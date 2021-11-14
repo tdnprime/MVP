@@ -8,9 +8,10 @@ Boxeon is a subscription box platform for content creators to offer subscription
 1. Download the project onto your local server.
 2. Name your local server as "localhost".
 3. Ensure your gmail address was added to the project in Google Developer Console.
-4. Go to /config/app.ini to update any variables that might be needed for the site to work with your server
-5. Set your local server to listen to Port 80. Google Sign-In will redirect to Port 80.
-6. Install the MySql database. Find it on Dropbox at https://www.dropbox.com/s/46h4g54stqa72tp/boxeon.sql?dl=0 
+4. Get the /config directory and place it in the peoject's root directory
+5. Go to /config/app.ini to update any variables that might be needed for the site to work with your server
+6. Set your local server to listen to Port 80. Google Sign-In will redirect to Port 80.
+7. Install the MySql database. Find it on Dropbox at https://www.dropbox.com/s/46h4g54stqa72tp/boxeon.sql?dl=0 
 
 # Signin
 

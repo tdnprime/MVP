@@ -50,6 +50,7 @@ if ( !isset( $_SESSION[ "uid" ] ) ) {
     }
     // If the user is not found, save info
     if ( !isset( $uid ) ) {
+	
       $db->insert( "user", $data );
       $arr = $db->get( "SELECT uid, pic, email, givenname, familyname FROM user WHERE gid=" . "'$gid'" );
       foreach ( $arr as $iarr ) {
@@ -59,12 +60,8 @@ if ( !isset( $_SESSION[ "uid" ] ) ) {
       }
 
       #SEND WELCOME EMAIL
+		// (This is a to do)
 
-      /*Incomplete.  A proper form email implementation will 
-	  replace the following code, including the required_once file*/
-      require_once "..php/welcome-email.php";
-      $from = $config[ "boxeon" ][ "serviceEmail" ];
-      sendWelcome( $from, $to, $name );
     }
   } catch ( Exception $e ) {
     error_log( $e, 0 );

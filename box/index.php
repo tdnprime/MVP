@@ -149,7 +149,7 @@ echo "<script src=https://www.paypal.com/sdk/js?client-id=" . $config[ 'paypal' 
 
       }
     } else {
-		// There is an embeded video.
+		// There is an embeded video in the user's account.
       $video = $u[ 0 ][ "video" ];
 
     }
@@ -239,7 +239,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
         </div>
          </div>
     </section>
-	 <section class='section'>
+	 <section class='section margin-bottom-10-em'>
       <div class='alt-section-inner-grid'>
         <div class='secinner'>
           <h1 class='extra-large-font'>Cancel anytime</h1>
@@ -248,7 +248,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
         </div>
         <img src='../images/still.svg' alt='subscription box'> </div>
     </section>
-	<br>
 	 <h2 class='centered'>How it works</h2>
     <div id='how-it-works' class='four-col-grid'>
       <div> <img src='../images/search.svg' alt='Computer'/> <h2>Find box</h2></div>
@@ -258,8 +257,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     </div>
 	<br>
     <section>
-      <div class='centered margin-bottom-10-em'>
-        <h1 class='extra-large-font darkblue margin-top-4-em'>It's that simple</h1>
+      <div class='centered'>
+        <h1 class='extra-large-font darkblue'>It's that simple</h1>
         <br>
         <a class='button' href='$signin_url'> Get started with $givenname </a> </div>
     </section>

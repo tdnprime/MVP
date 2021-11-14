@@ -3,11 +3,11 @@
 padding-top-6-em {
   padding-top: 6em;
 }
-margin-bottom-10-em {
-  margin-bottom: 10em;
+.margin-bottom-10-em {
+  margin-bottom: 10em !important;
 }
-margin-top-4-em {
-  margin-top: 4em;
+.margin-top-4-em {
+  margin-top: 4em !important;
 }
 /*Structure*/
 #box #headline {

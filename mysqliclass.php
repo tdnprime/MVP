@@ -216,7 +216,7 @@ class Database {
     $fields = substr( $fields, 0, -1 );
     $values = substr( $values, 0, -1 );
 
-    $sql = sprintf( "INSERT INTO %s (%s) VALUES (%s)", $table, $fields, $values );
+    $sql = sprintf( "INSERT INTO %s (%s) VALUES (%s)", $table, $fields, $values ); 
     self::set( 'last_query', $sql );
     $result = $link->query( $sql );
     if ( !$result ) {

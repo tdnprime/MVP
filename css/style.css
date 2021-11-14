@@ -30,7 +30,7 @@ margin-top-4-em {
 }
 #how-it-works{
 	width:50%;
-	margin:2em;
+	margin:5em;
 	margin-left:auto;
 	margin-right:auto;
 	filter:grayscale(1);
@@ -281,7 +281,7 @@ form {
 }
 .centered {
   text-align: center;
-  margin: 0 auto;
+  margin: auto;
   display: block;
 }
 #subs-btns {
@@ -460,7 +460,7 @@ footer {
   background-color: #f5f7fa;
   margin: 0 auto;
   display: grid;
-  padding-top: 5em;
+  padding-top: 10em;
   padding-bottom: 5em;
   border-top: 1px solid #fff;
   width: 100%;
@@ -1129,8 +1129,8 @@ input:checked + .slider:before {
   height: auto;
 }
 #menu-icon img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 #paypal-logo {
   width: 100px;
@@ -1312,7 +1312,7 @@ input:checked + .slider:before {
     background: url(../images/products.svg) no-repeat right 5em !important;
   }
 }
-/* SMALL SCREENSß */
+/* SMALL SCREENS */
 @media only screen and (max-width: 768px) {
   #m-content {
     width: 95%;

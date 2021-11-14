@@ -1,4 +1,16 @@
 <?php
+#SUBSCRIPTION BOX PAGE
+##Handles a user emebeding a Youtube Video
+##Serves a default page 
+##Serves a customized page
+## Allows Youtube video embed(UI/UX)
+
+
+
+/* When this page is requested with the query string "?u=" in the URL
+we take the value of "u" to identify the owner (Seller) 
+of the page that is being requested.
+*/
 session_start();
 require_once( "../mysqliclass.php" );
 $db = Database::getInstance();
@@ -7,9 +19,11 @@ $sql = "SELECT givenname, fullname FROM user WHERE uid=$uid";
 $owner = $db::get( $sql );
 $creator = $owner[ 0 ][ "fullname" ];
 $givenname = $owner[ 0 ][ "givenname" ];
+/* The user requesting this page must be identified by our system for them
+to interact with it.  So we create a sign in URL to populate
+the default or custom pages with sign in links/buttons*/
 require_once( "../signin/create-url.php" );
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +33,6 @@ require_once("../meta.html");
 $config = parse_ini_file( "../config/app.ini", true );
 // Subscriptions
 echo "<script src=https://www.paypal.com/sdk/js?client-id=" . $config[ 'paypal' ][ 'clientID' ] . "&vault=true&intent=subscription></script>";
-
 ?>
 </head>
 <body id="box">
@@ -30,6 +43,14 @@ echo "<script src=https://www.paypal.com/sdk/js?client-id=" . $config[ 'paypal' 
   <?php
   require_once( "../header.php" );
   echo '<div id="masthead">';
+	
+# YOUTUBE VIDEO EMBED
+	
+	/* The final step in CREATE A BOX 
+	is to embed a YouTube video by supplying the video URL. 
+	The video ID is then taken from the URL and saved in the database. 
+	This "if statement" gets the video ID, updates the database then 
+	reloads the page so that the user sees their emebeded video.*/
   if ( isset( $_POST[ 'ytembed' ] ) ) {
     $code = $_POST[ 'ytembed' ];
     preg_match(
@@ -46,6 +67,12 @@ echo "<script src=https://www.paypal.com/sdk/js?client-id=" . $config[ 'paypal' 
     header( "Refresh:0" );
   }
 
+   // Setting variables:
+	
+  /* Get information of the subscription box that is being reguested. 
+  This info will be used to decide if to show a default page or 
+  populate a custom page.
+  */
   $id = $_GET[ "u" ];
   require_once "../mysqliclass.php";
   $db = Database::getInstance();
@@ -53,16 +80,41 @@ echo "<script src=https://www.paypal.com/sdk/js?client-id=" . $config[ 'paypal' 
   $price = $u[ 0 ][ "price" ];
   $box_weight = $u[ 0 ][ "box_weight" ];
   $box_supply = $u[ 0 ][ "box_supply" ];
-  // $in_stock = $u[ 0 ][ "in_stock" ];
+  //$in_stock = $u[ 0 ][ "in_stock" ]; // not yet implemented
+	
+	
 
-  // If a box does not exist 
+# DEFAULT SUBSCRIPTION BOX PAGE
+	
+  /* To completely set up a subscription box, a seller 
+  must provide the weight of the box, which will be used
+  to calculate shipping cost. This is because shipping cost 
+  is included in buyers' subscription price.
+  Therefore, a subscription box page request must serve a default page 
+  until the owner of the box provides box weight/finishes creating their subscriptopn box. 
+  */
+	
+  // If a box_weight does not exist 
   if ( is_null( $box_weight ) ) {
+	  
+	  /* An embeded video is vital to a subscription box gaining subscribers. 
+	  Therefore, if the box owner has not embeded a video, their subscription 
+	  box page must remain in default page mode. 
+	  So we check for the existense of said embed video.
+	  */
 
     if ( is_null( $u[ 0 ][ "video" ] ) ) {
 
-      // If user is authenticated
-
+      /* The default subscription box page displays different messages
+	  according to who is requesting the page. One set of messages are directed
+	  at Sellers and the others are directed at Buyers. 
+	  Therefore, we check ff the user requesting the page 
+	  is authenticated and then check if they are the seller/owner 
+	  of the page or possible buyer.*/
+		
+	  // If the user is authenticated
       if ( isset( $_SESSION[ 'uid' ] ) ) {
+		  // If the user requeting the page owns the page
         if ( $id == $_SESSION[ 'uid' ] ) {
           $url = "https://boxeon.com/home/?cnb=cnb";
           echo "<div id='headline'><h1 class='ginormous'>Your box is still incomplete</h1>
@@ -97,22 +149,23 @@ echo "<script src=https://www.paypal.com/sdk/js?client-id=" . $config[ 'paypal' 
 
       }
     } else {
+		// There is an embeded video.
       $video = $u[ 0 ][ "video" ];
 
     }
     ?>
 </div>
 <?php
+	  
+# CUSTOMIZED SUBSCRIPTION BOX PAGE
 
 if ( !is_null( $u[ 0 ][ "video" ] ) ) {
-  if ( !isset( $url ) ) { // $url is set in header.php. 
+  if ( !isset( $url ) ) {
     $url = '?u=' . $id;
   }
 }
-
-
 } else {
-  // IF A BOX WEIGHT EXIST 
+
   if ( !is_null( $u[ 0 ][ "video" ] ) ) {
 
     $table = "subscriptions";
@@ -129,7 +182,6 @@ if ( !is_null( $u[ 0 ][ "video" ] ) ) {
     echo "<div id='box-masthead-inner-wrapper'>
 	<img id='image-previous-arrow' src='../images/arrow.svg' title='Previous' alt='Previous'/>
 	<section id='headline'>
-	
 		<h1 class='darkblue extra-large-font'> 
 		<span id='page-name' class='ginormous'>$creator</span> <br>is shipping $box_supply boxes <br> to loyal fans</h1> <div>
 		<p><span class='highlighted darkblue'>$$price</span> per box (plus shipping and handling)</p>
@@ -149,7 +201,6 @@ if ( !is_null( $u[ 0 ][ "video" ] ) ) {
 		<img id='image-next-arrow' src='../images/arrow.svg' title='Next' alt='Next'/>
 		</div>
 		 </div>
-		
 		 <main class='fadein'>
 		 <a id='whatis' href='#whatis'></a>
     <section class='section'>
@@ -215,7 +266,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 		 </main>";
 
   } else {
-	 // Allows video embed
+	  
+# ALLOW VIDEO EMBED(UI/UX)
+	  
+	/*This is the final step a seller takes 
+	  in the CREATE A BOX flow, emebed a YouTube video. */
     echo "<div id='video-place-holder' class='centered'>
 	<h1 class='extra-large-font'>Embed Video</h1>
 	<p>Embed a show and tell Youtube video for your subscription box. You may complete 
@@ -226,7 +281,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 	<div class='buttonHolder'>
 	<input type='submit' value='Embed'></input></div></form></div>";
   }
-
 }
 ?>
 </div>

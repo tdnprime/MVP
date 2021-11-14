@@ -1,9 +1,28 @@
-/* JS/GLOBAL */
+/* GLOBAL
 
-var Boxeon = Boxeon || {}; // Functions
+
+NOTE: 
++ At the very bottom of this file
+  are event listeners that are added upon page load.
+
+TO DO:
++ Get Progress Bar to work accurately
++ Fix the subscription flow UX
++ Fix the unsubscribe flow UX
++ Proper error handling
++ Refactor with abstraction in mind
+
+
+*/
+
+
+//A collection of functions
+var Boxeon = Boxeon || {}; 
+//Gets user account info
 var Account = Account || {};
 var Shipping = Shipping || {};
 var Subscriptions = Subscriptions || {};
+
 
 Boxeon = {
 
@@ -106,7 +125,13 @@ Boxeon = {
     form.appendChild(label3);
     return form;
   },
-  /************ INCOMPLETE **********/
+	
+	
+	
+	
+	
+	
+  /*INCOMPLETE **********/
   createSubsButton: function () {
     // Note: APPLY sellers UID
     var wrapper = document.createElement("div");
@@ -122,6 +147,11 @@ Boxeon = {
     // NOTE: Add event listener
     return wrapper;
   },
+	
+	
+	
+	
+	
   createSecureTransactionNotice: function () {
     var wrapper = document.createElement("div");
     var img = document.createElement("img");

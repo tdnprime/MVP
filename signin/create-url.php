@@ -2,8 +2,13 @@
 #CREATE-URL
 ##Creates Google signin URL
 
-/*Turn off WARNINGS*/
+
+
+# TURN OFF WARNINGS
 error_reporting(E_ERROR | E_PARSE | E_NOTICE);
+
+
+#CONFIGURATION FILE
 
 /*Check to see if the configuration file is NOT
 being reguested from the root directory 
@@ -18,6 +23,7 @@ if( !parse_ini_file( "config/app.ini", true ) ) {
 	*/
   $config = parse_ini_file( "config/app.ini", true );
 }
+
 
 #CREATE GOOGLE SIGN IN URL
 require_once 'google-api/vendor/autoload.php';

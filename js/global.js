@@ -15,11 +15,10 @@ TO DO:
 
 */
 
+// TABLE OF CONTENTS:
 
-//A collection of functions
-var Boxeon = Boxeon || {}; 
-//Gets user account info
-var Account = Account || {};
+var Boxeon = Boxeon || {};  // A collection of functions
+var Account = Account || {}; // Gets user account info
 var Shipping = Shipping || {};
 var Subscriptions = Subscriptions || {};
 
@@ -36,20 +35,17 @@ Boxeon = {
       if (this.readyState == 0) {
         Boxeon.progressBar(25);
       } else if (this.readyState == 2) {
-
         Boxeon.progressBar(50);
       } else if (this.readyState == 3) {
         Boxeon.progressBar(75);
       } else if (this.readyState == 4 && this.status == 200) {
         back(this.responseText);
         Boxeon.progressBar(101);
-
       } else {
 
         alert("Sorry! An error occured. Please try again.");
       }
     }
-
   },
 
   progressBar: function (completed) {

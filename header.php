@@ -7,9 +7,15 @@
 ## Displays left sidebar menu
 
 
-/*
-Required configuration file:
+#CONFIGURATION FILE
+
+/* NOTICE!
+If you're looking for where the configuration file is called during signin, 
+it is not here. In the signin sub-directory, 
+you will see create-url.php. This is where the Google Signin flow starts 
+and is where the configuration file is reguired for the signin process.
 */
+
 $config = parse_ini_file( "config/app.ini", true );
 ?>
 <span></span><!-- Hack-->

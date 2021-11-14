@@ -17,3 +17,10 @@ Boxeon is a subscription box platform for content creators to offer subscription
 1. Load project in your browser using Port 80.
 2. Use your gmail associated with the project in Google Developer Console to sign in.
 
+# know
+
+1. Signin - Users must be identified by the app prior to them starting some important processes.
+For example, sometimes a user might set out to subscribe to a box. They are first asked
+to sign in.  Once they sign in, they will be redirected to the page they signed in from to continue the process in question. 
+This redirect occurs afer Google Sign in has redirected them to the home page. See /signin/create-url.php to see the redirect logic.
+

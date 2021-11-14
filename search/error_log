@@ -1,0 +1,56 @@
+[04-Apr-2021 12:12:31 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/btkv7th7c1o5/public_html/find/index.php on line 33
+[04-Apr-2021 12:13:42 UTC] PHP Notice:  Undefined index: search in /home/btkv7th7c1o5/public_html/find/index.php on line 32
+[04-Apr-2021 12:22:36 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/btkv7th7c1o5/public_html/find/index.php on line 38
+[04-Apr-2021 12:23:03 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/btkv7th7c1o5/public_html/find/index.php on line 38
+[04-Apr-2021 12:23:29 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/btkv7th7c1o5/public_html/find/index.php on line 38
+[04-Apr-2021 14:40:20 UTC] PHP Notice:  Undefined variable: url in /home/btkv7th7c1o5/public_html/find/index.php on line 38
+[04-Apr-2021 16:54:33 UTC] PHP Notice:  Undefined variable: token in /home/btkv7th7c1o5/public_html/find/index.php on line 39
+[04-Apr-2021 16:55:17 UTC] PHP Notice:  Undefined variable: token in /home/btkv7th7c1o5/public_html/find/index.php on line 39
+[04-Apr-2021 17:18:52 UTC] PHP Notice:  Undefined variable: client in /home/btkv7th7c1o5/public_html/find/index.php on line 34
+[04-Apr-2021 17:18:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function createAuthUrl() on null in /home/btkv7th7c1o5/public_html/find/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/btkv7th7c1o5/public_html/find/index.php on line 34
+[04-Apr-2021 17:22:33 UTC] PHP Warning:  require(login/google-api/vendor/autoload.php): failed to open stream: No such file or directory in /home/btkv7th7c1o5/public_html/find/index.php on line 34
+[04-Apr-2021 17:22:33 UTC] PHP Fatal error:  require(): Failed opening required 'login/google-api/vendor/autoload.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/btkv7th7c1o5/public_html/find/index.php on line 34
+[04-Apr-2021 17:22:46 UTC] PHP Warning:  require(login/google-api/vendor/autoload.php): failed to open stream: No such file or directory in /home/btkv7th7c1o5/public_html/find/index.php on line 34
+[04-Apr-2021 17:22:46 UTC] PHP Fatal error:  require(): Failed opening required 'login/google-api/vendor/autoload.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/btkv7th7c1o5/public_html/find/index.php on line 34
+[04-Apr-2021 17:54:42 UTC] PHP Notice:  Undefined variable: url in /home/btkv7th7c1o5/public_html/find/index.php on line 64
+[04-Apr-2021 20:04:01 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/btkv7th7c1o5/public_html/find/index.php on line 63
+[04-Apr-2021 20:04:29 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/btkv7th7c1o5/public_html/find/index.php on line 63
+[04-Apr-2021 20:29:18 UTC] PHP Notice:  Undefined variable: client in /home/btkv7th7c1o5/public_html/header.php on line 216
+[04-Apr-2021 20:29:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function createAuthUrl() on null in /home/btkv7th7c1o5/public_html/header.php:216
+Stack trace:
+#0 /home/btkv7th7c1o5/public_html/find/index.php(28): require_once()
+#1 {main}
+  thrown in /home/btkv7th7c1o5/public_html/header.php on line 216
+[04-Apr-2021 23:16:29 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/btkv7th7c1o5/public_html/find/index.php on line 79
+[04-Apr-2021 23:21:31 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/btkv7th7c1o5/public_html/header.php:198) in /home/btkv7th7c1o5/public_html/find/index.php on line 82
+[04-Apr-2021 23:21:31 UTC] PHP Notice:  Undefined index: discount in /home/btkv7th7c1o5/public_html/find/index.php on line 83
+[05-Apr-2021 16:02:14 UTC] PHP Notice:  Undefined variable: client in /home/btkv7th7c1o5/public_html/header.php on line 216
+[05-Apr-2021 16:02:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function createAuthUrl() on null in /home/btkv7th7c1o5/public_html/header.php:216
+Stack trace:
+#0 /home/btkv7th7c1o5/public_html/find/index.php(23): require_once()
+#1 {main}
+  thrown in /home/btkv7th7c1o5/public_html/header.php on line 216
+[05-Apr-2021 17:59:41 UTC] PHP Notice:  Undefined variable: client in /home/btkv7th7c1o5/public_html/header.php on line 216
+[05-Apr-2021 17:59:41 UTC] PHP Fatal error:  Uncaught Error: Call to a member function createAuthUrl() on null in /home/btkv7th7c1o5/public_html/header.php:216
+Stack trace:
+#0 /home/btkv7th7c1o5/public_html/find/index.php(23): require_once()
+#1 {main}
+  thrown in /home/btkv7th7c1o5/public_html/header.php on line 216
+[05-Apr-2021 21:13:15 UTC] PHP Warning:  require_once(myssqliclass.php): failed to open stream: No such file or directory in /home/btkv7th7c1o5/public_html/find/index.php on line 30
+[05-Apr-2021 21:13:15 UTC] PHP Fatal error:  require_once(): Failed opening required 'myssqliclass.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/btkv7th7c1o5/public_html/find/index.php on line 30
+[05-Apr-2021 21:13:50 UTC] PHP Warning:  require_once(../myssqliclass.php): failed to open stream: No such file or directory in /home/btkv7th7c1o5/public_html/find/index.php on line 30
+[05-Apr-2021 21:13:50 UTC] PHP Fatal error:  require_once(): Failed opening required '../myssqliclass.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/btkv7th7c1o5/public_html/find/index.php on line 30
+[05-Apr-2021 21:14:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Database::qet() in /home/btkv7th7c1o5/public_html/find/index.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/btkv7th7c1o5/public_html/find/index.php on line 33
+[05-Apr-2021 21:18:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Database::qet() in /home/btkv7th7c1o5/public_html/find/index.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/btkv7th7c1o5/public_html/find/index.php on line 33
+[05-Apr-2021 22:35:58 UTC] PHP Notice:  Undefined variable: pic in /home/btkv7th7c1o5/public_html/find/index.php on line 39
+[05-Apr-2021 22:37:03 UTC] PHP Notice:  Undefined variable: pic in /home/btkv7th7c1o5/public_html/find/index.php on line 39
+[05-Apr-2021 22:37:15 UTC] PHP Notice:  Undefined variable: pic in /home/btkv7th7c1o5/public_html/find/index.php on line 39

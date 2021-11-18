@@ -39,7 +39,7 @@ class GoogleController extends Controller
         try{
             $user = Socialite::driver('google')->stateless()->user();
 
-            $finduser = User::where('google_id', $user->id)->first;
+            $finduser = User::where('google_id', $user->id)->first();
 
             if($finduser){
                 Auth::login($finduser);
@@ -53,7 +53,7 @@ class GoogleController extends Controller
                 ]);
 
                 Auth::login($user, true);
-                
+
                 Mail::to($user->email)->send(new WelcomeUser($user));
 
                 return redirect('/dashboard');

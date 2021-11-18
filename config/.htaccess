@@ -1,4 +1,0 @@
-<files app.ini>
-order allow,deny
-deny from all
-</files>

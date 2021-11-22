@@ -10,7 +10,7 @@
 <link rel="alternate icon" href="assets/images/favicon.svg">
 <link rel="mask-icon" href="https://boxeon.cassets/images/favicon.svg" color="#fff">
 <link rel="stylesheet" href="assets/css/style.css?v=2">
-<link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 1320px)" href="../css/mobile.css"/>
+<link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 1320px)" href="assets/css/mobile.css"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert%20One">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -23,12 +23,17 @@
 
 <body id='index'>
     <div id="container">
+        <span></span><!-- Hack-->
         <header>
             <a href="#" title="Menu" id='menu-icon'>
             <img src="assets/images/menu.svg" alt="Menu"></a>
             <a id='logo' href="/home" title='Home'>
             <img src="assets/images/logo.svg" alt="logo"/>
             <span id="beta">Beta</span></a>
+            <a id='signin' href='{{ url('auth/google') }}'>
+                Sign in with Google
+                </a>
+        </header>
 
             <div  id="menu" class="menu">
                 <a id="m-close" class="fadein menu-close" href="#">X</a>
@@ -45,8 +50,9 @@
                 <a class="fadein" id="signout" href="/signout">Sign out</a>
             </div>
 
-        </header>
-
+            <div id='mobile-signin'><a class='signin centered' href='{{ url('auth/google') }}'>
+                Sign in with Google
+                </a></div>
             @yield('content')
 
     </div>

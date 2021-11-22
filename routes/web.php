@@ -23,6 +23,9 @@ Route::get('/home/?q=l', function () {
 Route::get('/home/?i=i', function () {
     return view('home.income');
 });
+Route::get('/home/?s=s', function () {
+    return view('home.index');
+});
 Route::get('/commission', function () {
     return view('commission.index');
 });

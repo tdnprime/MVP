@@ -3,8 +3,14 @@
 
 We are happy to have you {{ $user['name'] }} onboard.
 
-@component('mail::button', ['url' => ''])
-Button Text
+if you are seller?
+@component('mail::button', ['url' => 'http://localhost:8000/box'])
+Get Started here
+@endcomponent
+
+if you are buyer?
+@component('mail::button', ['url' => 'http://localhost:8000/'])
+Get Started here
 @endcomponent
 
 Thanks,<br>

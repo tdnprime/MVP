@@ -15,7 +15,34 @@ class CreateBoxesTable extends Migration
     {
         Schema::create('boxes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->integer('curation');
+            $table->string('category')->nullable();
+            $table->string('description')->nullable();
+            $table->integer('box_weight')->nullable();
+            $table->integer('price');
+            $table->integer('ship_from')->nullable();
+            $table->integer('box_height')->nullable();
+            $table->integer('box_length')->nullable();
+            $table->integer('box_width')->nullable();
+            $table->integer('box_supply');
+            $table->integer('in_stock')->nullable();
+            $table->integer('num_products');
+            $table->string('promo_code');
+            $table->integer('promo_supply')->nullable();
+            $table->integer('promo_in_stock')->nullable();
+            $table->string('video')->nullable();
+            $table->string('product_id')->nullable();
+            $table->string('address_line_1')->nullable();
+            $table->string('address_line_2')->nullable();
+            $table->string('admin_area_1')->nullable();
+            $table->string('admin_area_2')->nullable();
+            $table->string('country_code')->nullable();
+            $table->integer('postal_code')->nullable();
+            $table->string('plan_ids')->nullable();
+            $table->string('page_name')->nullable();
             $table->timestamps();
+
         });
     }
 

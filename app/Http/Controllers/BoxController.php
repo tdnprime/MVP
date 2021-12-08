@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BoxController extends Controller
@@ -13,7 +14,10 @@ class BoxController extends Controller
      */
     public function index()
     {
-        //
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        return view('home/create_box', compact('user'));
     }
 
     /**
@@ -21,9 +25,11 @@ class BoxController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+
+        ]);
     }
 
     /**

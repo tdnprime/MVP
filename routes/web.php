@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LogoutController;
 /*
@@ -14,9 +15,8 @@ use App\Http\Controllers\LogoutController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('index');
+
 Route::get('/home/?q=l', function () {
     return view('home.creators-guide');
 });
@@ -44,8 +44,8 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::patch('box/{id}','App\Http\Controllers\BoxController@update')->name('box.update');
     Route::post('box/destory', 'App\Http\Controllers\BoxController@destory')->name('box.destory');
     Route::get('box/ship', 'App\Http\Controllers\BoxController@ship')->name('box.ship');
+    Route::get('/signout', 'LogoutController@logout')->name('logout');
 
-    Route::get('/signout', 'LogoutController@perform')->name('logout.perform');
  });
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);

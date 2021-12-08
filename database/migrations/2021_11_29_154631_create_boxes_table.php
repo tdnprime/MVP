@@ -14,7 +14,7 @@ class CreateBoxesTable extends Migration
     public function up()
     {
         Schema::create('boxes', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('vid');
             $table->foreignId('user_id')->nullable()->index();
             $table->integer('curation');
             $table->string('category')->nullable();

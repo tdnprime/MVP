@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Box;
 use Illuminate\Http\Request;
 
 class BoxController extends Controller
@@ -20,6 +21,22 @@ class BoxController extends Controller
         return view('home/create_box', compact('user'));
     }
 
+    public function step2(Request $request)
+    {
+        $id = auth()->user()->id;
+
+        $box = new Box();
+
+        $box->user_id = $id;
+        $box->price = $request->input('price');
+        $box->page_name = $request->input('page_name');
+        $box->box_supply = $request->input('box_supply');
+        $box->curation = $request->input('curation');
+        $box->save();
+
+        return view('home/step-one-markup');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,9 +44,7 @@ class BoxController extends Controller
      */
     public function create(Request $request)
     {
-        $request->validate([
 
-        ]);
     }
 
     /**
@@ -40,7 +55,7 @@ class BoxController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -51,7 +66,7 @@ class BoxController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -62,7 +77,7 @@ class BoxController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -74,7 +89,7 @@ class BoxController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -85,6 +100,6 @@ class BoxController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

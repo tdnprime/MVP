@@ -27,7 +27,7 @@
         <header>
             <a href="#" title="Menu" id='menu-icon'>
             <img src="assets/images/menu.svg" alt="Menu"></a>
-            <a id='logo' href="/home" title='Home'>
+            <a id='logo' href="/" title='Home'>
             <img src="assets/images/logo.svg" alt="logo"/>
             <span id="beta">Beta</span></a>
 
@@ -51,7 +51,7 @@
                 <a class="fadein" href="/home/?q=l">Creators guide</a>
                 <a class="fadein" href="/partner">Partner</a>
                 <a class="fadein" href="/commission">Commission</a>
-                <a class="fadein" href="/box">Create box</a>
+                <a class="fadein" href="/box/index">Create box</a>
                 <a class="fadein" href="box/edit/{id}">Edit box</a>
                 <a class="fadein" href="/home/?s=s">Ship boxes</a>
                     <a class="fadein" href="/home/?i=i">Income</a>

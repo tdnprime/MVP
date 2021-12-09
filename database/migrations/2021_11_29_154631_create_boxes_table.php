@@ -16,19 +16,19 @@ class CreateBoxesTable extends Migration
         Schema::create('boxes', function (Blueprint $table) {
             $table->bigIncrements('vid');
             $table->foreignId('user_id')->nullable()->index();
-            $table->integer('curation');
+            $table->integer('curation')->nullable();
             $table->string('category')->nullable();
             $table->string('description')->nullable();
             $table->integer('box_weight')->nullable();
-            $table->integer('price');
+            $table->integer('price')->nullable();
             $table->integer('ship_from')->nullable();
             $table->integer('box_height')->nullable();
             $table->integer('box_length')->nullable();
             $table->integer('box_width')->nullable();
-            $table->integer('box_supply');
+            $table->integer('box_supply')->nullable();
             $table->integer('in_stock')->nullable();
-            $table->integer('num_products');
-            $table->string('promo_code');
+            $table->integer('num_products')->nullable();
+            $table->string('promo_code')->nullable();
             $table->integer('promo_supply')->nullable();
             $table->integer('promo_in_stock')->nullable();
             $table->string('video')->nullable();
@@ -42,7 +42,6 @@ class CreateBoxesTable extends Migration
             $table->string('plan_ids')->nullable();
             $table->string('page_name')->nullable();
             $table->timestamps();
-
         });
     }
 

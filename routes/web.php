@@ -37,24 +37,19 @@ Route::get('/blog', function () {
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
-
-    Route::get('/box', 'App\Http\Controllers\BoxController@index')->name('box.index');
+    Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
+    Route::post('/box', 'App\Http\Controllers\BoxController@step2')->name('box.step2');
     Route::post('/box/create', 'App\Http\Controllers\BoxController@create')->name('box.create');
     Route::get('box/edit/{id}','App\Http\Controllers\BoxController@edit')->name('box.edit');
     Route::patch('box/{id}','App\Http\Controllers\BoxController@update')->name('box.update');
     Route::post('box/destory', 'App\Http\Controllers\BoxController@destory')->name('box.destory');
     Route::get('box/ship', 'App\Http\Controllers\BoxController@ship')->name('box.ship');
-    Route::get('/signout', 'LogoutController@logout')->name('logout');
-
+    Route::get('/signout', [LogoutController::class, 'perform']);
  });
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-
-
-
-Route::get('/WelcomeMail', [MailController::class, 'welcomeMail']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

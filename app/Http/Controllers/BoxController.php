@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Box;
 use Illuminate\Http\Request;
+
 
 class BoxController extends Controller
 {
@@ -17,14 +19,35 @@ class BoxController extends Controller
     {
         $id = auth()->user()->id;
         $user = User::find($id);
+        $boxes = Box::latest()->paginate(5);
 
-        return view('home/create_box', compact('user'));
+        return view('subscription_box.index',compact('boxes','user'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    public function step2(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function create()
     {
         $id = auth()->user()->id;
+        $user = User::find($id);
 
+        return view('subscription_box.create', compact('user'));
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $id = auth()->user()->id;
+        $user = User::find($id);
         $box = new Box();
 
         $box->user_id = $id;
@@ -38,35 +61,14 @@ class BoxController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Box $box)
     {
-
+        return view('subscription_box.show', compact('post'));
     }
 
     /**
@@ -75,9 +77,13 @@ class BoxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user_id)
     {
+        $user = User::find($user_id);
 
+        $box = DB::table('boxes')->where('user_id', $user_id)->first();
+
+        return view('subscription_box.edit' , compact('box', 'user'));
     }
 
     /**
@@ -87,9 +93,28 @@ class BoxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$user_id)
     {
+        $box = DB::table('boxes')->where('user_id', $user_id)->limit(1);
 
+        $request->validate([
+            'price' => 'required',
+            'page_name' => 'required',
+            'box_supply' => 'required',
+            'curation' => 'required'
+        ]);
+
+        $array = array(
+            'price' => $request->get('price'),
+            'page_name' => $request->get('page_name'),
+            'box_supply' => $request->get('box_supply'),
+            'curation' => $request->get('curation'),
+           );
+
+        $box->update($array);
+
+        return redirect()->route('box.index')
+                        ->with('success','Subscription Box updated successfully');
     }
 
     /**
@@ -98,8 +123,12 @@ class BoxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Box $box)
     {
+        $box->delete();
+
+        return redirect()->route('subscription_box.create')
+                        ->with('success','Subscription deleted successfully');
 
     }
 }

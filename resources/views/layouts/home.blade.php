@@ -51,8 +51,8 @@
                 <a class="fadein" href="/home/?q=l">Creators guide</a>
                 <a class="fadein" href="/partner">Partner</a>
                 <a class="fadein" href="/commission">Commission</a>
-                <a class="fadein" href="/box/index">Create box</a>
-                <a class="fadein" href="box/edit/{id}">Edit box</a>
+                <a class="fadein" href="/box/create">Create box</a>
+                <a class="fadein" href="{{ route('box.edit',$user->id) }}">Edit box</a>
                 <a class="fadein" href="/home/?s=s">Ship boxes</a>
                     <a class="fadein" href="/home/?i=i">Income</a>
                     <a class="fadein" href="/blog">Academy</a>

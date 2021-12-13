@@ -1,7 +1,8 @@
 @charset "UTF-8";
-
 /* ----- MOBILE----------------------
 
+NOTE:
+<link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 1591px)" href="../css/mobile.css?v=1.0"/>
 
 320px — 480px: Mobile devices
 481px — 768px: iPads, Tablets
@@ -12,7 +13,95 @@
 
 
 */
-@media only screen and (max-width: 1320px) {
+.break {
+  display: block;
+}
+	#partner-apply{
+		display:none;
+	}
+@media only screen and (max-width:1591px) {
+#partner .two-col-grid {
+    background: url(../images/fall-4.svg) -10em 18em no-repeat, url(../images/fall-5.svg) 40em top no-repeat; 
+}
+	#form-partner-apply-wrapper{
+		display:none;
+	}
+	#partner-apply{
+		display:inline-block;
+	}
+	#masthead-image-about {
+    background: url("../images/alt-blue-bg.svg") no-repeat 50% 5em;
+}
+	#partner .two-col-grid{
+		display:block;
+	}
+	#headline{
+		width:70%;
+		margin:auto;
+		top: 14em;
+	}
+	#masthead-video-wrapper{
+		    width: 70%;
+    margin: auto;
+	}
+  .hack-br-2 {
+    display: none !important;
+  }
+  #box-masthead-inner-wrapper {
+    display: block;
+    background-image: url(../images/alt-blue-bg.svg);
+  }
+  #box-headline {
+    width: 100%;
+    text-align: center;
+  }
+  #box #masthead {
+    display: block;
+    height: fit-content;
+  }
+  #box-masthead-inner-wrapper {
+    width: fit-content;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: none;
+  }
+  #box-headline {
+    display: grid;
+    grid-template-rows: auto auto;
+    text-align: left;
+    width: 100%;
+  }
+  #box .break {
+    display: inline;
+  }
+  #box .ginormous {
+    font-size: inherit !important;
+  }
+  #box-headline h1 {
+    grid-row-start: 1;
+    font-size: 5em;
+    margin-bottom: 0.2em;
+    text-align: center;
+	  width:auto !important;
+  }
+  #box-headline p {
+    display: inline-block;
+    margin-right: 4em;
+    margin-bottom: 2em;
+    text-align: center;
+  }
+  #main {
+    padding-left: 3em;
+  }
+  #box-headline div {
+    grid-row-start: 3;
+    margin: auto;
+    padding: 2em;
+  }
+  #box-headline .sub-btns {
+    width: 30%;
+    nargin: auto;
+  }
   #video-place-holder {
     width: 100%;
     padding: 0;
@@ -86,7 +175,7 @@
     vertical-align: middle;
   }
   .section {
-    width: 100%;
+    width: 60%;
   }
   #container {
     padding: 1em;
@@ -99,11 +188,12 @@
     width: auto;
   }
   #headline {
-    top: 8em !important;
+  /*  top: 8em !important;
     padding-left: 0 !important;
     grid-row-start: 3;
     grid-row-end: 3;
-    position: static !important;
+    position: static !important;*/
+	text-align: center;
   }
   #testimonials {
     display: block;
@@ -116,28 +206,22 @@
     height: 300px;
   }
   #masthead {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    height: 50em;
+    display: block;
     overflow-y: hidden;
   }
   #box #masthead {
     display: block;
   }
-  #headline {
+  /*  #headline {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 1;
     grid-row-end: 1;
-  }
-  #masthead div {
-    grid-column-start: 2;
-    grid-column-end: 2;
-  }
+  }*/
   #masthead-image {
     width: 95%;
     height: 100%;
-    background: url(../images/altwelcomeimg.svg) no-repeat right 5em !important;
+    background: url("../images/alt-marilyn.svg") no-repeat right 5em !important;
   }
   #masthead-image-discounts {
     width: 95%;
@@ -151,13 +235,13 @@
 }
 /* SMALL SCREENSß */
 @media only screen and (max-width: 768px) {
-	#logo{
-	bottom: .5em;
+  #logo {
+    bottom: .5em;
     position: relative;
-	}
+  }
   #getlabels {
     left: -9.5em !important;
-	  left:0;
+    left: 0;
     color: #fff !important;
     background-color: #005ea6;
   }
@@ -190,8 +274,8 @@
   }
 }
 /* Extra small devices (phones, 600px and down) */
-
 @media only screen and (max-width: 600px) {
+	
   #home main {
     display: block;
     padding: 0;
@@ -202,6 +286,7 @@
   }
   #container {
     display: block;
+	      width: fit-content;
   }
   p {
     max-width: 100%;

@@ -2,8 +2,8 @@
 <svg
    id="ab8ae2a1-21db-4159-bb67-e2c62dcc19dc"
    data-name="Layer 1"
-   width="362"
-   height="228.54601"
+   width=""
+   height="25"
    viewBox="0 0 361.99999 228.54601"
    version="1.1"
    sodipodi:docname="logo.svg"
@@ -38,17 +38,17 @@
      id="path179" />
   <polygon
      points="543.307,387.986 577.189,380.853 488.026,430.784 493.376,416.518 "
-     fill="#006ea6"
+     fill="#0c8dc4"
      id="polygon181"
      transform="translate(-215.189,-359.454)" />
   <polygon
      points="249.071,387.986 215.189,380.853 304.352,430.784 299.002,416.518 "
-     fill="#006ea6"
+     fill="#0c8dc4"
      id="polygon183"
      transform="translate(-215.189,-359.454)" />
   <polygon
      points="284.736,359.454 507.642,359.454 491.593,434.35 300.785,434.35 "
-     fill="#006ea6"
+     fill="#0c8dc4"
      id="polygon185"
      transform="translate(-215.189,-359.454)" />
   <polygon
@@ -62,7 +62,7 @@
      y="70.43763"
      width="192.59109"
      height="158.10837"
-     fill="#006ea6"
+     fill="#0c8dc4"
      id="rect189" />
   <rect
      x="163.99997"

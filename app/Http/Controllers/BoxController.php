@@ -81,7 +81,7 @@ class BoxController extends Controller
     {
         $user = User::find($user_id);
 
-        $box = DB::table('boxes')->where('user_id', $user_id)->first();
+        $box = $user->boxes()->first();
 
         return view('subscription_box.edit' , compact('box', 'user'));
     }

@@ -1,10 +1,7 @@
-@extends('layouts.home')
+@extends('layouts.create-box')
 
 @section('content')
 
-
-
-<main>
     <form name='basics' action='/box' method='post'>
         @csrf
         @method('POST')
@@ -371,6 +368,5 @@
 
 
         </form>
-    </main>
 
-    @endsection
+@endsection

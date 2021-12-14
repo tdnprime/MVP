@@ -21,7 +21,7 @@
 </script>
 </head>
 
-<body id='home'>
+<body id='index'>
     <div id="container">
         <span></span><!-- Hack-->
         <header>

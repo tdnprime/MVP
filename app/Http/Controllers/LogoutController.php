@@ -12,7 +12,7 @@ class LogoutController extends Controller
     public function perform(Request $request) {
 
         Session::flush();
-        Auth::logout();
-        return redirect('login');
+        Auth::guard('web')->logout();
+        return redirect('/');
     }
 }

@@ -17,26 +17,23 @@ use App\Http\Controllers\LogoutController;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('index');
 
+
 Route::get('/home/?q=l', function () {
     return view('home.creators-guide');
 });
 Route::get('/home/?i=i', function () {
     return view('home.income');
 });
-Route::get('/home/?s=s', function () {
-    return view('home.index');
-});
 Route::get('/commission', function () {
     return view('commission.index');
-});
-Route::get('/partner', function () {
-    return view('partner');
 });
 Route::get('/blog', function () {
     return view('blog.index');
 });
 
+Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('index');
 Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::get('/home', 'App\Http\Controllers\HomeController@dashboard')->name('index');
     Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
     Route::get('/box/create', 'App\Http\Controllers\BoxController@create')->name('box.create');
     Route::post('/box', 'App\Http\Controllers\BoxController@store')->name('box.store');

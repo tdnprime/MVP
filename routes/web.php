@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::put('/box/{vid}','App\Http\Controllers\BoxController@update')->name('box.update');
     Route::delete('/box/{vid}', 'App\Http\Controllers\BoxController@destory')->name('box.destory');
     Route::get('/box/ship', 'App\Http\Controllers\BoxController@ship')->name('box.ship');
-    Route::get('/signout', [LogoutController::class, 'perform']);
+    Route::get('/signout', 'App\Http\Controllers\LogoutController@perform')->name('logout.perform');
  });
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);

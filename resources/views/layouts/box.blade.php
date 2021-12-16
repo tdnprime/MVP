@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @include('includes.meta');
+    @include('includes.meta')
 </head>
 
 <body id='box' data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="">
@@ -11,10 +11,10 @@
 
     <div id="container">
         <span></span><!-- Hack-->
-        @include('includes.header');
-        @include('includes.menu');
+        @include('includes.header')
+        @include('includes.menu')
 
-        @yield('content');
+        @yield('content')
 
     </div>
     <div id="video-place-holder" class="centered">
@@ -26,6 +26,6 @@
         <div class="buttonHolder">
         <input type="submit" value="Embed"></div></form>
     </div>
-    @include('includes.footer');
+    @include('includes.footer')
 </body>
 </html>

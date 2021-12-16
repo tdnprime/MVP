@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    @include('includes.meta');
+    @include('includes.meta')
 </head>
 <body id='partner'>
     <div id="progress">
@@ -9,12 +9,12 @@
     </div>
     <div id="container">
         <span></span><!-- Hack-->
-        @include('includes.header');
-        @include('includes.menu');
+        @include('includes.header')
+        @include('includes.menu')
 
-        @yield('content');
+        @yield('content')
 
     </div>
-    @include('includes.footer');
+    @include('includes.footer')
 </body>
 </html>

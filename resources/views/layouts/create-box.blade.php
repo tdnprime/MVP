@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    @include('includes.meta');
+    @include('includes.meta')
 </head>
 <body id='home'>
     <div id="progress">
@@ -9,8 +9,8 @@
     </div>
     <div id="container">
         <span></span><!-- Hack-->
-        @include('includes.header');
-        @include('includes.menu');
+        @include('includes.header')
+        @include('includes.menu')
 
         {{-- #FEEDBACK
 	/*This is the first point of contact in getting feedback from users.
@@ -19,15 +19,15 @@
         <main>
             <section id='left-aside'></section>
             <aside id='panel'>
-            
-                @yield('content');
+
+                @yield('content')
 
             </aside>
             <section id='right-aside'>
             </section>
         </main>
     </div>
-    @include('includes.footer');
+    @include('includes.footer')
 
     </div>
 </body>

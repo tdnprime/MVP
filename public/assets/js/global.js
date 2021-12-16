@@ -58,7 +58,7 @@ Boxeon = {
     }
   },
   changeImageOnMouseover: function (img, src) {
-    img.src = "../images/" + src;
+    img.src = "../assets/images/" + src;
 
   },
   playVideo: function (video_id, creator_uid) {
@@ -229,7 +229,7 @@ Boxeon = {
     mc.appendChild(mb);
     x.innerHTML = "&times;";
     if (document.getElementById('m-window')) {
-		  var m_window = document.getElementById("m-window")
+      var m_window = document.getElementById("m-window")
       var m_content = document.getElementById("m-window").firstChild;
       m_content.remove();
       m_window.appendChild(mc);
@@ -262,8 +262,8 @@ Boxeon = {
 
   menu: function () {
     /* When side navigation slides out, 
-	set the width of the side navigation and 
-	the left margin of MAIN + FOOTER */
+  set the width of the side navigation and 
+  the left margin of MAIN + FOOTER */
     document.getElementById("menu").style.width = "300px";
     document.getElementsByTagName("main")[0].style.marginLeft = "300px";
     document.getElementsByTagName("footer")[0].style.marginLeft = "300px";
@@ -456,7 +456,7 @@ Shipping = {
     document.getElementById("mc-header").innerHTML =
       '<div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p><p class="step step-completed">L</p><p class="step step-current">3</p></div>';
     document.getElementById("m-body").
-    innerHTML = Shipping.rate_card;
+      innerHTML = Shipping.rate_card;
   },
   printLabels: function (b) {
     var arr = {};
@@ -470,7 +470,7 @@ Shipping = {
       payload: json
     }
 
-    function callback() {}
+    function callback() { }
     Boxeon.sendAjax(data, callback);
   }
 
@@ -483,8 +483,8 @@ Subscriptions = {
     var ownerID = b.getAttribute("data-id");
     Boxeon.createModalWindow();
     document.
-    getElementById("m-body").
-    innerHTML = '<div id="subs-btns"><button id="close-modal">No</button><button class="clearbtn" data-id="' + ownerID + '" id="exe-unsub">Yes</button></div>';
+      getElementById("m-body").
+      innerHTML = '<div id="subs-btns"><button id="close-modal">No</button><button class="clearbtn" data-id="' + ownerID + '" id="exe-unsub">Yes</button></div>';
 
   },
 
@@ -549,8 +549,8 @@ Subscriptions = {
   showPaymentOptions: function () {
     Boxeon.createModalWindow();
     document.
-    getElementById("m-body").
-    innerHTML = "<div id='paypal-button-container'></div>";
+      getElementById("m-body").
+      innerHTML = "<div id='paypal-button-container'></div>";
     Boxeon.loadScript("../js/subs.js");
     var buttons = document.getElementById("paypal-button-container");
     buttons.style.display = "block";
@@ -695,24 +695,33 @@ $(document).ready(function () {
     });
   }
   if (document.getElementById('play-video')) {
-// EDIT EDIT EDIT
-    document.getElementsByClassName('playbtn')[0].addEventListener('mouseover', function () {
-      var a = this;
-      Boxeon.changeImageOnMouseover(a, 'playbtn-red.png');
-    });
+    var btns = document.getElementsByClassName('playbtn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('mouseover', function () {
+        var a = this;
+        Boxeon.changeImageOnMouseover(a, 'playbtn-red.png');
+
+      });
+    }
   }
+
   if (document.getElementById('play-video')) {
+    var btns = document.getElementsByClassName('playbtn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('mouseout', function () {
+        var a = this;
+        Boxeon.changeImageOnMouseover(a, 'playbtn.png');
 
-    document.getElementById('play-video').getElementsByClassName('playbtn')[0].addEventListener('mouseout', function () {
-      var a = this;
-      Boxeon.changeImageOnMouseover(a, 'playbtn.png');
-    });
+      });
+    }
   }
-  if (document.getElementById('removeDisabled')) {
 
-    document.getElementById('removeDisabled').addEventListener('click', function () {
-      var a = this;
-      Boxeon.removeDisabled(a);
-    });
-  }
-});
+    
+    if (document.getElementById('removeDisabled')) {
+
+      document.getElementById('removeDisabled').addEventListener('click', function () {
+        var a = this;
+        Boxeon.removeDisabled(a);
+      });
+    }
+  });

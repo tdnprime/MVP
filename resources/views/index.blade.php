@@ -57,7 +57,7 @@
           <h2 class="extra-large-font">We ride together</h2>
           <p>We have no upfront fees and your sales are subject to a simple <a href="/commission/" class="darkblue underline one-em-font">commission</a>. So where you go, we go, and we'll treat you like it.</p>
         </div>
-        <img src="../images/car.svg" alt="Ferrari" /> </div>
+        <img src="../assets/images/car.svg" alt="Ferrari" /> </div>
     </section>
     <section class="section">
       <div class="alt-section-inner-grid"><img src="../assets/images/gdpr.svg" alt="General Data Protection Regulation" />
@@ -73,7 +73,7 @@
           <h2 class="extra-large-font">The numbers love you</h2>
           <p>Only two YouTubers sell subscription boxes as of 2021. But there's a whopping 951k monthly Youtube searches for the phrase "subscription box." Source: TubeBuddy.</p>
         </div>
-        <img src="../images/love.svg" alt="Shoppers"/> </div>
+        <img src="../assets/images/love.svg" alt="Shoppers"/> </div>
     </section>
     <section class="section margin-bottom-10-em">
       <div class="alt-section-inner-grid"><img src="../assets/images/slamdunk.svg" alt="Easy business" />

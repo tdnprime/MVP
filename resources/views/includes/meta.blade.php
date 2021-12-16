@@ -3,11 +3,11 @@
 <meta name="keywords" content="Boxeon, Patreon alternative, monitize content, Subscription box platform, make more money on Youtube">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-<link rel="alternate icon" href="assets/images/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+<link rel="alternate icon" href="../assets/images/favicon.svg">
 <link rel="mask-icon" href="https://boxeon.com/images/favicon.svg" color="#fff">
 <link rel="stylesheet" href="../assets/css/style.css?v=2">
-<link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 1591px)" href="assets/css/mobile.css?v=1.0"/>
+<link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 1591px)" href="../assets/css/mobile.css?v=1.0"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert%20One">

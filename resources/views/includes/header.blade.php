@@ -15,6 +15,5 @@
     <a id='signin' href='{{ url('auth/google') }}'>
         Sign in with Google
     </a>
-
     @endauth
 </header>

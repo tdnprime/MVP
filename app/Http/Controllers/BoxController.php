@@ -65,7 +65,7 @@ class BoxController extends Controller
         $box->curation = $request->input('curation');
         $box->save();
 
-        return view('home/step-one-markup');
+        return view('home/index', compact('user'));
     }
 
     /**

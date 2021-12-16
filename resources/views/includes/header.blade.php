@@ -2,7 +2,7 @@
     <a href="#" title="Menu" id='menu-icon'>
         <span class="material-icons">menu</span></a>
         <a id='logo' href="/home" title='Boxeon home'>
-            <img id='logo' src='../assets/images/logo.svg' alt='logo'/>
+            <img id='logo' src='{{ asset('../assets/images/logo.svg') }}' alt='logo'/>
             <span id="beta">Beta</span></a>
 
     @auth

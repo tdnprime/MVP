@@ -1,4 +1,4 @@
-<title>Best way for creators to get sustainable income and connect with fans | Boxeon</title>
+<title>Boxeon</title>
 <meta name="description" content="Start and grow a subscription box business and secure monthly income without making extra content. It's the wave of the future."/>
 <meta name="keywords" content="Boxeon, Patreon alternative, monitize content, Subscription box platform, make more money on Youtube">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>

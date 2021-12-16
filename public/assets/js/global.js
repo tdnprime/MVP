@@ -695,8 +695,8 @@ $(document).ready(function () {
     });
   }
   if (document.getElementById('play-video')) {
-
-    document.getElementById('play-video').getElementsByClassName('playbtn')[0].addEventListener('mouseover', function () {
+// EDIT EDIT EDIT
+    document.getElementsByClassName('playbtn')[0].addEventListener('mouseover', function () {
       var a = this;
       Boxeon.changeImageOnMouseover(a, 'playbtn-red.png');
     });

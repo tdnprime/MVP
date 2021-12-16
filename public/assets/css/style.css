@@ -46,6 +46,9 @@
 #box .for-creators-only {
   visibility: hidden;
 }
+#box .sub-btns{
+	margin-right: 2.5em;
+}
 #box-headline {
   padding-left: 0;
   border-radius: .5em;
@@ -58,13 +61,12 @@
 }
 #box-headline h1 {
   width: 90%;
+	margin-top:4em;
 }
 #box-headline p {
   max-width: 90%;
 }
-#box-headline #exe-sub {
-  border: 5px solid #fff;
-}
+
 #box-masthead-inner-wrapper {
   display: grid;
   grid-template-columns: 40% 60%;
@@ -589,7 +591,8 @@ a:visited {
   height: 200px;
   padding: 1em;
   font-size: 1em;
-  background-image: url("../images/bluebg.svg");
+  background-image: url("../images/alt-blue-bg.svg");
+	    box-shadow: 2px 4px 12px #0c8dc41a;
   color: #005ea6;
   position: fixed;
   bottom: 0;
@@ -682,7 +685,7 @@ a:visited {
   padding-left: 6.5em;
 }
 .bg-yellow {
-  background-color: #ffffe02e;
+  background-color: #f5f7fa;
   border: 1px solid #ffffe0;
 }
 .alert {
@@ -888,7 +891,7 @@ a:visited {
   bottom: 0;
   display: grid;
   grid-gap: .5em;
-  grid-template-rows: auto;
+  grid-template-rows: 6%;
   height: 100%;
   position: fixed;
   top: 0;
@@ -906,7 +909,7 @@ a:visited {
   color: #4a4a4a;
   display: block;
   margin: auto;
-  margin-left: 2em;
+  margin-left: 1em;
   margin-right: auto;
   padding: .5em;
   padding-left: 1em;
@@ -959,7 +962,6 @@ the side navigation*/
   vertical-align: middle;
   width: 1.3em;
 }*/
-.font-one-em,
 .one-em-font {
   font-size: 1em;
 }

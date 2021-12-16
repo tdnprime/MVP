@@ -1,8 +1,3 @@
-
-{{-- WARNING #2 of 3
-
-    THESE URLS MUST BE MADE ABSOLUTE URLS FOR PRODUCTION.  SEE WARNING #3 IN HEADER --}}
-
 <footer>
     <div id="footer-content-wrapper"> <a>&copy; {{date("Y");}} Boxeon, LLC</a> <a href="#">Made in the USA with love <img src='{{ asset('../assets/images/heart.svg') }}' alt='heart'/></a> <a href="/terms">Terms of use</a> <a href="/privacy">Privacy</a> <a href="/contact">Contact</a> <a href="/about">About</a>  </div>
     <br>

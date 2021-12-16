@@ -1,12 +1,12 @@
 @extends('layouts.create-box')
 
 @section('content')
-
+<div id='module'>
     <form name='basics' action='/box' method='post'>
         @csrf
         @method('POST')
         <fieldset>
-        <input type='number'  required value='' name='price' min='$price' max='$price' placeholder="Price">
+        <input type='number'  required value='' name='price' min='30'  placeholder="Price per box (min $30)">
         <input type='text'  required value='' placeholder='Youtube channel name' name='page_name'>
         <input type='number'  required value='' placeholder='Number of subscriptions you will initially accept' name='box-supply' min='1' max='1000000'>
         </fieldset>
@@ -19,6 +19,7 @@
          <input type='radio' id='removeDisabled' value='0' name='curation'/>
         </label>
         </fieldset>
+        
        <fieldset>
         <input class='optional' type='number'  required name='num_products' placeholder='Number of products in box' min='1' max='25'>
         <input class='optional' type='number' disabled required value='' placeholder='Weight of box in pounds' name='box-weight' min='1' max='1000000'>
@@ -360,13 +361,11 @@
             <option value='WOMEN_ACCESSORY_SPECIALITY'>Women's Accessory/Speciality</option>
             </select>
             <textarea required maxlength='127' name='proddesc' rows='10' cols='40' placeHolder='Sell your box in one sentence (127 max characters)'></textarea>
-
+            </fieldset>
         <fieldset>
          <input type='submit' value='Save'/>
          </fieldset>
-
-
-
         </form>
+        </div>
 
 @endsection

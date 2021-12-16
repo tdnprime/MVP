@@ -1,8 +1,12 @@
 
 
 {{-- WARNING #1 of 3
-
+    
     THE URLS MUST BE CHANGED FOR PRODUCTION.  SEE WARNING #2 IN THE FOOTER --}}
+
+
+
+
 
 
 <title>Boxeon</title>

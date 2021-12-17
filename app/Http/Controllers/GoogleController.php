@@ -38,7 +38,6 @@ class GoogleController extends Controller
     {
         try{
             $user = Socialite::driver('google')->stateless()->user();
-
             $finduser = User::where('google_id', $user->id)->first();
 
             if($finduser){
@@ -48,8 +47,8 @@ class GoogleController extends Controller
                 $user = User::firstOrCreate([
                     'google_id' => $user->id,
                     'email' => $user->email,
-                    'name' => $user->name,
-
+                    'given_name' => $user->offsetGet('given_name'),
+                    'family_name' => $user->offsetGet('family_name'),
                     'password' => encrypt('my-google'),
                 ]);
 

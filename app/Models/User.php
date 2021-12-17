@@ -24,7 +24,8 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'given_name',
+        'family_name',
         'email',
         'password',
         'google_id'

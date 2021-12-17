@@ -56,6 +56,10 @@
   position: relative;
   top: -3.5em;
 }
+#create-box{
+  position: relative;
+  left: -2em;
+}
 #signin, #current-user, h2, h1 {
   font-family: 'Concert One';
 }
@@ -740,6 +744,9 @@ width:fit-content;
   display:grid;
   grid-template-columns: 10% 90%;
 }
+form .alert{
+  padding:none;
+}
 .alt-section-inner-grid {
   display: grid;
   grid-gap: 5em;
@@ -1350,6 +1357,8 @@ input:checked + .slider:before {
   transform: translateX(8px);
   webkit-transform: translateX(26px);
 }
+.special-offer,
+#special-offer,
 .optional {
 display: none;
 }

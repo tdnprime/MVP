@@ -7,27 +7,29 @@
         @method('POST')
         <fieldset>
         <div class='alert float-left'>
-        <p class='material-icons'> info</p><p>You may have fans pre-order your boxes for you to secure the starting capital to launch your box. Pre-order sales can last one month. 
+        <p class='material-icons'>info</p><p>You can have fans pre-order your boxes for you to secure 
+        the starting capital to launch your box. Pre-order sales can last one month. 
         Pre-orders must be shipped within a month after pre-order sales have ended.</p></div>
         <label>Do you want to sell pre-orders?
-        <select required name='pre_order'>
+        <select id='pre-order' required name='pre_order'>
         <option value='0'>No</option>
         <option value='1'>Yes</option>
         </select> 
         </label>
-        <div class='optional alert float-left'>
-        <p class='material-icons'> info</p><p>Pre-orders work best with a special offer.  
+        <div id="special-offer" class='alert float-left'>
+        <p class='material-icons'>info</p><p>Pre-orders work best with a special offer.  
             We recommend offering a 30-minute chat by phone for the first ten fans who pre-order.
         </p></div>
-        <label class='optional'>Do you want to offer a 30-minute chat by phone for the first ten fans who pre-order?
-        <select class='optional' required name='special_offer'>
+        <label class="special-offer">Do you want to offer a 30-minute chat by phone for the 
+        first ten fans who pre-order?
+        <select class="special-offer" disabled required name='special_offer'>
         <option value='1'>Yes</option>
         <option value='0'>No</option>
         </select> 
         </label>
-        <input type='number'  required value='' name='price' min='30'  placeholder="Price per box (min $30)">
+        <input type='number' required value='' name='price' min='30'  placeholder="Price per box (min $30)">
         <label id='grid-custom-url'><p>https://boxeon.com/</p>
-        <input type='text'  required value='' placeholder='Your custom URL' name='box_url'>
+        <input type='text' required value='' placeholder='Your custom URL' name='box_url'>
         </label>
         <div class='alert float-left'>
         <p class='material-icons'> info</p><p>Sell more boxes by offering buyers free 
@@ -50,7 +52,7 @@
         </label>
         </fieldset>
        <fieldset>
-        <input class='optional' type='number'  required name='num_products' placeholder='Number of products in box' min='1' max='25'>
+        <input class='optional' type='number'  disabled required name='num_products' placeholder='Number of products in box' min='1' max='25'>
         <input class='optional' type='number' disabled required value='' placeholder='Weight of box in pounds' name='box-weight' min='1' max='1000000'>
         <input class='optional' type='number'  disabled required value='' placeholder='Length of box in inches' name='box-length' min='1' max='1000000'>
         <input class='optional' type='number'  disabled required value='' placeholder='Width of box in inches' name='box-width' min='1' max='1000000'>

@@ -355,9 +355,7 @@ Boxeon = {
   removeDisabled: function (f) {
     var optionals = document.getElementsByClassName("optional");
     for (var i = 0; i < optionals.length; i++) {
-
       if (optionals[i].disabled) {
-
         optionals[i].removeAttribute("disabled");
         optionals[i].style.display = "block";
       }
@@ -761,8 +759,8 @@ $(document).ready(function () {
       className: "step step-incomplete",
       length: 3,
       label1: "Basics",
-      label2: "Payout",
-      label3: "Video"
+      label2: "Embed video",
+      label3: "Publish"
     }
     document.getElementById("module").prepend(Boxeon.createStepsLeft(opts));
 
@@ -772,6 +770,26 @@ $(document).ready(function () {
       className: "primary-color centered"
     }
     document.getElementById("module").prepend(Boxeon.createElem(el, options));
+
+    var preOrder = document.getElementById("pre-order");
+    preOrder.addEventListener("change", function(){
+      if(this.value == 1){
+        var specialOffer = document.getElementById("special-offer");
+        specialOffer.style.display = "grid";
+        var specialOffer = document.getElementsByClassName("special-offer");
+        specialOffer[0].style.display = "block";
+        specialOffer[1].style.display = "block";
+        specialOffer[1].removeAttribute("disabled");
+      }else if(this.value == 0){
+        var specialOffer = document.getElementById("special-offer");
+        specialOffer.style.display = "none";
+        var specialOffer = document.getElementsByClassName("special-offer");
+        specialOffer[0].style.display = "none";
+        specialOffer[1].style.display = "none";
+        specialOffer[1].setAttribute("disabled", "disabled");
+      }
+
+    });
 
   }
 });

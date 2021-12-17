@@ -2,24 +2,53 @@
 
 @section('content')
 <div id='module'>
-    <form name='basics' action='/box' method='post'>
+    <form id='create-box' name='basics' action='/box' method='post'>
         @csrf
         @method('POST')
         <fieldset>
+        <div class='alert float-left'>
+        <p class='material-icons'> info</p><p>You may have fans pre-order your boxes for you to secure the starting capital to launch your box. Pre-order sales can last one month. 
+        Pre-orders must be shipped within a month after pre-order sales have ended.</p></div>
+        <label>Do you want to sell pre-orders?
+        <select required name='pre_order'>
+        <option value='0'>No</option>
+        <option value='1'>Yes</option>
+        </select> 
+        </label>
+        <div class='optional alert float-left'>
+        <p class='material-icons'> info</p><p>Pre-orders work best with a special offer.  
+            We recommend offering a 30-minute chat by phone for the first ten fans who pre-order.
+        </p></div>
+        <label class='optional'>Do you want to offer a 30-minute chat by phone for the first ten fans who pre-order?
+        <select class='optional' required name='special_offer'>
+        <option value='1'>Yes</option>
+        <option value='0'>No</option>
+        </select> 
+        </label>
         <input type='number'  required value='' name='price' min='30'  placeholder="Price per box (min $30)">
-        <input type='text'  required value='' placeholder='Youtube channel name' name='page_name'>
-        <input type='number'  required value='' placeholder='Number of subscriptions you will initially accept' name='box-supply' min='1' max='1000000'>
-        </fieldset>
+        <label id='grid-custom-url'><p>https://boxeon.com/</p>
+        <input type='text'  required value='' placeholder='Your custom URL' name='box_url'>
+        </label>
+        <div class='alert float-left'>
+        <p class='material-icons'> info</p><p>Sell more boxes by offering buyers free 
+            shipping, and keep shipping costs low by using <b>flat rate</b> shipping.</p></div>
+        <label>Do you want to offer free shipping?
+        <select required name='shipping_cost'>
+        <option value='1'>Yes</option>
+        <option value='0'>No</option>
+        </select> 
+        </label>      
+    </fieldset>
         <fieldset>
-        <label>Do you need help with product curation?</label>
-        <label>Yes
+        <label class='float-left'>Do you need help with product curation?</label>
+        <label class='float-left'>Yes
         <input type='radio' id='disable' value='1' checked name='curation'/>
-        </label><label>
+        </label>
+        <label class='float-left'>
         No
          <input type='radio' id='removeDisabled' value='0' name='curation'/>
         </label>
         </fieldset>
-        
        <fieldset>
         <input class='optional' type='number'  required name='num_products' placeholder='Number of products in box' min='1' max='25'>
         <input class='optional' type='number' disabled required value='' placeholder='Weight of box in pounds' name='box-weight' min='1' max='1000000'>
@@ -27,9 +56,8 @@
         <input class='optional' type='number'  disabled required value='' placeholder='Width of box in inches' name='box-width' min='1' max='1000000'>
         <input class='optional' type='number' disabled required value='' placeholder='Height of box in inches' name='box-height' min='1' max='1000000'>
         </fieldset>
-
         <fieldset>
-            <select required name='prodname'>
+            <select class='optional' disabled required name='prodname'>
             <option value=''>Choose your product category</option>
             <option value='ACCESSORIES'>Accessories</option>
             <option value='AGRICULTURAL_COOPERATIVE_FOR_MAIL_ORDER'>Agricultural</option>
@@ -360,7 +388,7 @@
             <option value='WIRE_TRANSFER_AND_MONEY_ORDER'>Wire transfer and money order</option>
             <option value='WOMEN_ACCESSORY_SPECIALITY'>Women's Accessory/Speciality</option>
             </select>
-            <textarea required maxlength='127' name='proddesc' rows='10' cols='40' placeHolder='Sell your box in one sentence (127 max characters)'></textarea>
+            <textarea class='optional' disabled required maxlength='127' name='proddesc' rows='10' cols='40' placeHolder='Sell your box in one sentence (127 max characters)'></textarea>
             </fieldset>
         <fieldset>
          <input type='submit' value='Save'/>

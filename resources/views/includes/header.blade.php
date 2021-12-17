@@ -1,6 +1,6 @@
 
 {{-- WARNING #3 Of 3
-    
+
     MAKE URL ABSOLUTE FOR PRODUCTION--}}
 
 <header>
@@ -13,7 +13,7 @@
     @auth
 
     <a id='current-user' href='/box/{{ $user ? $user->id : '0'}}/edit' title='Edit mode'>
-        <span class='material-icons'>account_box</span> {{$user->givenname}}'s Boxeon
+        <span class='material-icons'>account_box</span> {{$user->name}}'s Boxeon
     </a>
 
     @else

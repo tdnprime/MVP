@@ -18,18 +18,10 @@ use App\Http\Controllers\LogoutController;
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('index');
 
 
-Route::get('/home/?q=l', function () {
-    return view('home.creators-guide');
-});
-Route::get('/home/?i=i', function () {
-    return view('home.income');
-});
-Route::get('/commission', function () {
-    return view('commission.index');
-});
-Route::get('/blog', function () {
-    return view('blog.index');
-});
+Route::get('/terms', 'App\Http\Controllers\HomeController@terms')->name('terms');
+Route::get('/privacy', 'App\Http\Controllers\HomeController@privacy')->name('privacy');
+Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('contact');
+Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about');
 
 Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('index');
 Route::group(['middleware' => ['auth:sanctum']], function() {

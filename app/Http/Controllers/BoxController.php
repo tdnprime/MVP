@@ -65,7 +65,9 @@ class BoxController extends Controller
         $box->curation = $request->input('curation');
         $box->save();
 
-        return view('home/index', compact('user'));
+        return redirect()->route('box.index')
+                        ->with('success','Subscription Box created successfully');
+
     }
 
     /**

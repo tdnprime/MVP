@@ -14,6 +14,30 @@ class HomeController extends Controller
         return view('index', compact('user'));
     }
 
+    public function terms(){
+        $user = Auth::user();
+
+        return view('terms.index', compact('user'));
+    }
+
+    public function privacy(){
+        $user = Auth::user();
+
+        return view('privacy.index', compact('user'));
+    }
+
+    public function contact(){
+        $user = Auth::user();
+
+        return view('contact.index', compact('user'));
+    }
+
+    public function about(){
+        $user = Auth::user();
+
+        return view('about.index', compact('user'));
+    }
+
     public function dashboard(){
         $user = Auth::user();
 

@@ -59,10 +59,20 @@ class BoxController extends Controller
         $box = new Box();
 
         $box->user_id = $id;
+        $box->pre_order = $request->input('pre_order');
+        $box->special_offer = $request->input('special_offer');
+        $box->pre_order = $request->input('pre_order');
         $box->price = $request->input('price');
-        $box->page_name = $request->input('page_name');
-        $box->box_supply = $request->input('box_supply');
+        $box->box_url = $request->input('box_url');
+        $box->shipping_cost = $request->input('shipping_cost');
         $box->curation = $request->input('curation');
+        $box->num_products = $request->input('num_products');
+        $box->box_weight = $request->input('box_weight');
+        $box->box_length = $request->input('box_length');
+        $box->box_width = $request->input('box_width');
+        $box->box_height = $request->input('box_height');
+        $box->prodname = $request->input('prodname');
+        $box->proddesc = $request->input('proddesc');
         $box->save();
 
         return redirect()->route('box.index')

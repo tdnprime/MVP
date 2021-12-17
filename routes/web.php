@@ -25,8 +25,8 @@ Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about')
 
 Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('index');
 Route::group(['middleware' => ['auth:sanctum']], function() {
-    Route::get('/home', 'App\Http\Controllers\HomeController@dashboard')->name('index');
     Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
+    Route::get('/home', 'App\Http\Controllers\HomeController@dashboard')->name('home.index');
     Route::get('/box/create', 'App\Http\Controllers\BoxController@create')->name('box.create');
     Route::post('/box', 'App\Http\Controllers\BoxController@store')->name('box.store');
     Route::get('/box/{vid}/edit','App\Http\Controllers\BoxController@edit')->name('box.edit');

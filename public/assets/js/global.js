@@ -87,21 +87,48 @@ Boxeon = {
 
   },
   createStepsLeft: function (options) {
-    var wrapper = Boxeon.createElem("div");
-    wrapper.id = "steps-left";
+    var grid = Boxeon.createElem("div");
+    var wrapper = document.createElement("div");
+    wrapper.className = "asides";
+    grid.id = "steps-left";
+
+    var label1 = document.createTextNode(options.label1);
+    var label2 = document.createTextNode(options.label2);
+    var label3 = document.createTextNode(options.label3);
+
+    var p = [];
+    p[0] = document.createElement("p");
+    p[1] = document.createElement("p");
+    p[2] = document.createElement("p");
+
+    p[0].id = "text-step0-label";
+    p[1].id = "text-step1-label";
+    p[2].id = "text-step2-label";
+
+    p[0].className = "centered";
+    p[1].className = "centered";
+    p[2].className = "centered";
+
+    p[0].appendChild(label1);
+    p[1].appendChild(label2);
+    p[2].appendChild(label3);
+
     for (var i = 0; i < options.length; i++) {
       var span = Boxeon.createElem("p", options);
       if (i == 0) {
         span.className = "step step-current";
+        span.id = "span-step" + 0 + "-circle";
       }
+
       var number = document.createTextNode(i + 1);
       span.appendChild(number);
-      wrapper.appendChild(span);
+      grid.appendChild(span);
+      grid.append(p[i]);
     }
     var line = document.createElement("div");
     line.id = "steps-line";
-    var header = document.getElementById("mc-header");
-    header.appendChild(line);
+    wrapper.appendChild(line);
+    wrapper.appendChild(grid);
     return wrapper;
 
   },
@@ -254,9 +281,10 @@ Boxeon = {
   },
 
   disable: function (f) {
-    var inputs = f.parentNode.parentNode.parentNode.getElementsByClassName("optional");
-    for (var i = 0; i < inputs.length; i++) {
-      inputs[i].setAttribute("disabled", 'disabled');
+    var optionals = f.parentNode.parentNode.parentNode.getElementsByClassName("optional");
+    for (var i = 0; i < optionals.length; i++) {
+      optionals[i].setAttribute("disabled", 'disabled');
+      optionals[i].style.display = "none";
     }
   },
 
@@ -317,19 +345,21 @@ Boxeon = {
         // Play video in UI
         Boxeon.playVideo(video_id, creator_id);
       } else if (sessionStorage.getItem('sub') == 0) {
-        Subscriptions.removeCheck(a);
+        Subscriptions.
+          removeCheck(a);
       }
     }
 
   },
 
   removeDisabled: function (f) {
-    var inputs = f.parentNode.parentNode.parentNode.getElementsByTagName("input");
-    for (var i = 0; i < inputs.length; i++) {
+    var optionals = document.getElementsByClassName("optional");
+    for (var i = 0; i < optionals.length; i++) {
 
-      if (inputs[i].disabled) {
+      if (optionals[i].disabled) {
 
-        inputs[i].removeAttribute("disabled");
+        optionals[i].removeAttribute("disabled");
+        optionals[i].style.display = "block";
       }
     }
   }
@@ -716,12 +746,32 @@ $(document).ready(function () {
     }
   }
 
-    
-    if (document.getElementById('removeDisabled')) {
 
-      document.getElementById('removeDisabled').addEventListener('click', function () {
-        var a = this;
-        Boxeon.removeDisabled(a);
-      });
+  if (document.getElementById('removeDisabled')) {
+
+    document.getElementById('removeDisabled').addEventListener('click', function () {
+      var a = this;
+      Boxeon.removeDisabled(a);
+    });
+  }
+
+  if (document.getElementById('create-box')) {
+
+    var opts = {
+      className: "step step-incomplete",
+      length: 3,
+      label1: "Basics",
+      label2: "Payout",
+      label3: "Video"
     }
-  });
+    document.getElementById("module").prepend(Boxeon.createStepsLeft(opts));
+
+    var el = "h2";
+    var options = {
+      msg: "Create your box in three easy steps",
+      className: "primary-color centered"
+    }
+    document.getElementById("module").prepend(Boxeon.createElem(el, options));
+
+  }
+});

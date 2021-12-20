@@ -306,7 +306,7 @@
   <main> <a id='whatis' href='#whatis'></a>
     <aside class="asides">
       <h1 class="extra-large-font darkblue">It's our grand launch</h1>
-      <p class="centered font-1-5-em">Boxeon is a subscription box platform for content creators to offer boxes to fans. In this business model, content creators put together products around a theme, and their most loyal fans subscribe to receive these boxes for the thematic experience. It's the best way for creators to earn sustainable, monthly income. As part of our launch, we're seeking creators to sponsor.</p>
+      <p class="centered center font-1-5-em">Boxeon is a subscription box platform for content creators to offer boxes to fans. In this business model, content creators put together products around a theme, and their most loyal fans subscribe to receive these boxes for the thematic experience. It's the best way for creators to earn sustainable, monthly income. As part of our launch, we're seeking creators to sponsor.</p>
     </aside>
     <section class="section">
       <div class="alt-section-inner-grid">

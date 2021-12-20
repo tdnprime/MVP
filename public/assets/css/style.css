@@ -1467,7 +1467,10 @@ ul, p {
   color: #023256;
 }
 ul, P, a, label {
-  /*font-size: 1.3em;*/
+  font-size: 1.3em;
+}
+form ul, form P, form a, form label {
+  font-size: 1em;
 }
 label{
   float:left;

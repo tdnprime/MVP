@@ -18,7 +18,7 @@
 
 		<p><span class="highlighted">Help wanted</span> for various positions. Ideal candidates will have a clue. Boomers in clever human costumes need not apply. Please find our open positions on <a href="https://www.linkedin.com/company/boxeon/people/?viewAsMember=true" target="_blank" class="darkblue underline one-em-font">LinkedIn</a>.</p>
 		<p><span class="highlighted">Furthermore...</span></p>
-      <div class="centered"> <img id="image-raised-fist" class="centered" src="../images/raised-fist.svg" alt="Black Lives Matter"/>
+      <div class="centered"> <img id="image-raised-fist" class="centered" src="../assets/images/raised-fist.svg" alt="Black Lives Matter"/>
         <h1 class="highlighted">Black lives matter</h1>
       </div>
     </section>

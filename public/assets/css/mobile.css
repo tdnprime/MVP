@@ -60,6 +60,9 @@ NOTE:
     display: block;
    
   }
+  #create-box {
+    left: -7em;
+  }
   #box-masthead-inner-wrapper {
     width: fit-content;
     display: grid;
@@ -139,11 +142,7 @@ NOTE:
   .answers {
     padding-top: 0 !important;
   }
-  #module, #module form {
-    padding: 0;
-    font-size: inherit;
-    width: auto;
-  }
+
   #mobile-signin {
     position: fixed;
     z-index: 1000;
@@ -182,9 +181,7 @@ NOTE:
     padding: 1em;
    
   }
-  header {
-    padding-left: 0;
-  }
+
   #headline h1, #pitch {
     width: auto;
   }

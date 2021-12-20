@@ -21,7 +21,7 @@
   </div><div id="home-videos-wrapper"><div id="48">
         <div class="playbtn-wrapper">
         <img src="http://img.youtube.com/vi/LJszeiEyXMk/mqdefault.jpg">
-        <img id="play-video" data-video-id="LJszeiEyXMk" class="playbtn" src="../images/playbtn.png" alt="Play video">
+        <img id="play-video" data-video-id="LJszeiEyXMk" class="playbtn" src="../assets/images/playbtn.png" alt="Play video">
         </div>
           <br>
         <p>Prototype Creator</p>

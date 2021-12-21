@@ -755,15 +755,20 @@ $(document).ready(function () {
     }
   }
 
+  if (document.getElementById('signin')) {
+    document.getElementById('signin').addEventListener('click', function () {
+    if(location.href == "http://localhost:8000/partner"){
+      sessionStorage.setItem("last", "http://localhost:8000/partner");
+    }
+    });
+  }
 
   if (document.getElementById('removeDisabled')) {
-
     document.getElementById('removeDisabled').addEventListener('click', function () {
       var a = this;
       Boxeon.removeDisabled(a);
     });
   }
-
   if (document.getElementById('create-box')) {
 
     var opts = {

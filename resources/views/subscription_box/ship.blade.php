@@ -18,7 +18,7 @@
 
 
 {{--  THIS IS A DEFAULT  MESSAGE. PLEASE BE MINDFUL. --}}
-<div class="alert"><p><span class="material-icons">info</span>There are no boxes for you to ship at this time.</p></div>
+<div class="alert"><p class="material-icons">info</p><p>There are no boxes for you to ship at this time.</p></div>
 
 
 

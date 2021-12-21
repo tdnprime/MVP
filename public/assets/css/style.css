@@ -742,7 +742,13 @@ width:fit-content;
   width: 95%;
   min-height: 5em;
   display:grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 30px 90%;
+  grid-gap:1em;
+}
+.alert .material-icons{
+  color:#005ea6;
+  position:relative;
+  bottom:.2em;
 }
 form .alert{
   padding:none;
@@ -1339,7 +1345,8 @@ header {
   grid-template-columns: 3em 6em auto;
   height: 50px;
   padding-left: 2em;
-  position: relative;
+  position: fixed;
+  top:0;
   width: 100%;
   z-index: 1000;
 }
@@ -1412,6 +1419,20 @@ input[type="submit"]:active, .button:active, button:active {
 input[type="submit"]:hover, .button:hover, button:active:hover {
   background: #005ea6;
 }
+ul {
+  list-style: none; /* Remove default bullets */
+}
+header .material-icons{
+  padding-right:0 !important;
+}
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #4a4a4a;; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
 label {
   padding: .6em;
 }
@@ -1422,6 +1443,9 @@ label {
 .blog-masthead-images {
   width: 100%;
   height: auto;
+}
+.fit-content{
+  width:fit-content;
 }
 nav {
   display: grid;
@@ -1467,7 +1491,10 @@ ul, p {
   color: #023256;
 }
 ul, P, a, label {
-  /*font-size: 1.3em;*/
+  font-size: 1.3em;
+}
+form ul, form P, form a, form label {
+  font-size: 1em;
 }
 label{
   float:left;

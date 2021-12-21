@@ -23,6 +23,8 @@ NOTE:
 #partner .two-col-grid {
     background: url(../images/fall-4.svg) -10em 18em no-repeat, url(../images/fall-5.svg) 40em top no-repeat; 
 }
+
+
 	#form-partner-apply-wrapper{
 		display:none;
 	}
@@ -32,7 +34,7 @@ NOTE:
 	#masthead-image-about {
     background: url("../images/alt-blue-bg.svg") no-repeat 50% 5em;
 }
-	#partner .two-col-grid{
+	.two-col-grid{
 		display:block;
 	}
 	#headline{
@@ -57,7 +59,10 @@ NOTE:
   }
   #box #masthead {
     display: block;
-    height: fit-content;
+   
+  }
+  #create-box {
+    left: -7em;
   }
   #box-masthead-inner-wrapper {
     width: fit-content;
@@ -74,9 +79,9 @@ NOTE:
   #box .break {
     display: inline;
   }
-  #box .ginormous {
+ /* #box .ginormous {
     font-size: inherit !important;
-  }
+  }*/
   #box-headline h1 {
     grid-row-start: 1;
     font-size: 5em;
@@ -138,11 +143,7 @@ NOTE:
   .answers {
     padding-top: 0 !important;
   }
-  #module, #module form {
-    padding: 0;
-    font-size: inherit;
-    width: auto;
-  }
+
   #mobile-signin {
     position: fixed;
     z-index: 1000;
@@ -179,11 +180,9 @@ NOTE:
   }
   #container {
     padding: 1em;
-    background-color: #fff;
+   
   }
-  header {
-    padding-left: 0;
-  }
+
   #headline h1, #pitch {
     width: auto;
   }
@@ -231,6 +230,11 @@ NOTE:
     width: 95%;
     height: 100%;
     background: url(../images/ballons.svg) no-repeat right 5em !important;
+  }
+  #masthead-image-construction{
+    width: 95%;
+    height: 100%;
+    background: url("../images/alt-makeitrain.svg") no-repeat right 5em !important;
   }
 }
 /* SMALL SCREENSß */

@@ -804,3 +804,14 @@ $(document).ready(function () {
 
   }
 });
+
+// Fades out pages for a smoother unload transition
+$(window).on('beforeunload', function() { 
+  if (document.getElementsByTagName("main")[0]) {
+    document.getElementsByTagName("main")[0].setAttribute("class", "fadeout");
+  }
+  if (document.getElementById("masthead")) {
+    document.getElementById("masthead").setAttribute("class", "fadeout");
+  }
+
+});

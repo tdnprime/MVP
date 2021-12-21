@@ -24,6 +24,7 @@ NOTE:
     background: url(../images/fall-4.svg) -10em 18em no-repeat, url(../images/fall-5.svg) 40em top no-repeat; 
 }
 
+
 	#form-partner-apply-wrapper{
 		display:none;
 	}
@@ -231,7 +232,9 @@ NOTE:
     background: url(../images/ballons.svg) no-repeat right 5em !important;
   }
   #masthead-image-construction{
-    display: none;
+    width: 95%;
+    height: 100%;
+    background: url("../images/alt-makeitrain.svg") no-repeat right 5em !important;
   }
 }
 /* SMALL SCREENSß */

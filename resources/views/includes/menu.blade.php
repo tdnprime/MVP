@@ -17,7 +17,7 @@
         @else
         {{-- # CREATE GOOGLE SIGNIN URL (MOBILE) --}}
         <div id='mobile-signin'>
-            <a class='signin centered' href='{{ url('auth/google') }}'>
+            <a class='signin centered center' href='{{ url('auth/google') }}'>
                 Sign in with Google
             </a>
         </div>

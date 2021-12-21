@@ -1423,6 +1423,9 @@ label {
   width: 100%;
   height: auto;
 }
+.fit-content{
+  width:fit-content;
+}
 nav {
   display: grid;
   grid-column-start: 3;

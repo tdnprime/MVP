@@ -2,6 +2,6 @@
 
 
  phpinfo();
-mail("trevorprimenyc@gmail.com","Cronjob executed", "Cronjob executed");
+mail("ship@boxeon.com","Cronjob executed", "Cronjob executed");
 
 ?>

@@ -3,6 +3,7 @@
 @section('content')
 
 <main>
+  
     <section class="section ">
       <p class="text-heading-label">HELLO, WORLD</p>
 		<p> <span class="highlighted">We're</span> an international group with an acute desire to make globalization work for the many, not only a few. To satisfy this desire, we've created Boxeon. Our goal is to create mutually beneficial relationships between <span class="highlighted">creators and artisans</span> in developing countries. We achieve this with the Boxeon Partner Program, which enlists artisans as suppliers of products for the subscription boxes offered by partner creators.</p>

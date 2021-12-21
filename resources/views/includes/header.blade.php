@@ -1,3 +1,4 @@
+@include('includes.http-headers')
 
 {{-- WARNING #3 Of 3
 

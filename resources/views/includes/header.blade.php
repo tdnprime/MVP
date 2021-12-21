@@ -2,7 +2,7 @@
 {{-- WARNING #3 Of 3
 
     MAKE URL ABSOLUTE FOR PRODUCTION--}}
-
+<span></span><!-- Hack !-->
 <header>
     <a href="#" title="Menu" id='menu-icon'>
         <span class="material-icons">menu</span></a>

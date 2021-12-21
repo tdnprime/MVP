@@ -292,11 +292,18 @@ Boxeon = {
     /* When side navigation slides out, 
   set the width of the side navigation and 
   the left margin of MAIN + FOOTER */
+  
     document.getElementById("menu").style.width = "300px";
+
+  if(document.getElementsByTagName("main")[0]){
     document.getElementsByTagName("main")[0].style.marginLeft = "300px";
+  }
+  if( document.getElementById("masthead")){
+    document.getElementById("masthead").style.marginLeft = "300px";
+  }
     document.getElementsByTagName("footer")[0].style.marginLeft = "300px";
     document.getElementsByTagName("header")[0].style.marginLeft = "300px";
-    document.getElementById("masthead").style.marginLeft = "300px";
+  
 
   },
   signOut: function () {
@@ -312,10 +319,14 @@ Boxeon = {
   closeMenu: function () {
     /* Return page to normal upon side navigation close */
     document.getElementById("menu").style.width = "0";
+    if(document.getElementsByTagName("main")[0]){
     document.getElementsByTagName("main")[0].style.marginLeft = "0";
+    }
     document.getElementsByTagName("footer")[0].style.marginLeft = "0";
     document.getElementsByTagName("header")[0].style.marginLeft = "0";
+    if( document.getElementById("masthead")){
     document.getElementById("masthead").style.marginLeft = "0";
+    }
   },
   router: function (a) {
 

@@ -410,6 +410,7 @@ width:fit-content;
 #image-next-arrow:hover, #image-previous-arrow:hover {
   cursor: pointer;
 }
+#video-place-holder,
 #image-youtube-thumb {
   border-radius: .5em;
   background: #f5f7fa;
@@ -714,7 +715,7 @@ width:fit-content;
 }
 .text-edit-mode{
 position:relative;
-top:3em;
+top:5em;
 }
 #text-modes-switch{
   width:30em;
@@ -723,7 +724,7 @@ top:3em;
 
 }
 #video-place-holder, #masthead-iframe-wrapper iframe {
-  max-height: 450px;
+  max-height: 414px;
   width: 100%;
 }
 #welcome {

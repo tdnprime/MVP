@@ -56,10 +56,7 @@
   position: relative;
   top: -3.5em;
 }
-#create-box{
-  position: relative;
-  left: -2em;
-}
+
 #signin, #current-user, h2, h1 {
   font-family: 'Concert One';
 }
@@ -267,6 +264,10 @@ a:visited {
 #embed-form {
   height: 105px;
   width: 63%;
+  margin: 0 auto;
+}
+#embed-form input[type="url"] {
+  width:100%;
 }
 #footer-content-wrapper {
   margin: auto;
@@ -533,7 +534,7 @@ width:fit-content;
 #module form {
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+
 }
 #m-window {
   background-color: #f5f7fa;
@@ -707,13 +708,22 @@ width:fit-content;
 }
 #video-place-holder {
   background-color: #fff;
-  margin-top: 6em;
+  margin-top: 4em;
   padding: 2em;
-  text-align: left;
   width: 50%;
 }
+.text-edit-mode{
+position:relative;
+top:3em;
+}
+#text-modes-switch{
+  width:30em;
+  display:grid;
+  grid-template-columns: 50% 50%;
+
+}
 #video-place-holder, #masthead-iframe-wrapper iframe {
-  min-height: 360px;
+  max-height: 450px;
   width: 100%;
 }
 #welcome {
@@ -739,7 +749,8 @@ width:fit-content;
   margin-top: 1em;
   padding: 1em;
   text-align: left !important;
-  width: 95%;
+  width:fit-content;
+  max-width: 95%;
   min-height: 5em;
   display:grid;
   grid-template-columns: 30px 90%;
@@ -1243,6 +1254,7 @@ the side navigation*/
   position: relative;
   top: 2em;
 }
+
 .price-options-grid {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -1301,10 +1313,18 @@ body {
   min-height: 97%;
   overflow-x: hidden;
 }
-fieldset {
-  border: none;
-  margin-bottom: 1em;
-  padding: 0;
+fieldset{
+  border:none;
+}
+#create-box fieldset {
+  border: 1px solid #0c8dc452;
+  margin-bottom: 3em;
+  padding: 2em;
+ 
+}
+legend{
+  font-size: 1.5em;
+  font-family: 'Concert One';
 }
 footer {
   background-color: #f5f7fa;
@@ -1422,6 +1442,7 @@ input[type="submit"]:hover, .button:hover, button:active:hover {
 ul {
   list-style: none; /* Remove default bullets */
 }
+#text-modes-switch .material-icons,
 header .material-icons{
   padding-right:0 !important;
 }
@@ -1493,9 +1514,7 @@ ul, p {
 ul, P, a, label {
   font-size: 1.3em;
 }
-form ul, form P, form a, form label {
-  font-size: 1em;
-}
+
 label{
   float:left;
   clear:both;

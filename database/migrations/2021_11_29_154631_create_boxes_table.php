@@ -23,12 +23,21 @@ class CreateBoxesTable extends Migration
             $table->integer('shipping_cost')->default(0);
             $table->integer('curation')->nullable();
             $table->integer('num_products')->nullable();
+            $table->integer('box_supply')->nullable();
+            $table->string('in_stock')->nullable();
             $table->integer('box_weight')->nullable();
             $table->integer('box_length')->nullable();
             $table->integer('box_width')->nullable();
             $table->integer('box_height')->nullable();
             $table->string('prodname')->nullable();
             $table->string('proddesc')->nullable();
+            $table->string('address_line_1')->nullable();
+            $table->string('address_line_2')->nullable();
+            $table->string('admin_area_1')->nullable();
+            $table->string('admin_area_2')->nullable();
+            $table->string('country_code')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('video')->nullable();
             $table->timestamps();
         });
     }

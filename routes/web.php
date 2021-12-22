@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/box/create', 'App\Http\Controllers\BoxController@create')->name('box.create');
     Route::post('/box', 'App\Http\Controllers\BoxController@store')->name('box.store');
     Route::get('/box/{vid}/edit','App\Http\Controllers\BoxController@edit')->name('box.edit');
+    Route::post('/box/{vid}/edit','App\Http\Controllers\BoxController@edit')->name('box.edit');
     Route::put('/box/{vid}','App\Http\Controllers\BoxController@update')->name('box.update');
     Route::delete('/box/{vid}', 'App\Http\Controllers\BoxController@destory')->name('box.destory');
     Route::get('/box/ship', 'App\Http\Controllers\BoxController@ship')->name('box.ship');

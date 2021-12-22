@@ -68,15 +68,24 @@ class BoxController extends Controller
         $box->curation = $request->input('curation');
         $box->num_products = $request->input('num_products');
         $box->box_weight = $request->input('box_weight');
+        $box->box_supply = $request->input('box_supply');
+        $box->in_stock = $request->input('box_supply');
         $box->box_length = $request->input('box_length');
         $box->box_width = $request->input('box_width');
         $box->box_height = $request->input('box_height');
+        $box->address_line_1 = $request->input('address_line_1');
+        $box->address_line_2 = $request->input('address_line_2');
+        $box->admin_area_1 = $request->input('admin_area_1');
+        $box->admin_area_2 = $request->input('admin_area_2');
+        $box->country_code = $request->input('country_code');
+        $box->postal_code = $request->input('postal_code');
         $box->prodname = $request->input('prodname');
         $box->proddesc = $request->input('proddesc');
         $box->save();
-
-        return redirect()->route('box.index')
+        
+        return redirect()->route('box.edit')
                         ->with('success','Subscription Box created successfully');
+
 
     }
 

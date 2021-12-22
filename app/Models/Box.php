@@ -23,9 +23,18 @@ class Box extends Model
         'box_weight',
         'box_length',
         'box_width',
+        'box_supply',
+        'in_stock',
         'box_height',
         'prodname',
         'proddesc',
+        'address_line_1',
+        'address_line_2',
+        'admin_area_1',
+        'admin_area_2',
+        'postal_code',
+        'country_code',
+        'video',
     ];
 
     public function user()

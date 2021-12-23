@@ -12,7 +12,7 @@ $data = [
   "home_url"=> "https://boxeon.com/box/index" // Update
   ];
 $media = "Content-Type: application/json, Authorization: Bearer $token";
-$cp = sendcurl(json_encode($data), $endpoint, $media); 
+$cp = sendcurl(json_encode($data), $endpoint, $media); print_r($cp);
 $product_id = $cp["id"];
 $array = array('product_id' => $product_id);
 $box = DB::table( 'boxes' )->where( 'user_id', $user->id )->limit( 1 );

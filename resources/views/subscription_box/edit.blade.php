@@ -208,7 +208,6 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
 
 <?php
 #EMBED YOUTUBE VIDEO
-
   if ( isset( $_POST[ 'ytembed' ] ) ) {
     $code = $_POST[ 'ytembed' ];
     preg_match(
@@ -220,9 +219,27 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
     $array[ "video" ] = $vid;
     $box = DB::table( 'boxes' )->where( 'user_id', $user->id )->limit( 1 );
     $box->update( $array );
-    header( "Refresh:0" );
+    //Check if update was successful then Create Product on PayPal
 
-    // Check if update was successful then Create Product on PayPal
+
+// CREATE PRODUCT ON PAYPAL 
+require_once "../php/paypal-token.php";
+$config = parse_ini_file("../config/app.ini", true);
+$endpoint = $config["paypal"]["productsEndpoint"];   
+$data = [
+  "name"=> "A subscription box",
+  "description"=> "Various products for entertainment purposes",
+  "type"=> "PHYSICAL",
+  "category"=> "ENTERTAINMENT_AND_MEDIA",
+  "home_url"=> "https://boxeon.com/box/index" // Update
+  ];
+$media = "Content-Type: application/json, Authorization: Bearer $token";
+$cp = sendcurl(json_encode($data), $endpoint, $media);
+$product_id = $cp["id"];
+$array = array('product_id' => $product_id);
+$box = DB::table( 'boxes' )->where( 'user_id', $user->id )->limit( 1 );
+$box->update( $array );
+header( "Refresh:0" );
   }
 ?>
 @endsection

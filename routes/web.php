@@ -15,6 +15,7 @@ use App\Http\Controllers\LogoutController;
 |
 */
 
+
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('index');
 
 

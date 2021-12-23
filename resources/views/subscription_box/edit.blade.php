@@ -8,14 +8,20 @@
    ?>
 @section('content')
 
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
+
 <?php
-$box = DB::select('select * from boxes where user_id= ?', [$user->id]); 
+$box = DB::select('select * from boxes where user_id= ?', [$user->id]);
 if(empty($box) || is_null($box[0]->box_weight)){
 echo '<div id="masthead" class="fadein">
     <div id="headline">
-    <div><p class="text-heading-label">FANS ARE WAITING</p><h1 class="ginormous">Create a 
+    <div><p class="text-heading-label">FANS ARE WAITING</p><h1 class="ginormous">Create a
     subscription box today</h1>
-    <p id="pitch">If you started creating a box and chose to have us help you with product 
+    <p id="pitch">If you started creating a box and chose to have us help you with product
     curation and shipping, we will be
     contacting you by email. Please ensure our emails are not in your spam folder.</p>
     <a class="button" href="/box/create">Create box</a>
@@ -58,7 +64,7 @@ echo '<div id="masthead" class="fadein">
 		<p><span class='highlighted darkblue'>$in_stock</span> boxes left in stock</p>
         <span class='break hack-br-3'><br></span>
 		<div class='sub-btns'>
-		<a href='#' id='exe-sub' data-id='$id' data-url='$url' data-video-id='$video' 
+		<a href='#' id='exe-sub' data-id='$id' data-url='$url' data-video-id='$video'
         data-plan-id='1' class='button'>Subscribe</a>
 		<a id='share-box' data-id='$id' data-url='$url' href='#' class='button clearbtn'>
         Share instead</a>
@@ -74,16 +80,16 @@ echo '<div id="masthead" class="fadein">
         You may complete this step at any time by signing in and clicking 
         on $user->given_name's 
         Boxeon.</p></div>
-        <form action='/box/$user->id/edit' method='post' 
+        <form action='/box/$user->id/edit' method='post'
         id='embed-form'>";
-        
+
         ?>
 
         @csrf
         @method('POST')
 
         <?php
-        echo "<input required placeholder='Youtube video URL from browser' name='ytembed' 
+        echo "<input required placeholder='Youtube video URL from browser' name='ytembed'
         type='url'></input>
         <div class='buttonHolder'>
         <input type='submit' value='Embed'></input></div></form></div>
@@ -143,7 +149,7 @@ pre-order sales have ended.</p>
         <div class='secinner'> 
           <h1 class='extra-large-font'>Rest secured</h1>
           <p>
-          We conduct all financial transactions securely via PayPal. No PayPal account 
+          We conduct all financial transactions securely via PayPal. No PayPal account
           is necessary to subscribe.</p>
         </div>
          </div>
@@ -158,13 +164,13 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
         <img src='../../assets/images/high-five.svg' alt='subscription box'> </div>
     </section>
 			 <section class='section'>
-      <div class='section-inner-grid'><img src='../../assets/images/makeitrain.svg' 
+      <div class='section-inner-grid'><img src='../../assets/images/makeitrain.svg'
       alt='subscription box'>
-        <div class='secinner'> 
+        <div class='secinner'>
           <h1 class='extra-large-font'>Money back guarantee</h1>
-          <p>We don't allow products of poor or medium quality on our platform. 
-          They don't have to be expensive; they have to be of excellent quality. 
-          We will return any fees collected from a customer who successfully proves 
+          <p>We don't allow products of poor or medium quality on our platform.
+          They don't have to be expensive; they have to be of excellent quality.
+          We will return any fees collected from a customer who successfully proves
           their seller violated this policy.</p>
         </div>
          </div>
@@ -181,7 +187,7 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
     </section>
 	 <h2 class='centered'>How it works</h2>
     <div id='how-it-works' class='three-col-grid'>
-     
+
       <div> <img src='../../assets/images/computer.svg' alt='Box'/> <h2>Find box</h2></div>
       <div> <img src='../../assets/images/card.svg' alt='Card'/> <h2>Add payment</h2></div>
       <div> <img src='../../assets/images/present.svg' alt='Box'/> <h2>Receive boxes</h2></div>
@@ -191,7 +197,7 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
       <div class='centered'>
         <h1 class='extra-large-font darkblue'>We make it that simple</h1>
         <br>
-        <a href='#' id='exe-sub-alt' data-id='$id' data-url='$url' data-video-id='$video' 
+        <a href='#' id='exe-sub-alt' data-id='$id' data-url='$url' data-video-id='$video'
         data-plan-id='1' class='button'> Get started with $user->given_name </a> </div>
     </section>
 		 </main>";

@@ -15,7 +15,7 @@ class CreateBoxesTable extends Migration
     {
         Schema::create('boxes', function (Blueprint $table) {
             $table->bigIncrements('vid');
-            $table->foreignId('user_id')->nullable()->index();
+            $table->unsignedBigInteger('user_id')->unique();
             $table->integer('pre_order')->nullable();
             $table->integer('special_offer')->nullable();
             $table->integer('price')->nullable();
@@ -39,6 +39,8 @@ class CreateBoxesTable extends Migration
             $table->string('postal_code')->nullable();
             $table->string('video')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

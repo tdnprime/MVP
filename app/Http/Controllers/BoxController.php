@@ -44,6 +44,11 @@ class BoxController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
 
+        if ($user->boxes()){
+            return redirect()->route('box.edit', $id)
+                        ->with('success','Subscription Box already exist');
+        }
+
         return view('subscription_box.create', compact('user'));
     }
     /**
@@ -58,7 +63,6 @@ class BoxController extends Controller
         $user = User::find($id);
         $box = new Box();
 
-        $box->user_id = $id;
         $box->pre_order = $request->input('pre_order');
         $box->special_offer = $request->input('special_offer');
         $box->pre_order = $request->input('pre_order');
@@ -81,7 +85,7 @@ class BoxController extends Controller
         $box->postal_code = $request->input('postal_code');
         $box->prodname = $request->input('prodname');
         $box->proddesc = $request->input('proddesc');
-        $box->save();
+        $user->boxes()->save($box);
        return redirect()->route('box.edit', $id)
                         ->with('success','Subscription Box created successfully');
 

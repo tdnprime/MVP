@@ -1,7 +1,9 @@
 @extends('layouts.box')
 <?php    echo "<div id='text-modes-switch' class='center'>
-    <a href='/box/$user->id/edit'class='text-edit-mode' class='centered'><span class='material-icons'>preview</span> Preview</a>
-   <a href='/box/$user->id/edit' class='text-edit-mode' class='centered'><span class='material-icons'>edit</span> Edit</a>
+    <a href='/box/$user->id/edit'class='text-edit-mode' class='centered'>
+    <span class='material-icons'>preview</span> Preview</a>
+   <a href='/box/$user->id/edit' class='text-edit-mode' class='centered'>
+   <span class='material-icons'>edit</span> Edit</a>
    </div>";
    ?>
 @section('content')
@@ -42,13 +44,16 @@ echo '<div id="masthead" class="fadein">
     <div id='box-masthead-inner-wrapper'>
 	<section id='box-headline'>
 		<h1 class='darkblue'> 
-		<span id='page-name' class='ginormous primary-color'>$user->given_name $user->family_name</span>
+		<span id='page-name' class='ginormous primary-color'>
+        $user->given_name $user->family_name</span>
         <span class='break hack-br-1'><br></span> is shipping $box_s subscription boxes <br> 
         to loyal fans</h1> <div>
 		<p><span class='highlighted darkblue'>$$price</span> per box ($shipping)</p>
-		<!--<p><span class='highlighted darkblue'>$20 off</span> when you <span class='break hack-br-2'><br>
+		<!--<p><span class='highlighted darkblue'>$20 off</span> when you 
+        <span class='break hack-br-2'><br>
         </span>
-		<a class='one-em-font darkblue underline' href='#' title='Click to allow'>allow notifications</a>
+		<a class='one-em-font darkblue underline' href='#' 
+        title='Click to allow'>allow notifications</a>
         </p>!-->
 		<p><span class='highlighted darkblue'>$in_stock</span> boxes left in stock</p>
         <span class='break hack-br-3'><br></span>
@@ -66,7 +71,8 @@ echo '<div id="masthead" class="fadein">
         <h1 class='extra-large-font'>Embed Video</h1>
       <div class='alert'>  <p class='material-icons'>info</p><p>To publish your page, embed a 
       <b>show and tell</b> Youtube video of your subscription box. 
-        You may complete this step at any time by signing in and clicking on $user->given_name's 
+        You may complete this step at any time by signing in and clicking 
+        on $user->given_name's 
         Boxeon.</p></div>
         <form action='/box/$user->id/edit' method='post' 
         id='embed-form'>";
@@ -85,7 +91,8 @@ echo '<div id="masthead" class="fadein">
         }else{
             echo "<div id='masthead-video-wrapper'>
             <div class='playbtn-wrapper'>
-            <img id='image-youtube-thumb' src='http://img.youtube.com/vi/$video/maxresdefault.jpg'/>
+            <img id='image-youtube-thumb' 
+            src='http://img.youtube.com/vi/$video/maxresdefault.jpg'/>
              <a href='#' id='play-video' data-id='$id' data-url='$url' data-video-id='$video' 
              data-plan-id='1'><img class='playbtn' src='../../assets/images/playbtn.png' 
              alt='Play video'/></a>
@@ -107,11 +114,13 @@ Subscribe to enjoy a curated experience that is uniquely $user->given_name.</p>
         <img src='../../assets/images/smith.svg' alt='subscription box'> </div>
     </section>
     <section class='section'>
-      <div class='section-inner-grid'> <img src='../../assets/images/freedom.svg' alt='subscription box'>
+      <div class='section-inner-grid'> <img src='../../assets/images/freedom.svg' 
+      alt='subscription box'>
         <div class='secinner'>
           <h1 class='extra-large-font'>Give $user->given_name freedom</h1>
           <p>
-          $user->given_name's subscription box is the best way to support $user->given_name's quest 
+          $user->given_name's subscription box is the best way to support 
+          $user->given_name's quest 
           for financial freedom to continue making the content you deserve.</p>
         </div>
       </div>
@@ -121,13 +130,16 @@ Subscribe to enjoy a curated experience that is uniquely $user->given_name.</p>
         <div class='secinner'>
           <h1 class='extra-large-font'>Special offer</h1>
           <p>
-The first ten fans to <b>pre-order</b> will receive a 30-minute phone call with $user->given_name. 
-Pre-order sales end on $date, and boxes will ship within one month after pre-order sales have ended.</p>
+The first ten fans to <b>pre-order</b> will receive a 30-minute phone call with 
+$user->given_name. 
+Pre-order sales end on $date, and boxes will ship within one month after 
+pre-order sales have ended.</p>
         </div>
         <img src='../../assets/images/fireworks.svg' alt='subscription box'> </div>
     </section>
 		 <section class='section'>
-      <div class='section-inner-grid'><img src='../../assets/images/sleep.svg' alt='subscription box'>
+      <div class='section-inner-grid'><img src='../../assets/images/sleep.svg' 
+      alt='subscription box'>
         <div class='secinner'> 
           <h1 class='extra-large-font'>Rest secured</h1>
           <p>
@@ -162,7 +174,8 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
         <div class='secinner'>
           <h1 class='extra-large-font'>Cancel anytime</h1>
           <p>
-If you're unsatisfied with $user->given_name's box, you may unsubscribe at anytime without hassle.</p>
+            If you're unsatisfied with $user->given_name's box, you may unsubscribe 
+            at anytime without hassle.</p>
         </div>
         <img src='../../assets/images/laptop.svg' alt='subscription box'> </div>
     </section>
@@ -197,8 +210,8 @@ If you're unsatisfied with $user->given_name's box, you may unsubscribe at anyti
     $vid = $matches[ 1 ]; // should contain the youtube user id
     $array = [];
     $array[ "video" ] = $vid;
-    $box = DB::table('boxes')->where('user_id', $user->id)->limit(1);
-    $box->update($array);
+    $box = DB::table( 'boxes' )->where( 'user_id', $user->id )->limit( 1 );
+    $box->update( $array );
     header( "Refresh:0" );
   }
 ?>

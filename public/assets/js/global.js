@@ -420,10 +420,12 @@ Shipping = {
     }
     Shipping.arr['creator_id'] = document.getElementById('process-data').getAttribute('data-id');
     // Get rates or save shipping address to create subscription
-    if(sessionStorage.getItem("sub-shipping") == 0){
-      Boxeon.createBillingPlan();
-    }else if(sessionStorage.getItem("sub-shipping") == 1){
+    if(sessionStorage.getItem("sub-shipping") == 1){
+      //Boxeon.createBillingPlan(); 
+      alert(1);
+    }else if(sessionStorage.getItem("sub-shipping") == 0){
       Shipping.getRates();
+   
     }
     return false;
   },
@@ -431,7 +433,8 @@ Shipping = {
     var json = JSON.stringify(Shipping.arr);
     var manifest = {
       method: "POST",
-      action: "../../php/shipping-rates.php",
+      _token: document.querySelector('meta[name="csrf_token"]').content,
+      action: "/rates",
       contentType: "application/json; charset=utf-8",
       customHeader: "CALC",
       payload: json

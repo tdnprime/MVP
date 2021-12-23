@@ -1,5 +1,7 @@
 <?php
 
+die();
+
 $target_dir = "../uploads/";
 
 $target_file = $target_dir . $uid . $_FILES["upload"]["name"];

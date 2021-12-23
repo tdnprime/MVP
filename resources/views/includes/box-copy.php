@@ -19,7 +19,7 @@ echo '<div id="masthead" class="fadein">
     $video = $box[0]->video;
 	$price = $box[0]->price;
 	$id = $box_supply = $box[0]->user_id;
-    $date = $box[0]->created_at;
+    $date = gmdate("F b", $box[0]->created_at + 2629743);
     if($box[0]->shipping_cost == 0){
         $shipping = "+ shipping";
         $discount = "90% off on";

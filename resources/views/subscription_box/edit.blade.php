@@ -33,9 +33,9 @@ echo '<div id="masthead" class="fadein">
     $box_s = $box[0]->box_supply;
     $in_stock = $box[0]->in_stock;
     $video = $box[0]->video;
-	$price = $box[0]->price;
-	$id = $box_supply = $box[0]->user_id;
-    $date = $box[0]->created_at;
+	  $price = $box[0]->price;
+	  $id = $box_supply = $box[0]->user_id;
+    $date = gmdate("F d", $box[0]->created_at + 2629743);
     if($box[0]->shipping_cost == 0){
         $shipping = "+ shipping";
         $discount = "90% off on";

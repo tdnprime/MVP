@@ -44,7 +44,7 @@ class BoxController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
 
-        if ($user->boxes()){
+        if ($user->boxes()->first() != null){
             return redirect()->route('box.edit', $id)
                         ->with('success','Subscription Box already exist');
         }

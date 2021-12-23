@@ -1,5 +1,5 @@
 @extends('layouts.box')
-<?php    echo "<div id='text-modes-switch' class='center'>
+<?php echo "<div id='text-modes-switch' class='center'>
     <a href='/box/$user->id/edit'class='text-edit-mode' class='centered'>
     <span class='material-icons'>preview</span> Preview</a>
    <a href='/box/$user->id/edit' class='text-edit-mode' class='centered'>
@@ -219,6 +219,8 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
     $box = DB::table( 'boxes' )->where( 'user_id', $user->id )->limit( 1 );
     $box->update( $array );
     header( "Refresh:0" );
+
+    // Check if update was successful then Create Product on PayPal
   }
 ?>
 @endsection

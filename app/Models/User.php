@@ -65,4 +65,19 @@ class User extends Authenticatable
     {
         return $this->hasOne(Box::class);
     }
+
+    public function shippingAddress()
+    {
+        return [
+            'name' => $this->name,
+            'company' => $this->company,
+            'street1' => $this->boxes()->street1,
+            'city' => $this->boxes()->city,
+            'state' => $this->boxes()->state,
+            'zip' => $this->boxes()->zip,
+            'country' => $this->boxes()->country,
+            'phone' => $this->phone,
+            'email' => $this->email,
+        ];
+    }
 }

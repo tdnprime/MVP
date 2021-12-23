@@ -82,8 +82,7 @@ class BoxController extends Controller
         $box->prodname = $request->input('prodname');
         $box->proddesc = $request->input('proddesc');
         $box->save();
-        
-        return redirect()->route('box.edit')
+       return redirect()->route('box.edit', $id)
                         ->with('success','Subscription Box created successfully');
 
 
@@ -110,7 +109,7 @@ class BoxController extends Controller
     {
         $user = User::find($user_id);
 
-        $box = $user->boxes()->first();
+        $box = $user->boxes()->first(); // NOTED
 
         return view('subscription_box.edit' , compact('box', 'user'));
     }

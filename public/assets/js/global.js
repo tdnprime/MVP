@@ -18,7 +18,6 @@ https://stackoverflow.com/questions/43954836/disabling-blackbars-on-youtube-embe
 // TABLE OF CONTENTS:
 
 var Boxeon = Boxeon || {}; // A collection of functions
-var Account = Account || {}; // Gets user account info
 var Shipping = Shipping || {};
 var Subscriptions = Subscriptions || {};
 
@@ -58,7 +57,7 @@ Boxeon = {
     }
   },
   changeImageOnMouseover: function (img, src) {
-    img.src = "../assets/images/" + src;
+    img.src = "http://localhost:8000/assets/images/" + src;
 
   },
   playVideo: function (video_id, creator_uid) {
@@ -70,7 +69,7 @@ Boxeon = {
     var el = "h2";
     var options = {
       msg: "1. Choose subscription schedule",
-      className: "primary-color"
+      className: "primary-color margin-top-2-em"
     }
     mbodyNode.appendChild(Boxeon.createElem(el, options));
     mbodyNode.appendChild(Boxeon.createPlanOptions());
@@ -78,6 +77,9 @@ Boxeon = {
     var header = document.getElementById("mc-header");
     var opts = {
       className: "step step-incomplete",
+      label1: "Schedule",
+      label2: "Shipping",
+      label3: "Payment",
       length: 3
     }
     header.appendChild(Boxeon.createStepsLeft(opts));
@@ -292,40 +294,34 @@ Boxeon = {
     /* When side navigation slides out, 
   set the width of the side navigation and 
   the left margin of MAIN + FOOTER */
-  
+
     document.getElementById("menu").style.width = "300px";
 
-  if(document.getElementsByTagName("main")[0]){
-    document.getElementsByTagName("main")[0].style.marginLeft = "300px";
-  }
-  if( document.getElementById("masthead")){
-    document.getElementById("masthead").style.marginLeft = "300px";
-  }
+    if (document.getElementsByTagName("main")[0]) {
+      document.getElementsByTagName("main")[0].style.marginLeft = "300px";
+    }
+    if (document.getElementById("masthead")) {
+      document.getElementById("masthead").style.marginLeft = "300px";
+    }
     document.getElementsByTagName("footer")[0].style.marginLeft = "300px";
     document.getElementsByTagName("header")[0].style.marginLeft = "300px";
-  
+
 
   },
   signOut: function () {
     sessionStorage.clear();
   },
-  toggleArrowBlack: function (img) {
-    img.src = "../images/arrow.svg";
-  },
-  toggleArrowRed: function (img) {
-    img.src = "../images/arrow-red.svg";
-  },
 
   closeMenu: function () {
     /* Return page to normal upon side navigation close */
     document.getElementById("menu").style.width = "0";
-    if(document.getElementsByTagName("main")[0]){
-    document.getElementsByTagName("main")[0].style.marginLeft = "0";
+    if (document.getElementsByTagName("main")[0]) {
+      document.getElementsByTagName("main")[0].style.marginLeft = "0";
     }
     document.getElementsByTagName("footer")[0].style.marginLeft = "0";
     document.getElementsByTagName("header")[0].style.marginLeft = "0";
-    if( document.getElementById("masthead")){
-    document.getElementById("masthead").style.marginLeft = "0";
+    if (document.getElementById("masthead")) {
+      document.getElementById("masthead").style.marginLeft = "0";
     }
   },
   router: function (a) {
@@ -337,28 +333,21 @@ Boxeon = {
     } else if (a.id == 'exe-unsub') {
       sessionStorage.setItem('sub', 0);
     }
-    Account.isUser();
-    if (Account.known == 0) {
-      // ask to sign in
-      sessionStorage.setItem("last", window.location.href);
-      location.assign(URL);
-    }
-    if (Account.known == 1) {
-      sessionStorage.setItem('box', document.getElementById(a.getAttribute('data-id')));
-      if (sessionStorage.getItem('sub') == 1) {
-        var video_id = a.getAttribute("data-video-id");
-        var creator_id = a.getAttribute("data-id");
-        // Save for later
-        sessionStorage.setItem("sub-carrier", a.getAttribute("carrier"));
-        sessionStorage.setItem("sub-rate", a.getAttribute("rate"));
-        sessionStorage.setItem("sub-rate-id", a.getAttribute("rate-id"));
-        sessionStorage.setItem("sub-shipment", a.getAttribute("shipment"));
-        // Play video in UI
-        Boxeon.playVideo(video_id, creator_id);
-      } else if (sessionStorage.getItem('sub') == 0) {
-        Subscriptions.
-          removeCheck(a);
-      }
+    sessionStorage.setItem('box', document.getElementById(a.getAttribute('data-id')));
+    if (sessionStorage.getItem('sub') == 1) {
+      var video_id = a.getAttribute("data-video-id");
+      var creator_id = a.getAttribute("data-id");
+      // Save for later
+      sessionStorage.setItem("sub-carrier", a.getAttribute("carrier"));
+      sessionStorage.setItem("sub-rate", a.getAttribute("rate"));
+      sessionStorage.setItem("sub-rate-id", a.getAttribute("rate-id"));
+      sessionStorage.setItem("sub-shipment", a.getAttribute("shipment"));
+      // Play video in UI
+      Boxeon.playVideo(video_id, creator_id);
+    } else if (sessionStorage.getItem('sub') == 0) {
+      Subscriptions.
+        removeCheck(a);
+
     }
 
   },
@@ -375,57 +364,31 @@ Boxeon = {
 
 };
 
-Account = {
-
-  isUser: function () {
-    var data = {
-      method: "POST",
-      action: "../account/index.php",
-      contentType: "application/json; charset=utf-8",
-      customHeader: "AUTH",
-      payload: "1"
-    }
-
-    function callback(re) {
-      Account.known = re;
-    }
-    Boxeon.sendAjax(data, callback);
-
-  }
-};
-
 Shipping = {
 
   collectUserAddress: function (creator_uid) {
     Boxeon.createModalWindow();
-    Shipping.buildUI(creator_uid);
+    Shipping.buildAddressInputForm(creator_uid);
   },
-  buildUI: function (creator_uid) {
-    var data = {
-      method: "POST",
-      action: "../account/index.php",
-      contentType: "application/json; charset=utf-8",
-      customHeader: "ADDR"
-    }
 
-    function callback(re) {
-      Shipping.buildAddressInputForm(JSON.parse(re), creator_uid);
-    }
-    Boxeon.sendAjax(data, callback);
-
-  },
-  buildAddressInputForm: function (addr, creator_uid) {
+  buildAddressInputForm: function (creator_uid) {
     document.getElementById("mc-header").innerHTML =
-      '<div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p><p class="step step-current">2</p><p class="step step-incomplete">3</p></div>';
+      '<div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p>'
+      +'<p id="text-step0-label" class="centered">Schedule</p>'
+      +'<p class="step step-current">2</p>'
+      +'<p id="text-step1-label" class="centered">Shipping</p>'
+      +'<p class="step step-incomplete">3</p>'
+      +'<p id="text-step2-label" class="centered">Payment</p>'
+      +'</div>';
     document.getElementById("m-body").innerHTML =
-      "<h2>2. Check if you qualify for a shipping  discount</h2><p>Please provide your address to continue.</p><form onsubmit='return'>"
-      + "<fieldset><input type='text' name='name' placeHolder='Full name' required value='" + addr.fullname + "'></input>"
-      + "<input type='text' name='address_line_1' placeHolder='Street address' required value='" + addr.address_line_1 + "'></input>"
-      + "<input type='text' name='address_line_2' placeHolder='Street address line 2 (optional)' value='" + addr.address_line_2 + "'></input>"
-      + "<input type='text' name='admin_area_2' required placeHolder='City' value='" + addr.admin_area_2 + "'></input>"
-      + "<input type='text' name='admin_area_1' required placeHolder='State/Province' value='" + addr.admin_area_1 + "'></input>"
-      + addr.country_code
-      + "<input type='text' name='postal_code' required placeHolder='Postal code' value='" + addr.postal_code + "'></input></fieldset>"
+      "<h2>2. Provide your shipping address</h2><form onsubmit='return'>"
+      + "<fieldset><input type='text' name='name' placeHolder='Full name' required value=''></input>"
+      + "<input type='text' name='address_line_1' placeHolder='Street address' required value=''></input>"
+      + "<input type='text' name='address_line_2' placeHolder='Street address line 2 (optional)' value=''></input>"
+      + "<input type='text' name='admin_area_2' required placeHolder='City' value=''></input>"
+      + "<input type='text' name='admin_area_1' required placeHolder='State/Province' value=''></input>"
+      + "<input type='text' name='country_code' required placeHolder='Country' value=''></input>"
+      + "<input type='text' name='postal_code' required placeHolder='Postal code' value=''></input></fieldset>"
       + "<input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
       + "</form>";
     var btn = document.getElementById("process-data");
@@ -757,9 +720,9 @@ $(document).ready(function () {
 
   if (document.getElementById('signin')) {
     document.getElementById('signin').addEventListener('click', function () {
-    if(location.href == "http://localhost:8000/partner"){
-      sessionStorage.setItem("last", "http://localhost:8000/partner");
-    }
+      if (location.href == "http://localhost:8000/partner") {
+        sessionStorage.setItem("last", "http://localhost:8000/partner");
+      }
     });
   }
 
@@ -770,7 +733,6 @@ $(document).ready(function () {
     });
   }
   if (document.getElementById('create-box')) {
-
     var opts = {
       className: "step step-incomplete",
       length: 3,
@@ -788,15 +750,15 @@ $(document).ready(function () {
     document.getElementById("module").prepend(Boxeon.createElem(el, options));
 
     var preOrder = document.getElementById("pre-order");
-    preOrder.addEventListener("change", function(){
-      if(this.value == 1){
+    preOrder.addEventListener("change", function () {
+      if (this.value == 1) {
         var specialOffer = document.getElementById("special-offer");
         specialOffer.style.display = "grid";
         var specialOffer = document.getElementsByClassName("special-offer");
         specialOffer[0].style.display = "block";
         specialOffer[1].style.display = "block";
         specialOffer[1].removeAttribute("disabled");
-      }else if(this.value == 0){
+      } else if (this.value == 0) {
         var specialOffer = document.getElementById("special-offer");
         specialOffer.style.display = "none";
         var specialOffer = document.getElementsByClassName("special-offer");
@@ -811,7 +773,7 @@ $(document).ready(function () {
 });
 
 // Fades out pages for a smoother unload transition
-$(window).on('beforeunload', function() { 
+$(window).on('beforeunload', function () {
   if (document.getElementsByTagName("main")[0]) {
     document.getElementsByTagName("main")[0].setAttribute("class", "fadeout");
   }

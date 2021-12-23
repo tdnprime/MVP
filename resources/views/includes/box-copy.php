@@ -23,9 +23,11 @@ echo '<div id="masthead" class="fadein">
     if($box[0]->shipping_cost == 0){
         $shipping = "+ shipping";
         $discount = "90% off on";
+        $cost = 1;
     }else{
         $shipping = "Free shipping";
         $discount = "free";
+        $cost = 0;
     }
 
 	$url = url('auth/google');
@@ -62,10 +64,9 @@ echo '<div id="masthead" class="fadein">
         Boxeon.</p></div>
         <form action='/box/$user->id/edit' method='post' 
         id='embed-form'>";
-        
         ?>
 
-        @csrf
+       @csrf
         @method('POST')
 
         <?php
@@ -78,7 +79,7 @@ echo '<div id="masthead" class="fadein">
             echo "<div id='masthead-video-wrapper'>
             <div class='playbtn-wrapper'>
             <img id='image-youtube-thumb' src='http://img.youtube.com/vi/$video/maxresdefault.jpg'/>
-             <a href='#' id='play-video' data-id='$id' data-url='$url' data-video-id='$video' 
+             <a href='#' id='play-video' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video' 
              data-plan-id='1'><img class='playbtn' src='../../assets/images/playbtn.png' 
              alt='Play video'/></a>
             </div>

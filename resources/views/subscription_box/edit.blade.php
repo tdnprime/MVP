@@ -223,7 +223,7 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
 
 
 // CREATE PRODUCT ON PAYPAL 
-require_once "../php/paypal-token.php";
+require_once "../php/paypal-connect.php";
 $config = parse_ini_file("../config/app.ini", true);
 $endpoint = $config["paypal"]["productsEndpoint"];   
 $data = [

@@ -28,6 +28,7 @@ class Box extends Model
         'box_height',
         'prodname',
         'proddesc',
+        'product_id',
         'address_line_1',
         'address_line_2',
         'admin_area_1',

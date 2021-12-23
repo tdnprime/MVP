@@ -178,7 +178,7 @@ Boxeon = {
     radio1.value = 1;
     radio2.value = 2;
     radio3.value = 3;
-    radio3.value = 0;
+    radio4.value = 0;
     label1.appendChild(txt1);
     label2.appendChild(txt2);
     label3.appendChild(txt3);
@@ -278,7 +278,7 @@ Boxeon = {
 
   switchPlan: function (a) {
     var frequency = a.value;
-    sessionStorage.setItem("sub-frequency", frequency);
+    sessionStorage.setItem("sub-freq", frequency);
 
   },
 
@@ -325,30 +325,30 @@ Boxeon = {
     }
   },
   router: function (a) {
-
-    let URL = a.getAttribute("data-url");
+    // Google sign in URL: let URL = a.getAttribute("data-url");
     if (a.id == 'exe-sub' || a.id == 'exe-sub-alt' || a.id == 'play-video') {
       // In case of page reload
       sessionStorage.setItem('sub', 1);
+      sessionStorage.setItem('sub-shipping', a.getAttribute("data-shipping"));
     } else if (a.id == 'exe-unsub') {
       sessionStorage.setItem('sub', 0);
     }
-    sessionStorage.setItem('box', document.getElementById(a.getAttribute('data-id')));
-    if (sessionStorage.getItem('sub') == 1) {
-      var video_id = a.getAttribute("data-video-id");
-      var creator_id = a.getAttribute("data-id");
-      // Save for later
-      sessionStorage.setItem("sub-carrier", a.getAttribute("carrier"));
-      sessionStorage.setItem("sub-rate", a.getAttribute("rate"));
-      sessionStorage.setItem("sub-rate-id", a.getAttribute("rate-id"));
-      sessionStorage.setItem("sub-shipment", a.getAttribute("shipment"));
-      // Play video in UI
-      Boxeon.playVideo(video_id, creator_id);
-    } else if (sessionStorage.getItem('sub') == 0) {
-      Subscriptions.
-        removeCheck(a);
-
-    }
+    // sessionStorage.setItem('box', document.getElementById(a.getAttribute('data-id')));
+    
+      if (sessionStorage.getItem('sub') == 1) {
+        var video_id = a.getAttribute("data-video-id");
+        var creator_id = a.getAttribute("data-id");
+        // Save for later
+        sessionStorage.setItem("sub-carrier", a.getAttribute("carrier"));
+        sessionStorage.setItem("sub-rate", a.getAttribute("rate"));
+        sessionStorage.setItem("sub-rate-id", a.getAttribute("rate-id"));
+        sessionStorage.setItem("sub-shipment", a.getAttribute("shipment"));
+        sessionStorage.setItem("sub-seller", creator_id);
+        // Play video in UI
+        Boxeon.playVideo(video_id, creator_id);
+      } else if (sessionStorage.getItem('sub') == 0) {
+        Subscriptions.removeCheck(a);
+      }
 
   },
 
@@ -373,13 +373,13 @@ Shipping = {
 
   buildAddressInputForm: function (creator_uid) {
     document.getElementById("mc-header").innerHTML =
-      '<div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p>'
-      +'<p id="text-step0-label" class="centered">Schedule</p>'
-      +'<p class="step step-current">2</p>'
-      +'<p id="text-step1-label" class="centered">Shipping</p>'
-      +'<p class="step step-incomplete">3</p>'
-      +'<p id="text-step2-label" class="centered">Payment</p>'
-      +'</div>';
+      '<div class="asides"><div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p>'
+      + '<p id="text-step0-label" class="centered">Schedule</p>'
+      + '<p class="step step-current">2</p>'
+      + '<p id="text-step1-label" class="centered">Shipping</p>'
+      + '<p class="step step-incomplete">3</p>'
+      + '<p id="text-step2-label" class="centered">Payment</p>'
+      + '</div></div>';
     document.getElementById("m-body").innerHTML =
       "<h2>2. Provide your shipping address</h2><form onsubmit='return'>"
       + "<fieldset><input type='text' name='name' placeHolder='Full name' required value=''></input>"
@@ -419,14 +419,19 @@ Shipping = {
       }
     }
     Shipping.arr['creator_id'] = document.getElementById('process-data').getAttribute('data-id');
-    Shipping.getRates();
+    // Get rates or save shipping address to create subscription
+    if(sessionStorage.getItem("sub-shipping") == 0){
+      Boxeon.createBillingPlan();
+    }else if(sessionStorage.getItem("sub-shipping") == 1){
+      Shipping.getRates();
+    }
     return false;
   },
   getRates: function () {
     var json = JSON.stringify(Shipping.arr);
     var manifest = {
       method: "POST",
-      action: "../shipping/validateAddress.php",
+      action: "../../php/shipping-rates.php",
       contentType: "application/json; charset=utf-8",
       customHeader: "CALC",
       payload: json
@@ -522,19 +527,19 @@ Subscriptions = {
     Boxeon.sendAjax(data, callback);
   },
 
-  createBillingPlan: function (b) {
+  createBillingPlan: function () {
     var arr = {};
     arr['rate'] = sessionStorage.getItem('sub-rate');
     arr['shipment'] = sessionStorage.getItem('sub-shipment');
     arr['rate_id'] = sessionStorage.getItem('sub-rate-id');
     arr['carrier'] = sessionStorage.getItem('sub-carrier');
     arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
-    arr['frequency'] = sessionStorage.getItem('sub-frequency');
+    arr['frequency'] = sessionStorage.getItem('sub-freq');
 
     var json = JSON.stringify(arr);
     var data = {
       method: "POST",
-      action: "../home/create-plan.php",
+      action: "../../php/create-plan.php",
       contentType: "application/json; charset=utf-8",
       customHeader: "PLAN",
       payload: json
@@ -542,7 +547,7 @@ Subscriptions = {
 
     function callback(r) {
       var json = JSON.parse(r);
-      document.getElementById('sub').setAttribute("data-plan-id", json['plan_id']);
+      document.getElementById('sub').setAttribute("data-plan-id", json['plan_id']); //From PayPal
       document.getElementById("m-window").remove();
       Subscriptions.showPaymentOptions();
     }
@@ -553,7 +558,7 @@ Subscriptions = {
     document.
       getElementById("m-body").
       innerHTML = "<div id='paypal-button-container'></div>";
-    Boxeon.loadScript("../js/subs.js");
+    Boxeon.loadScript("../assets/js/subs.js");
     var buttons = document.getElementById("paypal-button-container");
     buttons.style.display = "block";
 

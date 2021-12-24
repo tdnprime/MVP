@@ -14,6 +14,7 @@
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
+        "shippo/shippo-php": "^2.0",
         "swiftmailer/swiftmailer": "^6.0"
     },
     "require-dev": {

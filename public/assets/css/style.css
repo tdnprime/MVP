@@ -519,6 +519,24 @@ width:fit-content;
   position: relative;
   max-width: 557px;
 }
+#m-content #checkout-address-form{
+  width:63%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#m-content h2{
+  width:78%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#m-content #subs-btns,
+#process-data,
+#m-content #exe-sub{
+  margin-left: auto;
+  margin-right: auto;
+  width:11em;
+  display: block;
+}
 .icon {
   height: 25px;
   width: 25px;
@@ -1453,7 +1471,7 @@ ul {
 header .material-icons{
   padding-right:0 !important;
 }
-ul li::before {
+#contact ul li::before {
   content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
   color: #4a4a4a;; /* Change the color */
   font-weight: bold; /* If you want it to be bold */

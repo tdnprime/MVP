@@ -196,12 +196,16 @@ Boxeon = {
     label4.appendChild(radio4);
     form.appendChild(label4);
     radio1.addEventListener('click', function () {
+     
       Boxeon.switchPlan(this);
     });
     radio2.addEventListener('click', function () {
       Boxeon.switchPlan(this);
     });
     radio3.addEventListener('click', function () {
+      Boxeon.switchPlan(this);
+    });
+    radio4.addEventListener('click', function () {
       Boxeon.switchPlan(this);
     });
     return form;
@@ -276,6 +280,7 @@ Boxeon = {
     x.appendChild(s);
   },
 
+
   switchPlan: function (a) {
     var frequency = a.value;
     sessionStorage.setItem("sub-freq", frequency);
@@ -329,26 +334,29 @@ Boxeon = {
     if (a.id == 'exe-sub' || a.id == 'exe-sub-alt' || a.id == 'play-video') {
       // In case of page reload
       sessionStorage.setItem('sub', 1);
+      var video_id = a.getAttribute("data-video-id");
+      var creator_id = a.getAttribute("data-id");
+      // sub-creator-id is already set in sessionStorage
+      sessionStorage.setItem("sub-total", a.getAttribute("data-total"));
+      sessionStorage.setItem("sub-product", a.getAttribute("data-product"));
+      sessionStorage.setItem("sub-in-stock", a.getAttribute("data-in-stock"));
       sessionStorage.setItem('sub-shipping', a.getAttribute("data-shipping"));
+      // Play video in UI
+      Boxeon.playVideo(video_id, creator_id);
+
     } else if (a.id == 'exe-unsub') {
-      sessionStorage.setItem('sub', 0);
+      sessionStorage.setItem('sub', 0); // in case of page reload
+      Subscriptions.removeCheck(a);
     }
-    // sessionStorage.setItem('box', document.getElementById(a.getAttribute('data-id')));
-    
-      if (sessionStorage.getItem('sub') == 1) {
-        var video_id = a.getAttribute("data-video-id");
-        var creator_id = a.getAttribute("data-id");
-        // Save for later
-        sessionStorage.setItem("sub-carrier", a.getAttribute("carrier"));
-        sessionStorage.setItem("sub-rate", a.getAttribute("rate"));
-        sessionStorage.setItem("sub-rate-id", a.getAttribute("rate-id"));
-        sessionStorage.setItem("sub-shipment", a.getAttribute("shipment"));
-        sessionStorage.setItem("sub-seller", creator_id);
-        // Play video in UI
-        Boxeon.playVideo(video_id, creator_id);
-      } else if (sessionStorage.getItem('sub') == 0) {
-        Subscriptions.removeCheck(a);
-      }
+
+    if (sessionStorage.getItem('sub') == 1) {
+      // Save for later
+      sessionStorage.setItem("sub-carrier", a.getAttribute("data-carrier"));
+      sessionStorage.setItem("sub-rate", a.getAttribute("data-rate"));
+      sessionStorage.setItem("sub-rate-id", a.getAttribute("data-rate-id"));
+      sessionStorage.setItem("sub-shipment", a.getAttribute("data-shipment"));
+
+    }
 
   },
 
@@ -381,15 +389,21 @@ Shipping = {
       + '<p id="text-step2-label" class="centered">Payment</p>'
       + '</div></div>';
     document.getElementById("m-body").innerHTML =
-      "<h2>2. Provide your shipping address</h2><form onsubmit='return'>"
-      + "<fieldset><input type='text' name='name' placeHolder='Full name' required value=''></input>"
+      "<h2>2. Provide your shipping address</h2><form id='checkout-address-form' onsubmit='return'>"
+      + "<fieldset><input type='text' name='fullname' placeHolder='Full name' required value=''></input>"
       + "<input type='text' name='address_line_1' placeHolder='Street address' required value=''></input>"
       + "<input type='text' name='address_line_2' placeHolder='Street address line 2 (optional)' value=''></input>"
       + "<input type='text' name='admin_area_2' required placeHolder='City' value=''></input>"
       + "<input type='text' name='admin_area_1' required placeHolder='State/Province' value=''></input>"
-      + "<input type='text' name='country_code' required placeHolder='Country' value=''></input>"
+      + "<select required name='country_code' class='form-control' id='country'>"
+      +"<option value='' invalid>Select your country </option>"
+      +"<option value='US' label='United States'>United States</option>"
+      + "<option value='GB' label='United Kingdom'>United Kingdom</option>"
+      +"<option value='CA' label='Canada'>Canada</option>"
+      +"<option value='BR' label='Brazil'>Brazil</option>"
+      +"</select>"
       + "<input type='text' name='postal_code' required placeHolder='Postal code' value=''></input></fieldset>"
-      + "<input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
+      + "<br><input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
       + "</form>";
     var btn = document.getElementById("process-data");
     btn.addEventListener("click", function () {
@@ -418,14 +432,12 @@ Shipping = {
         Shipping.arr[k] = v;
       }
     }
-    Shipping.arr['creator_id'] = document.getElementById('process-data').getAttribute('data-id');
-    // Get rates or save shipping address to create subscription
-    if(sessionStorage.getItem("sub-shipping") == 1){
-      //Boxeon.createBillingPlan(); 
-      alert(1);
-    }else if(sessionStorage.getItem("sub-shipping") == 0){
+    // Get shipping rates to add to 
+    // billing plan or create billing plan right away 
+    if (sessionStorage.getItem("sub-shipping") == 0) {
+      Subscriptions.createBillingPlan(); 
+    } else if (sessionStorage.getItem("sub-shipping") == 1) {
       Shipping.getRates();
-   
     }
     return false;
   },
@@ -433,10 +445,9 @@ Shipping = {
     var json = JSON.stringify(Shipping.arr);
     var manifest = {
       method: "POST",
-      _token: document.querySelector('meta[name="csrf_token"]').content,
-      action: "/rates",
+      _token: document.querySelector('meta[name="csrf-token"]').content,
+      action: "Shipping/getrates",
       contentType: "application/json; charset=utf-8",
-      customHeader: "CALC",
       payload: json
     }
 
@@ -455,7 +466,6 @@ Shipping = {
         + "' width='75px' alt='Carrier'/></p><p>" + rates.results[i].servicelevel.name + '</p><p><b>$'
         + rate + "</b></p>"
         + "<button data-carrier='" + rates.results[i].provider + "'  data-shipment='" + rates.results[i].shipment + "' data-rate='" + rate + "' data-rate-id='" + rates.results[i].object_id + "' id='exe-sub'>Select</button></div>";
-
     }
     Shipping.showRates();
 
@@ -531,27 +541,25 @@ Subscriptions = {
   },
 
   createBillingPlan: function () {
-    var arr = {};
-    arr['rate'] = sessionStorage.getItem('sub-rate');
-    arr['shipment'] = sessionStorage.getItem('sub-shipment');
-    arr['rate_id'] = sessionStorage.getItem('sub-rate-id');
-    arr['carrier'] = sessionStorage.getItem('sub-carrier');
-    arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
-    arr['frequency'] = sessionStorage.getItem('sub-freq');
-
-    var json = JSON.stringify(arr);
+    Shipping.arr['rate'] = sessionStorage.getItem('sub-rate'); // Optional
+    Shipping.arr['shipment'] = sessionStorage.getItem('sub-shipment'); // Optional
+    Shipping.arr['rate_id'] = sessionStorage.getItem('sub-rate-id'); // Optional
+    Shipping.arr['carrier'] = sessionStorage.getItem('sub-carrier'); // Optional
+    Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
+    Shipping.arr['frequency'] = sessionStorage.getItem('sub-freq');
+    var json = JSON.stringify( Shipping.arr );
     var data = {
       method: "POST",
-      action: "../../php/create-plan.php",
+      action: "subscriptions/createplan",
       contentType: "application/json; charset=utf-8",
-      customHeader: "PLAN",
+      _token: document.querySelector('meta[name="csrf-token"]').content,
       payload: json
     }
-
     function callback(r) {
       var json = JSON.parse(r);
       document.getElementById('sub').setAttribute("data-plan-id", json['plan_id']); //From PayPal
       document.getElementById("m-window").remove();
+      // Optional
       Subscriptions.showPaymentOptions();
     }
     Boxeon.sendAjax(data, callback);

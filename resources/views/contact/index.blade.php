@@ -2,7 +2,7 @@
 
 @section('content')
 
-<main>
+<main id="contact">
     <section id="left-aside"></section>
         <aside id="panel">
 		<div id='module'>

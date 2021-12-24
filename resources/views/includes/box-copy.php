@@ -16,6 +16,7 @@ echo '<div id="masthead" class="fadein">
 }else{
     $box_s = $box[0]->box_supply;
     $in_stock = $box[0]->in_stock;
+    $product = $box[0]->product_id;
     $video = $box[0]->video;
 	$price = $box[0]->price;
 	$id = $box_supply = $box[0]->user_id;
@@ -47,7 +48,7 @@ echo '<div id="masthead" class="fadein">
 		<p><span class='highlighted darkblue'>$in_stock</span> boxes left in stock</p>
         <span class='break hack-br-3'><br></span>
 		<div class='sub-btns'>
-		<a href='#' id='exe-sub' data-id='$id' data-url='$url' data-video-id='$video' 
+		<a href='#' id='exe-sub' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-id='$id' data-shipping='$cost' data-url='$url' data-video-id='$video' 
         data-plan-id='1' class='button'>Subscribe</a>
 		<a id='share-box' data-id='$id' data-url='$url' href='#' class='button clearbtn'>
         Share instead</a>
@@ -79,7 +80,7 @@ echo '<div id="masthead" class="fadein">
             echo "<div id='masthead-video-wrapper'>
             <div class='playbtn-wrapper'>
             <img id='image-youtube-thumb' src='http://img.youtube.com/vi/$video/maxresdefault.jpg'/>
-             <a href='#' id='play-video' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video' 
+             <a href='#' id='play-video' data-product='$product' data-in-stock='$in_stock'  data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video' 
              data-plan-id='1'><img class='playbtn' src='../../assets/images/playbtn.png' 
              alt='Play video'/></a>
             </div>
@@ -115,7 +116,7 @@ Subscribe to enjoy a curated experience that is uniquely $user->given_name.</p>
           <h1 class='extra-large-font'>Special offer</h1>
           <p>
 The first ten fans to <b>pre-order</b> will receive a 30-minute phone call with $user->given_name. 
-Pre-order sales end on $date, and boxes will ship within one month after pre-order sales have ended.</p>
+Pre-order sales end on <span class='primary-color'><b>$date</b></span>, and boxes will ship within one month after pre-order sales have ended.</p>
         </div>
         <img src='../../assets/images/fireworks.svg' alt='subscription box'> </div>
     </section>
@@ -171,7 +172,7 @@ If you're unsatisfied with $user->given_name's box, you may unsubscribe at anyti
       <div class='centered'>
         <h1 class='extra-large-font darkblue'>We make it that simple</h1>
         <br>
-        <a href='#' id='exe-sub-alt' data-id='$id' data-url='$url' data-video-id='$video' 
+        <a href='#' id='exe-sub-alt' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video' 
         data-plan-id='1' class='button'> Get started with $user->given_name </a> </div>
     </section>
 		 </main>";

@@ -1,16 +1,5 @@
 <?php
-#CREATE A BILLING PLAN (PAYPAL)
-/*This comes second in the PayPal subscription flow.
-For a user to subscribe to a box, they must first check the cost
-of shipping to them. A list of prices is returned to them. 
-Once they "choose" the price they wish to pay,
-that info along with other requisite info are saved 
-in the subscriptions table. In other words, we're placing
-info in the subscriptions table before we have a 
-subscription payment. Choosing a shipping cost
-also calls this script because the plan info that 
-PayPal will return in this script is needed for the next step, which 
-is step to proceed to further in the PayPal payment flow - offsite.*/
+
 
 if ( isset( $_SERVER[ 'HTTP_PLAN' ] ) ) {
   session_start();

@@ -468,8 +468,8 @@ Shipping = {
     function callback(re) {
       Shipping.buildRateCard(JSON.parse(re));
     }
-    Boxeon.sendAjax(manifest, callback);
-   //Boxeon.jqueryAjax();
+   // Boxeon.sendAjax(manifest, callback);
+   Boxeon.jqueryAjax();
 
   },
   buildRateCard: function (rates) {

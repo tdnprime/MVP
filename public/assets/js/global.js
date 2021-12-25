@@ -236,6 +236,7 @@ Boxeon = {
     try {
       var m = document.getElementById("m-window");
       m.remove();
+      document.getElementsByTagName("header")[0].style.display = "grid";
     } catch (e) {
       //console.log(e);
     }
@@ -260,6 +261,7 @@ Boxeon = {
     m.appendChild(mc);
     mc.appendChild(mch);
     mc.appendChild(mb);
+  
     x.innerHTML = "&times;";
     if (document.getElementById('m-window')) {
       var m_window = document.getElementById("m-window")
@@ -267,6 +269,7 @@ Boxeon = {
       m_content.remove();
       m_window.appendChild(mc);
     } else {
+      document.getElementsByTagName("header")[0].style.display = "none";
       document.getElementById("container").appendChild(m);
     }
   },
@@ -445,9 +448,9 @@ Shipping = {
     var json = JSON.stringify(Shipping.arr);
     var manifest = {
       method: "POST",
-      _token: document.querySelector('meta[name="csrf-token"]').content,
-      action: "Shipping/getrates",
+      action: "/rates",
       contentType: "application/json; charset=utf-8",
+      customHeader:'CALC',
       payload: json
     }
 
@@ -550,17 +553,16 @@ Subscriptions = {
     var json = JSON.stringify( Shipping.arr );
     var data = {
       method: "POST",
-      action: "subscriptions/createplan",
+      action: "/createplan", // TEMPORARY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       contentType: "application/json; charset=utf-8",
       _token: document.querySelector('meta[name="csrf-token"]').content,
       payload: json
     }
     function callback(r) {
       var json = JSON.parse(r);
-      document.getElementById('sub').setAttribute("data-plan-id", json['plan_id']); //From PayPal
+      sessionStorage.setItem("sub-plan-id", json['plan_id']); //From PayPal
       document.getElementById("m-window").remove();
-      // Optional
-      Subscriptions.showPaymentOptions();
+      Subscriptions.showPaymentOptions(); // PayPal et al.
     }
     Boxeon.sendAjax(data, callback);
   },
@@ -568,8 +570,8 @@ Subscriptions = {
     Boxeon.createModalWindow();
     document.
       getElementById("m-body").
-      innerHTML = "<div id='paypal-button-container'></div>";
-    Boxeon.loadScript("../assets/js/subs.js");
+      innerHTML = "<h2>Call to action</h2><div id='paypal-button-container'></div>";
+    Boxeon.loadScript("subs.js");
     var buttons = document.getElementById("paypal-button-container");
     buttons.style.display = "block";
 

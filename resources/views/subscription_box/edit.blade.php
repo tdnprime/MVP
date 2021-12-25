@@ -215,11 +215,15 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
       '/[\\?\\&]v=([^\\?\\&]+)/', $code,
       $matches
     );
+    if($matches[ 1 ]){
     $vid = $matches[ 1 ]; // should contain the youtube user id
     $array = [];
     $array[ "video" ] = $vid;
     $box = DB::table( 'boxes' )->where( 'user_id', $user->id )->limit( 1 );
     $box->update( $array );
+    }else{
+      // Serve error message
+    }
     //Check if update was successful then Create Product on PayPal
 
 

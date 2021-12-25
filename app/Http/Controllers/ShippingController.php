@@ -2,89 +2,55 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Services\Shipping;
+
 
 class ShippingController extends Controller
 {
-    public function rates() {
 
+    public function rates(User $user, Box $box)
+    {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        $box = $user()->boxes()->first();
 
-        $config = parse_ini_file( "../config/app.ini", true );
-        $to = json_decode( $_SERVER[ "HTTP_CALC" ] );
-        $uid = $to->creator_id;
-
-        // GET BOX DIMENSIONS + SHIPPERS ADDRESS
-
-        // SETUP Expensive Shippo code
-        $token = $config[ 'shippo' ][ 'token' ];
-        require_once "../shippo/master/lib/Shippo.php";
-        Shippo::setApiKey( $token );
-
-        // CREATE ADDRESS OBJECTS
-        require_once "../mysqliclass.php";
-        $db = Database::getInstance();
-        $re = $db->get( "SELECT * FROM boxes WHERE uid=$uid" );
-
-        // SAVE ADDRESS TO SESSION FOR ENDING SUBSCRIPTION FLOW LATER
-            session_start();
-            $_SESSION['fullname'] = $to->name;
-            $_SESSION['address_line_1']  = $to->address_line_1;
-            if(isset($to->address_line_2)){ $_SESSION['address_line_2']  = $to->address_line_2;}
-            $_SESSION['admin_area_2'] = $to->admin_area_2;
-            $_SESSION['admin_area_1'] = $to->admin_area_1;
-            $_SESSION['postal_code'] = $to->postal_code;
-        $_SESSION['country_code'] = $to->country_code;
-
-        if ( isset( $re[ 0 ] ) && $re[ 0 ][ 'ship_from' ] == 0 ) {
-
-            $r = $db->get( "SELECT fullname FROM user  WHERE uid='$uid'" );
+        if(isset($box) && $box->ship_from == 0) {
             $fromAddress = Shippo_Address::create( array(
-            "name" => $r[ 0 ][ 'fullname' ],
-            "company" => "Boxeon",
-            "street1" => $re[ 0 ][ 'address_line_1' ],
-            "city" => $re[ 0 ][ 'admin_area_2' ],
-            "state" => $re[ 0 ][ 'admin_area_1' ],
-            "zip" => $re[ 0 ][ 'postal_code' ],
-            "country" => $re[ 0 ][ 'country_code' ],
-            "phone" => $config[ 'boxeon' ][ 'USPhone' ],
-            "email" => $config[ 'boxeon' ][ 'serviceEmail' ]
-            ) );
-        }
-        if ( isset( $re[ 0 ] ) && $re[ 0 ][ 'ship_from' ] == 1 ) {
-
-            $r = $db->get( "SELECT fullname FROM user  WHERE uid='$uid'" );
-            $fromAddress = Shippo_Address::create( array(
-            "name" => $r[ 0 ][ 'fullname' ],
-            "company" => "Boxeon",
-            "street1" => $config[ 'boxeon' ][ 'address_line_1' ],
-            "city" => $config[ 'boxeon' ][ 'admin_area_2' ],
-            "state" => $config[ 'boxeon' ][ 'admin_area_1' ],
-            "zip" => $config[ 'boxeon' ][ 'postal_code' ],
-            "country" => $config[ 'boxeon' ][ 'country_code' ],
-            "phone" => $config[ 'boxeon' ][ 'USPhone' ],
-            "email" => $config[ 'boxeon' ][ 'serviceEmail' ]
-            ) );
+                "name" => $box->name,
+                "company" => env('APP_NAME'),
+                "street1" => $box->street1,
+                "city" => $box->admin_area_2,
+                "state" => $box->admin_area_1,
+                "zip" => $box->postal_code,
+                "country" => $box->country_code,
+                "phone" => env('US_PHONE'),
+                "email" => env('SERVICE_EMAIL')
+                ) );
         }
 
-        $endpoint = 'https://api.goshippo.com/addresses/';
-        $toAddress = Shippo_Address::create( array(
-            "name" => $to->name,
-            "company" => "Boxeon",
-            "street1" => $to->address_line_1,
-            "city" => $to->admin_area_2,
-            "state" => $to->admin_area_1,
-            "zip" => $to->postal_code,
-            "country" => $to->country_code,
-            "phone" => $config[ 'boxeon' ][ 'USPhone' ],
-            "email" =>  $config[ 'boxeon' ][ 'serviceEmail' ]
-        ) );
+        if(isset($box) && $box->ship_from == 1 ) {
+            $fromAddress = Shippo_Address::create( array(
+                "name" => $box->name,
+                "company" => env('APP_NAME'),
+                "street1" => $box->street1,
+                "city" => $box->admin_area_2,
+                "state" => $box->admin_area_1,
+                "zip" => $box->postal_code,
+                "country" => $box->country_code,
+                "phone" => env('US_PHONE'),
+                "email" => env('SERVICE_EMAIL')
+                ) );
+        }
 
+        // Grab the shipping address from the User model
+        $toAddress = $user->shippingAddress();    // Pass the PURCHASE flag.
+        $toAddress['object_purpose'] = 'PURCHASE';
 
         // VALIDATE ADDRESS
         $toid = $toAddress[ 'object_id' ];
         $fromid = $fromAddress[ 'object_id' ];
         $vto = Shippo_Address::validate( $toid );
-        $vfrom = Shippo_Address::validate( $fromid );
-        //print_r($vto['validation_results']['is_valid']);
+        $vfrom = Shippo_Address::validate( $fromid );// Get the shipment object
 
         // CREATE PARCEL OBJECT
         $parcel = Shippo_Parcel::create( array(
@@ -96,28 +62,6 @@ class ShippingController extends Controller
             "mass_unit" => "lb",
         ) );
 
-        // IF NEEDED, CREATE CUSTOMS DECLARATION IN PURCHASING OF LABELS
-
-        /*$customs_item = array(
-            'description'=> 'T-Shirt',
-            'quantity'=> '20',
-            'net_weight'=> '1',
-            'mass_unit'=> 'lb',
-            'value_amount'=> '200',
-            'value_currency'=> 'USD',
-            'origin_country'=> 'US');
-
-        $customs_declaration = Shippo_CustomsDeclaration::create(
-        array(
-            'contents_type'=> 'MERCHANDISE',
-            'contents_explanation'=> 'T-Shirt purchase',
-            'non_delivery_option'=> 'RETURN',
-            'certify'=> 'true',
-            'certify_signer'=> 'Simon Kreuz',
-            'items'=> array($customs_item)
-        ));*/
-
-        // CREATE SHIPMENT OBJECT
         $shipment = Shippo_Shipment::create(
             array(
             "address_from" => $fromid,
@@ -126,7 +70,6 @@ class ShippingController extends Controller
             "async" => false
             )
         );
-
 
         //GET SHIPPING RATES
         $sid = $shipment[ 'object_id' ];
@@ -137,7 +80,8 @@ class ShippingController extends Controller
             )
         );
 
-        return
-        $rates;
+        // The $rates is a complete object but for our view we
+        // only need the rates_list items and will pass that to it
+        return redirect()->back();
     }
 }

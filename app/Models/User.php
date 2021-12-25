@@ -70,14 +70,14 @@ class User extends Authenticatable
     {
         return [
             'name' => $this->name,
-            'company' => $this->company,
+            'company' => env('APP_NAME'),
             'street1' => $this->boxes()->street1,
             'city' => $this->boxes()->city,
             'state' => $this->boxes()->state,
             'zip' => $this->boxes()->zip,
             'country' => $this->boxes()->country,
-            'phone' => $this->phone,
-            'email' => $this->email,
+            'phone' => env('US_PHONE'),
+            'email' => env('SERVICE_EMAIL'),
         ];
     }
 }

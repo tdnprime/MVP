@@ -32,11 +32,11 @@ class SubcriptionController extends Controller
           [
             "frequency" => [
               "interval_unit" => "MONTH", // this may need to be dynamic as buyers can also do single purchases
-              "interval_count" => $frequency // this may need to be dynamic as buyers can also do single purchases
+              "interval_count" => $frequency  // Set this to "1" if the json has a value of "0" for frequency 
             ],
             "tenure_type" => "REGULAR",
             "sequence" => 1,
-            "total_cycles" => 0,
+            "total_cycles" => 0, // Set this to "1" if the json has a value of "0" for frequency
             "pricing_scheme" => [
               "fixed_price" => [
                 "value" => $TOTAL,
@@ -71,14 +71,4 @@ class SubcriptionController extends Controller
   
     }
 }
-private function singlePay(){
-
-    /* 
-    NOTE:
-     In the UI, buyers may choose to receive a box every month, 
-     every two months, every three months or ONCE. 
-     This "once" is a single purchase and not a subscription.
-     
-     */
- }
 }

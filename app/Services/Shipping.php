@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use Shippo;
+use App\Services\shippo\master\lib\Shippo;
 use App\User;
 use App\Box;
 use Shippo_Address;
@@ -28,7 +28,7 @@ class Shipping
     {
         // Grab this private key from
         // .env and setup the Shippo api
-        Shippo::setApiKey(env('SHIPPO_PRIVATE'));
+       Shippo::setApiKey(env('SHIPPO_PRIVATE'));
     }
 
     /**

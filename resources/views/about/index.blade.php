@@ -17,7 +17,7 @@
        <li> <a class="font-one-em" href="https://www.linkedin.com/in/luanafnascimento/" target="_blank">Luana Nascimento</a></li>
 	</ul>
 
-		<p><span class="highlighted">Help wanted</span> for various positions. Ideal candidates will have a clue. Boomers in clever human costumes need not apply. Please find our open positions on <a href="https://www.linkedin.com/company/boxeon/people/?viewAsMember=true" target="_blank" class="darkblue underline one-em-font">LinkedIn</a>.</p>
+		<p><span class="highlighted">Help wanted</span> for various positions. Ideal candidates will have a clue. No boomers in clever human costumes. Please find our open positions on <a href="https://www.linkedin.com/company/boxeon/people/?viewAsMember=true" target="_blank" class="darkblue underline one-em-font">LinkedIn</a>.</p>
 		<p><span class="highlighted">Furthermore...</span></p>
       <div class="centered"> <img id="image-raised-fist" class="centered" src="../assets/images/raised-fist.svg" alt="Black Lives Matter"/>
         <h1 class="highlighted">Black lives matter</h1>

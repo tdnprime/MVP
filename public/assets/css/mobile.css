@@ -24,7 +24,9 @@ NOTE:
     background: url(../images/fall-4.svg) -10em 18em no-repeat, url(../images/fall-5.svg) 40em top no-repeat; 
 }
 
-
+.ginormous{
+  font-size: inherit !important;
+}
 	#form-partner-apply-wrapper{
 		display:none;
 	}
@@ -104,8 +106,8 @@ NOTE:
     padding: 2em;
   }
   #box-headline .sub-btns {
-    width: 30%;
-    nargin: auto;
+    width: 48%;
+    margin: auto;
   }
   #video-place-holder {
     width: 100%;
@@ -207,6 +209,7 @@ NOTE:
   #masthead {
     display: block;
     overflow-y: hidden;
+    height:auto;
   }
   #box #masthead {
     display: block;

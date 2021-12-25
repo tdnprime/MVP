@@ -69,8 +69,8 @@ echo '<div id="masthead" class="fadein">
 		<div class='sub-btns'>
 		<a href='#' id='exe-sub' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video'
         data-plan-id='1' class='button'>Subscribe</a>
-		<a id='share-box' data-id='$id' data-url='$url' href='#' class='button clearbtn'>
-        Share instead</a>
+		<a id='share-box' data-id='$id' data-url='$url' href='#whatis' class='button clearbtn'>
+        Learn more</a>
 		</div>
 		</section>";
         ?>

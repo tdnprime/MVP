@@ -3,22 +3,41 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\Shipping;
+use Shippo;
 use App\Models\User;
 use App\Models\Box;
-use Illuminate\Support\Facades\DB;
+use Shippo_Address;
+use Shippo_Shipment;
+use Shippo_Transaction;
 
 
 class ShippingController extends Controller
 {
 
-    public function rates(User $user, Box $box)
+    public function __construct()
+    {
+        // Grab this private key from
+        // .env and setup the Shippo api
+       Shippo::setApiKey(env('SHIPPO_PRIVATE'));
+    }
+
+    public function rates(User $user, Request  $request)
     {
         $id = auth()->user()->id; //  WARNING: Must be the seller's user id
         $user = User::find($id);
-        $box = DB::table('boxes')->where('user_id', '=', $id)->get();
+        $box = $user->boxes()->first();
+
+        dd($request->all());
+
+        if ( $request->json_decode($_SERVER[ "HTTP_CALC" ])  !== null) {
+            $to = json_decode($_SERVER[ "HTTP_CALC" ]);
+
+            dd($to);
+        }else{
+            echo "missing header";
+        }
 
 
-        dd($user->boxes()->first());
         if(isset($box) && $box->ship_from == 0) {
             $fromAddress = Shippo_Address::create( array(
                 "name" => $box->name,
@@ -50,8 +69,14 @@ class ShippingController extends Controller
         }
 
         // Grab the shipping address from the User model
+<<<<<<< HEAD
+        $toAddress = $user->shippingAddress();
+        // Pass the PURCHASE flag.
+        $toAddress['object_purpose'] = 'PURCHASE';
+=======
        $toAddress = $user->shippingAddress();    // Pass the PURCHASE flag.
        $toAddress['object_purpose'] = 'PURCHASE';
+>>>>>>> 85e736ce0bb68e55b9235932e035ad3883931d65
 
         // VALIDATE ADDRESS
         $toid = $toAddress[ 'object_id' ];
@@ -89,8 +114,12 @@ class ShippingController extends Controller
 
         // The $rates is a complete object but for our view we
         // only need the rates_list items and will pass that to it
+<<<<<<< HEAD
+        return redirect()->back()->compact(['rates' => $rates->rates_list]);
+=======
       return redirect()->back()->compact(['rates' => $rates]);
     
         
+>>>>>>> 85e736ce0bb68e55b9235932e035ad3883931d65
     }
 }

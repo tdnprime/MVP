@@ -45,6 +45,17 @@ Boxeon = {
       }
     }
   },
+  jqueryAjax:function(){
+    $.ajax({
+      type:'POST',
+      url:'/rates',
+      data:'_token = <?php echo csrf_token() ?>',
+      success:function(data) {
+         $("#msg").html(data.msg);
+      }
+   });
+
+  },
 
   progressBar: function (completed) {
     var wrapper = document.getElementById("progress");
@@ -458,6 +469,7 @@ Shipping = {
       Shipping.buildRateCard(JSON.parse(re));
     }
     Boxeon.sendAjax(manifest, callback);
+   // Boxeon.jqueryAjax();
 
   },
   buildRateCard: function (rates) {

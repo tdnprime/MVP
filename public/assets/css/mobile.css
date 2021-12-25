@@ -54,6 +54,7 @@ NOTE:
   #box-masthead-inner-wrapper {
     display: block;
     background-image: url(../images/alt-blue-bg.svg);
+    padding:0 !important;
   }
   #box-headline {
     width: 100%;
@@ -90,6 +91,7 @@ NOTE:
     margin-bottom: 0.2em;
     text-align: center;
 	  width:auto !important;
+    margin-top:0 !important;
   }
   #box-headline p {
     display: inline-block;
@@ -106,7 +108,7 @@ NOTE:
     padding: 2em;
   }
   #box-headline .sub-btns {
-    width: 48%;
+    width: 50%;
     margin: auto;
   }
   #video-place-holder {
@@ -133,9 +135,7 @@ NOTE:
   .pointer:before {
     display: none;
   }
-  header > * {
-    margin: 0;
-  }
+
   .for-creators-only {
     display: none;
   }
@@ -242,10 +242,7 @@ NOTE:
 }
 /* SMALL SCREENSß */
 @media only screen and (max-width: 768px) {
-  #logo {
-    bottom: .5em;
-    position: relative;
-  }
+
   #getlabels {
     left: -9.5em !important;
     left: 0;
@@ -293,7 +290,7 @@ NOTE:
   }
   #container {
     display: block;
-	      width: fit-content;
+	  width: min-content;
   }
   p {
     max-width: 100%;

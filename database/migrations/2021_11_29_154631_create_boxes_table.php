@@ -21,6 +21,7 @@ class CreateBoxesTable extends Migration
             $table->integer('price')->nullable();
             $table->string('box_url')->nullable();
             $table->integer('shipping_cost')->default(0);
+            $table->integer('ship_from')->default(1);
             $table->integer('curation')->nullable();
             $table->integer('num_products')->nullable();
             $table->integer('box_supply')->nullable();

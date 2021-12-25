@@ -18,6 +18,7 @@ class Box extends Model
         'price',
         'box_url',
         'shipping_cost',
+        'ship_from',
         'curation',
         'num_products',
         'box_weight',

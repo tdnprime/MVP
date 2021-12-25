@@ -117,7 +117,7 @@ NOTE:
     margin-top: 4em;
   }
   #panel a {
-    padding: 0;
+    //padding: 0;
   }
   .pointer {
     display: inline-block;
@@ -290,7 +290,7 @@ NOTE:
   }
   #container {
     display: block;
-	  width: min-content;
+	  width: fit-content;
   }
   p {
     max-width: 100%;

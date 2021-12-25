@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\Shipping;
+use App\Models\User;
+use App\Models\Box;
+use Illuminate\Support\Facades\DB;
 
 
 class ShippingController extends Controller
@@ -12,8 +15,10 @@ class ShippingController extends Controller
     {
         $id = auth()->user()->id;
         $user = User::find($id);
-        $box = $user()->boxes()->first();
+        $box = DB::table('boxes')->where('user_id', '=', $id)->get();
 
+
+        dd($user->boxes()->first());
         if(isset($box) && $box->ship_from == 0) {
             $fromAddress = Shippo_Address::create( array(
                 "name" => $box->name,

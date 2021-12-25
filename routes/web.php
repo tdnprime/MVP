@@ -37,9 +37,12 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::delete('/box/{vid}', 'App\Http\Controllers\BoxController@destory')->name('box.destory');
     Route::get('/box/ship', 'App\Http\Controllers\BoxController@ship')->name('box.ship');
     Route::get('/signout', 'App\Http\Controllers\LogoutController@perform')->name('logout.perform');
- });
- 
-Route::post('/rates','App\Services\Shipping@rates');
+
+    Route::get('/rates','App\Http\Controllers\ShippingController@rates')->name('box.rates');
+
+});
+
+Route::post('/rates','App\Http\Controllers\ShippingController@rates');
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 

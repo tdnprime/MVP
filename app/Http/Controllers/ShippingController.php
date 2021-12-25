@@ -55,7 +55,7 @@ class ShippingController extends Controller
         if(isset($box) && $box->ship_from == 1 ) {
             $config = parse_ini_file( "../../config/app.ini", true );
             $fromAddress = Shippo_Address::create( array(
-              "name" => ' I AM THE SELLER', // WARNING Get user_id from boxes table and 
+              "name" => ' I AM THE SELLER', // WARNING Get user_id from boxes table and
                                             //use it to get fullname from users table
               "company" => "Boxeon",
               "street1" => $config[ 'boxeon' ][ 'address_line_1' ],
@@ -69,8 +69,9 @@ class ShippingController extends Controller
         }
 
         // Grab the shipping address from the User model
-       $toAddress = $user->shippingAddress();    // Pass the PURCHASE flag.
-       $toAddress['object_purpose'] = 'PURCHASE';
+        $toAddress = $user->shippingAddress();
+        // Pass the PURCHASE flag.
+        $toAddress['object_purpose'] = 'PURCHASE';
 
         // VALIDATE ADDRESS
         $toid = $toAddress[ 'object_id' ];

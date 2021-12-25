@@ -19,7 +19,13 @@
       <li id="tab-tracking"><a class="one-em-font" href="#"><span class="material-icons">place</span>Tracking</a></li>
       </ul>
       </div>
-  </div><div id="home-videos-wrapper"><div id="48">
+  </div>
+  <div class="alert">
+<p class="material-icons">info</p>
+<p>You don't have any subscriptions to show at this time.</p>
+
+  </div>
+  <!--<div id="home-videos-wrapper"><div id="$id">
         <div class="playbtn-wrapper">
         <img src="http://img.youtube.com/vi/LJszeiEyXMk/mqdefault.jpg">
         <img id="play-video" data-shipping='$cost' data-video-id="LJszeiEyXMk" class="playbtn" src="../assets/images/playbtn.png" alt="Play video">
@@ -27,6 +33,10 @@
           <br>
         <p>Prototype Creator</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras auctor id ligula et tincidunt.</p>
-        </div></div></aside><section id="right-aside"></section>  </main>
+        </div></div>!-->
+      
+      </aside>
+        
+        <section id="right-aside"></section>  </main>
 
 @endsection

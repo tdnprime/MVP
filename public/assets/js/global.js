@@ -469,7 +469,7 @@ Shipping = {
       Shipping.buildRateCard(JSON.parse(re));
     }
     Boxeon.sendAjax(manifest, callback);
-   // Boxeon.jqueryAjax();
+   //Boxeon.jqueryAjax();
 
   },
   buildRateCard: function (rates) {

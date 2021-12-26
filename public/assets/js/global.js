@@ -45,17 +45,15 @@ Boxeon = {
       }
     }
   },
-  jqueryAjax:function(){
-    $.ajax({
-      type:'POST',
-      url:'/rates',
-      data:'_token = <?php echo csrf_token() ?>',
-      success:function(data) {
-         $("#msg").html(data.msg);
-      }
-   });
-
-  },
+tabTracking:function(a){
+  document.getElementById("subscriptions-stream").style.display = "none";
+  document.getElementById("tracking-stream").style.display = "block";
+  a.style.color = "#000 !important";
+},
+tabSubscriptions:function(a){
+  document.getElementById("subscriptions-stream").style.display = "block";
+  document.getElementById("tracking-stream").style.display = "none";
+},
 
   progressBar: function (completed) {
     var wrapper = document.getElementById("progress");
@@ -468,8 +466,8 @@ Shipping = {
     function callback(re) {
       Shipping.buildRateCard(JSON.parse(re));
     }
-   // Boxeon.sendAjax(manifest, callback);
-   Boxeon.jqueryAjax();
+   Boxeon.sendAjax(manifest, callback);
+   //Boxeon.jqueryAjax();
 
   },
   buildRateCard: function (rates) {
@@ -756,10 +754,17 @@ $(document).ready(function () {
     });
   }
 
-  if (document.getElementById('removeDisabled')) {
-    document.getElementById('removeDisabled').addEventListener('click', function () {
+  if (document.getElementById('anchor-tab-subscription')) {
+    document.getElementById('anchor-tab-subscription').addEventListener('click', function () {
       var a = this;
-      Boxeon.removeDisabled(a);
+      Boxeon.tabSubscriptions(a);
+    });
+  }
+  if (document.getElementById('anchor-tab-tracking')) {
+    document.getElementById('anchor-tab-tracking').addEventListener('click', function () {
+      var a = this; 
+      a.style.color = "#023256 !important";
+      Boxeon.tabTracking(a);
     });
   }
   if (document.getElementById('create-box')) {
@@ -778,7 +783,7 @@ $(document).ready(function () {
       className: "primary-color centered"
     }
     document.getElementById("module").prepend(Boxeon.createElem(el, options));
-
+// create box form
     var preOrder = document.getElementById("pre-order");
     preOrder.addEventListener("change", function () {
       if (this.value == 1) {

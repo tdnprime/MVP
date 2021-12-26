@@ -26,6 +26,8 @@ Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('con
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about');
 
 Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('index');
+Route::post('/partner/apply', 'App\Http\Controllers\PartnerController@apply')->name('apply');
+
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
     Route::get('/home', 'App\Http\Controllers\HomeController@dashboard')->name('home.index');
@@ -43,6 +45,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 });
 
 Route::post('/rates','App\Http\Controllers\ShippingController@rates');
+Route::get('/rates','App\Http\Controllers\ShippingController@rates');
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 

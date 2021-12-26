@@ -689,32 +689,25 @@ width:fit-content;
   display: grid;
   grid-template-rows: auto auto;
 }
-#tabs {
-  display: inline-block;
-  list-style: none;
-  margin-bottom: 2em;
-  padding-left: 0;
-}
-#tabs li {
-  background: #f5f7fa;
-  border-bottom: 3px solid #f5f7fa;
-  display: inline;
-  margin-right: 4em;
-  padding: .5em;
-}
-#tabs li a:hover {
-  cursor: pointer;
-  text-decoration: none;
+
+#tabs-wrapper a{
+ 
+    width: 14em;
+
 }
 .color-orange {
   color: orange;
 }
-#tab-surf, #tabs li:hover {
-  border-bottom: 3px solid #005ea6 !important;
-}
+
 #tabs-wrapper {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto;
+  grid-gap:1em;
+  width:35%;
+}
+
+#tracking-stream{
+  display: none;
 }
 #testimonials img {
   height: 200px;
@@ -842,7 +835,8 @@ form .alert{
 }
 .clearbtn {
   background-color: #f5f7fa !important;
-  color: #005ea6 !important;
+  color:#0c8dc4 !important;
+  border:1px solid #b5daf7 !important;
 }
 .clearbtn:hover {
   background-color: #f5f7fa;
@@ -997,14 +991,16 @@ form .alert{
   border-bottom-right-radius: 25px;
   border-top-left-radius: 0;
   border-top-right-radius: 25px;
-  color: #4a4a4a;
+
   display: block;
   margin: auto;
   margin-left: 1em;
   margin-right: auto;
   padding: .5em;
+  padding-right: 1em;
   padding-left: 1em;
   transition: 0.3s;
+  box-shadow: 20px 20px 60px #0c8dc41a;
 }
 #menu-icon {
   color: #4a4a4a;
@@ -1016,11 +1012,18 @@ the side navigation*/
 #masthead, main, header {
   transition: margin-left .5s;
 }
+#tabs-wrapper a,
 .menu a:hover {
   background-color: #ffffff;
-  ;
   font-weight: bold;
   text-decoration: none;
+  box-shadow: 20px 20px 60px #0c8dc41a;
+}
+#tabs-wrapper a:active{
+  box-shadow: 20px 20px 60px #0217201a;
+}
+#tabs-wrapper a:after{
+  color:#000 !important;
 }
 .button:active, .menu a:active {
   box-shadow: 20px 20px 60px #0c8dc41a;
@@ -1450,7 +1453,7 @@ input[type="submit"], .button, button {
   font-family: "Open Sans";
   font-size: inherit !important;
   font-weight: bold;
-  height: 3em;
+  height: 3.5em;
   letter-spacing: 1px;
   margin-bottom: 1em;
   margin-right: 1em;

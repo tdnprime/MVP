@@ -13,18 +13,22 @@
     </div>!-->
   <div class="margin-top-4-em vertical-align">
       <div id="tabs-wrapper">
-      <ul id="tabs">
-        <!--<li id="tab-surf"><a class="one-em-font" href="#"><span class="material-icons">surfing</span>Surf boxes</a></li>!-->
-      <li id="tab-subscriptions"><a class="one-em-font" href="#"><span class="material-icons">subscriptions</span>Subscriptions</a></li>
-      <li id="tab-tracking"><a class="one-em-font" href="#"><span class="material-icons">place</span>Tracking</a></li>
-      </ul>
+      <a id="anchor-tab-subscription" class="button clearbtn" href="#"><span class="material-icons">subscriptions</span>Subscriptions</a>
+      <a  id="anchor-tab-tracking" class="button clearbtn" href="#"><span class="material-icons">place</span>Tracking</a>
       </div>
   </div>
+  <div id="subscriptions-stream">
   <div class="alert">
 <p class="material-icons">info</p>
-<p>You don't have any subscriptions to show at this time.</p>
-
+<p>You don't presently have subscriptions to show.</p>
   </div>
+</div>
+<div id="tracking-stream">
+<div class="alert">
+<p class="material-icons">info</p>
+<p>You don't have any boxes to track.</p>
+  </div>
+</div>
   <!--<div id="home-videos-wrapper"><div id="$id">
         <div class="playbtn-wrapper">
         <img src="http://img.youtube.com/vi/LJszeiEyXMk/mqdefault.jpg">
@@ -35,7 +39,8 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras auctor id ligula et tincidunt.</p>
         </div></div>!-->
       
-      </aside>
+      </aside><!-- THIS WAS OPENED ON LINE 5 !-->
+      <aside></aside>
         
         <section id="right-aside"></section>  </main>
 

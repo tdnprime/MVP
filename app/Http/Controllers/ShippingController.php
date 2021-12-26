@@ -14,7 +14,7 @@ use Shippo_Transaction;
 class ShippingController extends Controller
 {
 
-    public function __construct()
+    function __construct()
     {
         // Grab this private key from
         // .env and setup the Shippo api
@@ -29,7 +29,7 @@ class ShippingController extends Controller
 
         dd($request->all());
 
-        if ( $request->json_decode($_SERVER[ "HTTP_CALC" ])  !== null) {
+        if (json_decode($_SERVER[ "HTTP_CALC" ])  !== null) {
             $to = json_decode($_SERVER[ "HTTP_CALC" ]);
 
             dd($to);

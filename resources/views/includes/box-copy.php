@@ -48,9 +48,8 @@ echo '<div id="masthead" class="fadein">
 		<p><span class='highlighted darkblue'>$in_stock</span> boxes left in stock</p>
         <span class='break hack-br-3'><br></span>
 		<div class='sub-btns'>
-		<a href='#' id='exe-sub' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-id='$id' data-shipping='$cost' data-url='$url' data-video-id='$video' 
-        data-plan-id='1' class='button'>Subscribe</a>
-        data-plan-id='1' class='button'>Subscribe</a>
+		<a href='#' id='exe-sub' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-id='$id' data-shipping='$cost' data-url='$url' data-video-id='$video' data-plan-id='1' class='button'>Subscribe</a>
+    
 		<a id='share-box' data-id='$id' data-url='$url' href='#whatis' class='button clearbtn'>
         Learn more</a>
 		</div>

@@ -21,10 +21,10 @@ NOTE:
 	}
 @media only screen and (max-width:1591px) {
 #partner .two-col-grid {
-    background: url(../images/fall-4.svg) -10em 18em no-repeat, url(../images/fall-5.svg) 40em top no-repeat; 
+    background: url(../images/fall-4.svg) -10em 18em no-repeat, url(../images/fall-5.svg) 36em top no-repeat; 
 }
 
-.ginormous{
+#box .ginormous{
   font-size: inherit !important;
 }
 	#form-partner-apply-wrapper{
@@ -206,7 +206,7 @@ NOTE:
   .section img {
     height: 300px;
   }
-  #masthead {
+ #box #masthead {
     display: block;
     overflow-y: hidden;
     height:auto;

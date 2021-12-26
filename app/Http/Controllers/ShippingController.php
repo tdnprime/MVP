@@ -109,6 +109,6 @@ class ShippingController extends Controller
 
         // The $rates is a complete object but for our view we
         // only need the rates_list items and will pass that to it
-        return redirect()->back()->compact(['rates' => $rates->rates_list]);
+        return redirect()->back()->compact(['rates' => $rates]);
     }
 }

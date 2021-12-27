@@ -701,11 +701,11 @@ width:fit-content;
 
 #tabs-wrapper {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   grid-gap:1em;
   width:35%;
 }
-
+#incoming-stream,
 #tracking-stream{
   display: none;
 }

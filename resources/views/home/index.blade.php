@@ -16,17 +16,17 @@
     </div>!-->
   <div class="margin-top-4-em vertical-align">
       <div id="tabs-wrapper">
-      <a id="anchor-tab-subscription" class="button clearbtn" href="#"><span class="material-icons">subscriptions</span>Subscriptions</a>
+      <a id="anchor-tab-subscriptions" class="button clearbtn" href="#"><span class="material-icons">subscriptions</span>Subscriptions</a>
       <a  id="anchor-tab-tracking" class="button clearbtn" href="#"><span class="material-icons">place</span>Tracking</a>
       </div>
   </div>
-  <div id="subscriptions-stream">
+  <div class="tab-content" data-id='anchor-tab-subscriptions' id="subscriptions-stream">
   <div class="alert">
 <p class="material-icons">info</p>
 <p>You don't presently have subscriptions to show.</p>
   </div>
 </div>
-<div id="tracking-stream">
+<div class="tab-content" data-id='anchor-tab-tracking' id="tracking-stream">
 <div class="alert">
 <p class="material-icons">info</p>
 <p>You don't have any boxes to track.</p>

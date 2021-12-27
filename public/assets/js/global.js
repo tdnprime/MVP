@@ -45,14 +45,15 @@ Boxeon = {
       }
     }
   },
-tabTracking:function(a){
-  document.getElementById("subscriptions-stream").style.display = "none";
-  document.getElementById("tracking-stream").style.display = "block";
-  a.style.color = "#000 !important";
-},
-tabSubscriptions:function(a){
-  document.getElementById("subscriptions-stream").style.display = "block";
-  document.getElementById("tracking-stream").style.display = "none";
+tabSwitch:function(id){
+  var contents = document.getElementsByClassName("tab-content");
+  for(var i = 0; i < contents.length; i++){
+    if(contents[i].getAttribute("data-id") != id){
+      contents[i].style.display = "none";
+    }else if(contents[i].getAttribute("data-id") == id){
+      contents[i].style.display = "block";
+    }
+  }
 },
 
   progressBar: function (completed) {
@@ -754,19 +755,25 @@ $(document).ready(function () {
     });
   }
 
-  if (document.getElementById('anchor-tab-subscription')) {
-    document.getElementById('anchor-tab-subscription').addEventListener('click', function () {
+  if (document.getElementById('anchor-tab-subscriptions')) {
+    document.getElementById('anchor-tab-subscriptions').addEventListener('click', function () {
       var a = this;
-      Boxeon.tabSubscriptions(a);
+      Boxeon.tabSwitch(a.id);
     });
   }
   if (document.getElementById('anchor-tab-tracking')) {
     document.getElementById('anchor-tab-tracking').addEventListener('click', function () {
       var a = this; 
-      a.style.color = "#023256 !important";
-      Boxeon.tabTracking(a);
+      Boxeon.tabSwitch(a.id);
     });
   }
+  if (document.getElementById('anchor-tab-incoming')) {
+    document.getElementById('anchor-tab-incoming').addEventListener('click', function () {
+      var a = this; 
+      Boxeon.tabSwitch(a.id);
+    });
+  }
+  
   if (document.getElementById('create-box')) {
     var opts = {
       className: "step step-incomplete",

@@ -26,8 +26,8 @@
 </script>
 <script>
 
-if(screen.width <599){
+if(screen.width <1591){
 	
-	document.querySelector('meta[name="viewport"]').setAttribute("content", "width=800");
+	document.querySelector('meta[name="viewport"]').setAttribute("content", "width=1591");
 }
 </script>

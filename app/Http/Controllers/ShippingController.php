@@ -9,6 +9,7 @@ use App\Models\Box;
 use Shippo_Address;
 use Shippo_Shipment;
 use Shippo_Transaction;
+use Shippo_Parcel;
 
 
 class ShippingController extends Controller
@@ -24,6 +25,7 @@ class ShippingController extends Controller
     public function rates(User $user, Request  $request)
     {
 
+
         if (json_decode($_SERVER[ "HTTP_TO" ])  !== null) {
             $to = json_decode($_SERVER[ "HTTP_TO" ]);
            dd($to);
@@ -38,6 +40,15 @@ class ShippingController extends Controller
        // dd($box);
 
 
+        if (json_decode($_SERVER[ "HTTP_TO" ])  !== null) {
+            $to = json_decode($_SERVER[ "HTTP_TO" ]);
+
+        }else{
+            echo "Missing header";
+        }
+        $id = $to->creator_id;
+        $user = User::find($id);
+        $box = $user->boxes()->first();
 
         if(isset($box) && $box->ship_from == 0) {
             $fromAddress = Shippo_Address::create( array(
@@ -69,15 +80,25 @@ class ShippingController extends Controller
             ) );
         }
 
-        // Grab the shipping address from the User model
-        $toAddress = $to;
-        // Pass the PURCHASE flag.
-        $toAddress['object_purpose'] = 'PURCHASE';
+
+        //$toAddress = (array)$to;
+
+        $toAddress = Shippo_Address::create( array(
+            "name" => $to->fullname,
+            "company" => "Boxeon",
+            "street1" => $to->address_line_1,
+            "city" => $to->admin_area_2,
+            "state" => $to->admin_area_1,
+            "zip" => $to->postal_code,
+            "country" => $to->country_code,
+            "phone" => $config[ 'boxeon' ][ 'USPhone' ],
+            "email" =>  $config[ 'boxeon' ][ 'serviceEmail' ]
+          ) );
 
         // VALIDATE ADDRESS
-        $toid = $toAddress[ 'object_id' ];
+       $toid = $toAddress[ 'object_id' ];
         $fromid = $fromAddress[ 'object_id' ];
-        $vto = Shippo_Address::validate( $toid );
+       $vto = Shippo_Address::validate( $toid );
         $vfrom = Shippo_Address::validate( $fromid );// Get the shipment object
 
         // CREATE PARCEL OBJECT

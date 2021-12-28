@@ -69,13 +69,13 @@ class User extends Authenticatable
     public function shippingAddress()
     {
         return [
-            'name' => $this->name,
+            'name' => $this->name, 
             'company' => env('APP_NAME'),
-            'street1' => $this->boxes()->street1,
-            'city' => $this->boxes()->city,
-            'state' => $this->boxes()->state,
-            'zip' => $this->boxes()->zip,
-            'country' => $this->boxes()->country,
+            'street1' => $this->boxes()->address_line_1,
+            'city' => $this->boxes()->admin_area_2,
+            'state' => $this->boxes()->admin_area_1,
+            'zip' => $this->boxes()->postal_code,
+            'country' => $this->boxes()->country_code,
             'phone' => env('US_PHONE'),
             'email' => env('SERVICE_EMAIL'),
         ];

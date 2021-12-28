@@ -488,6 +488,7 @@ Shipping = {
         Shipping.arr[k] = v;
       }
     }
+    Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
     // Get shipping rates to add to 
     // billing plan or create billing plan right away 
     if (sessionStorage.getItem("sub-shipping") == 0) {

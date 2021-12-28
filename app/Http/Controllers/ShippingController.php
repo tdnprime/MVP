@@ -23,15 +23,15 @@ class ShippingController extends Controller
 
     public function rates(User $user, Request  $request)
     {
-        $id = auth()->user()->id; //WARNING: Must be the seller's user id
+        $id = auth()->user()->id; 
         $user = User::find($id);
         $box = $user->boxes()->first();
       
-      //  dd($request->all());  <-- error
+       // dd($box); 
 
         if (json_decode($_SERVER[ "HTTP_TO" ])  !== null) {
             $to = json_decode($_SERVER[ "HTTP_TO" ]);
-           // dd($to); <-- error
+          // dd($to);
         }else{
             echo "Missing header";
         }
@@ -67,7 +67,7 @@ class ShippingController extends Controller
         }
 
         // Grab the shipping address from the User model
-        $toAddress = $user->shippingAddress();
+        $toAddress = $to;
         // Pass the PURCHASE flag.
         $toAddress['object_purpose'] = 'PURCHASE';
 

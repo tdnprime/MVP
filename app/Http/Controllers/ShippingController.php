@@ -23,19 +23,22 @@ class ShippingController extends Controller
 
     public function rates(User $user, Request  $request)
     {
-        $id = auth()->user()->id; 
-        $user = User::find($id);
-        $box = $user->boxes()->first();
-      
-       // dd($box); 
 
         if (json_decode($_SERVER[ "HTTP_TO" ])  !== null) {
             $to = json_decode($_SERVER[ "HTTP_TO" ]);
-          // dd($to);
+           dd($to);
         }else{
             echo "Missing header";
         }
-        
+
+        $id = $to->id;
+        $user = User::find($id);
+        $box = $user->boxes()->first();
+
+       // dd($box);
+
+
+
         if(isset($box) && $box->ship_from == 0) {
             $fromAddress = Shippo_Address::create( array(
                 "name" => $box->name,
@@ -107,6 +110,7 @@ class ShippingController extends Controller
 
         // The $rates is a complete object but for our view we
         // only need the rates_list items and will pass that to it
-        return $to;
+        return redirect()->back()->compact(['rates' => $rates->rates_list]);
+        // return response()->json($rates);
     }
 }

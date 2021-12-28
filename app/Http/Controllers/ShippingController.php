@@ -14,24 +14,24 @@ use Shippo_Transaction;
 class ShippingController extends Controller
 {
 
-    function __construct()
+    public function __construct()
     {
-        // Grab this private key from
-        // .env and setup the Shippo api
-       Shippo::setApiKey(env('SHIPPO_PRIVATE'));
+        $config = parse_ini_file( "../config/app.ini", true );
+        $token = $config[ 'shippo' ][ 'token' ];
+        Shippo::setApiKey($token);
     }
 
     public function rates(User $user, Request  $request)
     {
-        $id = auth()->user()->id; //  WARNING: Must be the seller's user id
+        $id = auth()->user()->id; //WARNING: Must be the seller's user id
         $user = User::find($id);
         $box = $user->boxes()->first();
       
-      //  dd($request->all());  // This gives the error
+      //  dd($request->all());  <-- error
 
         if (json_decode($_SERVER[ "HTTP_TO" ])  !== null) {
             $to = json_decode($_SERVER[ "HTTP_TO" ]);
-           // dd($to);
+           // dd($to); <-- error
         }else{
             echo "Missing header";
         }
@@ -53,8 +53,8 @@ class ShippingController extends Controller
         if(isset($box) && $box->ship_from == 1 ) {
             $config = parse_ini_file( "../config/app.ini", true );
             $fromAddress = Shippo_Address::create( array(
-              "name" => ' I AM THE SELLER', // WARNING Get user_id from boxes table and
-                                            //use it to get fullname from users table
+              "name" => 'SELLER', /* WARNING Get user_id from boxes table and
+                                     use it to get fullname from users table  */
               "company" => "Boxeon",
               "street1" => $config[ 'boxeon' ][ 'address_line_1' ],
               "city" => $config[ 'boxeon' ][ 'admin_area_2' ],

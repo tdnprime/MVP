@@ -5,12 +5,8 @@
     THE URLS MUST BE CHANGED FOR PRODUCTION.  SEE WARNING #2 IN THE FOOTER --}}
 
 
-
-
-
-
 <title>Boxeon</title>
-<meta name="description" content="Start and grow a subscription box business and secure monthly income without making extra content. It's the wave of the future."/>
+<meta name="description" content="Start and grow a subscription box business and secure monthly income It's the wave of the future."/>
 <meta name="keywords" content="Boxeon, Patreon alternative, monitize content, Subscription box platform, make more money on Youtube">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,4 +23,11 @@
 <script src="{{ asset('../assets/js/global.js?v=1') }}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-211880503-1">
+</script>
+<script>
+
+if(screen.width <599){
+	
+	document.querySelector('meta[name="viewport"]').setAttribute("content", "width=800");
+}
 </script>

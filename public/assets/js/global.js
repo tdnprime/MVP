@@ -664,10 +664,7 @@ Subscriptions = {
 
 
 $(document).ready(function () {
-  // Resize viewport for mobile
-  if (screen.width < 599) {
-    document.querySelector('meta[name="viewport"]').setAttribute("content", "width=500");
-  }
+
   // Redirects users to previous location
   // after Google signin
   var url = sessionStorage.getItem("last");

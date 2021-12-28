@@ -191,8 +191,8 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
 	 <h2 class='centered'>How it works</h2>
     <div id='how-it-works' class='three-col-grid'>
 
-      <div> <img src='../../assets/images/computer.svg' alt='Box'/> <h2>Find box</h2></div>
-      <div> <img src='../../assets/images/card.svg' alt='Card'/> <h2>Add payment</h2></div>
+      <div> <img src='../../assets/images/computer.svg' alt='Box'/> <h2>Watch video</h2></div>
+      <div> <img src='../../assets/images/card.svg' alt='Card'/> <h2>Subscribe</h2></div>
       <div> <img src='../../assets/images/present.svg' alt='Box'/> <h2>Receive boxes</h2></div>
     </div>
 	<br>

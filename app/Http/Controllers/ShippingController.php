@@ -26,18 +26,16 @@ class ShippingController extends Controller
         $id = auth()->user()->id; //  WARNING: Must be the seller's user id
         $user = User::find($id);
         $box = $user->boxes()->first();
+      
+      //  dd($request->all());  // This gives the error
 
-        dd($request->all());
-
-        if (json_decode($_SERVER[ "HTTP_CALC" ])  !== null) {
-            $to = json_decode($_SERVER[ "HTTP_CALC" ]);
-
-            dd($to);
+        if (json_decode($_SERVER[ "HTTP_TO" ])  !== null) {
+            $to = json_decode($_SERVER[ "HTTP_TO" ]);
+           // dd($to);
         }else{
-            echo "missing header";
+            echo "Missing header";
         }
-
-
+        
         if(isset($box) && $box->ship_from == 0) {
             $fromAddress = Shippo_Address::create( array(
                 "name" => $box->name,
@@ -53,7 +51,7 @@ class ShippingController extends Controller
         }
 
         if(isset($box) && $box->ship_from == 1 ) {
-            $config = parse_ini_file( "../../config/app.ini", true );
+            $config = parse_ini_file( "../config/app.ini", true );
             $fromAddress = Shippo_Address::create( array(
               "name" => ' I AM THE SELLER', // WARNING Get user_id from boxes table and
                                             //use it to get fullname from users table
@@ -109,6 +107,6 @@ class ShippingController extends Controller
 
         // The $rates is a complete object but for our view we
         // only need the rates_list items and will pass that to it
-        return redirect()->back()->compact(['rates' => $rates]);
+        return $to;
     }
 }

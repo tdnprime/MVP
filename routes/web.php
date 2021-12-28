@@ -48,6 +48,7 @@ Route::post('/rates','App\Http\Controllers\ShippingController@rates');
 Route::get('/rates','App\Http\Controllers\ShippingController@rates');
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+Route::get('auth/google/check', [GoogleController::class, 'check']);
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

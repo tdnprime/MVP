@@ -24,9 +24,7 @@ NOTE:
     background: url(../images/fall-4.svg) -10em 18em no-repeat, url(../images/fall-5.svg) 36em top no-repeat; 
 }
 
-#box .ginormous{
-  font-size: inherit !important;
-}
+
 	#form-partner-apply-wrapper{
 		display:none;
 	}
@@ -59,7 +57,9 @@ NOTE:
   #box-headline {
     width: 100%;
     text-align: center;
+    
   }
+  
   #box #masthead {
     display: block;
    
@@ -82,9 +82,9 @@ NOTE:
   #box .break {
     display: inline;
   }
- /* #box .ginormous {
+ #page-name {
     font-size: inherit !important;
-  }*/
+  }
   #box-headline h1 {
     grid-row-start: 1;
     font-size: 5em;
@@ -209,7 +209,7 @@ NOTE:
  #box #masthead {
     display: block;
     overflow-y: hidden;
-    height:auto;
+   /* height:auto;*/
   }
   #box #masthead {
     display: block;
@@ -279,7 +279,9 @@ NOTE:
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-	
+	#current-user{
+    display:none;
+  }
   #home main {
     display: block;
     padding: 0;

@@ -62,20 +62,16 @@ echo "<div id='module'>
         </label>
         <label class='float-left'>
         No
-         <input type='radio' id='removeDisabled' value='0' name='curation'/>
+         <input type='radio' id='show-disabled' value='0' name='curation'/>
         </label>
         </fieldset>
-       <fieldset class='optional'><legend class='primary-color'>Box description</legend>
+       <fieldset id='curation1'><legend class='primary-color'>Box description</legend>
        <label>We'll use this info to generate postage / shipping labels you will need to ship your boxes.</label>
         <input class='optional' type='number'  disabled required name='num_products' placeholder='Number of products in box' min='1' max='25'>
         <input class='optional' type='number' disabled required value='' placeholder='Weight of box in pounds' name='box_weight' min='1' max='1000000'>
         <input class='optional' type='number'  disabled required value='' placeholder='Length of box in inches' name='box_length' min='1' max='1000000'>
         <input class='optional' type='number'  disabled required value='' placeholder='Width of box in inches' name='box_width' min='1' max='1000000'>
-        <input class='optional' type='number' disabled required value='' placeholder='Height of box in inches' name='box_height' min='1' max='1000000'>
-        </fieldset>
-        <fieldset class='optional'><legend class='primary-color'>Products</legend>
-        <label>This info is required by our payment processor to facilitate your fans subscription payments.</label>
-            <select class='optional' disabled required name='prodname'>
+        <input class='optional' type='number' disabled required value='' placeholder='Height of box in inches' name='box_height' min='1' max='1000000'>            <select class='optional' disabled required name='prodname'>
             <option value=''>Choose your product category</option>
             <option value='ACCESSORIES'>Accessories</option>
             <option value='AGRICULTURAL_COOPERATIVE_FOR_MAIL_ORDER'>Agricultural</option>
@@ -408,7 +404,7 @@ echo "<div id='module'>
             </select>
             <textarea class='optional' disabled required maxlength='127' name='proddesc' rows='10' cols='40' placeHolder='Describe the products in your box in one sentence (127 max characters)'></textarea>
             </fieldset>
-            <fieldset class='optional'><legend class='primary-color'>Shipping address</legend>
+            <fieldset id='curation2'><legend class='primary-color'>Shipping address</legend>
             <label>We will use this info to calculate the cost of shipping to your fans and to generate the postage / shipping labels you will need to ship your boxes.</label>
             <input name='address_line_1' type='text' class='optional' disabled required value='' placeHolder='Street address'/>
             <input name='address_line_2' type='text' class='optional' disabled required value='' placeHolder='Address line 2 (optional)'/>

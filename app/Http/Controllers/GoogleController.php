@@ -54,4 +54,11 @@ class GoogleController extends Controller
             dd($e->getMessage());
         }
     }
+    public function check(){
+        if (Auth::check()) {
+            return true;
+        }else if(!Auth::check()){
+            return false;
+        }
+    }
 }

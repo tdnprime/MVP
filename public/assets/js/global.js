@@ -21,6 +21,24 @@ var Boxeon = Boxeon || {}; // A collection of functions
 var Shipping = Shipping || {};
 var Subscriptions = Subscriptions || {};
 
+Auth = {
+
+  check: function () {
+    var data = {
+      method: "GET",
+      action: "/auth/google/check",
+      contentType: "application/json; charset=utf-8",
+      _token: document.querySelector('meta[name="csrf-token"]').content
+    
+    }
+
+    function callback(re) {
+      Auth.yes = re;
+    }
+    Boxeon.sendAjax(data, callback);
+
+  }
+};
 
 Boxeon = {
   sendAjax: function (data, back) {
@@ -45,16 +63,16 @@ Boxeon = {
       }
     }
   },
-tabSwitch:function(id){
-  var contents = document.getElementsByClassName("tab-content");
-  for(var i = 0; i < contents.length; i++){
-    if(contents[i].getAttribute("data-id") != id){
-      contents[i].style.display = "none";
-    }else if(contents[i].getAttribute("data-id") == id){
-      contents[i].style.display = "block";
+  tabSwitch: function (id) {
+    var contents = document.getElementsByClassName("tab-content");
+    for (var i = 0; i < contents.length; i++) {
+      if (contents[i].getAttribute("data-id") != id) {
+        contents[i].style.display = "none";
+      } else if (contents[i].getAttribute("data-id") == id) {
+        contents[i].style.display = "block";
+      }
     }
-  }
-},
+  },
 
   progressBar: function (completed) {
     var wrapper = document.getElementById("progress");
@@ -206,7 +224,7 @@ tabSwitch:function(id){
     label4.appendChild(radio4);
     form.appendChild(label4);
     radio1.addEventListener('click', function () {
-     
+
       Boxeon.switchPlan(this);
     });
     radio2.addEventListener('click', function () {
@@ -271,7 +289,7 @@ tabSwitch:function(id){
     m.appendChild(mc);
     mc.appendChild(mch);
     mc.appendChild(mb);
-  
+
     x.innerHTML = "&times;";
     if (document.getElementById('m-window')) {
       var m_window = document.getElementById("m-window")
@@ -300,12 +318,20 @@ tabSwitch:function(id){
 
   },
 
-  disable: function (f) {
-    var optionals = f.parentNode.parentNode.parentNode.getElementsByClassName("optional");
-    for (var i = 0; i < optionals.length; i++) {
-      optionals[i].setAttribute("disabled", 'disabled');
-      optionals[i].style.display = "none";
+  showDisabled: function () {
+    var fieldset = document.getElementById("curation1");
+    fieldset.style.display = "block";
+    var elems = fieldset.getElementsByTagName("*");
+    for(var i = 0; i <elems.length; i++){
+      elems[i].removeAttribute("disabled");
     }
+    var fieldset = document.getElementById("curation2");
+    fieldset.style.display = "block";
+    var elems = fieldset.getElementsByTagName("*");
+    for(var i = 0; i <elems.length; i++){
+      elems[i].removeAttribute("disabled");
+    }
+
   },
 
   menu: function () {
@@ -343,12 +369,24 @@ tabSwitch:function(id){
     }
   },
   router: function (a) {
-    // Google sign in URL: let URL = a.getAttribute("data-url");
+    let URL = a.getAttribute("data-url");
     if (a.id == 'exe-sub' || a.id == 'exe-sub-alt' || a.id == 'play-video') {
+      if (a.id == 'exe-sub') {
+        sessionStorage.setItem('sub', 1);
+      } else if (a.id == 'exe-unsub') {
+        sessionStorage.setItem('sub', 0);
+      }
       // In case of page reload
       sessionStorage.setItem('sub', 1);
       var video_id = a.getAttribute("data-video-id");
+      sessionStorage.setItem('sub-vid', video_id);
       var creator_id = a.getAttribute("data-id");
+      sessionStorage.setItem('sub-cid', creator_id);
+      Auth.check();
+      if(Auth.yes == 0){
+        sessionStorage.setItem("last", window.location.href);
+        location.assign(URL);
+      }
       // sub-creator-id is already set in sessionStorage
       sessionStorage.setItem("sub-total", a.getAttribute("data-total"));
       sessionStorage.setItem("sub-product", a.getAttribute("data-product"));
@@ -373,16 +411,21 @@ tabSwitch:function(id){
 
   },
 
-  removeDisabled: function (f) {
-    var optionals = document.getElementsByClassName("optional");
-    for (var i = 0; i < optionals.length; i++) {
-      if (optionals[i].disabled) {
-        optionals[i].removeAttribute("disabled");
-        optionals[i].style.display = "block";
-      }
+  disable: function () {
+    var fieldset = document.getElementById("curation1");
+    fieldset.style.display = "none";
+    var elems = fieldset.getElementsByTagName("*");
+    for(var i = 0; i <elems.length; i++){
+      elems[i].setAttribute("disabled", "disabled");
     }
-  }
+    var fieldset = document.getElementById("curation2");
+    fieldset.style.display = "none";
+    var elems = fieldset.getElementsByTagName("*");
+    for(var i = 0; i <elems.length; i++){
+      elems[i].setAttribute("disabled", "disabled");
+    }
 
+  },
 };
 
 Shipping = {
@@ -409,12 +452,12 @@ Shipping = {
       + "<input type='text' name='admin_area_2' required placeHolder='City' value=''></input>"
       + "<input type='text' name='admin_area_1' required placeHolder='State/Province' value=''></input>"
       + "<select required name='country_code' class='form-control' id='country'>"
-      +"<option value='' invalid>Select your country </option>"
-      +"<option value='US' label='United States'>United States</option>"
+      + "<option value='' invalid>Select your country </option>"
+      + "<option value='US' label='United States'>United States</option>"
       + "<option value='GB' label='United Kingdom'>United Kingdom</option>"
-      +"<option value='CA' label='Canada'>Canada</option>"
-      +"<option value='BR' label='Brazil'>Brazil</option>"
-      +"</select>"
+      + "<option value='CA' label='Canada'>Canada</option>"
+      + "<option value='BR' label='Brazil'>Brazil</option>"
+      + "</select>"
       + "<input type='text' name='postal_code' required placeHolder='Postal code' value=''></input></fieldset>"
       + "<br><input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
       + "</form>";
@@ -448,7 +491,7 @@ Shipping = {
     // Get shipping rates to add to 
     // billing plan or create billing plan right away 
     if (sessionStorage.getItem("sub-shipping") == 0) {
-      Subscriptions.createBillingPlan(); 
+      Subscriptions.createBillingPlan();
     } else if (sessionStorage.getItem("sub-shipping") == 1) {
       Shipping.getRates();
     }
@@ -460,15 +503,15 @@ Shipping = {
       method: "POST",
       action: "/rates",
       contentType: "application/json; charset=utf-8",
-      customHeader:'CALC',
+      customHeader: 'TO',
       payload: json
     }
 
     function callback(re) {
       Shipping.buildRateCard(JSON.parse(re));
     }
-   Boxeon.sendAjax(manifest, callback);
-   //Boxeon.jqueryAjax();
+    Boxeon.sendAjax(manifest, callback);
+    //Boxeon.jqueryAjax();
 
   },
   buildRateCard: function (rates) {
@@ -561,7 +604,7 @@ Subscriptions = {
     Shipping.arr['carrier'] = sessionStorage.getItem('sub-carrier'); // Optional
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
     Shipping.arr['frequency'] = sessionStorage.getItem('sub-freq');
-    var json = JSON.stringify( Shipping.arr );
+    var json = JSON.stringify(Shipping.arr);
     var data = {
       method: "POST",
       action: "/createplan", // TEMPORARY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -632,6 +675,23 @@ $(document).ready(function () {
     location.assign(url);
     sessionStorage.removeItem("last");
   }
+
+  //Tracks user intent prior to sign in
+  if (sessionStorage.getItem('sub') == 1) { // intended to subscribe
+    var vid = sessionStorage.getItem("sub-vid");
+    var cid = sessionStorage.getItem("sub-cid");
+    Boxeon.playVideo(vid, cid);
+    sessionStorage.removeItem('sub-vid');
+    sessionStorage.removeItem('sub-cid');
+    sessionStorage.removeItem('last');
+    sessionStorage.removeItem('sub');
+  }
+  if (sessionStorage.getItem('sub') == 0) { // intended to un-subscribe
+    Subscriptions.removeCheck();
+    sessionStorage.removeItem('sub');
+  
+  }
+
   // Presentation: fades in pages on load
   if (document.getElementsByTagName("main")[0]) {
     document.getElementsByTagName("main")[0].setAttribute("class", "fadein");
@@ -640,33 +700,7 @@ $(document).ready(function () {
     document.getElementById("masthead").setAttribute("class", "fadein");
   }
 
-
-  //LISTENERS
-
-  /*if (document.getElementById('image-next-arrow')) {
-    document.getElementById('image-next-arrow').addEventListener('mouseover', function () {
-      var a = this;
-      Boxeon.toggleArrowRed(a);
-    });
-  }
-  if (document.getElementById('image-next-arrow')) {
-    document.getElementById('image-next-arrow').addEventListener('mouseout', function () {
-      var a = this;
-      Boxeon.toggleArrowBlack(a);
-    });
-  }
-  if (document.getElementById('image-previous-arrow')) {
-    document.getElementById('image-previous-arrow').addEventListener('mouseover', function () {
-      var a = this;
-      Boxeon.toggleArrowRed(a);
-    });
-  }
-  if (document.getElementById('image-previous-arrow')) {
-    document.getElementById('image-previous-arrow').addEventListener('mouseout', function () {
-      var a = this;
-      Boxeon.toggleArrowBlack(a);
-    });
-  }*/
+  // LISTENERS
   if (document.getElementById('exe-sub')) {
     document.getElementById('exe-sub').addEventListener('click', function () {
       var a = this;
@@ -693,8 +727,6 @@ $(document).ready(function () {
   }
   if (document.getElementById('play-video')) {
     document.getElementById('play-video').addEventListener('click', function () {
-      /*   var id = this.getAttribute("data-video-id");
-         Boxeon.playVideo(id);*/
       var a = this;
       Boxeon.router(a);
     });
@@ -717,14 +749,19 @@ $(document).ready(function () {
           Boxeon.switchPlan(this);
         });
       }
-    }*/
-  if (document.getElementById('disable')) {
-
-    document.getElementById('disable').addEventListener('click', function () {
-      var a = this;
-      Boxeon.disable(a);
+    }
+    */
+  if (document.getElementById('show-disabled')) {
+    document.getElementById('show-disabled').addEventListener('click', function () {
+      Boxeon.showDisabled();
     });
   }
+  if (document.getElementById('disable')) {
+    document.getElementById('disable').addEventListener('click', function () {
+      Boxeon.disable();
+    });
+  }
+
   if (document.getElementById('play-video')) {
     var btns = document.getElementsByClassName('playbtn');
     for (var i = 0; i < btns.length; i++) {
@@ -749,8 +786,8 @@ $(document).ready(function () {
 
   if (document.getElementById('signin')) {
     document.getElementById('signin').addEventListener('click', function () {
-      if (location.href == "http://localhost:8000/partner") {
-        sessionStorage.setItem("last", "http://localhost:8000/partner");
+      if (location.href == "https://boxeon.com/partner") {
+        sessionStorage.setItem("last", "https://boxeon.com/partner");
       }
     });
   }
@@ -763,17 +800,17 @@ $(document).ready(function () {
   }
   if (document.getElementById('anchor-tab-tracking')) {
     document.getElementById('anchor-tab-tracking').addEventListener('click', function () {
-      var a = this; 
+      var a = this;
       Boxeon.tabSwitch(a.id);
     });
   }
   if (document.getElementById('anchor-tab-incoming')) {
     document.getElementById('anchor-tab-incoming').addEventListener('click', function () {
-      var a = this; 
+      var a = this;
       Boxeon.tabSwitch(a.id);
     });
   }
-  
+
   if (document.getElementById('create-box')) {
     var opts = {
       className: "step step-incomplete",
@@ -790,7 +827,7 @@ $(document).ready(function () {
       className: "primary-color centered"
     }
     document.getElementById("module").prepend(Boxeon.createElem(el, options));
-// create box form
+    // create box form
     var preOrder = document.getElementById("pre-order");
     preOrder.addEventListener("change", function () {
       if (this.value == 1) {

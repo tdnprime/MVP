@@ -64,14 +64,9 @@ echo '<div id="masthead" class="fadein">
         You may complete this step at any time by signing in and clicking on $user->given_name's 
         Boxeon.</p></div>
         <form action='/box/$user->id/edit' method='post' 
-        id='embed-form'>";
-        ?>
-
-       @csrf
-        @method('POST')
-
-        <?php
-        echo "<input required placeholder='Youtube video URL from browser' name='ytembed' 
+        id='embed-form'>
+        <input type='hidden' name='_token' value='{{ csrf_token() }}' />
+        <input required placeholder='Youtube video URL from browser' name='ytembed' 
         type='url'></input>
         <div class='buttonHolder'>
         <input type='submit' value='Embed'></input></div></form></div>

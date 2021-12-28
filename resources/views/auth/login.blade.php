@@ -10,7 +10,7 @@
 Sign in with Google
 </a>
 </div>
-<br>
+<br><br><br>
 </div>
 </main>
 @endsection

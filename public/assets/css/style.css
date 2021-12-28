@@ -1,4 +1,12 @@
-/*STYLE*/
+/*
+STYLE
+
+Fair skin: #ffd5d8
+Brown skin: #a0616a
+
+*/
+
+
 #alt-home-main {
   display: block !important;
 }
@@ -228,6 +236,7 @@
   grid-gap: 1px;
   grid-template-rows: auto 50px auto auto;
   position: relative;
+  border-bottom: 1px solid #0c8dc445;
 }
 #container {
   background-color: #f5f7fa;
@@ -853,6 +862,10 @@ form .alert{
   font-weight: 100;
   color: #0c8dc4;
 }
+#curation1,
+#curation2{
+  display: none;
+}
 .fadein {
   animation-duration: 1s;
   animation-iteration-count: 1;
@@ -1082,7 +1095,7 @@ the side navigation*/
   height: auto;
   left: 42%;
   position: absolute;
-  top: 30%;
+  top: 40%;
   width: 5em;
 }
 .playbtn:hover {
@@ -1357,7 +1370,7 @@ legend{
 }
 footer {
   background-color: #f5f7fa;
-  border-top: 1px solid #fff;
+  border-top: 5px solid #fff;
   display: grid;
   margin: 0 auto;
   padding-bottom: 5em;
@@ -1414,8 +1427,7 @@ input:checked + .slider:before {
   webkit-transform: translateX(26px);
 }
 .special-offer,
-#special-offer,
-.optional {
+#special-offer{
 display: none;
 }
 input:focus + .slider {

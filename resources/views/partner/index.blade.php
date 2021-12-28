@@ -8,7 +8,7 @@
         <div>
           <p class="text-heading-label">DON'T HESITATE</p>
           <h1 class="ginormous">Take the leap, Boxeon will give you wings</h1>
-          <p id="pitch">Our partner program is sponsoring 100 content creators to launch their subscription boxes on Boxeon. If you're a creator with 20k+ average views and would like to launch a subscription box at no cost to you, apply today.</p>
+          <p id="pitch">Our partner program is sponsoring 100 content creators to launch their subscription boxes on Boxeon. If you're a creator with 2k+ average views and would like to launch a subscription box at no cost to you, apply today.</p>
 			    <a id="partner-apply" href="#" class="button"> Apply</a>
           <a href="#whatis" class="button clearbtn"> Learn more </a> </div>
         <div id="form-partner-apply-wrapper" class="masthead-forms">
@@ -29,7 +29,7 @@
               </select>
               <input required type='number' name='views' placeholder="Average views">
               <select required name="country_code" class="form-control" id="country">
-                <option value="" invalid>Select your country </option>
+                <option value="" invalid>Select country where you have the most fans </option>
                 <optgroup id="country-optgroup-Africa" label="Africa">
                 <option value="DZ" label="Algeria">Algeria</option>
                 <option value="AO" label="Angola">Angola</option>

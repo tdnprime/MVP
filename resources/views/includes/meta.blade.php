@@ -21,13 +21,4 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert%20One">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{{ asset('../assets/js/global.js?v=1') }}"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-211880503-1">
-</script>
-<script>
 
-if(screen.width <1591){
-	
-	document.querySelector('meta[name="viewport"]').setAttribute("content", "width=1591");
-}
-</script>

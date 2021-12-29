@@ -29,7 +29,7 @@ Auth = {
       action: "/auth/google/check",
       contentType: "application/json; charset=utf-8",
       _token: document.querySelector('meta[name="csrf-token"]').content
-    
+
     }
 
     function callback(re) {
@@ -322,13 +322,13 @@ Boxeon = {
     var fieldset = document.getElementById("curation1");
     fieldset.style.display = "block";
     var elems = fieldset.getElementsByTagName("*");
-    for(var i = 0; i <elems.length; i++){
+    for (var i = 0; i < elems.length; i++) {
       elems[i].removeAttribute("disabled");
     }
     var fieldset = document.getElementById("curation2");
     fieldset.style.display = "block";
     var elems = fieldset.getElementsByTagName("*");
-    for(var i = 0; i <elems.length; i++){
+    for (var i = 0; i < elems.length; i++) {
       elems[i].removeAttribute("disabled");
     }
 
@@ -383,7 +383,7 @@ Boxeon = {
       var creator_id = a.getAttribute("data-id");
       sessionStorage.setItem('sub-cid', creator_id);
       Auth.check();
-      if(Auth.yes == 0){
+      if (Auth.yes == 0) {
         sessionStorage.setItem("last", window.location.href);
         location.assign(URL);
       }
@@ -415,13 +415,13 @@ Boxeon = {
     var fieldset = document.getElementById("curation1");
     fieldset.style.display = "none";
     var elems = fieldset.getElementsByTagName("*");
-    for(var i = 0; i <elems.length; i++){
+    for (var i = 0; i < elems.length; i++) {
       elems[i].setAttribute("disabled", "disabled");
     }
     var fieldset = document.getElementById("curation2");
     fieldset.style.display = "none";
     var elems = fieldset.getElementsByTagName("*");
-    for(var i = 0; i <elems.length; i++){
+    for (var i = 0; i < elems.length; i++) {
       elems[i].setAttribute("disabled", "disabled");
     }
 
@@ -512,7 +512,6 @@ Shipping = {
       Shipping.buildRateCard(JSON.parse(re));
     }
     Boxeon.sendAjax(manifest, callback);
-    //Boxeon.jqueryAjax();
 
   },
   buildRateCard: function (rates) {
@@ -520,10 +519,16 @@ Shipping = {
     var num = rates.results.length;
     for (var i = 0; i < num; i++) {
       var rate = parseInt(rates.results[i].amount) + 3;
-      Shipping.rate_card += "<div class='four-col-grid margin-bottom-4-em'><p><img src='" + rates.results[i].provider_image_200
-        + "' width='75px' alt='Carrier'/></p><p>" + rates.results[i].servicelevel.name + '</p><p><b>$'
+      Shipping.rate_card += "<div class='four-col-grid margin-bottom-4-em'><p><img src='" 
+       + rates.results[i].provider_image_200
+        + "' width='75px' alt='Carrier'/></p><p>" 
+        + rates.results[i].servicelevel.name + '</p><p><b>$'
         + rate + "</b></p>"
-        + "<button data-carrier='" + rates.results[i].provider + "'  data-shipment='" + rates.results[i].shipment + "' data-rate='" + rate + "' data-rate-id='" + rates.results[i].object_id + "' id='exe-sub'>Select</button></div>";
+        + "<button data-carrier='" 
+        + rates.results[i].provider + "'  data-shipment='" 
+        + rates.results[i].shipment + "' data-rate='" + rate 
+        + "' data-rate-id='" + rates.results[i].object_id 
+        + "'onclick='Subscriptions.createBillingPlan(this)'>Select</button></div>";
     }
     Shipping.showRates();
 
@@ -532,7 +537,7 @@ Shipping = {
     document.getElementById('m-window').remove();
     Boxeon.createModalWindow();
     document.getElementById("mc-header").innerHTML =
-      '<div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p><p class="step step-completed">L</p><p class="step step-current">3</p></div>';
+      '<div class="asides"><div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p><p class="step step-completed">L</p><p class="step step-current">3</p></div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
     document.getElementById("m-body").
       innerHTML = Shipping.rate_card;
   },
@@ -599,12 +604,21 @@ Subscriptions = {
   },
 
   createBillingPlan: function () {
-    Shipping.arr['rate'] = sessionStorage.getItem('sub-rate'); // Optional
-    Shipping.arr['shipment'] = sessionStorage.getItem('sub-shipment'); // Optional
-    Shipping.arr['rate_id'] = sessionStorage.getItem('sub-rate-id'); // Optional
-    Shipping.arr['carrier'] = sessionStorage.getItem('sub-carrier'); // Optional
+    if (sessionStorage.getItem('sub-rate')) {
+      Shipping.arr['rate'] = sessionStorage.getItem('sub-rate'); // Optional
+    }
+    if (sessionStorage.getItem('sub-shipment')) {
+      Shipping.arr['shipment'] = sessionStorage.getItem('sub-shipment'); // Optional
+    }
+    if (sessionStorage.getItem('sub-rate-id')) {
+      Shipping.arr['rate_id'] = sessionStorage.getItem('sub-rate-id'); // Optional
+    }
+    if (sessionStorage.getItem('sub-carrier')) {
+      Shipping.arr['carrier'] = sessionStorage.getItem('sub-carrier'); // Optional
+    }
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
     Shipping.arr['frequency'] = sessionStorage.getItem('sub-freq');
+
     var json = JSON.stringify(Shipping.arr);
     var data = {
       method: "POST",
@@ -687,7 +701,7 @@ $(document).ready(function () {
   if (sessionStorage.getItem('sub') == 0) { // intended to un-subscribe
     Subscriptions.removeCheck();
     sessionStorage.removeItem('sub');
-  
+
   }
 
   // Presentation: fades in pages on load

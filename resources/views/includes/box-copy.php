@@ -1,5 +1,7 @@
 <?php
-$box = DB::select('select * from boxes where user_id= ?', [$user->id]); 
+$pattern = "/";
+$box_url = str_replace($pattern, "", $_SERVER["REQUEST_URI"]);
+$box = DB::select('select * from boxes where box_url= ?', [$box_url]); 
 if(empty($box) || is_null($box[0]->box_weight)){
 echo '<div id="masthead" class="fadein">
     <div id="headline">

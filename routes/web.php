@@ -30,6 +30,7 @@ Route::post('/partner/apply', 'App\Http\Controllers\PartnerController@apply')->n
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
+    Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index');
     Route::get('/home', 'App\Http\Controllers\HomeController@dashboard')->name('home.index');
     Route::get('/box/create', 'App\Http\Controllers\BoxController@create')->name('box.create');
     Route::post('/box', 'App\Http\Controllers\BoxController@store')->name('box.store');

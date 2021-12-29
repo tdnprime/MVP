@@ -24,16 +24,32 @@ class ShippingController extends Controller
 
     public function rates(User $user, Request  $request)
     {
+
+
         if (json_decode($_SERVER[ "HTTP_TO" ])  !== null) {
             $to = json_decode($_SERVER[ "HTTP_TO" ]);
-       
+           dd($to);
+        }else{
+            echo "Missing header";
+        }
+
+        $id = $to->id;
+        $user = User::find($id);
+        $box = $user->boxes()->first();
+
+       // dd($box);
+
+
+        if (json_decode($_SERVER[ "HTTP_TO" ])  !== null) {
+            $to = json_decode($_SERVER[ "HTTP_TO" ]);
+
         }else{
             echo "Missing header";
         }
         $id = $to->creator_id;
         $user = User::find($id);
         $box = $user->boxes()->first();
-        
+
         if(isset($box) && $box->ship_from == 0) {
             $fromAddress = Shippo_Address::create( array(
                 "name" => $box->name,
@@ -64,7 +80,7 @@ class ShippingController extends Controller
             ) );
         }
 
-      
+
         //$toAddress = (array)$to;
 
         $toAddress = Shippo_Address::create( array(

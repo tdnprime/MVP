@@ -97,7 +97,8 @@ Boxeon = {
     header.appendChild(Boxeon.createStepsLeft(opts));
   },
   createVideoHTML: function (id) {
-    return "<div id='remove-black-bar'><iframe src=https://www.youtube.com/embed/" + id + "?rel=0&autoplay=1&frameborder=0&mute=1></iframe></div>";
+    return "<div id='remove-black-bar'><iframe src=https://www.youtube.com/embed/" 
+    + id + "?rel=0&autoplay=1&frameborder=0&mute=1></iframe></div>";
 
   },
   createStepsLeft: function (options) {
@@ -273,7 +274,6 @@ Boxeon = {
     m.appendChild(mc);
     mc.appendChild(mch);
     mc.appendChild(mb);
-
     x.innerHTML = "&times;";
     if (document.getElementById('m-window')) {
       var m_window = document.getElementById("m-window")
@@ -294,7 +294,6 @@ Boxeon = {
     var x = document.getElementsByTagName('footer')[0];
     x.appendChild(s);
   },
-
 
   switchPlan: function (a) {
     var frequency = a.value;
@@ -352,6 +351,7 @@ Boxeon = {
       document.getElementById("masthead").style.marginLeft = "0";
     }
   },
+
   router: function (a) {
     let URL = a.getAttribute("data-url");
     if (a.id == 'exe-sub' || a.id == 'exe-sub-alt' || a.id == 'play-video') {
@@ -473,8 +473,6 @@ Shipping = {
       }
     }
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
-    // Get shipping rates to add to 
-    // billing plan or create billing plan right away 
     if (sessionStorage.getItem("sub-shipping") == 0) {
       Subscriptions.createBillingPlan();
     } else if (sessionStorage.getItem("sub-shipping") == 1) {

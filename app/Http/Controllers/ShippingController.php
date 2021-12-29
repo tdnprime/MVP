@@ -27,11 +27,11 @@ class ShippingController extends Controller
 
         if (json_decode($_SERVER[ "HTTP_TO" ])  !== null) {
             $to = json_decode($_SERVER[ "HTTP_TO" ]);
-           dd($to);
+          
         }else{
             echo "Missing header";
         }
-        $id = $to->id;
+        $id = $to->creator_id;
         $user = User::find($id);
         $box = $user->boxes()->first();
 
@@ -126,6 +126,9 @@ class ShippingController extends Controller
 
         // The $rates is a complete object but for our view we
         // only need the rates_list items and will pass that to it
+        $tmp = json_decode($rates);
+        if($tmp->count == 0){ return "Something went wrong.";}else{
         return $rates;
+        }
     }
 }

@@ -19,7 +19,7 @@ class CreateBoxesTable extends Migration
             $table->integer('pre_order')->nullable();
             $table->integer('special_offer')->nullable();
             $table->integer('price')->nullable();
-            $table->string('box_url')->nullable();
+            $table->string('box_url')->unique();
             $table->integer('shipping_cost')->default(0);
             $table->integer('ship_from')->default(1);
             $table->integer('curation')->nullable();

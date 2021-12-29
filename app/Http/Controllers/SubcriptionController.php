@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class SubcriptionController extends Controller
 {
     
-    private function createPlan(){
+    public function createPlan(){
         /* 
 
         NOTE:
@@ -19,7 +19,12 @@ class SubcriptionController extends Controller
         for retrieval even after the redirect from PayPal.
 
         */
-
+      if (json_decode($_SERVER[ "HTTP_PLAN" ])  !== null) {
+          $to = json_decode($_SERVER[ "HTTP_PLAN" ]);
+         dd($to);
+      }else{
+          echo "Missing header";
+      }
     require_once "../../php/paypal-connect.php";
     $config = parse_ini_file( "../../config/app.ini", true );
     // Prep data PayPal needs to create a billing plan
@@ -36,7 +41,7 @@ class SubcriptionController extends Controller
             ],
             "tenure_type" => "REGULAR",
             "sequence" => 1,
-            "total_cycles" => 0, // Set this to "1" if the json has a value of "0" for frequency
+            "total_cycles" => 0,
             "pricing_scheme" => [
               "fixed_price" => [
                 "value" => $TOTAL,
@@ -56,7 +61,7 @@ class SubcriptionController extends Controller
       $plan = sendcurl( json_encode( $data ), $endpoint, $media );
       if ( isset( $plan[ "id" ] ) ) {
         /*
-        Saving price, plan ID. and address for now. 
+        Save price, plan ID. and address for now. 
         More info is needed to complete a subscription.
         */
         $b[ 'uid' ] = $uid;
@@ -64,7 +69,7 @@ class SubcriptionController extends Controller
         $b ['plan_id'] =  $plan[ "id" ];
        // $r = $db->insert( "subscriptions", $b );
     
-        // Returning plan ID to browser for the off-site PayPal checkout flow
+        // Return plan ID to browser for the off-site PayPal checkout flow
         $return = [];
         $return[ 'plan_id' ] = $p[ 'id' ];
         print_r( json_encode( $return ) );

@@ -1,24 +1,8 @@
-/* GLOBAL
+/* GLOBAL */
 
-
-NOTE: 
-+ At the very bottom of this file
-  are event listeners that are added upon page load.
-
-TO DO:
-+ Get Progress Bar to work accurately
-+ Fix the subscription flow UX
-+ Fix the unsubscribe flow UX
-+ Proper error handling
-+ Refactor with abstraction in mind
-
-https://stackoverflow.com/questions/43954836/disabling-blackbars-on-youtube-embed-iframe
-*/
-
-// TABLE OF CONTENTS:
-
-var Boxeon = Boxeon || {}; // A collection of functions
+var Boxeon = Boxeon || {};
 var Shipping = Shipping || {};
+var Auth = Auth || {};
 var Subscriptions = Subscriptions || {};
 
 Auth = {
@@ -622,9 +606,10 @@ Subscriptions = {
     var json = JSON.stringify(Shipping.arr);
     var data = {
       method: "POST",
-      action: "/createplan", // TEMPORARY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      action: "/createplan",
       contentType: "application/json; charset=utf-8",
       _token: document.querySelector('meta[name="csrf-token"]').content,
+      customHeader:"PLAN",
       payload: json
     }
     function callback(r) {

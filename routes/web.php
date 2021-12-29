@@ -27,9 +27,8 @@ Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about')
 
 Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('index');
 Route::post('/partner/apply', 'App\Http\Controllers\PartnerController@apply')->name('apply');
-// MOVED FROM MIDDLEWARE:
 Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
-Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index');
+Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index'); // moved back
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/home', 'App\Http\Controllers\HomeController@dashboard')->name('home.index');

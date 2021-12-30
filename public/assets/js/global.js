@@ -19,9 +19,9 @@ Auth = {
       if (status == 0) {
         sessionStorage.setItem("last", window.location.href);
         location.assign("/auth/google");
-      }else if(status == 1){
-          // Play video in UI
-      Boxeon.playVideo(video_id, creator_id);
+      } else if (status == 1) {
+        // Play video in UI
+        Boxeon.playVideo(video_id, creator_id);
       }
     }
     Boxeon.sendAjax(data, callback);
@@ -226,6 +226,7 @@ Boxeon = {
     radio4.addEventListener('click', function () {
       Boxeon.switchPlan(this);
     });
+    sessionStorage.setItem("sub-freq", 1);
     return form;
   },
 
@@ -360,7 +361,7 @@ Boxeon = {
   router: function (a) {
     let URL = a.getAttribute("data-url");
     if (a.id == 'exe-sub' || a.id == 'exe-sub-alt' || a.id == 'play-video') {
-        // In case of page reload
+      // In case of page reload
       if (a.id == 'exe-sub') {
         sessionStorage.setItem('sub', 1);
       } else if (a.id == 'exe-unsub') {
@@ -496,31 +497,53 @@ Shipping = {
 
   },
   buildRateCard: function (rates) {
-    Shipping.rate_card = "";
+    var div = document.createElement("div");
     var num = rates.results.length;
     for (var i = 0; i < num; i++) {
-      var rate = parseInt(rates.results[i].amount) + 3;
-      Shipping.rate_card += "<div class='four-col-grid margin-bottom-4-em'><p><img src='"
-        + rates.results[i].provider_image_200
-        + "' width='75px' alt='Carrier'/></p><p>"
-        + rates.results[i].servicelevel.name + '</p><p><b>$'
-        + rate + "</b></p>"
-        + "<button data-carrier='"
-        + rates.results[i].provider + "'  data-shipment='"
-        + rates.results[i].shipment + "' data-rate='" + rate
-        + "' data-rate-id='" + rates.results[i].object_id
-        + "'onclick='Subscriptions.createBillingPlan(this)'>Select</button></div>";
+      var rate_plus = parseInt(rates.results[i].amount);
+      var rate = document.createTextNode("$" + rate_plus);
+
+      var p1 = document.createElement("p");
+      var p2 = document.createElement("p");
+      var p3 = document.createElement("p");
+      var img = document.createElement("img");
+      img.className = "img-carrier";
+      var button = document.createElement("button");
+      var serviceLevelName = document.createTextNode(rates.results[i].servicelevel.name);
+      var cta = document.createTextNode("Select");
+
+      div.className = "four-col-grid margin-bottom-4-em";
+      img.src = rates.results[i].provider_image_200;
+      sessionStorage.setItem("sub-carrier", rates.results[i].provider);
+      sessionStorage.setItem("sub-rate", rate_plus);
+      sessionStorage.setItem("sub-shipment", rates.results[i].shipment);
+      sessionStorage.setItem("sub-rate-id", rates.results[i].object_id);
+      button.appendChild(cta);
+
+      div.appendChild(p1);
+      p1.appendChild(img);
+      div.appendChild(p2);
+      p2.appendChild(serviceLevelName);
+      div.appendChild(p3);
+      p3.appendChild(rate);
+      div.appendChild(button);
+      button.addEventListener("click", function () {
+        Subscriptions.createBillingPlan();
+
+      });
+
     }
-    Shipping.showRates();
+    Shipping.showRates(div);
 
   },
-  showRates: function () {
+  showRates: function (div) {
     document.getElementById('m-window').remove();
     Boxeon.createModalWindow();
-    document.getElementById("mc-header").innerHTML =
+    var mcheader = document.getElementById("mc-header");
+    mcheader.innerHTML =
       '<div class="asides"><div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p><p class="step step-completed">L</p><p class="step step-current">3</p></div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
-    document.getElementById("m-body").
-      innerHTML = Shipping.rate_card;
+    mcheader.appendChild(div)
+
   },
   printLabels: function (b) {
     var arr = {};
@@ -597,15 +620,17 @@ Subscriptions = {
     if (sessionStorage.getItem('sub-carrier')) {
       Shipping.arr['carrier'] = sessionStorage.getItem('sub-carrier'); // Optional
     }
+    Shipping.arr['total'] = sessionStorage.getItem('sub-total');
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
     Shipping.arr['frequency'] = sessionStorage.getItem('sub-freq');
+    Shipping.arr["_token"] = document.querySelector('meta[name="csrf-token"]').content;
 
     var json = JSON.stringify(Shipping.arr);
     var data = {
       method: "POST",
       action: "/createplan",
       contentType: "application/json; charset=utf-8",
-      _token: document.querySelector('meta[name="csrf-token"]').content,
+      Accept:"*application/json*",
       customHeader: "PLAN",
       payload: json
     }
@@ -669,25 +694,25 @@ $(document).ready(function () {
     location.assign(url);
     sessionStorage.removeItem("last");
   }
- 
-if(document.getElementById("box")){
 
-  //Tracks user intent prior to sign in
-  if (sessionStorage.getItem('sub') == 1) { // intended to subscribe
-    var vid = sessionStorage.getItem("sub-vid");
-    var cid = sessionStorage.getItem("sub-cid");
-    Boxeon.playVideo(vid, cid);
-    sessionStorage.removeItem('sub-vid');
-    sessionStorage.removeItem('sub-cid');
-    sessionStorage.removeItem('last');
-    sessionStorage.removeItem('sub');
-  }
-  if (sessionStorage.getItem('sub') == 0) { // intended to un-subscribe
-    Subscriptions.removeCheck();
-    sessionStorage.removeItem('sub');
+  if (document.getElementById("box")) {
 
+    //Tracks user intent prior to sign in
+    if (sessionStorage.getItem('sub') == 1) { // intended to subscribe
+      var vid = sessionStorage.getItem("sub-vid");
+      var cid = sessionStorage.getItem("sub-cid");
+      Boxeon.playVideo(vid, cid);
+      sessionStorage.removeItem('sub-vid');
+      sessionStorage.removeItem('sub-cid');
+      sessionStorage.removeItem('last');
+      sessionStorage.removeItem('sub');
+    }
+    if (sessionStorage.getItem('sub') == 0) { // intended to un-subscribe
+      Subscriptions.removeCheck();
+      sessionStorage.removeItem('sub');
+
+    }
   }
-}
 
   // Presentation: fades in pages on load
   if (document.getElementsByTagName("main")[0]) {

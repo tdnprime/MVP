@@ -47,7 +47,9 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/box/ship', 'App\Http\Controllers\BoxController@ship')->name('box.ship');
     Route::get('/rates','App\Http\Controllers\ShippingController@rates')->name('box.rates');
 
+
 });
+Route::post('/createplan','App\Http\Controllers\SubscriptionController@createplan')->name('subscriptions.createplan');
 
 Route::post('/rates','App\Http\Controllers\ShippingController@rates');
 Route::get('/rates','App\Http\Controllers\ShippingController@rates');

@@ -497,6 +497,9 @@ width:fit-content;
   height: 100%;
   width: 100%;
 }
+.img-carrier{
+  max-width:75px;
+}
 #masthead-video-wrapper img {
   max-width: 100%;
 }

@@ -6,7 +6,7 @@ paypal.Buttons({
     return actions.subscription.create({
 
 
-      'plan_id': document.getElementById('sub').getAttribute("data-plan-id")
+      'plan_id': sessionStorage.getItem('sub-plan_id')
 
 
     });

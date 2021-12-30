@@ -22,5 +22,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{{ asset('../assets/js/global.js?v=1') }}"></script>
 <meta name="google-signin-client_id" content="227887284273-k2b81lp0r79e25vg57vf5kjbnglff49p.apps.googleusercontent.com">
+<?php
+$config = parse_ini_file( "../config/app.ini", true );
+
+// FOR SUBSCRIPTIONS
+echo "<script src=https://www.paypal.com/sdk/js?client-id=" . $config[ 'paypal' ][ 'clientID' ] . "&vault=true&intent=subscription></script>";
+
+
+?>
 <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
 

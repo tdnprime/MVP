@@ -636,7 +636,7 @@ Subscriptions = {
     }
     function callback(r) {
       var json = JSON.parse(r);
-      sessionStorage.setItem("sub-plan-id", json['plan_id']); //From PayPal
+      sessionStorage.setItem("sub-plan_id", json['plan_id']); //From PayPal
       document.getElementById("m-window").remove();
       Subscriptions.showPaymentOptions(); // PayPal et al.
     }
@@ -646,8 +646,8 @@ Subscriptions = {
     Boxeon.createModalWindow();
     document.
       getElementById("m-body").
-      innerHTML = "<h2>Call to action</h2><div id='paypal-button-container'></div>";
-    Boxeon.loadScript("subs.js");
+      innerHTML = "<div class='asides'><div id='steps-line'></div><div id='steps-left'><p class='step step-completed'>L</p><p class='step step-completed'>L</p><p class='step step-current'>3</p></div><h2>3. Choose a payment method</h2><div id='paypal-button-container'></div>";
+    Boxeon.loadScript("../../assets/js/subs.js");
     var buttons = document.getElementById("paypal-button-container");
     buttons.style.display = "block";
 

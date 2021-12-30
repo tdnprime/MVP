@@ -21,7 +21,7 @@ class SubcriptionController extends Controller
         */
       if (json_decode($_SERVER[ "HTTP_PLAN" ])  !== null) {
           $to = json_decode($_SERVER[ "HTTP_PLAN" ]);
-         dd($to);
+       
       }else{
           echo "Missing header";
       }

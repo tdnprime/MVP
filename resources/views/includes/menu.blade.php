@@ -6,7 +6,7 @@
 
         <div  id="menu" class="menu ">
             <a  id="menu-close" href="#" title='Close'><span class="material-icons">close</span></a>
-            <a    href="/home"><span class="material-icons">home</span>Home</a>
+            <a    href="/home/index"><span class="material-icons">home</span>Home</a>
             <a    href="/box/create"><span class="material-icons">add_box</span>Create box</a>
             <a     href="/box/ship"><span class="material-icons">local_shipping</span>Ship boxes</a>
             <a     href="/partner"><span class="material-icons">group_work</span>Partner</a>

@@ -7,17 +7,22 @@ var Subscriptions = Subscriptions || {};
 
 Auth = {
 
-  check: function () {
+  check: function (video_id, creator_id) {
     var data = {
       method: "GET",
-      action: "/auth/google/check",
+      action: "/auth/google/status",
       contentType: "application/json; charset=utf-8",
       _token: document.querySelector('meta[name="csrf-token"]').content
 
     }
-
-    function callback(re) {
-      Auth.yes = re;
+    function callback(status) {
+      if (status == 0) {
+        sessionStorage.setItem("last", window.location.href);
+        location.assign("/auth/google");
+      }else if(status == 1){
+          // Play video in UI
+      Boxeon.playVideo(video_id, creator_id);
+      }
     }
     Boxeon.sendAjax(data, callback);
 
@@ -97,8 +102,8 @@ Boxeon = {
     header.appendChild(Boxeon.createStepsLeft(opts));
   },
   createVideoHTML: function (id) {
-    return "<div id='remove-black-bar'><iframe src=https://www.youtube.com/embed/" 
-    + id + "?rel=0&autoplay=1&frameborder=0&mute=1></iframe></div>";
+    return "<div id='remove-black-bar'><iframe src=https://www.youtube.com/embed/"
+      + id + "?rel=0&autoplay=1&frameborder=0&mute=1></iframe></div>";
 
   },
   createStepsLeft: function (options) {
@@ -355,6 +360,7 @@ Boxeon = {
   router: function (a) {
     let URL = a.getAttribute("data-url");
     if (a.id == 'exe-sub' || a.id == 'exe-sub-alt' || a.id == 'play-video') {
+        // In case of page reload
       if (a.id == 'exe-sub') {
         sessionStorage.setItem('sub', 1);
       } else if (a.id == 'exe-unsub') {
@@ -366,31 +372,23 @@ Boxeon = {
       sessionStorage.setItem('sub-vid', video_id);
       var creator_id = a.getAttribute("data-id");
       sessionStorage.setItem('sub-cid', creator_id);
-      Auth.check();
-      if (Auth.yes == 0) {
-        sessionStorage.setItem("last", window.location.href);
-        location.assign(URL);
-      }
+      Auth.check(video_id, creator_id);
       // sub-creator-id is already set in sessionStorage
       sessionStorage.setItem("sub-total", a.getAttribute("data-total"));
       sessionStorage.setItem("sub-product", a.getAttribute("data-product"));
       sessionStorage.setItem("sub-in-stock", a.getAttribute("data-in-stock"));
       sessionStorage.setItem('sub-shipping', a.getAttribute("data-shipping"));
-      // Play video in UI
-      Boxeon.playVideo(video_id, creator_id);
 
     } else if (a.id == 'exe-unsub') {
       sessionStorage.setItem('sub', 0); // in case of page reload
       Subscriptions.removeCheck(a);
     }
-
     if (sessionStorage.getItem('sub') == 1) {
       // Save for later
       sessionStorage.setItem("sub-carrier", a.getAttribute("data-carrier"));
       sessionStorage.setItem("sub-rate", a.getAttribute("data-rate"));
       sessionStorage.setItem("sub-rate-id", a.getAttribute("data-rate-id"));
       sessionStorage.setItem("sub-shipment", a.getAttribute("data-shipment"));
-
     }
 
   },
@@ -421,7 +419,8 @@ Shipping = {
 
   buildAddressInputForm: function (creator_uid) {
     document.getElementById("mc-header").innerHTML =
-      '<div class="asides"><div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p>'
+      '<div class="asides"><div id="steps-line"></div><div id="steps-left">'
+      + '<p class="step step-completed">L</p>'
       + '<p id="text-step0-label" class="centered">Schedule</p>'
       + '<p class="step step-current">2</p>'
       + '<p id="text-step1-label" class="centered">Shipping</p>'
@@ -501,15 +500,15 @@ Shipping = {
     var num = rates.results.length;
     for (var i = 0; i < num; i++) {
       var rate = parseInt(rates.results[i].amount) + 3;
-      Shipping.rate_card += "<div class='four-col-grid margin-bottom-4-em'><p><img src='" 
-       + rates.results[i].provider_image_200
-        + "' width='75px' alt='Carrier'/></p><p>" 
+      Shipping.rate_card += "<div class='four-col-grid margin-bottom-4-em'><p><img src='"
+        + rates.results[i].provider_image_200
+        + "' width='75px' alt='Carrier'/></p><p>"
         + rates.results[i].servicelevel.name + '</p><p><b>$'
         + rate + "</b></p>"
-        + "<button data-carrier='" 
-        + rates.results[i].provider + "'  data-shipment='" 
-        + rates.results[i].shipment + "' data-rate='" + rate 
-        + "' data-rate-id='" + rates.results[i].object_id 
+        + "<button data-carrier='"
+        + rates.results[i].provider + "'  data-shipment='"
+        + rates.results[i].shipment + "' data-rate='" + rate
+        + "' data-rate-id='" + rates.results[i].object_id
         + "'onclick='Subscriptions.createBillingPlan(this)'>Select</button></div>";
     }
     Shipping.showRates();
@@ -607,7 +606,7 @@ Subscriptions = {
       action: "/createplan",
       contentType: "application/json; charset=utf-8",
       _token: document.querySelector('meta[name="csrf-token"]').content,
-      customHeader:"PLAN",
+      customHeader: "PLAN",
       payload: json
     }
     function callback(r) {
@@ -670,6 +669,8 @@ $(document).ready(function () {
     location.assign(url);
     sessionStorage.removeItem("last");
   }
+ 
+if(document.getElementById("box")){
 
   //Tracks user intent prior to sign in
   if (sessionStorage.getItem('sub') == 1) { // intended to subscribe
@@ -686,6 +687,7 @@ $(document).ready(function () {
     sessionStorage.removeItem('sub');
 
   }
+}
 
   // Presentation: fades in pages on load
   if (document.getElementsByTagName("main")[0]) {
@@ -696,6 +698,7 @@ $(document).ready(function () {
   }
 
   // LISTENERS
+
   if (document.getElementById('exe-sub')) {
     document.getElementById('exe-sub').addEventListener('click', function () {
       var a = this;
@@ -722,6 +725,7 @@ $(document).ready(function () {
   }
   if (document.getElementById('play-video')) {
     document.getElementById('play-video').addEventListener('click', function () {
+      let URL = document.getElementById("exe-sub").getAttribute("data-url");
       var a = this;
       Boxeon.router(a);
     });
@@ -856,3 +860,5 @@ $(window).on('beforeunload', function () {
   }
 
 });
+
+

@@ -34,7 +34,7 @@ class GoogleController extends Controller
 
             if($finduser){
                 Auth::login($finduser);
-                return redirect('/home');
+                return redirect('/home/index');
             }else{
                 $user = User::firstOrCreate([
                     'google_id' => $user->id,
@@ -45,20 +45,19 @@ class GoogleController extends Controller
                 ]);
 
                 Auth::login($user, true);
-
-                Mail::to($user->email)->send(new WelcomeUser($user));
-
-                return redirect('/home');
+                Mail::to($user->email)->send(new WelcomeUser($user)); 
+                return redirect('/home/index');
             }
         }catch (Exception $e) {
             dd($e->getMessage());
         }
     }
-    public function check(){
-        if (Auth::check()) {
-            return true;
-        }else if(!Auth::check()){
-            return false;
+    public function status(){
+        $status = Auth::check();
+        if ($status) {
+            echo 1;
+        }else if(!$status){
+            echo 0;
         }
     }
 }

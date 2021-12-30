@@ -20,7 +20,7 @@
               <input required type="email" name="email" placeholder="Email">
               <input required type="tel" name="phone" placeholder="Phone number">
               <select required name="platform">
-                <option value="" invalid>Select your primary platform:</option>
+                <option value="" invalid>Select your primary platform</option>
                 <option value="yt">Youtube</option>
                 <option value="in">Instagram</option>
                 <option value="tw">Twitch</option>

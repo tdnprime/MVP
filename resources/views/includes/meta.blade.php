@@ -21,4 +21,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert%20One">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{{ asset('../assets/js/global.js?v=1') }}"></script>
+<meta name="google-signin-client_id" content="227887284273-k2b81lp0r79e25vg57vf5kjbnglff49p.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
 

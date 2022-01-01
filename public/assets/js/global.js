@@ -4,6 +4,8 @@ var Boxeon = Boxeon || {};
 var Shipping = Shipping || {};
 var Auth = Auth || {};
 var Subscriptions = Subscriptions || {};
+var controller = new AbortController();
+var signal = controller.signal;
 
 Auth = {
 
@@ -24,6 +26,7 @@ Auth = {
         Boxeon.playVideo(video_id, creator_id);
       }
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
 
   }
@@ -37,20 +40,20 @@ Boxeon = {
     xhttp.setRequestHeader(data.customHeader, data.payload, false);
     xhttp.send();
     xhttp.onreadystatechange = function () {
-      if (this.readyState == 0) {
-        Boxeon.progressBar(25);
-      } else if (this.readyState == 2) {
-        Boxeon.progressBar(50);
-      } else if (this.readyState == 3) {
-        Boxeon.progressBar(75);
-      } else if (this.readyState == 4 && this.status == 200) {
+
+      if (this.readyState == 4 && this.status == 200) {
+        Boxeon.removeLoader();
         back(this.responseText);
-        Boxeon.progressBar(101);
       } else {
         // We will not use modal windows for 
         // error, success, or warning messages
       }
     }
+  },
+  disableLink: function (link) {
+    link.addEventListener("click", function() {
+      controller.abort();
+    });
   },
   tabSwitch: function (id) {
     var contents = document.getElementsByClassName("tab-content");
@@ -63,15 +66,22 @@ Boxeon = {
     }
   },
 
-  progressBar: function (completed) {
-    var wrapper = document.getElementById("progress");
-    var bar = document.getElementById("bar");
-    var width = 0;
-    for (width < completed; width++;) {
-      wrapper.style.visibility = "visible";
-      wrapper.style.width = width + "%";
-      bar.style.width = width + "%";
+  loader: function () {
+    if (!document.getElementsByClassName("loader")[0]) {
+      let div = document.createElement("div");
+      div.className = "loader";
+      let masthead = document.getElementById("container");
+      masthead.prepend(div);
     }
+  },
+  removeLoader: function () {
+    if (document.getElementsByClassName("loader")[0]) {
+      var loader = document.getElementsByClassName("loader")[0];
+      loader.remove();
+    }
+  },
+  inlineMessage: function (msg) {
+    // Show inline message
   },
   changeImageOnMouseover: function (img, src) {
     img.src = "http://localhost:8000/assets/images/" + src;
@@ -212,7 +222,7 @@ Boxeon = {
     label3.appendChild(radio3);
     form.appendChild(label3);
     label4.appendChild(radio4);
-    form.appendChild(label4);
+    //form.appendChild(label4);
     radio1.addEventListener('click', function () {
 
       Boxeon.switchPlan(this);
@@ -448,6 +458,7 @@ Shipping = {
     var btn = document.getElementById("process-data");
     btn.addEventListener("click", function () {
       var f = this.parentNode;
+      var a = this;
       Shipping.processFormData(f);
       return;
     });
@@ -493,6 +504,7 @@ Shipping = {
     function callback(re) {
       Shipping.buildRateCard(JSON.parse(re));
     }
+    Boxeon.loader();
     Boxeon.sendAjax(manifest, callback);
 
   },
@@ -541,7 +553,7 @@ Shipping = {
     Boxeon.createModalWindow();
     var mcheader = document.getElementById("mc-header");
     mcheader.innerHTML =
-      '<div class="asides"><div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p><p class="step step-completed">L</p><p class="step step-current">3</p></div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
+      '<div class="asides"><div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p><p class="step step-current">2</p><p class="step step-incomplete">3</p></div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
     mcheader.appendChild(div)
 
   },
@@ -558,6 +570,7 @@ Shipping = {
     }
 
     function callback() { }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   }
 
@@ -590,6 +603,7 @@ Subscriptions = {
         // to do.  m.setAttribute("class", "fadein");
       }
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
   add: function (json) {
@@ -604,6 +618,7 @@ Subscriptions = {
     function callback() {
       Boxeon.createModalWindow();
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
 
@@ -630,7 +645,7 @@ Subscriptions = {
       method: "POST",
       action: "/createplan",
       contentType: "application/json; charset=utf-8",
-      Accept:"*application/json*",
+      Accept: "*application/json*",
       customHeader: "PLAN",
       payload: json
     }
@@ -640,13 +655,17 @@ Subscriptions = {
       document.getElementById("m-window").remove();
       Subscriptions.showPaymentOptions(); // PayPal et al.
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
   showPaymentOptions: function () {
     Boxeon.createModalWindow();
+    document.getElementById("mc-header").innerHTML = "<div class='asides'><div id='steps-line'></div><div id='steps-left'>"
+    +"<p class='step step-completed'>L</p>"
+    +"<p class='step step-completed'>L</p><p class='step step-current'>3</p></div></div>";
     document.
       getElementById("m-body").
-      innerHTML = "<div class='asides'><div id='steps-line'></div><div id='steps-left'><p class='step step-completed'>L</p><p class='step step-completed'>L</p><p class='step step-current'>3</p></div><h2>3. Choose a payment method</h2><div id='paypal-button-container'></div>";
+      innerHTML = "<h2>3. Choose a payment method</h2><div id='paypal-button-container'><br></div>";
     Boxeon.loadScript("../../assets/js/subs.js");
     var buttons = document.getElementById("paypal-button-container");
     buttons.style.display = "block";
@@ -665,6 +684,7 @@ Subscriptions = {
     function callback(r) {
       alert(r);
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
   showRecommended: function () {
@@ -679,6 +699,7 @@ Subscriptions = {
     function callback(r) {
       alert(r);
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   }
 
@@ -723,9 +744,10 @@ $(document).ready(function () {
   }
 
   // LISTENERS
-
+ 
   if (document.getElementById('exe-sub')) {
     document.getElementById('exe-sub').addEventListener('click', function () {
+      Boxeon.loader();
       var a = this;
       Boxeon.router(a);
     });
@@ -733,6 +755,7 @@ $(document).ready(function () {
   if (document.getElementById('exe-sub-alt')) {
     document.getElementById('exe-sub-alt').addEventListener('click', function () {
       var a = this;
+      Boxeon.loader();
       Boxeon.router(a);
     });
   }
@@ -752,6 +775,7 @@ $(document).ready(function () {
     document.getElementById('play-video').addEventListener('click', function () {
       let URL = document.getElementById("exe-sub").getAttribute("data-url");
       var a = this;
+      Boxeon.loader();
       Boxeon.router(a);
     });
   }

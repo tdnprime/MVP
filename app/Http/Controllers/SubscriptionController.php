@@ -26,7 +26,11 @@ class SubscriptionController extends Controller
 
     // Prep data PayPal needs to create a billing plan
     $box = DB::select('select * from boxes where user_id= ?', [$user->id]);
-    $TOTAL = $plan->total + $plan->rate;
+    if(is_int($plan->rate)){
+     $TOTAL = $plan->total + $plan->rate;
+    }elseif($plan->rate){
+      $TOTAL = $plan->total;
+    }
       $data = [
         "product_id" => $box[0]->product_id,
         "name" => "Boxeon",

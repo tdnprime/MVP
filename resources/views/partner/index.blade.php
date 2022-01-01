@@ -3,14 +3,17 @@
 @section('content')
 
 <div id="masthead">
+  
     <section id="headline">
       <div class="two-col-grid">
         <div>
           <p class="text-heading-label">DON'T HESITATE</p>
+        
           <h1 class="ginormous">Take the leap, Boxeon will give you wings</h1>
+          
           <p id="pitch">Our partner program is sponsoring 100 content creators to launch their subscription boxes on Boxeon. If you're a creator with 2k+ average views and would like to launch a subscription box at no cost to you, apply today.</p>
 			    <a id="partner-apply" href="#" class="button"> Apply</a>
-          <a href="#whatis" class="button clearbtn"> Learn more </a> </div>
+          <a href="#whatis" class="button clearbtn hide"> Learn more </a> </div>
         <div id="form-partner-apply-wrapper" class="masthead-forms">
           <h2>Apply now</h2>
           <form id='form-partner-apply' action="/partner/apply" method="post">

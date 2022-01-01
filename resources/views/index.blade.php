@@ -79,7 +79,7 @@
       <div class="alt-section-inner-grid"><img src="../assets/images/slamdunk.svg" alt="Easy business" />
         <div class="secinner">
           <h2 class="extra-large-font">It's easier than you think</h2>
-          <p>You can offer a subscription box on any schedule that's easy for you to slam dunk. For proof of concept, see how Boxeon is being used by <a href='/box/?u=48' class='darkblue underline one-em-font' title='Proof of concept'>Prototype</a>.</p>
+          <p>You can offer a subscription box on any schedule that's easy for you to slam dunk. Unlike Patreon, Boxeon is flexible enough for you to have time to enjoy freedom.</p>
         </div>
       </div>
     </section>

@@ -26,13 +26,29 @@ NOTE:
     }
   }
 
-
+  @media only screen and (max-width:1595px) {
+    main{
+      margin-top: 25em;
+    }
+    .overide{
+      margin-top: 0;
+    }
+  }
 @media only screen and (max-width:1591px) {
   #m-content h2 {
     width: 89%;
   }
-#partner .two-col-grid {
-    background: url(../images/mobile-fall-5.svg) 10em -8em no-repeat; 
+  header{
+    padding-left:0;
+  }
+#partner-masthead-image {
+  width: 95%;
+    height: 100%;
+    background: url(../images/fall-4.svg) 50% 5em no-repeat; 
+    display:block;
+}
+#partner .two-col-grid{
+  background: none;
 }
 #how-it-works{
   width:90%;
@@ -41,12 +57,8 @@ NOTE:
 	#form-partner-apply-wrapper{
 		display:none;
 	}
-	#partner-apply{
-		display:inline-block;
-	}
-	#masthead-image-about {
-    background: url("../images/alt-blue-bg.svg") no-repeat 50% 5em;
-}
+
+
 	.two-col-grid{
 		display:block;
 	}
@@ -101,6 +113,9 @@ NOTE:
   }
  #page-name {
     font-size: inherit !important;
+  }
+  .ginormous{
+    font-size: 4em !important;
   }
   #box-headline h1 {
     grid-row-start: 1;
@@ -238,17 +253,9 @@ NOTE:
   #masthead-image {
     width: 95%;
     height: 100%;
-    background: url("../images/alt-marilyn.svg") no-repeat right 5em !important;
+    background: url("../images/marilyn.svg") no-repeat 50% 5em;
   }
-  #masthead-image-discounts {
-    width: 95%;
-    height: 100%;
-  }
-  #masthead-image-plus {
-    width: 95%;
-    height: 100%;
-    background: url(../images/ballons.svg) no-repeat right 5em !important;
-  }
+
   #masthead-image-construction{
     width: 95%;
     height: 100%;
@@ -258,18 +265,7 @@ NOTE:
     height:50em;
   }
 }
-/* SMALL SCREENSß */
-@media only screen and (max-width: 864px) {
-  #partner .two-col-grid {
-    background: url(../images/mobile-fall-5.svg) 0 -5em no-repeat;
-}
-}
 
-/* SMALL SCREENSß */
-@media only screen and (max-width: 768px) {
-  #partner .two-col-grid {
-    background: url(../images/mobile-fall-5.svg) no-repeat;
-}
   .hide{
     display:none;
   }
@@ -299,7 +295,7 @@ NOTE:
     margin-bottom: 4em;
   }
   input, select, button, .button, textarea {
-    width: 100% !important;
+    min-width: 100% !important;
   }
   #subs-btns {
     display: block;
@@ -317,32 +313,60 @@ NOTE:
     padding: 0;
   }
 }
-/* Extra small devices (phones, 600px and down) */
+/* Extra small devices (phones, 684px and down) */
 @media only screen and (max-width: 694px) {
   #partner .two-col-grid {
     background: url(../images/mobile-fall-5.svg) -5em -5em no-repeat;
 }
+
+
 }
-/* Extra small devices (phones, 600px and down) */
+/* Extra small devices (phones, 674px and down) */
 @media only screen and (max-width: 674px) {
+
   #partner .two-col-grid {
     background: url(../images/mobile-fall-5.svg) -8em -5em no-repeat;
 }
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 668px) {
+  #box-headline p{
+    display:block;
+  }
+  #box .highlighted{
+    display:block;
+    margin-bottom:.5em;
+  }
+  #tabs-wrapper a,
+#tabs-wrapper {
+  display: block;
+}
+  footer{
+    padding:1em;
+    width:80%;
+  }
+  main{
+    margin-top: 45em;
+  }
+  #partner .two-col-grid {
+    
+    background: url(../images/fall-5.svg) no-repeat 80% 5em;
+}
+  #masthead-image {
+    background: url(../images/marilyn.svg) no-repeat 80% 5em;
+    height: inherit;
+    width: inherit;
+}
   #partner .two-col-grid {
     background: none;
 }
-#partner .alt-masthead-image{
-  display: block;
-}
+
   #box-headline div {
     padding:0;
     padding-top: 2em;
     padding-bottom: 2em;
   }
-  #partner #masthead{
+  #masthead{
     margin-top:6em;
     height:65em;
   }
@@ -373,7 +397,7 @@ NOTE:
   }
   #container {
     display: block;
-	  width: fit-content;
+	 
   }
   p {
     max-width: 100%;

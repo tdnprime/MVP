@@ -12,7 +12,7 @@
           <h1 class="ginormous">Take the leap, Boxeon will give you wings</h1>
           
           <p id="pitch">Our partner program is sponsoring 100 content creators to launch their subscription boxes on Boxeon. If you're a creator with 2k+ average views and would like to launch a subscription box at no cost to you, apply today.</p>
-			    <a id="partner-apply" href="#" class="button"> Apply</a>
+			    <a id="partner-apply" href="#" class="button hide"> Apply</a>
           <a href="#whatis" class="button clearbtn hide"> Learn more </a> </div>
         <div id="form-partner-apply-wrapper" class="masthead-forms">
           <h2>Apply now</h2>
@@ -305,6 +305,7 @@
         </div>
       </div>
     </section>
+    <div id="partner-masthead-image"></div>
   </div>
   <main> <a id='whatis' href='#whatis'></a>
     <aside class="asides">
@@ -355,8 +356,8 @@
     </section>
 
     <br>
-    <h2 class="centered">How it works</h2>
-    <div id="how-it-works" class="four-col-grid">
+    <h2 class="centered hide">How it works</h2>
+    <div id="how-it-works" class="four-col-grid hide">
       <div> <img src="../assets/images/computer.svg" alt="Computer"/>
         <h2>Survey fans</h2>
       </div>

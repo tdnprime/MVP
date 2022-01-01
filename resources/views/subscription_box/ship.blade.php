@@ -9,8 +9,8 @@
    
   <div class="margin-top-4-em vertical-align">
       <div id="tabs-wrapper">
-      <a id="anchor-tab-subscriptions" class="button clearbtn" href="#"><span class="material-icons">outbox</span>Outgoing</a>
-      <a id="anchor-tab-incoming" class="button clearbtn" href="#"><span class="material-icons">inbox</span>Incoming</a>
+      <a id="anchor-tab-subscriptions" class="button clearbtn" href="#"><span class="material-icons">outbox</span>Outgoing</a><span class="break"></span>
+      <a id="anchor-tab-incoming" class="button clearbtn" href="#"><span class="material-icons">inbox</span>Incoming</a><span class="break"></span>
       <a  id="anchor-tab-tracking" class="button clearbtn" href="#"><span class="material-icons">place</span>Tracking</a>
       </div>
   </div>

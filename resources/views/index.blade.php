@@ -8,7 +8,7 @@
         <h1 class="ginormous">Liberating, monthly, sustainable income</h1>
         <p id="pitch">Finally, content creators can achieve the freedom they desire by offering their fans subscription boxes. Boxeon makes it a breeze - ask Marilyn.</p>
       <a class="button" href="{{ url('auth/google') }}"> Get started </a>
-        <a href="#whatis" class="button clearbtn"> Learn more </a> </section>
+        <a href="#whatis" class="button clearbtn hide"> Learn more </a> </section>
       <div id="masthead-image"> </div>
     </div>
 
@@ -84,8 +84,8 @@
       </div>
     </section>
       <br>
-      <h2 class="centered">How it works</h2>
-      <div id="how-it-works" class="four-col-grid">
+      <h2 class="centered hide">How it works</h2>
+      <div id="how-it-works" class="four-col-grid hide">
         <div> <img src="assets/images/computer.svg" alt="Computer"/> <h2>Survey fans</h2></div>
         <div> <img src="assets/images/box.svg" alt="Box"/> <h2>Create box</h2></div>
         <div> <img src="assets/images/camera.svg" alt="Camera"/> <h2>Share box</h2></div>

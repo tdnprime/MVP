@@ -157,8 +157,8 @@ If you're unsatisfied with $user->given_name's box, you may unsubscribe at anyti
         </div>
         <img src='../../assets/images/laptop.svg' alt='subscription box'> </div>
     </section>
-	 <h2 class='centered'>How it works</h2>
-    <div id='how-it-works' class='three-col-grid'>
+	 <h2 class='centered hide'>How it works</h2>
+    <div id='how-it-works' class='three-col-grid hide'>
      
       <div> <img src='../../assets/images/computer.svg' alt='Box'/> <h2>Find box</h2></div>
       <div> <img src='../../assets/images/card.svg' alt='Card'/> <h2>Add payment</h2></div>

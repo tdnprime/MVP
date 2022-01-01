@@ -57,7 +57,7 @@ echo '<div id="masthead" class="fadein">
         $user->given_name $user->family_name</span>
         <span class='break hack-br-1'><br></span> is shipping $box_s subscription boxes <br> 
         to loyal fans</h1> <div>
-		<p><span class='highlighted darkblue'>$$price</span> per box ($shipping)</p>
+		<p><span class='highlighted darkblue'>$$price</span></span> per box ($shipping)</p>
 		<!--<p><span class='highlighted darkblue'>$20 off</span> when you 
         <span class='break hack-br-2'><br>
         </span>
@@ -188,8 +188,8 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
         </div>
         <img src='../../assets/images/laptop.svg' alt='subscription box'> </div>
     </section>
-	 <h2 class='centered'>How it works</h2>
-    <div id='how-it-works' class='three-col-grid'>
+	 <h2 class='centered hide'>How it works</h2>
+    <div id='how-it-works' class='three-col-grid hide'>
 
       <div> <img src='../../assets/images/computer.svg' alt='Box'/> <h2>Watch video</h2></div>
       <div> <img src='../../assets/images/card.svg' alt='Card'/> <h2>Subscribe</h2></div>

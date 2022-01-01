@@ -439,7 +439,7 @@ Shipping = {
       + '<p id="text-step2-label" class="centered">Payment</p>'
       + '</div></div>';
     document.getElementById("m-body").innerHTML =
-      "<h2>2. Provide your shipping address</h2><form id='checkout-address-form' onsubmit='return'>"
+      "<h2>2. Provide your address</h2><form id='checkout-address-form' onsubmit='return'>"
       + "<fieldset><input type='text' name='fullname' placeHolder='Full name' required value=''></input>"
       + "<input type='text' name='address_line_1' placeHolder='Street address' required value=''></input>"
       + "<input type='text' name='address_line_2' placeHolder='Street address line 2 (optional)' value=''></input>"

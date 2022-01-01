@@ -40,7 +40,7 @@ echo '<div id="masthead" class="fadein">
 	<section id='box-headline'>
 		<h1 class='darkblue'> 
 		<span id='page-name' class='ginormous primary-color'>$user->given_name $user->family_name</span>
-        <span class='break hack-br-1'><br></span> is shipping $box_s subscription boxes <br> 
+        <span class='hack-br-1'></span> is shipping $box_s subscription boxes <br> 
         to loyal fans</h1> <div>
 		<p><span class='highlighted darkblue'>$$price</span> per box ($shipping)</p>
 		<!-- <p><span class='highlighted darkblue'>$20 off</span> when you <span class='break hack-br-2'><br>
@@ -48,7 +48,7 @@ echo '<div id="masthead" class="fadein">
 		<a class='one-em-font darkblue underline' href='#' title='Click to allow'>allow notifications</a>
         </p>!-->
 		<p><span class='highlighted darkblue'>$in_stock</span> boxes left in stock</p>
-        <span class='break hack-br-3'><br></span>
+        <span class='break hack-br-1'><br></span>
 		<div class='sub-btns'>
 		<a href='#' id='exe-sub' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-id='$id' data-shipping='$cost' data-url='$url' data-video-id='$video' data-plan-id='1' class='button'>Subscribe</a>
     

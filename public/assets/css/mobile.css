@@ -13,13 +13,13 @@ NOTE:
 
 
 */
-.break {
-  display: block;
-}
+
 	#partner-apply{
 		display:none;
 	}
-
+.hack-br-1{
+  display: none;
+}
   @media only screen and (max-width:1810px) {
     #box-masthead-inner-wrapper {
       width: 80%;
@@ -332,6 +332,9 @@ NOTE:
 @media only screen and (max-width: 668px) {
   #box-headline p{
     display:block;
+  }
+  .break {
+    display: block;
   }
   #box .highlighted{
     display:block;

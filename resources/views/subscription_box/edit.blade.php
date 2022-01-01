@@ -65,7 +65,7 @@ echo '<div id="masthead" class="fadein">
         title='Click to allow'>allow notifications</a>
         </p>!-->
 		<p><span class='highlighted darkblue'>$in_stock</span> boxes left in stock</p>
-        <span class='break hack-br-3'><br></span>
+        <span class='break hack-br-1'><br></span>
 		<div class='sub-btns'>
 		<a href='#' id='exe-sub' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video'
         data-plan-id='1' class='button'>Subscribe</a>

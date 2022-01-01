@@ -91,6 +91,12 @@ Brown skin: #a0616a
   padding-bottom: 4em;
   border-radius: .5em;
 }
+.break{
+  display: none;
+}
+.hack-br-1{
+  display: block;
+}
 .asides {
   height: auto;
   margin: auto;
@@ -559,6 +565,7 @@ width:fit-content;
   width:78%;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 #m-content #subs-btns,
 #process-data,
@@ -1118,6 +1125,9 @@ the side navigation*/
   position: absolute;
   top: 40%;
   width: 5em;
+}
+main a{
+  font-size: 1em !important;
 }
 .playbtn:hover {
   cursor: pointer;

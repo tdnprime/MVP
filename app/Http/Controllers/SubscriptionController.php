@@ -39,8 +39,8 @@ class SubscriptionController extends Controller
         "billing_cycles" => [
           [
             "frequency" => [
-              "interval_unit" => "MONTH", // this may need to be dynamic as buyers can also do single purchases
-              "interval_count" => $plan->frequency  // Set this to "1" if the json has a value of "0" for frequency 
+              "interval_unit" => "MONTH", 
+              "interval_count" => $plan->frequency  
             ],
             "tenure_type" => "REGULAR",
             "sequence" => 1,
@@ -85,13 +85,13 @@ class SubscriptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($data)
+    public function store($data)
     {
       $id = auth()->user()->id;
       $user = User::find($id);
       $subscription = DB::table('subscriptions');
 
-       /* $request->validate([
+        $request->validate([
             'price' => 'required',
             'plan_id' => 'required',
             'address_line_1' => 'required',
@@ -106,7 +106,7 @@ class SubscriptionController extends Controller
             'fullname' => 'required',
             'status' => 'required',
             'carrier' => 'required'
-        ]);*/
+        ]);
 
         $array = array(
             'price' => $data->total,
@@ -125,7 +125,7 @@ class SubscriptionController extends Controller
             'carrier' => $data->carrier,
            );
 
-        $subscription->update($array);
+           $user->subscriptions()->save($array);
     }
 
 }

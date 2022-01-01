@@ -118,7 +118,6 @@
       <p>We or our third-party service providers may use cookies and similar tracking technologies to collect personal data whenever you use our services, visit our sites, or visit websites that offer our services. The information collected with these technologies helps us personalize your experience, measure the effect of our ads, prevent fraud and enhance the security of our sites and service. </p>
       <p>You can disable or decline some cookies for our sites and services. But, since some parts of our service rely on cookies to work, those services could become difficult or impossible to use.</p>
       <p>Some web browsers have an optional setting called “Do Not Track” (DNT) that lets you opt-out of being tracked by advertisers and some third parties. Because many of our services won’t function without tracking data, we do not respond to DNT settings.</p>
-      <p>If you want to know more about how we use cookies, read our <a href='/cookies/'>Cookie Statement</a>. To learn how to opt-out of this kind of tracking technology, visit <a href='/ads/'>About Ads</a>.</p>
       <p>Why we collect personal data</p>
       <p>We collect personal data for many reasons, including to improve your experience, and to run our business. Specific reasons why we collect your personal data include:</p>
       <ul>
@@ -126,7 +125,7 @@
         <li>Manage and improve our business. For example, we do user research to improve our products’ performance and abilities. We also monitor and analyze our sites to help ensure they work as expected.</li>
         <li>Protect our business and our customers from risk and fraud, including fraud that involves our business partners, strategic ventures, or other individuals and merchants.</li>
         <li>Send you marketing information about our products and services. We may use personal data to market about our partners, such as merchants. We use personal data to better understand and cater to your interests.</li>
-        <li>Personalize your experience when you use our sites and services, as well as other third-party sites and services. In this case, we might use tracking technologies like cookies. See our <a href='/cookies/'>Cookie Statement</a> for more details.</li>
+        <li>Personalize your experience when you use our sites and services, as well as other third-party sites and services. In this case, we might use tracking technologies like cookies.</li>
         <li>Send you locally relevant options, but only if you agree to let us track your location. If you do, this can help us enhance the security of our sites and services, and customize our services by using the right language and personalizing content such as ads and search results.</li>
         <li>Make it easy for you to find and connect with others. For instance, if you let us access your contacts, we can suggest connections with people you may know.</li>
         <li>Contact you when you need us, such as answering a question you sent to our customer service team.</li>

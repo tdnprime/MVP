@@ -644,6 +644,8 @@ Subscriptions = {
       Shipping.arr['shipment'] = Shipping.rateSelected.getAttribute('sub-shipment'); 
       Shipping.arr['rate_id'] = Shipping.rateSelected.getAttribute('sub-rate-id'); 
       Shipping.arr['carrier'] = Shipping.rateSelected.getAttribute('sub-carrier'); 
+    }else{
+      Shipping.arr['rate'] = 0; 
     }
     Shipping.arr['total'] = sessionStorage.getItem('sub-total');
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');

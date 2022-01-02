@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class SubscriptionController extends Controller
 {
     
-    public function createplan(){
+    public function createplan(Request $request){
         
         $id = auth()->user()->id;
         $user = User::find($id);
@@ -26,7 +26,7 @@ class SubscriptionController extends Controller
 
     // Prep data PayPal needs to create a billing plan
     $box = DB::select('select * from boxes where user_id= ?', [$user->id]);
-    if(is_int($plan->rate)){
+    if($plan->rate != null){
      $TOTAL = $plan->total + $plan->rate;
     }elseif($plan->rate){
       $TOTAL = $plan->total;
@@ -55,6 +55,11 @@ class SubscriptionController extends Controller
         ],
         "payment_preferences" => [
           "auto_bill_outstanding" => true,
+          "setup_fee" => [
+            "value" => "3",
+            "currency_code" => "USD"
+          ],
+          "setup_fee_failure_action" => "CONTINUE",
           "payment_failure_threshold" => 3
         ]
       ];
@@ -69,12 +74,10 @@ class SubscriptionController extends Controller
         */
 
        $plan->plan_id =  $p[ "id" ];
-       $this->update($plan);
-    
-        // Return plan ID to browser for the off-site PayPal checkout flow
-        $return = [];
-        $return[ 'plan_id' ] = $p[ 'id' ];
-        print_r( json_encode( $return ) );
+       //$plan - Save in DB without calling the store function from within this function
+       $return = [];
+       $return[ 'plan_id' ] = $p[ 'id' ];
+       print_r( json_encode( $return ) );
   
     }
 }
@@ -89,9 +92,10 @@ class SubscriptionController extends Controller
     {
       $id = auth()->user()->id;
       $user = User::find($id);
-      $subscription = DB::table('subscriptions');
+      $subscription = new Subscription;
 
         $request->validate([
+            'uid' => 'required',
             'price' => 'required',
             'plan_id' => 'required',
             'address_line_1' => 'required',
@@ -109,6 +113,7 @@ class SubscriptionController extends Controller
         ]);
 
         $array = array(
+            'uid' => $user->id,
             'price' => $data->total,
             'plan_id' => $data->plan_id,
             'address_line_1' => $data->address_line_1,
@@ -122,10 +127,14 @@ class SubscriptionController extends Controller
             'shipment' => $data->shipment,
             'fullname' => $data->fullname,
             'status' => 'p', // p = pending - the subscription is not yet paid for
-            'carrier' => $data->carrier,
+            'carrier' => $data->carrier
            );
 
-           $user->subscriptions()->save($array);
+           $subscription->save($array);
+    }
+    public function add(){
+      /* Update subscription table after PayPal callback 
+      then update the in_stock column in the boxes tables by subtracting 1.*/
     }
 
 }

@@ -294,9 +294,7 @@ NOTE:
     padding: 0;
     margin-bottom: 4em;
   }
-  input, select, button, .button, textarea {
-    min-width: 100% !important;
-  }
+ 
   #subs-btns {
     display: block;
   }

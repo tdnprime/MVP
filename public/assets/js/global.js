@@ -51,7 +51,7 @@ Boxeon = {
     }
   },
   disableLink: function (link) {
-    link.addEventListener("click", function() {
+    link.addEventListener("click", function () {
       controller.abort();
     });
   },
@@ -472,7 +472,13 @@ Shipping = {
       if (nl[i].getAttribute('name')) {
         var key = nl[i].getAttribute('name');
         var value = nl[i].value;
-        Shipping.arr[key] = value;
+        if (value == "" && key !== "address_line_2") {
+          let field = document.getElementsByName(key)[0];
+          field.style.border = "red 1px solid";
+          return;
+        } else {
+          Shipping.arr[key] = value;
+        }
       }
     }
     var n = f.getElementsByTagName("select");
@@ -480,7 +486,13 @@ Shipping = {
       if (n[e].getAttribute('name')) {
         var k = n[e].getAttribute('name');
         var v = n[e].value;
+        if(v == ""){
+          let field = document.getElementsByName(k)[0];
+          field.style.border = "red 1px solid";
+          return;
+        }else{
         Shipping.arr[k] = v;
+        }
       }
     }
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
@@ -526,10 +538,10 @@ Shipping = {
 
       div.className = "four-col-grid margin-bottom-4-em";
       img.src = rates.results[i].provider_image_200;
-      sessionStorage.setItem("sub-carrier", rates.results[i].provider);
-      sessionStorage.setItem("sub-rate", rate_plus);
-      sessionStorage.setItem("sub-shipment", rates.results[i].shipment);
-      sessionStorage.setItem("sub-rate-id", rates.results[i].object_id);
+      button.setAttribute("sub-carrier", rates.results[i].provider);
+      button.setAttribute("sub-rate", rate_plus);
+      button.setAttribute("sub-shipment", rates.results[i].shipment);
+      button.setAttribute("sub-rate-id", rates.results[i].object_id);
       button.appendChild(cta);
 
       div.appendChild(p1);
@@ -540,6 +552,7 @@ Shipping = {
       p3.appendChild(rate);
       div.appendChild(button);
       button.addEventListener("click", function () {
+        Shipping.rateSelected = this;
         Subscriptions.createBillingPlan();
 
       });
@@ -553,7 +566,10 @@ Shipping = {
     Boxeon.createModalWindow();
     var mcheader = document.getElementById("mc-header");
     mcheader.innerHTML =
-      '<div class="asides"><div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p><p class="step step-current">2</p><p class="step step-incomplete">3</p></div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
+      '<div class="asides"><div id="steps-line"></div>'
+      +'<div id="steps-left"><p class="step step-completed">L</p>'
+      +'<p class="step step-current">2</p><p class="step step-incomplete">3</p>'
+      +'</div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
     mcheader.appendChild(div)
 
   },
@@ -609,9 +625,9 @@ Subscriptions = {
   add: function (json) {
     var data = {
       method: "POST",
-      action: "../subs/index.php",
+      action: "/subscription/add",
       contentType: "application/json; charset=utf-8",
-      customHeader: "SUB",
+      customHeader: "ADD",
       payload: json
     }
 
@@ -623,17 +639,11 @@ Subscriptions = {
   },
 
   createBillingPlan: function () {
-    if (sessionStorage.getItem('sub-rate')) {
-      Shipping.arr['rate'] = sessionStorage.getItem('sub-rate'); // Optional
-    }
-    if (sessionStorage.getItem('sub-shipment')) {
-      Shipping.arr['shipment'] = sessionStorage.getItem('sub-shipment'); // Optional
-    }
-    if (sessionStorage.getItem('sub-rate-id')) {
-      Shipping.arr['rate_id'] = sessionStorage.getItem('sub-rate-id'); // Optional
-    }
-    if (sessionStorage.getItem('sub-carrier')) {
-      Shipping.arr['carrier'] = sessionStorage.getItem('sub-carrier'); // Optional
+    if (Shipping.rateSelected) {
+      Shipping.arr['rate'] = Shipping.rateSelected.getAttribute('sub-rate'); 
+      Shipping.arr['shipment'] = Shipping.rateSelected.getAttribute('sub-shipment'); 
+      Shipping.arr['rate_id'] = Shipping.rateSelected.getAttribute('sub-rate-id'); 
+      Shipping.arr['carrier'] = Shipping.rateSelected.getAttribute('sub-carrier'); 
     }
     Shipping.arr['total'] = sessionStorage.getItem('sub-total');
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
@@ -661,8 +671,8 @@ Subscriptions = {
   showPaymentOptions: function () {
     Boxeon.createModalWindow();
     document.getElementById("mc-header").innerHTML = "<div class='asides'><div id='steps-line'></div><div id='steps-left'>"
-    +"<p class='step step-completed'>L</p>"
-    +"<p class='step step-completed'>L</p><p class='step step-current'>3</p></div></div>";
+      + "<p class='step step-completed'>L</p>"
+      + "<p class='step step-completed'>L</p><p class='step step-current'>3</p></div></div>";
     document.
       getElementById("m-body").
       innerHTML = "<h2>3. Choose a payment method</h2><div id='paypal-button-container'><br></div>";
@@ -744,7 +754,7 @@ $(document).ready(function () {
   }
 
   // LISTENERS
- 
+
   if (document.getElementById('exe-sub')) {
     document.getElementById('exe-sub').addEventListener('click', function () {
       Boxeon.loader();

@@ -90,11 +90,13 @@ class ShippingController extends Controller
             "email" =>  $config[ 'boxeon' ][ 'serviceEmail' ]
           ) );
 
-        // VALIDATE ADDRESS
-       $toid = $toAddress[ 'object_id' ];
+        
+        $toid = $toAddress[ 'object_id' ];
         $fromid = $fromAddress[ 'object_id' ];
-       $vto = Shippo_Address::validate( $toid );
-        $vfrom = Shippo_Address::validate( $fromid );// Get the shipment object
+        // VALIDATE ADDRESS -- This will be done when purchasing shipping labels
+        /*$vto = Shippo_Address::validate( $toid );
+        $vfrom = Shippo_Address::validate( $fromid );//the shipment object
+        */
 
         // CREATE PARCEL OBJECT
         $parcel = Shippo_Parcel::create( array(

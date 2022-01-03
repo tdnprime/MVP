@@ -13,7 +13,7 @@ class Subscription extends Model
         'creator_id',
         'uid',
         'fullname',
-        'cfp',
+        'cpf',
         'sub_id',
         'date_created',
         'version',
@@ -31,8 +31,10 @@ class Subscription extends Model
         'rate',
         'shipment',
         'plan_id',
+        'order_id',
         'last_shipping',
         'label',
         'carrier'
     ];
+
 }

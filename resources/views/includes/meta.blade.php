@@ -1,7 +1,4 @@
-
-
-{{-- WARNING #1 of 3
-    
+{{-- WARNING #1 of 3 
     THE URLS MUST BE CHANGED FOR PRODUCTION.  SEE WARNING #2 IN THE FOOTER --}}
 
 
@@ -24,11 +21,10 @@
 <meta name="google-signin-client_id" content="227887284273-k2b81lp0r79e25vg57vf5kjbnglff49p.apps.googleusercontent.com">
 <?php
 $config = parse_ini_file( "../config/app.ini", true );
-
-// FOR SUBSCRIPTIONS
-echo "<script src=https://www.paypal.com/sdk/js?client-id=" . $config[ 'paypal' ][ 'clientID' ] . "&vault=true&intent=subscription></script>";
-
-
+$nonce = base64_encode("Content-Security-Policy: def");
+session_start();
+$_SESSION ["nonce"] = $nonce;
+echo "<script type='text/javascript' data-csp-nonce='$nonce' src=https://www.paypal.com/sdk/js?client-id=" . $config[ 'paypal' ][ 'clientID' ] . "&locale=en_US&vault=true&intent=subscription&commit=true></script>";
 ?>
 <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
 

@@ -307,7 +307,7 @@ Boxeon = {
     s.type = 'text/javascript';
     s.async = true;
     s.src = url;
-    var x = document.getElementsByTagName('footer')[0];
+    var x = document.getElementsByTagName('head')[0];
     x.appendChild(s);
   },
 
@@ -377,19 +377,18 @@ Boxeon = {
       } else if (a.id == 'exe-unsub') {
         sessionStorage.setItem('sub', 0);
       }
-      // In case of page reload
       sessionStorage.setItem('sub', 1);
       var video_id = a.getAttribute("data-video-id");
       sessionStorage.setItem('sub-vid', video_id);
       var creator_id = a.getAttribute("data-id");
       sessionStorage.setItem('sub-cid', creator_id);
-      Auth.check(video_id, creator_id);
       // sub-creator-id is already set in sessionStorage
       sessionStorage.setItem("sub-total", a.getAttribute("data-total"));
       sessionStorage.setItem("sub-product", a.getAttribute("data-product"));
       sessionStorage.setItem("sub-in-stock", a.getAttribute("data-in-stock"));
       sessionStorage.setItem('sub-shipping', a.getAttribute("data-shipping"));
-
+      sessionStorage.setItem('sub-version', a.getAttribute("data-version"));
+      Auth.check(video_id, creator_id);
     } else if (a.id == 'exe-unsub') {
       sessionStorage.setItem('sub', 0); // in case of page reload
       Subscriptions.removeCheck(a);
@@ -452,7 +451,9 @@ Shipping = {
       + "<option value='CA' label='Canada'>Canada</option>"
       + "<option value='BR' label='Brazil'>Brazil</option>"
       + "</select>"
-      + "<input type='text' name='postal_code' required placeHolder='Postal code' value=''></input></fieldset>"
+      + "<input type='text' name='postal_code' required placeHolder='Postal code' value=''></input>"
+      +"<input type='hidden' name='cpf' placeHolder='Cadastro de Pessoas Físicas' value='0'></input>"
+      +"</fieldset>"
       + "<br><input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
       + "</form>";
     var btn = document.getElementById("process-data");
@@ -622,17 +623,20 @@ Subscriptions = {
     Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
-  add: function (json) {
+  complete: function (json) {
     var data = {
       method: "POST",
-      action: "/subscription/add",
+      action: "/subscription/complete/" + json + "",
       contentType: "application/json; charset=utf-8",
-      customHeader: "ADD",
-      payload: json
+      customHeader: "X-CSRF-TOKEN",
+      payload: document.querySelector('meta[name="csrf-token"]').content
     }
 
-    function callback() {
-      Boxeon.createModalWindow();
+    function callback(re) {
+      if(re == 1){
+      sessionStorage.clear();
+      location.href = "/home/index";
+      }
     }
     Boxeon.loader();
     Boxeon.sendAjax(data, callback);
@@ -646,7 +650,11 @@ Subscriptions = {
       Shipping.arr['carrier'] = Shipping.rateSelected.getAttribute('sub-carrier'); 
     }else{
       Shipping.arr['rate'] = 0; 
+      Shipping.arr['shipment'] = null;
+      Shipping.arr['rate_id'] = null;
+      Shipping.arr['carrier'] = null;
     }
+    Shipping.arr['version'] = sessionStorage.getItem('sub-version');
     Shipping.arr['total'] = sessionStorage.getItem('sub-total');
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
     Shipping.arr['frequency'] = sessionStorage.getItem('sub-freq');
@@ -672,13 +680,21 @@ Subscriptions = {
   },
   showPaymentOptions: function () {
     Boxeon.createModalWindow();
-    document.getElementById("mc-header").innerHTML = "<div class='asides'><div id='steps-line'></div><div id='steps-left'>"
+    document.getElementById("mc-header").innerHTML = 
+        "<div class='asides'><div id='steps-line'></div><div id='steps-left'>"
       + "<p class='step step-completed'>L</p>"
       + "<p class='step step-completed'>L</p><p class='step step-current'>3</p></div></div>";
     document.
       getElementById("m-body").
-      innerHTML = "<h2>3. Choose a payment method</h2><div id='paypal-button-container'><br></div>";
-    Boxeon.loadScript("../../assets/js/subs.js");
+      innerHTML = "<h2>3. Choose a payment method</h2><div id='paypal-button-container'><br></div>"
+      + "<p class='centered'>By choosing a Payment Method, you agree to our <a href='/terms' target='_blank'"
+      +"class='one-em-font'>Terms of use</a> and <a href='/privacy' target='_blank'"
+      +"class='one-em-font'>Privacy Policy</a>, and consent to enroll in a subscription " 
+      +"billing agreement with Boxeon LLC for the subscription box advertised on this page. " 
+      +"Subscriptions can be cancelled at any time via the " 
+      +"Home page in your account. Subscriptions are billed to the payment method "
+      +"selected, until cancelled.</p>";
+    Boxeon.loadScript("../../assets/js/paypal-button.js");
     var buttons = document.getElementById("paypal-button-container");
     buttons.style.display = "block";
 
@@ -883,7 +899,7 @@ $(document).ready(function () {
 
     var el = "h2";
     var options = {
-      msg: "Create your box in three easy steps",
+      msg: "Create your box",
       className: "primary-color centered"
     }
     document.getElementById("module").prepend(Boxeon.createElem(el, options));

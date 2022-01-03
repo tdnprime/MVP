@@ -40,7 +40,7 @@ echo "<div id='module'>
     <label>How many boxes will you make available for sale monthly?</label>
         <input type='number' required value='' name='box_supply' placeHolder='60'>
         <label>What's the price per box in US dollars?</label>
-        <input type='number' required value='' name='price' min='30'  placeholder='30'>
+        <input type='number' required value='' name='price' placeholder='30'>
         <label>Create a custum URL for your subscription box page.</label>
         <label id='grid-custom-url'><p class='one-em-font'>https://boxeon.com/</p>
         <input type='text' required value='' placeholder='Your custom URL' name='box_url'>
@@ -407,7 +407,7 @@ echo "<div id='module'>
             <fieldset id='curation2'><legend class='primary-color'>Shipping address</legend>
             <label>We will use this info to calculate the cost of shipping to your fans and to generate the postage / shipping labels you will need to ship your boxes.</label>
             <input name='address_line_1' type='text' class='optional' disabled required value='' placeHolder='Street address'/>
-            <input name='address_line_2' type='text' class='optional' disabled required value='' placeHolder='Address line 2 (optional)'/>
+            <input name='address_line_2' type='text' class='optional' disabled value='' placeHolder='Address line 2 (optional)'/>
             <input name='admin_area_2' type='text' class='optional' disabled required value='' placeHolder='City'/>
             <input name='admin_area_1' type='text' class='optional' disabled required value='' placeHolder='State'/>
             <select disabled required name='country_code' class='optional form-control' id='country'>

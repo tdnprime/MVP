@@ -1525,6 +1525,7 @@ header .material-icons{
   width: 1em; /* Also needed for space (tweak if needed) */
   margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
+
 label {
   padding: .6em;
 }

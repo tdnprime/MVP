@@ -25,16 +25,16 @@ class SubscriptionController extends Controller
     $config = parse_ini_file( "../config/app.ini", true );
 
     // Prep data PayPal needs to create a billing plan
-    $box = DB::select('select * from boxes where user_id= ?', [$user->id]);
+    $box = DB::select('select * from boxes where user_id= ?', [$plan->creator_id]);
     if($plan->rate > 0){
-     $TOTAL = $plan->total + $plan->rate;
+    $TOTAL = $plan->total + $plan->rate;
     }elseif($plan->rate == 0){
       $TOTAL = $plan->total;
     }
       $data = [
         "product_id" => $box[0]->product_id,
-        "name" => "Boxeon",
-        "description" => "Subscription box",
+        "name" => $user->given_name . " " . $user->family_name . " " . "Plan" . " " . $plan->frequency,
+        "description" => $user->given_name . " " . $user->family_name . " " . "Subscription box",
         "status" => "ACTIVE",
         "billing_cycles" => [
           [
@@ -63,7 +63,7 @@ class SubscriptionController extends Controller
           "payment_failure_threshold" => 3
         ]
       ];
-      #SEND REQUEST TO PAYPAL
+      // Create billing plan on PayPal and get the returned ID
       $endpoint = $config[ "paypal" ][ "plansEndpoint" ];
       $media = "Content-Type: application/json, Authorization: Bearer $token";
       $p = sendcurl( json_encode( $data ), $endpoint, $media );
@@ -72,9 +72,9 @@ class SubscriptionController extends Controller
         Save price, plan ID. and address for now. 
         More info is needed to complete a subscription.
         */
-
        $plan->plan_id =  $p[ "id" ];
-       //$plan - Save in DB without calling the store function from within this function
+       $this->store($plan);
+       // Return plan_id for buyer to continue to PayPal 
        $return = [];
        $return[ 'plan_id' ] = $p[ 'id' ];
        print_r( json_encode( $return ) );
@@ -92,29 +92,13 @@ class SubscriptionController extends Controller
     {
       $id = auth()->user()->id;
       $user = User::find($id);
-      $subscription = new Subscription;
-
-        $request->validate([
-            'uid' => 'required',
-            'price' => 'required',
-            'plan_id' => 'required',
-            'address_line_1' => 'required',
-            'address_line_2' => 'required',
-            'admin_area_1' => 'required',
-            'admin_area_2' => 'required',
-            'postal_code' => 'required',
-            'country_code' => 'required',
-            'rate_id' => 'required',
-            'rate' => 'required',
-            'shipment' => 'required',
-            'fullname' => 'required',
-            'status' => 'required',
-            'carrier' => 'required'
-        ]);
-
-        $array = array(
-            'uid' => $user->id,
+      $array = array(
+            'creator_id' => $data->creator_id,
+            'user_id' => $user->id,
+            'version' => $data->version,
+            'frequency' => $data->frequency,
             'price' => $data->total,
+            'cpf' => $data->cpf, // Cadastro de Pessoas Físicas. 
             'plan_id' => $data->plan_id,
             'address_line_1' => $data->address_line_1,
             'address_line_2' => $data->address_line_2,
@@ -126,15 +110,27 @@ class SubscriptionController extends Controller
             'rate' => $data->rate,
             'shipment' => $data->shipment,
             'fullname' => $data->fullname,
-            'status' => 'p', // p = pending - the subscription is not yet paid for
+            'status' => 2, // 2 = pending - the subscription is not yet paid for
             'carrier' => $data->carrier
            );
-
-           $subscription->save($array);
+           DB::table('subscriptions')->insert($array);
     }
-    public function add(){
-      /* Update subscription table after PayPal callback 
-      then update the in_stock column in the boxes tables by subtracting 1.*/
+
+    public function complete($callback){
+      
+      $id = auth()->user()->id;
+      $user = User::find($id);
+      // Update subscription table after PayPal callback 
+      $add = json_decode($callback);
+      DB::unprepared("update subscriptions set status=1, sub_id='$add->sub_id', order_id='$add->order_id' WHERE user_id=$user->id AND creator_id=$add->creator_id AND plan_id='$add->plan_id'");
+      //Update the in_stock column in the seller's boxes row
+      $this->updateStock($add->creator_id, $add->version, $add->stock);
+      return 1;
+    }
+
+    protected function updateStock($creator_id, $version, $stock){
+      $available = $stock - 1;
+      DB::unprepared("update boxes set in_stock=$available where user_id=$creator_id AND vid=$version");
     }
 
 }

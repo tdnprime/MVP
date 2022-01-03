@@ -25,6 +25,11 @@ NOTE:
       width: 80%;
     }
   }
+  @media only screen and (max-width:800px) {
+    #home main {
+      display: block;
+    }
+  }
 
   @media only screen and (max-width:1595px) {
     main{
@@ -53,7 +58,10 @@ NOTE:
 #how-it-works{
   width:90%;
 }
-
+#module{
+  width:min-content;
+  padding:0;
+}
 	#form-partner-apply-wrapper{
 		display:none;
 	}
@@ -264,6 +272,11 @@ NOTE:
   #partner #masthead{
     height:50em;
   }
+ 
+  #create-box fieldset {
+    width:fit-content;
+   
+  }
 }
 
   .hide{
@@ -325,12 +338,22 @@ NOTE:
   #partner .two-col-grid {
     background: url(../images/mobile-fall-5.svg) -8em -5em no-repeat;
 }
+
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 668px) {
+  legend{
+    text-align: center;
+    margin-bottom:2em;
+    text-transform: uppercase;
+  }
   #box-headline p{
     display:block;
   }
+#panel{
+  padding:0;
+  box-shadow:none;
+}
   .break {
     display: block;
   }
@@ -381,7 +404,13 @@ NOTE:
   #home main {
     display: block;
     padding: 0;
+    //width: fit-content;
   }
+  #create-box fieldset {
+    border: none;
+    margin-bottom: 3em;
+    padding: 0;
+}
 #box-headline p{
   margin-right:0;
 }

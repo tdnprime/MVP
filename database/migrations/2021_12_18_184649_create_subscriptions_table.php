@@ -15,28 +15,29 @@ class CreateSubscriptionsTable extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->integer('creator_id')->nullable();
-            $table->foreignId('uid');
+            $table->foreignId('user_id');
             $table->string('fullname');
-            $table->integer('cfp');
-            $table->string('sub_id');
+            $table->integer('cpf')->nullable();
+            $table->string('sub_id')->nullable();
             $table->integer('version');
             $table->integer('price');
             $table->integer('frequency');
             $table->integer('status');
-            $table->string('tracking');
+            $table->string('tracking')->nullable();
             $table->string('address_line_1');
             $table->string('address_line_2');
             $table->string('admin_area_1');
             $table->string('admin_area_2');
             $table->string('postal_code');
             $table->string('country_code');
-            $table->string('rate_id');
-            $table->string('rate');
-            $table->string('shipment');
+            $table->string('rate_id')->nullable();
+            $table->string('rate')->nullable();
+            $table->string('shipment')->nullable();
             $table->string('plan_id');
-            $table->string('last_shipping');
-            $table->string('label');
-            $table->string('carrier');
+            $table->string('order_id')->nullable();
+            $table->string('last_shipping')->nullable();
+            $table->string('label')->nullable();
+            $table->string('carrier')->nullable();
             $table->timestamps();
         });
     }

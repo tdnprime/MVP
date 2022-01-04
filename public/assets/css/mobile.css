@@ -13,32 +13,65 @@ NOTE:
 
 
 */
-.break {
-  display: block;
-}
+
 	#partner-apply{
 		display:none;
 	}
-@media only screen and (max-width:1591px) {
-#partner .two-col-grid {
-    background: url(../images/fall-4.svg) -10em 18em no-repeat, url(../images/fall-5.svg) 36em top no-repeat; 
+.hack-br-1{
+  display: none;
 }
+  @media only screen and (max-width:1810px) {
+    #box-masthead-inner-wrapper {
+      width: 80%;
+    }
+  }
+  @media only screen and (max-width:800px) {
+    #home main {
+      display: block;
+    }
+  }
 
-
+  @media only screen and (max-width:1595px) {
+    main{
+      margin-top: 25em;
+    }
+    .overide{
+      margin-top: 0;
+    }
+  }
+@media only screen and (max-width:1591px) {
+  #m-content h2 {
+    width: 89%;
+  }
+  header{
+    padding-left:0;
+  }
+#partner-masthead-image {
+  width: 95%;
+    height: 100%;
+    background: url(../images/fall-4.svg) 50% 5em no-repeat; 
+    display:block;
+}
+#partner .two-col-grid{
+  background: none;
+}
+#how-it-works{
+  width:90%;
+}
+#module{
+  width:min-content;
+  padding:0;
+}
 	#form-partner-apply-wrapper{
 		display:none;
 	}
-	#partner-apply{
-		display:inline-block;
-	}
-	#masthead-image-about {
-    background: url("../images/alt-blue-bg.svg") no-repeat 50% 5em;
-}
+
+
 	.two-col-grid{
 		display:block;
 	}
 	#headline{
-		width:70%;
+		max-width:90%;
 		margin:auto;
 		top: 14em;
 	}
@@ -53,6 +86,7 @@ NOTE:
     display: block;
     background-image: url(../images/alt-blue-bg.svg);
     padding:0 !important;
+    width:60%;
   }
   #box-headline {
     width: 100%;
@@ -63,6 +97,9 @@ NOTE:
   #box #masthead {
     display: block;
    
+  }
+  #box main{
+    margin-top:4em;
   }
   #create-box {
     left: -7em;
@@ -85,9 +122,12 @@ NOTE:
  #page-name {
     font-size: inherit !important;
   }
+  .ginormous{
+    font-size: 4em !important;
+  }
   #box-headline h1 {
     grid-row-start: 1;
-    font-size: 5em;
+    font-size: 4em;
     margin-bottom: 0.2em;
     text-align: center;
 	  width:auto !important;
@@ -116,9 +156,7 @@ NOTE:
     padding: 0;
     margin-top: 4em;
   }
-  #panel a {
-    //padding: 0;
-  }
+ 
   .pointer {
     display: inline-block;
     font-size: inherit;
@@ -166,9 +204,7 @@ NOTE:
   .section img {
     margin-bottom: 0;
   }
-  #signin {
-    display: none;
-  }
+ 
   #mobile-signin a {
     padding-left: .5em;
     width: 11em;
@@ -190,10 +226,12 @@ NOTE:
   }
   #headline {
   /*  top: 8em !important;
-    padding-left: 0 !important;
+   
     grid-row-start: 3;
     grid-row-end: 3;
-    position: static !important;*/
+  */
+  padding-left: 0 !important;
+  position: static !important;
 	text-align: center;
   }
   #testimonials {
@@ -206,13 +244,13 @@ NOTE:
   .section img {
     height: 300px;
   }
- #box #masthead {
+ /*#box #masthead {
     display: block;
     overflow-y: hidden;
-   /* height:auto;*/
-  }
+  }*/
   #box #masthead {
     display: block;
+    height:fit-content;
   }
   /*  #headline {
     grid-column-start: 1;
@@ -223,26 +261,33 @@ NOTE:
   #masthead-image {
     width: 95%;
     height: 100%;
-    background: url("../images/alt-marilyn.svg") no-repeat right 5em !important;
+    background: url("../images/marilyn.svg") no-repeat 50% 5em;
   }
-  #masthead-image-discounts {
-    width: 95%;
-    height: 100%;
-  }
-  #masthead-image-plus {
-    width: 95%;
-    height: 100%;
-    background: url(../images/ballons.svg) no-repeat right 5em !important;
-  }
+
   #masthead-image-construction{
     width: 95%;
     height: 100%;
     background: url("../images/alt-makeitrain.svg") no-repeat right 5em !important;
   }
+  #partner #masthead{
+    height:50em;
+  }
+ 
+  #create-box fieldset {
+    width:fit-content;
+   
+  }
 }
-/* SMALL SCREENSß */
-@media only screen and (max-width: 768px) {
 
+  .hide{
+    display:none;
+  }
+  #box-masthead-inner-wrapper {
+    width:100% !important;
+  }
+  #signin {
+    display: none;
+  }
   #getlabels {
     left: -9.5em !important;
     left: 0;
@@ -250,17 +295,19 @@ NOTE:
     background-color: #005ea6;
   }
   #current-user {
-    padding: 0;
-    position: relative;
-    top: 0;
+    display:none;
+  }
+  .section{
+    width:auto;
+  }
+  #masthead-video-wrapper{
+    width:auto;
   }
   .tip {
     padding: 0;
     margin-bottom: 4em;
   }
-  input, select, button, .button, textarea {
-    width: 100% !important;
-  }
+ 
   #subs-btns {
     display: block;
   }
@@ -277,22 +324,110 @@ NOTE:
     padding: 0;
   }
 }
+/* Extra small devices (phones, 684px and down) */
+@media only screen and (max-width: 694px) {
+  #partner .two-col-grid {
+    background: url(../images/mobile-fall-5.svg) -5em -5em no-repeat;
+}
+
+
+}
+/* Extra small devices (phones, 674px and down) */
+@media only screen and (max-width: 674px) {
+
+  #partner .two-col-grid {
+    background: url(../images/mobile-fall-5.svg) -8em -5em no-repeat;
+}
+
+}
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 668px) {
+  legend{
+    text-align: center;
+    margin-bottom:2em;
+    text-transform: uppercase;
+  }
+  #box-headline p{
+    display:block;
+  }
+#panel{
+  padding:0;
+  box-shadow:none;
+}
+  .break {
+    display: block;
+  }
+  #box .highlighted{
+    display:block;
+    margin-bottom:.5em;
+  }
+  #tabs-wrapper a,
+#tabs-wrapper {
+  display: block;
+}
+  footer{
+    padding:1em;
+    width:80%;
+  }
+  main{
+    margin-top: 45em;
+  }
+  #partner .two-col-grid {
+    
+    background: url(../images/fall-5.svg) no-repeat 80% 5em;
+}
+  #masthead-image {
+    background: url(../images/marilyn.svg) no-repeat 80% 5em;
+    height: inherit;
+    width: inherit;
+}
+  #partner .two-col-grid {
+    background: none;
+}
+
+  #box-headline div {
+    padding:0;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  #masthead{
+    margin-top:6em;
+    height:65em;
+  }
+  #box-masthead-inner-wrapper{
+    margin-top:6em;
+  }
+
 	#current-user{
     display:none;
   }
   #home main {
     display: block;
     padding: 0;
+    //width: fit-content;
   }
+  #create-box fieldset {
+    border: none;
+    margin-bottom: 3em;
+    padding: 0;
+}
+#box-headline p{
+  margin-right:0;
+}
+#box-headline .sub-btns{
+  width:fit-content;
+}
+#share-box{
+  display:none;
+}
   footer {
     padding-left: 0;
     padding-right: 0;
+    text-align: center;
   }
   #container {
     display: block;
-	  width: fit-content;
+	 
   }
   p {
     max-width: 100%;
@@ -323,5 +458,6 @@ NOTE:
     grid-row-start: 3;
     grid-row-end: 3;
     position: static !important;
+    width:80%;
   }
 }

@@ -34,6 +34,7 @@ echo '<div id="masthead" class="fadein">
     $in_stock = $box[0]->in_stock;
     $product = $box[0]->product_id;
     $video = $box[0]->video;
+    $version = $box[0]->vid;
 	  $price = $box[0]->price;
 	  $id = $box_supply = $box[0]->user_id;
     $date = gmdate("F d", $box[0]->created_at + 2629743);
@@ -57,7 +58,7 @@ echo '<div id="masthead" class="fadein">
         $user->given_name $user->family_name</span>
         <span class='break hack-br-1'><br></span> is shipping $box_s subscription boxes <br> 
         to loyal fans</h1> <div>
-		<p><span class='highlighted darkblue'>$$price</span> per box ($shipping)</p>
+		<p><span class='highlighted darkblue'>$$price</span></span> per box ($shipping)</p>
 		<!--<p><span class='highlighted darkblue'>$20 off</span> when you 
         <span class='break hack-br-2'><br>
         </span>
@@ -65,9 +66,9 @@ echo '<div id="masthead" class="fadein">
         title='Click to allow'>allow notifications</a>
         </p>!-->
 		<p><span class='highlighted darkblue'>$in_stock</span> boxes left in stock</p>
-        <span class='break hack-br-3'><br></span>
+        <span class='break hack-br-1'><br></span>
 		<div class='sub-btns'>
-		<a href='#' id='exe-sub' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video'
+		<a href='#' id='exe-sub' data-version='$version' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video'
         data-plan-id='1' class='button'>Subscribe</a>
 		<a id='share-box' data-id='$id' data-url='$url' href='#whatis' class='button clearbtn'>
         Learn more</a>
@@ -102,7 +103,7 @@ echo '<div id="masthead" class="fadein">
             <div class='playbtn-wrapper'>
             <img id='image-youtube-thumb' 
             src='http://img.youtube.com/vi/$video/maxresdefault.jpg'/>
-             <a href='#' id='play-video' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video' 
+             <a href='#' id='play-video' data-version='$version' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video' 
              data-plan-id='1'><img class='playbtn' src='../../assets/images/playbtn.png' 
              alt='Play video'/></a>
             </div>
@@ -188,8 +189,8 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
         </div>
         <img src='../../assets/images/laptop.svg' alt='subscription box'> </div>
     </section>
-	 <h2 class='centered'>How it works</h2>
-    <div id='how-it-works' class='three-col-grid'>
+	 <h2 class='centered hide'>How it works</h2>
+    <div id='how-it-works' class='three-col-grid hide'>
 
       <div> <img src='../../assets/images/computer.svg' alt='Box'/> <h2>Watch video</h2></div>
       <div> <img src='../../assets/images/card.svg' alt='Card'/> <h2>Subscribe</h2></div>
@@ -200,7 +201,7 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
       <div class='centered'>
         <h1 class='extra-large-font darkblue'>We make it that simple</h1>
         <br>
-        <a href='#' id='exe-sub-alt' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video'
+        <a href='#' id='exe-sub-alt' data-version='$version' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video'
         data-plan-id='1' class='button'> Get started with $user->given_name </a> </div>
     </section>
 		 </main>";

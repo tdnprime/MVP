@@ -4,6 +4,8 @@ var Boxeon = Boxeon || {};
 var Shipping = Shipping || {};
 var Auth = Auth || {};
 var Subscriptions = Subscriptions || {};
+var controller = new AbortController();
+var signal = controller.signal;
 
 Auth = {
 
@@ -24,6 +26,7 @@ Auth = {
         Boxeon.playVideo(video_id, creator_id);
       }
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
 
   }
@@ -37,20 +40,20 @@ Boxeon = {
     xhttp.setRequestHeader(data.customHeader, data.payload, false);
     xhttp.send();
     xhttp.onreadystatechange = function () {
-      if (this.readyState == 0) {
-        Boxeon.progressBar(25);
-      } else if (this.readyState == 2) {
-        Boxeon.progressBar(50);
-      } else if (this.readyState == 3) {
-        Boxeon.progressBar(75);
-      } else if (this.readyState == 4 && this.status == 200) {
+
+      if (this.readyState == 4 && this.status == 200) {
+        Boxeon.removeLoader();
         back(this.responseText);
-        Boxeon.progressBar(101);
       } else {
         // We will not use modal windows for 
         // error, success, or warning messages
       }
     }
+  },
+  disableLink: function (link) {
+    link.addEventListener("click", function () {
+      controller.abort();
+    });
   },
   tabSwitch: function (id) {
     var contents = document.getElementsByClassName("tab-content");
@@ -63,15 +66,22 @@ Boxeon = {
     }
   },
 
-  progressBar: function (completed) {
-    var wrapper = document.getElementById("progress");
-    var bar = document.getElementById("bar");
-    var width = 0;
-    for (width < completed; width++;) {
-      wrapper.style.visibility = "visible";
-      wrapper.style.width = width + "%";
-      bar.style.width = width + "%";
+  loader: function () {
+    if (!document.getElementsByClassName("loader")[0]) {
+      let div = document.createElement("div");
+      div.className = "loader";
+      let masthead = document.getElementById("container");
+      masthead.prepend(div);
     }
+  },
+  removeLoader: function () {
+    if (document.getElementsByClassName("loader")[0]) {
+      var loader = document.getElementsByClassName("loader")[0];
+      loader.remove();
+    }
+  },
+  inlineMessage: function (msg) {
+    // Show inline message
   },
   changeImageOnMouseover: function (img, src) {
     img.src = "http://localhost:8000/assets/images/" + src;
@@ -212,7 +222,7 @@ Boxeon = {
     label3.appendChild(radio3);
     form.appendChild(label3);
     label4.appendChild(radio4);
-    form.appendChild(label4);
+    //form.appendChild(label4);
     radio1.addEventListener('click', function () {
 
       Boxeon.switchPlan(this);
@@ -297,7 +307,7 @@ Boxeon = {
     s.type = 'text/javascript';
     s.async = true;
     s.src = url;
-    var x = document.getElementsByTagName('footer')[0];
+    var x = document.getElementsByTagName('head')[0];
     x.appendChild(s);
   },
 
@@ -367,19 +377,18 @@ Boxeon = {
       } else if (a.id == 'exe-unsub') {
         sessionStorage.setItem('sub', 0);
       }
-      // In case of page reload
       sessionStorage.setItem('sub', 1);
       var video_id = a.getAttribute("data-video-id");
       sessionStorage.setItem('sub-vid', video_id);
       var creator_id = a.getAttribute("data-id");
       sessionStorage.setItem('sub-cid', creator_id);
-      Auth.check(video_id, creator_id);
       // sub-creator-id is already set in sessionStorage
       sessionStorage.setItem("sub-total", a.getAttribute("data-total"));
       sessionStorage.setItem("sub-product", a.getAttribute("data-product"));
       sessionStorage.setItem("sub-in-stock", a.getAttribute("data-in-stock"));
       sessionStorage.setItem('sub-shipping', a.getAttribute("data-shipping"));
-
+      sessionStorage.setItem('sub-version', a.getAttribute("data-version"));
+      Auth.check(video_id, creator_id);
     } else if (a.id == 'exe-unsub') {
       sessionStorage.setItem('sub', 0); // in case of page reload
       Subscriptions.removeCheck(a);
@@ -429,7 +438,7 @@ Shipping = {
       + '<p id="text-step2-label" class="centered">Payment</p>'
       + '</div></div>';
     document.getElementById("m-body").innerHTML =
-      "<h2>2. Provide your shipping address</h2><form id='checkout-address-form' onsubmit='return'>"
+      "<h2>2. Provide your address</h2><form id='checkout-address-form' onsubmit='return'>"
       + "<fieldset><input type='text' name='fullname' placeHolder='Full name' required value=''></input>"
       + "<input type='text' name='address_line_1' placeHolder='Street address' required value=''></input>"
       + "<input type='text' name='address_line_2' placeHolder='Street address line 2 (optional)' value=''></input>"
@@ -442,12 +451,15 @@ Shipping = {
       + "<option value='CA' label='Canada'>Canada</option>"
       + "<option value='BR' label='Brazil'>Brazil</option>"
       + "</select>"
-      + "<input type='text' name='postal_code' required placeHolder='Postal code' value=''></input></fieldset>"
+      + "<input type='text' name='postal_code' required placeHolder='Postal code' value=''></input>"
+      +"<input type='hidden' name='cpf' placeHolder='Cadastro de Pessoas Físicas' value='0'></input>"
+      +"</fieldset>"
       + "<br><input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
       + "</form>";
     var btn = document.getElementById("process-data");
     btn.addEventListener("click", function () {
       var f = this.parentNode;
+      var a = this;
       Shipping.processFormData(f);
       return;
     });
@@ -461,7 +473,13 @@ Shipping = {
       if (nl[i].getAttribute('name')) {
         var key = nl[i].getAttribute('name');
         var value = nl[i].value;
-        Shipping.arr[key] = value;
+        if (value == "" && key !== "address_line_2") {
+          let field = document.getElementsByName(key)[0];
+          field.style.border = "red 1px solid";
+          return;
+        } else {
+          Shipping.arr[key] = value;
+        }
       }
     }
     var n = f.getElementsByTagName("select");
@@ -469,7 +487,13 @@ Shipping = {
       if (n[e].getAttribute('name')) {
         var k = n[e].getAttribute('name');
         var v = n[e].value;
+        if(v == ""){
+          let field = document.getElementsByName(k)[0];
+          field.style.border = "red 1px solid";
+          return;
+        }else{
         Shipping.arr[k] = v;
+        }
       }
     }
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
@@ -493,6 +517,7 @@ Shipping = {
     function callback(re) {
       Shipping.buildRateCard(JSON.parse(re));
     }
+    Boxeon.loader();
     Boxeon.sendAjax(manifest, callback);
 
   },
@@ -514,10 +539,10 @@ Shipping = {
 
       div.className = "four-col-grid margin-bottom-4-em";
       img.src = rates.results[i].provider_image_200;
-      sessionStorage.setItem("sub-carrier", rates.results[i].provider);
-      sessionStorage.setItem("sub-rate", rate_plus);
-      sessionStorage.setItem("sub-shipment", rates.results[i].shipment);
-      sessionStorage.setItem("sub-rate-id", rates.results[i].object_id);
+      button.setAttribute("sub-carrier", rates.results[i].provider);
+      button.setAttribute("sub-rate", rate_plus);
+      button.setAttribute("sub-shipment", rates.results[i].shipment);
+      button.setAttribute("sub-rate-id", rates.results[i].object_id);
       button.appendChild(cta);
 
       div.appendChild(p1);
@@ -528,6 +553,7 @@ Shipping = {
       p3.appendChild(rate);
       div.appendChild(button);
       button.addEventListener("click", function () {
+        Shipping.rateSelected = this;
         Subscriptions.createBillingPlan();
 
       });
@@ -541,7 +567,10 @@ Shipping = {
     Boxeon.createModalWindow();
     var mcheader = document.getElementById("mc-header");
     mcheader.innerHTML =
-      '<div class="asides"><div id="steps-line"></div><div id="steps-left"><p class="step step-completed">L</p><p class="step step-completed">L</p><p class="step step-current">3</p></div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
+      '<div class="asides"><div id="steps-line"></div>'
+      +'<div id="steps-left"><p class="step step-completed">L</p>'
+      +'<p class="step step-current">2</p><p class="step step-incomplete">3</p>'
+      +'</div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
     mcheader.appendChild(div)
 
   },
@@ -558,6 +587,7 @@ Shipping = {
     }
 
     function callback() { }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   }
 
@@ -590,36 +620,41 @@ Subscriptions = {
         // to do.  m.setAttribute("class", "fadein");
       }
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
-  add: function (json) {
+  complete: function (json) {
     var data = {
       method: "POST",
-      action: "../subs/index.php",
+      action: "/subscription/complete/" + json + "",
       contentType: "application/json; charset=utf-8",
-      customHeader: "SUB",
-      payload: json
+      customHeader: "X-CSRF-TOKEN",
+      payload: document.querySelector('meta[name="csrf-token"]').content
     }
 
-    function callback() {
-      Boxeon.createModalWindow();
+    function callback(re) {
+      if(re == 1){
+      sessionStorage.clear();
+      location.href = "/home/index";
+      }
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
 
   createBillingPlan: function () {
-    if (sessionStorage.getItem('sub-rate')) {
-      Shipping.arr['rate'] = sessionStorage.getItem('sub-rate'); // Optional
+    if (Shipping.rateSelected) {
+      Shipping.arr['rate'] = Shipping.rateSelected.getAttribute('sub-rate'); 
+      Shipping.arr['shipment'] = Shipping.rateSelected.getAttribute('sub-shipment'); 
+      Shipping.arr['rate_id'] = Shipping.rateSelected.getAttribute('sub-rate-id'); 
+      Shipping.arr['carrier'] = Shipping.rateSelected.getAttribute('sub-carrier'); 
+    }else{
+      Shipping.arr['rate'] = 0; 
+      Shipping.arr['shipment'] = null;
+      Shipping.arr['rate_id'] = null;
+      Shipping.arr['carrier'] = null;
     }
-    if (sessionStorage.getItem('sub-shipment')) {
-      Shipping.arr['shipment'] = sessionStorage.getItem('sub-shipment'); // Optional
-    }
-    if (sessionStorage.getItem('sub-rate-id')) {
-      Shipping.arr['rate_id'] = sessionStorage.getItem('sub-rate-id'); // Optional
-    }
-    if (sessionStorage.getItem('sub-carrier')) {
-      Shipping.arr['carrier'] = sessionStorage.getItem('sub-carrier'); // Optional
-    }
+    Shipping.arr['version'] = sessionStorage.getItem('sub-version');
     Shipping.arr['total'] = sessionStorage.getItem('sub-total');
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
     Shipping.arr['frequency'] = sessionStorage.getItem('sub-freq');
@@ -630,24 +665,36 @@ Subscriptions = {
       method: "POST",
       action: "/createplan",
       contentType: "application/json; charset=utf-8",
-      Accept:"*application/json*",
+      Accept: "*application/json*",
       customHeader: "PLAN",
       payload: json
     }
     function callback(r) {
       var json = JSON.parse(r);
-      sessionStorage.setItem("sub-plan-id", json['plan_id']); //From PayPal
+      sessionStorage.setItem("sub-plan_id", json['plan_id']); //From PayPal
       document.getElementById("m-window").remove();
       Subscriptions.showPaymentOptions(); // PayPal et al.
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
   showPaymentOptions: function () {
     Boxeon.createModalWindow();
+    document.getElementById("mc-header").innerHTML = 
+        "<div class='asides'><div id='steps-line'></div><div id='steps-left'>"
+      + "<p class='step step-completed'>L</p>"
+      + "<p class='step step-completed'>L</p><p class='step step-current'>3</p></div></div>";
     document.
       getElementById("m-body").
-      innerHTML = "<h2>Call to action</h2><div id='paypal-button-container'></div>";
-    Boxeon.loadScript("subs.js");
+      innerHTML = "<h2>3. Choose a payment method</h2><div id='paypal-button-container'><br></div>"
+      + "<p class='centered'>By choosing a Payment Method, you agree to our <a href='/terms' target='_blank'"
+      +"class='one-em-font'>Terms of use</a> and <a href='/privacy' target='_blank'"
+      +"class='one-em-font'>Privacy Policy</a>, and consent to enroll in a subscription " 
+      +"billing agreement with Boxeon LLC for the subscription box advertised on this page. " 
+      +"Subscriptions can be cancelled at any time via the " 
+      +"Home page in your account. Subscriptions are billed to the payment method "
+      +"selected, until cancelled.</p>";
+    Boxeon.loadScript("../../assets/js/paypal-button.js");
     var buttons = document.getElementById("paypal-button-container");
     buttons.style.display = "block";
 
@@ -665,6 +712,7 @@ Subscriptions = {
     function callback(r) {
       alert(r);
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
   showRecommended: function () {
@@ -679,6 +727,7 @@ Subscriptions = {
     function callback(r) {
       alert(r);
     }
+    Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   }
 
@@ -726,6 +775,7 @@ $(document).ready(function () {
 
   if (document.getElementById('exe-sub')) {
     document.getElementById('exe-sub').addEventListener('click', function () {
+      Boxeon.loader();
       var a = this;
       Boxeon.router(a);
     });
@@ -733,6 +783,7 @@ $(document).ready(function () {
   if (document.getElementById('exe-sub-alt')) {
     document.getElementById('exe-sub-alt').addEventListener('click', function () {
       var a = this;
+      Boxeon.loader();
       Boxeon.router(a);
     });
   }
@@ -752,6 +803,7 @@ $(document).ready(function () {
     document.getElementById('play-video').addEventListener('click', function () {
       let URL = document.getElementById("exe-sub").getAttribute("data-url");
       var a = this;
+      Boxeon.loader();
       Boxeon.router(a);
     });
   }
@@ -847,7 +899,7 @@ $(document).ready(function () {
 
     var el = "h2";
     var options = {
-      msg: "Create your box in three easy steps",
+      msg: "Create your box",
       className: "primary-color centered"
     }
     document.getElementById("module").prepend(Boxeon.createElem(el, options));

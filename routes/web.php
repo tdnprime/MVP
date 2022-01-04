@@ -49,8 +49,8 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
 
 });
-Route::post('/createplan','App\Http\Controllers\SubscriptionController@createplan')->name('subscriptions.createplan');
-
+Route::post('/createplan','App\Http\Controllers\SubscriptionController@createplan')->name('subscription.createplan');
+Route::post('/subscription/complete/{paypal}','App\Http\Controllers\SubscriptionController@complete')->name('subscription.complete');
 Route::post('/rates','App\Http\Controllers\ShippingController@rates');
 Route::get('/rates','App\Http\Controllers\ShippingController@rates');
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);

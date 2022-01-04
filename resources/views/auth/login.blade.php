@@ -1,9 +1,9 @@
 @extends("layouts.index")
 
 @section('content')
-<main>
+<section class="overide">
 <div id="panel">
-<h1 class="primary-color centered">Your session has expired</h1>
+<h1 class="primary-color centered extra-large-font">Your session has expired</h1>
 <p class="centered">Please sign in to continue.</p><br>
 <div class="center fit-content">
 <a class="button" href="{{ url('auth/google') }}">
@@ -12,5 +12,5 @@ Sign in with Google
 </div>
 <br><br><br>
 </div>
-</main>
+</section>
 @endsection

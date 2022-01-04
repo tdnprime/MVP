@@ -16,7 +16,7 @@
     </div>!-->
   <div class="margin-top-4-em vertical-align">
       <div id="tabs-wrapper">
-      <a id="anchor-tab-subscriptions" class="button clearbtn" href="#"><span class="material-icons">subscriptions</span>Subscriptions</a>
+      <a id="anchor-tab-subscriptions" class="button clearbtn" href="#"><span class="material-icons">subscriptions</span>Subscriptions</a><span class="break"></span>
       <a  id="anchor-tab-tracking" class="button clearbtn" href="#"><span class="material-icons">place</span>Tracking</a>
       </div>
   </div>

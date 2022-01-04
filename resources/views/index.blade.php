@@ -8,7 +8,7 @@
         <h1 class="ginormous">Liberating, monthly, sustainable income</h1>
         <p id="pitch">Finally, content creators can achieve the freedom they desire by offering their fans subscription boxes. Boxeon makes it a breeze - ask Marilyn.</p>
       <a class="button" href="{{ url('auth/google') }}"> Get started </a>
-        <a href="#whatis" class="button clearbtn"> Learn more </a> </section>
+        <a href="#whatis" class="button clearbtn hide"> Learn more </a> </section>
       <div id="masthead-image"> </div>
     </div>
 
@@ -79,13 +79,13 @@
       <div class="alt-section-inner-grid"><img src="../assets/images/slamdunk.svg" alt="Easy business" />
         <div class="secinner">
           <h2 class="extra-large-font">It's easier than you think</h2>
-          <p>You can offer a subscription box on any schedule that's easy for you to slam dunk. For proof of concept, see how Boxeon is being used by <a href='/box/?u=48' class='darkblue underline one-em-font' title='Proof of concept'>Prototype</a>.</p>
+          <p>You can offer a subscription box on any schedule that's easy for you to slam dunk. Unlike Patreon, Boxeon is flexible enough for you to have time to enjoy freedom.</p>
         </div>
       </div>
     </section>
       <br>
-      <h2 class="centered">How it works</h2>
-      <div id="how-it-works" class="four-col-grid">
+      <h2 class="centered hide">How it works</h2>
+      <div id="how-it-works" class="four-col-grid hide">
         <div> <img src="assets/images/computer.svg" alt="Computer"/> <h2>Survey fans</h2></div>
         <div> <img src="assets/images/box.svg" alt="Box"/> <h2>Create box</h2></div>
         <div> <img src="assets/images/camera.svg" alt="Camera"/> <h2>Share box</h2></div>

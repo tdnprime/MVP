@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subcription extends Model
+class Subscription extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'creator_id',
-        'user_id',
+        'uid',
         'fullname',
-        'cfp',
+        'cpf',
         'sub_id',
         'date_created',
         'version',
@@ -31,6 +31,7 @@ class Subcription extends Model
         'rate',
         'shipment',
         'plan_id',
+        'order_id',
         'last_shipping',
         'label',
         'carrier'
@@ -40,4 +41,5 @@ class Subcription extends Model
     {
         return 'U';
     }
+
 }

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('includes.meta')
+    
 </head>
 
 <body id='box' data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="">

@@ -124,7 +124,9 @@ class SubscriptionController extends Controller
         $user = User::find($id);
         // Update subscription table after PayPal callback
         $add = json_decode($callback);
+        // NB - Works as an unprepared update, but should be and insert statement:
         DB::unprepared("update subscriptions set status=1, sub_id='$add->sub_id', order_id='$add->order_id' WHERE user_id=$user->id AND creator_id=$add->creator_id AND plan_id='$add->plan_id'");
+
         //Update the in_stock column in the seller's boxes row
         $this->updateStock($add->creator_id, $add->version, $add->stock);
         return 1;
@@ -132,12 +134,28 @@ class SubscriptionController extends Controller
 
     protected function updateStock($creator_id, $version, $stock)
     {
-        $available = $stock - 1;
-        DB::unprepared("update boxes set in_stock=$available where user_id=$creator_id AND vid=$version");
+        $new = $stock - 1;
+        DB::table('boxes')
+        ->where('user_id', '=', $creator_id)
+        ->where('vid', '=', $version)
+        ->update(['in_stock' => $new]);
     }
     protected function addStock($box)
     {
-        //
+      $add = json_decode($box);
+      $stock = DB::table('boxes')
+      ->where('user_id', '=', $add->creator_id)
+      ->where('vid', '=', $add->version)
+      ->select('in_stock')
+      ->get();
+      
+      $new = $stock[0]->in_stock + 1;
+
+      DB::table('boxes')
+      ->where('user_id', '=', $add->creator_id)
+      ->where('vid', '=', $add->version)
+      ->update(['in_stock' => $new]);
+
     }
     protected function boxeonRemove($box)
     {
@@ -150,7 +168,6 @@ class SubscriptionController extends Controller
             ->where('version', '=', $remove->version)
             ->where('user_id', '=', $user->id)
             ->delete();
-
         // Update in_stock
         $this->addStock($box);
     }

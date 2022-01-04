@@ -1525,7 +1525,11 @@ header .material-icons{
   width: 1em; /* Also needed for space (tweak if needed) */
   margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
-
+#subscriptions-stream{
+  display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin:auto;
+}
 label {
   padding: .6em;
 }

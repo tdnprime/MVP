@@ -20,31 +20,21 @@
       <a  id="anchor-tab-tracking" class="button clearbtn" href="#"><span class="material-icons">place</span>Tracking</a>
       </div>
   </div>
-  <div class="tab-content" data-id='anchor-tab-subscriptions' id="subscriptions-stream">
-  <div class="alert">
-<p class="material-icons">info</p>
-<p>You don't presently have subscriptions to show.</p>
-  </div>
-</div>
+
+  
+@include("includes.subscription-stream")
+
+
 <div class="tab-content" data-id='anchor-tab-tracking' id="tracking-stream">
 <div class="alert">
 <p class="material-icons">info</p>
 <p>You don't have any boxes to track.</p>
   </div>
 </div>
-  <!--<div id="home-videos-wrapper"><div id="$id">
-        <div class="playbtn-wrapper">
-        <img src="http://img.youtube.com/vi/LJszeiEyXMk/mqdefault.jpg">
-        <img id="play-video" data-shipping='$cost' data-video-id="LJszeiEyXMk" class="playbtn" src="../assets/images/playbtn.png" alt="Play video">
-        </div>
-          <br>
-        <p>Prototype Creator</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras auctor id ligula et tincidunt.</p>
-        </div></div>!-->
-      
-      </aside><!-- THIS WAS OPENED ON LINE 5 !-->
+
+      </aside>
       <aside></aside>
-        
+
         <section id="right-aside"></section>  </main>
 
 @endsection

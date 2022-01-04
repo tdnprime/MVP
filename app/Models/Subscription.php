@@ -37,4 +37,9 @@ class Subscription extends Model
         'carrier'
     ];
 
+    public function getDateFormat()
+    {
+        return 'U';
+    }
+
 }

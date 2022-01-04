@@ -38,7 +38,8 @@ class CreateSubscriptionsTable extends Migration
             $table->string('last_shipping')->nullable();
             $table->string('label')->nullable();
             $table->string('carrier')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

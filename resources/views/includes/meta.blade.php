@@ -1,4 +1,11 @@
+<<<<<<< HEAD
+
+
+{{-- WARNING #1 of 3
+
+=======
 {{-- WARNING #1 of 3 
+>>>>>>> 9f23fdd5d2461de3c5a0e403851ed9f73634a56c
     THE URLS MUST BE CHANGED FOR PRODUCTION.  SEE WARNING #2 IN THE FOOTER --}}
 
 

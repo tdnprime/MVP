@@ -9,26 +9,28 @@ use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
-    
-    public function createplan(){
-        
-        $id = auth()->user()->id;
-        $user = User::find($id);
-        
+
+    public function createplan()
+    {
+
       if (json_decode($_SERVER[ "HTTP_PLAN" ])  !== null) {
           $plan = json_decode($_SERVER[ "HTTP_PLAN" ]);
-       
+
       }else{
           echo "Missing header";
       }
+
+
     require_once "../php/paypal-connect.php";
     $config = parse_ini_file( "../config/app.ini", true );
 
     // Prep data PayPal needs to create a billing plan
-    $box = DB::select('select * from boxes where user_id= ?', [$user->id]);
+    $id = auth()->user()->id;
+    $user = User::find($id);
+    $box = $user->boxes()->first();
     $TOTAL = $plan->total + $plan->rate;
       $data = [
-        "product_id" => $box[0]->product_id,
+        "product_id" => $box->product_id,
         "name" => "Boxeon",
         "description" => "Subscription box",
         "status" => "ACTIVE",
@@ -36,7 +38,7 @@ class SubscriptionController extends Controller
           [
             "frequency" => [
               "interval_unit" => "MONTH", // this may need to be dynamic as buyers can also do single purchases
-              "interval_count" => $plan->frequency  // Set this to "1" if the json has a value of "0" for frequency 
+              "interval_count" => $plan->frequency  // Set this to "1" if the json has a value of "0" for frequency
             ],
             "tenure_type" => "REGULAR",
             "sequence" => 1,
@@ -60,18 +62,18 @@ class SubscriptionController extends Controller
       $p = sendcurl( json_encode( $data ), $endpoint, $media );
       if ( isset( $p[ "id" ] ) ) {
         /*
-        Save price, plan ID. and address for now. 
+        Save price, plan ID. and address for now.
         More info is needed to complete a subscription.
         */
 
        $plan->plan_id =  $p[ "id" ];
        $this->update($plan);
-    
+
         // Return plan ID to browser for the off-site PayPal checkout flow
         $return = [];
         $return[ 'plan_id' ] = $p[ 'id' ];
         print_r( json_encode( $return ) );
-  
+
     }
 }
     /**

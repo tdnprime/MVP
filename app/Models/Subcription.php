@@ -35,4 +35,9 @@ class Subcription extends Model
         'label',
         'carrier'
     ];
+
+    public function getDateFormat()
+    {
+        return 'U';
+    }
 }

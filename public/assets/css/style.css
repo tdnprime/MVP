@@ -742,6 +742,9 @@ width:fit-content;
   grid-gap:1em;
   width:35%;
 }
+#tracking-stream{
+  display: grid;
+}
 #incoming-stream,
 #tracking-stream{
   display: none;

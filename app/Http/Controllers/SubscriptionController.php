@@ -9,19 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
-<<<<<<< HEAD
-
-    public function createplan()
-    {
-
-=======
     
     public function createplan(Request $request){
         
         $id = auth()->user()->id;
         $user = User::find($id);
         
->>>>>>> 9f23fdd5d2461de3c5a0e403851ed9f73634a56c
       if (json_decode($_SERVER[ "HTTP_PLAN" ])  !== null) {
           $plan = json_decode($_SERVER[ "HTTP_PLAN" ]);
 
@@ -34,39 +27,22 @@ class SubscriptionController extends Controller
     $config = parse_ini_file( "../config/app.ini", true );
 
     // Prep data PayPal needs to create a billing plan
-<<<<<<< HEAD
-    $id = auth()->user()->id;
-    $user = User::find($id);
-    $box = $user->boxes()->first();
-=======
     $box = DB::select('select * from boxes where user_id= ?', [$plan->creator_id]);
     if($plan->rate > 0){
->>>>>>> 9f23fdd5d2461de3c5a0e403851ed9f73634a56c
     $TOTAL = $plan->total + $plan->rate;
     }elseif($plan->rate == 0){
       $TOTAL = $plan->total;
     }
       $data = [
-<<<<<<< HEAD
-        "product_id" => $box->product_id,
-        "name" => "Boxeon",
-        "description" => "Subscription box",
-=======
         "product_id" => $box[0]->product_id,
         "name" => $user->given_name . " " . $user->family_name . " " . "Plan" . " " . $plan->frequency,
         "description" => $user->given_name . " " . $user->family_name . " " . "Subscription box",
->>>>>>> 9f23fdd5d2461de3c5a0e403851ed9f73634a56c
         "status" => "ACTIVE",
         "billing_cycles" => [
           [
             "frequency" => [
-<<<<<<< HEAD
-              "interval_unit" => "MONTH", // this may need to be dynamic as buyers can also do single purchases
-              "interval_count" => $plan->frequency  // Set this to "1" if the json has a value of "0" for frequency
-=======
               "interval_unit" => "MONTH", 
               "interval_count" => $plan->frequency  
->>>>>>> 9f23fdd5d2461de3c5a0e403851ed9f73634a56c
             ],
             "tenure_type" => "REGULAR",
             "sequence" => 1,
@@ -99,22 +75,12 @@ class SubscriptionController extends Controller
         More info is needed to complete a subscription.
         */
        $plan->plan_id =  $p[ "id" ];
-<<<<<<< HEAD
-       $this->update($plan);
-
-        // Return plan ID to browser for the off-site PayPal checkout flow
-        $return = [];
-        $return[ 'plan_id' ] = $p[ 'id' ];
-        print_r( json_encode( $return ) );
-
-=======
        $this->store($plan);
        // Return plan_id for buyer to continue to PayPal 
        $return = [];
        $return[ 'plan_id' ] = $p[ 'id' ];
        print_r( json_encode( $return ) );
   
->>>>>>> 9f23fdd5d2461de3c5a0e403851ed9f73634a56c
     }
 }
     /**
@@ -168,5 +134,25 @@ class SubscriptionController extends Controller
       $available = $stock - 1;
       DB::unprepared("update boxes set in_stock=$available where user_id=$creator_id AND vid=$version");
     }
+    protected function remove($box){
+      
+      $id = auth()->user()->id;
+      $user = User::find($id);
+      
+      // Remove on PayPal
+
+      // Remove on Boxeon
+      $remove = json_decode($box);
+      DB::table('subscriptions')
+      ->where('creator_id', '=', $remove->creator_id)
+      ->where('version', '=', $remove->version)
+      ->where('user_id', '=', $user->id)
+      ->delete();
+
+      // Update stock
+
+      return 1;
+    }
+  
 
 }

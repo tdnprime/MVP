@@ -61,7 +61,8 @@ Boxeon = {
       if (contents[i].getAttribute("data-id") != id) {
         contents[i].style.display = "none";
       } else if (contents[i].getAttribute("data-id") == id) {
-        contents[i].style.display = "block";
+        contents[i].style.display = null;
+        contents[i].style.display = "grid";
       }
     }
   },
@@ -391,7 +392,7 @@ Boxeon = {
       Auth.check(video_id, creator_id);
     } else if (a.id == 'exe-unsub') {
       sessionStorage.setItem('sub', 0); // in case of page reload
-      Subscriptions.removeCheck(a);
+      Subscriptions.unsubCheck(a);
     }
     if (sessionStorage.getItem('sub') == 1) {
       // Save for later
@@ -452,8 +453,8 @@ Shipping = {
       + "<option value='BR' label='Brazil'>Brazil</option>"
       + "</select>"
       + "<input type='text' name='postal_code' required placeHolder='Postal code' value=''></input>"
-      +"<input type='hidden' name='cpf' placeHolder='Cadastro de Pessoas Físicas' value='0'></input>"
-      +"</fieldset>"
+      + "<input type='hidden' name='cpf' placeHolder='Cadastro de Pessoas Físicas' value='0'></input>"
+      + "</fieldset>"
       + "<br><input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
       + "</form>";
     var btn = document.getElementById("process-data");
@@ -487,12 +488,12 @@ Shipping = {
       if (n[e].getAttribute('name')) {
         var k = n[e].getAttribute('name');
         var v = n[e].value;
-        if(v == ""){
+        if (v == "") {
           let field = document.getElementsByName(k)[0];
           field.style.border = "red 1px solid";
           return;
-        }else{
-        Shipping.arr[k] = v;
+        } else {
+          Shipping.arr[k] = v;
         }
       }
     }
@@ -568,9 +569,9 @@ Shipping = {
     var mcheader = document.getElementById("mc-header");
     mcheader.innerHTML =
       '<div class="asides"><div id="steps-line"></div>'
-      +'<div id="steps-left"><p class="step step-completed">L</p>'
-      +'<p class="step step-current">2</p><p class="step step-incomplete">3</p>'
-      +'</div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
+      + '<div id="steps-left"><p class="step step-completed">L</p>'
+      + '<p class="step step-current">2</p><p class="step step-incomplete">3</p>'
+      + '</div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
     mcheader.appendChild(div)
 
   },
@@ -596,23 +597,50 @@ Shipping = {
 
 Subscriptions = {
 
-  removeCheck: function (b) {
+  unsubCheck: function (b) {
     var ownerID = b.getAttribute("data-id");
     Boxeon.createModalWindow();
-    document.
-      getElementById("m-body").
-      innerHTML = '<div id="subs-btns"><button id="close-modal">No</button><button class="clearbtn" data-id="' + ownerID + '" id="exe-unsub">Yes</button></div>';
+    let h2 = document.createElement("h2");
+    h2.className = "centered";
+    let h2txt = document.createTextNode("Are you sure you wish to unsubscribe from this box?");
+    let div = document.createElement("div");
+    div.id = "subs-btns";
+    let button = document.createElement("button");
+    button.innerText = "No";
+    let button2 = document.createElement("button");
+    button2.className = "clearbtn";
+    button2.setAttribute("data-id", ownerID);
+    let version = b.getAttribute("data-version");
+    button2.setAttribute("data-version", version);
+    button2.innerText = "Yes";
+    let body = document.getElementById("m-body");
+    h2.appendChild(h2txt)
+    body.appendChild(h2);
+    body.appendChild(div);
+    div.appendChild(button);
+    div.appendChild(button2);
+    button.addEventListener("click", function () {
+      Boxeon.closeModal();
+    });
+    button2.addEventListener("click", function () {
+      let b = this;
+      Subscriptions.remove(b);
+    });
 
   },
 
   remove: function (b) {
-    let owner = b.getAttribute("data-id");
+    let box = {
+      creator_id: b.getAttribute("data-id"),
+      version: b.getAttribute("data-version")
+    };
+    let json = JSON.stringify(box);
     var data = {
       method: "POST",
-      action: "../subs/index.php",
+      action: "/subscription/remove/" + json + "",
       contentType: "application/json; charset=utf-8",
-      customHeader: "UNSUB",
-      payload: owner
+      customHeader: "X-CSRF-TOKEN",
+      payload: document.querySelector('meta[name="csrf-token"]').content
     }
 
     function callback(re) {
@@ -633,9 +661,9 @@ Subscriptions = {
     }
 
     function callback(re) {
-      if(re == 1){
-      sessionStorage.clear();
-      location.href = "/home/index";
+      if (re == 1) {
+        sessionStorage.clear();
+        location.href = "/home/index";
       }
     }
     Boxeon.loader();
@@ -644,12 +672,12 @@ Subscriptions = {
 
   createBillingPlan: function () {
     if (Shipping.rateSelected) {
-      Shipping.arr['rate'] = Shipping.rateSelected.getAttribute('sub-rate'); 
-      Shipping.arr['shipment'] = Shipping.rateSelected.getAttribute('sub-shipment'); 
-      Shipping.arr['rate_id'] = Shipping.rateSelected.getAttribute('sub-rate-id'); 
-      Shipping.arr['carrier'] = Shipping.rateSelected.getAttribute('sub-carrier'); 
-    }else{
-      Shipping.arr['rate'] = 0; 
+      Shipping.arr['rate'] = Shipping.rateSelected.getAttribute('sub-rate');
+      Shipping.arr['shipment'] = Shipping.rateSelected.getAttribute('sub-shipment');
+      Shipping.arr['rate_id'] = Shipping.rateSelected.getAttribute('sub-rate-id');
+      Shipping.arr['carrier'] = Shipping.rateSelected.getAttribute('sub-carrier');
+    } else {
+      Shipping.arr['rate'] = 0;
       Shipping.arr['shipment'] = null;
       Shipping.arr['rate_id'] = null;
       Shipping.arr['carrier'] = null;
@@ -680,20 +708,20 @@ Subscriptions = {
   },
   showPaymentOptions: function () {
     Boxeon.createModalWindow();
-    document.getElementById("mc-header").innerHTML = 
-        "<div class='asides'><div id='steps-line'></div><div id='steps-left'>"
+    document.getElementById("mc-header").innerHTML =
+      "<div class='asides'><div id='steps-line'></div><div id='steps-left'>"
       + "<p class='step step-completed'>L</p>"
       + "<p class='step step-completed'>L</p><p class='step step-current'>3</p></div></div>";
     document.
       getElementById("m-body").
       innerHTML = "<h2>3. Choose a payment method</h2><div id='paypal-button-container'><br></div>"
       + "<p class='centered'>By choosing a Payment Method, you agree to our <a href='/terms' target='_blank'"
-      +"class='one-em-font'>Terms of use</a> and <a href='/privacy' target='_blank'"
-      +"class='one-em-font'>Privacy Policy</a>, and consent to enroll in a subscription " 
-      +"billing agreement with Boxeon LLC for the subscription box advertised on this page. " 
-      +"Subscriptions can be cancelled at any time via the " 
-      +"Home page in your account. Subscriptions are billed to the payment method "
-      +"selected, until cancelled.</p>";
+      + "class='one-em-font'>Terms of use</a> and <a href='/privacy' target='_blank'"
+      + "class='one-em-font'>Privacy Policy</a>, and consent to enroll in a subscription "
+      + "billing agreement with Boxeon LLC for the subscription box advertised on this page. "
+      + "Subscriptions can be cancelled at any time via the "
+      + "Home page in your account. Subscriptions are billed to the payment method "
+      + "selected, until cancelled.</p>";
     Boxeon.loadScript("../../assets/js/paypal-button.js");
     var buttons = document.getElementById("paypal-button-container");
     buttons.style.display = "block";
@@ -756,11 +784,6 @@ $(document).ready(function () {
       sessionStorage.removeItem('last');
       sessionStorage.removeItem('sub');
     }
-    if (sessionStorage.getItem('sub') == 0) { // intended to un-subscribe
-      Subscriptions.removeCheck();
-      sessionStorage.removeItem('sub');
-
-    }
   }
 
   // Presentation: fades in pages on load
@@ -776,6 +799,12 @@ $(document).ready(function () {
   if (document.getElementById('exe-sub')) {
     document.getElementById('exe-sub').addEventListener('click', function () {
       Boxeon.loader();
+      var a = this;
+      Boxeon.router(a);
+    });
+  }
+  if (document.getElementById('exe-unsub')) {
+    document.getElementById('exe-unsub').addEventListener('click', function () {
       var a = this;
       Boxeon.router(a);
     });

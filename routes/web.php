@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::delete('/box/{vid}', 'App\Http\Controllers\BoxController@destory')->name('box.destory');
     Route::get('/box/ship', 'App\Http\Controllers\BoxController@ship')->name('box.ship');
     Route::get('/rates','App\Http\Controllers\ShippingController@rates')->name('box.rates');
+    Route::post('/subscription/remove/{box}','App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
 
 
 });

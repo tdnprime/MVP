@@ -17,7 +17,7 @@ class ShippingController extends Controller
 
     public function __construct()
     {
-        $config = parse_ini_file( "../config/app.ini", true );
+        $config = parse_ini_file( "../laravel/config/app.ini", true );
         $token = $config[ 'shippo' ][ 'token' ];
         Shippo::setApiKey($token);
     }
@@ -60,7 +60,7 @@ class ShippingController extends Controller
         }
 
         if(isset($box) && $box->ship_from == 1 ) {
-            $config = parse_ini_file( "../config/app.ini", true );
+            $config = parse_ini_file( "../laravel/config/app.ini", true );
             $fromAddress = Shippo_Address::create( array(
               "name" => 'SELLER', /* WARNING Get user_id from boxes table and
                                      use it to get fullname from users table  */

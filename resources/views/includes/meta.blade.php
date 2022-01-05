@@ -16,7 +16,7 @@
 <script src="{{ asset('../assets/js/global.js?v=1') }}"></script>
 <meta name="google-signin-client_id" content="227887284273-k2b81lp0r79e25vg57vf5kjbnglff49p.apps.googleusercontent.com">
 <?php
-$config = parse_ini_file( "../config/app.ini", true );
+$config = config('env.paypal.clientID');
 $nonce = base64_encode("Content-Security-Policy: def");
 session_start();
 $_SESSION ["nonce"] = $nonce;

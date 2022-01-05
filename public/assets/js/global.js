@@ -85,7 +85,7 @@ Boxeon = {
     // Show inline message
   },
   changeImageOnMouseover: function (img, src) {
-    img.src = "http://localhost:8000/assets/images/" + src;
+    img.src = "https://boxeon.com/assets/images/" + src;
 
   },
   playVideo: function (video_id, creator_uid) {

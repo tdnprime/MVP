@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '1052931869608-tqm8vlajn2nd9plo93stk3607p3p87mq.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'http://localhost:8000/auth/google/callback',
+        'redirect' => 'https://boxeon.com/auth/google/callback',
     ],
 
 ];

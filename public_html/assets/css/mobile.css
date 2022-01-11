@@ -34,7 +34,7 @@ NOTE:
     }
   }
 
-  @media only screen and (max-width:1595px) {
+  @media only screen and (max-width:1024px) {
     main{
       margin-top: 25em;
    
@@ -51,7 +51,7 @@ NOTE:
       margin-top: 0;
     }
   }
-@media only screen and (max-width:1591px) {
+@media only screen and (max-width:1024px) {
   #m-content h2 {
     width: 89%;
   }
@@ -199,17 +199,7 @@ NOTE:
     padding-top: 0 !important;
   }
 
-  #mobile-signin {
-    position: fixed;
-    z-index: 1000;
-    bottom: 0;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    width: 100%;
-    background-color: #f5f7fa;
-    display: block;
-    left: 0;
-  }
+
   #guide {
     display: block;
   }
@@ -220,14 +210,7 @@ NOTE:
     margin-bottom: 0;
   }
  
-  #mobile-signin a {
-    padding-left: .5em;
-    width: 11em;
-    color: #005ea6;
-    background: url("../images/googleg.png") no-repeat;
-    line-height: inherit !important;
-    vertical-align: middle;
-  }
+
   .section {
     width: 60%;
   }
@@ -310,9 +293,7 @@ NOTE:
     color: #fff !important;
     background-color: #005ea6;
   }
-  #current-user {
-    display:none;
-  }
+ 
   .section{
     width:auto;
   }
@@ -358,6 +339,28 @@ NOTE:
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 668px) {
+  #current-user{
+    display:none;
+  }
+  #mobile-signin {
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    width: 100%;
+    background-color: #f5f7fa;
+    display: block;
+    left: 0;
+  }
+  #mobile-signin a {
+    padding-left: .5em;
+    width: 11em;
+    color: #005ea6;
+    background: url("../images/googleg.png") no-repeat;
+    line-height: inherit !important;
+    vertical-align: middle;
+  }
   .margin-bottom-10-em {
     margin-bottom: 5em !important; 
 }
@@ -443,9 +446,7 @@ main, #masthead{
     margin-top:6em;
   }
 
-	#current-user{
-    display:none;
-  }
+
   #home main {
     display: block;
     padding: 0;

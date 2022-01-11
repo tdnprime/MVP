@@ -283,9 +283,6 @@ a:visited {
   width: 63%;
   margin: 0 auto;
 }
-#embed-form input[type="url"] {
-  width:100%;
-}
 #footer-content-wrapper {
   margin: auto;
 }

@@ -7,6 +7,7 @@ NOTE:
 320px — 480px: Mobile devices
 481px — 768px: iPads, Tablets
 769px — 1024px: Small screens, laptops
+1366 - 768 - most common laptops
 
 1025px — 1200px: Desktops, large screens
 1201px and more —  Extra large screens, TV
@@ -17,13 +18,22 @@ NOTE:
 	#partner-apply{
 		display:none;
 	}
-.hack-br-1{
-  display: none;
-}
+
   @media only screen and (max-width:1810px) {
+    main,
     #box-masthead-inner-wrapper {
       width: 80%;
+
     }
+    main{
+      margin:auto;
+    }
+    #masthead-image-construction {
+      background: url(../images/alt-makeitrain.svg) no-repeat 80% 7em;
+  }
+   #how-it-works{
+     width:80%;
+   }
   }
   @media only screen and (max-width:800px) {
     #home main {
@@ -58,7 +68,10 @@ NOTE:
   header{
     padding-left:0;
   }
+  #headline {
+    padding-left: 7em;
 
+}
 #partner-masthead-image {
   width: 95%;
     height: 100%;
@@ -281,12 +294,7 @@ NOTE:
   .hide{
     display:none;
   }
-  #box-masthead-inner-wrapper {
-    width:100% !important;
-  }
-  #signin {
-    display: none;
-  }
+
   #getlabels {
     left: -9.5em !important;
     left: 0;
@@ -341,6 +349,9 @@ NOTE:
 @media only screen and (max-width: 668px) {
   #current-user{
     display:none;
+  } 
+  #signin {
+    display: none;
   }
   #mobile-signin {
     position: fixed;

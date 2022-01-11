@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-use App\Models\User;
 use App\Models\Box;
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class BoxController extends Controller
 {
@@ -18,22 +17,25 @@ class BoxController extends Controller
     public function index()
     {
         $pattern = "/";
-        
-        if(!$id = auth()->user()){
+
+        if (!$id = auth()->user()) {
             $box_url = str_replace($pattern, "", $_SERVER["REQUEST_URI"]);
-            $boxes = DB::select('select * from boxes where box_url= ?', [$box_url]); 
+            $boxes = DB::table('boxes')
+                ->where('box_url', '=', $box_url)
+                ->select('user_id')
+                ->get();
             $user = User::find($boxes[0]->user_id);
-            return view('subscription_box.index',compact('boxes','user'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-            
-        }else{
+            return view('subscription_box.index', compact('boxes', 'user'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
+
+        } else {
             $id = auth()->user()->id;
             $user = User::find($id);
             $boxes = Box::latest()->paginate(5);
-            return view('subscription_box.index',compact('boxes','user'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            return view('subscription_box.index', compact('boxes', 'user'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
         }
-  
+
     }
 
     public function ship()
@@ -54,9 +56,9 @@ class BoxController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
 
-        if ($user->boxes()->first() != null){
+        if ($user->boxes()->first() != null) {
             return redirect()->route('box.edit', $id)
-                        ->with('success','Subscription Box already exist');
+                ->with('success', 'Subscription Box already exist');
         }
 
         return view('subscription_box.create', compact('user'));
@@ -96,9 +98,8 @@ class BoxController extends Controller
         $box->prodname = $request->input('prodname');
         $box->proddesc = $request->input('proddesc');
         $user->boxes()->save($box);
-       return redirect()->route('box.edit', $id)
-                        ->with('success','Subscription Box created successfully');
-
+        return redirect()->route('box.edit', $id)
+            ->with('success', 'Subscription Box created successfully');
 
     }
 
@@ -125,7 +126,7 @@ class BoxController extends Controller
 
         $box = $user->boxes()->first(); // NOTED
 
-        return view('subscription_box.edit' , compact('box', 'user'));
+        return view('subscription_box.edit', compact('box', 'user'));
     }
 
     /**
@@ -135,7 +136,7 @@ class BoxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$user_id)
+    public function update(Request $request, $user_id)
     {
         $box = DB::table('boxes')->where('user_id', $user_id)->limit(1);
 
@@ -143,7 +144,7 @@ class BoxController extends Controller
             'price' => 'required',
             'page_name' => 'required',
             'box_supply' => 'required',
-            'curation' => 'required'
+            'curation' => 'required',
         ]);
 
         $array = array(
@@ -151,12 +152,12 @@ class BoxController extends Controller
             'page_name' => $request->get('page_name'),
             'box_supply' => $request->get('box_supply'),
             'curation' => $request->get('curation'),
-           );
+        );
 
         $box->update($array);
 
         return redirect()->route('box.index')
-                        ->with('success','Subscription Box updated successfully');
+            ->with('success', 'Subscription Box updated successfully');
     }
 
     /**
@@ -170,7 +171,7 @@ class BoxController extends Controller
         $box->delete();
 
         return redirect()->route('subscription_box.create')
-                        ->with('success','Subscription deleted successfully');
+            ->with('success', 'Subscription deleted successfully');
 
     }
 }

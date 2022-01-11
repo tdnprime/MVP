@@ -327,7 +327,7 @@ width:fit-content;
   font-family: "concert one" !important;
 }
 #headline {
-  padding-left: 13em;
+  margin-left: clamp(7%, 10%, 12%);
   position: absolute;
   top: 9em;
   z-index: 1;
@@ -515,6 +515,7 @@ width:fit-content;
   background-repeat: no-repeat;
   background-position-x: 5%;
 }
+
 #partner .two-col-grid {
   background: url("../images/fall-4.svg") 3em 8em no-repeat, url("../images/fall-5.svg") 70em top no-repeat;
 }

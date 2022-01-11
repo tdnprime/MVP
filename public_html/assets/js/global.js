@@ -363,12 +363,12 @@ Boxeon = {
     /* Return page to normal upon side navigation close */
     document.getElementById("menu").style.width = "0";
     if (document.getElementsByTagName("main")[0]) {
-      document.getElementsByTagName("main")[0].style.marginLeft = "0";
+      document.getElementsByTagName("main")[0].style.marginLeft = null;
     }
-    document.getElementsByTagName("footer")[0].style.marginLeft = "0";
-    document.getElementsByTagName("header")[0].style.marginLeft = "0";
+    document.getElementsByTagName("footer")[0].style.marginLeft = null;
+    document.getElementsByTagName("header")[0].style.marginLeft = null;
     if (document.getElementById("masthead")) {
-      document.getElementById("masthead").style.marginLeft = "0";
+      document.getElementById("masthead").style.marginLeft = null;
     }
   },
 

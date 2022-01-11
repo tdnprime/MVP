@@ -250,7 +250,7 @@ Boxeon = {
     var btn = document.createElement("button");
     btn.id = 'exe-sub';
     sessionStorage.setItem("sub-creator-id", creator_uid);
-    btn.setAttribute("data-url", "URL");
+   // btn.setAttribute("data-url", "URL");
     btn.innerText = "Continue";
     //Event listener
     btn.addEventListener('click', function () {

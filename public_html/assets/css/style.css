@@ -1473,7 +1473,6 @@ input[type="tel"], input[type="number"], input[type="email"], select, textarea, 
   border-radius: 1em;
   padding: 1em;
   clear: both;
-  float: left;
   margin-bottom: 1em;
   margin-top: 2em;
   width: 25em;

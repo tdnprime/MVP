@@ -1,0 +1,4 @@
+[09-Apr-2021 20:32:23 UTC] PHP Fatal error:  Uncaught Error: Class 'TestCase' not found in /home/btkv7th7c1o5/public_html/shippo/master/test/BatchTest.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/btkv7th7c1o5/public_html/shippo/master/test/BatchTest.php on line 3

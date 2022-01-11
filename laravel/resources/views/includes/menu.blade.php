@@ -1,8 +1,5 @@
 {{-- #MENU --}}
 
-        {{-- This is the menu on the left sidebar used by
-        customers. Note that the Admin dashboard has its
-        own, unique, menu in its left sidebar. --}}
 
         <div  id="menu" class="menu ">
             <a  id="menu-close" href="#" title='Close'><span class="material-icons">close</span></a>

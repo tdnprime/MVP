@@ -16,7 +16,7 @@
 
 <?php
 $box = DB::select('select * from boxes where user_id= ?', [$user->id]);
-if(empty($box) || is_null($box[0]->box_weight)){
+if(empty($box)){
 echo '<div id="masthead" class="fadein">
     <div id="headline">
     <div><p class="text-heading-label">FANS ARE WAITING</p><h1 class="ginormous">Create a
@@ -80,7 +80,7 @@ echo '<div id="masthead" class="fadein">
        echo "<div id='video-place-holder' class='centered'>
         <h1 class='extra-large-font'>Embed Video</h1>
       <div class='alert'>  <p class='material-icons'>info</p><p>To publish your page, embed a 
-      <b>show and tell</b> Youtube video of your subscription box. 
+      <a href='#' class='one-em-font underline' id='video-instructions'>show and tell Youtube video</a> of your subscription box. 
         You may complete this step at any time by signing in and clicking 
         on $user->given_name's 
         Boxeon.</p></div>
@@ -189,8 +189,8 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
         </div>
         <img src='../../assets/images/laptop.svg' alt='subscription box'> </div>
     </section>
-	 <h2 class='centered hide'>How it works</h2>
-    <div id='how-it-works' class='three-col-grid hide'>
+	 <h2 class='centered'>How it works</h2><br>
+    <div id='how-it-works' class='three-col-grid'>
 
       <div> <img src='../../assets/images/computer.svg' alt='Box'/> <h2>Watch video</h2></div>
       <div> <img src='../../assets/images/card.svg' alt='Card'/> <h2>Subscribe</h2></div>
@@ -199,7 +199,7 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
 	<br>
     <section class='margin-bottom-10-em'>
       <div class='centered'>
-        <h1 class='extra-large-font darkblue'>We make it that simple</h1>
+        <h1 class='extra-large-font darkblue'>It's that easy</h1>
         <br>
         <a href='#' id='exe-sub-alt' data-version='$version' data-product='$product' data-in-stock='$in_stock' data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video'
         data-plan-id='1' class='button'> Get started with $user->given_name </a> </div>
@@ -229,15 +229,15 @@ Subscribe to $user->given_name's box today to secure $discount shipping.</p>
 
 
 // CREATE PRODUCT ON PAYPAL 
-require_once "../php/paypal-connect.php";
-$config = parse_ini_file("../config/app.ini", true);
+require_once dirname(__DIR__, 3) . "/php/paypal-connect.php";
+$config = parse_ini_file( dirname(__DIR__, 3) . "/config/app.ini", true );
 $endpoint = $config["paypal"]["productsEndpoint"];   
 $data = [
   "name"=> "A subscription box",
   "description"=> "Various products for entertainment purposes",
   "type"=> "PHYSICAL",
   "category"=> "ENTERTAINMENT_AND_MEDIA",
-  "home_url"=> "https://boxeon.com/box/index" // Update
+  "home_url"=> "https://boxeon.com" // Update
   ];
 $media = "Content-Type: application/json, Authorization: Bearer $token";
 $cp = sendcurl(json_encode($data), $endpoint, $media);

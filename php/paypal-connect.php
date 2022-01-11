@@ -2,7 +2,7 @@
 
 
 function getcurl( $data = null, $endpoint, $media ) {
-  $config = parse_ini_file( "../config/app.ini", true );
+  $config = parse_ini_file( dirname(__DIR__, 1) . "/config/app.ini", true );
   $PAYPAL_CLIENT_ID = $config[ 'paypal' ][ 'clientID' ];
   $PAYPAL_SECRET = $config[ 'paypal' ][ 'clientSecret' ];
 
@@ -26,7 +26,7 @@ function getcurl( $data = null, $endpoint, $media ) {
 }
 
 function sendcurl( $data = null, $endpoint, $media ) {
-  $config = parse_ini_file( "../config/app.ini", true );
+  $config = parse_ini_file( dirname(__DIR__, 1) . "/config/app.ini", true );
   $PAYPAL_CLIENT_ID = $config[ 'paypal' ][ 'clientID' ];
   $PAYPAL_SECRET = $config[ 'paypal' ][ 'clientSecret' ];
 
@@ -50,7 +50,7 @@ function sendcurl( $data = null, $endpoint, $media ) {
 }
 
 $data = "grant_type=client_credentials";
-$config = parse_ini_file( "../config/app.ini", true );
+$config = parse_ini_file( dirname(__DIR__, 1) . "/config/app.ini", true );
 $endpoint = $config[ 'paypal' ][ 'tokenEndpoint' ];
 $media = 'Accept:application/json';
 $array = sendcurl( $data, $endpoint, $media );

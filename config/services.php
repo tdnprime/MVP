@@ -31,9 +31,9 @@ return [
     ],
 
     'google' => [
-        'client_id' => '1052931869608-tqm8vlajn2nd9plo93stk3607p3p87mq.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'https://boxeon.com/auth/google/callback',
+        'client_id' => '227887284273-ehpp04l1krs2nuqu6908544qqg69hqip.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://127.0.0.1:8000/auth/google/callback',
     ],
 
 ];

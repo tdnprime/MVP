@@ -7,20 +7,20 @@
 <link rel="icon" type="image/svg+xml" href="{{ asset('../assets/images/favicon.svg') }}">
 <link rel="alternate icon" href="{{ asset('../assets/images/favicon.svg') }}">
 <link rel="mask-icon" href="https://boxeon.com/images/favicon.svg" color="#fff">
-<link rel="stylesheet" href="{{ asset('../assets/css/style.css?v=2') }}">
-<link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 1810px)" href="{{ asset('../assets/css/mobile.css?v=1.2') }}"/>
+<link rel="stylesheet" href="{{ asset('../assets/css/style.css?v=4.1') }}">
+<link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 1810px)" href="{{ asset('../assets/css/mobile.css?v=3.6') }}"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert%20One">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="{{ asset('../assets/js/global.js?v=1') }}"></script>
-<meta name="google-signin-client_id" content="227887284273-k2b81lp0r79e25vg57vf5kjbnglff49p.apps.googleusercontent.com">
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script defer src="{{ asset('../assets/js/global.js?v=2.1') }}"></script>
 <?php
-$config = config('env.paypal.clientID');
+$config = parse_ini_file( dirname(__DIR__, 3) . "/config/app.ini", true );
+$clientID = $config['paypal']['clientID'];
 $nonce = base64_encode("Content-Security-Policy: def");
 session_start();
 $_SESSION ["nonce"] = $nonce;
-echo "<script type='text/javascript' data-csp-nonce='$nonce' src=https://www.paypal.com/sdk/js?client-id=" . $config[ 'paypal' ][ 'clientID' ] . "&locale=en_US&vault=true&intent=subscription&commit=true></script>";
+echo "<script defer type='text/javascript' data-csp-nonce='$nonce' src=https://www.paypal.com/sdk/js?client-id=" . $clientID  . "&locale=en_US&vault=true&intent=subscription&commit=true></script>";
 ?>
 <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
 

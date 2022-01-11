@@ -55,7 +55,7 @@ Route::post('/subscription/complete/{paypal}','App\Http\Controllers\Subscription
 Route::post('/rates','App\Http\Controllers\ShippingController@rates');
 Route::get('/rates','App\Http\Controllers\ShippingController@rates');
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::get('auth/google/status', [GoogleController::class, 'status']);
 
 

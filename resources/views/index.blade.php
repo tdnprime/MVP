@@ -17,7 +17,7 @@
     <aside class="asides">
       <h1 class="extra-large-font darkblue">What's a subscription box?</h1>
       <p class="centered center font-1-5-em">In this business model, content creators put together a box of products around a theme, and their most loyal fans subscribe to receive these boxes for the thematic experience. </p>
-    </aside>
+    <br></aside>
 	<section class="section">
       <div class="alt-section-inner-grid">
         <div class="secinner">
@@ -55,7 +55,7 @@
       <div class="alt-section-inner-grid">
         <div class="secinner">
           <h2 class="extra-large-font">We ride together</h2>
-          <p>We have no upfront fees and your sales are subject to a simple <a href="/commission/" class="darkblue underline one-em-font">commission</a>. So where you go, we go, and we'll treat you like it.</p>
+          <p>We have no upfront fees and your sales are subject to a 14% commission. So where you go, we go, and we'll treat you like it.</p>
         </div>
         <img src="../assets/images/car.svg" alt="Ferrari" /> </div>
     </section>
@@ -84,8 +84,8 @@
       </div>
     </section>
       <br>
-      <h2 class="centered hide">How it works</h2>
-      <div id="how-it-works" class="four-col-grid hide">
+      <h2 class="centered">How it works</h2>
+      <div id="how-it-works" class="four-col-grid">
         <div> <img src="assets/images/computer.svg" alt="Computer"/> <h2>Survey fans</h2></div>
         <div> <img src="assets/images/box.svg" alt="Box"/> <h2>Create box</h2></div>
         <div> <img src="assets/images/camera.svg" alt="Camera"/> <h2>Share box</h2></div>

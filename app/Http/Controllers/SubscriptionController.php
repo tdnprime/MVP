@@ -22,8 +22,8 @@ class SubscriptionController extends Controller
             echo "Missing header";
         }
 
-        require_once "../php/paypal-connect.php";
-        $config = parse_ini_file("../config/app.ini", true);
+        require_once  dirname(__DIR__, 3) . "/php/paypal-connect.php";
+        $config = parse_ini_file( dirname(__DIR__, 3) . "/config/app.ini", true );
 
         // Prep data PayPal needs to create a billing plan
         $box = DB::select('select * from boxes where user_id= ?', [$plan->creator_id]);
@@ -67,7 +67,7 @@ class SubscriptionController extends Controller
         // Create billing plan on PayPal and get the returned ID
         $endpoint = $config["paypal"]["plansEndpoint"];
         $media = "Content-Type: application/json, Authorization: Bearer $token";
-        $p = sendcurl(json_encode($data), $endpoint, $media);
+        $p = sendcurl(json_encode($data), $endpoint, $media); 
         if (isset($p["id"])) {
             /*
             Save price, plan ID. and address for now.
@@ -173,8 +173,8 @@ class SubscriptionController extends Controller
     }
     protected function remove($box)
     {
-        require_once "../php/paypal-connect.php";
-        $config = parse_ini_file("../config/app.ini", true);
+        require_once dirname(__DIR__, 3) . "/php/paypal-connect.php";
+        $config = parse_ini_file( dirname(__DIR__, 3) . "/config/app.ini", true );
         $remove = json_decode($box);
 
         $id = auth()->user()->id;

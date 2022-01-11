@@ -9,7 +9,6 @@
         <span></span><!-- Hack-->
         @include('includes.header')
         @include('includes.menu')
-
         @yield('content')
 
     </div>

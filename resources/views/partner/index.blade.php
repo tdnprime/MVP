@@ -308,9 +308,10 @@
     <div id="partner-masthead-image"></div>
   </div>
   <main> <a id='whatis' href='#whatis'></a>
-    <aside class="asides">
-      <h1 class="extra-large-font darkblue">It's our grand launch</h1>
-      <p class="centered center font-1-5-em">Boxeon is a subscription box platform for content creators to offer boxes to fans. In this business model, content creators put together products around a theme, and their most loyal fans subscribe to receive these boxes for the thematic experience. It's the best way for creators to earn sustainable, monthly income. As part of our launch, we're seeking creators to sponsor.</p>
+  <aside class="asides">
+      <h1 class="extra-large-font darkblue">What's a subscription box?</h1>
+      <p class="centered center font-1-5-em">In this business model, content creators put together a box of products around a theme, and their most loyal fans subscribe to receive these boxes for the thematic experience. </p>
+   <br>
     </aside>
     <section class="section">
       <div class="alt-section-inner-grid">
@@ -346,7 +347,7 @@
         </div>
       </div>
     </section>
-    <section class="section">
+    <section class="section margin-bottom-10-em">
       <div class="alt-section-inner-grid">
         <div class="secinner">
           <h2 class="extra-large-font">The numbers love us</h2>
@@ -354,10 +355,9 @@
         </div>
         <img src="../assets/images/love.svg" alt="Shoppers"/> </div>
     </section>
-
-    <br>
-    <h2 class="centered hide">How it works</h2>
-    <div id="how-it-works" class="four-col-grid hide">
+<br>
+    <h2 class="centered">How it works</h2><br>
+    <div id="how-it-works" class="four-col-grid">
       <div> <img src="../assets/images/computer.svg" alt="Computer"/>
         <h2>Survey fans</h2>
       </div>
@@ -371,10 +371,9 @@
         <h2>Earn</h2>
       </div>
     </div>
-    <div class='image-gray-overlay'></div>
-    <section><br>
+    <section>
       <div class="centered margin-bottom-10-em">
-        <h1 class="extra-large-font darkblue margin-top-4-em">We make it that simple</h1>
+        <h1 class="extra-large-font darkblue margin-top-4-em">It's that simple</h1>
         <br>
         <a class="button" href="{{ url('auth/google') }}"> Apply now </a> </div>
     </section>

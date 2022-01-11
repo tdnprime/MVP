@@ -1,10 +1,12 @@
 <?php 
     session_start();
     session_destroy();
+    $config = parse_ini_file( dirname(__DIR__, 3) . "/config/app.ini", true);
+    $clientID = $config["google"]["clientID"];
 ?>
 <html>
     <head>
-        <meta name="google-signin-client_id" content="227887284273-k2b81lp0r79e25vg57vf5kjbnglff49p.apps.googleusercontent.com">
+        <meta name="google-signin-client_id" content="<?php echo $clientID; ?>">
     </head>
     <body>
         <div id="container">

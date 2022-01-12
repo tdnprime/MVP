@@ -406,6 +406,11 @@ width:fit-content;
   height: 100px;
   width: 100px;
 }
+#image-video-frame{
+  position: absolute;
+    left: 0;
+   display: none;
+}
 #image-guide-icon {
   background-image: url("../images/guide-icon.svg");
   padding-left: 2.5em;
@@ -1138,6 +1143,7 @@ main a{
   height: fit-content;
   position: relative;
   width: fit-content;
+  overflow: hidden;
 }
 .price-options-grid input {
   margin-left: .5em;

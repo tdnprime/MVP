@@ -7,8 +7,6 @@ use Laravel\Socialite\Facades\Socialite;
 use Exception;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\WelcomeUser;
 
 class GoogleController extends Controller
 {
@@ -34,7 +32,7 @@ class GoogleController extends Controller
 
             if($finduser){
                 Auth::login($finduser);
-                return redirect('/trevor');
+                return redirect('/home/index');
             }else{
                 $user = User::firstOrCreate([
                     'google_id' => $user->id,
@@ -45,8 +43,8 @@ class GoogleController extends Controller
                 ]);
 
                 Auth::login($user, true);
-                Mail::to($user->email)->send(new WelcomeUser($user)); 
-                return redirect('/trevor');
+                shell_exec( dirname(__DIR__, 2) . "/Mail/WelcomeUser.php/".$user->id."' 'alert' >> " . dirname(__DIR__, 3) . "/storage/logs/laravel.log &");
+                return redirect('/home/index');
             }
         }catch (Exception $e) {
             dd($e->getMessage());

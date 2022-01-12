@@ -250,7 +250,7 @@ Boxeon = {
     var btn = document.createElement("button");
     btn.id = 'exe-sub';
     sessionStorage.setItem("sub-creator-id", creator_uid);
-   // btn.setAttribute("data-url", "URL");
+    // btn.setAttribute("data-url", "URL");
     btn.innerText = "Continue";
     //Event listener
     btn.addEventListener('click', function () {
@@ -338,10 +338,10 @@ Boxeon = {
     /* When side navigation slides out, 
   set the width of the side navigation and 
   the left margin of MAIN + FOOTER */
-    if(screen.width <= 600){
+    if (screen.width <= 600) {
       document.getElementById("menu").style.width = "100%";
-    }else{
-    document.getElementById("menu").style.width = "300px";
+    } else {
+      document.getElementById("menu").style.width = "300px";
     }
 
     if (document.getElementsByTagName("main")[0]) {
@@ -350,7 +350,7 @@ Boxeon = {
     if (document.getElementById("masthead")) {
       document.getElementById("masthead").style.marginLeft = "300px";
     }
-   // document.getElementsByTagName("footer")[0].style.marginLeft = "300px";
+    // document.getElementsByTagName("footer")[0].style.marginLeft = "300px";
     document.getElementsByTagName("header")[0].style.marginLeft = "300px";
 
 
@@ -766,12 +766,13 @@ Subscriptions = {
 
 
 $(document).ready(function () {
-
   // Redirects users to previous location
-  // after Google signin
-
+  var url = sessionStorage.getItem("last");
+  if (url) {
+    location.assign(url);
+    sessionStorage.removeItem("last");
+  }
   if (document.getElementById("box")) {
-
     //Tracks user intent prior to sign in
     if (sessionStorage.getItem('sub') == 1) { // intended to subscribe
       var vid = sessionStorage.getItem("sub-vid");

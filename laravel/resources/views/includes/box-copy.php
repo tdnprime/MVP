@@ -85,6 +85,7 @@ echo '<div id="masthead" class="fadein">
             echo "<div id='masthead-video-wrapper'>
             <div class='playbtn-wrapper'>
             <img id='image-youtube-thumb' src='http://img.youtube.com/vi/$video/maxresdefault.jpg'/>
+            <img id='image-video-frame' src='http://127.0.0.1:8000/assets/images/frame.svg'/>
              <a href='#' id='play-video' data-version='$version' data-product='$product' data-in-stock='$in_stock'  data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video' 
              data-plan-id='1'><img class='playbtn' src='../../assets/images/playbtn.png' 
              alt='Play video'/></a>

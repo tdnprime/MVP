@@ -65,6 +65,8 @@ echo "<div id='module'>
          <input type='radio' id='show-disabled' value='0' name='curation'/>
         </label>
         </fieldset>
+
+        
        <fieldset id='curation1'><legend class='primary-color'>Box description</legend>
        <label>We'll use this info to generate postage / shipping labels you will need to ship your boxes.</label>
         <input class='optional' type='number'  disabled required name='num_products' placeholder='Number of products in box' min='1' max='25'>

@@ -8,7 +8,7 @@ $box = DB::table("boxes")
 ->select('boxes.*', 'users.given_name', 'users.family_name')
 ->get();
 
-if(empty($box)){
+if(empty($box) || is_null($box[0]->box_weight)){
 echo '<div id="masthead" class="fadein">
     <div id="headline">
     <div><p class="text-heading-label">FANS ARE WAITING</p><h1 class="ginormous">Create a 

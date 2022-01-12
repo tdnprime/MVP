@@ -43,7 +43,9 @@ class GoogleController extends Controller
                 ]);
 
                 Auth::login($user, true);
-                shell_exec( dirname(__DIR__, 2) . "/Mail/WelcomeUser.php/".$user->id."' 'alert' >> " . dirname(__DIR__, 3) . "/storage/logs/laravel.log &");
+                $mail = new MailController();
+                $mail->welcome();
+                //shell_exec( dirname(__DIR__, 2) . "/Mail/WelcomeUser.php/".$user->id."' 'alert' >> " . dirname(__DIR__, 3) . "/storage/logs/laravel.log &");
                 return redirect('/home/index');
             }
         }catch (Exception $e) {

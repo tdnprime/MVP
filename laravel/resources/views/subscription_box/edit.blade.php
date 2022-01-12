@@ -16,15 +16,15 @@
 
 <?php
 $box = DB::select('select * from boxes where user_id= ?', [$user->id]);
-if(empty($box)){
+if(empty($box) || is_null($box[0]->box_weight)){
 echo '<div id="masthead" class="fadein">
     <div id="headline">
-    <div><p class="text-heading-label">FANS ARE WAITING</p><h1 class="ginormous">Create a
-    subscription box today</h1>
+    <div><p class="text-heading-label">PLEASE HOLD</p><h1 class="ginormous">Your
+    subscription box isn\'t ready</h1>
     <p id="pitch">If you started creating a box and chose to have us help you with product
-    curation and shipping, we will be
-    contacting you by email. Please ensure our emails are not in your spam folder.</p>
-    <a class="button" href="/box/create">Create box</a>
+    curation, we will be
+    contacting you by email to help you finish creating your box. Please ensure our emails are not in your spam folder.</p>
+    <a  href="/contact" class="button">Contact us</a>
 </div>
    </div>
     <div id="masthead-image-construction"></div>

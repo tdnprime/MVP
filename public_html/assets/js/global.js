@@ -769,11 +769,6 @@ $(document).ready(function () {
 
   // Redirects users to previous location
   // after Google signin
-  var url = sessionStorage.getItem("last");
-  if (url) {
-    location.assign(url);
-    sessionStorage.removeItem("last");
-  }
 
   if (document.getElementById("box")) {
 

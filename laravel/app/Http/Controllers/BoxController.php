@@ -16,9 +16,10 @@ class BoxController extends Controller
      */
     public function index()
     {
-        $pattern = "/";
-
+      
         if (!$id = auth()->user()) {
+         
+            $pattern = "/";
             $box_url = str_replace($pattern, "", $_SERVER["REQUEST_URI"]);
             $boxes = DB::table('boxes')
                 ->where('box_url', '=', $box_url)
@@ -29,11 +30,13 @@ class BoxController extends Controller
                 ->with('i', (request()->input('page', 1) - 1) * 5);
 
         } else {
+            
             $id = auth()->user()->id;
             $user = User::find($id);
             $boxes = Box::latest()->paginate(5);
             return view('subscription_box.index', compact('boxes', 'user'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
+            
         }
 
     }

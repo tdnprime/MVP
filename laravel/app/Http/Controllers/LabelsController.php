@@ -12,7 +12,7 @@ class LabelsController extends Controller
     private function PDFMerge()
     {
         $pdfMerger = PDFMerger::init();
-      
+
     }
 
     public function generate()
@@ -43,20 +43,17 @@ class LabelsController extends Controller
                 if ($transaction["object_state"] == "VALID") {
                     // Combine for printing
                     fopen(dirname(__DIR__, 3) . "/storage/app/public/pdf/label.pdf", "w");
-                    file_put_contents(dirname(__DIR__, 3) . "/storage/app/public/pdf/label.pdf", file_get_contents( $transaction['label_url']));
-                   $pdfMerger->addPDF(dirname(__DIR__, 3) . "/storage/app/public/pdf/label.pdf", 'all');
-                   $pdfMerger->merge();
-                   return $pdfMerger->save('file_path.pdf', 'browser');
-                
+                    file_put_contents(dirname(__DIR__, 3) . "/storage/app/public/pdf/label.pdf", file_get_contents($transaction['label_url']));
+                    $pdfMerger->addPDF(dirname(__DIR__, 3) . "/storage/app/public/pdf/label.pdf", 'all');
+                    $pdfMerger->merge();
+                    return $pdfMerger->save('file_path.pdf', 'browser');
                     // Save object_id + tracking number
-
                     //Send tracking number to PayPal
                 }
 
             } else {
                 //
             }
-
 
         }
     }

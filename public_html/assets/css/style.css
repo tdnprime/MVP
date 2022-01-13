@@ -760,7 +760,7 @@ width:fit-content;
   text-transform: uppercase;
 }
 #text-current-step-number p {
-  floar: left;
+  float: left;
 }
 #text-next-step-number p {
   float: right;
@@ -982,6 +982,19 @@ form .alert{
   font-size: 2.5em;
   color: #0c8dc4;
   font-family: "Concert One";
+}
+.lift{
+  position:relative;
+  top:-2em;
+  z-index:1;
+}
+.image-shipping-label{
+  width:400px;
+  height:600px;
+  margin:auto;
+}
+.image-ego-boost{
+  width:50%;
 }
 .image-exclamation {
   height: 30px;

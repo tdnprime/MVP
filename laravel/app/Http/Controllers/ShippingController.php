@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Shippo;
 use Shippo_Address;
 use Shippo_Parcel;
@@ -131,7 +133,12 @@ class ShippingController extends Controller
     {
         $id = auth()->user()->id;
         $user = User::find($id);
-        return view('subscription_box.ship', compact('user'));
+        $subscriptions = DB::table('subscriptions')
+        ->where('creator_id', '=', $id)
+        ->select('*')
+        ->get();
+        return view('subscription_box.ship', compact('user'))
+            ->with('outgoing', count( $subscriptions));
     }
     public function incoming()
     {

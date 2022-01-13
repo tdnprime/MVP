@@ -578,16 +578,13 @@ Shipping = {
     mcheader.appendChild(div)
 
   },
-  printLabels: function (b) {
-    var arr = {};
-    arr['one'] = b.getAttribute('class');
-    var json = JSON.stringify(arr);
+  generateLabels: function () {
     var data = {
-      method: "POST",
-      action: "../home/s.php",
+      method: "GET",
+      action: "/box/labels",
       contentType: "application/json; charset=utf-8",
-      customHeader: "LABELS",
-      payload: json
+      customHeader: "X-CSRF-TOKEN",
+      payload: document.querySelector('meta[name="csrf-token"]').content
     }
 
     function callback() { }
@@ -896,22 +893,10 @@ $(document).ready(function () {
     });
   }
 
-  if (document.getElementById('anchor-tab-subscriptions')) {
-    document.getElementById('anchor-tab-subscriptions').addEventListener('click', function () {
-      var a = this;
-      Boxeon.tabSwitch(a.id);
-    });
-  }
-  if (document.getElementById('anchor-tab-tracking')) {
-    document.getElementById('anchor-tab-tracking').addEventListener('click', function () {
-      var a = this;
-      Boxeon.tabSwitch(a.id);
-    });
-  }
-  if (document.getElementById('anchor-tab-incoming')) {
-    document.getElementById('anchor-tab-incoming').addEventListener('click', function () {
-      var a = this;
-      Boxeon.tabSwitch(a.id);
+  if (document.getElementById('generate-labels')) {
+    document.getElementById('generate-labels').addEventListener('click', function () {
+      Boxeon.loader();
+      Shipping.generateLabels();
     });
   }
 

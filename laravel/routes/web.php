@@ -44,7 +44,9 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::post('/box/{vid}/edit','App\Http\Controllers\BoxController@edit')->name('box.edit');
     Route::put('/box/{vid}','App\Http\Controllers\BoxController@update')->name('box.update');
     Route::delete('/box/{vid}', 'App\Http\Controllers\BoxController@destory')->name('box.destory');
-    Route::get('/box/ship', 'App\Http\Controllers\BoxController@ship')->name('box.ship');
+    Route::get('/box/ship', 'App\Http\Controllers\ShippingController@ship')->name('box.ship');
+    Route::get('/box/incoming', 'App\Http\Controllers\ShippingController@incoming')->name('box.incoming');
+    Route::get('/box/track', 'App\Http\Controllers\ShippingController@track')->name('box.track');
     Route::get('/rates','App\Http\Controllers\ShippingController@rates')->name('box.rates');
     Route::post('/subscription/remove/{box}','App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
 

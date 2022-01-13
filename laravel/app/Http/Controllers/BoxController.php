@@ -41,13 +41,6 @@ class BoxController extends Controller
 
     }
 
-    public function ship()
-    {
-        $id = auth()->user()->id;
-        $user = User::find($id);
-        return view('subscription_box.ship', compact('user'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Laravel\Socialite\Facades\Socialite;
-use Exception;
 use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
 {
-        /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -19,21 +18,21 @@ class GoogleController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
-         /**
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function handleGoogleCallback()
     {
-        try{
+        try {
             $user = Socialite::driver('google')->stateless()->user();
             $finduser = User::where('google_id', $user->id)->first();
 
-            if($finduser){
+            if ($finduser) {
                 Auth::login($finduser);
                 return redirect('/home/index');
-            }else{
+            } else {
                 $user = User::firstOrCreate([
                     'google_id' => $user->id,
                     'email' => $user->email,
@@ -43,20 +42,22 @@ class GoogleController extends Controller
                 ]);
 
                 Auth::login($user, true);
-                $mail = new MailController();
-                $mail->welcome();
-                //shell_exec( dirname(__DIR__, 2) . "/Mail/WelcomeUser.php/".$user->id."' 'alert' >> " . dirname(__DIR__, 3) . "/storage/logs/laravel.log &");
+                //$mail = new MailController();
+                // $mail->welcome();
+                /*Mail::to($request->user())
+                    ->queue(new WelcomeUser);*/
                 return redirect('/home/index');
             }
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             dd($e->getMessage());
         }
     }
-    public function status(){
+    public function status()
+    {
         $status = Auth::check();
         if ($status) {
             echo 1;
-        }else if(!$status){
+        } else if (!$status) {
             echo 0;
         }
     }

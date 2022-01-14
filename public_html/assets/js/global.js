@@ -44,9 +44,6 @@ Boxeon = {
       if (this.readyState == 4 && this.status == 200) {
         Boxeon.removeLoader();
         back(this.responseText);
-      } else {
-        // We will not use modal windows for 
-        // error, success, or warning messages
       }
     }
   },
@@ -587,7 +584,11 @@ Shipping = {
       payload: document.querySelector('meta[name="csrf-token"]').content
     }
 
-    function callback() { }
+    function callback(re) { 
+      let msg = JSON.parse(re);
+      alert(msg.msg);
+
+    }
     Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   }

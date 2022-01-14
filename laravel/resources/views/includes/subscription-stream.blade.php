@@ -3,6 +3,7 @@
 $subs = DB::table("subscriptions")
     ->join('boxes', 'boxes.user_id', '=', 'subscriptions.creator_id')
     ->join('users', 'users.id', '=', 'boxes.user_id')
+	->where('subscriptions.user_id', '=', $user->id)
 	->where('sub_id', '<>', null)
     ->select('subscriptions.*', 'boxes.*', 'users.given_name', 'users.family_name')
     ->get();

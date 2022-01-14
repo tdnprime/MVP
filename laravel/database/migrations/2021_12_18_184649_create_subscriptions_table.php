@@ -40,6 +40,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('carrier')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
+        
         });
     }
 

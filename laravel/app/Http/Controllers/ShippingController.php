@@ -157,5 +157,18 @@ class ShippingController extends Controller
 
         //
     }
+    public function addresses(){
+        $id = auth()->user()->id;
+        $Addresses = DB::table('subscriptions')
+        ->where('creator_id', '=', $id)
+        ->where('status', '=', 1)
+        ->where('order_id', '<>', null)
+        ->where('rate_id', '<>', null)
+        ->select('fullname', 'address_line_1',
+        'address_line_2', 'admin_area_1',
+        'admin_area_2', 'country_code', 'postal_code')
+        ->get();
+        return view('subscription_box.addresses', ['print'=>$Addresses]);
+      }
 
 }

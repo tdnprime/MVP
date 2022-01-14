@@ -40,6 +40,7 @@ class CreateBoxesTable extends Migration
             $table->string('country_code')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('video')->nullable();
+            $table->integer('shipping_count')->nullable();
             $table->integer('updated_at');
             $table->integer('created_at');
 

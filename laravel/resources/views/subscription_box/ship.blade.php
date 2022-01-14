@@ -11,16 +11,33 @@
          
                 @if ($outgoing > 0)
                 <?php
-                $box = DB::select('select created_at from boxes where user_id= ?', [$user->id]);
+                $box = DB::table("boxes")
+                ->where('user_id', '=', [$user->id])
+                ->select('created_at', 'shipping_count')
+                ->get();
+
+                if(!is_null($box[0]->shipping_count)){
+
+                  $last_shipping = 2629743 * $box[0]->shipping_count;
+
+                }else{
+
+                $last_shipping = 2629743;
+
+                }
+                $next_shipping = gmdate("F d", $box[0]->created_at + $last_shipping)
                 ?>
                
                     <div class="centered margin-bottom-4-em">
-                        <img class="image-ego-boost" src="../assets/images/fly.svg" alt="Soaring" />
+                        <img class="image-ego-boost" src="../assets/images/fly.svg" alt="Congratulations" />
                         <h2>You're flying high, {{ $user->given_name }}!</h2>
-                        <p>You have &nbsp;<span class="highlighted">{{$outgoing}}</span> &nbsp;boxes to ship for month ending {{gmdate("F d", $box[0]->created_at + 2629743)}}. If ready, generate their shipping
-                            labels. </p>
-                        <br>
-                        <a class="button" href="#" id="generate-labels">Generate labels</a>
+                        <p class="centered center">You have &nbsp;<span class="highlighted">{{$outgoing}}</span> &nbsp;boxes to ship for month ending {{$next_shipping}}. If your buyers paid for shipping, generate their shipping
+                            labels when you're ready to ship. Otherwise, print their shipping addresses. </p>
+                        <div class="margin-top-4-em">
+                        <a class="button" href="/box/labels">Generate labels</a>
+                        <a class="button" href="#" id="buy-labels">Buy labels</a>
+                        <a class="button" href="/box/addresses" id="print-addresses">Print addresses</a>
+                        </div>
                     </div>
                 @else
                     <div class="alert">

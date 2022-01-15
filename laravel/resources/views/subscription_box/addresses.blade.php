@@ -10,5 +10,5 @@
    {{$print[0]->country_code}},
    {{$print[0]->postal_code}}</p>
     </div>
-  
+
 @endsection

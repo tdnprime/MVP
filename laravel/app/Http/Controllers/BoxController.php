@@ -16,9 +16,9 @@ class BoxController extends Controller
      */
     public function index()
     {
-      
+
         if (!$id = auth()->user()) {
-         
+
             $pattern = "/";
             $box_url = str_replace($pattern, "", $_SERVER["REQUEST_URI"]);
             $boxes = DB::table('boxes')
@@ -30,17 +30,58 @@ class BoxController extends Controller
                 ->with('i', (request()->input('page', 1) - 1) * 5);
 
         } else {
-            
+
             $id = auth()->user()->id;
             $user = User::find($id);
             $boxes = Box::latest()->paginate(5);
             return view('subscription_box.index', compact('boxes', 'user'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
-            
+
         }
 
     }
 
+    private function fileCheck($img)
+    {
+        $response = get_headers($img, 1);
+        return $file_exists = strpos($response[0], '404') === false;
+    }
+    private function setThumb($box)
+    {
+        $img0 = 'https://img.youtube.com/vi/' . $box->video . '/maxres0.jpg';
+        $img1 = 'https://img.youtube.com/vi/' . $box->video . '/maxres1.jpg';
+        $img2 = 'https://img.youtube.com/vi/' . $box->video . '/maxres2.jpg';
+        $img3 = 'https://img.youtube.com/vi/' . $box->video . '/maxres3.jpg';
+        $img4 = 'https://img.youtube.com/vi/' . $box->video . '/hqdefault.jpg';
+
+        if (self::fileCheck($img0)) {
+            $image = $img0;
+        } elseif (self::fileCheck($img1)) {
+            $image = $img1;
+        } elseif (self::fileCheck($img2)) {
+            $image = $img2;
+        } elseif (self::fileCheck($img3)) {
+            $image = $img3;
+        } else {
+            $image = $img4;
+        }
+        $box->video = $image;
+    }
+private function setShippingDetails($box){
+
+    $box->preenddate = gmdate('F d', (int)$box->created_at->toDateTimeString() + 2629743);
+    if ($box->shipping_cost == 0) {
+        $box->shipping = '+ shipping';
+        $box->discount = '90% off on';
+        $box->shipping_cost = 1;
+    } else {
+        $box->shipping = 'Free shipping';
+        $box->discount = 'free';
+        $box->shipping_cost = 0;
+    }
+
+
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -54,7 +95,7 @@ class BoxController extends Controller
 
         if ($user->boxes()->first() != null) {
             return redirect()->route('box.edit', $id)
-                ->with('success', 'Subscription Box already exist');
+                ->with(['box' => $box]);
         }
 
         return view('subscription_box.create', compact('user'));
@@ -80,7 +121,6 @@ class BoxController extends Controller
         $box->curation = $request->input('curation');
         $box->box_supply = $request->input('box_supply');
         $box->in_stock = $request->input('box_supply');
-
         $box->num_products = $request->input('num_products');
         $box->box_weight = $request->input('box_weight');
         $box->box_length = $request->input('box_length');
@@ -97,7 +137,7 @@ class BoxController extends Controller
 
         $user->boxes()->save($box);
         return redirect()->route('box.edit', $id)
-            ->with('success', 'Subscription Box created successfully');
+            ->with(['box' => $box]);
 
     }
 
@@ -122,8 +162,9 @@ class BoxController extends Controller
     {
         $user = User::find($user_id);
 
-        $box = $user->boxes()->first(); // NOTED
-
+        $box = $user->boxes()->first(); // NOTED 
+        self::setThumb($box);
+        self::setShippingDetails($box);
         return view('subscription_box.edit', compact('box', 'user'));
     }
 

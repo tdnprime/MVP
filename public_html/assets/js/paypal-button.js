@@ -1,6 +1,12 @@
 
 paypal.Buttons({
 
+  style: {
+    color: 'blue'
+
+    
+  },
+
   createSubscription: function (data, actions) {
 
 

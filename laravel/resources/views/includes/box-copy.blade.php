@@ -65,7 +65,7 @@ echo '<div id="masthead" class="fadein">
 		</div>
 		</section>";
         ?>
-        <?php
+<?php
         if(!isset($video)){
        echo "<div id='video-place-holder' class='centered'>
         <h1 class='extra-large-font'>Embed Video</h1>
@@ -82,9 +82,35 @@ echo '<div id="masthead" class="fadein">
         <input type='submit' value='Embed'></input></div></form></div>
 		</div>";
         }else{
+
+            $img0 = 'https://img.youtube.com/vi/' . $video . '/maxres0.jpg';
+           $img1 = 'https://img.youtube.com/vi/' . $video . '/maxres1.jpg';
+            $img2 = 'https://img.youtube.com/vi/' . $video . '/maxres2.jpg';
+            $img3 = 'https://img.youtube.com/vi/' . $video . '/maxres3.jpg';
+            $img4 = 'https://img.youtube.com/vi/' . $video . '/hqdefault.jpg';
+
+          function fileCheck($img){
+
+            $response = get_headers($img, 1); 
+            return  $file_exists = (strpos($response[0], "404") === false); 
+           
+          }
+   
+            if(fileCheck($img0)){
+              $image =  $img0;
+            }else if(fileCheck($img1)){
+              $image = $img1;
+            }else if(fileCheck($img2)){
+              $image = $img2;
+            }else if(fileCheck($img3)){
+              $image = $img3;
+            }else{
+              $image = $img4;
+            }
+
             echo "<div id='masthead-video-wrapper'>
             <div class='playbtn-wrapper'>
-            <img id='image-youtube-thumb' src='http://img.youtube.com/vi/$video/maxresdefault.jpg'/>
+            <img id='image-youtube-thumb' src='$image'/>
             <img id='image-video-frame' src='http://127.0.0.1:8000/assets/images/frame.svg'/>
              <a href='#' id='play-video' data-version='$version' data-product='$product' data-in-stock='$in_stock'  data-total='$price' data-shipping='$cost' data-id='$id' data-url='$url' data-video-id='$video' 
              data-plan-id='1'><img class='playbtn' src='../../assets/images/playbtn.png' 
@@ -93,7 +119,7 @@ echo '<div id="masthead" class="fadein">
             </div></div>";
         }
         ?>
-        <?php
+<?php
 		 echo "</div>
 		 <main class='fadein'>
 		 <a id='whatis' href='#whatis'></a>

@@ -32,7 +32,7 @@
                         <img class="image-ego-boost" src="../assets/images/fly.svg" alt="Congratulations" />
                         <h2>You're flying high, {{ $user->given_name }}!</h2>
                         <p class="centered center">You have &nbsp;<span class="highlighted">{{$outgoing}}</span> &nbsp;boxes to ship for month ending {{$next_shipping}}. If your buyers paid for shipping, generate their shipping
-                            labels when you're ready to ship. Otherwise, print their shipping addresses. </p>
+                            labels when you're ready to ship. Otherwise, buy labels or print their shipping addresses. </p>
                         <div class="margin-top-4-em">
                         <a class="button" href="/box/labels">Generate labels</a>
                         <a class="button" href="#" id="buy-labels">Buy labels</a>

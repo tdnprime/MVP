@@ -17,28 +17,64 @@ class BoxController extends Controller
     public function index()
     {
 
-        if (!$id = auth()->user()) {
+        $pattern = "/";
+        $box_url = str_replace($pattern, "", $_SERVER["REQUEST_URI"]);
 
-            $pattern = "/";
-            $box_url = str_replace($pattern, "", $_SERVER["REQUEST_URI"]);
-            $boxes = DB::table('boxes')
-                ->where('box_url', '=', $box_url)
-                ->select('user_id')
-                ->get();
-            $user = User::find($boxes[0]->user_id);
-            return view('subscription_box.index', compact('boxes', 'user'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
+        $box = DB::table("boxes")
+            ->join('users', 'boxes.user_id', '=', 'users.id')
+            ->where("box_url", '=', $box_url)
+            ->select('boxes.*', 'users.given_name', 'users.family_name')
+            ->get();
+        $box = $box[0];
+        self::setThumb($box);
+        self::setShippingDetails($box);
+        $user = User::find($box->user_id);
+        return view('subscription_box.index', compact('box', 'user'));
+    }
+    public function emdedVideo()
+    {
 
-        } else {
-
-            $id = auth()->user()->id;
-            $user = User::find($id);
-            $boxes = Box::latest()->paginate(5);
-            return view('subscription_box.index', compact('boxes', 'user'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
-
+        if (isset($_POST['ytembed'])) {
+            $code = $_POST['ytembed'];
+            preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $code, $matches);
+            if ($matches[1]) {
+                $vid = $matches[1]; // should contain the youtube user id
+                $array = [];
+                $array['video'] = $vid;
+                $box = DB::table('boxes')
+                    ->where('user_id', $user->id)
+                    ->limit(1);
+                $box->update($array);
+            } else {
+                // Serve error message
+            }
         }
+    }
 
+    private function createProduct($box)
+    {
+        require_once dirname(__DIR__, 3) . '/php/paypal-connect.php';
+        $config = parse_ini_file(dirname(__DIR__, 3) . '/config/app.ini', true);
+        $endpoint = $config['paypal']['productsEndpoint'];
+        $data = [
+            'name' => 'A subscription box',
+            'description' => 'Various products for entertainment purposes',
+            'type' => 'PHYSICAL',
+            'category' => 'ENTERTAINMENT_AND_MEDIA',
+            'home_url' => 'https://boxeon.com', // Update
+        ];
+        $media = "Content-Type: application/json, Authorization: Bearer $token";
+        $cp = sendcurl(json_encode($data), $endpoint, $media);
+
+        $box->product_id = $cp['id'];
+        $array = ['product_id' => $box->product_id];
+
+        $box = DB::table('boxes')
+            ->where('user_id', $user->id)
+            ->limit(1);
+        $box->update($array);
+
+        header('Refresh:0');
     }
 
     private function fileCheck($img)
@@ -67,21 +103,21 @@ class BoxController extends Controller
         }
         $box->video = $image;
     }
-private function setShippingDetails($box){
+    private function setShippingDetails($box)
+    {
 
-    $box->preenddate = gmdate('F d', (int)$box->created_at->toDateTimeString() + 2629743);
-    if ($box->shipping_cost == 0) {
-        $box->shipping = '+ shipping';
-        $box->discount = '90% off on';
-        $box->shipping_cost = 1;
-    } else {
-        $box->shipping = 'Free shipping';
-        $box->discount = 'free';
-        $box->shipping_cost = 0;
+        $box->preenddate = gmdate('F d', $box->created_at + 2629743);
+        if ($box->shipping_cost == 0) {
+            $box->shipping = '+ shipping';
+            $box->discount = '90% off on';
+            $box->shipping_cost = 1;
+        } else {
+            $box->shipping = 'Free shipping';
+            $box->discount = 'free';
+            $box->shipping_cost = 0;
+        }
+
     }
-
-
-}
     /**
      * Show the form for creating a new resource.
      *
@@ -94,8 +130,7 @@ private function setShippingDetails($box){
         $user = User::find($id);
 
         if ($user->boxes()->first() != null) {
-            return redirect()->route('box.edit', $id)
-                ->with(['box' => $box]);
+            return redirect()->route('box.edit', $id);
         }
 
         return view('subscription_box.create', compact('user'));
@@ -162,7 +197,7 @@ private function setShippingDetails($box){
     {
         $user = User::find($user_id);
 
-        $box = $user->boxes()->first(); // NOTED 
+        $box = $user->boxes()->first(); // NOTED
         self::setThumb($box);
         self::setShippingDetails($box);
         return view('subscription_box.edit', compact('box', 'user'));

@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    @if (is_null($box->box_weight))
+    @if(is_null($box->box_weight))
         <div id="masthead" class="fadein">
             <div id="headline">
                 <div>
@@ -27,6 +27,7 @@
                         contacting you by email to help you finish creating your box. Please ensure our emails are not in
                         your spam folder.</p>
                     <a href="/contact" class="button">Contact us</a>
+                    <a href="/box/create" class="button clearnbtn">Create box</a>
                 </div>
             </div>
             <div id="masthead-image-construction"></div>
@@ -52,10 +53,10 @@
                             <a href='#' id='exe-sub' data-version='{{ $box->vid }}'
                                 data-product='{{ $box->product_id }}' data-in-stock='{{ $box->in_stock }}'
                                 data-total='{{ $box->price }}' data-shipping='{{ $box->shipping_cost }}'
-                                data-id='{{ $box->user_id }}' data-url='auth/google'
-                                data-video-id='{{ $box->video }}' data-plan-id='1' class='button'>Subscribe</a>
-                            <a id='share-box' data-id='{{ $box->user_id }}' data-url='auth/google'
-                                href='#whatis' class='button clearbtn'>
+                                data-id='{{ $box->user_id }}' data-url='auth/google' data-video-id='{{ $box->video }}'
+                                data-plan-id='1' class='button'>Subscribe</a>
+                            <a id='share-box' data-id='{{ $box->user_id }}' data-url='auth/google' href='#whatis'
+                                class='button clearbtn'>
                                 Learn more</a>
                         </div>
                 </section>
@@ -74,7 +75,7 @@
                                 Boxeon.
                             </p>
                         </div>
-                        <form action='/box/$user->id/edit' method='post' id='embed-form'>
+                        <form action='/box/{{$user->id}}/edit' method='post' id='embed-form'>
 
                             @csrf
                             @method('POST')
@@ -92,10 +93,10 @@
             <div id='masthead-video-wrapper'>
                 <div class='playbtn-wrapper'>
                     <img id='image-youtube-thumb' src='{{ $box->video }}' />
-                    <a href='#' id='play-video' data-version='{{ $box->vid }}'
-                        data-product='{{ $box->product_id }}' data-in-stock='{{ $box->in_stock }}'
-                        data-total='{{ $box->price }}' data-shipping='{{ $box->shipping_cost }}'
-                        data-id='{{ $box->user_id }}' data-url='auth/google'
+                    {{--<img id='image-video-frame' src='http://127.0.0.1:8000/assets/images/frame.svg'/>--}}
+                    <a href='#' id='play-video' data-version='{{ $box->vid }}' data-product='{{ $box->product_id }}'
+                        data-in-stock='{{ $box->in_stock }}' data-total='{{ $box->price }}'
+                        data-shipping='{{ $box->shipping_cost }}' data-id='{{ $box->user_id }}' data-url='auth/google'
                         data-video-id='{{ $box->video }}' data-plan-id='1'>
                         <img class='playbtn' src='../../assets/images/playbtn.png' alt='Play video' /></a>
                 </div>
@@ -134,7 +135,8 @@
                     <p>
                         The first ten fans to <b>pre-order</b> will receive a 30-minute phone call with
                         {{ $user->given_name }}.
-                        Pre-order sales end on <span class='primary-color'><b>{{ $box->preenddate }}</b></span>, and boxes
+                        Pre-order sales end on <span class='primary-color'><b>{{ $box->preenddate }}</b></span>, and
+                        boxes
                         will ship within
                         one month after
                         pre-order sales have ended.</p>
@@ -157,7 +159,7 @@
                 <div class='secinner'>
                     <h1 class='extra-large-font'> Save on shipping</h1>
                     <p>
-                        Subscribe to {{ $user->given_name }}'s box today to secure {{$box->discount}} shipping.</p>
+                        Subscribe to {{ $user->given_name }}'s box today to secure {{ $box->discount }} shipping.</p>
                 </div>
                 <img src='../../assets/images/high-five.svg' alt='subscription box'>
             </div>
@@ -210,47 +212,5 @@
             </div>
         </section>
     </main>
-
-    @php
-    #EMBED YOUTUBE VIDEO
-    if (isset($_POST['ytembed'])) {
-        $code = $_POST['ytembed'];
-        preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $code, $matches);
-        if ($matches[1]) {
-            $vid = $matches[1]; // should contain the youtube user id
-            $array = [];
-            $array['video'] = $vid;
-            $box = DB::table('boxes')
-                ->where('user_id', $user->id)
-                ->limit(1);
-            $box->update($array);
-        } else {
-            // Serve error message
-        }
-        //Check if update was successful then Create Product on PayPal
-
-        // CREATE PRODUCT ON PAYPAL
-        require_once dirname(__DIR__, 3) . '/php/paypal-connect.php';
-        $config = parse_ini_file(dirname(__DIR__, 3) . '/config/app.ini', true);
-        $endpoint = $config['paypal']['productsEndpoint'];
-        $data = [
-            'name' => 'A subscription box',
-            'description' => 'Various products for entertainment purposes',
-            'type' => 'PHYSICAL',
-            'category' => 'ENTERTAINMENT_AND_MEDIA',
-            'home_url' => 'https://boxeon.com', // Update
-        ];
-        $media = "Content-Type: application/json, Authorization: Bearer $token";
-        $cp = sendcurl(json_encode($data), $endpoint, $media);
-        $box->product_id = $cp['id'];
-        $array = ['product_id' => $box->product_id];
-        $box = DB::table('boxes')
-            ->where('user_id', $user->id)
-            ->limit(1);
-        $box->update($array);
-        header('Refresh:0');
-    }
-
-    @endphp
     @endif
 @endsection

@@ -1,5 +1,5 @@
 @extends('layouts.index')
-
+@section('title', 'Best place for content creators to earn monthly, sustainable income')
 @section('content')
 
     <div id="masthead">

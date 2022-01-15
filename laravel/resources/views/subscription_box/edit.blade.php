@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    @if(is_null($box->box_weight))
+    @if(empty($box) || is_null($box->box_weight))
         <div id="masthead" class="fadein">
             <div id="headline">
                 <div>
@@ -92,7 +92,7 @@
 
             <div id='masthead-video-wrapper'>
                 <div class='playbtn-wrapper'>
-                    <img id='image-youtube-thumb' src='{{ $box->video }}' />
+                    <img id='image-youtube-thumb' src='{{ $box->image }}' />
                     {{--<img id='image-video-frame' src='http://127.0.0.1:8000/assets/images/frame.svg'/>--}}
                     <a href='#' id='play-video' data-version='{{ $box->vid }}' data-product='{{ $box->product_id }}'
                         data-in-stock='{{ $box->in_stock }}' data-total='{{ $box->price }}'

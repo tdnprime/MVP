@@ -1,5 +1,5 @@
 @extends('layouts.box')
-
+@section('title', $box->given_name . " " . $box->family_name  . ' is shipping ' . $box->box_supply . ' subscription boxes to loyal fans')
 @section('content')
 
     @if (session()->has('message'))
@@ -8,19 +8,21 @@
         </div>
     @endif
 
-    @if (is_null($box->box_weight))
-    <div id="masthead" class="fadein">
-        <div id="headline">
-        <div><p class="text-heading-label">FANS ARE WAITING</p><h1 class="ginormous">Create a 
-        subscription box today</h1>
-        <p id="pitch">If you started creating a box and chose to have us help you with product 
-        curation and shipping, we will be
-        contacting you by email. Please ensure our emails are not in your spam folder.</p>
-        <a class="button" href="/box/create">Create box</a>
-    </div>
-       </div>
-        <div id="masthead-image-construction"></div>
-    </div>
+    @if (empty($box) || is_null($box->box_weight))
+        <div id="masthead" class="fadein">
+            <div id="headline">
+                <div>
+                    <p class="text-heading-label">FANS ARE WAITING</p>
+                    <h1 class="ginormous">Create a
+                        subscription box today</h1>
+                    <p id="pitch">If you started creating a box and chose to have us help you with product
+                        curation and shipping, we will be
+                        contacting you by email. Please ensure our emails are not in your spam folder.</p>
+                    <a class="button" href="/box/create">Create box</a>
+                </div>
+            </div>
+            <div id="masthead-image-construction"></div>
+        </div>
     @else
 
         <div id='masthead'>
@@ -81,7 +83,7 @@
 
             <div id='masthead-video-wrapper'>
                 <div class='playbtn-wrapper'>
-                    <img id='image-youtube-thumb' src='{{ $box->video }}' />
+                    <img id='image-youtube-thumb' src='{{ $box->image }}' />
                     <a href='#' id='play-video' data-version='{{ $box->vid }}' data-product='{{ $box->product_id }}'
                         data-in-stock='{{ $box->in_stock }}' data-total='{{ $box->price }}'
                         data-shipping='{{ $box->shipping_cost }}' data-id='{{ $box->user_id }}' data-url='auth/google'
@@ -202,4 +204,3 @@
     </main>
     @endif
 @endsection
-

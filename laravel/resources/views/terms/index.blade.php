@@ -1,5 +1,5 @@
 @extends('layouts.home')
-
+@section('title', 'Terms of use')
 @section('content')
 
 <main>

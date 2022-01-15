@@ -1,5 +1,5 @@
 @extends('layouts.partner')
-
+@section('title', 'Best place for content creators to launch a subscription box at no cost')
 @section('content')
 
 <div id="masthead">

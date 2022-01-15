@@ -1,5 +1,5 @@
 @extends('layouts.home')
-
+@section('title', 'Contact')
 @section('content')
 
 <main id="contact">

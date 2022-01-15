@@ -1,5 +1,5 @@
 @extends('layouts.home')
-
+@section('title', 'Home')
 @section('content')
 
 <main class="fadein"><section id="left-aside">

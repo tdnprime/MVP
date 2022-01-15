@@ -31,9 +31,13 @@ class BoxController extends Controller
         $user = User::find($box->user_id);
         return view('subscription_box.index', compact('box', 'user'));
     }
-    public function emdedVideo()
+    /**
+     * Gets and saves Youtube video ID.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function embedVideo()
     {
-
         if (isset($_POST['ytembed'])) {
             $code = $_POST['ytembed'];
             preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $code, $matches);
@@ -101,12 +105,16 @@ class BoxController extends Controller
         } else {
             $image = $img4;
         }
-        $box->video = $image;
+        $box->image = $image;
     }
     private function setShippingDetails($box)
     {
-
-        $box->preenddate = gmdate('F d', $box->created_at + 2629743);
+        if (gettype($box->created_at) != 'integer') {
+            $created_at = (int) $box->created_at->toDateTimeString();
+        } else {
+            $created_at = $box->created_at;
+        }
+        $box->preenddate = gmdate('F d', $created_at + 2629743);
         if ($box->shipping_cost == 0) {
             $box->shipping = '+ shipping';
             $box->discount = '90% off on';
@@ -197,9 +205,11 @@ class BoxController extends Controller
     {
         $user = User::find($user_id);
 
-        $box = $user->boxes()->first(); // NOTED
+        $box = $user->boxes()->first();
+        if(isset($box)){
         self::setThumb($box);
         self::setShippingDetails($box);
+        }
         return view('subscription_box.edit', compact('box', 'user'));
     }
 

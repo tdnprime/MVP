@@ -55,6 +55,11 @@ Brown skin: #a0616a
 #box .for-creators-only {
   visibility: hidden;
 }
+#check-url{
+  grid-column-start: 2;
+  float:right;
+  height:auto;
+}
 #box .sub-btns{
 	margin-right: 2.5em;
 }
@@ -386,6 +391,7 @@ width:fit-content;
   grid-template-columns: 15% 68% 15%;
   margin-top: 2em;
   min-height: 70em;
+  margin-bottom: 2em;
 }
 #home-videos-wrapper {
   display: grid;
@@ -801,6 +807,17 @@ top:5em;
   background-color: #f5f7fa;
   border: 1px solid #ffffe0;
 }
+.div-form-field-explain{
+  background-color: #ffffe02e;
+  color: #000 !important;
+  margin-top: 1em;
+  text-align: left !important;
+  width:fit-content;
+  max-width: 95%;
+  min-height: 5em;
+  font-size: .8em;
+
+}
 .alert {
   background-color: #ffffe02e;
   color: #000 !important;
@@ -820,9 +837,7 @@ top:5em;
   position:relative;
   bottom:.2em;
 }
-form .alert{
-  padding:none;
-}
+
 .alt-section-inner-grid {
   display: grid;
   grid-gap: 5em;
@@ -1513,7 +1528,6 @@ input[type="submit"], .button, button {
   color: #ffffff;
   cursor: pointer;
   font-family: "Open Sans";
-  font-size: inherit !important;
   font-weight: bold;
   height: 3.5em;
   letter-spacing: 1px;
@@ -1617,4 +1631,16 @@ main p{
 label{
   float:left;
   clear:both;
+}
+#create-box fieldset{
+
+  box-shadow: 2px 4px 12px #0c8dc41a;
+}
+.hiden{
+  display: none;
+}
+h3{
+  color: #0c8dc4;
+  font-size: 1.5em;
+  font-family: 'Concert One';
 }

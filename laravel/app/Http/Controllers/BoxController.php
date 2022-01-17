@@ -36,21 +36,27 @@ class BoxController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function embedVideo()
+    public function embed(Request $request)
     {
-        if (isset($_POST['ytembed'])) {
-            $code = $_POST['ytembed'];
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        if (isset($request['ytembed'])) {
+            $code = $request['ytembed'];
             preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $code, $matches);
             if ($matches[1]) {
-                $vid = $matches[1]; // should contain the youtube user id
+                $vid = $matches[1];
                 $array = [];
                 $array['video'] = $vid;
                 $box = DB::table('boxes')
                     ->where('user_id', $user->id)
                     ->limit(1);
                 $box->update($array);
+                return view('subscription_box.edit', compact('box', 'user'))
+                ->with('success', 'Your subscription box is now live at https://boxeon.com/YourCustomURL');
             } else {
-                // Serve error message
+                return view('subscription_box.edit', compact('box', 'user'))
+                ->with('error', 'Oops! Something went wrong. Please try again.');
             }
         }
     }
@@ -243,6 +249,23 @@ class BoxController extends Controller
         return redirect()->route('box.index')
             ->with('success', 'Subscription Box updated successfully');
     }
+    protected function url(Request $request){
+
+        $box_url = json_decode($request['url']);
+        $re = DB::table('boxes')
+        ->where('box_url', '=', $box_url->url)
+        ->select('box_url')
+        ->get();
+        if( isset($re[0])){
+            return json_encode(array('msg' => 'Unavailable'));
+           // return route('box.url', 'url');
+        }else{
+            return json_encode($url = array('msg' => 'Available'));
+            //return route('box.url', 'url');
+        }
+     
+
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -250,7 +273,7 @@ class BoxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Box $box)
+    private function destroy(Box $box)
     {
         $box->delete();
 

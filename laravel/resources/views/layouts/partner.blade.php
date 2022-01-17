@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
     @include('includes.meta')
 </head>

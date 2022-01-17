@@ -47,6 +47,30 @@ Boxeon = {
       }
     }
   },
+  checkUrl: function (input) {
+    let json = JSON.stringify({ url: input });
+    var data = {
+      method: "POST",
+      action: "/box/url/?url=" + json + "",
+      contentType: "application/json; charset=utf-8",
+      customHeader: "X-CSRF-TOKEN",
+      payload: document.querySelector('meta[name="csrf-token"]').content
+    }
+
+    function callback(re) {
+      let msg = JSON.parse(re);
+      if(msg.msg == "Available"){
+        document.getElementById("box-url").
+        style.backgroundColor = '#00800087';
+      }else if(msg.msg == "Unavailable"){
+        document.getElementById("box-url").
+        style.backgroundColor = '#e2042987';
+      }
+
+    }
+    Boxeon.loader();
+    Boxeon.sendAjax(data, callback);
+  },
   disableLink: function (link) {
     link.addEventListener("click", function () {
       controller.abort();
@@ -68,18 +92,23 @@ Boxeon = {
     if (!document.getElementsByClassName("loader")[0]) {
       let div = document.createElement("div");
       div.className = "loader";
-      let masthead = document.getElementById("container");
-      masthead.prepend(div);
+      let container = document.getElementById("container");
+      container.prepend(div);
+      div.style.position = "absolute"; 
     }
   },
   removeLoader: function () {
     if (document.getElementsByClassName("loader")[0]) {
       var loader = document.getElementsByClassName("loader")[0];
       loader.remove();
+      Boxeon.CTA.value = Boxeon.ctaValue;
     }
   },
-  inlineMessage: function (msg) {
-    // Show inline message
+  working: function(CTA){
+    Boxeon.CTA = CTA;
+    Boxeon.ctaValue = CTA.value; 
+    CTA.value = 'Working...';
+
   },
   changeImageOnMouseover: function (img, src) {
     img.src = "/assets/images/" + src;
@@ -328,6 +357,10 @@ Boxeon = {
     for (var i = 0; i < elems.length; i++) {
       elems[i].removeAttribute("disabled");
     }
+    var hiden = document.getElementsByClassName('hiden');
+    for (var i = 0; i < hiden.length; i++) {
+      hiden[i].style.display = "block";
+    }
 
   },
 
@@ -417,6 +450,10 @@ Boxeon = {
     for (var i = 0; i < elems.length; i++) {
       elems[i].setAttribute("disabled", "disabled");
     }
+    var hiden = document.getElementsByClassName('hiden');
+    for (var i = 0; i < hiden.length; i++) {
+      hiden[i].style.display = "none";
+    }
 
   },
 };
@@ -505,6 +542,7 @@ Shipping = {
     }
     return false;
   },
+  // UPDATE
   getRates: function () {
     var json = JSON.stringify(Shipping.arr);
     var manifest = {
@@ -584,7 +622,7 @@ Shipping = {
       payload: document.querySelector('meta[name="csrf-token"]').content
     }
 
-    function callback(re) { 
+    function callback(re) {
       let msg = JSON.parse(re);
       alert(msg.msg);
 
@@ -796,6 +834,8 @@ $(document).ready(function () {
   if (document.getElementById('exe-sub')) {
     document.getElementById('exe-sub').addEventListener('click', function () {
       Boxeon.loader();
+      var CTA = this;
+      Boxeon.working(CTA);
       var a = this;
       Boxeon.router(a);
     });
@@ -810,6 +850,8 @@ $(document).ready(function () {
     document.getElementById('exe-sub-alt').addEventListener('click', function () {
       var a = this;
       Boxeon.loader();
+      var CTA = this;
+      Boxeon.working(CTA);
       Boxeon.router(a);
     });
   }
@@ -830,6 +872,8 @@ $(document).ready(function () {
       let URL = document.getElementById("exe-sub").getAttribute("data-url");
       var a = this;
       Boxeon.loader();
+      var CTA = this;
+      Boxeon.working(CTA);
       Boxeon.router(a);
     });
   }
@@ -853,6 +897,17 @@ $(document).ready(function () {
       }
     }
     */
+
+  if (document.getElementById('box-url')) {
+    document.getElementById('box-url').addEventListener('keydown', function (e) {
+      var key = e.keyCode;
+      if (key === 32) {
+        event.preventDefault();
+      }
+    });
+  }
+
+
   if (document.getElementById('show-disabled')) {
     document.getElementById('show-disabled').addEventListener('click', function () {
       Boxeon.showDisabled();
@@ -897,7 +952,22 @@ $(document).ready(function () {
   if (document.getElementById('generate-labels')) {
     document.getElementById('generate-labels').addEventListener('click', function () {
       Boxeon.loader();
+      var CTA = this;
+      Boxeon.working(CTA);
       Shipping.generateLabels();
+    });
+  }
+  if (document.getElementById('check-url')) {
+    document.getElementById('check-url').addEventListener('click', function () {
+      Boxeon.loader();
+      var CTA = this;
+      Boxeon.working(CTA);
+      if (document.getElementById("box-url").value) {
+        var input = document.getElementById("box-url").value;
+        Boxeon.checkUrl(input);
+      } else {
+        //
+      }
     });
   }
 
@@ -905,7 +975,7 @@ $(document).ready(function () {
     var opts = {
       className: "step step-incomplete",
       length: 3,
-      label1: "Basics",
+      label1: "Details",
       label2: "Embed video",
       label3: "Publish"
     }
@@ -913,10 +983,10 @@ $(document).ready(function () {
 
     var el = "h2";
     var options = {
-      msg: "Create your box",
+      msg: "1. Details",
       className: "primary-color centered"
     }
-    document.getElementById("module").prepend(Boxeon.createElem(el, options));
+    document.getElementById("create-box").prepend(Boxeon.createElem(el, options));
     // create box form
     var preOrder = document.getElementById("pre-order");
     preOrder.addEventListener("change", function () {
@@ -925,15 +995,15 @@ $(document).ready(function () {
         specialOffer.style.display = "grid";
         var specialOffer = document.getElementsByClassName("special-offer");
         specialOffer[0].style.display = "block";
-        specialOffer[1].style.display = "block";
-        specialOffer[1].removeAttribute("disabled");
+        // specialOffer[1].style.display = "block";
+        specialOffer[0].removeAttribute("disabled");
       } else if (this.value == 0) {
         var specialOffer = document.getElementById("special-offer");
         specialOffer.style.display = "none";
         var specialOffer = document.getElementsByClassName("special-offer");
         specialOffer[0].style.display = "none";
-        specialOffer[1].style.display = "none";
-        specialOffer[1].setAttribute("disabled", "disabled");
+        //specialOffer[1].style.display = "none";
+        specialOffer[0].setAttribute("disabled", "disabled");
       }
 
     });
@@ -965,7 +1035,7 @@ $(window).on('beforeunload', function () {
     <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
   </div>
   <script src="https://www.paypal.com/sdk/js?client-id=AX8AvmJU7HxmlDw59tYGvs3GIddloRyhAgJaNzWzx6tdk_ttmSULaw18BoA2g34isdWxKCaVcrmKvo3t&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
-  
+
 
 
 */

@@ -1,12 +1,12 @@
+
 <title>@yield('title', config('app.name'))</title>
 <meta property="og:title" content="Best place for content creators to earn, monthly, sustainable income" />
+<meta property="og:description" content="Be a free spirit, start a subscription box, raise capital, it's easy." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://boxeon.com" />
-<meta property="og:image" content="{{ asset('../assets/images/favicon.svg') }}" />
-<meta name="description"
-    content="Start and grow a subscription box business and secure monthly income. It's the wave of the future." />
-<meta name="keywords"
-    content="Boxeon, Patreon alternative, monitize content, Subscription box platform, make more money on Youtube">
+<meta property="og:image" content="{{ asset('../assets/images/high-five.svg') }}" />
+<meta name="description" content="Start and grow a subscription box business and secure monthly income. It's the wave of the future." />
+<meta name="keywords" content="Boxeon, Patreon alternative, monitize content, Subscription box platform, make more money on Youtube">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />

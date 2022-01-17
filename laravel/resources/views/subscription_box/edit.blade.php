@@ -75,7 +75,7 @@
                                 Boxeon.
                             </p>
                         </div>
-                        <form action='/box/{{$user->id}}/edit' method='post' id='embed-form'>
+                        <form action='/box/embed' method='post' id='embed-form'>
 
                             @csrf
                             @method('POST')
@@ -93,7 +93,6 @@
             <div id='masthead-video-wrapper'>
                 <div class='playbtn-wrapper'>
                     <img id='image-youtube-thumb' src='{{ $box->image }}' />
-                    {{--<img id='image-video-frame' src='http://127.0.0.1:8000/assets/images/frame.svg'/>--}}
                     <a href='#' id='play-video' data-version='{{ $box->vid }}' data-product='{{ $box->product_id }}'
                         data-in-stock='{{ $box->in_stock }}' data-total='{{ $box->price }}'
                         data-shipping='{{ $box->shipping_cost }}' data-id='{{ $box->user_id }}' data-url='auth/google'

@@ -33,9 +33,9 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
+        '40275907c8566c390185147049ef6e5d' => __DIR__ . '/..' . '/livewire/livewire/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        '40275907c8566c390185147049ef6e5d' => __DIR__ . '/..' . '/livewire/livewire/src/helpers.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
     );
 
@@ -179,6 +179,7 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         'C' => 
         array (
             'Cron\\' => 5,
+            'Cmgmyr\\Messenger\\' => 17,
             'Carbon\\' => 7,
         ),
         'B' => 
@@ -542,6 +543,10 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'Cmgmyr\\Messenger\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cmgmyr/messenger/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -789,6 +794,12 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'Carbon\\TranslatorStrongTypeInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/TranslatorStrongTypeInterface.php',
+        'Cmgmyr\\Messenger\\MessengerServiceProvider' => __DIR__ . '/..' . '/cmgmyr/messenger/src/MessengerServiceProvider.php',
+        'Cmgmyr\\Messenger\\Models\\Message' => __DIR__ . '/..' . '/cmgmyr/messenger/src/Models/Message.php',
+        'Cmgmyr\\Messenger\\Models\\Models' => __DIR__ . '/..' . '/cmgmyr/messenger/src/Models/Models.php',
+        'Cmgmyr\\Messenger\\Models\\Participant' => __DIR__ . '/..' . '/cmgmyr/messenger/src/Models/Participant.php',
+        'Cmgmyr\\Messenger\\Models\\Thread' => __DIR__ . '/..' . '/cmgmyr/messenger/src/Models/Thread.php',
+        'Cmgmyr\\Messenger\\Traits\\Messagable' => __DIR__ . '/..' . '/cmgmyr/messenger/src/Traits/Messagable.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',

@@ -53,7 +53,14 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/box/track', 'App\Http\Controllers\ShippingController@track')->name('box.track');
     Route::get('/rates','App\Http\Controllers\ShippingController@rates')->name('box.rates');
     Route::post('/subscription/remove/{box}','App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
-
+   
+    Route::group(['prefix' => 'messages'], function () {
+        Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
+        Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
+        Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
+        Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+        Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+    });
 
 });
 Route::post('/createplan','App\Http\Controllers\SubscriptionController@createplan')->name('subscription.createplan');

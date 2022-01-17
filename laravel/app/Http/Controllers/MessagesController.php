@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Models\User;
 use Carbon\Carbon;
 use Cmgmyr\Messenger\Models\Message;
 use Cmgmyr\Messenger\Models\Participant;
@@ -21,6 +21,8 @@ class MessagesController extends Controller
      */
     public function index()
     {
+        $id = auth()->user()->id;
+        $user = User::find($id);
         // All threads, ignore deleted/archived participants
         $threads = Thread::getAllLatest()->get();
 
@@ -30,7 +32,8 @@ class MessagesController extends Controller
         // All threads that user is participating in, with new messages
         // $threads = Thread::forUserWithNewMessages(Auth::id())->latest('updated_at')->get();
 
-        return view('messenger.index', compact('threads'));
+        return view('messenger.index', compact('threads'))
+        ->with('user', $user);
     }
 
     /**
@@ -48,7 +51,8 @@ class MessagesController extends Controller
 
             return redirect()->route('messages');
         }
-
+        $id = auth()->user()->id;
+        $user = User::find($id);
         // show current user in list if not a current participant
         // $users = User::whereNotIn('id', $thread->participantsUserIds())->get();
 
@@ -58,7 +62,8 @@ class MessagesController extends Controller
 
         $thread->markAsRead($userId);
 
-        return view('messenger.show', compact('thread', 'users'));
+        return view('messenger.show', compact('thread', 'users'))
+        ->with('user', $user);
     }
 
     /**

@@ -1,4 +1,4 @@
-<h2>Add a new message</h2>
+
 <form action="{{ route('messages.update', $thread->id) }}" method="post">
     {{ method_field('put') }}
     {{ csrf_field() }}
@@ -9,7 +9,7 @@
     </div>
 
     @if($users->count() > 0)
-        <div class="checkbox">
+        <div class="checkbox hide">
             @foreach($users as $user)
                 <label title="{{ $user->name }}">
                     <input type="checkbox" name="recipients[]" value="{{ $user->id }}">{{ $user->name }}
@@ -20,6 +20,6 @@
 
     <!-- Submit Form Input -->
     <div class="form-group">
-        <button type="submit" class="btn btn-primary form-control">Submit</button>
+        <button type="submit" class="btn btn-primary form-control">Send</button>
     </div>
 </form>

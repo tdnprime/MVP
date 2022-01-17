@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'e9d1d8253cab67060df24e8bcd466942e1f82d4f',
+        'reference' => '6ba922adec4a316e4c2be31ba8f1b75acefba3dc',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -472,7 +472,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'e9d1d8253cab67060df24e8bcd466942e1f82d4f',
+            'reference' => '6ba922adec4a316e4c2be31ba8f1b75acefba3dc',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -574,6 +574,15 @@
             'reference' => 'e117c78f9a4b19edb294b5b576138fd1f896925a',
             'dev_requirement' => false,
         ),
+        'mateusjunges/laravel-invite-codes' => array(
+            'pretty_version' => 'v1.4.2',
+            'version' => '1.4.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mateusjunges/laravel-invite-codes',
+            'aliases' => array(),
+            'reference' => '50e68d61cf965e58c146d82d0d91b82aab0bc264',
+            'dev_requirement' => false,
+        ),
         'mobiledetect/mobiledetectlib' => array(
             'pretty_version' => '2.8.37',
             'version' => '2.8.37.0',
@@ -618,6 +627,15 @@
             'replaced' => array(
                 0 => '1.10.2',
             ),
+        ),
+        'mydnic/laravel-kustomer' => array(
+            'pretty_version' => 'v1.7.0',
+            'version' => '1.7.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mydnic/laravel-kustomer',
+            'aliases' => array(),
+            'reference' => 'b5675eb60fd5902ac2f5ec5a698781dac93aef51',
+            'dev_requirement' => false,
         ),
         'nesbot/carbon' => array(
             'pretty_version' => '2.55.2',

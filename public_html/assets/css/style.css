@@ -63,6 +63,9 @@ Brown skin: #a0616a
 #box .sub-btns{
 	margin-right: 2.5em;
 }
+#unread-count{
+  color:red;
+}
 #box-headline {
   padding-left: 0;
   border-radius: .5em;
@@ -355,6 +358,9 @@ width:fit-content;
 #about main p{
 	line-height: 4em;
 }
+.image-cta{
+  width:50%;
+}
 #image-eating-pizza {
   width: 30%;
   margin-bottom: 2em;
@@ -456,6 +462,11 @@ width:fit-content;
 }
 #left-aside {
   grid-column-start: 1;
+  display: grid;
+  grid-template-rows: 10em 5em 5em;
+}
+#left-aside *{
+  margin:auto;
 }
 #logo {
   display: inline;

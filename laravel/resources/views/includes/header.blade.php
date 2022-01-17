@@ -10,9 +10,12 @@
 
     @auth
 
-        <a id='current-user' href='/box/{{ $user ? $user->id : '0' }}/edit' title='Edit mode'>
+    <div id='current-user' class='two-col-grid'>
+        <a href='/direct/inbox' title='Messages'><span class='material-icons'>mail</span><span id='unread-count'>@include('messenger.unread-count')</span></a>
+        <a  href='/box/{{ $user ? $user->id : '0' }}/edit' title='Edit mode'>
             <span class='material-icons'>account_box</span> {{ $user->given_name }}'s Boxeon
         </a>
+    </div>
 
     @else
         <a id='signin' href='{{ url('auth/google') }}'>

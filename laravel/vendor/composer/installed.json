@@ -3005,6 +3005,67 @@
             "install-path": "../livewire/livewire"
         },
         {
+            "name": "mateusjunges/laravel-invite-codes",
+            "version": "v1.4.2",
+            "version_normalized": "1.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mateusjunges/laravel-invite-codes.git",
+                "reference": "50e68d61cf965e58c146d82d0d91b82aab0bc264"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mateusjunges/laravel-invite-codes/zipball/50e68d61cf965e58c146d82d0d91b82aab0bc264",
+                "reference": "50e68d61cf965e58c146d82d0d91b82aab0bc264",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^6.0|^7.0|^8.0",
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0|^5.0",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0",
+                "predis/predis": "^1.1"
+            },
+            "time": "2021-10-14T13:15:30+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Junges\\InviteCodes\\InviteCodesServiceProvider",
+                        "Junges\\InviteCodes\\InviteCodesEventServiceProvider"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Junges\\InviteCodes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mateus Junges",
+                    "email": "contato@mateusjunges.com",
+                    "homepage": "https://twitter.com/mateusjungess",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package allows you to easily manage invite codes for your Laravel application.",
+            "support": {
+                "issues": "https://github.com/mateusjunges/laravel-invite-codes/issues",
+                "source": "https://github.com/mateusjunges/laravel-invite-codes/tree/v1.4.2"
+            },
+            "install-path": "../mateusjunges/laravel-invite-codes"
+        },
+        {
             "name": "mobiledetect/mobiledetectlib",
             "version": "2.8.37",
             "version_normalized": "2.8.37.0",
@@ -3306,6 +3367,68 @@
                 }
             ],
             "install-path": "../myclabs/deep-copy"
+        },
+        {
+            "name": "mydnic/laravel-kustomer",
+            "version": "v1.7.0",
+            "version_normalized": "1.7.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mydnic/laravel-feedback-component.git",
+                "reference": "b5675eb60fd5902ac2f5ec5a698781dac93aef51"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mydnic/laravel-feedback-component/zipball/b5675eb60fd5902ac2f5ec5a698781dac93aef51",
+                "reference": "b5675eb60fd5902ac2f5ec5a698781dac93aef51",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0|^8.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3",
+                "orchestra/testbench": "^3.7.8",
+                "phpunit/phpunit": "^7.5"
+            },
+            "time": "2021-06-11T11:30:33+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mydnic\\Kustomer\\KustomerServiceProvider"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Mydnic\\Kustomer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Clément Rigo",
+                    "email": "rigoclement@mydnic.be"
+                }
+            ],
+            "description": "Open Source Feedback Interface for Laravel",
+            "homepage": "https://github.com/mydnic/laravel-feedback-component",
+            "keywords": [
+                "customer",
+                "feedback",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/mydnic/laravel-feedback-component/issues",
+                "source": "https://github.com/mydnic/laravel-feedback-component/tree/v1.7.0"
+            },
+            "install-path": "../mydnic/laravel-kustomer"
         },
         {
             "name": "nesbot/carbon",

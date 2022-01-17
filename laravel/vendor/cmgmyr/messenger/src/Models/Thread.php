@@ -349,7 +349,7 @@ class Thread extends Eloquent
      *
      * @return string
      */
-    public function participantsString($userId = null, array $columns = ['name']): string
+    public function participantsString($userId = null, array $columns = ['given_name']): string
     {
         $participantsTable = Models::table('participants');
         $usersTable = Models::table('users');

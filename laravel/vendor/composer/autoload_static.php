@@ -117,6 +117,7 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         ),
         'M' => 
         array (
+            'Mydnic\\Kustomer\\' => 16,
             'Monolog\\' => 8,
         ),
         'L' => 
@@ -137,6 +138,7 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         ),
         'J' => 
         array (
+            'Junges\\InviteCodes\\' => 19,
             'Jenssegers\\Agent\\' => 17,
             'Jaybizzle\\CrawlerDetect\\' => 24,
         ),
@@ -390,6 +392,10 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
         ),
+        'Mydnic\\Kustomer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mydnic/laravel-kustomer/src',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -445,6 +451,10 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         'Laravel\\Fortify\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/fortify/src',
+        ),
+        'Junges\\InviteCodes\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src',
         ),
         'Jenssegers\\Agent\\' => 
         array (
@@ -609,6 +619,7 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         'App\\Http\\Controllers\\LabelsController' => __DIR__ . '/../..' . '/app/Http/Controllers/LabelsController.php',
         'App\\Http\\Controllers\\LogoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/LogoutController.php',
         'App\\Http\\Controllers\\MailController' => __DIR__ . '/../..' . '/app/Http/Controllers/MailController.php',
+        'App\\Http\\Controllers\\MessagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/MessagesController.php',
         'App\\Http\\Controllers\\PartnerController' => __DIR__ . '/../..' . '/app/Http/Controllers/PartnerController.php',
         'App\\Http\\Controllers\\ShippingController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShippingController.php',
         'App\\Http\\Controllers\\SubscriptionController' => __DIR__ . '/../..' . '/app/Http/Controllers/SubscriptionController.php',
@@ -2853,6 +2864,28 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         'Jenssegers\\Agent\\AgentServiceProvider' => __DIR__ . '/..' . '/jenssegers/agent/src/AgentServiceProvider.php',
         'Jenssegers\\Agent\\Facades\\Agent' => __DIR__ . '/..' . '/jenssegers/agent/src/Facades/Agent.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'Junges\\InviteCodes\\Console\\Commands\\DeleteExpiredInvitesCommand' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Console/Commands/DeleteExpiredInvitesCommand.php',
+        'Junges\\InviteCodes\\Contracts\\InviteCodesContract' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Contracts/InviteCodesContract.php',
+        'Junges\\InviteCodes\\Contracts\\InviteContract' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Contracts/InviteContract.php',
+        'Junges\\InviteCodes\\Events\\DeletedExpiredInvitesEvent' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Events/DeletedExpiredInvitesEvent.php',
+        'Junges\\InviteCodes\\Events\\InviteCreatedEvent' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Events/InviteCreatedEvent.php',
+        'Junges\\InviteCodes\\Events\\InviteRedeemedEvent' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Events/InviteRedeemedEvent.php',
+        'Junges\\InviteCodes\\Exceptions\\DuplicateInviteCodeException' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Exceptions/DuplicateInviteCodeException.php',
+        'Junges\\InviteCodes\\Exceptions\\ExpiredInviteCodeException' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Exceptions/ExpiredInviteCodeException.php',
+        'Junges\\InviteCodes\\Exceptions\\InvalidInviteCodeException' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Exceptions/InvalidInviteCodeException.php',
+        'Junges\\InviteCodes\\Exceptions\\InviteAlreadyRedeemedException' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Exceptions/InviteAlreadyRedeemedException.php',
+        'Junges\\InviteCodes\\Exceptions\\InviteCodesException' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Exceptions/InviteCodesException.php',
+        'Junges\\InviteCodes\\Exceptions\\InviteMustBeAbleToBeRedeemedException' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Exceptions/InviteMustBeAbleToBeRedeemedException.php',
+        'Junges\\InviteCodes\\Exceptions\\InviteWithRestrictedUsageException' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Exceptions/InviteWithRestrictedUsageException.php',
+        'Junges\\InviteCodes\\Exceptions\\RouteProtectedByInviteCodeException' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Exceptions/RouteProtectedByInviteCodeException.php',
+        'Junges\\InviteCodes\\Exceptions\\SoldOutException' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Exceptions/SoldOutException.php',
+        'Junges\\InviteCodes\\Exceptions\\UserLoggedOutException' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Exceptions/UserLoggedOutException.php',
+        'Junges\\InviteCodes\\Facades\\InviteCodes' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Facades/InviteCodes.php',
+        'Junges\\InviteCodes\\Http\\Middlewares\\ProtectedByInviteCodeMiddleware' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Http/Middlewares/ProtectedByInviteCodeMiddleware.php',
+        'Junges\\InviteCodes\\Http\\Models\\Invite' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/Http/Models/Invite.php',
+        'Junges\\InviteCodes\\InviteCodes' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/InviteCodes.php',
+        'Junges\\InviteCodes\\InviteCodesEventServiceProvider' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/InviteCodesEventServiceProvider.php',
+        'Junges\\InviteCodes\\InviteCodesServiceProvider' => __DIR__ . '/..' . '/mateusjunges/laravel-invite-codes/src/InviteCodesServiceProvider.php',
         'Laravel\\Fortify\\Actions\\AttemptToAuthenticate' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/AttemptToAuthenticate.php',
         'Laravel\\Fortify\\Actions\\CompletePasswordReset' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/CompletePasswordReset.php',
         'Laravel\\Fortify\\Actions\\ConfirmPassword' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/ConfirmPassword.php',
@@ -3738,6 +3771,11 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Test\\TestCase' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Test/TestCase.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
+        'Mydnic\\Kustomer\\Console\\PublishCommand' => __DIR__ . '/..' . '/mydnic/laravel-kustomer/src/Console/PublishCommand.php',
+        'Mydnic\\Kustomer\\Events\\NewFeedback' => __DIR__ . '/..' . '/mydnic/laravel-kustomer/src/Events/NewFeedback.php',
+        'Mydnic\\Kustomer\\Feedback' => __DIR__ . '/..' . '/mydnic/laravel-kustomer/src/Feedback.php',
+        'Mydnic\\Kustomer\\Http\\Controllers\\FeedbackController' => __DIR__ . '/..' . '/mydnic/laravel-kustomer/src/Http/Controllers/FeedbackController.php',
+        'Mydnic\\Kustomer\\KustomerServiceProvider' => __DIR__ . '/..' . '/mydnic/laravel-kustomer/src/KustomerServiceProvider.php',
         'Nette\\ArgumentOutOfRangeException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'Nette\\DeprecatedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'Nette\\DirectoryNotFoundException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',

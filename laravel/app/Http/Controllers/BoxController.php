@@ -53,7 +53,7 @@ class BoxController extends Controller
                     ->limit(1);
                 $box->update($array);
                 return view('subscription_box.edit', compact('box', 'user'))
-                ->with('success', 'Your subscription box is now live at https://boxeon.com/YourCustomURL');
+                ->with('success', 'Your subscription box is live at https://boxeon.com/YourCustomURL');
             } else {
                 return view('subscription_box.edit', compact('box', 'user'))
                 ->with('error', 'Oops! Something went wrong. Please try again.');

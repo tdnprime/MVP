@@ -59,12 +59,12 @@ Boxeon = {
 
     function callback(re) {
       let msg = JSON.parse(re);
-      if(msg.msg == "Available"){
+      if (msg.msg == "Available") {
         document.getElementById("box-url").
-        style.backgroundColor = '#00800087';
-      }else if(msg.msg == "Unavailable"){
+          style.backgroundColor = '#00800087';
+      } else if (msg.msg == "Unavailable") {
         document.getElementById("box-url").
-        style.backgroundColor = '#e2042987';
+          style.backgroundColor = '#e2042987';
       }
 
     }
@@ -94,7 +94,7 @@ Boxeon = {
       div.className = "loader";
       let container = document.getElementById("container");
       container.prepend(div);
-      div.style.position = "absolute"; 
+      div.style.position = "absolute";
     }
   },
   removeLoader: function () {
@@ -104,9 +104,9 @@ Boxeon = {
       Boxeon.CTA.value = Boxeon.ctaValue;
     }
   },
-  working: function(CTA){
+  working: function (CTA) {
     Boxeon.CTA = CTA;
-    Boxeon.ctaValue = CTA.value; 
+    Boxeon.ctaValue = CTA.value;
     CTA.value = 'Working...';
 
   },
@@ -956,6 +956,16 @@ $(document).ready(function () {
       Boxeon.working(CTA);
       Shipping.generateLabels();
     });
+  }
+  if (document.getElementById('message-create')) {
+    document.getElementById('message-create').addEventListener('click', function () {
+      let id = this.getAttribute("data-type-id");
+      sessionStorage.setItem('recipient', id);
+    });
+  }
+  if (document.getElementById('form-message-store')) {
+      let id = sessionStorage.getItem('recipient'); 
+      document.getElementById('recipient').setAttribute("value", id);
   }
   if (document.getElementById('check-url')) {
     document.getElementById('check-url').addEventListener('click', function () {

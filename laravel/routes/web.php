@@ -53,16 +53,18 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/box/track', 'App\Http\Controllers\ShippingController@track')->name('box.track');
     Route::get('/rates','App\Http\Controllers\ShippingController@rates')->name('box.rates');
     Route::post('/subscription/remove/{box}','App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
-   
-    Route::group(['prefix' => 'direct'], function () {
-        Route::get('/inbox', 'App\Http\Controllers\MessagesController@index');
+  
+    Route::group(['prefix' => 'messages'], function () {
+        Route::get('/index', ['as' => 'messages', 'uses' => 'App\Http\Controllers\MessagesController@index']);
         Route::get('create', ['as' => 'messages.create', 'uses' => 'App\Http\Controllers\MessagesController@create']);
-        Route::post('/', ['as' => 'messages.store', 'uses' => 'App\Http\Controllers\MessagesController@store']);
+        Route::post('store', ['as' => 'messages.store', 'uses' => 'App\Http\Controllers\MessagesController@store']);
         Route::get('{id}', ['as' => 'messages.show', 'uses' => 'App\Http\Controllers\MessagesController@show']);
         Route::put('{id}', ['as' => 'messages.update', 'uses' => 'App\Http\Controllers\MessagesController@update']);
     });
 
+
 });
+
 Route::post('/createplan','App\Http\Controllers\SubscriptionController@createplan')->name('subscription.createplan');
 Route::post('/subscription/complete/{paypal}','App\Http\Controllers\SubscriptionController@complete')->name('subscription.complete');
 Route::post('/rates','App\Http\Controllers\ShippingController@rates');

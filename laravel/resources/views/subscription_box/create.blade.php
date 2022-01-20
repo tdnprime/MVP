@@ -59,7 +59,7 @@
                 <h3>Check availability of the URL you want for your page.</h3>
                 <label id='grid-custom-url'>
                     <p class='one-em-font'>https://boxeon.com/</p>
-                    <input id='box-url' type='text' required value='' autocomplete='off' placeholder='{{strtolower($user->given_name)}}' name='box_url'>
+                    <input id='box-url' type='text' required autocomplete='off' value='' placeHolder='YourCustomURL' name='box_url'>
                     <input id='check-url' class='button' type='button' value='Check'>
                 </label>
             </fieldset>

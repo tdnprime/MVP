@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Box;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,6 +16,10 @@ class BoxController extends Controller
      */
     public function index()
     {
+        if($user = Auth::user()){
+            $id = auth()->user()->id;
+            $user = User::find($id);
+        }
 
         $pattern = "/";
         $box_url = str_replace($pattern, "", $_SERVER["REQUEST_URI"]);
@@ -28,9 +32,16 @@ class BoxController extends Controller
         $box = $box[0];
         self::setThumb($box);
         self::setShippingDetails($box);
-        $user = User::find($box->user_id);
-        return view('subscription_box.index', compact('box', 'user'));
+        //$user = User::find($box->user_id);
+        return view('subscription_box.index', compact('user', 'user'))
+        ->with('box', $box);
     }
+    public function setCookie(Request $request){
+        $minutes = 10;
+        $response = new Response('Set Cookie');
+        $response->withCookie(cookie('name', 'box', $minutes));
+        return $response;
+     }
     /**
      * Gets and saves Youtube video ID.
      *
@@ -52,16 +63,16 @@ class BoxController extends Controller
                     ->where('user_id', $user->id)
                     ->limit(1);
                 $box->update($array);
-                return view('subscription_box.edit', compact('box', 'user'))
-                ->with('success', 'Your subscription box is live at https://boxeon.com/YourCustomURL');
+                self::createProduct($user->id);
+                return redirect()->route('box.edit', $id);
             } else {
-                return view('subscription_box.edit', compact('box', 'user'))
+                return redirect()->route('box.edit', $id)
                 ->with('error', 'Oops! Something went wrong. Please try again.');
             }
         }
     }
 
-    private function createProduct($box)
+    private function createProduct($id)
     {
         require_once dirname(__DIR__, 3) . '/php/paypal-connect.php';
         $config = parse_ini_file(dirname(__DIR__, 3) . '/config/app.ini', true);
@@ -74,17 +85,14 @@ class BoxController extends Controller
             'home_url' => 'https://boxeon.com', // Update
         ];
         $media = "Content-Type: application/json, Authorization: Bearer $token";
-        $cp = sendcurl(json_encode($data), $endpoint, $media);
+        $product = sendcurl(json_encode($data), $endpoint, $media); 
 
-        $box->product_id = $cp['id'];
-        $array = ['product_id' => $box->product_id];
+        $array = ['product_id' =>  $product['id']];
 
         $box = DB::table('boxes')
-            ->where('user_id', $user->id)
+            ->where('user_id', $id)
             ->limit(1);
         $box->update($array);
-
-        header('Refresh:0');
     }
 
     private function fileCheck($img)

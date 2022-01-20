@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Cmgmyr\Messenger\Models\Message;
 use Cmgmyr\Messenger\Models\Participant;
 use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -25,11 +25,11 @@ class MessagesController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
         $subs = DB::table('subscriptions')
-        ->join( 'users', 'subscriptions.creator_id' , '=' , 'users.id')
-        ->where('subscriptions.user_id', '=', $id)
-        ->where('subscriptions.status', '=', 1)
-        ->select('users.*')
-        ->get();
+            ->join('users', 'subscriptions.creator_id', '=', 'users.id')
+            ->where('subscriptions.user_id', '=', $id)
+            ->where('subscriptions.status', '=', 1)
+            ->select('users.*')
+            ->get();
         // All threads, ignore deleted/archived participants
         //$threads = Thread::getAllLatest()->get();
 
@@ -40,8 +40,9 @@ class MessagesController extends Controller
         $threads = Thread::forUserWithNewMessages(Auth::id())->latest('updated_at')->get();
 
         return view('messenger.index', compact('threads'))
-        ->with('user', $user)
-        ->with('subs', $subs);
+            ->with('user', $user)
+            ->with('subs', $subs)
+            ->with('threads', $threads);
     }
 
     /**
@@ -50,7 +51,7 @@ class MessagesController extends Controller
      * @param $id
      * @return mixed
      */
-    public function show($id)
+    private function show($id)
     {
         try {
             $thread = Thread::findOrFail($id);
@@ -61,6 +62,14 @@ class MessagesController extends Controller
         }
         $id = auth()->user()->id;
         $user = User::find($id);
+
+        $subs = DB::table('subscriptions')
+            ->join('users', 'subscriptions.creator_id', '=', 'users.id')
+            ->where('subscriptions.user_id', '=', $id)
+            ->where('subscriptions.status', '=', 1)
+            ->select('users.*')
+            ->get();
+
         // show current user in list if not a current participant
         // $users = User::whereNotIn('id', $thread->participantsUserIds())->get();
 
@@ -69,9 +78,10 @@ class MessagesController extends Controller
         $users = User::whereNotIn('id', $thread->participantsUserIds($userId))->get();
 
         $thread->markAsRead($userId);
-
-        return view('messenger.show', compact('thread', 'users'))
-        ->with('user', $user);
+        return $thread;
+        // return view('messenger.show', compact('thread', 'users'))
+        // ->with('user', $user)
+        // ->with('subs', $subs);
     }
 
     /**
@@ -85,14 +95,17 @@ class MessagesController extends Controller
         $user = User::find($id);
 
         $subs = DB::table('subscriptions')
-        ->join( 'users', 'subscriptions.creator_id' , '=' , 'users.id')
-        ->where('subscriptions.user_id', '=', $id)
-        ->where('subscriptions.status', '=', 1)
-        ->select('users.*')
-        ->get();
+            ->join('users', 'subscriptions.creator_id', '=', 'users.id')
+            ->where('subscriptions.user_id', '=', $id)
+            ->where('subscriptions.status', '=', 1)
+            ->select('users.*')
+            ->get();
+
+            $thread = self::show($id);
 
         return view('messenger.create', compact('user'))
-        ->with('subs', $subs);
+            ->with('subs', $subs)
+            ->with('thread', $thread);
     }
 
     /**

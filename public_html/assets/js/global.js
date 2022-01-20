@@ -19,7 +19,7 @@ Auth = {
     }
     function callback(status) {
       if (status == 0) {
-        sessionStorage.setItem("last", window.location.href);
+        document.cookie = "box=" + window.location.href;
         location.assign("/auth/google");
       } else if (status == 1) {
         // Play video in UI
@@ -360,6 +360,11 @@ Boxeon = {
     var hiden = document.getElementsByClassName('hiden');
     for (var i = 0; i < hiden.length; i++) {
       hiden[i].style.display = "block";
+      let optional = hiden[i].getElementsByClassName('optional');
+      let count = optional.length;
+      for(let e =0; e < count; e++){
+      optional[e].removeAttribute("disabled");
+      }
     }
 
   },
@@ -453,6 +458,11 @@ Boxeon = {
     var hiden = document.getElementsByClassName('hiden');
     for (var i = 0; i < hiden.length; i++) {
       hiden[i].style.display = "none";
+      let optional = hiden[i].getElementsByClassName('optional');
+      let count = optional.length;
+      for(let e =0; e < count; e++){
+      optional[e].setAttribute("disabled", "disabled");
+      }
     }
 
   },
@@ -730,11 +740,10 @@ Subscriptions = {
     var json = JSON.stringify(Shipping.arr);
     var data = {
       method: "POST",
-      action: "/createplan",
+      action: "/plan/create/?plan=" + json + "",
       contentType: "application/json; charset=utf-8",
-      Accept: "*application/json*",
-      customHeader: "PLAN",
-      payload: json
+      customHeader: "X-CSRF-TOKEN",
+      payload: document.querySelector('meta[name="csrf-token"]').content
     }
     function callback(r) {
       var json = JSON.parse(r);
@@ -802,12 +811,7 @@ Subscriptions = {
 
 
 $(document).ready(function () {
-  // Redirects users to previous location
-  var url = sessionStorage.getItem("last");
-  if (url) {
-    location.assign(url);
-    sessionStorage.removeItem("last");
-  }
+  // Handles redirected users to a subscription box after they have sgigned in from a box page
   if (document.getElementById("box")) {
     //Tracks user intent prior to sign in
     if (sessionStorage.getItem('sub') == 1) { // intended to subscribe
@@ -856,17 +860,7 @@ $(document).ready(function () {
     });
   }
 
-  if (document.getElementById('show-recommended')) {
-    document.getElementById('show-subscriptions').addEventListener('click', function () {
-      Subscriptions.showSubscriptions();
-    });
-    document.getElementById('show-recommended').addEventListener('click', function () {
-      Subscriptions.showRecommended();
-    });
-    document.getElementById('show-subscriptions').addEventListener('click', function () {
-      Subscriptions.showSubscriptions();
-    });
-  }
+
   if (document.getElementById('play-video')) {
     document.getElementById('play-video').addEventListener('click', function () {
       let URL = document.getElementById("exe-sub").getAttribute("data-url");
@@ -957,15 +951,18 @@ $(document).ready(function () {
       Shipping.generateLabels();
     });
   }
-  if (document.getElementById('message-create')) {
-    document.getElementById('message-create').addEventListener('click', function () {
-      let id = this.getAttribute("data-type-id");
-      sessionStorage.setItem('recipient', id);
-    });
+  if (document.getElementsByClassName('message-create')) {
+    let elem = document.getElementsByClassName('message-create');
+    for (let i = 0; i < elem.length; i++) {
+      elem[i].addEventListener('click', function () {
+        let id = this.getAttribute("data-type-id");
+        sessionStorage.setItem('recipient', id);
+      });
+    }
   }
   if (document.getElementById('form-message-store')) {
-      let id = sessionStorage.getItem('recipient'); 
-      document.getElementById('recipient').setAttribute("value", id);
+    let id = sessionStorage.getItem('recipient');
+    document.getElementById('recipient').setAttribute("value", id);
   }
   if (document.getElementById('check-url')) {
     document.getElementById('check-url').addEventListener('click', function () {

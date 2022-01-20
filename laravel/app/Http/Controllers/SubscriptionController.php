@@ -15,12 +15,8 @@ class SubscriptionController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
 
-        if (json_decode($_SERVER["HTTP_PLAN"]) !== null) {
-            $plan = json_decode($_SERVER["HTTP_PLAN"]);
+        $plan = json_decode($request["plan"]);
 
-        } else {
-            echo "Missing header";
-        }
 
         require_once  dirname(__DIR__, 3) . "/php/paypal-connect.php";
         $config = parse_ini_file( dirname(__DIR__, 3) . "/config/app.ini", true );
@@ -78,7 +74,7 @@ class SubscriptionController extends Controller
             // Return plan_id for buyer to continue to PayPal
             $return = [];
             $return['plan_id'] = $p['id'];
-            print_r(json_encode($return));
+            return json_encode($return);
 
         }
     }

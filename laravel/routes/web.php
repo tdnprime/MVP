@@ -30,8 +30,10 @@ Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about')
 Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('index');
 Route::post('/partner/apply', 'App\Http\Controllers\PartnerController@apply')->name('apply');
 Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
-Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index'); //moved back
+Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index'); 
+Route::get('/invite/{id}/accept', 'App\Http\Controllers\CommissionController@accept')->name('commission.accept'); 
 Route::get('/search/creator', 'App\Http\Controllers\SearchController@creator')->name('search.creator');
+Route::get('/blog/home', 'App\Http\Controllers\BlogController@feed')->name('blog.home');
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -49,7 +51,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/box/ship', 'App\Http\Controllers\ShippingController@ship')->name('box.ship');
     Route::get('/box/labels', 'App\Http\Controllers\LabelsController@generate')->name('box.labels');
     Route::get('/box/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('box.addresses');
-    Route::get('/box/incoming', 'App\Http\Controllers\ShippingController@incoming')->name('box.incoming');
     Route::get('/box/track', 'App\Http\Controllers\ShippingController@track')->name('box.track');
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('box.rates');
     Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
@@ -63,6 +64,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     });
     Route::post('/plan/create', 'App\Http\Controllers\SubscriptionController@createplan')->name('subscription.createplan');
     Route::get('/commission/home', 'App\Http\Controllers\CommissionController@home')->name('commission.home');
+    Route::get('/commission/discounts', 'App\Http\Controllers\CommissionController@discounts')->name('commission.discounts');
 
 });
 Route::get('/commission/index', 'App\Http\Controllers\HomeController@commission')->name('commission.index');

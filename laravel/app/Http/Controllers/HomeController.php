@@ -34,11 +34,11 @@ class HomeController extends Controller
 
         return view('contact.index', compact('user'));
     }
-    public function rewards()
+    public function commission()
     {
         $user = Auth::user();
 
-        return view('rewards.index', compact('user'));
+        return view('commission.index', compact('user'));
     }
     public function search()
     {

@@ -31,6 +31,7 @@ Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('ind
 Route::post('/partner/apply', 'App\Http\Controllers\PartnerController@apply')->name('apply');
 Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
 Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index'); //moved back
+Route::get('/search/creator', 'App\Http\Controllers\SearchController@creator')->name('search.creator');
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -53,7 +54,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('box.rates');
     Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
     Route::get('/account/home', 'App\Http\Controllers\HomeController@account')->name('account.home');
-    Route::get('/search/creator', 'App\Http\Controllers\HomeController@search')->name('search.creator');
     Route::group(['prefix' => 'messages'], function () {
         Route::get('/index', ['as' => 'messages', 'uses' => 'App\Http\Controllers\MessagesController@index']);
         Route::get('create', ['as' => 'messages.create', 'uses' => 'App\Http\Controllers\MessagesController@create']);
@@ -62,10 +62,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::put('update/{id}', ['as' => 'messages.update', 'uses' => 'App\Http\Controllers\MessagesController@update']);
     });
     Route::post('/plan/create', 'App\Http\Controllers\SubscriptionController@createplan')->name('subscription.createplan');
-
+    Route::get('/commission/home', 'App\Http\Controllers\CommissionController@home')->name('commission.home');
 
 });
-Route::get('/rewards/home', 'App\Http\Controllers\HomeController@rewards')->name('rewards.home');
+Route::get('/commission/index', 'App\Http\Controllers\HomeController@commission')->name('commission.index');
 Route::post('/subscription/complete/{paypal}', 'App\Http\Controllers\SubscriptionController@complete')->name('subscription.complete');
 Route::post('/rates', 'App\Http\Controllers\ShippingController@rates');
 Route::get('/rates', 'App\Http\Controllers\ShippingController@rates');

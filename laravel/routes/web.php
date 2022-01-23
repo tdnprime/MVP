@@ -31,9 +31,11 @@ Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('ind
 Route::post('/partner/apply', 'App\Http\Controllers\PartnerController@apply')->name('apply');
 Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
 Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index'); 
-Route::get('/invite/{id}/accept', 'App\Http\Controllers\CommissionController@accept')->name('commission.accept'); 
+Route::get('/{id}/accept', 'App\Http\Controllers\CommissionController@accept')->name('commission.accept'); 
 Route::get('/search/creator', 'App\Http\Controllers\SearchController@creator')->name('search.creator');
-Route::get('/blog/home', 'App\Http\Controllers\BlogController@feed')->name('blog.home');
+Route::get('/school/home', 'App\Http\Controllers\SchoolController@what')->name('school.home');
+Route::get('/school/how', 'App\Http\Controllers\SchoolController@how')->name('school.how');
+Route::get('/school/why', 'App\Http\Controllers\SchoolController@why')->name('school.why');
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -56,15 +58,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
     Route::get('/account/home', 'App\Http\Controllers\HomeController@account')->name('account.home');
     Route::group(['prefix' => 'messages'], function () {
-        Route::get('/index', ['as' => 'messages', 'uses' => 'App\Http\Controllers\MessagesController@index']);
+        Route::get('/inbox', ['as' => 'messages', 'uses' => 'App\Http\Controllers\MessagesController@index']);
         Route::get('create', ['as' => 'messages.create', 'uses' => 'App\Http\Controllers\MessagesController@create']);
         Route::post('store', ['as' => 'messages.store', 'uses' => 'App\Http\Controllers\MessagesController@store']);
         Route::get('show/{id}', ['as' => 'messages.show', 'uses' => 'App\Http\Controllers\MessagesController@show']);
         Route::put('update/{id}', ['as' => 'messages.update', 'uses' => 'App\Http\Controllers\MessagesController@update']);
     });
     Route::post('/plan/create', 'App\Http\Controllers\SubscriptionController@createplan')->name('subscription.createplan');
-    Route::get('/commission/home', 'App\Http\Controllers\CommissionController@home')->name('commission.home');
-    Route::get('/commission/discounts', 'App\Http\Controllers\CommissionController@discounts')->name('commission.discounts');
+    Route::get('/invitations/home', 'App\Http\Controllers\InvitationsController@home')->name('invitations.home');
+    Route::get('/invitations/rewards', 'App\Http\Controllers\InvitationsController@rewards')->name('invitations.rewards');
 
 });
 Route::get('/commission/index', 'App\Http\Controllers\HomeController@commission')->name('commission.index');
@@ -75,6 +77,6 @@ Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::get('auth/google/status', [GoogleController::class, 'status']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/index', function () {
     return view('dashboard');
 })->name('dashboard');

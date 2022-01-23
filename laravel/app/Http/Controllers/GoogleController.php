@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\MailController;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -54,6 +55,19 @@ class GoogleController extends Controller
                // Mail::to($user->email)->send(new WelcomeUser($user));
                 $mail = new MailController();
                 $mail->welcome();
+
+                if (isset($_COOKIE['invited_by'])) {
+
+                   
+                    $invitation = array(
+                    'google_id' => $user->id,
+                    'invited_by' => $_COOKIE['invited_by']
+                );
+                    
+                    DB::table('invitations')
+                    ->insert($invitation);
+
+                }
                
                 if (isset($_COOKIE['box'])) {
                     $location = $_COOKIE['box'];
@@ -64,7 +78,7 @@ class GoogleController extends Controller
                 }
             }
         } catch (Exception $e) {
-            dd($e->getMessage());
+            dd($e);
         }
     }
     public function status()

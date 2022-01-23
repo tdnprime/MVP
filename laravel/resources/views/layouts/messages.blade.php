@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @section('title', 'Inbox')
+    @section('title', 'Boxeon | Messages')
     @include('includes.meta')
 
 </head>

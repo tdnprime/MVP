@@ -5,6 +5,9 @@ Fair skin: #ffd5d8
 Brown skin: #a0616a
 
 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 #alt-masthead-image {
   display: none;
@@ -332,35 +335,40 @@ Brown skin: #a0616a
 
 
 }
-.position-relative{
+
+.position-relative {
   position: relative;
 }
+
 #left-aside h2,
 .recipients-grid {
   margin-left: 35%;
 
 }
-#left-aside h2{
+
+#left-aside h2 {
   position: relative;
-  top:2em;
+  top: 2em;
 }
 
 .message-create {
   position: relative;
   width: 100%;
-  margin:auto;
-  display:block;
+  margin: auto;
+  display: block;
 }
 
-.nav-grid{
-  display:grid;
+.nav-grid {
+  display: grid;
   grid-template-columns: 25% 75%;
   padding-top: 1em;
   padding-bottom: 1em;
 }
-.nav-grid p{
+
+.nav-grid p {
   grid-column-start: 2;
 }
+
 a:visited {
   color: none;
 }
@@ -387,21 +395,25 @@ a:visited {
 #dash-menu tr:nth-child(even) {
   background-color: #fff;
 }
-.image-round{
+
+.image-round {
   border-radius: 9999px;
 }
+
 #embed-form {
   height: 105px;
   width: 63%;
   margin: 0 auto;
 }
-#form-search-inline input[type=submit]{
-  margin-left:2em;
+
+#form-search-inline input[type=submit] {
+  margin-left: 2em;
 }
-#form-search-inline input[type=text]{
-  width:50%;
+
+#form-search-inline input[type=text] {
+  width: 50%;
   background: transparent url("../images/search-icon.svg") no-repeat center left;
-  padding-left:2em;
+  padding-left: 2em;
 }
 
 #footer-content-wrapper {
@@ -517,9 +529,11 @@ a:visited {
   float: left;
   clear: both;
 }
-.button{
+
+.button {
   font-size: 1em;
 }
+
 #home input[type="radio"] {
   clear: both;
   float: left;
@@ -595,6 +609,13 @@ a:visited {
   box-shadow: 2px 4px 12px #0c8dc41a;
 }
 
+.image-youtube-thumb {
+  width: 100%;
+  border-radius: .5em;
+  background: #f5f7fa;
+  box-shadow: 2px 4px 12px #0c8dc41a;
+}
+
 #index main {
   display: grid;
   grid-template-rows: auto;
@@ -616,12 +637,13 @@ a:visited {
 }
 
 
-#left-aside a{
+#left-aside a {
   box-shadow: 20px 20px 60px #0c8dc41a;
   width: 100%;
   padding-top: 1em;
   padding-bottom: 1em;
 }
+
 #logo {
   display: inline;
 }
@@ -648,6 +670,7 @@ a:visited {
   height: 100%;
   width: 100%;
 }
+
 #masthead-image-buyers-home {
   background: url("../images/share_link.svg") no-repeat 80% 5em;
   height: 100%;
@@ -858,6 +881,7 @@ a:visited {
   position: relative;
   top: 2em;
 }
+
 .image-user-icon,
 #header-user-icon {
   border-radius: 9999px;
@@ -1067,6 +1091,15 @@ a:visited {
   grid-gap: 1em;
 }
 
+.alert-info {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  display: block;
+}
+#image-error-page{
+  width:30%;
+}
 .alert .material-icons {
   color: #005ea6;
   position: relative;
@@ -1375,9 +1408,11 @@ the side navigation*/
 #masthead, main, header {
   transition: margin-left .5s;
 }
-tr{
+
+tr {
   box-shadow: 20px 20px 60px #0c8dc41a;
 }
+
 #left-aside a:hover,
 .menu a:hover {
   background-color: #ffffff;
@@ -1823,17 +1858,23 @@ footer {
   margin-bottom: auto;
 
 }
-.display-block{
+
+.display-block {
   display: block;
+}
+
+.margin-bottom-2-em {
+  margin-bottom: 2em;
 }
 
 form {
   font-size: 1em;
 }
+
 .form-settings input[type=number],
 .form-settings input[type=url],
-.form-settings input[type=text]{
-  margin-right:4%;
+.form-settings input[type=text] {
+  margin-right: 4%;
 }
 
 h4 {
@@ -2015,7 +2056,7 @@ select:required:invalid {
 
 table {
   border-collapse: collapse;
-  width:100%;
+  width: 100%;
 }
 
 td h2 {
@@ -2030,7 +2071,8 @@ th, td {
   border: 1px solid #fff;
   padding: 1em;
 }
-th{
+
+th {
   font-family: 'Concert One';
   text-align: left;
 }

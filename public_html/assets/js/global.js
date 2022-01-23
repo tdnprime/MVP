@@ -141,6 +141,7 @@ Boxeon = {
   createVideoHTML: function (id) {
     return "<div id='remove-black-bar'><iframe src=https://www.youtube.com/embed/"
       + id + "?rel=0&autoplay=1&frameborder=0&mute=1></iframe></div>";
+  
 
   },
   createStepsLeft: function (options) {
@@ -552,15 +553,15 @@ Shipping = {
     }
     return false;
   },
-  // UPDATE
+
   getRates: function () {
     var json = JSON.stringify(Shipping.arr);
     var manifest = {
       method: "POST",
-      action: "/rates",
+      action: "/rates/?to=" + json,
       contentType: "application/json; charset=utf-8",
-      customHeader: 'TO',
-      payload: json
+      customHeader: "X-CSRF-TOKEN",
+      payload: document.querySelector('meta[name="csrf-token"]').content
     }
 
     function callback(re) {
@@ -912,7 +913,22 @@ $(document).ready(function () {
       Boxeon.disable();
     });
   }
+if(document.getElementsByClassName('play-video')){
+  let btns = document.getElementsByClassName('play-video');
+  for(let i=0; i < btns.length; i++){
+    btns[i].addEventListener('click', function () {
+      let id = this.getAttribute('data-video-id');
+      let video = Boxeon.createVideoHTML(id);
+      this.parentNode.innerHTML = video;
+      //this.parentNode.getElementsByTagName('img')[0].remove();
+      //this.parentNode.getElementsByTagName('a')[0].remove();
 
+    
+      
+    });
+  }
+
+}
   if (document.getElementById('play-video')) {
     var btns = document.getElementsByClassName('playbtn');
     for (var i = 0; i < btns.length; i++) {

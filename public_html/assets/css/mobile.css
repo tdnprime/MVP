@@ -14,6 +14,9 @@ NOTE:
 
 
 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 	#partner-apply{
 		display:none;

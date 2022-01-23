@@ -23,6 +23,12 @@ class SearchController extends Controller
                 'boxes.proddesc', 'users.id')
             ->get();
 
+            if(!isset($creator[0]->id)){
+
+                return view('search.index', compact('user', 'user'))
+                ->with('invite', $request['creator']);
+            }
+
         $subscribers = DB::table('subscriptions')
             ->where('creator_id', '=', $creator[0]->id)
             ->select('creator_id')

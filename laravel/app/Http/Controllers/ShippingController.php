@@ -25,8 +25,8 @@ class ShippingController extends Controller
     public function rates(User $user, Request $request)
     {
 
-        if (json_decode($_SERVER["HTTP_TO"]) !== null) {
-            $to = json_decode($_SERVER["HTTP_TO"]);
+        if (json_decode($request["to"]) !== null) {
+            $to = json_decode($request["to"]);
 
         } else {
             echo "Missing header";
@@ -35,12 +35,6 @@ class ShippingController extends Controller
         $user = User::find($id);
         $box = $user->boxes()->first();
 
-        if (json_decode($_SERVER["HTTP_TO"]) !== null) {
-            $to = json_decode($_SERVER["HTTP_TO"]);
-
-        } else {
-            echo "Missing header";
-        }
         $id = $to->creator_id;
         $user = User::find($id);
         $box = $user->boxes()->first();

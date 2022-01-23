@@ -1,19 +1,5 @@
 @extends('layouts.box')
-
-<div id='text-modes-switch' class='center'>
-    <a href='/box/{{ $user->id }}/edit' class='text-edit-mode' class='centered'>
-        <span class='material-icons'>preview</span> Preview</a>
-    <a href='/box/{{ $user->id }}/edit' class='text-edit-mode' class='centered'>
-        <span class='material-icons'>edit</span> Edit</a>
-</div>
-
 @section('content')
-
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session()->get('message') }}
-        </div>
-    @endif
 
     @if(empty($box) || is_null($box->box_weight))
         <div id="masthead" class="fadein">
@@ -35,6 +21,11 @@
     @else
 
         <div id='masthead'>
+            @if (session()->has('message'))
+            <div class="alert alert-info">
+               <p class='centered'> {{ session()->get('message') }}&nbsp;<a class='one-em-font' href='/{{$box->box_url}}'> boxeon.com/{{$box->box_url}}</a></p>
+            </div>  
+        @endif
             <div id='box-masthead-inner-wrapper'>
                 <section id='box-headline'>
                     <h1 class='darkblue'>

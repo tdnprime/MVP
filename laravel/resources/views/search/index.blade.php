@@ -21,6 +21,15 @@
 
                     @endforeach
                 </table>
+            @elseif(isset($invite))
+
+                <div class='centered margin-bottom-4-em'>
+                    <img class='center image-cta' src="{{ '../assets/images/congratulations.svg' }}" alt="congratulations">
+                    <h2 class='centered'>Congratulations!</h2>
+                    <p class='center'>You can invite <span class='primary-color'>{{ucwords($invite)}} </span> to Boxeon to receive free shipping on any subscription box they offer.</p>
+                    <br><br>
+                    <a class='button' href='/invitations/home'>Get started</a>
+                </div>
             @endif
 
         </aside>

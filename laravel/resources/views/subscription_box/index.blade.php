@@ -2,11 +2,6 @@
 @section('title', $box->given_name . " " . $box->family_name  . ' is shipping ' . $box->box_supply . ' subscription boxes to loyal fans')
 @section('content')
 
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session()->get('message') }}
-        </div>
-    @endif
 
     @if (empty($box) || is_null($box->box_weight))
         <div id="masthead" class="fadein">

@@ -6,6 +6,7 @@ use App\Models\Box;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class BoxController extends Controller
 {
@@ -64,10 +65,11 @@ class BoxController extends Controller
                     ->limit(1);
                 $box->update($array);
                 self::createProduct($user->id);
+                Session::flash('message', 'Congratulations! Your box is live at'); 
                 return redirect()->route('box.edit', $id);
             } else {
                 return redirect()->route('box.edit', $id)
-                ->with('error', 'Oops! Something went wrong. Please try again.');
+                ->with('message', 'Oops! Something went wrong. Please try again.');
             }
         }
     }

@@ -1375,9 +1375,10 @@ the side navigation*/
 #masthead, main, header {
   transition: margin-left .5s;
 }
-
+tr{
+  box-shadow: 20px 20px 60px #0c8dc41a;
+}
 #left-aside a:hover,
-#tabs-wrapper a,
 .menu a:hover {
   background-color: #ffffff;
   font-weight: bold;
@@ -1822,9 +1823,17 @@ footer {
   margin-bottom: auto;
 
 }
+.display-block{
+  display: block;
+}
 
 form {
   font-size: 1em;
+}
+.form-settings input[type=number],
+.form-settings input[type=url],
+.form-settings input[type=text]{
+  margin-right:4%;
 }
 
 h4 {

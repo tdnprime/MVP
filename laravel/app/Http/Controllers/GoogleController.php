@@ -1,15 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\MailController;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Facades\Socialite;
-
+use Cookie;
 class GoogleController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -30,13 +32,14 @@ class GoogleController extends Controller
         try {
             $user = Socialite::driver('google')->stateless()->user();
             $finduser = User::where('google_id', $user->id)->first();
-        
+
             if ($finduser) {
                 Auth::login($finduser);
                 if (isset($_COOKIE['box'])) {
                     $location = $_COOKIE['box'];
-                    setcookie('box', '', time() - 3600);
-                    return redirect($location);
+                    //setcookie('box', "", time() - 360000);
+                    $cookie = Cookie::forget('box');
+                    return redirect($location)->withCookie($cookie);
                 } else {
                     return redirect('/home/index');
                 }
@@ -50,32 +53,24 @@ class GoogleController extends Controller
                     'profile_photo_path' => $avatar,
                     'password' => encrypt('my-google'),
                 ]);
-            
+
                 Auth::login($user, true);
-               // Mail::to($user->email)->send(new WelcomeUser($user));
+                // Mail::to($user->email)->send(new WelcomeUser($user));
                 $mail = new MailController();
                 $mail->welcome();
 
                 if (isset($_COOKIE['invited_by'])) {
 
-                   
                     $invitation = array(
-                    'google_id' => $user->id,
-                    'invited_by' => $_COOKIE['invited_by']
-                );
-                    
+                        'google_id' => $user->id,
+                        'invited_by' => $_COOKIE['invited_by'],
+                    );
+
                     DB::table('invitations')
-                    ->insert($invitation);
+                        ->insert($invitation);
 
                 }
-               
-                if (isset($_COOKIE['box'])) {
-                    $location = $_COOKIE['box'];
-                    setcookie('box', '', time() - 3600);
-                    return redirect($location);
-                } else {
-                    return redirect('/home/index');
-                }
+
             }
         } catch (Exception $e) {
             dd($e);

@@ -31,7 +31,7 @@ Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('ind
 Route::post('/partner/apply', 'App\Http\Controllers\PartnerController@apply')->name('apply');
 Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
 Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index'); 
-Route::get('/{id}/accept', 'App\Http\Controllers\CommissionController@accept')->name('commission.accept'); 
+Route::get('/{id}/accept', 'App\Http\Controllers\InvitationsController@accept')->name('invitations.accept'); 
 Route::get('/search/creator', 'App\Http\Controllers\SearchController@creator')->name('search.creator');
 Route::get('/school/home', 'App\Http\Controllers\SchoolController@what')->name('school.home');
 Route::get('/school/how', 'App\Http\Controllers\SchoolController@how')->name('school.how');
@@ -57,6 +57,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('box.rates');
     Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
     Route::get('/account/home', 'App\Http\Controllers\HomeController@account')->name('account.home');
+    Route::post('/account/box/', 'App\Http\Controllers\AccountController@updateBox')->name('account.box');
+    Route::post('/account/users', 'App\Http\Controllers\AccountController@updateUsers')->name('account.users');
+    Route::post('/account/address', 'App\Http\Controllers\AccountController@updateAddress')->name('account.address');
+    Route::get('/account/suspend', 'App\Http\Controllers\AccountController@suspend')->name('account.suspend');
+
     Route::group(['prefix' => 'messages'], function () {
         Route::get('/inbox', ['as' => 'messages', 'uses' => 'App\Http\Controllers\MessagesController@index']);
         Route::get('create', ['as' => 'messages.create', 'uses' => 'App\Http\Controllers\MessagesController@create']);

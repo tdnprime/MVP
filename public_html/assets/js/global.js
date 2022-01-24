@@ -812,7 +812,8 @@ Subscriptions = {
 
 
 $(document).ready(function () {
-  // Handles redirected users to a subscription box after they have sgigned in from a box page
+
+  // Handles redirected users to a subscription box after they have signed in from a box page
   if (document.getElementById("box")) {
     //Tracks user intent prior to sign in
     if (sessionStorage.getItem('sub') == 1) { // intended to subscribe
@@ -883,6 +884,8 @@ $(document).ready(function () {
     Boxeon.closeMenu();
 
   });
+
+
   /*  if (document.getElementsByClassName('switch-plan')) {
       var radios = document.getElementsByClassName('switch-plan');
       for (var i = 0; i < radios.length; i++) {
@@ -920,11 +923,7 @@ if(document.getElementsByClassName('play-video')){
       let id = this.getAttribute('data-video-id');
       let video = Boxeon.createVideoHTML(id);
       this.parentNode.innerHTML = video;
-      //this.parentNode.getElementsByTagName('img')[0].remove();
-      //this.parentNode.getElementsByTagName('a')[0].remove();
 
-    
-      
     });
   }
 
@@ -1046,19 +1045,3 @@ $(window).on('beforeunload', function () {
 });
 
 
-/*
-
-<div id="smart-button-container">
-    <div style="text-align: center"><label for="description">Shipping Labels </label><input type="text" name="descriptionInput" id="description" maxlength="127" value=""></div>
-      <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
-    <div style="text-align: center"><label for="amount"> </label><input name="amountInput" type="number" id="amount" value="" ><span> USD</span></div>
-      <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
-    <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" ></div>
-      <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
-    <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
-  </div>
-  <script src="https://www.paypal.com/sdk/js?client-id=AX8AvmJU7HxmlDw59tYGvs3GIddloRyhAgJaNzWzx6tdk_ttmSULaw18BoA2g34isdWxKCaVcrmKvo3t&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
-
-
-
-*/

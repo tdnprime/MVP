@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @include('includes.meta')
-    <script src="{{ asset('vendor/kustomer/js/kustomer.js') }}" defer></script>
+
 </head>
 
 <body id='home'>

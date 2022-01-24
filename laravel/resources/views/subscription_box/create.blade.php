@@ -1,5 +1,5 @@
 @extends('layouts.create-box')
-
+@section('title', 'Boxeon | Create Box')
 @section('content')
 
     <div id='module'>

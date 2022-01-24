@@ -1,4 +1,5 @@
 @extends('layouts.home')
+@section('title', 'Boxeon | Shipping')
 @section('content')
     <main class="fadein">
         <section id="left-aside">
@@ -50,7 +51,7 @@
                     ?>
 
                     <div class="centered margin-bottom-4-em">
-                        <img class="image-ego-boost" src="../assets/images/fly.svg" alt="Congratulations" />
+                        <img class="image-cta" src="../assets/images/fly.svg" alt="Congratulations" />
                         <h2>You're flying high, {{ $user->given_name }}!</h2>
                         <p class="centered center">You have &nbsp;<span class="highlighted">{{ $outgoing }}</span>
                             &nbsp;boxes to ship for month ending {{ $next_shipping }}. If your buyers paid for shipping,
@@ -59,9 +60,17 @@
 
                     </div>
                 @else
-                    <div class="alert">
-                        <p class="material-icons">info</p>
-                        <p>Sorry {{ $user->given_name }}, you don't have any outgoing boxes.</p>
+                    <div class="centered margin-bottom-4-em">
+                        <img class="image-cta" src="../assets/images/order-delivered.svg" alt="Congratulations" />
+                        <h2>Shipping Center</h2>
+                        <p class="centered center">You don't have any outgoing boxes to ship. </p>
+
+                        <div id="smart-button-container">
+                     
+                            <div id="paypal-button-container"></div>
+
+                        </div>
+
                     </div>
                 @endif
 

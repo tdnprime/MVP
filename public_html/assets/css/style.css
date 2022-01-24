@@ -1078,6 +1078,8 @@ a:visited {
 
 .alert {
   background-color: #ffffe02e;
+  background-image:url('../images/alt-blue-bg.svg');
+  background-size: cover;
   color: #000 !important;
   margin-bottom: 2em;
   margin-top: 1em;
@@ -1096,6 +1098,7 @@ a:visited {
   margin-right: auto;
   width: 50%;
   display: block;
+  font-weight:bold;
 }
 #image-error-page{
   width:30%;
@@ -1822,6 +1825,7 @@ fieldset {
   border: none;
 }
 
+.fieldset-neuromorph,
 #create-box fieldset {
   border: 1px solid #0c8dc452;
   margin-bottom: 3em;

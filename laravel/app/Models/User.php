@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Cmgmyr\Messenger\Traits\Messagable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use  Nikolag\Square\Traits\HasCustomers;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use Messagable;
     use SoftDeletes;
+    use HasCustomers;
 
     /**
      * The attributes that are mass assignable.

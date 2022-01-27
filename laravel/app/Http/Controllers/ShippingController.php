@@ -22,14 +22,14 @@ class ShippingController extends Controller
         Shippo::setApiKey($token);
     }
 
-    public function rates(User $user, Request $request)
+    public function rates(Request $request)
     {
 
-        if (json_decode($request["to"]) !== null) {
+        if (gettype($request["to"]) == 'string') {
             $to = json_decode($request["to"]);
 
-        } else {
-            echo "Missing header";
+        } elseif (gettype($request["to"]) == 'object'){
+            $to = $request["to"];
         }
         $id = $to->creator_id;
         $user = User::find($id);
@@ -56,8 +56,7 @@ class ShippingController extends Controller
         if (isset($box) && $box->ship_from == 1) {
             $config = parse_ini_file(dirname(__DIR__, 3) . "/config/app.ini", true);
             $fromAddress = Shippo_Address::create(array(
-                "name" => 'SELLER', /* WARNING Get user_id from boxes table and
-                use it to get fullname from users table  */
+                "name" => $box->name, 
                 "company" => "Boxeon",
                 "street1" => $config['boxeon']['address_line_1'],
                 "city" => $config['boxeon']['admin_area_2'],
@@ -68,8 +67,6 @@ class ShippingController extends Controller
                 "email" => $config['boxeon']['serviceEmail'],
             ));
         }
-
-        //$toAddress = (array)$to;
 
         $toAddress = Shippo_Address::create(array(
             "name" => $to->fullname,
@@ -134,18 +131,8 @@ class ShippingController extends Controller
         return view('subscription_box.ship', compact('user'))
             ->with('outgoing', count( $subscriptions));
     }
-    public function incoming()
-    {
 
-        $user = Auth::user();
-        return view('subscription_box.incoming', compact('user'));
-    }
-    public function track()
-    {
 
-        $user = Auth::user();
-        return view('subscription_box.track', compact('user'));
-    }
     public function update()
     {
 

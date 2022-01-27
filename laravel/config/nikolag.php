@@ -38,9 +38,9 @@ return [
         */
         'square' => [
             'namespace'      => 'Nikolag\Square\SquareService',
-            'application_id' => env('SQUARE_APPLICATION_ID'),
-            'access_token'   => env('SQUARE_TOKEN'),
-            'sandbox'        => env('SQUARE_SANDBOX', false),
+            'application_id' => env('sandbox-sq0idb-FrLggaZMvpJBc2UDN3zKlg'),
+            'access_token'   => env('EAAAEGPaBJ5JKN9xriwzYsc7Gw3lBmjY_QDUe3KfjiRE4djDdDbEFl2deRywP5_P'),
+            'sandbox'        => env('SQUARE_SANDBOX', true),
 
             /*
             |--------------------------------------------------------------------------

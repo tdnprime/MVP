@@ -1,0 +1,5 @@
+{
+    "require": {
+        "htmlmin/htmlmin": "^8.0"
+    }
+}

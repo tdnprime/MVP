@@ -14,8 +14,8 @@
                     <table class='margin-top-4-em'>
                         @foreach ($results as $creator)
                             <tr>
-                                <td><img class='image-round' src='{{ $creator->profile_photo_path }}' /></td>
-                                <td>{{ $creator->given_name }}&nbsp;{{ $creator->family_name }} </td>
+                                <td><a href='/{{$creator->box_url}}'><img class='image-round' src='{{ $creator->profile_photo_path }}' /></a></td>
+                                <td><a href='/{{$creator->box_url}}'>{{ $creator->given_name }}&nbsp;{{ $creator->family_name }}</a> </td>
                                 <td> Shipping {{ $creator->proddesc }}</td>
                                 <td><b>{{ $subscribers }} Subscribers</b></td>
                                 <td></td>

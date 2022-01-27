@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\ShippingController;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use LynX39\LaraPdfMerger\Facades\PdfMerger;
 use Shippo;
@@ -9,54 +13,59 @@ use Shippo_Transaction;
 
 class LabelsController extends Controller
 {
-  
-    private function storeTracking($transaction, $sub){
 
-      DB::table('subscriptions')
-      ->where('user_id', '=', $sub->user_id)
-      ->update(['tracking' => $transaction['tracking_number']]);
-    }
-    private function storeLabel($transaction, $sub){
+    private function storeTracking($transaction, $sub)
+    {
 
-      DB::table('subscriptions')
-      ->where('user_id', '=', $sub->user_id)
-      ->update(['label' => $transaction['object_id']]);
+        DB::table('subscriptions')
+            ->where('user_id', '=', $sub->user_id)
+            ->update(['tracking' => $transaction['tracking_number']]);
     }
-    private function getShippingCount($id){
-      $box = DB::table('boxes')
-      ->where('user_id', '=', $id)
-      ->select('shipping_count')
-      ->get();
-      return $box[0]->shipping_count;
+    private function storeLabel($transaction, $sub)
+    {
+
+        DB::table('subscriptions')
+            ->where('user_id', '=', $sub->user_id)
+            ->update(['label' => $transaction['object_id']]);
     }
-    private function updateShippingCount($id){
-      $count = self::getShippingCount($id) + 1;
-      DB::table('boxes')
-      ->where('user_id', '=', $id)
-      ->update(['shipping_count' => $count]);
+    private function getShippingCount($id)
+    {
+        $box = DB::table('boxes')
+            ->where('user_id', '=', $id)
+            ->select('shipping_count')
+            ->get();
+        return $box[0]->shipping_count;
     }
-    private function permission($id){
-      $box = DB::table('boxes')
-      ->where('user_id', '=', $id)
-      ->select('shipping_cost')
-      ->get();
-      if($box[0]->shipping_cost == 1){
-        return array('msg' => 'You don\'t have shipping labels because your buyers aren\'t paying for shipping.');
-      }else{
-        return true;
-      }
+    private function updateShippingCount($id)
+    {
+        $count = self::getShippingCount($id) + 1;
+        DB::table('boxes')
+            ->where('user_id', '=', $id)
+            ->update(['shipping_count' => $count]);
+    }
+    private function permission($id)
+    {
+        $box = DB::table('boxes')
+            ->where('user_id', '=', $id)
+            ->select('shipping_cost')
+            ->get();
+        if ($box[0]->shipping_cost == 1) {
+            return array('msg' => 'You don\'t have shipping labels because your buyers aren\'t paying for shipping.');
+        } else {
+            return true;
+        }
     }
 
     public function generate()
     {
-        $config = parse_ini_file(dirname(__DIR__, 3) . 
-        "/config/app.ini", true);
-     
+        $config = parse_ini_file(dirname(__DIR__, 3) .
+            "/config/app.ini", true);
+
         $id = auth()->user()->id;
-        $permission = self::permission($id); 
-        if(is_array($permission)){
-        // denied
-         return $permission; 
+        $permission = self::permission($id);
+        if (is_array($permission)) {
+            // denied
+            return $permission;
         }
 
         $subs = DB::table('subscriptions')
@@ -70,7 +79,7 @@ class LabelsController extends Controller
         $token = $config['shippo']['token'];
         Shippo::setApiKey($token);
         $pdfMerger = PDFMerger::init();
-        
+
         $count = count($subs);
         for ($i = 0; $i < $count; $i++) {
             // Purchase the saved rate
@@ -82,19 +91,19 @@ class LabelsController extends Controller
             if ($transaction["status"] == "SUCCESS") {
                 if ($transaction["object_state"] == "VALID") {
                     // Set temp location
-                    $path = dirname(__DIR__, 3) . 
+                    $path = dirname(__DIR__, 3) .
                     "/storage/app/public/tmp/labels/" . time() .
-                   '/'.  $id . ".pdf";
+                        '/' . $id . ".pdf";
                     // Merge PDFs
                     fopen($path, "w");
-                    file_put_contents($path, 
-                    file_get_contents($transaction['label_url']));
+                    file_put_contents($path,
+                        file_get_contents($transaction['label_url']));
                     $pdfMerger->addPDF($path, 'all');
-                    $pdfMerger->merge();            
-                    // Save label's object_id and tracking number 
+                    $pdfMerger->merge();
+                    // Save label's object_id and tracking number
                     self::storeLabel($transaction, $subs[$i]);
-                }else{
-                  // Handle error
+                } else {
+                    // Handle error
                 }
 
             } else {
@@ -102,9 +111,106 @@ class LabelsController extends Controller
             }
 
         }
-               self::updateShippingCount($id);
-               return $pdfMerger->save('labels.pdf', 'browser');
-            
+        self::updateShippingCount($id);
+        return $pdfMerger->save('labels.pdf', 'browser');
+
+    }
+    public function due()
+    {
+
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        $subs = DB::table('subscriptions')
+            ->where('creator_id', '=', $id)
+            ->where('status', '=', 1)
+            ->where('order_id', '<>', null)
+            ->where('rate_id', '<>', null)
+            ->select('rate', 'user_id')
+            ->get();
+
+        $addr = DB::table('boxes')
+            ->where('user_id', '=', $id)
+            ->select('address_line_1', 'address_line_2',
+                'admin_area_1', 'admin_area_2',
+                'country_code', 'postal_code')
+            ->get();
+
+        $due = array(
+            'total' => $subs->sum('rate'),
+            'count' => $subs->count('rate'),
+        );
+
+        return view('subscription_box.ship', compact('user', $user))
+            ->with('due', $due)
+            ->with('address', $addr[0]);
+    }
+
+    // Gets the shipping rates for each subscriber
+    public function rates(Request $request)
+    {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+       
+        // Use USPS.
+
+        $subs = DB::table('subscriptions')
+            ->where('creator_id', '=', $user->id)
+            ->where('status', '=', 1)
+            ->where('order_id', '<>', null)
+            ->where('rate_id', '<>', null)
+            ->select('fullname', 'creator_id', 'user_id', 'address_line_1', 'address_line_2',
+                'admin_area_1', 'admin_area_2',
+                'country_code', 'postal_code')
+            ->get();
+           
+        $shipping = new ShippingController();
+        $total = 0;
+        $count = 0;
+        
+        foreach ($subs as $to) {
+          print_r($to);
+            $request['to'] = $to;
+            $rate = $shipping->rates($request);
+
+            $array = array(
+                'rate_id' => $rate->rate_id,
+                'rate' => $rate->rate,
+                'shipment' => $rate->shipment,
+                'carrier' => $rate->carrier,
+            );
+            DB::table('subscriptions')
+                ->where('user_id', '=', $to->user_id)
+                ->update($array);
+
+            $total += $rate->rate;
+            $count += 1;
+
+        }
+        $due = array(
+            'total' => $total,
+            'count' => $count,
+        );
+
+        return view('includes.shipping-checkout-final', compact('user', $user))
+            ->with('due', $due);
+
+    }
+    public function showAddress(Request $request)
+    {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        $address = DB::table('boxes')
+            ->where('user_id', $user->id)
+            ->select('address_line_1', 'address_line_2',
+                'admin_area_1', 'admin_area_2',
+                'country_code', 'postal_code')
+            ->get();
+
+        return view('includes.shipping-checkout-address', compact('user', $user))
+            ->with('address', $address[0]);
+
     }
 
 }

@@ -170,7 +170,9 @@ return [
         LynX39\LaraPdfMerger\PdfMergerServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
         Junges\InviteCodes\InviteCodesServiceProvider::class,
-        Junges\InviteCodes\InviteCodesEventServiceProvider::class,
+    
+        //Junges\InviteCodes\InviteCodesEventServiceProvider::class,
+        //Collective\Html\HtmlServiceProvider::class,
 
 
         /*
@@ -239,6 +241,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+       // 'Form' => Collective\Html\FormFacade::class,
+        //'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

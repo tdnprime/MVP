@@ -28,6 +28,7 @@ return array(
     'App\\Http\\Controllers\\SchoolController' => $baseDir . '/app/Http/Controllers/SchoolController.php',
     'App\\Http\\Controllers\\SearchController' => $baseDir . '/app/Http/Controllers/SearchController.php',
     'App\\Http\\Controllers\\ShippingController' => $baseDir . '/app/Http/Controllers/ShippingController.php',
+    'App\\Http\\Controllers\\SquareController' => $baseDir . '/app/Http/Controllers/SquareController.php',
     'App\\Http\\Controllers\\SubscriptionController' => $baseDir . '/app/Http/Controllers/SubscriptionController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

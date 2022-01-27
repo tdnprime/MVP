@@ -30,6 +30,7 @@ class BoxController extends Controller
             ->where("box_url", '=', $box_url)
             ->select('boxes.*', 'users.given_name', 'users.family_name')
             ->get();
+
         $box = $box[0];
         self::setThumb($box);
         self::setShippingDetails($box);
@@ -102,6 +103,7 @@ class BoxController extends Controller
         $response = get_headers($img, 1);
         return $file_exists = strpos($response[0], '404') === false;
     }
+    
     private function setThumb($box)
     {
         $img0 = 'https://img.youtube.com/vi/' . $box->video . '/maxres0.jpg';
@@ -123,6 +125,7 @@ class BoxController extends Controller
         }
         $box->image = $image;
     }
+
     private function setShippingDetails($box)
     {
         if (gettype($box->created_at) != 'integer') {

@@ -7,6 +7,6 @@
     </div>
     <br>
     <img id='footer-logo' src='{{ asset('../assets/images/logo.svg') }}' alt='logo'/>
-    <p class='centered one-em-font'>help@boxeon.com</p>
-    <p class='centered one-em-font'>+1-646-450-4671‬</p>
+    <p class='centered one-em-font'>service@boxeon.com</p>
+    <p class='centered one-em-font'>+1.646.450.4671‬</p>
 </footer>

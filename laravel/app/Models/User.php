@@ -72,7 +72,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Box::class);
     }
-
+//  Change:
     public function shippingAddress()
     {
         return [

@@ -3,11 +3,27 @@
     @if (isset($due))
         <div id='module'>
             <div class="centered margin-bottom-4-em">
-                <h2>Due today</h2>
+                <h2 class='red'>Due today</h2>
                 <h3 class="centered center red">${{ $due['total'] }} for {{ $due['count'] }} shipping
-                    label(s).
+                    label(s)
                 </h3>
-                <br><br>
+                <br>
+                <img class="center service-provider-logo" src='{{ $due['provider_logo'] }}' alt='Provider'/>
+                <h3 class="centered">{{ $due['description'] }}</h3>
+                <br>
+
+
+                {{-- TESTING--}}
+
+                <form id="payment-form">
+                    <div id="card-container"></div>
+                    <button id="card-button" type="button">Pay</button>
+                  </form>
+                
+
+
+
+                <br>
                 <form action='/labels/charge' method='post'>
                     @csrf
                     @method('POST')

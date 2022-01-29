@@ -30,3 +30,4 @@ $_SESSION['nonce'] = $nonce;
 echo "<script defer type='text/javascript' data-csp-nonce='$nonce' src=https://www.paypal.com/sdk/js?client-id=" . $clientID . '&locale=en_US&vault=true&intent=subscription&commit=true></script>';
 @endphp
 <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
+<script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>

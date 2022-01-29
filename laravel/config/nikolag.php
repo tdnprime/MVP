@@ -54,7 +54,7 @@ return [
             |
             */
             'user' => [
-                'namespace'  => env('SQUARE_USER_NAMESPACE', '\App\User'),
+                'namespace'  => env('SQUARE_USER_NAMESPACE', '\App\Models\User'),
                 'identifier' => env('SQUARE_USER_IDENTIFIER', 'id'),
             ],
 

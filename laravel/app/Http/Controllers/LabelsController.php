@@ -146,6 +146,17 @@ class LabelsController extends Controller
             ->with('address', $addr[0]);
     }
 
+
+    public function getShippingAddress($id){
+
+      return DB::table('boxes')
+      ->where('user_id', $id)
+      ->select('address_line_1', 'address_line_2',
+          'admin_area_1', 'admin_area_2',
+          'country_code', 'postal_code')
+      ->get();
+    }
+
     // Gets the shipping rates for each subscriber
     public function rates(Request $request)
     {
@@ -158,7 +169,6 @@ class LabelsController extends Controller
             ->where('creator_id', '=', $user->id)
             ->where('status', '=', 1)
             ->where('order_id', '<>', null)
-            ->where('rate_id', '<>', null)
             ->select('fullname', 'creator_id', 'user_id', 'address_line_1', 'address_line_2',
                 'admin_area_1', 'admin_area_2',
                 'country_code', 'postal_code')
@@ -169,45 +179,42 @@ class LabelsController extends Controller
         $count = 0;
         
         foreach ($subs as $to) {
-          print_r($to);
+       
             $request['to'] = $to;
+        
             $rate = $shipping->rates($request);
-
+          // print_r($rate['results'][1]);
             $array = array(
-                'rate_id' => $rate->rate_id,
-                'rate' => $rate->rate,
-                'shipment' => $rate->shipment,
-                'carrier' => $rate->carrier,
+                'rate_id' => $rate['results'][1]->object_id,
+                'rate' => $rate['results'][1]->amount,
+                'shipment' => $rate['results'][1]->shipment,
+                'carrier' => $rate['results'][1]->provider,
             );
             DB::table('subscriptions')
                 ->where('user_id', '=', $to->user_id)
                 ->update($array);
 
-            $total += $rate->rate;
+            $total += $rate['results'][1]->amount;
             $count += 1;
 
         }
         $due = array(
             'total' => $total,
             'count' => $count,
+            'description' => 'Priority Mail Express',
+            'provider_logo' => ' https://shippo-static.s3.amazonaws.com/providers/200/USPS.png',
         );
-
+        $address = self::getShippingAddress($id);
         return view('includes.shipping-checkout-final', compact('user', $user))
-            ->with('due', $due);
+            ->with('due', $due)
+            ->with('address', $address[0]);
 
     }
     public function showAddress(Request $request)
     {
         $id = auth()->user()->id;
         $user = User::find($id);
-
-        $address = DB::table('boxes')
-            ->where('user_id', $user->id)
-            ->select('address_line_1', 'address_line_2',
-                'admin_area_1', 'admin_area_2',
-                'country_code', 'postal_code')
-            ->get();
-
+        $address = self::getShippingAddress($id);
         return view('includes.shipping-checkout-address', compact('user', $user))
             ->with('address', $address[0]);
 

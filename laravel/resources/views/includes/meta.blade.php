@@ -21,6 +21,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert%20One">
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script defer src="{{ asset('../assets/js/global.js?v=2.1') }}"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EKYP1LECWS"></script>
+
 @php
 $config = parse_ini_file(dirname(__DIR__, 3) . '/config/app.ini', true);
 $clientID = $config['paypal']['clientID'];

@@ -1031,6 +1031,12 @@ if(document.getElementsByClassName('play-video')){
     });
 
   }
+
+  // Google Tags
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EKYP1LECWS');
 });
 
 // Fades out pages for a smoother unload transition

@@ -169,9 +169,6 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         LynX39\LaraPdfMerger\PdfMergerServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
-        Junges\InviteCodes\InviteCodesServiceProvider::class,
-    
-        //Junges\InviteCodes\InviteCodesEventServiceProvider::class,
         //Collective\Html\HtmlServiceProvider::class,
 
 

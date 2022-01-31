@@ -16,6 +16,7 @@
         }
         $next_shipping = gmdate('F d', $box[0]->created_at + $last_shipping);
         ?>
+      
 
         <div class="centered margin-bottom-4-em">
             <img class="image-cta" src="../assets/images/fly.svg" alt="Congratulations" />
@@ -28,7 +29,7 @@
         </div>
 
     @else
-    
+
         <div class="centered margin-bottom-4-em">
             <img class="image-cta" src="../assets/images/order-delivered.svg" alt="Congratulations" />
             <h2>Shipping Center</h2>
@@ -37,7 +38,6 @@
             <a class='button' href='/box/create'>Create box</a>
             <a class='button' href='/search/creator'>Find creator</a>
         </div>
-
 
     @endif
 

@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+Route::get('/web-payments-quickstart/public/', 'App\Http\Controllers\HomeController@square')->name('square.index');
+Route::post('/payments/charge/', function(){
+
+    ///web-payments-quickstart/public/
+});
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('index');
 //Handle Laravel logout

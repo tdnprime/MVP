@@ -34,7 +34,7 @@
             </a>
         </section>
 
-        <aside id='panel'>
+        <aside class='filter-grayscale' id='panel'>
 
             @if (isset($what) && count($what) > 0)
 

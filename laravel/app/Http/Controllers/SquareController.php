@@ -53,6 +53,7 @@ class SquareController extends Controller
     }
     public function labels(Request $request)
     {
+        dd($request);
         $id = auth()->user()->id;
         $user = User::find($id);
         //process data, find or create customer, create product, create plan

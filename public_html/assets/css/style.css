@@ -2101,7 +2101,16 @@ ul, P, a, label {
 #home main p {
   max-width: 600px;
 }
-
+.filter-grayscale{
+  filter:grayscale(1);
+}
+#iframe-square-payment{
+  border:none;
+  width:100%;
+  height:600px;
+  overflow: hidden;
+  
+}
 label {
   float: left;
   clear: both;

@@ -13,6 +13,7 @@ class SquareController extends Controller
 {
     private function charge(Request $request)
     {
+        dd($request);
         return $transaction = Square::charge([
             'amount' => '500',
             'card_nonce' => $request['card'],
@@ -53,7 +54,7 @@ class SquareController extends Controller
     }
     public function labels(Request $request)
     {
-        dd($request);
+       // dd($request);
         $id = auth()->user()->id;
         $user = User::find($id);
         //process data, find or create customer, create product, create plan

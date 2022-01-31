@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `htdocs`
+-- Database: `boxeon`
 --
-CREATE DATABASE IF NOT EXISTS `htdocs` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `htdocs`;
+CREATE DATABASE IF NOT EXISTS `boxeon` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `boxeon`;
 
 -- --------------------------------------------------------
 

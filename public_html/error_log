@@ -1,0 +1,439 @@
+[05-Jan-2022 16:31:32 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 16:31:32 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 16:31:36 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 16:31:36 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:02:41 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:02:41 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:02:44 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:02:44 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:03:01 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:03:01 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:03:04 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:03:04 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:08:29 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:08:29 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:08:40 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:08:40 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 19:13:42 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:13:42 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:15:49 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:15:49 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:16:35 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:16:35 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:16:35 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:16:35 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:18:15 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:18:15 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:18:28 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:18:28 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:21:25 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:21:25 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:22:16 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:22:16 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:22:42 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:22:42 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:23:45 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:23:45 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:24:05 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:24:05 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:25:52 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:25:52 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:29:12 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:29:12 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:29:36 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:29:36 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:30:14 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:30:14 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:31:12 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:31:12 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:31:45 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:31:45 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:32:39 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:32:39 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:32:43 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:32:43 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:34:04 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:34:04 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:35:12 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:35:12 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:35:16 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:35:16 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:35:17 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:35:17 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:53:09 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:53:09 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:53:10 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:53:10 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:55:37 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:55:37 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:55:40 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:55:40 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:57:18 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 19:57:18 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 20:04:28 UTC] PHP Warning:  require(/home/mfb1dd2691uf/laravel/vendor/composer/../laravel/framework/src/Illuminate/Collections/helpers.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 20:04:28 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/laravel/vendor/composer/../laravel/framework/src/Illuminate/Collections/helpers.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/autoload_real.php on line 71
+[05-Jan-2022 20:10:50 UTC] PHP Warning:  include(/home/mfb1dd2691uf/laravel/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Container/Container.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php on line 571
+[05-Jan-2022 20:10:50 UTC] PHP Warning:  include(): Failed opening '/home/mfb1dd2691uf/laravel/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Container/Container.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php on line 571
+[05-Jan-2022 20:10:50 UTC] PHP Fatal error:  Uncaught Error: Interface 'Illuminate\Contracts\Container\Container' not found in /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php:17
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(571): include()
+#1 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/mfb1dd269...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Cont...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(29): spl_autoload_call('Illuminate\\Cont...')
+#4 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(571): include('/home/mfb1dd269...')
+#5 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/mfb1dd269...')
+#6 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Foun...')
+#7 /home/mfb1dd2691uf/laravel/bootstrap/app.php(14): spl_autoload_call('Illuminate\\Foun...')
+#8 /ho in /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 17
+[05-Jan-2022 20:12:11 UTC] PHP Warning:  include(/home/mfb1dd2691uf/laravel/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Container/Container.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php on line 571
+[05-Jan-2022 20:12:11 UTC] PHP Warning:  include(): Failed opening '/home/mfb1dd2691uf/laravel/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Container/Container.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php on line 571
+[05-Jan-2022 20:12:11 UTC] PHP Fatal error:  Uncaught Error: Interface 'Illuminate\Contracts\Container\Container' not found in /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php:17
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(571): include()
+#1 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/mfb1dd269...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Cont...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(29): spl_autoload_call('Illuminate\\Cont...')
+#4 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(571): include('/home/mfb1dd269...')
+#5 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/mfb1dd269...')
+#6 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Foun...')
+#7 /home/mfb1dd2691uf/laravel/bootstrap/app.php(14): spl_autoload_call('Illuminate\\Foun...')
+#8 /ho in /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 17
+[05-Jan-2022 20:15:00 UTC] PHP Warning:  include(/home/mfb1dd2691uf/laravel/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Container/Container.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php on line 571
+[05-Jan-2022 20:15:00 UTC] PHP Warning:  include(): Failed opening '/home/mfb1dd2691uf/laravel/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Container/Container.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php on line 571
+[05-Jan-2022 20:15:00 UTC] PHP Fatal error:  Uncaught Error: Interface 'Illuminate\Contracts\Container\Container' not found in /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php:17
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(571): include()
+#1 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/mfb1dd269...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Cont...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(29): spl_autoload_call('Illuminate\\Cont...')
+#4 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(571): include('/home/mfb1dd269...')
+#5 /home/mfb1dd2691uf/laravel/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/mfb1dd269...')
+#6 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Foun...')
+#7 /home/mfb1dd2691uf/laravel/bootstrap/app.php(14): spl_autoload_call('Illuminate\\Foun...')
+#8 /ho in /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 17
+[05-Jan-2022 20:23:53 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 20:23:53 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 20:24:10 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 20:24:10 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 20:24:11 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 20:24:11 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 20:53:52 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 20:53:52 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 20:53:52 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 20:53:52 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 21:28:33 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 21:28:33 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 21:28:35 UTC] PHP Warning:  require(/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 21:28:35 UTC] PHP Fatal error:  require(): Failed opening required '/home/mfb1dd2691uf/public_html../laravel/vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/public_html/index.php on line 34
+[05-Jan-2022 22:45:43 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[05-Jan-2022 22:45:43 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[05-Jan-2022 22:54:03 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[05-Jan-2022 22:54:03 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[05-Jan-2022 23:05:30 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[05-Jan-2022 23:05:30 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:06:13 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php:232
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php(232): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 232, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php(232): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequir in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php on line 232
+[07-Jan-2022 00:06:13 UTC] PHP Fatal error:  Illuminate\Filesystem\Filesystem::main(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php on line 232
+[07-Jan-2022 00:06:49 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php:232
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php(232): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 232, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php(232): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequir in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php on line 232
+[07-Jan-2022 00:06:49 UTC] PHP Fatal error:  Illuminate\Filesystem\Filesystem::main(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php on line 232
+[07-Jan-2022 00:07:05 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php:232
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php(232): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 232, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php(232): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequir in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php on line 232
+[07-Jan-2022 00:07:05 UTC] PHP Fatal error:  Illuminate\Filesystem\Filesystem::main(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php on line 232
+[07-Jan-2022 00:19:06 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:06 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:07 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:07 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:09 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:09 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:10 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:10 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:10 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:10 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:10 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:10 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:12 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:12 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:12 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:12 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:12 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:12 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:13 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:13 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:13 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:13 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:15 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:15 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:15 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:15 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:15 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:15 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:15 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illum in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 00:19:15 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 12:50:55 UTC] PHP Warning:  Uncaught ErrorException: require_once(/home/mfb1dd2691uf/laravel/app/php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php:25
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(/h...', '/home/mfb1dd269...', 25, Array)
+#1 /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php(25): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\Http\Controllers\SubscriptionController->createplan(Object(Illuminate\Http\Request))
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('createplan', Array)
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(262): Illuminate\Routing\ControllerDispa in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 12:50:55 UTC] PHP Fatal error:  App\Http\Controllers\SubscriptionController::createplan(): Failed opening required '/home/mfb1dd2691uf/laravel/app/php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/app/Http/Controllers/SubscriptionController.php on line 25
+[07-Jan-2022 13:34:04 UTC] PHP Warning:  Uncaught ErrorException: require_once(../php/paypal-connect.php): failed to open stream: No such file or directory in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php:232
+Stack trace:
+#0 /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php(232): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/mfb1dd269...', 232, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php(232): require_once()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequir in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php on line 232
+[07-Jan-2022 13:34:04 UTC] PHP Fatal error:  Illuminate\Filesystem\Filesystem::main(): Failed opening required '../php/paypal-connect.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/mfb1dd2691uf/laravel/storage/framework/views/5db344a89b956cc64428082308cd7eedd0462378.php on line 232
+[30-Jan-2022 16:50:19 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 16:50:38 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 16:50:44 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 16:51:34 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 16:55:31 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 16:55:40 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 16:55:48 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 16:55:58 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 16:58:02 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 17:09:56 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 17:22:59 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 17:23:05 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 17:23:29 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 17:23:44 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 17:24:16 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31
+[30-Jan-2022 17:24:19 UTC] PHP Fatal error:  Uncaught ErrorException: session_start(): A session had already been started - ignoring in /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'session_start()...', '/home/mfb1dd269...', 31, Array)
+#1 /home/mfb1dd2691uf/laravel/storage/framework/views/45d063b793c4b72458a20b9e90099bfae6060ce1.php(31): session_start()
+#2 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require('/home/mfb1dd269...')
+#3 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#4 /home/mfb1dd2691uf/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\Filesystem\Filesystem->getRequire('/home/mfb1dd269...', Array)
+#5 /home/mfb1dd2691uf/laravel/vendor/livewire/livewire/src/ComponentConcerns/Re in /home/mfb1dd2691uf/laravel/resources/views/includes/meta.blade.php on line 31

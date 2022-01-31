@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://127.0.0.1:8000'),
+    'url' => env('APP_URL', 'https://boxeon.com'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -162,14 +162,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        
         /*
          * Package Service Providers...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
-        LynX39\LaraPdfMerger\PdfMergerServiceProvider::class,
-        Cmgmyr\Messenger\MessengerServiceProvider::class,
-        //Collective\Html\HtmlServiceProvider::class,
+
 
 
         /*
@@ -238,8 +235,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-       // 'Form' => Collective\Html\FormFacade::class,
-        //'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

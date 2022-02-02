@@ -875,17 +875,24 @@ $(document).ready(function () {
       Boxeon.router(a);
     });
   }
+  if(document.getElementById('menu-icon')){
   document.getElementById('menu-icon').addEventListener('click', function () {
     Boxeon.menu();
 
   });
+}
+if(  document.getElementById('signout')){
   document.getElementById('signout').addEventListener('click', function () {
     Boxeon.signOut();
   });
+}
+if(  document.getElementById('menu-close')){
+
   document.getElementById('menu-close').addEventListener('click', function () {
     Boxeon.closeMenu();
 
   });
+}
 
 
   /*  if (document.getElementsByClassName('switch-plan')) {
@@ -1043,12 +1050,12 @@ if(document.getElementsByClassName('play-video')){
 
 // Fades out pages for a smoother unload transition
 $(window).on('beforeunload', function () {
-  if (document.getElementsByTagName("main")[0]) {
-    document.getElementsByTagName("main")[0].setAttribute("class", "fadeout");
-  }
-  if (document.getElementById("masthead")) {
-    document.getElementById("masthead").setAttribute("class", "fadeout");
-  }
+  //if (document.getElementsByTagName("main")[0]) {
+    document.getElementBy("container").setAttribute("class", "fadeout");
+ // }
+ // if (document.getElementById("masthead")) {
+    //document.getElementById("masthead").setAttribute("class", "fadeout");
+ // }
 
 });
 

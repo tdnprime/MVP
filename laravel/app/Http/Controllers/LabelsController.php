@@ -205,7 +205,7 @@ class LabelsController extends Controller
             'provider_logo' => ' https://shippo-static.s3.amazonaws.com/providers/200/USPS.png',
         );
         $address = self::getShippingAddress($id);
-        return view('includes.shipping-checkout-final', compact('user', $user))
+        return view('includes.square', compact('user', $user))
             ->with('due', $due)
             ->with('address', $address[0]);
 

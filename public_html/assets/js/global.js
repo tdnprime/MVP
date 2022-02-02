@@ -47,6 +47,8 @@ Boxeon = {
       }
     }
   },
+
+  
   checkUrl: function (input) {
     let json = JSON.stringify({ url: input });
     var data = {

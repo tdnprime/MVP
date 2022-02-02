@@ -47,8 +47,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/home/index', 'App\Http\Controllers\HomeController@dashboard')->name('home.dashboard');
     Route::get('/home/subscriptions', 'App\Http\Controllers\HomeController@subscriptions')->name('home.subscriptions');
     Route::get('/home/subscribers', 'App\Http\Controllers\HomeController@subscribers')->name('home.subscribers');
+    
     Route::get('/box/create', 'App\Http\Controllers\BoxController@create')->name('box.create');
     Route::post('/box/embed', 'App\Http\Controllers\BoxController@embed')->name('box.embed');
+    
     Route::post('/box/url', 'App\Http\Controllers\BoxController@url')->name('box.url');
     Route::post('/box', 'App\Http\Controllers\BoxController@store')->name('box.store');
     Route::get('/box/{vid}/edit', 'App\Http\Controllers\BoxController@edit')->name('box.edit');
@@ -56,14 +58,17 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/box/{vid}', 'App\Http\Controllers\BoxController@update')->name('box.update');
     Route::delete('/box/{vid}', 'App\Http\Controllers\BoxController@destory')->name('box.destory');
     Route::get('/box/ship', 'App\Http\Controllers\ShippingController@ship')->name('box.ship');
+   
     Route::get('/box/labels', 'App\Http\Controllers\LabelsController@generate')->name('box.labels');
     Route::get('/labels/purchase', 'App\Http\Controllers\LabelsController@showAddress')->name('labels.purchase');
     Route::post('/labels/rates', 'App\Http\Controllers\LabelsController@rates')->name('labels.purchase');
-    Route::post('/labels/charge', 'App\Http\Controllers\SquareController@labels')->name('labels.charge');
+    Route::get('/labels/charge', 'App\Http\Controllers\SquareController@charge');
+
     Route::get('/box/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('box.addresses');
     Route::get('/box/track', 'App\Http\Controllers\ShippingController@track')->name('box.track');
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('box.rates');
     Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
+    
     Route::get('/account/home', 'App\Http\Controllers\HomeController@account')->name('account.home');
     Route::post('/account/box/', 'App\Http\Controllers\AccountController@updateBox')->name('account.box');
     Route::post('/account/users', 'App\Http\Controllers\AccountController@updateUsers')->name('account.users');

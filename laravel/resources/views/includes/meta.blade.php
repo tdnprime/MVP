@@ -28,8 +28,13 @@
 $config = parse_ini_file(dirname(__DIR__, 3) . '/config/app.ini', true);
 $clientID = $config['paypal']['clientID'];
 $nonce = base64_encode('Content-Security-Policy: def');
+$nonce2 = base64_encode('Contentaecurity-Polyuscy: def');
+
 session_start();
 $_SESSION['nonce'] = $nonce;
+$_SESSION['no'] = $nonce2;
+setCookie('no', $nonce2);
+
 echo "<script defer type='text/javascript' data-csp-nonce='$nonce' src=https://www.paypal.com/sdk/js?client-id=" . $clientID . '&locale=en_US&vault=true&intent=subscription&commit=true></script>';
 @endphp
 <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>

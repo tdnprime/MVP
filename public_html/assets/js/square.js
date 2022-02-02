@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-@include('includes.meta')
-@section('title', 'Boxeon | Checkout')
-    <link href="https://boxeon.com/assets/css/square.css" rel="stylesheet" />
-    <script defer type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
 
 
-    <script nonce='
-    @php
-    echo $_COOKIE['no'];
-    setCookie('no', '', time() - 3900);
-    @endphp
-    '>
+
 
         const appId = 'sandbox-sq0idb-FrLggaZMvpJBc2UDN3zKlg';
         const locationId = 'LABQBPRYSFTE8';
@@ -31,7 +18,7 @@
             const body = JSON.stringify({
                 locationId,
                 sourceId: token,
-                amount: 100,
+                amount: total,
 
             });
             
@@ -49,8 +36,15 @@
 
             }
             Boxeon.loader();
-            Boxeon.sendAjax(data, callback);
+            const paymentResponse =  sendAjax(data, callback);
             
+
+            if (paymentResponse.ok) {
+                return paymentResponse.json();
+            }
+
+            const errorBody = await paymentResponse.text();
+            throw new Error(errorBody);
         }
 
         async function tokenize(paymentMethod) {
@@ -134,30 +128,3 @@
                 await handlePaymentMethodSubmission(event, card);
             });
         });
-    </script>
-</head>
-
-<body id='index'>
-    <div id="container">
-        <span></span><!-- Hack-->
-
-        @if (isset($due))
-        <div id='module'>
-            <div class="centered margin-bottom-4-em">
-                <h2>Due today</h2>
-                <p class="centered center">${{ $due['total'] }} for {{ $due['count'] }} shipping
-                    label(s) via USPS {{ $due['description'] }}</p>
-                <form id="payment-form">
-                    <div id="card-container"></div>
-                    <button class='button' id="card-button" type="button">Pay&nbsp;{{$due['total']}}</button>
-                </form>
-                <div id="payment-status-container"></div>
-                <img style='width:100px; height:auto; margin:auto; display:block;position:relative; bottom:10em;'
-                    id='image-square-logo' class='center' src='../../../assets/images/square-logo.png' alt='Square' />
-            </div>
-        </div>
-        @endif
-</body>
-
-
-</html>

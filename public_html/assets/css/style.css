@@ -12,11 +12,16 @@ Brown skin: #a0616a
 #alt-masthead-image {
   display: none;
 }
-
+#image-square-logo{
+  width:100px;
+  height:auto;
+}
 #alt-home-main {
   display: block !important;
 }
-
+.filter-grayscale{
+  filter:grayscale(9);
+}
 #alt-home-main .alt-section-inner-grid {
   margin-top: 8em;
 }

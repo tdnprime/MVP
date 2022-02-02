@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0" />
     @include('includes.meta')
     <link href="https://boxeon.com/assets/css/square.css" rel="stylesheet" />
-    <script defer type="text/javascript" src="https://web.squarecdn.com/v1/square.js"></script>
+    <script defer type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
 
 
     <script async defer nonce='
@@ -162,15 +162,13 @@
     </script>
 </head>
 
-<body id='index'>
-    
-    
+<body id='index'> 
 <div id="m-window">
         @if (isset($due))
         <div id='m-content'>
-            <div id="mc-header"></div>
+            <div id="mc-header"><a href='{{ url()->previous() }}'><span id="m-close" class="material-icons">×</span></a></div>
+            <h2>Checkout</h2>
             <div class="centered margin-bottom-4-em">
-                <h2>Checkout</h2>
                 <p class="centered center">${{ $due['total'] }} for {{ $due['count'] }} shipping
                     label(s) via USPS {{ $due['description'] }}</p>
                 <form id="payment-form">

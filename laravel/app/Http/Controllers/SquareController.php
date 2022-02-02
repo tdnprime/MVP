@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class SquareController extends Controller
@@ -14,12 +11,12 @@ class SquareController extends Controller
     {
 
         $charge = json_decode($request['charge']);
-        $amount =  (int)$charge->amount * 100;
-        $config = parse_ini_file(dirname(__DIR__, 3) . "/config/app.ini", true);
+        $amount = (int) $charge->amount * 100;
+        $config = parse_ini_file(dirname(__DIR__, 3) .
+            "/config/app.ini", true);
         $token = $config['square']['access_token'];
         $endpoint = $config['square']['payments'];
 
-        
         $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $token,
@@ -47,53 +44,17 @@ class SquareController extends Controller
         }
 
     }
-    private function createCustomer($buyer)
+    public function createPlan()
     {
-
-        $arr = array(
-            'first_name' => $buyer->given_name,
-            'last_name' => $buyer->family_name,
-            'company_name' => $buyer->given_name . "" . $buyer->family_name,
-            'nickname' => $buyer->given_name ?? '',
-            'phone' => $buyer->phone ?? '',
-            'note' => $buyer->note ?? '',
-            'email' => $buyer->email,
-        );
-        $customer = new Customer($arr);
-        // $customer->save();
-        return $customer;
 
     }
-    private function chargeWithCustomer(Customer $customer)
+    public function createSubscription()
     {
 
-        $transaction = Square::setCustomer($customer)
-            ->charge([
-                'amount' => '500',
-                'card_nonce' => 'xxxxx',
-                'location_id' => 'xxxxx',
-                'currency' => 'USD',
-                'source_id' => 'xxxxxx',
-            ]);
-        return $transaction;
     }
-    public function labels(Request $request)
+    public function deleteSubscription()
     {
 
-        $id = auth()->user()->id;
-        $user = User::find($id);
-        //process data, find or create customer, create product, create plan
-        $buyer = DB::table('boxes')
-            ->join('users', 'users.id', '=', 'boxes.user_id')
-            ->where('user_id', '=', $user->id)
-            ->select('users.given_name', 'users.family_name',
-                'boxes.address_line_1', 'users.email',
-                'boxes.address_line_2', 'boxes.admin_area_1',
-                'boxes.admin_area_2', 'boxes.country_code', 'boxes.postal_code')
-            ->get();
-
-        // $customer = self::createCustomer($buyer[0]);
-        //self::charge();
     }
 
 }

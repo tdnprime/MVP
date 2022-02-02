@@ -2,7 +2,7 @@
 @section('content')
     <div id='module'>
         <div class="centered margin-bottom-4-em">
-        <form action='/labels/rates' method='post'>
+        <form action='/checkout/labels' method='post'>
             @csrf
             @method('POST')
             <fieldset id='fieldset-shipping-addresss' class='fieldset-neuromorph'>

@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="message-create" href="/labels/purchase" data-type-id="">
+                <a class="message-create" href="/checkout/address">
                     <div class='recipients-grid'>
                         <div class='position-relative'><span class="material-icons">new_label</span>
                             Purchase labels

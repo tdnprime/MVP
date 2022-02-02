@@ -14,15 +14,15 @@ class SquareController extends Controller
     {
 
         $charge = json_decode($request['charge']);
-        $amount =  100;
+        $amount =  (int)$charge->amount * 100;
         $config = parse_ini_file(dirname(__DIR__, 3) . "/config/app.ini", true);
-       // $token = $config['square']['access_token'];
+        $token = $config['square']['access_token'];
         $endpoint = $config['square']['payments'];
 
         
         $response = Http::withHeaders(
             [
-                'Authorization' => 'Bearer EAAAEGPaBJ5JKN9xriwzYsc7Gw3lBmjY_QDUe3KfjiRE4djDdDbEFl2deRywP5_P',
+                'Authorization' => "Bearer " . $token,
                 'Content-Type' => 'application/json',
                 'Square-Version' => "2022-01-20",
             ]

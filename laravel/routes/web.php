@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/box/labels', 'App\Http\Controllers\LabelsController@generate')->name('box.labels');
     Route::get('/labels/purchase', 'App\Http\Controllers\LabelsController@showAddress')->name('labels.purchase');
     Route::post('/labels/rates', 'App\Http\Controllers\LabelsController@rates')->name('labels.purchase');
-    Route::get('/labels/charge', 'App\Http\Controllers\SquareController@charge');
+    Route::post('/labels/charge', 'App\Http\Controllers\SquareController@charge');
 
     Route::get('/box/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('box.addresses');
     Route::get('/box/track', 'App\Http\Controllers\ShippingController@track')->name('box.track');

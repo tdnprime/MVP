@@ -160,6 +160,8 @@ class LabelsController extends Controller
     // Gets the shipping rates for each subscriber
     public function rates(Request $request)
     {
+        $config = parse_ini_file(dirname(__DIR__, 3) . "/config/app.ini", true);
+
         $id = auth()->user()->id;
         $user = User::find($id);
        
@@ -183,7 +185,7 @@ class LabelsController extends Controller
             $request['to'] = $to;
         
             $rate = $shipping->rates($request);
-          // print_r($rate['results'][1]);
+          
             $array = array(
                 'rate_id' => $rate['results'][1]->object_id,
                 'rate' => $rate['results'][1]->amount,
@@ -202,10 +204,11 @@ class LabelsController extends Controller
             'total' => $total,
             'count' => $count,
             'description' => 'Priority Mail Express',
-            'provider_logo' => ' https://shippo-static.s3.amazonaws.com/providers/200/USPS.png',
+            'appId' => $config['square']['appId'],
+            'locationId' => $config['square']['locationId']
         );
         $address = self::getShippingAddress($id);
-        return view('includes.square', compact('user', $user))
+        return view('square.index', compact('user', $user))
             ->with('due', $due)
             ->with('address', $address[0]);
 

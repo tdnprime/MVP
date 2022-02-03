@@ -32,7 +32,7 @@
         @endif
             <div id='module'>
                 <h2>Box</h2>
-                <form class='form-settings' method='post' action='/account/box/'>
+                <form class='form-settings' method='post' action='{{route('account.box_url')}}'>
                     @csrf
                     @method('POST')
                     <fieldset class='fieldset-neuromorph'>

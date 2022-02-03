@@ -75,29 +75,6 @@ class BoxController extends Controller
         }
     }
 
-    private function createProduct($id)
-    {
-        require_once dirname(__DIR__, 3) . '/php/paypal-connect.php';
-        $config = parse_ini_file(dirname(__DIR__, 3) . '/config/app.ini', true);
-        $endpoint = $config['paypal']['productsEndpoint'];
-        $data = [
-            'name' => 'A subscription box',
-            'description' => 'Various products for entertainment purposes',
-            'type' => 'PHYSICAL',
-            'category' => 'ENTERTAINMENT_AND_MEDIA',
-            'home_url' => 'https://boxeon.com', // Update
-        ];
-        $media = "Content-Type: application/json, Authorization: Bearer $token";
-        $product = sendcurl(json_encode($data), $endpoint, $media); 
-
-        $array = ['product_id' =>  $product['id']];
-
-        $box = DB::table('boxes')
-            ->where('user_id', $id)
-            ->limit(1);
-        $box->update($array);
-    }
-
     private function fileCheck($img)
     {
         $response = get_headers($img, 1);
@@ -128,12 +105,9 @@ class BoxController extends Controller
 
     private function setShippingDetails($box)
     {
-        if (gettype($box->created_at) != 'integer') {
-            $created_at = (int) $box->created_at->toDateTimeString();
-        } else {
-            $created_at = $box->created_at;
-        }
-        $box->preenddate = gmdate('F d', $created_at + 2629743);
+        //->diffForHumans();
+       
+        $box->preenddate = $box->created_at;
         if ($box->shipping_cost == 0) {
             $box->shipping = '+ shipping';
             $box->discount = '90% off on';

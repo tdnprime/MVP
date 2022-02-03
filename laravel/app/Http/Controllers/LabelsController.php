@@ -141,7 +141,7 @@ class LabelsController extends Controller
             'count' => $subs->count('rate'),
         );
 
-        return view('subscription_box.ship', compact('user', $user))
+        return view('box.ship', compact('user', $user))
             ->with('due', $due)
             ->with('address', $addr[0]);
     }
@@ -218,7 +218,7 @@ class LabelsController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
         $address = self::getShippingAddress($id);
-        return view('includes.shipping-checkout-address', compact('user', $user))
+        return view('shipping.from-address', compact('user', $user))
             ->with('address', $address[0]);
 
     }

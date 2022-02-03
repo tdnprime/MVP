@@ -35,7 +35,7 @@ class BoxController extends Controller
         self::setThumb($box);
         self::setShippingDetails($box);
         //$user = User::find($box->user_id);
-        return view('subscription_box.index', compact('user', 'user'))
+        return view('box.index', compact('user', 'user'))
         ->with('box', $box);
     }
     public function setCookie(Request $request){
@@ -134,7 +134,7 @@ class BoxController extends Controller
             return redirect()->route('box.edit', $id);
         }
 
-        return view('subscription_box.create', compact('user'));
+        return view('box.create', compact('user'));
     }
     /**
      * Store a newly created resource in storage.
@@ -185,7 +185,7 @@ class BoxController extends Controller
      */
     public function show(Box $box)
     {
-        return view('subscription_box.show', compact('post'));
+        return view('box.show', compact('post'));
     }
 
     /**
@@ -203,7 +203,7 @@ class BoxController extends Controller
         self::setThumb($box);
         self::setShippingDetails($box);
         }
-        return view('subscription_box.edit', compact('box', 'user'));
+        return view('box.edit', compact('box', 'user'));
     }
 
     /**
@@ -264,7 +264,7 @@ class BoxController extends Controller
     {
         $box->delete();
 
-        return redirect()->route('subscription_box.create')
+        return redirect()->route('box.create')
             ->with('success', 'Subscription deleted successfully');
 
     }

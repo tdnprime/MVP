@@ -2,6 +2,7 @@
 const appId = 'sandbox-sq0idb-FrLggaZMvpJBc2UDN3zKlg';
 const locationId = 'LABQBPRYSFTE8';
 
+
 async function initializeCard(payments) {
 
     const card = await payments.card();
@@ -19,7 +20,7 @@ async function ajax(data, back) {
     xhttp.onreadystatechange = function () {
 
         if (this.readyState == 4 && this.status == 200) {
-            
+
             back(this.responseText);
         }
     }

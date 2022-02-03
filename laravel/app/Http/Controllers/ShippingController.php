@@ -128,7 +128,7 @@ class ShippingController extends Controller
         ->where('creator_id', '=', $id)
         ->select('*')
         ->get();
-        return view('subscription_box.ship', compact('user'))
+        return view('shipping.ship', compact('user'))
             ->with('outgoing', count( $subscriptions));
     }
 
@@ -149,7 +149,7 @@ class ShippingController extends Controller
         'address_line_2', 'admin_area_1',
         'admin_area_2', 'country_code', 'postal_code')
         ->get();
-        return view('subscription_box.addresses', ['print'=>$Addresses]);
+        return view('box.addresses', ['print'=>$Addresses]);
       }
 
 }

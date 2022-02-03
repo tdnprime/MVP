@@ -1,4 +1,5 @@
 @extends('layouts.shipping')
+@section('title', 'Boxeon | Shipping')
 @section('content')
 
 

@@ -54,18 +54,25 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::put('/{vid}', 'App\Http\Controllers\BoxController@update')->name('box.update');
         Route::delete('/{vid}', 'App\Http\Controllers\BoxController@destory')->name('box.destory');
         Route::get('/ship', 'App\Http\Controllers\ShippingController@ship')->name('box.ship');
-        Route::get('/labels', 'App\Http\Controllers\LabelsController@generate')->name('box.labels');
-        Route::get('/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('box.addresses');
         Route::get('/track', 'App\Http\Controllers\ShippingController@track')->name('box.track');
 
     });
     Route::prefix('checkout')->group(function () {
-        Route::get('/address', 'App\Http\Controllers\LabelsController@showAddress')->name('labels.purchase');
-        Route::post('/labels', 'App\Http\Controllers\LabelsController@rates')->name('labels.purchase');
+        Route::get('/address', 'App\Http\Controllers\LabelsController@showAddress')->name('checkout.address');
+       // Route::post('/labels', 'App\Http\Controllers\LabelsController@rates')->name('labels.purchase');
         Route::get('/labels/charge', 'App\Http\Controllers\SquareController@charge');
         Route::get('/subscription', 'App\Http\Controllers\SquareController@createSubscription')->name('subscription.purchase');
 
     });
+    Route::prefix('labels')->group(function () {
+       Route::get('/generate', 'App\Http\Controllers\LabelsController@generate')->name('labels.generate');
+       Route::get('/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('box.addresses');
+
+    });
+    Route::prefix('shipping')->group(function () {
+        Route::get('/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('shipping.addresses');
+ 
+     });
 
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('box.rates');
     Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');

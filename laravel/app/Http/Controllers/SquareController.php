@@ -16,7 +16,8 @@ class SquareController extends Controller
 
     }
     /*
-     * Creates a one-time payment
+     * Creates a one-time payment for shipping labe;s
+     * Returns to /labels/generate
      */
     public function charge(Request $request)
     {

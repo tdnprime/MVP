@@ -45,6 +45,7 @@ async function createPayment(token, total) {
     };
 
     function callback(re) {
+        Boxeon.removeLoader();
         var res = JSON.parse(re);
 
         if (res.status == 'FAILURE') {
@@ -60,7 +61,7 @@ async function createPayment(token, total) {
         }
 
     }
-
+    Boxeon.loader();
     return await ajax(data, callback);
 
 }

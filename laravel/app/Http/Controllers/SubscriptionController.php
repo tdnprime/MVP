@@ -8,62 +8,29 @@ use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
+    public $config;
+
+    public function __construct(){
+        $this->config = parse_ini_file( dirname(__DIR__, 3) . "/config/app.ini", true );
+    }
 
     public function createplan(Request $request)
     {
 
         $id = auth()->user()->id;
         $user = User::find($id);
-
-        $plan = json_decode($request["plan"]);
-
-
-        require_once  dirname(__DIR__, 3) . "/php/paypal-connect.php";
-        $config = parse_ini_file( dirname(__DIR__, 3) . "/config/app.ini", true );
+        $plan = json_decode($request["plan"]);       
 
         // Prep data PayPal needs to create a billing plan
         $box = DB::select('select * from boxes where user_id= ?', [$plan->creator_id]);
         if ($plan->rate > 0) {
-            $TOTAL = $plan->total + $plan->rate;
+            $total = $plan->total + $plan->rate;
         } elseif ($plan->rate == 0) {
-            $TOTAL = $plan->total;
+            $total = $plan->total;
         }
-        $data = [
-            "product_id" => $box[0]->product_id,
-            "name" => $user->given_name . " " . $user->family_name . " " . "Plan" . " " . $plan->frequency,
-            "description" => $user->given_name . " " . $user->family_name . " " . "Subscription box",
-            "status" => "ACTIVE",
-            "billing_cycles" => [
-                [
-                    "frequency" => [
-                        "interval_unit" => "MONTH",
-                        "interval_count" => $plan->frequency,
-                    ],
-                    "tenure_type" => "REGULAR",
-                    "sequence" => 1,
-                    "total_cycles" => 0,
-                    "pricing_scheme" => [
-                        "fixed_price" => [
-                            "value" => $TOTAL,
-                            "currency_code" => "USD",
-                        ],
-                    ],
-                ],
-            ],
-            "payment_preferences" => [
-                "auto_bill_outstanding" => true,
-                "setup_fee" => [
-                    "value" => "3",
-                    "currency_code" => "USD",
-                ],
-                "setup_fee_failure_action" => "CONTINUE",
-                "payment_failure_threshold" => 3,
-            ],
-        ];
-        // Create billing plan on PayPal and get the returned ID
-        $endpoint = $config["paypal"]["plansEndpoint"];
-        $media = "Content-Type: application/json, Authorization: Bearer $token";
-        $p = sendcurl(json_encode($data), $endpoint, $media); 
+
+    // CALL SQUARE CONTROLLER
+        
         if (isset($p["id"])) {
             /*
             Save price, plan ID. and address for now.
@@ -170,7 +137,7 @@ class SubscriptionController extends Controller
     protected function remove($box)
     {
         require_once dirname(__DIR__, 3) . "/php/paypal-connect.php";
-        $config = parse_ini_file( dirname(__DIR__, 3) . "/config/app.ini", true );
+
         $remove = json_decode($box);
 
         $id = auth()->user()->id;
@@ -183,7 +150,7 @@ class SubscriptionController extends Controller
             ->select('sub_id')
             ->get();
         // Cancell billing on PayPal
-        $endpoint = $config["paypal"]["billinsEndpoint"] . "/" . $subscription[0]->sub_id . "/cancel";
+        $endpoint = $this->config["paypal"]["billinsEndpoint"] . "/" . $subscription[0]->sub_id . "/cancel";
         $media = 'Content-Type: application/json, Authorization: Bearer $token';
         $data = '{ "reason": "No reason" }';
         $a = sendcurl($data, $endpoint, $media);
@@ -196,6 +163,10 @@ class SubscriptionController extends Controller
             $this->boxeonRemove($box);
             return true;
         }
+    }
+    public function __destruct(){
+
+        delete($this->config);
     }
 
 }

@@ -44,6 +44,11 @@ class BoxController extends Controller
         $response->withCookie(cookie('name', 'box', $minutes));
         return $response;
      }
+     public function createProduct($id){
+
+        // Use square
+
+     }
     /**
      * Gets and saves Youtube video ID.
      *
@@ -65,7 +70,9 @@ class BoxController extends Controller
                     ->where('user_id', $user->id)
                     ->limit(1);
                 $box->update($array);
+
                 self::createProduct($user->id);
+
                 Session::flash('message', 'Congratulations! Your box is live at'); 
                 return redirect()->route('box.edit', $id);
             } else {

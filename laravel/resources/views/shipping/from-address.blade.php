@@ -1,5 +1,5 @@
 @extends('layouts.shipping')
-@section('title', 'Boxeon | Shipping')
+@section('title', 'Boxeon | Confirm Address')
 @section('content')
     <div id='module'>
         <div class="centered margin-bottom-4-em">

@@ -48,7 +48,7 @@ Boxeon = {
     }
   },
 
-  
+
   checkUrl: function (input) {
     let json = JSON.stringify({ url: input });
     var data = {
@@ -103,7 +103,9 @@ Boxeon = {
     if (document.getElementsByClassName("loader")[0]) {
       var loader = document.getElementsByClassName("loader")[0];
       loader.remove();
-      Boxeon.CTA.value = Boxeon.ctaValue;
+      if (Boxeon.CTA) {
+        Boxeon.CTA.value = Boxeon.ctaValue;
+      }
     }
   },
   working: function (CTA) {
@@ -143,7 +145,7 @@ Boxeon = {
   createVideoHTML: function (id) {
     return "<div id='remove-black-bar'><iframe src=https://www.youtube.com/embed/"
       + id + "?rel=0&autoplay=1&frameborder=0&mute=1></iframe></div>";
-  
+
 
   },
   createStepsLeft: function (options) {
@@ -365,8 +367,8 @@ Boxeon = {
       hiden[i].style.display = "block";
       let optional = hiden[i].getElementsByClassName('optional');
       let count = optional.length;
-      for(let e =0; e < count; e++){
-      optional[e].removeAttribute("disabled");
+      for (let e = 0; e < count; e++) {
+        optional[e].removeAttribute("disabled");
       }
     }
 
@@ -463,8 +465,8 @@ Boxeon = {
       hiden[i].style.display = "none";
       let optional = hiden[i].getElementsByClassName('optional');
       let count = optional.length;
-      for(let e =0; e < count; e++){
-      optional[e].setAttribute("disabled", "disabled");
+      for (let e = 0; e < count; e++) {
+        optional[e].setAttribute("disabled", "disabled");
       }
     }
 
@@ -560,7 +562,7 @@ Shipping = {
     var json = JSON.stringify(Shipping.arr);
     var manifest = {
       method: "POST",
-      action: "/rates/?to=" + json,
+      action: "/rates/fetch/?to=" + json,
       contentType: "application/json; charset=utf-8",
       customHeader: "X-CSRF-TOKEN",
       payload: document.querySelector('meta[name="csrf-token"]').content
@@ -875,24 +877,24 @@ $(document).ready(function () {
       Boxeon.router(a);
     });
   }
-  if(document.getElementById('menu-icon')){
-  document.getElementById('menu-icon').addEventListener('click', function () {
-    Boxeon.menu();
+  if (document.getElementById('menu-icon')) {
+    document.getElementById('menu-icon').addEventListener('click', function () {
+      Boxeon.menu();
 
-  });
-}
-if(  document.getElementById('signout')){
-  document.getElementById('signout').addEventListener('click', function () {
-    Boxeon.signOut();
-  });
-}
-if(  document.getElementById('menu-close')){
+    });
+  }
+  if (document.getElementById('signout')) {
+    document.getElementById('signout').addEventListener('click', function () {
+      Boxeon.signOut();
+    });
+  }
+  if (document.getElementById('menu-close')) {
 
-  document.getElementById('menu-close').addEventListener('click', function () {
-    Boxeon.closeMenu();
+    document.getElementById('menu-close').addEventListener('click', function () {
+      Boxeon.closeMenu();
 
-  });
-}
+    });
+  }
 
 
   /*  if (document.getElementsByClassName('switch-plan')) {
@@ -925,18 +927,18 @@ if(  document.getElementById('menu-close')){
       Boxeon.disable();
     });
   }
-if(document.getElementsByClassName('play-video')){
-  let btns = document.getElementsByClassName('play-video');
-  for(let i=0; i < btns.length; i++){
-    btns[i].addEventListener('click', function () {
-      let id = this.getAttribute('data-video-id');
-      let video = Boxeon.createVideoHTML(id);
-      this.parentNode.innerHTML = video;
+  if (document.getElementsByClassName('play-video')) {
+    let btns = document.getElementsByClassName('play-video');
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function () {
+        let id = this.getAttribute('data-video-id');
+        let video = Boxeon.createVideoHTML(id);
+        this.parentNode.innerHTML = video;
 
-    });
+      });
+    }
+
   }
-
-}
   if (document.getElementById('play-video')) {
     var btns = document.getElementsByClassName('playbtn');
     for (var i = 0; i < btns.length; i++) {
@@ -1043,7 +1045,7 @@ if(document.getElementsByClassName('play-video')){
 
   // Google Tags
   window.dataLayer = window.dataLayer || [];
-  function gtag(){window.dataLayer.push(arguments);}
+  function gtag() { window.dataLayer.push(arguments); }
   gtag('js', new Date());
   gtag('config', 'G-EKYP1LECWS');
 });
@@ -1051,11 +1053,11 @@ if(document.getElementsByClassName('play-video')){
 // Fades out pages for a smoother unload transition
 $(window).on('beforeunload', function () {
   //if (document.getElementsByTagName("main")[0]) {
-    document.getElementBy("container").setAttribute("class", "fadeout");
- // }
- // if (document.getElementById("masthead")) {
-    //document.getElementById("masthead").setAttribute("class", "fadeout");
- // }
+  document.getElementBy("container").setAttribute("class", "fadeout");
+  // }
+  // if (document.getElementById("masthead")) {
+  //document.getElementById("masthead").setAttribute("class", "fadeout");
+  // }
 
 });
 

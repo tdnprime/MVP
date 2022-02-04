@@ -28,7 +28,7 @@ Route::get('/privacy', 'App\Http\Controllers\HomeController@privacy')->name('pri
 Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('contact');
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about');
 
-Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('index');
+Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('partner.apply');
 Route::post('/partner/apply', 'App\Http\Controllers\PartnerController@apply')->name('apply');
 Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
 Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index');
@@ -40,11 +40,12 @@ Route::get('/school/why', 'App\Http\Controllers\SchoolController@why')->name('sc
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    Route::get('/home/index', 'App\Http\Controllers\HomeController@dashboard')->name('home.dashboard');
+    Route::get('/home/index', 'App\Http\Controllers\HomeController@dashboard')->name('home.index');
     Route::get('/home/subscriptions', 'App\Http\Controllers\HomeController@subscriptions')->name('home.subscriptions');
     Route::get('/home/subscribers', 'App\Http\Controllers\HomeController@subscribers')->name('home.subscribers');
 
     Route::prefix('box')->group(function () {
+
         Route::get('/create', 'App\Http\Controllers\BoxController@create')->name('box.create');
         Route::post('/embed', 'App\Http\Controllers\BoxController@embed')->name('box.embed');
         Route::post('/url', 'App\Http\Controllers\BoxController@url')->name('box.url');
@@ -53,20 +54,21 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/{vid}/edit', 'App\Http\Controllers\BoxController@edit')->name('box.edit');
         Route::put('/{vid}', 'App\Http\Controllers\BoxController@update')->name('box.update');
         Route::delete('/{vid}', 'App\Http\Controllers\BoxController@destory')->name('box.destory');
-        Route::get('/ship', 'App\Http\Controllers\ShippingController@ship')->name('box.ship');
         Route::get('/track', 'App\Http\Controllers\ShippingController@track')->name('box.track');
 
     });
     Route::prefix('checkout')->group(function () {
+
         Route::get('/address', 'App\Http\Controllers\LabelsController@showAddress')->name('checkout.address');
-       // Route::post('/labels', 'App\Http\Controllers\LabelsController@rates')->name('labels.purchase');
+        Route::post('/labels', 'App\Http\Controllers\LabelsController@rates')->name('labels.purchase');
         Route::get('/labels/charge', 'App\Http\Controllers\SquareController@charge');
         Route::get('/subscription', 'App\Http\Controllers\SquareController@createSubscription')->name('subscription.purchase');
 
     });
     Route::prefix('labels')->group(function () {
+        Route::get('/home', 'App\Http\Controllers\ShippingController@ship')->name('labels.home');
+
        Route::get('/generate', 'App\Http\Controllers\LabelsController@generate')->name('labels.generate');
-       Route::get('/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('box.addresses');
 
     });
     Route::prefix('shipping')->group(function () {
@@ -74,7 +76,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
  
      });
 
-    Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('box.rates');
+    Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('shipping.rates');
     Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
    
     Route::prefix('account')->group(function () {
@@ -93,15 +95,20 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('show/{id}', ['as' => 'messages.show', 'uses' => 'App\Http\Controllers\MessagesController@show']);
         Route::put('update/{id}', ['as' => 'messages.update', 'uses' => 'App\Http\Controllers\MessagesController@update']);
     });
-    Route::post('/plan/create', 'App\Http\Controllers\SubscriptionController@createplan')->name('subscription.createplan');
+   
+    Route::post('/plan/create', 'App\Http\Controllers\SubscriptionController@createplan');
+    Route::get('/plan/create', 'App\Http\Controllers\SubscriptionController@createplan');
+
     Route::get('/invitations/home', 'App\Http\Controllers\InvitationsController@home')->name('invitations.home');
     Route::get('/invitations/rewards', 'App\Http\Controllers\InvitationsController@rewards')->name('invitations.rewards');
 
 });
 Route::get('/commission/index', 'App\Http\Controllers\HomeController@commission')->name('commission.index');
 Route::post('/subscription/complete/{paypal}', 'App\Http\Controllers\SubscriptionController@complete')->name('subscription.complete');
-Route::post('/rates', 'App\Http\Controllers\ShippingController@rates');
-Route::get('/rates', 'App\Http\Controllers\ShippingController@rates');
+
+Route::post('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
+Route::get('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
+
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::get('auth/google/status', [GoogleController::class, 'status']);

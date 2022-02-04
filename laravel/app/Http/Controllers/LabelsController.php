@@ -13,6 +13,12 @@ use Shippo_Transaction;
 
 class LabelsController extends Controller
 {
+    public $config;
+
+    public function __construct(){
+        $this->config = parse_ini_file(dirname(__DIR__, 3) .
+        "/config/app.ini", true);
+    }
 
     private function storeTracking($transaction, $sub)
     {
@@ -28,6 +34,8 @@ class LabelsController extends Controller
             ->where('user_id', '=', $sub->user_id)
             ->update(['label' => $transaction['object_id']]);
     }
+
+
     private function getShippingCount($id)
     {
         $box = DB::table('boxes')
@@ -36,6 +44,8 @@ class LabelsController extends Controller
             ->get();
         return $box[0]->shipping_count;
     }
+
+
     private function updateShippingCount($id)
     {
         $count = self::getShippingCount($id) + 1;
@@ -43,6 +53,8 @@ class LabelsController extends Controller
             ->where('user_id', '=', $id)
             ->update(['shipping_count' => $count]);
     }
+
+
     private function permission($id)
     {
         $box = DB::table('boxes')
@@ -58,8 +70,6 @@ class LabelsController extends Controller
 
     public function generate()
     {
-        $config = parse_ini_file(dirname(__DIR__, 3) .
-            "/config/app.ini", true);
 
         $id = auth()->user()->id;
         $permission = self::permission($id);
@@ -76,7 +86,7 @@ class LabelsController extends Controller
             ->select('rate_id', 'user_id')
             ->get();
 
-        $token = $config['shippo']['token'];
+        $token = $this->config['shippo']['token'];
         Shippo::setApiKey($token);
         $pdfMerger = PDFMerger::init();
 
@@ -157,10 +167,10 @@ class LabelsController extends Controller
       ->get();
     }
 
+    
     // Gets the shipping rates for each subscriber
     public function rates(Request $request)
     {
-        $config = parse_ini_file(dirname(__DIR__, 3) . "/config/app.ini", true);
 
         $id = auth()->user()->id;
         $user = User::find($id);
@@ -204,8 +214,8 @@ class LabelsController extends Controller
             'total' => $total,
             'count' => $count,
             'description' => 'Priority Mail Express',
-            'appId' => $config['square']['appId'],
-            'locationId' => $config['square']['locationId']
+            'appId' => $this->config['square']['appId'],
+            'locationId' => $this->config['square']['locationId']
         );
         $address = self::getShippingAddress($id);
         return view('square.index', compact('user', $user))
@@ -213,6 +223,8 @@ class LabelsController extends Controller
             ->with('address', $address[0]);
 
     }
+
+
     public function showAddress(Request $request)
     {
         $id = auth()->user()->id;
@@ -221,6 +233,10 @@ class LabelsController extends Controller
         return view('shipping.from-address', compact('user', $user))
             ->with('address', $address[0]);
 
+    }
+
+    public function __destruct(){
+        delete($this->config);
     }
 
 }

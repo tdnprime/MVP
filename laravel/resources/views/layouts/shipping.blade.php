@@ -14,11 +14,11 @@
 
         <main class="fadein">
             <section id="left-aside">
-                <h2>Shipping</h2>
+                <h2>Labels</h2>
                 <a class="message-create" href="{{route('labels.generate')}}">
                     <div class='recipients-grid'>
                         <div class='position-relative'><span class="material-icons">label</span>
-                            Generate labels
+                            Generate
                         </div>
                         <div>
                         </div>
@@ -27,7 +27,7 @@
                 <a class="message-create" href="{{route('checkout.address')}}">
                     <div class='recipients-grid'>
                         <div class='position-relative'><span class="material-icons">new_label</span>
-                            Purchase labels
+                            Purchase
                         </div>
                         <div>
                         </div>
@@ -36,7 +36,7 @@
                 <a class="message-create" href="{{route('shipping.addresses')}}">
                     <div class='recipients-grid'>
                         <div class='position-relative'><span class="material-icons">print</span>
-                            Print addresses
+                            Addresses
                         </div>
                         <div>
                         </div>

@@ -118,7 +118,7 @@ class SquareController extends Controller
     }'
      */
     }
-    public function createPlan()
+    public function createPlan($data)
     {
 
         $response = Http::withHeaders(

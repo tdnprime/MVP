@@ -1,5 +1,5 @@
 @extends('layouts.shipping')
-@section('title', 'Boxeon | Shipping')
+@section('title', 'Boxeon | Labels')
 @section('content')
 
 
@@ -33,7 +33,7 @@
 
         <div class="centered margin-bottom-4-em">
             <img class="image-cta" src="../assets/images/order-delivered.svg" alt="Congratulations" />
-            <h2>Shipping Center</h2>
+            <h2>Your shipping labels</h2>
             <p class="centered center">You don't have any outgoing boxes to ship. </p>
             <br><br>
             <a class='button' href='/box/create'>Create box</a>

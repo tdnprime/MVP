@@ -54,7 +54,7 @@ Improve consistency of default fonts in all browsers. (https://github.com/sindre
 
 body {
 	font-family:
-		system-ui,
+	  
 		-apple-system, /* Firefox supports this but not yet `system-ui` */
 		'Segoe UI',
 		Roboto,
@@ -306,7 +306,7 @@ summary {
 /**
  * Removes the default spacing and border for appropriate elements.
  */
-
+/*
 blockquote,
 dl,
 dd,
@@ -326,7 +326,7 @@ pre {
 button {
   background-color: transparent;
   background-image: none;
-}
+}*/
 
 fieldset {
   margin: 0;
@@ -361,12 +361,12 @@ html {
  * Inherit font-family and line-height from `html` so users can set them as
  * a class directly on the `html` element.
  */
-
+ /*
 body {
   font-family: inherit;
   line-height: inherit;
 }
-
+*/
 /**
  * 1. Prevent padding and border from affecting element width.
  *
@@ -464,7 +464,7 @@ button,
 table {
   border-collapse: collapse;
 }
-
+/*
 h1,
 h2,
 h3,
@@ -473,7 +473,7 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: inherit;
-}
+}*/
 
 /**
  * Reset links to optimize for opt-in styling instead of
@@ -500,7 +500,7 @@ select,
 textarea {
   padding: 0;
   line-height: inherit;
-  color: inherit;
+  /*color: inherit;*/
 }
 
 /**

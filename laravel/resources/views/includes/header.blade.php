@@ -1,7 +1,7 @@
 @include('includes.http-headers')
 
 <span></span><!-- Hack !-->
-<header>
+<header grid h-12 pl-8 fixed top-0 w-full gap-8>
     <a href="#" title="Menu" id='menu-icon'>
         <span class="material-icons">menu</span></a>
     <a id='logo' href="/home/index" title='Boxeon home'>

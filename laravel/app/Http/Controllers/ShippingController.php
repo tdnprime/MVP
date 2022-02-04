@@ -14,11 +14,12 @@ use Shippo_Shipment;
 
 class ShippingController extends Controller
 {
+    public $config;
 
     public function __construct()
     {
-        $config = parse_ini_file(dirname(__DIR__, 3) . "/config/app.ini", true);
-        $token = $config['shippo']['token'];
+        $this->config = parse_ini_file(dirname(__DIR__, 3) . "/config/app.ini", true);
+        $token = $this->config['shippo']['token'];
         Shippo::setApiKey($token);
     }
 
@@ -54,17 +55,17 @@ class ShippingController extends Controller
         }
 
         if (isset($box) && $box->ship_from == 1) {
-            $config = parse_ini_file(dirname(__DIR__, 3) . "/config/app.ini", true);
+
             $fromAddress = Shippo_Address::create(array(
                 "name" => $box->name, 
                 "company" => "Boxeon",
-                "street1" => $config['boxeon']['address_line_1'],
-                "city" => $config['boxeon']['admin_area_2'],
-                "state" => $config['boxeon']['admin_area_1'],
-                "zip" => $config['boxeon']['postal_code'],
-                "country" => $config['boxeon']['country_code'],
-                "phone" => $config['boxeon']['USPhone'],
-                "email" => $config['boxeon']['serviceEmail'],
+                "street1" => $this->config['boxeon']['address_line_1'],
+                "city" => $this->config['boxeon']['admin_area_2'],
+                "state" => $this->config['boxeon']['admin_area_1'],
+                "zip" => $this->config['boxeon']['postal_code'],
+                "country" => $this->config['boxeon']['country_code'],
+                "phone" => $this->config['boxeon']['USPhone'],
+                "email" => $this->config['boxeon']['serviceEmail'],
             ));
         }
 
@@ -76,16 +77,12 @@ class ShippingController extends Controller
             "state" => $to->admin_area_1,
             "zip" => $to->postal_code,
             "country" => $to->country_code,
-            "phone" => $config['boxeon']['USPhone'],
-            "email" => $config['boxeon']['serviceEmail'],
+            "phone" => $this->config['boxeon']['USPhone'],
+            "email" => $this->config['boxeon']['serviceEmail'],
         ));
 
         $toid = $toAddress['object_id'];
         $fromid = $fromAddress['object_id'];
-        // VALIDATE ADDRESS -- This will be done when purchasing shipping labels
-        /*$vto = Shippo_Address::validate( $toid );
-        $vfrom = Shippo_Address::validate( $fromid );//the shipment object
-         */
 
         // CREATE PARCEL OBJECT
         $parcel = Shippo_Parcel::create(array(
@@ -133,11 +130,6 @@ class ShippingController extends Controller
     }
 
 
-    public function update()
-    {
-
-        //
-    }
     public function addresses(){
         $id = auth()->user()->id;
         $Addresses = DB::table('subscriptions')
@@ -150,6 +142,11 @@ class ShippingController extends Controller
         'admin_area_2', 'country_code', 'postal_code')
         ->get();
         return view('box.addresses', ['print'=>$Addresses]);
+      }
+
+      public function __destruct(){
+
+          delete($this->config);
       }
 
 }

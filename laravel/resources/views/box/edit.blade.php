@@ -1,4 +1,5 @@
 @extends('layouts.box')
+@section('title', 'Boxeon | Edit Box')
 @section('content')
 
     @if(empty($box) || is_null($box->box_weight))

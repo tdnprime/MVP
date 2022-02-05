@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\controllers\SquareController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -9,9 +10,13 @@ use Illuminate\Support\Facades\DB;
 class SubscriptionController extends Controller
 {
     public $config;
+    public define('__INDEMPOTENCY_KEY__', random_int(10000, 100000));
 
-    public function __construct(){
-        $this->config = parse_ini_file( dirname(__DIR__, 3) . "/config/app.ini", true );
+    public function __construct()
+    {
+
+        $this->config = parse_ini_file(dirname(__DIR__, 3) .
+            "/config/app.ini", true);
     }
 
     public function createplan(Request $request)
@@ -19,29 +24,38 @@ class SubscriptionController extends Controller
 
         $id = auth()->user()->id;
         $user = User::find($id);
-        $plan = json_decode($request["plan"]);       
+        $plan = json_decode($request["plan"]);
 
-        // Prep data PayPal needs to create a billing plan
-        $box = DB::select('select * from boxes where user_id= ?', [$plan->creator_id]);
         if ($plan->rate > 0) {
-            $total = $plan->total + $plan->rate;
+
+            $plan->amount = $plan->total + $plan->rate;
+
         } elseif ($plan->rate == 0) {
-            $total = $plan->total;
+
+            $plan->amount = $plan->total;
+        }
+        // Preparation for Square API
+        if($plan->frequency == 1){
+            $plan->cadence = "MONTHLY";
+        }elseif($plan->frequency == 2){
+            $plan->cadence = "EVERY_TWO_MONTHS";
+        }elseif($plan->frequency == 3){
+            $plan->cadence = "NINETY_DAYS";
         }
 
-    // CALL SQUARE CONTROLLER
-        
+        $response = SquareController::createPlan($plan, __INDEMPOTENCY_KEY__);
+
+        dd($response);
+
         if (isset($p["id"])) {
-            /*
-            Save price, plan ID. and address for now.
-            More info is needed to complete a subscription.
-             */
+        
             $plan->plan_id = $p["id"];
             $this->store($plan);
-            // Return plan_id for buyer to continue to PayPal
-            $return = [];
-            $return['plan_id'] = $p['id'];
-            return json_encode($return);
+
+            return redirect('checkout.subscriptions', compact('user', $user->id));
+
+            // Return plan_id for buyer to continue
+            //return json_encode(array('plan_id' => $p['id']));
 
         }
     }
@@ -56,6 +70,7 @@ class SubscriptionController extends Controller
     {
         $id = auth()->user()->id;
         $user = User::find($id);
+
         $array = array(
             'creator_id' => $data->creator_id,
             'user_id' => $user->id,
@@ -85,7 +100,7 @@ class SubscriptionController extends Controller
 
         $id = auth()->user()->id;
         $user = User::find($id);
-        // Update subscription table after PayPal callback
+        // Update subscription table after Payment processor callback
         $add = json_decode($callback);
         // NB - Works as an unprepared update, but should be and insert statement:
         DB::unprepared("update subscriptions set status=1, sub_id='$add->sub_id', order_id='$add->order_id' WHERE user_id=$user->id AND creator_id=$add->creator_id AND plan_id='$add->plan_id'");
@@ -99,25 +114,25 @@ class SubscriptionController extends Controller
     {
         $new = $stock - 1;
         DB::table('boxes')
-        ->where('user_id', '=', $creator_id)
-        ->where('vid', '=', $version)
-        ->update(['in_stock' => $new]);
+            ->where('user_id', '=', $creator_id)
+            ->where('vid', '=', $version)
+            ->update(['in_stock' => $new]);
     }
     protected function addStock($box)
     {
-      $add = json_decode($box);
-      $stock = DB::table('boxes')
-      ->where('user_id', '=', $add->creator_id)
-      ->where('vid', '=', $add->version)
-      ->select('in_stock')
-      ->get();
-      
-      $new = $stock[0]->in_stock + 1;
+        $add = json_decode($box);
+        $stock = DB::table('boxes')
+            ->where('user_id', '=', $add->creator_id)
+            ->where('vid', '=', $add->version)
+            ->select('in_stock')
+            ->get();
 
-      DB::table('boxes')
-      ->where('user_id', '=', $add->creator_id)
-      ->where('vid', '=', $add->version)
-      ->update(['in_stock' => $new]);
+        $new = $stock[0]->in_stock + 1;
+
+        DB::table('boxes')
+            ->where('user_id', '=', $add->creator_id)
+            ->where('vid', '=', $add->version)
+            ->update(['in_stock' => $new]);
 
     }
     protected function boxeonRemove($box)
@@ -134,6 +149,7 @@ class SubscriptionController extends Controller
         // Update in_stock
         $this->addStock($box);
     }
+    
     protected function remove($box)
     {
         require_once dirname(__DIR__, 3) . "/php/paypal-connect.php";
@@ -164,9 +180,10 @@ class SubscriptionController extends Controller
             return true;
         }
     }
-    public function __destruct(){
+    public function __destruct()
+    {
 
-        delete($this->config);
+        unset($this->config);
     }
 
 }

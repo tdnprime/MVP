@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Http\controllers\SquareController;
+
 
 class BoxController extends Controller
 {
@@ -46,7 +48,7 @@ class BoxController extends Controller
      }
      public function createProduct($id){
 
-        // Use square
+        //Create a Product on PayPal
 
      }
     /**
@@ -71,7 +73,7 @@ class BoxController extends Controller
                     ->limit(1);
                 $box->update($array);
 
-                self::createProduct($user->id);
+                // self::createProduct($user->id); use if PayPal subscription is enabled
 
                 Session::flash('message', 'Congratulations! Your box is live at'); 
                 return redirect()->route('box.edit', $id);

@@ -32,7 +32,7 @@
     @else
 
         <div class="centered margin-bottom-4-em">
-            <img class="image-cta" src="../assets/images/order-delivered.svg" alt="Congratulations" />
+            <img class=" center image-cta" src="../assets/images/order-delivered.svg" alt="Congratulations" />
             <h2>Your shipping labels</h2>
             <p class="centered center">You don't have any outgoing boxes to ship. </p>
             <br><br>

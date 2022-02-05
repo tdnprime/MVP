@@ -16,7 +16,7 @@ class SquareController extends Controller
 
     }
     /*
-     * Creates a one-time payment for shipping labe;s
+     * Creates a one-time payment for shipping labels
      * Returns to /labels/generate
      */
     public function charge(Request $request)
@@ -40,7 +40,7 @@ class SquareController extends Controller
             "source_id" => $charge->sourceId,
             "autocomplete" => true,
             "location_id" => $charge->locationId,
-            "note" => "Shipping labels",
+            "note" => "Shipping labels", // make dynamic
             "app_fee_money" => [
                 "amount" => 3,
                 "currency" => "USD"]]);
@@ -57,10 +57,12 @@ class SquareController extends Controller
         }
 
     }
-    public function createCustomer()
-    {
 
-        $response = Http::withHeaders(
+    public function createCustomer(Request $request)
+    {
+        $request = json_decode($request);
+
+        return $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
                 'Content-Type' => 'application/json',
@@ -68,60 +70,62 @@ class SquareController extends Controller
             ]
         )->post($this->config['square']['customersEndpoint'], [
 
-            "given_name" => "Amelia",
-            "family_name" => "Earhart",
-            "email_address" => "Amelia.Earhart@example.com",
+            "given_name" => $request->given_name,
+            "family_name" => $request->family_name,
+            "email_address" => $request->email,
             "address" => [
-                "address_line_1" => "500 Electric Ave",
-                "address_line_2" => "Suite 600",
-                "locality" => "New York",
-                "administrative_district_level_1" => "NY",
-                "postal_code" => "10003",
-                "country" => "US",
+                "address_line_1" => $request->address_line_1,
+                "address_line_2" => $request->address_line_2,
+                "locality" => $request->admin_area_2,
+                "administrative_district_level_1" => $request->admin_area_1,
+                "postal_code" => $request->postal_code,
+                "country" => $request->country_code,
             ],
-            "phone_number" => "1-212-555-4240",
-            "reference_id" => "YOUR_REFERENCE_ID",
-            "note" => "a customer",
+            "cardholder_name" => $request->fullname,
+            "customer_id" => $request->customer_id,
+            "reference_id" => $request->id,
         ]);
 
-        if ($response->failed()) {
-            return $response;
-        } else {
-            return "SUCCESS";
-        }
+    }
+
+    public function createCard(Request $request)
+    {
+        $request = json_decode($request);
+
+        return $response = Http::withHeaders(
+            [
+                'Authorization' => "Bearer " . $this->config['square']['access_token'],
+                'Content-Type' => 'application/json',
+                'Square-Version' => "2022-01-20",
+            ]
+        )->post($this->config['square']['cardsEndpoint'], [
+
+            "idempotency_key" => $request->source_id,
+            "source_id" => $request->source_id,
+            "card" => [
+                "billing_address" => [
+                    "address_line_1" => $request->address_line_1,
+                    "address_line_2" => $request->address_line_2,
+                    "locality" => $request->admin_area_2,
+                    "administrative_district_level_1" => $request->admin_area_1,
+                    "postal_code" => $request->postal_code,
+                    "country" => $request->country_code,
+                ],
+                "cardholder_name" => $request->fullname,
+                "customer_id" => $request->customer_id,
+                "reference_id" => $request->id,
+            ],
+        ]);
 
     }
-    public function createCard()
-    {
-        /*
-    curl https://connect.squareupsandbox.com/v2/cards \
-    -X POST \
-    -H 'Square-Version: 2022-01-20' \
-    -H 'Authorization: Bearer {ACCESS_TOKEN}' \
-    -H 'Content-Type: application/json' \
-    -d '{
-    "idempotency_key": "{UNIQUE_KEY}",
-    "source_id": "cnon:card-nonce-ok",
-    "card": {
-    "billing_address": {
-    "address_line_1": "500 Electric Ave",
-    "address_line_2": "Suite 600",
-    "locality": "New York",
-    "administrative_district_level_1": "NY",
-    "postal_code": "94103",
-    "country": "US"
-    },
-    "cardholder_name": "Jane Doe",
-    "customer_id": "{CUSTOMER_ID}",
-    "reference_id": "alternate-id-1"
-    }
-    }'
-     */
-    }
-    public function createPlan($data)
-    {
 
-        $response = Http::withHeaders(
+    public function createPlan($plan, $key)
+    {
+        
+        $price = (int) $plan->amount * 100;
+
+
+        return $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
                 'Content-Type' => 'application/json',
@@ -129,35 +133,20 @@ class SquareController extends Controller
             ]
         )->post($this->config['square']['plansEndpoint'], [
 
-            "idempotency_key" => "af3d1afc-7212-4300-b463-0bfc5314a5ae",
+            "idempotency_key" => $key,
             "object" => [
-                "id" => "#Cocoa",
-                "type" => "ITEM",
-                "item_data" => [
-                    "abbreviation" => "Ch",
-                    "description" => "Hot Chocolate",
-                    "name" => "Cocoa",
-                    "variations" => [
+                "type" => "SUBSCRIPTION_PLAN",
+                "id" => "#plan",
+                "subscription_plan_data" => [
+
+                    "name" => $plan->given_name . " " . $plan->family_name . " Subscription box",
+
+                    "phases" => [
                         [
-                            "id" => "#Small",
-                            "type" => "ITEM_VARIATION",
-                            "item_variation_data" => [
-                                "item_id" => "#Cocoa",
-                                "name" => "Small",
-                                "pricing_type" => "VARIABLE_PRICING",
-                            ],
-                        ],
-                        [
-                            "id" => "#Large",
-                            "type" => "ITEM_VARIATION",
-                            "item_variation_data" => [
-                                "item_id" => "#Cocoa",
-                                "name" => "Large",
-                                "pricing_type" => "FIXED_PRICING",
-                                "price_money" => [
-                                    "amount" => 400,
-                                    "currency" => "USD",
-                                ],
+                            "cadence" => $plan->cadence, 
+                            "recurring_price_money" => [
+                                "amount" => $price,
+                                "currency" => "USD",
                             ],
                         ],
                     ],
@@ -166,45 +155,41 @@ class SquareController extends Controller
 
         ]);
 
-        if ($response->failed()) {
-            return $response;
-        } else {
-            return "SUCCESS";
-        }
-
     }
-    public function createSubscription()
+
+    public function createSubscription(Request $request)
     {
-        return true;
-        $response = Http::withHeaders(
+
+        $subscription = json_decode($request);
+        return $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
                 'Content-Type' => 'application/json',
                 'Square-Version' => "2022-01-20",
             ]
         )->post($this->config['square']['subscriptionsEndpoint'], [
-            "idempotency_key" => $charge->sourceId,
-            "plan_id" => $charge->sourceId,
-            "customer_id" => true,
-            "card_id" => $charge->locationId,
-            "start_date" => "Shipping labels",
-            "tax_percentage" => '',
-            'timezone' => 'America/Los_Angeles',
+
+            "idempotency_key" => $subscription->sourceId,
+            "plan_id" => $subscription->sourceId,
+            "customer_id" => $subscription->customer_id,
+            "card_id" => $subscription->locationId,
+            "start_date" => $subscription->created_at,
+            "tax_percentage" => '5',
+            'timezone' => 'America/New_York',
             "source" => [
                 "name" => "Boxeon",
             ]]);
 
-        if ($response->failed()) {
-            return $response;
-        } else {
-            return "SUCCESS";
-        }
 
     }
-    public function deleteSubscription()
+
+    public function deleteSubscription(Request $request)
     {
-        $endpoint = "https://connect.squareup.com/v2/subscriptions/$sub->id/actions/$action_id";
-        $response = Http::withHeaders(
+        $subscription = json_decode( $request);
+        $endpoint = $config['square']['subscriptionsEndpoint'] .
+            "/$subscription->sub_id/actions/$subscription->action_id";
+
+        return $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
                 'Content-Type' => 'application/json',
@@ -213,39 +198,45 @@ class SquareController extends Controller
         )->delete($endpoint);
 
     }
+
     public function updateSubscription(Request $request)
     {
-        /*
-    {
-    "merchant_id": "VSE65BA53PXCC",
-    "type": "subscription.updated",
-    "event_id": "c0b40cc0-7cb2-4aa1-81ce-0893b9b0b9b8",
-    "created_at": "2020-07-15T05:14:11.213Z",
-    "data": {
-    "type": "subscription",
-    "id": "592b9720-d2ef-4ee4-b3fd-9d98e4f829d2",
-    "object": {
-    "subscription": {
-    "id": "592b9720-d2ef-4ee4-b3fd-9d98e4f829d2",
-    "created_date": "2020-07-15",
-    "customer_id": "QX2XG9GMQS2BVBJKPG8CJ8JKCR",
-    "location_id": "EZHGJ7SNVAJ19",
-    "plan_id": "CRUUZUK5W6PIIM6H54242NV6",
-    "start_date": "2020-07-15",
-    "status": "ACTIVE",
-    "tax_percentage": "5",
-    "timezone": "America/New_York",
-    "version": 1594790050754
-    }
-    }
-    }
-    }
-     */
+        return $response = Http::withHeaders(
+            [
+                'Authorization' => "Bearer " . $this->config['square']['access_token'],
+                'Content-Type' => 'application/json',
+                'Square-Version' => "2022-01-20",
+            ]
+        )->post($this->config['square']['subscriptionsEndpoint'], [
+
+            "merchant_id" => $request->merchant_id,
+            "type" => "subscription.updated",
+            "event_id" => $request->event_id,
+            "created_at" => $request->created_at,
+            "data" => [
+                "type" => "subscription",
+                "id" => $request->sub_id,
+                "object" => [
+                    "subscription" => [
+                        "id" => $request->sub_id,
+                        "created_date" => $request->created_at,
+                        "customer_id" => $request->customer_id,
+                        "location_id" => $config['square']['locationId'],
+                        "plan_id" => $request->plan_id,
+                        "start_date" => $request->createrd_at,
+                        "status" => "ACTIVE",
+                        "tax_percentage" => "5",
+                        "timezone" => "America/New_York",
+                        "version" => $request->vid,
+                    ],
+                ],
+            ]]);
+
     }
 
     public function __destruct()
     {
-        delete($this->config);
+        unset($this->config);
     }
 
 }

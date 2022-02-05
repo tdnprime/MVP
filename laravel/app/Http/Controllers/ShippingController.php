@@ -146,7 +146,7 @@ class ShippingController extends Controller
 
       public function __destruct(){
 
-          delete($this->config);
+          unset($this->config);
       }
 
 }

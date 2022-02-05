@@ -236,7 +236,7 @@ class LabelsController extends Controller
     }
 
     public function __destruct(){
-        delete($this->config);
+        unset($this->config);
     }
 
 }

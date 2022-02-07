@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\controllers\SquareController;
+use App\Http\Controllers\SquareController;
 use App\Models\User;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
     public $config;
-    public define('__INDEMPOTENCY_KEY__', random_int(10000, 100000));
+
 
     public function __construct()
     {
@@ -19,21 +20,41 @@ class SubscriptionController extends Controller
             "/config/app.ini", true);
     }
 
+
+    public function checkout(){
+
+        $subscription =  array(
+            'total' => 100,
+            'count' => 1,
+            'description' => 'Subscription decription',
+            'route' => '/checkout/subscription/create/?upsert='
+        );
+
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        return view('checkout.subscription', compact('user', $user))
+        ->with('subscription', $subscription);
+
+    }
+
+    
     public function createplan(Request $request)
     {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        $subscription = new Subscription();
 
         $id = auth()->user()->id;
         $user = User::find($id);
         $plan = json_decode($request["plan"]);
 
+        // Sets the subscription price
         if ($plan->rate > 0) {
-
             $plan->amount = $plan->total + $plan->rate;
-
         } elseif ($plan->rate == 0) {
-
             $plan->amount = $plan->total;
         }
+
         // Preparation for Square API
         if($plan->frequency == 1){
             $plan->cadence = "MONTHLY";
@@ -42,20 +63,14 @@ class SubscriptionController extends Controller
         }elseif($plan->frequency == 3){
             $plan->cadence = "NINETY_DAYS";
         }
+        $processor = new SquareController();
+        $response = json_decode($processor->createPlan($plan));
 
-        $response = SquareController::createPlan($plan, __INDEMPOTENCY_KEY__);
-
-        dd($response);
-
-        if (isset($p["id"])) {
-        
-            $plan->plan_id = $p["id"];
+        if (isset($response->catalog_object->id)) {
+            $plan->plan_id = $response->catalog_object->id;
             $this->store($plan);
-
-            return redirect('checkout.subscriptions', compact('user', $user->id));
-
-            // Return plan_id for buyer to continue
-            //return json_encode(array('plan_id' => $p['id']));
+            //Return plan_id for buyer to continue
+            return json_encode(array('plan_id' => $response->catalog_object->id));
 
         }
     }

@@ -149,6 +149,7 @@ class LabelsController extends Controller
         $due = array(
             'total' => $subs->sum('rate'),
             'count' => $subs->count('rate'),
+            'route' => "/checkout/labels/charge/?charge=" 
         );
 
         return view('box.ship', compact('user', $user))
@@ -215,10 +216,12 @@ class LabelsController extends Controller
             'count' => $count,
             'description' => 'Priority Mail Express',
             'appId' => $this->config['square']['appId'],
-            'locationId' => $this->config['square']['locationId']
+            'locationId' => $this->config['square']['locationId'],
+            'route' => "/checkout/labels/charge/?charge=" 
+
         );
         $address = self::getShippingAddress($id);
-        return view('square.index', compact('user', $user))
+        return view('checkout.labels', compact('user', $user))
             ->with('due', $due)
             ->with('address', $address[0]);
 

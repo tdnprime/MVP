@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -11,6 +12,7 @@ class SquareController extends Controller
 
     public function __construct()
     {
+    
         $this->config = parse_ini_file(dirname(__DIR__, 3) .
             "/config/app.ini", true);
 
@@ -24,10 +26,11 @@ class SquareController extends Controller
 
         $charge = json_decode($request['charge']);
         $amount = (int) $charge->amount * 100;
+        $token = $this->$config['square']['access_token'];
 
         $response = Http::withHeaders(
             [
-                'Authorization' => "Bearer " . $this->config['square']['access_token'],
+                'Authorization' => "Bearer " . $token,
                 'Content-Type' => 'application/json',
                 'Square-Version' => "2022-01-20",
             ]
@@ -58,11 +61,13 @@ class SquareController extends Controller
 
     }
 
-    public function createCustomer(Request $request)
+    public function createCustomer()
     {
-        $request = json_decode($request);
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        $subscription = Subscription::where('user_id', '=', $id)->get();
 
-        return $response = Http::withHeaders(
+        $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
                 'Content-Type' => 'application/json',
@@ -70,21 +75,21 @@ class SquareController extends Controller
             ]
         )->post($this->config['square']['customersEndpoint'], [
 
-            "given_name" => $request->given_name,
-            "family_name" => $request->family_name,
-            "email_address" => $request->email,
+            "given_name" => $user->given_name,
+            "family_name" => $user->family_name,
+            "email_address" => $user->email,
             "address" => [
-                "address_line_1" => $request->address_line_1,
-                "address_line_2" => $request->address_line_2,
-                "locality" => $request->admin_area_2,
-                "administrative_district_level_1" => $request->admin_area_1,
-                "postal_code" => $request->postal_code,
-                "country" => $request->country_code,
+                "address_line_1" => $subscription[0]['address_line_1'],
+                "address_line_2" => $subscription[0]['address_line_2'] ?? "",
+                "locality" => $subscription[0]['admin_area_2'],
+                "administrative_district_level_1" => $subscription[0]['admin_area_1'],
+                "postal_code" => $subscription[0]['postal_code'],
+                "country" => $subscription[0]['country_code'],
             ],
-            "cardholder_name" => $request->fullname,
-            "customer_id" => $request->customer_id,
-            "reference_id" => $request->id,
+            "cardholder_name" => $subscription[0]['fullname'], // verify with user
+            "reference_id" => '#early',
         ]);
+        return json_decode($response);
 
     }
 
@@ -119,11 +124,10 @@ class SquareController extends Controller
 
     }
 
-    public function createPlan($plan, $key)
+    public function createPlan($plan)
     {
-        
-        $price = (int) $plan->amount * 100;
 
+        $price = (int) $plan->amount * 100;
 
         return $response = Http::withHeaders(
             [
@@ -133,17 +137,15 @@ class SquareController extends Controller
             ]
         )->post($this->config['square']['plansEndpoint'], [
 
-            "idempotency_key" => $key,
+            "idempotency_key" => $plan->key,
             "object" => [
                 "type" => "SUBSCRIPTION_PLAN",
                 "id" => "#plan",
                 "subscription_plan_data" => [
-
-                    "name" => $plan->given_name . " " . $plan->family_name . " Subscription box",
-
+                    "name" =>  "Subscription box",
                     "phases" => [
                         [
-                            "cadence" => $plan->cadence, 
+                            "cadence" => $plan->cadence,
                             "recurring_price_money" => [
                                 "amount" => $price,
                                 "currency" => "USD",
@@ -159,9 +161,19 @@ class SquareController extends Controller
 
     public function createSubscription(Request $request)
     {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        $sub = Subscription::where('user_id', '=', $id)->get();
 
-        $subscription = json_decode($request);
-        return $response = Http::withHeaders(
+        if(!$user->customer_id){
+           
+            $new = self::createCustomer();
+            
+        }
+
+        $subscription = json_decode($request['upsert']);
+    
+        $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
                 'Content-Type' => 'application/json',
@@ -170,22 +182,23 @@ class SquareController extends Controller
         )->post($this->config['square']['subscriptionsEndpoint'], [
 
             "idempotency_key" => $subscription->sourceId,
-            "plan_id" => $subscription->sourceId,
-            "customer_id" => $subscription->customer_id,
+            "plan_id" => $sub[0]['plan_id'],
+            "customer_id" => $new->customer->id,
             "card_id" => $subscription->locationId,
-            "start_date" => $subscription->created_at,
+            "start_date" => $sub[0]['created_at'],
             "tax_percentage" => '5',
             'timezone' => 'America/New_York',
             "source" => [
                 "name" => "Boxeon",
             ]]);
 
+           return json_decode($response);
 
     }
 
     public function deleteSubscription(Request $request)
     {
-        $subscription = json_decode( $request);
+        $subscription = json_decode($request);
         $endpoint = $config['square']['subscriptionsEndpoint'] .
             "/$subscription->sub_id/actions/$subscription->action_id";
 

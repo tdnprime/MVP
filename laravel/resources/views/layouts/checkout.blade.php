@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: https://ogp.me/ns#">
-
 <head>
     @section('title', 'Boxeon | Checkout')
     @include('includes.meta')

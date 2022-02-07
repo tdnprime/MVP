@@ -20,7 +20,8 @@
       
 
         <div class="centered margin-bottom-4-em">
-            <img class="image-cta" src="../assets/images/fly.svg" alt="Congratulations" />
+            
+            <img class="image-cta centered" src="../assets/images/fly.svg" alt="Congratulations" />
             <h2>You're flying high, {{ $user->given_name }}!</h2>
             <p class="centered center">You have &nbsp;<span class="highlighted">{{ $outgoing }}</span>
                 &nbsp;boxes to ship for month ending {{ $next_shipping }}. If your buyers paid for shipping,

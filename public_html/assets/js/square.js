@@ -12,6 +12,7 @@ async function initializeCard(payments) {
 }
 
 async function ajax(data, back) {
+
     var xhttp = new XMLHttpRequest();
     xhttp.open(data.method, data.action, true);
     xhttp.setRequestHeader('Content-type', data.contentType);
@@ -35,17 +36,18 @@ async function createPayment(token, total) {
 
     });
 
+    const route = document.getElementById('route').value;
 
     const data = {
         method: "POST",
-        action: "/checkout/labels/charge/?charge=" + body + "",
+        action: route + body,
         contentType: "application/json; charset=utf-8",
         customHeader: "X-CSRF-TOKEN",
         payload: document.querySelector('meta[name="csrf-token"]').content
     };
 
     function callback(re) {
-        Boxeon.removeLoader();
+       // Boxeon.removeLoader();
         var res = JSON.parse(re);
 
         if (res.status == 'FAILURE') {
@@ -61,7 +63,8 @@ async function createPayment(token, total) {
         }
 
     }
-    Boxeon.loader();
+
+   // Boxeon.loader();
     return await ajax(data, callback);
 
 }
@@ -135,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             const token = await tokenize(paymentMethod);
             const paymentResults = await createPayment(token, total);
 
-            //console.debug('Payment Success', paymentResults);
+            console.debug('Payment Success', paymentResults);
         } catch (e) {
             cardButton.disabled = false;
 

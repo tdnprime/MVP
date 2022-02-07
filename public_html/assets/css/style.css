@@ -1058,11 +1058,15 @@ a:visited {
 
 }
 
-#video-place-holder, #masthead-iframe-wrapper iframe {
+
+#masthead-iframe-wrapper iframe {
   max-height: 414px;
+  
+}
+#masthead-iframe-wrapper iframe,
+#video-place-holder{
   width: 100%;
 }
-
 #welcome {
   font-weight: 100;
   margin-bottom: 1em;
@@ -1961,10 +1965,10 @@ input[type="tel"], input[type="number"], input[type="email"], select, textarea, 
   margin-bottom: 1em;
   margin-top: 2em;
   width: 25em;
-  -ms-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
+  -ms-box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  -webkit-box-sizing: content-box !important;
+  box-sizing: content-box !important;
   box-shadow: 2px 4px 12px #0c8dc41a;
 }
 

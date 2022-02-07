@@ -183,7 +183,7 @@ textarea {
 	font-family: inherit; /* 1 */
 	font-size: 100%; /* 1 */
 	line-height: 1.15; /* 1 */
-	margin: 0; /* 2 */
+	
 }
 
 /**
@@ -498,7 +498,6 @@ input,
 optgroup,
 select,
 textarea {
-  padding: 0;
   line-height: inherit;
   /*color: inherit;*/
 }
@@ -606,12 +605,6 @@ video {
 	        appearance: none;
 	background-color: #fff;
 	border-color: #6b7280;
-	border-width: 1px;
-	border-radius: 0px;
-	padding-top: 0.5rem;
-	padding-right: 0.75rem;
-	padding-bottom: 0.5rem;
-	padding-left: 0.75rem;
 	font-size: 1rem;
 	line-height: 1.5rem;
 	--tw-shadow: 0 0 #0000;

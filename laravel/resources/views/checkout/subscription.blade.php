@@ -76,7 +76,7 @@
               });
             </script>
           </div>--}}
-@section('content')
+
     @if(isset($subscription))
             
             <div id='m-content'>

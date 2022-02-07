@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Facades\Socialite;
 use Cookie;
+
+
 class GoogleController extends Controller
 {
 
@@ -37,7 +39,6 @@ class GoogleController extends Controller
                 Auth::login($finduser);
                 if (isset($_COOKIE['box'])) {
                     $location = $_COOKIE['box'];
-                    //setcookie('box', "", time() - 360000);
                     $cookie = Cookie::forget('box');
                     return redirect($location)->withCookie($cookie);
                 } else {
@@ -56,8 +57,8 @@ class GoogleController extends Controller
 
                 Auth::login($user, true);
                 // Mail::to($user->email)->send(new WelcomeUser($user));
-                $mail = new MailController();
-                $mail->welcome();
+               // $mail = new MailController();
+               // $mail->welcome();
 
                 if (isset($_COOKIE['invited_by'])) {
 
@@ -73,7 +74,7 @@ class GoogleController extends Controller
 
             }
         } catch (Exception $e) {
-            dd($e);
+          //  dd($e);
         }
     }
     public function status()

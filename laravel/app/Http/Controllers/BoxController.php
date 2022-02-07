@@ -27,8 +27,7 @@ class BoxController extends Controller
         $pattern = "/";
         $box_url = str_replace($pattern, "", $_SERVER["REQUEST_URI"]);
 
-        $box = DB::table("boxes")
-            ->join('users', 'boxes.user_id', '=', 'users.id')
+        $box = Box::join('users', 'boxes.user_id', '=', 'users.id')
             ->where("box_url", '=', $box_url)
             ->select('boxes.*', 'users.given_name', 'users.family_name')
             ->get();
@@ -114,9 +113,9 @@ class BoxController extends Controller
 
     private function setShippingDetails($box)
     {
-        //->diffForHumans();
+        //;
        
-        $box->preenddate = $box->created_at;
+        $box->preenddate = $box->created_at->addMonths(1)->diffForHumans();
         if ($box->shipping_cost == 0) {
             $box->shipping = '+ shipping';
             $box->discount = '90% off on';

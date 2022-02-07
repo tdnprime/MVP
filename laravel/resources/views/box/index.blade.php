@@ -120,7 +120,7 @@
                     <p>
                         The first ten fans to <b>pre-order</b> will receive a 30-minute phone call with
                         {{ $box->given_name }}.
-                        Pre-order sales end on <span class='primary-color'><b>{{ $box->preenddate }}</b></span>, and
+                        Pre-order sales ends <span class='primary-color'><b>{{ $box->preenddate }}</b></span>, and
                         boxes
                         will ship within
                         one month after

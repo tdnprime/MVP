@@ -5,7 +5,7 @@
             
             <div id='m-content'>
                 <div id="mc-header"><a href='{{ url()->previous() }}'><span id="m-close"
-                            class="material-icons">X</span></a></div>
+                            class="material-icons">x</span></a></div>
                 <h2>Checkout</h2>
                 <div class="centered margin-bottom-4-em">
                     <p class="centered center">{{ $due['description'] }}</p>

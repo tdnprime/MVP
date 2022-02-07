@@ -41,8 +41,7 @@ class CreateBoxesTable extends Migration
             $table->string('postal_code')->nullable();
             $table->string('video')->nullable();
             $table->integer('shipping_count')->nullable();
-            $table->integer('updated_at');
-            $table->integer('created_at');
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

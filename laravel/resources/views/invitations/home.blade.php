@@ -30,7 +30,9 @@
                 <p class='center'>To earn your rewards, share the invitation link below with creators you know and ask them to click on it, sign in, and become a seller.</p>
                 <br><br>
                 <form>
+                    <fieldset>
                     <input class='centered center' type='text' value='https://boxeon.com/{{$user->id}}/accept'>
+                    </fieldset>
                 </form>
             </div>
         </aside>

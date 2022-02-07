@@ -4,7 +4,8 @@
 /storage/*.key
 /vendor
 .env
-/config/app.ini
+/config/
+ftp-sync.json
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml

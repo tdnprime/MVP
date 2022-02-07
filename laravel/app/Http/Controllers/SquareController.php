@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class SquareController extends Controller
 
     public function __construct()
     {
-    
+
         $this->config = parse_ini_file(dirname(__DIR__, 3) .
             "/config/app.ini", true);
 
@@ -142,7 +143,7 @@ class SquareController extends Controller
                 "type" => "SUBSCRIPTION_PLAN",
                 "id" => "#plan",
                 "subscription_plan_data" => [
-                    "name" =>  "Subscription box",
+                    "name" => "Subscription box",
                     "phases" => [
                         [
                             "cadence" => $plan->cadence,
@@ -165,14 +166,17 @@ class SquareController extends Controller
         $user = User::find($id);
         $sub = Subscription::where('user_id', '=', $id)->get();
 
-        if(!$user->customer_id){
-           
+        if (!isset($user->customer_id)) {
+
             $new = self::createCustomer();
-            
+            if (isset($new->customer->id)) {
+                $user->update(['customer_id' => $new->customer->id]);
+            }
+
         }
 
         $subscription = json_decode($request['upsert']);
-    
+
         $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
@@ -192,7 +196,7 @@ class SquareController extends Controller
                 "name" => "Boxeon",
             ]]);
 
-           return json_decode($response);
+        return json_decode($response);
 
     }
 

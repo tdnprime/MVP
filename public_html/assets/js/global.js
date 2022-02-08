@@ -33,17 +33,27 @@ Auth = {
 };
 
 Boxeon = {
+
   sendAjax: function (data, back) {
+
     var xhttp = new XMLHttpRequest();
+
     xhttp.open(data.method, data.action, true);
+
     xhttp.setRequestHeader('Content-type', data.contentType);
+
     xhttp.setRequestHeader(data.customHeader, data.payload, false);
+
     xhttp.send();
+
     xhttp.onreadystatechange = function () {
 
       if (this.readyState == 4 && this.status == 200) {
+
         Boxeon.removeLoader();
+
         back(this.responseText);
+
       }
     }
   },
@@ -73,55 +83,95 @@ Boxeon = {
     Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
+
   disableLink: function (link) {
+
     link.addEventListener("click", function () {
+
       controller.abort();
+
     });
   },
+
   tabSwitch: function (id) {
+
     var contents = document.getElementsByClassName("tab-content");
+
     for (var i = 0; i < contents.length; i++) {
+
       if (contents[i].getAttribute("data-id") != id) {
+
         contents[i].style.display = "none";
+
       } else if (contents[i].getAttribute("data-id") == id) {
+
         contents[i].style.display = null;
+
         contents[i].style.display = "grid";
       }
     }
   },
 
+  scrollToTop: function () {
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  },
+
   loader: function () {
+
     if (!document.getElementsByClassName("loader")[0]) {
+
       let div = document.createElement("div");
+
       div.className = "loader";
+
       if (document.getElementById("container")) {
+
         let container = document.getElementById("container");
+
       } else if (document.getElementById("m-window")) {
+
         let container = document.getElementById("m-window");
       }
+
       container.prepend(div);
       div.style.position = "absolute";
     }
   },
+
   removeLoader: function () {
+
     if (document.getElementsByClassName("loader")[0]) {
+
       var loader = document.getElementsByClassName("loader")[0];
+
       loader.remove();
+
       if (Boxeon.CTA) {
+
         Boxeon.CTA.value = Boxeon.ctaValue;
+
       }
     }
   },
+
   working: function (CTA) {
+
     Boxeon.CTA = CTA;
+
     Boxeon.ctaValue = CTA.value;
+
     CTA.value = 'Working...';
 
   },
+
   changeImageOnMouseover: function (img, src) {
+
     img.src = "/assets/images/" + src;
 
   },
+
   playVideo: function (video_id, creator_uid) {
 
     Boxeon.createModalWindow();
@@ -141,11 +191,12 @@ Boxeon = {
       className: "step step-incomplete",
       label1: "Schedule",
       label2: "Shipping",
-      label3: "Payment",
+      label3: "Checkout",
       length: 3
     }
     header.appendChild(Boxeon.createStepsLeft(opts));
   },
+
   createVideoHTML: function (id) {
     return "<div id='remove-black-bar'><iframe src=https://www.youtube.com/embed/"
       + id + "?rel=0&autoplay=1&frameborder=0&mute=1></iframe></div>";
@@ -153,6 +204,7 @@ Boxeon = {
 
   },
   createStepsLeft: function (options) {
+
     var grid = Boxeon.createElem("div");
     var wrapper = document.createElement("div");
     wrapper.className = "asides";
@@ -198,7 +250,9 @@ Boxeon = {
     return wrapper;
 
   },
+
   createElem: function (el, options = false) {
+
     var elem = document.createElement(el);
     if (options.className) {
       elem.className = options.className;
@@ -212,7 +266,9 @@ Boxeon = {
     }
     return elem;
   },
+
   createPlanOptions: function () {
+
     var form = document.createElement("form");
     var label1 = document.createElement("label");
     var label2 = document.createElement("label");
@@ -221,7 +277,6 @@ Boxeon = {
     var txt1 = document.createTextNode("Every month");
     var txt2 = document.createTextNode("Every 2 months");
     var txt3 = document.createTextNode("Every 3 months");
-  //  var txt4 = document.createTextNode("Once");
     var radio1 = document.createElement("input");
     var radio2 = document.createElement("input");
     var radio3 = document.createElement("input");
@@ -230,7 +285,6 @@ Boxeon = {
     radio1.setAttribute("checked", "checked");
     radio2.setAttribute("type", "radio");
     radio3.setAttribute("type", "radio");
-   //radio4.setAttribute("type", "radio");
     radio1.setAttribute("name", "freq");
     radio2.setAttribute("name", "freq");
     radio3.setAttribute("name", "freq");
@@ -246,7 +300,6 @@ Boxeon = {
     label1.appendChild(txt1);
     label2.appendChild(txt2);
     label3.appendChild(txt3);
-    //label4.appendChild(txt4);
     form.className = "price-options-grid bg-yellow";
     label1.appendChild(txt1);
     label1.appendChild(radio1);
@@ -257,8 +310,6 @@ Boxeon = {
     label3.appendChild(txt3);
     label3.appendChild(radio3);
     form.appendChild(label3);
-   // label4.appendChild(radio4);
-    //form.appendChild(label4);
     radio1.addEventListener('click', function () {
 
       Boxeon.switchPlan(this);
@@ -307,6 +358,7 @@ Boxeon = {
     }
   },
   createModalWindow: function () {
+
     var m = document.createElement("div");
     var mc = document.createElement("div");
     var mb = document.createElement("div");
@@ -327,15 +379,25 @@ Boxeon = {
     mc.appendChild(mch);
     mc.appendChild(mb);
     x.innerHTML = "&times;";
+
     if (document.getElementById('m-window')) {
-      var m_window = document.getElementById("m-window")
+
+      var m_window = document.getElementById("m-window");
+
       var m_content = document.getElementById("m-window").firstChild;
+
       m_content.remove();
+
       m_window.appendChild(mc);
+
     } else {
-      document.getElementsByTagName("header")[0].style.display = "none";
+
+      document.getElementsByTagName("header")[0].className = "fadeout";
+
       document.getElementById("container").appendChild(m);
+
     }
+    Boxeon.scrollToTop();
   },
 
   loadScript: function (url) {
@@ -480,11 +542,15 @@ Boxeon = {
 Shipping = {
 
   collectUserAddress: function (creator_uid) {
+
     Boxeon.createModalWindow();
+
     Shipping.buildAddressInputForm(creator_uid);
+
   },
 
   buildAddressInputForm: function (creator_uid) {
+
     document.getElementById("mc-header").innerHTML =
       '<div class="asides"><div id="steps-line"></div><div id="steps-left">'
       + '<p class="step step-completed">L</p>'
@@ -492,11 +558,12 @@ Shipping = {
       + '<p class="step step-current">2</p>'
       + '<p id="text-step1-label" class="centered">Shipping</p>'
       + '<p class="step step-incomplete">3</p>'
-      + '<p id="text-step2-label" class="centered">Payment</p>'
+      + '<p id="text-step2-label" class="centered">Checkout</p>'
       + '</div></div>';
+
     document.getElementById("m-body").innerHTML =
       "<h2>2. Provide your address</h2><form id='checkout-address-form' onsubmit='return'>"
-      + "<fieldset><input type='text' name='fullname' placeHolder='Full name' required value=''></input>"
+      + "<fieldset><input type='text' name='fullname' placeHolder='Name on your credit / debit card' required value=''></input>"
       + "<input type='text' name='address_line_1' placeHolder='Street address' required value=''></input>"
       + "<input type='text' name='address_line_2' placeHolder='Street address line 2 (optional)' value=''></input>"
       + "<input type='text' name='admin_area_2' required placeHolder='City' value=''></input>"
@@ -510,81 +577,137 @@ Shipping = {
       + "</select>"
       + "<input type='text' name='postal_code' required placeHolder='Postal code' value=''></input>"
       + "<input type='hidden' name='cpf' placeHolder='Cadastro de Pessoas Físicas' value='0'></input>"
-        + "</fieldset><fieldset><br>"
+      + "</fieldset><fieldset><br>"
       + "<input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
       + "</fieldset>"
       + "</form>";
+
     var btn = document.getElementById("process-data");
+
     btn.addEventListener("click", function () {
-      var f = this.parentNode;
+
+      var f = this.parentNode.parentNode; // BAD
+
       var a = this;
+
       Shipping.processFormData(f);
+
       return;
     });
 
   },
+
   processFormData: function (f) {
+
     event.returnValue = false;
+
     var nl = f.getElementsByTagName("input");
+
     Shipping.arr = {};
+
     for (var i = 0; i < nl.length; i++) {
+
       if (nl[i].getAttribute('name')) {
+
         var key = nl[i].getAttribute('name');
+
         var value = nl[i].value;
+
         if (value == "" && key !== "address_line_2") {
+
           let field = document.getElementsByName(key)[0];
+
           field.style.border = "red 1px solid";
+
           return;
+
         } else {
+
           Shipping.arr[key] = value;
         }
       }
     }
+
     var n = f.getElementsByTagName("select");
+
     for (var e = 0; e < n.length; e++) {
+
       if (n[e].getAttribute('name')) {
+
         var k = n[e].getAttribute('name');
+
         var v = n[e].value;
+
         if (v == "") {
+
           let field = document.getElementsByName(k)[0];
+
           field.style.border = "red 1px solid";
+
           return;
+
         } else {
+
           Shipping.arr[k] = v;
+
         }
       }
     }
+
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
+
     if (sessionStorage.getItem("sub-shipping") == 0) {
+
       Subscriptions.createBillingPlan();
+
     } else if (sessionStorage.getItem("sub-shipping") == 1) {
+
+
       Shipping.getRates();
     }
+
     return false;
   },
 
   getRates: function () {
+
     var json = JSON.stringify(Shipping.arr);
+
     var manifest = {
+
       method: "POST",
+
       action: "/rates/fetch/?to=" + json,
+
       contentType: "application/json; charset=utf-8",
+
       customHeader: "X-CSRF-TOKEN",
+
       payload: document.querySelector('meta[name="csrf-token"]').content
+
     }
 
     function callback(re) {
+
       Shipping.buildRateCard(JSON.parse(re));
     }
+
     Boxeon.loader();
+
     Boxeon.sendAjax(manifest, callback);
 
   },
+
   buildRateCard: function (rates) {
+
     var div = document.createElement("div");
+
     var num = rates.results.length;
+
     for (var i = 0; i < num; i++) {
+
       var rate_plus = parseInt(rates.results[i].amount);
+
       var rate = document.createTextNode("$" + rate_plus);
 
       var p1 = document.createElement("p");
@@ -596,7 +719,8 @@ Shipping = {
       var serviceLevelName = document.createTextNode(rates.results[i].servicelevel.name);
       var cta = document.createTextNode("Select");
 
-      div.className = "four-col-grid margin-bottom-4-em";
+      div.className = "four-col-grid margin-bottom-4-em row-gap-4-em";
+
       img.src = rates.results[i].provider_image_200;
       button.setAttribute("sub-carrier", rates.results[i].provider);
       button.setAttribute("sub-rate", rate_plus);
@@ -611,8 +735,11 @@ Shipping = {
       div.appendChild(p3);
       p3.appendChild(rate);
       div.appendChild(button);
+
       button.addEventListener("click", function () {
+
         Shipping.rateSelected = this;
+
         Subscriptions.createBillingPlan();
 
       });
@@ -622,18 +749,23 @@ Shipping = {
 
   },
   showRates: function (div) {
-    document.getElementById('m-window').remove();
+
     Boxeon.createModalWindow();
-    var mcheader = document.getElementById("mc-header");
-    mcheader.innerHTML =
+
+    document.getElementById("mc-header").innerHTML =
       '<div class="asides"><div id="steps-line"></div>'
       + '<div id="steps-left"><p class="step step-completed">L</p>'
       + '<p class="step step-current">2</p><p class="step step-incomplete">3</p>'
       + '</div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
-    mcheader.appendChild(div)
+
+    document.getElementById("m-body").appendChild(div);
+
+    Boxeon.scrollToTop();
 
   },
+
   generateLabels: function () {
+
     var data = {
       method: "GET",
       action: "/box/labels",
@@ -758,27 +890,40 @@ Subscriptions = {
     }
     function callback(r) {
       try {
-        var json = JSON.parse(r); 
-        if(!json.errors){
-        sessionStorage.setItem("sub-plan_id", json['plan_id']);
-        document.getElementById("m-window").remove();
-        Subscriptions.showPaymentOptions();
+        var json = JSON.parse(r);
+        if (!json.errors) {
+          sessionStorage.setItem("sub-plan_id", json['plan_id']);
+          document.getElementById("m-window").remove();
+          Subscriptions.showPaymentOptions();
 
-        }else{
+        } else {
           alert("Sorry! Something went wrong on our end. Please try again later.");
         }
       } catch (e) {
         console.log(e);
-        
+
       }
 
     }
     Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
+
   showPaymentOptions: function () {
 
-    location.href = "/checkout/subscription";
+    //Boxeon.createModalWindow();
+
+    document.getElementById("mc-header").innerHTML =
+      '<div class="asides"><div id="steps-line"></div>'
+      + '<div id="steps-left"><p class="step step-completed">L</p>'
+      + '<p class="step step-completed">l</p><p class="step step-current">3</p>'
+      + '</div><h2 class="primary-color">3. Checkout</h2><br>';
+
+    var iframe = document.createElement('iframe');
+    iframe.id = 'iframe-checkout';
+    iframe.src = '/checkout/subscription';
+    document.getElementById("m-body").appendChild(iframe);
+
 
   },
 
@@ -817,7 +962,7 @@ Subscriptions = {
 };
 
 
-$(document).ready(function () {
+if (document.readyState === 'complete') {
 
   // Handles redirected users to a subscription box after they have signed in from a box page
   if (document.getElementById("box")) {
@@ -1045,21 +1190,17 @@ $(document).ready(function () {
 
   }
 
-  // Google Tags
+
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
   gtag('js', new Date());
   gtag('config', 'G-EKYP1LECWS');
-});
+}
 
-// Fades out pages for a smoother unload transition
-$(window).on('beforeunload', function () {
-  //if (document.getElementsByTagName("main")[0]) {
+window.addEventListener('onbeforeunload', function () {
+
   document.getElementBy("container").setAttribute("class", "fadeout");
-  // }
-  // if (document.getElementById("masthead")) {
-  //document.getElementById("masthead").setAttribute("class", "fadeout");
-  // }
+
 
 });
 

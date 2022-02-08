@@ -15,7 +15,7 @@
         } else {
             $last_shipping = 2629743;
         }
-        $next_shipping = gmdate('F d', $box[0]->created_at + $last_shipping);
+        $next_shipping = gmdate('F d', (int)$box[0]->created_at + $last_shipping);
         ?>
       
 

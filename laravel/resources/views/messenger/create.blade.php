@@ -3,14 +3,11 @@
 @section('content')
 
     <aside id="panel">
-        <h3> {{ $thread->participantsString(Auth::id()) }}</h3>
+        <h3> Participant</h3>
         <div class="messages-panel">
 
+            <p class="message">Message body</p>
 
-            <p class="message">{{ $thread->latestMessage->body }}
-            </p>
-    
-           
             <form id="form-message-store" action="/messages/store" method="post">
                 {{ csrf_field() }}
 

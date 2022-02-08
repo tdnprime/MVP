@@ -94,9 +94,11 @@ class SquareController extends Controller
 
     }
 
-    public function createCard(Request $request)
+    public function createCard($request)
     {
-        $request = json_decode($request);
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        $subscription = Subscription::where('user_id', '=', $id)->get();
 
         return $response = Http::withHeaders(
             [
@@ -106,20 +108,20 @@ class SquareController extends Controller
             ]
         )->post($this->config['square']['cardsEndpoint'], [
 
-            "idempotency_key" => $request->source_id,
-            "source_id" => $request->source_id,
+            "idempotency_key" => $request['source_id'],
+            "source_id" => $request['source_id'],
             "card" => [
                 "billing_address" => [
-                    "address_line_1" => $request->address_line_1,
-                    "address_line_2" => $request->address_line_2,
-                    "locality" => $request->admin_area_2,
-                    "administrative_district_level_1" => $request->admin_area_1,
-                    "postal_code" => $request->postal_code,
-                    "country" => $request->country_code,
+                    "address_line_1" =>  $subscription[0]['address_line_1'],
+                    "address_line_2" =>  $subscription[0]['address_line_2'] ?? "",
+                    "locality" =>  $subscription[0]['admin_area_2'],
+                    "administrative_district_level_1" =>  $subscription[0]['admin_area_1'],
+                    "postal_code" =>  $subscription[0]['postal_code'],
+                    "country" =>  $subscription[0]['country_code'],
                 ],
-                "cardholder_name" => $request->fullname,
-                "customer_id" => $request->customer_id,
-                "reference_id" => $request->id,
+                "cardholder_name" => $request['fullname'],
+                "customer_id" => $request['customer_id'],
+                "reference_id" => $request['id'],
             ],
         ]);
 
@@ -165,17 +167,39 @@ class SquareController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
         $sub = Subscription::where('user_id', '=', $id)->get();
+        $subscription = json_decode($request['upsert']);
 
-        if (!isset($user->customer_id)) {
+        if (isset($user->customer_id)) {
 
             $new = self::createCustomer();
+
             if (isset($new->customer->id)) {
-                $user->update(['customer_id' => $new->customer->id]);
+
+                $user->update([
+
+                    'customer_id' => $new->customer->id,
+                ]);
+
+            } else {
+
+                return $new; //json errors
             }
+
+            $user = User::find($id);
+
+            $card =  self::createCard([
+
+                    'source_id' => $subscription->sourceId,
+                    'fullname' => $sub[0]['fullname'],
+                    'customer_id' => $user->customer_id,
+                    'id' => $sub[0]['creator_id']
+    
+                ]);
+
+            return $card; // test
 
         }
 
-        $subscription = json_decode($request['upsert']);
 
         $response = Http::withHeaders(
             [
@@ -187,14 +211,26 @@ class SquareController extends Controller
 
             "idempotency_key" => $subscription->sourceId,
             "plan_id" => $sub[0]['plan_id'],
-            "customer_id" => $new->customer->id,
-            "card_id" => $subscription->locationId,
+            "customer_id" => $user->customer_id,
+            "card_id" => $card->id,
+            "location_id" => $this->config['square']['locationId'],
             "start_date" => $sub[0]['created_at'],
             "tax_percentage" => '5',
             'timezone' => 'America/New_York',
             "source" => [
                 "name" => "Boxeon",
             ]]);
+
+        if (isset($response->subscription->id)) {
+
+            Subscription::where('user_id', '=', $id)->update([
+
+                'sub_id' => $response->subscription->id,
+            ]);
+            
+            return redirect()->view('home.subscriptions', compact('user', $user))
+            ->with('message', 'Congratulations! You\'re subscribed to your favorite creator');
+        }
 
         return json_decode($response);
 

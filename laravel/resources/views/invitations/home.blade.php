@@ -28,7 +28,7 @@
                 <img class='center image-cta' src="../assets/images/invite.svg" alt="Messaging">
                 <h2 class='centered'>Your invitations</h2>
                 <p class='center'>To earn your rewards, share the invitation link below with creators you know and ask them to click on it, sign in, and become a seller.</p>
-                <br><br>
+                
                 <form>
                     <fieldset>
                     <input class='centered center' type='text' value='https://boxeon.com/{{$user->id}}/accept'>

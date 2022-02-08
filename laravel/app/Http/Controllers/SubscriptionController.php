@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\SquareController;
-use App\Models\User;
 use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
     public $config;
-
 
     public function __construct()
     {
@@ -20,24 +19,29 @@ class SubscriptionController extends Controller
             "/config/app.ini", true);
     }
 
+    public function checkout()
+    {
 
-    public function checkout(){
-
-        $subscription =  array(
+        $subscription = array(
             'total' => 100,
             'count' => 1,
             'description' => 'Subscription decription',
-            'route' => '/checkout/subscription/create/?upsert='
+            'route' => '/checkout/subscription/create/?upsert=',
         );
 
         $id = auth()->user()->id;
         $user = User::find($id);
         return view('checkout.subscription', compact('user', $user))
-        ->with('subscription', $subscription);
+            ->with('subscription', $subscription);
 
     }
+    /**
+     * Create a subscription plan
+     *
+     * @param  Request  $request
+     * @return Response
+     */
 
-    
     public function createplan(Request $request)
     {
         $id = auth()->user()->id;
@@ -56,11 +60,11 @@ class SubscriptionController extends Controller
         }
 
         // Preparation for Square API
-        if($plan->frequency == 1){
+        if ($plan->frequency == 1) {
             $plan->cadence = "MONTHLY";
-        }elseif($plan->frequency == 2){
+        } elseif ($plan->frequency == 2) {
             $plan->cadence = "EVERY_TWO_MONTHS";
-        }elseif($plan->frequency == 3){
+        } elseif ($plan->frequency == 3) {
             $plan->cadence = "NINETY_DAYS";
         }
         $processor = new SquareController();
@@ -69,10 +73,16 @@ class SubscriptionController extends Controller
         if (isset($response->catalog_object->id)) {
             $plan->plan_id = $response->catalog_object->id;
             $this->store($plan);
-            //Return plan_id for buyer to continue
-            return json_encode(array('plan_id' => $response->catalog_object->id));
+            // Return plan_id for buyer to continue
+            return response()->json([
+                'plan_id' => $response->catalog_object->id,
+            ]);
 
+        } else {
+
+            return json_encode($response);
         }
+
     }
     /**
      * Update the specified resource in storage.
@@ -164,7 +174,7 @@ class SubscriptionController extends Controller
         // Update in_stock
         $this->addStock($box);
     }
-    
+
     protected function remove($box)
     {
         require_once dirname(__DIR__, 3) . "/php/paypal-connect.php";

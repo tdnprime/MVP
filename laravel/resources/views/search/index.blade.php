@@ -29,7 +29,7 @@
                         <img class='center image-cta' src="{{ '../assets/images/congratulations.svg' }}"
                             alt="congratulations">
                         <h2 class='centered'>Congratulations!</h2>
-                        <p class='center'>You can invite <span class='primary-color'>{{ ucwords($invite) }} </span> to
+                        <p class='center'>You can be the first to invite <a href='{{route('invitations.home')}}' class='primary-color'>{{ ucwords($invite) }} </a> to
                             Boxeon to
                             receive free shipping on any subscription box they offer.</p>
                         <br><br>

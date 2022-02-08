@@ -427,6 +427,7 @@ a:visited {
 
 .image-round {
   border-radius: 9999px;
+  max-width: 70px;
 }
 
 

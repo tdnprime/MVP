@@ -14,8 +14,22 @@
         @include('includes.menu')
         <main>
             <section id="left-aside">
-                @if ($subs->count() > 0)
-                    <h2>Messages</h2>
+                <h2>Messages</h2>
+                @if(isset($trevor))
+                <a class="message-create" href="/messages/create" data-type-id="{{ $trevor->id }}">
+                    <div class='recipients-grid'>
+                        <div><span><img id='header-user-icon' src='{{$trevor->profile_photo_path}}'/></span>
+                            Customer Support
+                        
+                        </div>
+                        <div>
+                            
+                        </div>
+                    </div>
+                </a>
+                @endif
+                @if (isset($subs) && $subs->count() > 0)
+                    
                     @foreach ($subs as $sub)
                         <a class="message-create" href="/messages/create" data-type-id="{{ $sub->id }}">
                             <div class='recipients-grid'>

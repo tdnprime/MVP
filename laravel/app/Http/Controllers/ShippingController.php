@@ -25,13 +25,8 @@ class ShippingController extends Controller
 
     public function rates(Request $request)
     {
-        if (gettype($request["to"]) == 'string') {
-            $to = json_decode($request["to"]);
-
-        } elseif (gettype($request["to"]) == 'object'){
-            $to = $request["to"];
-    
-        }
+       
+        $to = json_decode($request["to"]);
         $id = $to->creator_id;
         $user = User::find($id);
         $box = $user->boxes()->first();

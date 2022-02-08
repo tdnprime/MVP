@@ -94,9 +94,9 @@ Boxeon = {
     if (!document.getElementsByClassName("loader")[0]) {
       let div = document.createElement("div");
       div.className = "loader";
-      if(document.getElementById("container")){
-      let container = document.getElementById("container");
-      }else if(document.getElementById("m-window")){
+      if (document.getElementById("container")) {
+        let container = document.getElementById("container");
+      } else if (document.getElementById("m-window")) {
         let container = document.getElementById("m-window");
       }
       container.prepend(div);
@@ -221,7 +221,7 @@ Boxeon = {
     var txt1 = document.createTextNode("Every month");
     var txt2 = document.createTextNode("Every 2 months");
     var txt3 = document.createTextNode("Every 3 months");
-    var txt4 = document.createTextNode("Once");
+  //  var txt4 = document.createTextNode("Once");
     var radio1 = document.createElement("input");
     var radio2 = document.createElement("input");
     var radio3 = document.createElement("input");
@@ -230,7 +230,7 @@ Boxeon = {
     radio1.setAttribute("checked", "checked");
     radio2.setAttribute("type", "radio");
     radio3.setAttribute("type", "radio");
-    radio4.setAttribute("type", "radio");
+   //radio4.setAttribute("type", "radio");
     radio1.setAttribute("name", "freq");
     radio2.setAttribute("name", "freq");
     radio3.setAttribute("name", "freq");
@@ -246,7 +246,7 @@ Boxeon = {
     label1.appendChild(txt1);
     label2.appendChild(txt2);
     label3.appendChild(txt3);
-    label4.appendChild(txt4);
+    //label4.appendChild(txt4);
     form.className = "price-options-grid bg-yellow";
     label1.appendChild(txt1);
     label1.appendChild(radio1);
@@ -257,7 +257,7 @@ Boxeon = {
     label3.appendChild(txt3);
     label3.appendChild(radio3);
     form.appendChild(label3);
-    label4.appendChild(radio4);
+   // label4.appendChild(radio4);
     //form.appendChild(label4);
     radio1.addEventListener('click', function () {
 
@@ -510,8 +510,9 @@ Shipping = {
       + "</select>"
       + "<input type='text' name='postal_code' required placeHolder='Postal code' value=''></input>"
       + "<input type='hidden' name='cpf' placeHolder='Cadastro de Pessoas Físicas' value='0'></input>"
+        + "</fieldset><fieldset><br>"
+      + "<input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
       + "</fieldset>"
-      + "<br><input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
       + "</form>";
     var btn = document.getElementById("process-data");
     btn.addEventListener("click", function () {
@@ -744,7 +745,7 @@ Subscriptions = {
     Shipping.arr['total'] = sessionStorage.getItem('sub-total');
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
     Shipping.arr['frequency'] = sessionStorage.getItem('sub-freq');
-    Shipping.arr['key'] =  document.querySelector('meta[name="csrf-token"]').content;
+    Shipping.arr['key'] = document.querySelector('meta[name="csrf-token"]').content;
     Shipping.arr["_token"] = document.querySelector('meta[name="csrf-token"]').content;
 
     var json = JSON.stringify(Shipping.arr);
@@ -756,10 +757,21 @@ Subscriptions = {
       payload: document.querySelector('meta[name="csrf-token"]').content
     }
     function callback(r) {
-      var json = JSON.parse(r);
-      sessionStorage.setItem("sub-plan_id", json['plan_id']); //From PayPal
-      document.getElementById("m-window").remove();
-      Subscriptions.showPaymentOptions(); // PayPal et al.
+      try {
+        var json = JSON.parse(r); 
+        if(!json.errors){
+        sessionStorage.setItem("sub-plan_id", json['plan_id']);
+        document.getElementById("m-window").remove();
+        Subscriptions.showPaymentOptions();
+
+        }else{
+          alert("Sorry! Something went wrong on our end. Please try again later.");
+        }
+      } catch (e) {
+        console.log(e);
+        
+      }
+
     }
     Boxeon.loader();
     Boxeon.sendAjax(data, callback);
@@ -770,7 +782,7 @@ Subscriptions = {
 
   },
 
-  
+
   showSubscriptions: function () {
     var data = {
       method: "POST",

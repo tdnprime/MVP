@@ -49,10 +49,11 @@ class SchoolController extends Controller
             $user = User::find($id);
         }
         $array = array(
-            'ad-GuV6YIMI',
+    
             '_Es46L1ayNg',
-            'dRnPvobdpew',
-            'PfT4wHmSBfs'
+            'PfT4wHmSBfs',
+            'dRnPvobdpew'
+            
         );
 
         return view('school.index', compact('user', $user))

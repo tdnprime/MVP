@@ -1,8 +1,8 @@
 @extends('layouts.checkout')
 @section('content')
-    <div id="m-window">
+  
 
-        {{--<div>
+        {{-- <div>
             <div ><div id="renderedCheckoutButtonHTML" style="
             overflow: auto;
             display: flex;
@@ -75,27 +75,23 @@
                 showCheckoutWindow(e);
               });
             </script>
-          </div>--}}
+          </div> --}}
 
-    @if(isset($subscription))
-            
-            <div id='m-content'>
-                <div id="mc-header"><a href='{{ url()->previous() }}'><span id="m-close"
-                            class="material-icons">×</span></a></div>
-                <h2>Checkout</h2>
+        @if (isset($subscription))
+             
                 <div class="centered margin-bottom-4-em">
                     <p class="centered center">{{ $subscription['description'] }}</p>
                     <form id="payment-form">
                         <div id="card-container"></div>
                         <button class='button' id="card-button" data-type-total="{{ $subscription['total'] }}"
                             type="button">Pay&nbsp;{{ $subscription['total'] }}</button>
-                    <input type='hidden' id='route' value='{{ $subscription['route'] }}'>
-                          </form>
+                        <input type='hidden' id='route' value='{{ $subscription['route'] }}'>
+                    </form>
                     <div id="payment-status-container"></div>
                     <img id='image-square-logo' class='center' src='../../../assets/images/square-logo.png' alt='Square' />
                 </div>
             </div>
-        
+
         @endif
 
-@endsection
+    @endsection

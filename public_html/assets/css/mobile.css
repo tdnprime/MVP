@@ -37,6 +37,9 @@ NOTE:
    #how-it-works{
      width:80%;
    }
+   #left-aside h2, .recipients-grid {
+    margin-left: 0; 
+}
   }
   @media only screen and (max-width:800px) {
     #home main {
@@ -265,6 +268,7 @@ NOTE:
   #box #masthead {
     display: block;
     height:fit-content;
+    margin-bottom: 4em;
   }
   /*  #headline {
     grid-column-start: 1;

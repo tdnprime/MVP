@@ -108,6 +108,7 @@ input[type="submit"], .button, button {
   cursor: pointer;
   font-weight: bold;
   height: 3.5em;
+  max-height: 49px;
   letter-spacing: 1px;
   margin-bottom: 1em;
   outline: none;

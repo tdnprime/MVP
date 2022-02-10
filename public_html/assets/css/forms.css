@@ -12,6 +12,7 @@ form {
   width: 100%;
 
 }
+
 #checkout-address-form select,
 #checkout-address-form input[type=text] {
   width: 94%;
@@ -104,7 +105,8 @@ input[type="submit"], .button, button {
   border-radius: 25px;
   box-sizing: border-box;
   color: #ffffff;
-  width:11em;
+  min-width: 200px;
+  text-align: center;
   cursor: pointer;
   font-weight: bold;
   height: 3.5em;
@@ -113,7 +115,7 @@ input[type="submit"], .button, button {
   margin-bottom: 1em;
   outline: none;
   padding: .8em 1.5em .8em 1.5em;
-  width: 11em;
+
 }
 
 input[type="submit"]:active, .button:active, button:active {
@@ -164,4 +166,3 @@ input[type="submit"]:hover, .button:hover, button:active:hover {
   width: fit-content;
 
 }
-

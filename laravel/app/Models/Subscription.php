@@ -12,7 +12,8 @@ class Subscription extends Model
     protected $fillable = [
         'creator_id',
         'uid',
-        'fullname',
+        'given_name',
+        'family_name',
         'cpf',
         'sub_id',
         'date_created',

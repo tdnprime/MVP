@@ -113,7 +113,8 @@ class SubscriptionController extends Controller
             'rate_id' => $data->rate_id,
             'rate' => $data->rate,
             'shipment' => $data->shipment,
-            'fullname' => $data->fullname,
+            'given_name' => $data->given_name,
+            'family_name' => $data->family_name,
             'status' => 2, // 2 = pending - the subscription is not yet paid for
             'carrier' => $data->carrier,
         );

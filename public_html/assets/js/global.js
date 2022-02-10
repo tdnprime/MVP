@@ -7,21 +7,39 @@ var Subscriptions = Subscriptions || {};
 var controller = new AbortController();
 var signal = controller.signal;
 
+//import instance from './modules/messages.js'
+
+
+
+/**
+ * Checks user auth status
+ */
 Auth = {
 
   check: function (video_id, creator_id) {
+
     var data = {
+
       method: "GET",
+
       action: "/auth/google/status",
+
       contentType: "application/json; charset=utf-8",
+
       _token: document.querySelector('meta[name="csrf-token"]').content
 
     }
+
     function callback(status) {
+
       if (status == 0) {
+
         document.cookie = "box=" + window.location.href;
+
         location.assign("/auth/google");
+
       } else if (status == 1) {
+
         // Play video in UI
         Boxeon.playVideo(video_id, creator_id);
       }
@@ -32,6 +50,9 @@ Auth = {
   }
 };
 
+/**
+ * Utility functions
+ */
 Boxeon = {
 
   sendAjax: function (data, back) {
@@ -57,9 +78,21 @@ Boxeon = {
       }
     }
   },
-
+  
+  generateUUID: function () {
+    let time = new Date().getTime();
+    if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
+      time += performance.now();
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      let random = (time + Math.random() * 16) % 16 | 0;
+      time = Math.floor(time / 16);
+      return (c === 'x' ? random : (random & 0x3 | 0x8)).toString(16);
+    });
+  },
 
   checkUrl: function (input) {
+
     let json = JSON.stringify({ url: input });
     var data = {
       method: "POST",
@@ -93,24 +126,6 @@ Boxeon = {
     });
   },
 
-  tabSwitch: function (id) {
-
-    var contents = document.getElementsByClassName("tab-content");
-
-    for (var i = 0; i < contents.length; i++) {
-
-      if (contents[i].getAttribute("data-id") != id) {
-
-        contents[i].style.display = "none";
-
-      } else if (contents[i].getAttribute("data-id") == id) {
-
-        contents[i].style.display = null;
-
-        contents[i].style.display = "grid";
-      }
-    }
-  },
 
   scrollToTop: function () {
 
@@ -203,6 +218,7 @@ Boxeon = {
 
 
   },
+
   createStepsLeft: function (options) {
 
     var grid = Boxeon.createElem("div");
@@ -352,7 +368,7 @@ Boxeon = {
     try {
       var m = document.getElementById("m-window");
       m.remove();
-      document.getElementsByTagName("header")[0].style.display = "grid";
+      //document.getElementsByTagName("header")[0].style.display = "grid";
     } catch (e) {
       //console.log(e);
     }
@@ -392,8 +408,6 @@ Boxeon = {
 
     } else {
 
-      document.getElementsByTagName("header")[0].className = "fadeout";
-
       document.getElementById("container").appendChild(m);
 
     }
@@ -401,138 +415,229 @@ Boxeon = {
   },
 
   loadScript: function (url) {
+
     var s = document.createElement('script');
+
     s.type = 'text/javascript';
+
     s.async = true;
+
     s.src = url;
+
     var x = document.getElementsByTagName('head')[0];
+
     x.appendChild(s);
+
   },
 
   switchPlan: function (a) {
+
     var frequency = a.value;
+
     sessionStorage.setItem("sub-freq", frequency);
 
   },
 
   showDisabled: function () {
+
     var fieldset = document.getElementById("curation1");
+
     fieldset.style.display = "block";
+
     var elems = fieldset.getElementsByTagName("*");
+
     for (var i = 0; i < elems.length; i++) {
+
       elems[i].removeAttribute("disabled");
+
     }
+
     var fieldset = document.getElementById("curation2");
+
     fieldset.style.display = "block";
+
     var elems = fieldset.getElementsByTagName("*");
+
     for (var i = 0; i < elems.length; i++) {
+
       elems[i].removeAttribute("disabled");
+
     }
+
     var hiden = document.getElementsByClassName('hiden');
+
     for (var i = 0; i < hiden.length; i++) {
+
       hiden[i].style.display = "block";
+
       let optional = hiden[i].getElementsByClassName('optional');
+
       let count = optional.length;
+
       for (let e = 0; e < count; e++) {
+
         optional[e].removeAttribute("disabled");
+
       }
     }
 
   },
 
   menu: function () {
-    /* When side navigation slides out, 
-  set the width of the side navigation and 
-  the left margin of MAIN + FOOTER */
+
     if (screen.width <= 600) {
+
       document.getElementById("menu").style.width = "100%";
+
     } else {
+
       document.getElementById("menu").style.width = "300px";
+
     }
 
     if (document.getElementsByTagName("main")[0]) {
+
       document.getElementsByTagName("main")[0].style.marginLeft = "300px";
+
     }
     if (document.getElementById("masthead")) {
+
       document.getElementById("masthead").style.marginLeft = "300px";
+
     }
-    // document.getElementsByTagName("footer")[0].style.marginLeft = "300px";
+
+
     document.getElementsByTagName("header")[0].style.marginLeft = "300px";
 
 
   },
+
   signOut: function () {
+
     sessionStorage.clear();
+
   },
 
   closeMenu: function () {
+
     /* Return page to normal upon side navigation close */
     document.getElementById("menu").style.width = "0";
+
     if (document.getElementsByTagName("main")[0]) {
+
       document.getElementsByTagName("main")[0].style.marginLeft = null;
     }
+
     document.getElementsByTagName("footer")[0].style.marginLeft = null;
+
     document.getElementsByTagName("header")[0].style.marginLeft = null;
+
     if (document.getElementById("masthead")) {
+
       document.getElementById("masthead").style.marginLeft = null;
+
     }
   },
 
   router: function (a) {
+
     let URL = a.getAttribute("data-url");
+
     if (a.id == 'exe-sub' || a.id == 'exe-sub-alt' || a.id == 'play-video') {
+
       // In case of page reload
       if (a.id == 'exe-sub') {
+
         sessionStorage.setItem('sub', 1);
+
       } else if (a.id == 'exe-unsub') {
+
         sessionStorage.setItem('sub', 0);
+
       }
+
       sessionStorage.setItem('sub', 1);
+
       var video_id = a.getAttribute("data-video-id");
+
       sessionStorage.setItem('sub-vid', video_id);
+
       var creator_id = a.getAttribute("data-id");
+
       sessionStorage.setItem('sub-cid', creator_id);
+
       // sub-creator-id is already set in sessionStorage
       sessionStorage.setItem("sub-total", a.getAttribute("data-total"));
+
       sessionStorage.setItem("sub-product", a.getAttribute("data-product"));
+
       sessionStorage.setItem("sub-in-stock", a.getAttribute("data-in-stock"));
+
       sessionStorage.setItem('sub-shipping', a.getAttribute("data-shipping"));
+
       sessionStorage.setItem('sub-version', a.getAttribute("data-version"));
+
       Auth.check(video_id, creator_id);
+
     } else if (a.id == 'exe-unsub') {
+
       sessionStorage.setItem('sub', 0); // in case of page reload
+
       Subscriptions.unsubCheck(a);
+
     }
+
     if (sessionStorage.getItem('sub') == 1) {
       // Save for later
       sessionStorage.setItem("sub-carrier", a.getAttribute("data-carrier"));
+
       sessionStorage.setItem("sub-rate", a.getAttribute("data-rate"));
+
       sessionStorage.setItem("sub-rate-id", a.getAttribute("data-rate-id"));
+
       sessionStorage.setItem("sub-shipment", a.getAttribute("data-shipment"));
     }
 
   },
 
   disable: function () {
+
     var fieldset = document.getElementById("curation1");
+
     fieldset.style.display = "none";
+
     var elems = fieldset.getElementsByTagName("*");
+
     for (var i = 0; i < elems.length; i++) {
+
       elems[i].setAttribute("disabled", "disabled");
+
     }
     var fieldset = document.getElementById("curation2");
+
     fieldset.style.display = "none";
+
     var elems = fieldset.getElementsByTagName("*");
+
     for (var i = 0; i < elems.length; i++) {
+
       elems[i].setAttribute("disabled", "disabled");
+
     }
     var hiden = document.getElementsByClassName('hiden');
+
     for (var i = 0; i < hiden.length; i++) {
+
       hiden[i].style.display = "none";
+
       let optional = hiden[i].getElementsByClassName('optional');
+
       let count = optional.length;
+
       for (let e = 0; e < count; e++) {
+
         optional[e].setAttribute("disabled", "disabled");
+
       }
     }
 
@@ -753,10 +858,15 @@ Shipping = {
     Boxeon.createModalWindow();
 
     document.getElementById("mc-header").innerHTML =
-      '<div class="asides"><div id="steps-line"></div>'
-      + '<div id="steps-left"><p class="step step-completed">L</p>'
-      + '<p class="step step-current">2</p><p class="step step-incomplete">3</p>'
-      + '</div><h2 class="primary-color">2. Select a shipping rate</h2><br>';
+      '<div class="asides"><div id="steps-line"></div><div id="steps-left">'
+      + '<p class="step step-completed">L</p>'
+      + '<p id="text-step0-label" class="centered">Schedule</p>'
+      + '<p class="step step-current">2</p>'
+      + '<p id="text-step1-label" class="centered">Shipping</p>'
+      + '<p class="step step-incomplete">3</p>'
+      + '<p id="text-step2-label" class="centered">Checkout</p>'
+      + '</div></div>'
+      + "<h2>2. Choose a shipping rate</h2><br>";
 
     document.getElementById("m-body").appendChild(div);
 
@@ -877,8 +987,8 @@ Subscriptions = {
     Shipping.arr['total'] = sessionStorage.getItem('sub-total');
     Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
     Shipping.arr['frequency'] = sessionStorage.getItem('sub-freq');
-    Shipping.arr['key'] = document.querySelector('meta[name="csrf-token"]').content;
-    Shipping.arr["_token"] = document.querySelector('meta[name="csrf-token"]').content;
+    Shipping.arr['key'] = Boxeon.generateUUID();
+    //Shipping.arr["_token"] = document.querySelector('meta[name="csrf-token"]').content;
 
     var json = JSON.stringify(Shipping.arr);
     var data = {
@@ -911,13 +1021,20 @@ Subscriptions = {
 
   showPaymentOptions: function () {
 
-    //Boxeon.createModalWindow();
+    Boxeon.createModalWindow();
 
     document.getElementById("mc-header").innerHTML =
-      '<div class="asides"><div id="steps-line"></div>'
-      + '<div id="steps-left"><p class="step step-completed">L</p>'
-      + '<p class="step step-completed">l</p><p class="step step-current">3</p>'
-      + '</div><h2 class="primary-color">3. Checkout</h2><br>';
+
+      '<div class="asides"><div id="steps-line"></div><div id="steps-left">'
+      + '<p class="step step-completed">L</p>'
+      + '<p id="text-step0-label" class="centered">Schedule</p>'
+      + '<p class="step step-completed">L</p>'
+      + '<p id="text-step1-label" class="centered">Shipping</p>'
+      + '<p class="step step-current">3</p>'
+      + '<p id="text-step2-label" class="centered">Checkout</p>'
+      + '</div></div>'
+      + "<h2>3. Checkout</h2><br>";
+
 
     var iframe = document.createElement('iframe');
     iframe.id = 'iframe-checkout';
@@ -962,7 +1079,7 @@ Subscriptions = {
 };
 
 
-if (document.readyState === 'complete') {
+window.onload = function () {
 
   // Handles redirected users to a subscription box after they have signed in from a box page
   if (document.getElementById("box")) {
@@ -1209,5 +1326,9 @@ window.addEventListener('onbeforeunload', function () {
 
 
 });
+
+
+
+//import instance from './modules/messages.js'
 
 

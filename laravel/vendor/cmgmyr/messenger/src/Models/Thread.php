@@ -66,7 +66,7 @@ class Thread extends Eloquent
      *
      * @codeCoverageIgnore
      */
-    public function messages(): HasMany
+    public function messages()
     {
         return $this->hasMany(Models::classname(Message::class), 'thread_id', 'id');
     }
@@ -88,7 +88,7 @@ class Thread extends Eloquent
      *
      * @codeCoverageIgnore
      */
-    public function participants(): HasMany
+    public function participants()
     {
         return $this->hasMany(Models::classname(Participant::class), 'thread_id', 'id');
     }
@@ -100,9 +100,17 @@ class Thread extends Eloquent
      *
      * @codeCoverageIgnore
      */
-    public function users(): BelongsToMany
+    public function users()
     {
-        return $this->belongsToMany(Models::classname('User'), Models::table('participants'), 'thread_id', 'user_id');
+        return $this
+            ->belongsToMany(
+                Models::classname('User'),
+                Models::table('participants'),
+                'thread_id',
+                'user_id'
+            )
+            ->whereNull(Models::table('participants') . '.deleted_at')
+            ->withTimestamps();
     }
 
     /**
@@ -110,7 +118,7 @@ class Thread extends Eloquent
      *
      * @return null|Models::user()|\Illuminate\Database\Eloquent\Model
      */
-    public function creator(): ?Eloquent
+    public function creator()
     {
         if ($this->creatorCache === null) {
             $firstMessage = $this->messages()->withTrashed()->oldest()->first();
@@ -137,7 +145,7 @@ class Thread extends Eloquent
      *
      * @return Collection|static[]
      */
-    public static function getBySubject(string $subject)
+    public static function getBySubject($subject)
     {
         return static::where('subject', 'like', $subject)->get();
     }
@@ -149,7 +157,7 @@ class Thread extends Eloquent
      *
      * @return array
      */
-    public function participantsUserIds($userId = null): array
+    public function participantsUserIds($userId = null)
     {
         $users = $this->participants()->withTrashed()->select('user_id')->get()->map(function ($participant) {
             return $participant->user_id;
@@ -170,7 +178,7 @@ class Thread extends Eloquent
      *
      * @return Builder
      */
-    public function scopeForUser(Builder $query, $userId): Builder
+    public function scopeForUser(Builder $query, $userId)
     {
         $participantsTable = Models::table('participants');
         $threadsTable = Models::table('threads');
@@ -189,7 +197,7 @@ class Thread extends Eloquent
      *
      * @return Builder
      */
-    public function scopeForUserWithNewMessages(Builder $query, $userId): Builder
+    public function scopeForUserWithNewMessages(Builder $query, $userId)
     {
         $participantTable = Models::table('participants');
         $threadsTable = Models::table('threads');
@@ -212,7 +220,7 @@ class Thread extends Eloquent
      *
      * @return Builder
      */
-    public function scopeBetweenOnly(Builder $query, array $participants): Builder
+    public function scopeBetweenOnly(Builder $query, array $participants)
     {
         return $query->whereHas('participants', function (Builder $builder) use ($participants) {
             return $builder->whereIn('user_id', $participants)
@@ -230,7 +238,7 @@ class Thread extends Eloquent
      *
      * @return Builder
      */
-    public function scopeBetween(Builder $query, array $participants): Builder
+    public function scopeBetween(Builder $query, array $participants)
     {
         return $query->whereHas('participants', function (Builder $q) use ($participants) {
             $q->whereIn('user_id', $participants)
@@ -247,7 +255,7 @@ class Thread extends Eloquent
      *
      * @return void
      */
-    public function addParticipant($userId): void
+    public function addParticipant($userId)
     {
         $userIds = is_array($userId) ? $userId : func_get_args();
 
@@ -266,7 +274,7 @@ class Thread extends Eloquent
      *
      * @return void
      */
-    public function removeParticipant($userId): void
+    public function removeParticipant($userId)
     {
         $userIds = is_array($userId) ? $userId : func_get_args();
 
@@ -280,7 +288,7 @@ class Thread extends Eloquent
      *
      * @return void
      */
-    public function markAsRead($userId): void
+    public function markAsRead($userId)
     {
         try {
             $participant = $this->getParticipantFromUser($userId);
@@ -298,7 +306,7 @@ class Thread extends Eloquent
      *
      * @return bool
      */
-    public function isUnread($userId): bool
+    public function isUnread($userId)
     {
         try {
             $participant = $this->getParticipantFromUser($userId);
@@ -333,7 +341,7 @@ class Thread extends Eloquent
      *
      * @return void
      */
-    public function activateAllParticipants(): void
+    public function activateAllParticipants()
     {
         $participants = $this->participants()->onlyTrashed()->get();
         foreach ($participants as $participant) {
@@ -349,7 +357,7 @@ class Thread extends Eloquent
      *
      * @return string
      */
-    public function participantsString($userId = null, array $columns = ['given_name']): string
+    public function participantsString($userId = null, $columns = ['name'])
     {
         $participantsTable = Models::table('participants');
         $usersTable = Models::table('users');
@@ -376,7 +384,7 @@ class Thread extends Eloquent
      *
      * @return bool
      */
-    public function hasParticipant($userId): bool
+    public function hasParticipant($userId)
     {
         $participants = $this->participants()->where('user_id', '=', $userId);
 
@@ -390,7 +398,7 @@ class Thread extends Eloquent
      *
      * @return string
      */
-    protected function createSelectString(array $columns): string
+    protected function createSelectString($columns)
     {
         $dbDriver = $this->getConnection()->getDriverName();
         $tablePrefix = $this->getConnection()->getTablePrefix();
@@ -423,7 +431,7 @@ class Thread extends Eloquent
      *
      * @return Collection
      */
-    public function userUnreadMessages($userId): Collection
+    public function userUnreadMessages($userId)
     {
         $messages = $this->messages()->where('user_id', '!=', $userId)->get();
 
@@ -449,7 +457,7 @@ class Thread extends Eloquent
      *
      * @return int
      */
-    public function userUnreadMessagesCount($userId): int
+    public function userUnreadMessagesCount($userId)
     {
         return $this->userUnreadMessages($userId)->count();
     }

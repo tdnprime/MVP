@@ -20,7 +20,7 @@ trait Messagable
      *
      * @codeCoverageIgnore
      */
-    public function messages(): HasMany
+    public function messages()
     {
         return $this->hasMany(Models::classname(Message::class));
     }
@@ -32,7 +32,7 @@ trait Messagable
      *
      * @codeCoverageIgnore
      */
-    public function participants(): HasMany
+    public function participants()
     {
         return $this->hasMany(Models::classname(Participant::class));
     }
@@ -44,14 +44,17 @@ trait Messagable
      *
      * @codeCoverageIgnore
      */
-    public function threads(): BelongsToMany
+    public function threads()
     {
-        return $this->belongsToMany(
-            Models::classname(Thread::class),
-            Models::table('participants'),
-            'user_id',
-            'thread_id'
-        );
+        return $this
+            ->belongsToMany(
+                Models::classname(Thread::class),
+                Models::table('participants'),
+                'user_id',
+                'thread_id'
+            )
+            ->whereNull(Models::table('participants') . '.deleted_at')
+            ->withTimestamps();
     }
 
     /**
@@ -59,7 +62,7 @@ trait Messagable
      *
      * @return int
      */
-    public function newThreadsCount(): int
+    public function newThreadsCount()
     {
         return $this->threadsWithNewMessages()->count();
     }
@@ -69,7 +72,7 @@ trait Messagable
      *
      * @return int
      */
-    public function unreadMessagesCount(): int
+    public function unreadMessagesCount()
     {
         return Message::unreadForUser($this->getKey())->count();
     }
@@ -79,7 +82,7 @@ trait Messagable
      *
      * @return Collection
      */
-    public function threadsWithNewMessages(): Collection
+    public function threadsWithNewMessages()
     {
         return $this->threads()
             ->where(function (Builder $q) {

@@ -3,8 +3,12 @@
 @section('content')
 
     <aside id="panel">
-        <h3> Participant</h3>
+
+        
+
         <div class="messages-panel">
+
+          <div id="header-messages"> <h3> Participant</h3></div>
 
             <p class="message">Message body</p>
 

@@ -11,6 +11,25 @@ async function initializeCard(payments) {
     return card;
 }
 
+function buildPaymentRequest(payments) {
+
+    return payments.paymentRequest({
+
+        countryCode: 'US',
+
+        currencyCode: 'USD',
+
+        total: {
+
+            amount: '1.00',
+
+            label: 'Total',
+
+        },
+
+    });
+}
+
 async function ajax(data, back) {
 
     var xhttp = new XMLHttpRequest();
@@ -47,7 +66,7 @@ async function createPayment(token, total) {
     };
 
     function callback(re) {
-       // Boxeon.removeLoader();
+        // Boxeon.removeLoader();
         var res = JSON.parse(re);
 
         if (res.status == 'FAILURE') {
@@ -64,7 +83,7 @@ async function createPayment(token, total) {
 
     }
 
-   // Boxeon.loader();
+    // Boxeon.loader();
     return await ajax(data, callback);
 
 }
@@ -108,6 +127,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     if (!window.Square) {
         throw new Error('Square.js failed to load properly');
     }
+    
+
 
     let payments;
     try {
@@ -128,6 +149,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error('Initializing Card failed', e);
         return;
     }
+
 
     // Checkpoint 2.
     async function handlePaymentMethodSubmission(event, paymentMethod, total) {
@@ -152,6 +174,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         await handlePaymentMethodSubmission(event, card, total);
     });
 }
+
 
 
 );

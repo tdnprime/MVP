@@ -50,13 +50,19 @@ class SquareController extends Controller
                 "currency" => "USD"]]);
 
         if ($response->status() == 200) {
+
             $completed = json_decode($response);
+
             if ($completed->payment->status == 'COMPLETED') {
+
                 return json_encode(array('status' => 'SUCCESS'));
+
             } else {
+
                 return json_encode(array('status' => 'FAILURE'));
             }
         } else {
+
             return json_encode(array('status' => 'FAILURE'));
         }
 
@@ -87,7 +93,7 @@ class SquareController extends Controller
                 "postal_code" => $subscription[0]['postal_code'],
                 "country" => $subscription[0]['country_code'],
             ],
-            "cardholder_name" => $subscription[0]['fullname'], // verify with user
+            "cardholder_name" => $subscription[0]['fullname'],
             "reference_id" => '#early',
         ]);
         return json_decode($response);
@@ -100,7 +106,7 @@ class SquareController extends Controller
         $user = User::find($id);
         $subscription = Subscription::where('user_id', '=', $id)->get();
 
-        return $response = Http::withHeaders(
+        $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
                 'Content-Type' => 'application/json',
@@ -112,18 +118,20 @@ class SquareController extends Controller
             "source_id" => $request['source_id'],
             "card" => [
                 "billing_address" => [
-                    "address_line_1" =>  $subscription[0]['address_line_1'],
-                    "address_line_2" =>  $subscription[0]['address_line_2'] ?? "",
-                    "locality" =>  $subscription[0]['admin_area_2'],
-                    "administrative_district_level_1" =>  $subscription[0]['admin_area_1'],
-                    "postal_code" =>  $subscription[0]['postal_code'],
-                    "country" =>  $subscription[0]['country_code'],
+                    "address_line_1" => $subscription[0]['address_line_1'],
+                    "address_line_2" => $subscription[0]['address_line_2'] ?? "",
+                    "locality" => $subscription[0]['admin_area_2'],
+                    "administrative_district_level_1" => $subscription[0]['admin_area_1'],
+                    "postal_code" => $subscription[0]['postal_code'],
+                    "country" => $subscription[0]['country_code'],
                 ],
                 "cardholder_name" => $request['fullname'],
                 "customer_id" => $request['customer_id'],
                 "reference_id" => $request['id'],
             ],
         ]);
+
+        return json_decode($response);
 
     }
 
@@ -187,19 +195,18 @@ class SquareController extends Controller
 
             $user = User::find($id);
 
-            $card =  self::createCard([
+            $card = self::createCard([
 
-                    'source_id' => $subscription->sourceId,
-                    'fullname' => $sub[0]['fullname'],
-                    'customer_id' => $user->customer_id,
-                    'id' => $sub[0]['creator_id']
-    
-                ]);
+                'source_id' => $subscription->sourceId,
+                'fullname' => $sub[0]['fullname'],
+                'customer_id' => $user->customer_id,
+                'id' => $sub[0]['creator_id'],
 
-            return $card; // test
+            ]);
+
+            //return $card; // test
 
         }
-
 
         $response = Http::withHeaders(
             [
@@ -227,12 +234,17 @@ class SquareController extends Controller
 
                 'sub_id' => $response->subscription->id,
             ]);
-            
-            return redirect()->view('home.subscriptions', compact('user', $user))
-            ->with('message', 'Congratulations! You\'re subscribed to your favorite creator');
+
+            return redirect()->view('home.subscriptions',
+                compact('user', $user))
+                ->with('message', 'Congratulations!
+                You\'re subscribed to your favorite creator');
         }
 
-        return json_decode($response);
+        if ($response->status() != 200) {
+
+            return json_encode(array('status' => 'FAILURE'));
+        }
 
     }
 

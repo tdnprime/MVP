@@ -134,7 +134,7 @@
                 <div class='secinner'>
                     <h1 class='extra-large-font'>Rest secured</h1>
                     <p>
-                        We conduct all financial transactions securely via PayPal. No PayPal account
+                        We conduct all financial transactions securely via Square. No Square account
                         is necessary to subscribe.</p>
                 </div>
             </div>

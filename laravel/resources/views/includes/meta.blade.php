@@ -3,7 +3,7 @@
 <meta property="og:description" content="Be a free spirit, start a subscription box, raise capital, it's easy." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://boxeon.com" />
-<meta property="og:image" content="{{ asset('../assets/images/high-five.svg') }}" />
+<meta property="og:image" content="{{ asset('../assets/images/high-five.svg') }}">
 <meta name="description"
     content="Start and grow a subscription box business and secure monthly income. It's the wave of the future." />
 <meta name="keywords"
@@ -20,8 +20,8 @@
     href="{{ asset('../assets/css/mobile.css?v=3.6') }}" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert%20One">
-<script defer src="{{ asset('../assets/js/global.js?v=2.1') }}"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10788250660"></script>
+<script defer type="module" src="{{ asset('../assets/js/global.js?v=2.1') }}"></script>
+<script async defer src="https://www.googletagmanager.com/gtag/js?id=AW-10788250660"></script>
 
 @php
 

@@ -1570,7 +1570,6 @@ tr {
   width: 96%;
   height: 30em;
   padding: 2%;
-  background-color: white;
   position: relative;
 }
 
@@ -1862,7 +1861,7 @@ header {
 
 header #grid-1 {
   display: grid;
-  grid-gap: 7.7em;
+  grid-gap: 5.3em;
   grid-template-columns: 2em auto auto auto;
 }
 

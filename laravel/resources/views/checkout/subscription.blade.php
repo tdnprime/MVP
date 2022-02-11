@@ -8,7 +8,7 @@
                     <form id="payment-form">
                         <div id="card-container"></div>
                         <button class='button' id="card-button" data-type-total="{{ $subscription['total'] }}"
-                            type="button">Pay&nbsp;{{ $subscription['total'] }}</button>
+                            type="button">Pay&nbsp;${{ $subscription['total'] }}</button>
                         <input type='hidden' id='route' value='{{ $subscription['route'] }}'>
                     </form>
                    

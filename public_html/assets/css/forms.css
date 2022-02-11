@@ -10,6 +10,7 @@ form {
 #form-search-inline, .search {
 
   width: 100%;
+  max-width:none;
 
 }
 

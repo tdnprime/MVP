@@ -1,4 +1,5 @@
 <main class="fadein">
+
     <section id="left-aside">
         <h2>Home</h2>
         <a class="message-create" href="/home/subscribers" data-type-id="">
@@ -22,11 +23,15 @@
     </section>
 
     <aside id="panel">
+        @if (session()->has('message'))
+            <div class="alert alert-info">
+                <p class='centered'> {{ session()->get('message') }}</p>
+            </div>
+        @endif
         <div class='tab-content margin-top-4-em' data-id='anchor-tab-subscriptionscriptions'
             id='subscriptionscriptions-stream'>
 
             @if (isset($subscriptions) && count($subscriptions) > 0)
-
                 @foreach ($subscriptions as $box)
 
                     <div>
@@ -50,31 +55,28 @@
                             </div>
                         </div>
                     </div>
-
                 @endforeach
 
             @elseif (isset($subscribers) && count($subscribers) > 0)
 
                 @foreach ($subscribers as $sub)
-
                     <table class='subscriber'>
-						<tr>
-							<th></th>
-							<th>Paying</th>
-							<th>Interval</th>
-							<th>Location</th>
-							<th>Started</th>
-						  </tr>
                         <tr>
-                            <td><img  class='image-user-icon' src='{{ $sub->profile_photo_path }}'/>
-                            {{ $sub->given_name }}&nbsp;{{ $sub->family_name }}</td>
-							<td> ${{ $sub->price }}</td>
+                            <th></th>
+                            <th>Paying</th>
+                            <th>Interval</th>
+                            <th>Location</th>
+                            <th>Started</th>
+                        </tr>
+                        <tr>
+                            <td><img class='image-user-icon' src='{{ $sub->profile_photo_path }}' />
+                                {{ $sub->given_name }}&nbsp;{{ $sub->family_name }}</td>
+                            <td> ${{ $sub->price }}</td>
                             <td> Every {{ $sub->frequency }} month(s)</td>
-							<td> {{ $sub->admin_area_1 }}, {{ $sub->country_code }}</td>
-							<td>{{$sub->created_at }}</td>
+                            <td> {{ $sub->admin_area_1 }}, {{ $sub->country_code }}</td>
+                            <td>{{ $sub->created_at }}</td>
                         </tr>
                     </table>
-
                 @endforeach
 
             @else

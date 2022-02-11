@@ -6,6 +6,7 @@ use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class SquareController extends Controller
 {
@@ -16,6 +17,31 @@ class SquareController extends Controller
 
         $this->config = parse_ini_file(dirname(__DIR__, 3) .
             "/config/app.ini", true);
+
+    }
+    public function amount()
+    {
+
+        $id = auth()->user()->id;
+
+        $plan = Subscription::where('user_id', '=', $id)->get();
+
+        if ($plan[0]['rate'] > 0) {
+
+            return array(
+
+                "amount" => $plan[0]['price'] + $plan[0]['rate'],
+
+            );
+
+        } elseif ($plan[0]['rate'] == 0) {
+
+            return array(
+
+                "amount" => $plan[0]['price'],
+
+            );
+        }
 
     }
     /*
@@ -82,8 +108,8 @@ class SquareController extends Controller
             ]
         )->post($this->config['square']['customersEndpoint'], [
 
-            "given_name" => $user->given_name,
-            "family_name" => $user->family_name,
+            "given_name" => $subscription[0]['given_name'],
+            "family_name" => $subscription[0]['family_name'],
             "email_address" => $user->email,
             "address" => [
                 "address_line_1" => $subscription[0]['address_line_1'],
@@ -93,15 +119,46 @@ class SquareController extends Controller
                 "postal_code" => $subscription[0]['postal_code'],
                 "country" => $subscription[0]['country_code'],
             ],
-            "cardholder_name" => $subscription[0]['fullname'],
+            "cardholder_name" => $subscription[0]['given_name'] . "" . $subscription[0]['family_name'],
             "reference_id" => '#early',
         ]);
         return json_decode($response);
 
     }
 
+    public function createPayment($request)
+    {
+
+        $response = Http::withHeaders(
+            [
+                'Authorization' => "Bearer " . $this->config['square']['access_token'],
+                'Content-Type' => 'application/json',
+                'Square-Version' => "2022-01-20",
+            ]
+        )->post($this->config['square']['paymentsEndpoint'], [
+
+            "idempotency_key" => $request['source_id'],
+            "amount_money" => [
+                "amount" => $request['amount'],
+                "currency" => "USD",
+            ],
+            "source_id" => $request['source_id'],
+            "autocomplete" => true,
+            "location_id" => $this->config['square']['locationId'],
+            "reference_id" => "creator-id-" . $request['id'],
+
+        ]);
+        $created = json_decode($response);
+
+        if (isset($created->payment->id)) {
+
+            return $created->payment->id;
+        }
+    }
+
     public function createCard($request)
     {
+
         $id = auth()->user()->id;
         $user = User::find($id);
         $subscription = Subscription::where('user_id', '=', $id)->get();
@@ -115,7 +172,7 @@ class SquareController extends Controller
         )->post($this->config['square']['cardsEndpoint'], [
 
             "idempotency_key" => $request['source_id'],
-            "source_id" => $request['source_id'],
+            "source_id" => "cnon:card-nonce-ok",
             "card" => [
                 "billing_address" => [
                     "address_line_1" => $subscription[0]['address_line_1'],
@@ -127,8 +184,9 @@ class SquareController extends Controller
                 ],
                 "cardholder_name" => $request['fullname'],
                 "customer_id" => $request['customer_id'],
-                "reference_id" => $request['id'],
+                "reference_id" => "creator-id-" . $request['id'],
             ],
+
         ]);
 
         return json_decode($response);
@@ -176,8 +234,20 @@ class SquareController extends Controller
         $user = User::find($id);
         $sub = Subscription::where('user_id', '=', $id)->get();
         $subscription = json_decode($request['upsert']);
+        $price = self::amount();
 
-        if (isset($user->customer_id)) {
+
+        // Checkpoint 1.
+        $payment_id = self::createPayment([
+
+            'source_id' => $subscription->sourceId,
+            'amount' => $price['amount'] * 100,
+            'id' => $sub[0]['creator_id'],
+
+        ]);
+
+        // Checkpoint 2.
+        if (!isset($user->customer_id)) { 
 
             $new = self::createCustomer();
 
@@ -193,21 +263,22 @@ class SquareController extends Controller
                 return $new; //json errors
             }
 
+            // Reload
             $user = User::find($id);
 
+            // Checkpoint 3.
             $card = self::createCard([
 
-                'source_id' => $subscription->sourceId,
-                'fullname' => $sub[0]['fullname'],
+                'source_id' => $payment_id,
+                'fullname' => $sub[0]['given_name'] . "" . $sub[0]['family_name'],
                 'customer_id' => $user->customer_id,
                 'id' => $sub[0]['creator_id'],
 
             ]);
 
-            //return $card; // test
-
         }
 
+        // Create the subscription
         $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
@@ -219,10 +290,10 @@ class SquareController extends Controller
             "idempotency_key" => $subscription->sourceId,
             "plan_id" => $sub[0]['plan_id'],
             "customer_id" => $user->customer_id,
-            "card_id" => $card->id,
+            "card_id" => $card->card->id,
             "location_id" => $this->config['square']['locationId'],
             "start_date" => $sub[0]['created_at'],
-            "tax_percentage" => '5',
+            "tax_percentage" => '0',
             'timezone' => 'America/New_York',
             "source" => [
                 "name" => "Boxeon",
@@ -235,10 +306,8 @@ class SquareController extends Controller
                 'sub_id' => $response->subscription->id,
             ]);
 
-            return redirect()->view('home.subscriptions',
-                compact('user', $user))
-                ->with('message', 'Congratulations!
-                You\'re subscribed to your favorite creator');
+            Session::flash('message', 'Thank you for your subscription!');
+            return json_encode(array('redirectTo' => '/home/subscriptions'));
         }
 
         if ($response->status() != 200) {
@@ -247,6 +316,8 @@ class SquareController extends Controller
         }
 
     }
+
+    
 
     public function deleteSubscription(Request $request)
     {

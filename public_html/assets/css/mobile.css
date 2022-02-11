@@ -117,9 +117,9 @@ NOTE:
   }
   #box-masthead-inner-wrapper {
     display: block;
-    background-image: url(../images/alt-blue-bg.svg);
     padding:0 !important;
     width:60%;
+    box-shadow: none;
   }
   #box-headline {
     width: 100%;

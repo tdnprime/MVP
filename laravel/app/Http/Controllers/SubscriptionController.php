@@ -21,11 +21,12 @@ class SubscriptionController extends Controller
 
     public function checkout()
     {
+        $price = self::amount();
 
         $subscription = array(
-            'total' => 100,
+            'total' => $price['amount'],
             'count' => 1,
-            'description' => 'Subscription decription',
+            'description' => 'Complete your subscription at $' . $price['amount'] . ' per month.',
             'route' => '/checkout/subscription/create/?upsert=',
         );
 
@@ -33,6 +34,32 @@ class SubscriptionController extends Controller
         $user = User::find($id);
         return view('checkout.subscription', compact('user', $user))
             ->with('subscription', $subscription);
+
+    }
+
+    private function amount()
+    {
+
+        $id = auth()->user()->id;
+
+        $plan = Subscription::where('user_id', '=', $id)->get();
+
+        if ($plan[0]['rate'] > 0) {
+
+            return array(
+
+                "amount" => $plan[0]['price'] + $plan[0]['rate'],
+
+            );
+
+        } elseif ($plan[0]['rate'] == 0) {
+
+            return array(
+
+                "amount" => $plan[0]['price'],
+
+            );
+        }
 
     }
     /**
@@ -46,7 +73,6 @@ class SubscriptionController extends Controller
     {
         $id = auth()->user()->id;
         $user = User::find($id);
-        $subscription = new Subscription();
 
         $id = auth()->user()->id;
         $user = User::find($id);
@@ -113,7 +139,8 @@ class SubscriptionController extends Controller
             'rate_id' => $data->rate_id,
             'rate' => $data->rate,
             'shipment' => $data->shipment,
-            'fullname' => $data->fullname,
+            'given_name' => $data->given_name,
+            'family_name' => $data->family_name,
             'status' => 2, // 2 = pending - the subscription is not yet paid for
             'carrier' => $data->carrier,
         );

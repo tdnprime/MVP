@@ -10,6 +10,7 @@ form {
 #form-search-inline, .search {
 
   width: 100%;
+  max-width:none;
 
 }
 
@@ -113,6 +114,7 @@ input[type="submit"], .button, button {
   max-height: 49px;
   letter-spacing: 1px;
   margin-bottom: 1em;
+  margin-right: 1em;
   outline: none;
   padding: .8em 1.5em .8em 1.5em;
 

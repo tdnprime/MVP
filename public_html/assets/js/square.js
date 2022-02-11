@@ -2,7 +2,6 @@
 const appId = 'sandbox-sq0idb-FrLggaZMvpJBc2UDN3zKlg';
 const locationId = 'LABQBPRYSFTE8';
 
-
 async function initializeCard(payments) {
 
     const card = await payments.card();
@@ -41,12 +40,20 @@ async function ajax(data, back) {
 
         if (this.readyState == 4 && this.status == 200) {
 
-            back(this.responseText);
+            var response = JSON.parse(this.responseText);
+            if (response.redirectTo) {
+                window.top.location.assign(response.redirectTo);
+               
+            }else if(response.status == 'FAILURE'){
+
+                 back(this.responseText);
+            }
         }
     }
 }
 
 async function createPayment(token, total) {
+
 
     const body = JSON.stringify({
         locationId,
@@ -66,7 +73,7 @@ async function createPayment(token, total) {
     };
 
     function callback(re) {
-        // Boxeon.removeLoader();
+
         var res = JSON.parse(re);
 
         if (res.status == 'FAILURE') {
@@ -78,12 +85,10 @@ async function createPayment(token, total) {
             displayPaymentResults('SUCCESS');
             cardButton.disabled = true;
 
-
         }
 
     }
 
-    // Boxeon.loader();
     return await ajax(data, callback);
 
 }
@@ -127,8 +132,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     if (!window.Square) {
         throw new Error('Square.js failed to load properly');
     }
-    
-
 
     let payments;
     try {
@@ -150,13 +153,13 @@ document.addEventListener('DOMContentLoaded', async function () {
         return;
     }
 
-
     // Checkpoint 2.
     async function handlePaymentMethodSubmission(event, paymentMethod, total) {
         event.preventDefault();
 
         try {
-            // disable the submit button as we await tokenization and make a payment request.
+            // disable the submit button as we await tokenization 
+            // and make a payment request.
             const token = await tokenize(paymentMethod);
             const paymentResults = await createPayment(token, total);
 

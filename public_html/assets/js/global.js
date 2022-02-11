@@ -668,7 +668,9 @@ Shipping = {
 
     document.getElementById("m-body").innerHTML =
       "<h2>2. Provide your address</h2><form id='checkout-address-form' onsubmit='return'>"
-      + "<fieldset><input type='text' name='fullname' placeHolder='Name on your credit / debit card' required value=''></input>"
+      + "<fieldset> <input type='text' name='given_name' placeHolder='Given name on your credit / debit card' required value=''></input>"
+      +  "<input type='text' name='family_name' placeHolder='Family name on your credit / debit card' required value=''></input>"
+
       + "<input type='text' name='address_line_1' placeHolder='Street address' required value=''></input>"
       + "<input type='text' name='address_line_2' placeHolder='Street address line 2 (optional)' value=''></input>"
       + "<input type='text' name='admin_area_2' required placeHolder='City' value=''></input>"

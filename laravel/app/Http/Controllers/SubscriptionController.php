@@ -191,7 +191,7 @@ class SubscriptionController extends Controller
             'given_name' => $data->given_name,
             'family_name' => $data->family_name,
             'status' => 2, // 2 = pending - the subscription is not yet paid for
-            'carrier' => $data->carrier,
+            'carrier' => $data->carrier
         );
         DB::table('subscriptions')->insert($array);
     }

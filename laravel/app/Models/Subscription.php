@@ -11,7 +11,7 @@ class Subscription extends Model
 
     protected $fillable = [
         'creator_id',
-        'uid',
+        'user_id',
         'given_name',
         'family_name',
         'cpf',
@@ -42,9 +42,9 @@ class Subscription extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function getDateFormat()
+   /* public function getDateFormat()
     {
         return 'U';
-    }
+    }*/
 
 }

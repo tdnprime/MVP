@@ -102,7 +102,7 @@ class SquareController extends Controller
             "cardholder_name" => $subscription[0]['given_name'] . "" . $subscription[0]['family_name'],
             "reference_id" => '#early',
         ]);
-        return $response;
+        return json_decode($response);
 
     }
 
@@ -304,9 +304,9 @@ class SquareController extends Controller
                 'status' => 1,
             ]);
 
-            SubscriptionController::updateStock(
+        SubscriptionController::updateStock(
 
-                $sub[0]['creator_id'], $sub[0]['version'], $sub[0]['stock']
+               $sub[0]['creator_id'], $sub[0]['version'], $sub[0]['stock']
             );
 
             Session::flash('message', 'Thank you for your subscription!');

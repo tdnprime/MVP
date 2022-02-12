@@ -73,6 +73,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Box::class);
     }
+    public function subscription()
+    {
+        return $this->hasMany(Subscription::class);
+    }
 //  Change:
     public function shippingAddress()
     {

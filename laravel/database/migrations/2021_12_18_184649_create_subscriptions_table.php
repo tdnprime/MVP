@@ -35,7 +35,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('rate')->nullable();
             $table->string('shipment')->nullable();
             $table->string('plan_id');
-            $table->string('order_id')->nullable();
+            $table->string('card_id')->nullable();
             $table->string('last_shipping')->nullable();
             $table->string('label')->nullable();
             $table->string('carrier')->nullable();

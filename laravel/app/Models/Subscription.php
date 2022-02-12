@@ -32,7 +32,7 @@ class Subscription extends Model
         'rate',
         'shipment',
         'plan_id',
-        'order_id',
+        'card_id',
         'last_shipping',
         'label',
         'carrier'

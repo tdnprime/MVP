@@ -4,7 +4,7 @@
         @if (isset($subscription))
              
                 <div class="centered margin-bottom-4-em">
-                    <p class="centered center">{{ $subscription['description'] }}</p>
+                    <p class="centered center">{{$user->given_name}}, {{ $subscription['description'] }}.</p>
                     <form id="payment-form">
                         <div id="card-container"></div>
                         <button class='button' id="card-button" data-type-total="{{ $subscription['total'] }}"

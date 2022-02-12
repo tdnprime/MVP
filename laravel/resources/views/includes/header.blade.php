@@ -8,7 +8,7 @@
     <a id='logo' href="/home/index" title='Boxeon home'>
         <img id='logo' src='{{ asset('../assets/images/logo.svg') }}' alt='logo' />
         <span id="beta">Beta</span></a>
-        <a href="/school/home"><span class="material-icons">school</span>&nbsp;Learn</a>
+        <a href="/school/home"><span class="material-icons icon-in-header">school</span>&nbsp;Learn</a>
         <span id="search-ico" class="material-icons"> </span>
             <form class='search hiden' action="/search/creator" method="get">
                 {{ csrf_field() }}

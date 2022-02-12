@@ -25,7 +25,7 @@ Brown skin: #a0616a
     margin-right: 1em;
     outline: none;
     padding: .8em 1.5em .8em 1.5em;
-    
+
   }
 }
 
@@ -552,12 +552,14 @@ a:visited {
   vertical-align: middle;
   line-height: 2em;
 }
-#card-button{
+
+#card-button {
   background-image: url("../images/lock.png");
   background-repeat: no-repeat;
   background-position: left;
   background-position: 7em;
 }
+
 #home input[type="radio"] {
   clear: both;
   float: left;
@@ -793,7 +795,6 @@ a:visited {
 #m-content #exe-sub {
   margin-left: auto;
   margin-right: auto;
-  width: 11em;
   display: block;
 }
 
@@ -1894,6 +1895,9 @@ header a {
   display: none;
 }
 
+.icon-in-header {
+  margin-right: .5em !important;
+}
 
 .row-gap-4-em {
   row-gap: 4em;

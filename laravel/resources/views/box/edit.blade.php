@@ -9,8 +9,7 @@
                     <p class="text-heading-label">PLEASE HOLD</p>
                     <h1 class="ginormous">Your
                         subscription box isn't ready</h1>
-                    <p id="pitch">If you started creating a box and chose to have us help you with product
-                        curation, we will be
+                    <p id="pitch">If you are in the Boxeon Partner Program, we will be
                         contacting you by email to help you finish creating your box. Please ensure our emails are not in
                         your spam folder.</p>
                     <a href="/messages/inbox" class="button">Contact us</a>
@@ -63,8 +62,7 @@
                                 <a href='#' class='one-em-font underline' id='video-instructions'>call to action YouTube
                                     video</a>.
                                 You may complete this step at any time by signing in and clicking
-                                on {{ $user->given_name }}'s
-                                Boxeon.
+                                on your user icon at the top right-hand corner of any page.
                             </p>
                         </div>
                         <form action='/box/embed' method='post' id='embed-form'>

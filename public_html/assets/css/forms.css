@@ -6,6 +6,9 @@ form {
   margin-right: auto;
 
 }
+#check-url{
+  line-height: 1em !important;
+}
 
 #form-search-inline, .search {
 

@@ -21,28 +21,77 @@ class SubscriptionController extends Controller
 
     public function checkout()
     {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
         $price = self::amount();
+        $creator = self::creator();
+        $per_cycle = self::frequency();
 
         $subscription = array(
             'total' => $price['amount'],
-            'count' => 1,
-            'description' => 'Complete your subscription at $' . $price['amount'] . ' per month.',
+            'description' => 'complete your subscription to ' .
+            $creator . '\'s' . ' subscription box at $' .
+            $price['amount'] . ' ' . $per_cycle,
             'route' => '/checkout/subscription/create/?upsert=',
         );
 
-        $id = auth()->user()->id;
-        $user = User::find($id);
         return view('checkout.subscription', compact('user', $user))
             ->with('subscription', $subscription);
 
     }
 
-    private function amount()
+    private function frequency()
     {
 
         $id = auth()->user()->id;
 
-        $plan = Subscription::where('user_id', '=', $id)->get();
+        $frequency = Subscription::where('user_id', '=', $id)
+        ->orderByDesc('created_at')
+        ->limit(1)
+        ->get();
+
+        if ($frequency[0]['frequency'] == 1) {
+
+            return "per month";
+
+        } elseif ($frequency[0]['frequency'] == 2) {
+
+            return "every two months";
+
+        } elseif ($frequency[0]['frequency'] == 3) {
+
+            return "every ninety days";
+        }
+
+    }
+
+    private function creator()
+    {
+
+        $id = auth()->user()->id;
+
+        $subscription = Subscription::where('user_id', '=', $id)
+        ->orderByDesc('created_at')
+        ->limit(1)
+        ->get();
+
+        $creator = User::where('id', '=', $subscription[0]['creator_id'])
+            ->get();
+
+        return $creator[0]['given_name'] . " " . $creator[0]['family_name'];
+
+    }
+
+    public function amount()
+    {
+
+        $id = auth()->user()->id;
+
+        $plan = Subscription::where('user_id', '=', $id)
+        ->orderByDesc('created_at')
+        ->limit(1)
+        ->get();
 
         if ($plan[0]['rate'] > 0) {
 
@@ -147,21 +196,6 @@ class SubscriptionController extends Controller
         DB::table('subscriptions')->insert($array);
     }
 
-    public function complete($callback)
-    {
-
-        $id = auth()->user()->id;
-        $user = User::find($id);
-        // Update subscription table after Payment processor callback
-        $add = json_decode($callback);
-        // NB - Works as an unprepared update, but should be and insert statement:
-        DB::unprepared("update subscriptions set status=1, sub_id='$add->sub_id', order_id='$add->order_id' WHERE user_id=$user->id AND creator_id=$add->creator_id AND plan_id='$add->plan_id'");
-
-        //Update the in_stock column in the seller's boxes row
-        $this->updateStock($add->creator_id, $add->version, $add->stock);
-        return 1;
-    }
-
     protected function updateStock($creator_id, $version, $stock)
     {
         $new = $stock - 1;
@@ -170,6 +204,7 @@ class SubscriptionController extends Controller
             ->where('vid', '=', $version)
             ->update(['in_stock' => $new]);
     }
+
     protected function addStock($box)
     {
         $add = json_decode($box);

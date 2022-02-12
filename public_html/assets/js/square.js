@@ -10,25 +10,6 @@ async function initializeCard(payments) {
     return card;
 }
 
-function buildPaymentRequest(payments) {
-
-    return payments.paymentRequest({
-
-        countryCode: 'US',
-
-        currencyCode: 'USD',
-
-        total: {
-
-            amount: '1.00',
-
-            label: 'Total',
-
-        },
-
-    });
-}
-
 async function ajax(data, back) {
 
     var xhttp = new XMLHttpRequest();
@@ -39,7 +20,7 @@ async function ajax(data, back) {
     xhttp.onreadystatechange = function () {
 
         if (this.readyState == 4 && this.status == 200) {
-
+            console.log(this.responseText);
             var response = JSON.parse(this.responseText);
             if (response.redirectTo) {
                 window.top.location.assign(response.redirectTo);

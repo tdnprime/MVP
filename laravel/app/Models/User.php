@@ -65,18 +65,25 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $appends = [
         'profile_photo_url',
     ];
+
+
 
     public function boxes()
     {
         return $this->hasOne(Box::class);
     }
+
+
     public function subscription()
     {
         return $this->hasMany(Subscription::class);
     }
+
+    
 //  Change:
     public function shippingAddress()
     {

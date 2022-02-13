@@ -194,18 +194,31 @@ Brown skin: #a0616a
   width: 90px;
 }
 
+#close-dialog,
 #close, #m-close {
   color: #8C8C8C;
   font-family: "Concert One";
   text-transform: uppercase;
 }
-
+#close-dialog:hover,
 #close:hover, #m-close:hover, #m-close:focus {
   color: red;
   cursor: pointer;
   text-decoration: none;
 }
-
+#close-dialog{
+  clear:both;
+  font-size: 1em;
+}
+dialog{
+  height:50px;
+  z-index:10000;
+}
+dialog p{
+  max-width:400px;
+  min-width: 200px;
+  margin:auto;
+}
 #text-step0-label {
   grid-column-start: 1;
   grid-row-start: 2;
@@ -1066,31 +1079,55 @@ a:visited {
 }
 
 
-
-.alert {
-  background-color: #fafa89;
-  background-image: url('../images/alt-blue-bg.svg');
-  background-size: cover;
-  color: #000 !important;
-  margin-bottom: 2em;
-  margin-top: 1em;
-  padding: 1em;
-  text-align: left !important;
-  width: fit-content;
-  max-width: 95%;
-  min-height: 5em;
-  display: grid;
-  grid-template-columns: 30px 90%;
-  grid-gap: 1em;
+.celebrate{
+  background-image: url(../images/confetti-40.gif);
+  background-repeat: repeat-x;
 }
 
-.alert-info {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+@keyframes alerts {
+  0% {
+    opacity:1;
+    position:fixed;
+    top:-5em;
+  }
+  50% {
+    opacity:1;
+    position:fixed;
+    top:1em;
+  }
+  100% {
+    opacity:0;
+  }
+
+
+}
+
+.subscriptions-stream{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+.subscription-card{
+  margin: 2%;
+  max-width: 256px;
+
+}
+.alert {
+  padding: 1em;
+  padding-left:2.5em;
+  padding-right:2.5em;
   display: block;
   font-weight: bold;
+  border-radius: 25px;
+  background: #f8f8c1;
+  box-shadow:  20px 20px 60px #d3d3a4;
+  animation-name: alerts !important;
+  animation-duration: 10s;
+  position: fixed;
+  top:1em;
+  opacity:0;
+  
 }
+
 
 #image-error-page {
   width: 30%;

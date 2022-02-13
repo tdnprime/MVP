@@ -78,7 +78,7 @@ Boxeon = {
       }
     }
   },
-  
+
   generateUUID: function () {
     let time = new Date().getTime();
     if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
@@ -151,6 +151,7 @@ Boxeon = {
       }
 
       container.prepend(div);
+      
       div.style.position = "absolute";
     }
   },
@@ -669,7 +670,7 @@ Shipping = {
     document.getElementById("m-body").innerHTML =
       "<h2>2. Provide your address</h2><form id='checkout-address-form' onsubmit='return'>"
       + "<fieldset> <input type='text' name='given_name' placeHolder='Given name on your credit / debit card' required value=''></input>"
-      +  "<input type='text' name='family_name' placeHolder='Family name on your credit / debit card' required value=''></input>"
+      + "<input type='text' name='family_name' placeHolder='Family name on your credit / debit card' required value=''></input>"
 
       + "<input type='text' name='address_line_1' placeHolder='Street address' required value=''></input>"
       + "<input type='text' name='address_line_2' placeHolder='Street address line 2 (optional)' value=''></input>"
@@ -1107,8 +1108,35 @@ window.onload = function () {
 
   // LISTENERS
 
+
+  if (localStorage.getItem('celebrate') == 'true') {
+
+    document.getElementById('container').className = 'celebrate';
+
+    localStorage.removeItem('celebrate');
+
+  }
+
+  if (document.getElementById('alert')) {
+
+    document.getElementById('alert').show();
+
+    if (document.getElementById('close-dialog')) {
+
+      document.getElementById('close-dialog').addEventListener('click', function () {
+
+        document.getElementById('alert').close();
+
+      })
+
+      // alert ();
+
+    }
+  }
   if (document.getElementById('exe-sub')) {
+
     document.getElementById('exe-sub').addEventListener('click', function () {
+
       Boxeon.loader();
       var CTA = this;
       Boxeon.working(CTA);
@@ -1116,11 +1144,17 @@ window.onload = function () {
       Boxeon.router(a);
     });
   }
-  if (document.getElementById('exe-unsub')) {
-    document.getElementById('exe-unsub').addEventListener('click', function () {
-      var a = this;
-      Boxeon.router(a);
-    });
+  
+  if (document.getElementsByClassName('exe-unsub')) {
+    var btns = document.getElementsByClassName('exe-unsub');
+    var num = btns.length;
+    for (var i = 0; i < num; i++) {
+      btns[i].addEventListener('click', function () {
+        var a = this;
+        Boxeon.router(a);
+      });
+    }
+      
   }
   if (document.getElementById('exe-sub-alt')) {
     document.getElementById('exe-sub-alt').addEventListener('click', function () {
@@ -1328,7 +1362,6 @@ window.addEventListener('onbeforeunload', function () {
 
 
 });
-
 
 
 //import instance from './modules/messages.js'

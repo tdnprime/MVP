@@ -22,8 +22,8 @@
 
         <div id='masthead'>
             @if (session()->has('message'))
-            <div class="alert alert-info">
-               <p class='centered'> {{ session()->get('message') }}&nbsp;<a class='one-em-font' href='/{{$box->box_url}}'> boxeon.com/{{$box->box_url}}</a></p>
+            <dialog id="alert" class="alert">
+               <p class='centered'> {{ session()->get('message') }}&nbsp;<a class='one-em-font primary-color' href='/{{$box->box_url}}'> boxeon.com/{{$box->box_url}}</a></p>
             </div>  
         @endif
             <div id='box-masthead-inner-wrapper'>

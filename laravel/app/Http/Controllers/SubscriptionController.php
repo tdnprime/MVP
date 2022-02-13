@@ -47,9 +47,9 @@ class SubscriptionController extends Controller
         $id = auth()->user()->id;
 
         $frequency = Subscription::where('user_id', '=', $id)
-        ->orderByDesc('created_at')
-        ->limit(1)
-        ->get();
+            ->orderByDesc('created_at')
+            ->limit(1)
+            ->get();
 
         if ($frequency[0]['frequency'] == 1) {
 
@@ -72,9 +72,9 @@ class SubscriptionController extends Controller
         $id = auth()->user()->id;
 
         $subscription = Subscription::where('user_id', '=', $id)
-        ->orderByDesc('created_at')
-        ->limit(1)
-        ->get();
+            ->orderByDesc('created_at')
+            ->limit(1)
+            ->get();
 
         $creator = User::where('id', '=', $subscription[0]['creator_id'])
             ->get();
@@ -89,9 +89,9 @@ class SubscriptionController extends Controller
         $id = auth()->user()->id;
 
         $plan = Subscription::where('user_id', '=', $id)
-        ->orderByDesc('created_at')
-        ->limit(1)
-        ->get();
+            ->orderByDesc('created_at')
+            ->limit(1)
+            ->get();
 
         if ($plan[0]['rate'] > 0) {
 
@@ -170,33 +170,33 @@ class SubscriptionController extends Controller
     {
         $id = auth()->user()->id;
         $user = User::find($id);
+        $subscription = new Subscription();
 
-        $array = array(
-            'creator_id' => $data->creator_id,
-            'user_id' => $user->id,
-            'version' => $data->version,
-            'frequency' => $data->frequency,
-            'price' => $data->total,
-            'cpf' => $data->cpf, // Cadastro de Pessoas Físicas.
-            'plan_id' => $data->plan_id,
-            'address_line_1' => $data->address_line_1,
-            'address_line_2' => $data->address_line_2,
-            'admin_area_1' => $data->admin_area_1,
-            'admin_area_2' => $data->admin_area_2,
-            'postal_code' => $data->postal_code,
-            'country_code' => $data->country_code,
-            'rate_id' => $data->rate_id,
-            'rate' => $data->rate,
-            'shipment' => $data->shipment,
-            'given_name' => $data->given_name,
-            'family_name' => $data->family_name,
-            'status' => 2, // 2 = pending - the subscription is not yet paid for
-            'carrier' => $data->carrier
-        );
-        DB::table('subscriptions')->insert($array);
+        $subscription->creator_id = $data->creator_id;
+        $subscription->user_id = $user->id;
+        $subscription->version = $data->version;
+        $subscription->frequency = $data->frequency;
+        $subscription->price = $data->total;
+        $subscription->cpf = $data->cpf; // Cadastro de Pessoas Físicas.
+        $subscription->plan_id = $data->plan_id;
+        $subscription->address_line_1 = $data->address_line_1;
+        $subscription->address_line_2 = $data->address_line_2;
+        $subscription->admin_area_1 = $data->admin_area_1;
+        $subscription->admin_area_2 = $data->admin_area_2;
+        $subscription->postal_code = $data->postal_code;
+        $subscription->country_code = $data->country_code;
+        $subscription->rate_id = $data->rate_id;
+        $subscription->rate = $data->rate;
+        $subscription->shipment = $data->shipment;
+        $subscription->given_name = $data->given_name;
+        $subscription->family_name = $data->family_name;
+        $subscription->status = 2; // 2 = pending - the subscription is not yet paid for
+        $subscription->carrier = $data->carrier;
+
+        $user->subscription()->save($subscription);
     }
 
-    protected function updateStock($creator_id, $version, $stock)
+    public function updateStock($creator_id, $version, $stock)
     {
         $new = $stock - 1;
         DB::table('boxes')
@@ -205,7 +205,7 @@ class SubscriptionController extends Controller
             ->update(['in_stock' => $new]);
     }
 
-    protected function addStock($box)
+    public function addStock($box)
     {
         $add = json_decode($box);
         $stock = DB::table('boxes')
@@ -222,7 +222,7 @@ class SubscriptionController extends Controller
             ->update(['in_stock' => $new]);
 
     }
-    protected function boxeonRemove($box)
+    public function boxeonRemove($box)
     {
 
         $id = auth()->user()->id;

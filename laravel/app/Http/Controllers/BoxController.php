@@ -180,6 +180,7 @@ class BoxController extends Controller
         $box->proddesc = $request->input('proddesc');
 
         $user->boxes()->save($box);
+        
         return redirect()->route('box.edit', $id)
             ->with(['box' => $box]);
 

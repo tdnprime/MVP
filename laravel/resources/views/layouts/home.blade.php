@@ -6,6 +6,7 @@
 </head>
 
 <body id='home'>
+   
     <div id="container">
         <span></span><!-- Hack-->
         @include('includes.header')

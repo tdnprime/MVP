@@ -270,6 +270,7 @@ class SquareController extends Controller
         }
 
         // Create the subscription
+        $created_at = $sub[0]['created_at']->format('Y-m-d');
         $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
@@ -283,7 +284,7 @@ class SquareController extends Controller
             "customer_id" => $user->customer_id,
             "card_id" => $saved->card->id,
             "location_id" => $this->config['square']['locationId'],
-            "start_date" => $sub[0]['created_at'],
+            "start_date" =>  $created_at,
             "tax_percentage" => '0',
             'timezone' => 'America/New_York',
             "source" => [

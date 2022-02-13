@@ -10,6 +10,40 @@ async function initializeCard(payments) {
     return card;
 }
 
+async function removeLoader() {
+
+    if (document.getElementsByClassName("loader")[0]) {
+
+        var loader = document.getElementsByClassName("loader")[0];
+
+        loader.remove();
+
+    }
+}
+
+async function loader() {
+
+    if (!window.top.document.getElementsByClassName("loader")[0]) {
+
+        let div = window.top.document.createElement("div");
+
+        div.className = "loader";
+
+        if (window.top.document.getElementById("container")) {
+
+            let container = window.top.document.getElementById("container");
+
+        } else if (window.top.document.getElementById("m-window")) {
+
+            let container = window.top.document.getElementById("m-window");
+        }
+
+        container.prepend(div);
+        div.style.position = "absolute";
+    }
+}
+
+
 async function ajax(data, back) {
 
     var xhttp = new XMLHttpRequest();
@@ -20,14 +54,18 @@ async function ajax(data, back) {
     xhttp.onreadystatechange = function () {
 
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
-            var response = JSON.parse(this.responseText);
-            if (response.redirectTo) {
-                window.top.location.assign(response.redirectTo);
-               
-            }else if(response.status == 'FAILURE'){
 
-                 back(this.responseText);
+            var response = JSON.parse(this.responseText);
+
+            if (response.redirectTo) {
+
+                localStorage.setItem('celebrate', 'true');
+
+                window.top.location.assign(response.redirectTo);
+
+            } else if (response.status == 'FAILURE') {
+
+                back(this.responseText);
             }
         }
     }
@@ -58,12 +96,16 @@ async function createPayment(token, total) {
         var res = JSON.parse(re);
 
         if (res.status == 'FAILURE') {
+
             displayPaymentResults('FAILURE');
+
             cardButton.disabled = false;
 
 
         } else if (res.status == 'SUCCESS') {
+
             displayPaymentResults('SUCCESS');
+
             cardButton.disabled = true;
 
         }
@@ -154,6 +196,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const cardButton = document.getElementById('card-button');
 
     cardButton.addEventListener('click', async function (event) {
+
         const total = cardButton.getAttribute('data-type-total');
         await handlePaymentMethodSubmission(event, card, total);
     });

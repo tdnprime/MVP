@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,18 @@ Route::get('/search/creator', 'App\Http\Controllers\SearchController@creator')->
 Route::get('/school/home', 'App\Http\Controllers\SchoolController@what')->name('school.home');
 Route::get('/school/how', 'App\Http\Controllers\SchoolController@how')->name('school.how');
 Route::get('/school/why', 'App\Http\Controllers\SchoolController@why')->name('school.why');
+
+Route::group(['middleware' => ['isAdmin']], function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', 'App\Http\Controllers\AdminController@dashboard')->name('admin.dashboard');
+        Route::get('/boxes', 'App\Http\Controllers\AdminController@boxes')->name('admin.boxes');
+        Route::get('/subscriptions', 'App\Http\Controllers\AdminController@subscriptions')->name('admin.subscriptions');
+        Route::get('/invitations', 'App\Http\Controllers\AdminController@invitations')->name('admin.invitations');
+        Route::get('/forms', 'App\Http\Controllers\AdminController@forms')->name('admin.forms');
+        Route::get('/emails', 'App\Http\Controllers\AdminController@emails')->name('admin.emails');
+        Route::get('/entry', 'App\Http\Controllers\AdminController@entry')->name('admin.entry');
+    });
+});
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -76,12 +90,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     });
     Route::prefix('shipping')->group(function () {
         Route::get('/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('shipping.addresses');
- 
+
      });
 
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('shipping.rates');
     Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
-   
+
     Route::prefix('account')->group(function () {
 
         Route::get('/home', 'App\Http\Controllers\HomeController@account')->name('account.home');
@@ -98,7 +112,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('show/{id}', ['as' => 'messages.show', 'uses' => 'App\Http\Controllers\MessagesController@show']);
         Route::put('update/{id}', ['as' => 'messages.update', 'uses' => 'App\Http\Controllers\MessagesController@update']);
     });
-   
+
     Route::post('/plan/create', 'App\Http\Controllers\SubscriptionController@createplan');
     Route::get('/plan/create', 'App\Http\Controllers\SubscriptionController@createplan');
 

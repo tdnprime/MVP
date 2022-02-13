@@ -42,6 +42,10 @@ class GoogleController extends Controller
                     $cookie = Cookie::forget('box');
                     return redirect($location)->withCookie($cookie);
                 } else {
+                    if (Auth::user()->user_type == 'Adminstrator')
+                    {
+                        return 'admin';
+                    }
                     return redirect('/home/index');
                 }
             } else {
@@ -55,7 +59,9 @@ class GoogleController extends Controller
                     'password' => encrypt('my-google'),
                 ]);
 
+
                 Auth::login($user, true);
+
                 // Mail::to($user->email)->send(new WelcomeUser($user));
                // $mail = new MailController();
                // $mail->welcome();
@@ -86,4 +92,6 @@ class GoogleController extends Controller
             echo 0;
         }
     }
+
+
 }

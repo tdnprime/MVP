@@ -44,7 +44,7 @@ class GoogleController extends Controller
                 } else {
                     if (Auth::user()->user_type == 'Adminstrator')
                     {
-                        return 'admin';
+                        return redirect('/admin/dashboard');
                     }
                     return redirect('/home/index');
                 }

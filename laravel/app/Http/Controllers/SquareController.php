@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\SubscriptionController;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
-use App\Http\Controllers\SubscriptionController;
 
 class SquareController extends Controller
 {
@@ -76,9 +76,9 @@ class SquareController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
         $subscription = Subscription::where('user_id', '=', $id)
-        ->orderByDesc('created_at')
-        ->limit(1)
-        ->get();
+            ->orderByDesc('created_at')
+            ->limit(1)
+            ->get();
 
         $response = Http::withHeaders(
             [
@@ -142,9 +142,9 @@ class SquareController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
         $subscription = Subscription::where('user_id', '=', $id)
-        ->orderByDesc('created_at')
-        ->limit(1)
-        ->get();
+            ->orderByDesc('created_at')
+            ->limit(1)
+            ->get();
 
         $response = Http::withHeaders(
             [
@@ -217,12 +217,12 @@ class SquareController extends Controller
         $user = User::find($id);
 
         $sub = Subscription::where('user_id', '=', $id)
-        ->orderByDesc('created_at')
-        ->limit(1)
-        ->get();
+            ->orderByDesc('created_at')
+            ->limit(1)
+            ->get();
 
         $subscription = json_decode($request['upsert']);
-        $price =  SubscriptionController::amount();
+        $price = SubscriptionController::amount();
 
         // Checkpoint 1.
         $payment_id = self::createPayment([
@@ -284,7 +284,7 @@ class SquareController extends Controller
             "customer_id" => $user->customer_id,
             "card_id" => $saved->card->id,
             "location_id" => $this->config['square']['locationId'],
-            "start_date" =>  $created_at,
+            "start_date" => $created_at,
             "tax_percentage" => '0',
             'timezone' => 'America/New_York',
             "source" => [
@@ -296,18 +296,18 @@ class SquareController extends Controller
         if (isset($response->subscription->id)) {
 
             Subscription::where('user_id', '=', $id)
-            ->where('creator_id','=', $sub[0]['creator_id'])
-            ->where('plan_id', '=', $sub[0]['plan_id'])
-            ->update([
+                ->where('creator_id', '=', $sub[0]['creator_id'])
+                ->where('plan_id', '=', $sub[0]['plan_id'])
+                ->update([
 
-                'sub_id' => $response->subscription->id,
-                'card_id' => $response->subscription->card_id,
-                'status' => 1,
-            ]);
+                    'sub_id' => $response->subscription->id,
+                    'card_id' => $response->subscription->card_id,
+                    'status' => 1,
+                ]);
 
-        SubscriptionController::updateStock(
+            SubscriptionController::updateStock(
 
-               $sub[0]['creator_id'], $sub[0]['version'], $sub[0]['stock']
+                $sub[0]['creator_id'], $sub[0]['version'], $sub[0]['stock']
             );
 
             Session::flash('message', 'Thank you for your subscription!');
@@ -320,11 +320,10 @@ class SquareController extends Controller
 
     }
 
-    public function deleteSubscription(Request $request)
+    public function deleteSubscription($request)
     {
-        $subscription = json_decode($request);
-        $endpoint = $config['square']['subscriptionsEndpoint'] .
-            "/$subscription->sub_id/actions/$subscription->action_id";
+
+        $endpoint = $this->config['square']['subscriptionsEndpoint'] . "/" . $request['sub_id'] . "/cancel";
 
         return $response = Http::withHeaders(
             [
@@ -332,9 +331,10 @@ class SquareController extends Controller
                 'Content-Type' => 'application/json',
                 'Square-Version' => "2022-01-20",
             ]
-        )->delete($endpoint);
+        )->post($endpoint);
 
     }
+
 
     public function updateSubscription(Request $request)
     {
@@ -344,30 +344,13 @@ class SquareController extends Controller
                 'Content-Type' => 'application/json',
                 'Square-Version' => "2022-01-20",
             ]
-        )->post($this->config['square']['subscriptionsEndpoint'], [
+        )->put($this->config['square']['subscriptionsEndpoint'] . "/" . $subscription[0]['sub_id'], [
 
-            "merchant_id" => $request->merchant_id,
-            "type" => "subscription.updated",
-            "event_id" => $request->event_id,
-            "created_at" => $request->created_at,
-            "data" => [
-                "type" => "subscription",
-                "id" => $request->sub_id,
-                "object" => [
-                    "subscription" => [
-                        "id" => $request->sub_id,
-                        "created_date" => $request->created_at,
-                        "customer_id" => $request->customer_id,
-                        "location_id" => $config['square']['locationId'],
-                        "plan_id" => $request->plan_id,
-                        "start_date" => $request->createrd_at,
-                        "status" => "ACTIVE",
-                        "tax_percentage" => "5",
-                        "timezone" => "America/New_York",
-                        "version" => $request->vid,
-                    ],
-                ],
-            ]]);
+            "subscription" => [
+                "cadence" => $request->cadence,
+                "version" => $request->square_vid,
+            ],
+        ]);
 
     }
 

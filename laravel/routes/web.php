@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +13,6 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
  */
-
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('index');
 //Handle Laravel logout
@@ -80,20 +77,20 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/subscription/create', 'App\Http\Controllers\SquareController@createSubscription')->name('subscription.upsert');
         Route::post('/subscription/create', 'App\Http\Controllers\SquareController@createSubscription')->name('subscription.upsert');
 
-
     });
     Route::prefix('labels')->group(function () {
         Route::get('/home', 'App\Http\Controllers\ShippingController@ship')->name('labels.home');
 
-       Route::get('/generate', 'App\Http\Controllers\LabelsController@generate')->name('labels.generate');
+        Route::get('/generate', 'App\Http\Controllers\LabelsController@generate')->name('labels.generate');
 
     });
     Route::prefix('shipping')->group(function () {
         Route::get('/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('shipping.addresses');
 
-     });
+    });
 
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('shipping.rates');
+
     Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
 
     Route::prefix('account')->group(function () {
@@ -126,9 +123,12 @@ Route::post('/subscription/complete/{paypal}', 'App\Http\Controllers\Subscriptio
 Route::post('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
 Route::get('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
 
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
-Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
-Route::get('auth/google/status', [GoogleController::class, 'status']);
+Route::group(['prefix' => 'auth'], function () {
+    
+    Route::get('/google', [GoogleController::class, 'redirectToGoogle']);
+    Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+    Route::get('/google/status', [GoogleController::class, 'status']);
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/index', function () {
     return view('dashboard');

@@ -222,6 +222,7 @@ class SubscriptionController extends Controller
             ->update(['in_stock' => $new]);
 
     }
+
     public function boxeonRemove($box)
     {
 
@@ -239,34 +240,71 @@ class SubscriptionController extends Controller
 
     protected function remove($box)
     {
-        require_once dirname(__DIR__, 3) . "/php/paypal-connect.php";
 
         $remove = json_decode($box);
-
         $id = auth()->user()->id;
-        $user = User::find($id);
 
         // Get subscription ID
-        $subscription = DB::table('subscriptions')
-            ->where('user_id', '=', $user->id)
+        $subscription = Subscription::where('user_id', '=', $id)
             ->where('creator_id', '=', $remove->creator_id)
-            ->select('sub_id')
+            ->where('version', '=', $remove->version)
             ->get();
-        // Cancell billing on PayPal
-        $endpoint = $this->config["paypal"]["billinsEndpoint"] . "/" . $subscription[0]->sub_id . "/cancel";
-        $media = 'Content-Type: application/json, Authorization: Bearer $token';
-        $data = '{ "reason": "No reason" }';
-        $a = sendcurl($data, $endpoint, $media);
-        if (isset($a["debug_id"])) {
 
-            return false;
+        // Delete on Square
+        $square = new SquareController();
+
+        $result = $square->deleteSubscription([
+
+            'sub_id' => $subscription[0]['sub_id'],
+            'action_id' => 'creator-id-' . $remove->creator_id,
+
+        ]);
+
+        $result = json_decode($result);
+
+        if (isset($result->errors)) {
+
+            return $result;
 
         } else {
             // Remove from Boxeon
             $this->boxeonRemove($box);
-            return true;
+            return 1;
         }
     }
+
+    public function update($box)
+    {
+
+        $update = json_decode($box);
+        $id = auth()->user()->id;
+
+        // Get subscription ID
+        $subscription = Subscription::where('user_id', '=', $id)
+            ->where('creator_id', '=', $update->creator_id)
+            ->where('version', '=', $update->version)
+            ->get();
+
+        // Update on Square
+        $square = new SquareController();
+
+        $result = $square->updateSubscription([
+
+            'cadence' => $box->cadence,
+            'version' => $subscription[0]['square_vid'],
+        ]);
+
+        if(!isset($result->errors)){
+
+            return $result->errors;
+            
+        }else{
+
+            return $result;
+        }
+    }
+
+
     public function __destruct()
     {
 

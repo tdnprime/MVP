@@ -71,7 +71,14 @@ Boxeon = {
 
       if (this.readyState == 4 && this.status == 200) {
 
-        Boxeon.removeLoader();
+        try {
+
+          Boxeon.removeLoader();
+
+        } catch (e) {
+
+          console.log(e);
+        }
 
         back(this.responseText);
 
@@ -151,7 +158,7 @@ Boxeon = {
       }
 
       container.prepend(div);
-      
+
       div.style.position = "absolute";
     }
   },
@@ -374,6 +381,30 @@ Boxeon = {
       //console.log(e);
     }
   },
+
+  dialog: function (txt) {
+
+    if(document.getElementsByTagName('dialog')[0]){
+      document.getElementsByTagName('dialog')[0].remove();
+    }
+    var d = document.createElement('dialog'); 
+    var c = document.getElementById('container');
+    var h3 =  document.createElement("h3");
+    var text = document.createTextNode(txt);
+    h3.appendChild(text)
+    d.appendChild(h3);
+    var button = document.createElement("button");
+    button.innerText = "Ok";
+    button.style.float = "right";
+    button.addEventListener('click', function(){
+     d.remove();
+    });
+    d.appendChild(button);
+    c.appendChild(d);
+    d.showModal();
+
+  },
+
   createModalWindow: function () {
 
     var m = document.createElement("div");
@@ -551,13 +582,14 @@ Boxeon = {
 
         sessionStorage.setItem('sub', 1);
 
-      } else if (a.id == 'exe-unsub') {
+      } else if (a.className == 'exe-unsub clearbtn') {
+
 
         sessionStorage.setItem('sub', 0);
 
       }
 
-      sessionStorage.setItem('sub', 1);
+      //  sessionStorage.setItem('sub', 1);
 
       var video_id = a.getAttribute("data-video-id");
 
@@ -580,7 +612,7 @@ Boxeon = {
 
       Auth.check(video_id, creator_id);
 
-    } else if (a.id == 'exe-unsub') {
+    } else if (a.className == 'exe-unsub clearbtn') {
 
       sessionStorage.setItem('sub', 0); // in case of page reload
 
@@ -903,12 +935,11 @@ Subscriptions = {
 
   unsubCheck: function (b) {
     var ownerID = b.getAttribute("data-id");
-    Boxeon.createModalWindow();
-    let h2 = document.createElement("h2");
+    let h2 = document.createElement("h3");
     h2.className = "centered";
-    let h2txt = document.createTextNode("Are you sure you wish to unsubscribe from this box?");
-    let div = document.createElement("div");
-    div.id = "subs-btns";
+    let h2txt = document.createTextNode("Do you wish to unsubscribe from this box?");
+    var div = document.createElement("dialog");
+    div.id = "dialog";;
     let button = document.createElement("button");
     button.innerText = "No";
     let button2 = document.createElement("button");
@@ -917,14 +948,15 @@ Subscriptions = {
     let version = b.getAttribute("data-version");
     button2.setAttribute("data-version", version);
     button2.innerText = "Yes";
-    let body = document.getElementById("m-body");
     h2.appendChild(h2txt)
-    body.appendChild(h2);
-    body.appendChild(div);
+    div.appendChild(h2);
     div.appendChild(button);
     div.appendChild(button2);
-    button.addEventListener("click", function () {
-      Boxeon.closeModal();
+    document.getElementById("container").appendChild(div);
+    div.showModal();
+    button.addEventListener("click", function (div) {
+
+      document.getElementById("dialog").remove();
     });
     button2.addEventListener("click", function () {
       let b = this;
@@ -948,8 +980,15 @@ Subscriptions = {
     }
 
     function callback(re) {
-      if (re == 1) {
-        // to do.  m.setAttribute("class", "fadein");
+
+      var result = JSON.parse(re); 
+
+      if(result.errors){
+
+        Boxeon.dialog("Sorry! Something went wrong on our end. Please try again later.");
+
+      }else{
+        Boxeon.dialog("You've been unsubscribed.");
       }
     }
     Boxeon.loader();
@@ -1125,7 +1164,7 @@ window.onload = function () {
 
       document.getElementById('close-dialog').addEventListener('click', function () {
 
-        document.getElementById('alert').close();
+        document.getElementById('alert').remove();
 
       })
 
@@ -1144,7 +1183,7 @@ window.onload = function () {
       Boxeon.router(a);
     });
   }
-  
+
   if (document.getElementsByClassName('exe-unsub')) {
     var btns = document.getElementsByClassName('exe-unsub');
     var num = btns.length;
@@ -1154,7 +1193,7 @@ window.onload = function () {
         Boxeon.router(a);
       });
     }
-      
+
   }
   if (document.getElementById('exe-sub-alt')) {
     document.getElementById('exe-sub-alt').addEventListener('click', function () {

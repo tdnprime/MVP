@@ -211,8 +211,7 @@ Brown skin: #a0616a
   font-size: 1em;
 }
 dialog{
-  height:50px;
-  z-index:10000;
+  
 }
 dialog p{
   max-width:400px;
@@ -1125,7 +1124,8 @@ a:visited {
   position: fixed;
   top:1em;
   opacity:0;
-  
+  height:50px;
+  z-index:10000;
 }
 
 

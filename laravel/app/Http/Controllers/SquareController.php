@@ -331,7 +331,7 @@ class SquareController extends Controller
                 'Content-Type' => 'application/json',
                 'Square-Version' => "2022-01-20",
             ]
-        )->post($endpoint);
+        )->put($endpoint);
 
     }
 

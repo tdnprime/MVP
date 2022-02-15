@@ -38,6 +38,7 @@ Route::get('/school/how', 'App\Http\Controllers\SchoolController@how')->name('sc
 Route::get('/school/why', 'App\Http\Controllers\SchoolController@why')->name('school.why');
 
 Route::group(['middleware' => ['isAdmin']], function () {
+    
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', 'App\Http\Controllers\AdminController@dashboard')->name('admin.dashboard');
         Route::get('/boxes', 'App\Http\Controllers\AdminController@boxes')->name('admin.boxes');

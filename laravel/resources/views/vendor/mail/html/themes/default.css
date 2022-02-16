@@ -50,6 +50,7 @@ h2 {
     font-weight: bold;
     margin-top: 0;
     text-align: left;
+    color:#0c8dc4;
 }
 
 h3 {
@@ -57,6 +58,8 @@ h3 {
     font-weight: bold;
     margin-top: 0;
     text-align: left;
+    color:#0c8dc4;
+
 }
 
 p {
@@ -102,6 +105,11 @@ img {
     text-align: center;
 }
 
+.header img{
+
+    margin:auto;
+}
+
 .header a {
     color: #3d4852;
     font-size: 19px;
@@ -112,9 +120,9 @@ img {
 /* Logo */
 
 .logo {
-    height: 75px;
-    max-height: 75px;
-    width: 75px;
+    height: 50px;
+    max-height: 50px;
+    width:auto;
 }
 
 /* Body */
@@ -232,11 +240,11 @@ img {
 
 .button-blue,
 .button-primary {
-    background-color: #2d3748;
-    border-bottom: 8px solid #2d3748;
-    border-left: 18px solid #2d3748;
-    border-right: 18px solid #2d3748;
-    border-top: 8px solid #2d3748;
+    background-color:#0c8dc4;
+    border-bottom: 8px solid #0c8dc4;
+    border-left: 18px solid #0c8dc4;
+    border-right: 18px solid #0c8dc4;
+    border-top: 8px solid #0c8dc4;
 }
 
 .button-green,
@@ -256,6 +264,25 @@ img {
     border-right: 18px solid #e53e3e;
     border-top: 8px solid #e53e3e;
 }
+.button{
+    background-color: #0c8dc4;
+    border: 1px solid #087FB0;
+    border-radius: 25px;
+    box-sizing: border-box;
+    color: #ffffff;
+    min-width: 200px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    height: 3.5em;
+    max-height: 49px;
+    letter-spacing: 1px;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    outline: none;
+    padding: 0.8em 1.5em 0.8em 1.5em;
+}
+
 
 /* Panels */
 

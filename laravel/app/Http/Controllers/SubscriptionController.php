@@ -19,6 +19,7 @@ class SubscriptionController extends Controller
             "/config/app.ini", true);
     }
 
+
     public function checkout()
     {
         $id = auth()->user()->id;

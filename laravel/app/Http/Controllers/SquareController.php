@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
+use App\Jobs\SendEmailJob;
+use App\Mail\OrderPlaced;
+
 
 class SquareController extends Controller
 {
@@ -19,6 +22,20 @@ class SquareController extends Controller
         $this->config = parse_ini_file(dirname(__DIR__, 3) .
             "/config/app.ini", true);
 
+    }
+
+    public function test()
+    { 
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        
+        return new OrderPlaced($user);
+
+        #Queue an order-placed system email
+        $details['email'] = $user->email;
+        $message = new OrderPlaced($user);
+        SendEmailJob::dispatch($details, $message)->onQueue('emails');
+        dd($response);
     }
 
     /*
@@ -213,8 +230,6 @@ class SquareController extends Controller
 
     public function createSubscription(Request $request)
     {
-        $id = auth()->user()->id;
-        $user = User::find($id);
 
         $sub = Subscription::where('user_id', '=', $id)
             ->orderByDesc('created_at')
@@ -310,6 +325,11 @@ class SquareController extends Controller
                 $sub[0]['creator_id'], $sub[0]['version'], $sub[0]['stock']
             );
 
+            #Queue an order placed system email
+            $details['email'] = $user->email;
+            $message = new OrderPlaced($user);
+            SendEmailJob::dispatch($details, $message)->onQueue('emails');
+
             Session::flash('message', 'Thank you for your subscription!');
             return json_encode(array('redirectTo' => '/home/subscriptions'));
 
@@ -334,7 +354,6 @@ class SquareController extends Controller
         )->put($endpoint);
 
     }
-
 
     public function updateSubscription(Request $request)
     {

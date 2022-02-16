@@ -11,14 +11,21 @@ class OrderPlaced extends Mailable
 {
     use Queueable, SerializesModels;
 
+     /**
+     * The user instance.
+     *
+     * @var \App\Models\User
+     */
+    public $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**

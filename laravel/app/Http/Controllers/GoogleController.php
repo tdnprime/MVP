@@ -23,16 +23,7 @@ class GoogleController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
-    public function test()
-    {
-        $id = auth()->user()->id;
-        $user = User::find($id);
-        
-        $details['email'] = $user->email;
-       // $message = new OrderPlaced($user); to test, add class above
-        $response = SendEmailJob::dispatch($details, $message)->onQueue('emails');
-        dd($response);
-    }
+
     /**
      * Create a new controller instance.
      *

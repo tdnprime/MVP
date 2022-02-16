@@ -158,6 +158,7 @@ Route::group(['prefix' => 'auth'], function () {
     
     Route::get('/google', [GoogleController::class, 'redirectToGoogle']);
     Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+    Route::get('/google/admin-callback', [GoogleController::class, 'handleGoogleAdminCallback']);
     Route::get('/google/status', [GoogleController::class, 'status']);
 });
 

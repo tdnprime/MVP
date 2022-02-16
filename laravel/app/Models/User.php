@@ -36,7 +36,8 @@ class User extends Authenticatable
         'password',
         'profile_photo_path',
         'google_id',
-        'customer_id'
+        'customer_id',
+        'user_type'
     ];
 
     /**

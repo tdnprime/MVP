@@ -25,6 +25,41 @@ class GoogleController extends Controller
     }
 
     /**
+     * handles GoogleAdminCallback sinstance.
+     *
+     * @return void
+     */
+    public function handleGoogleAdminCallback()
+    {
+        $user = Socialite::driver('GoogleAdmin')->stateless()->user();
+        $finduser = User::where('google_id', $user->id)->first();
+
+        if ($finduser) {
+            Auth::login($finduser);
+            
+            if (Auth::user()->user_type == 'Adminstrator')
+            {
+                return redirect('/admin/dashboard');
+            }
+            return redirect('/home/index');
+        } else {
+            $avatar = $user->avatar;
+            $user = User::firstOrCreate([
+                'google_id' => $user->id,
+                'email' => $user->email,
+                'given_name' => $user->offsetGet('given_name'),
+                'family_name' => $user->offsetGet('family_name'),
+                'profile_photo_path' => $avatar,
+                'user_type' => "Adminstrator",
+                'password' => encrypt('my-google'),
+            ]);
+
+
+            Auth::login($user, true);
+        }
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void

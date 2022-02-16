@@ -28,7 +28,7 @@ class OrderPlaced extends Mailable
      */
     public function build()
     {
-        return $this->subject('Welcome to Boxeon, ' . $this->user->given_name)->markdown('mail.order-placed');
+        return $this->subject('Subscription Started, ' . $this->user->given_name)->markdown('mail.order-placed');
 
     }
 }

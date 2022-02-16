@@ -36,6 +36,6 @@ class WelcomeUser extends Mailable
      */
     public function build()
     {
-        return $this->subject('Signup Completed')->markdown('mail.welcome-user');
+        return $this->subject('Welcome to Boxeon, ' . $this->user->given_name)->markdown('mail.welcome-user');
     }
 }

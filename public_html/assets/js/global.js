@@ -384,22 +384,28 @@ Boxeon = {
 
   dialog: function (txt) {
 
-    if(document.getElementsByTagName('dialog')[0]){
+    if (document.getElementsByTagName('dialog')[0]) {
       document.getElementsByTagName('dialog')[0].remove();
     }
-    var d = document.createElement('dialog'); 
+    var d = document.createElement('dialog');
     var c = document.getElementById('container');
-    var h3 =  document.createElement("h3");
+    var h3 = document.createElement("h3");
     var text = document.createTextNode(txt);
     h3.appendChild(text)
-    d.appendChild(h3);
-    var button = document.createElement("button");
-    button.innerText = "Ok";
-    button.style.float = "right";
-    button.addEventListener('click', function(){
-     d.remove();
+
+    var anchor = document.createElement("a");
+    anchor.href = "#/";
+    var span = document.createElement("span");
+    span.className = "material-icons";
+    span.innerText = "close";
+    span.style.float = "right";
+    anchor.appendChild(span);
+
+    anchor.addEventListener('click', function () {
+      d.remove();
     });
-    d.appendChild(button);
+    d.appendChild(anchor);
+    d.appendChild(h3);
     c.appendChild(d);
     d.showModal();
 
@@ -964,6 +970,52 @@ Subscriptions = {
     });
 
   },
+  createUpdateUI: function () {
+
+    var div = document.createElement("div");
+    var form = document.createElement("form");
+
+    var button = document.createElement("button");
+    button.innerText = "Update";
+    button.addEventListener("click", function(){
+
+      var a = this;
+
+    })
+
+    var select = document.createElement("select");
+    select.name = "cadence";
+    select.style.marginTop = "0";
+
+    var option1 = document.createElement("option");
+    var txt1 = document.createTextNode("Monthly");
+    option1.value = "MONTHLY";
+    option1.appendChild(txt1);
+
+    var option2 = document.createElement("option");
+    var txt2 = document.createTextNode("Every two months");
+    option2.value = "EVERY_TWO_MONTHS";
+    option2.appendChild(txt2);
+
+    var option3 = document.createElement("option");
+    var txt3 = document.createTextNode("Every 90 days");
+    option3.value = "NINETY_DAYS";
+    option3.appendChild(txt3);
+
+    select.appendChild(option1);
+    select.appendChild(option2);
+    select.appendChild(option3);
+
+
+    form.appendChild(select);
+    form.appendChild(button);
+
+    div.appendChild(form);
+    Boxeon.dialog("Update how often you receive this box.");
+    document.getElementsByTagName("dialog")[0].appendChild(div);
+
+
+  },
 
   remove: function (b) {
     let box = {
@@ -981,13 +1033,13 @@ Subscriptions = {
 
     function callback(re) {
 
-      var result = JSON.parse(re); 
+      var result = JSON.parse(re);
 
-      if(result.errors){
+      if (result.errors) {
 
         Boxeon.dialog("Sorry! Something went wrong on our end. Please try again later.");
 
-      }else{
+      } else {
         Boxeon.dialog("You've been unsubscribed.");
       }
     }
@@ -1154,6 +1206,12 @@ window.onload = function () {
 
     localStorage.removeItem('celebrate');
 
+    setTimeout(function () {
+
+      document.getElementById('container').className = null;
+
+    }, 6000);
+
   }
 
   if (document.getElementById('alert')) {
@@ -1183,7 +1241,14 @@ window.onload = function () {
       Boxeon.router(a);
     });
   }
+  if (document.getElementById('btn-update-subscription')) {
 
+    document.getElementById('btn-update-subscription').addEventListener('click', function () {
+      var button = this;
+      Subscriptions.createUpdateUI(button);
+
+    });
+  }
   if (document.getElementsByClassName('exe-unsub')) {
     var btns = document.getElementsByClassName('exe-unsub');
     var num = btns.length;

@@ -37,6 +37,8 @@ Route::get('/school/home', 'App\Http\Controllers\SchoolController@what')->name('
 Route::get('/school/how', 'App\Http\Controllers\SchoolController@how')->name('school.how');
 Route::get('/school/why', 'App\Http\Controllers\SchoolController@why')->name('school.why');
 
+#ADMIN
+
 Route::group(['middleware' => ['isAdmin']], function () {
     
     Route::prefix('admin')->group(function () {
@@ -50,11 +52,15 @@ Route::group(['middleware' => ['isAdmin']], function () {
     });
 });
 
+#AUTH MIDDLEWARE
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/home/index', 'App\Http\Controllers\HomeController@dashboard')->name('home.index');
     Route::get('/home/subscriptions', 'App\Http\Controllers\HomeController@subscriptions')->name('home.subscriptions');
     Route::get('/home/subscribers', 'App\Http\Controllers\HomeController@subscribers')->name('home.subscribers');
+
+    #BOX
 
     Route::prefix('box')->group(function () {
 
@@ -69,6 +75,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/track', 'App\Http\Controllers\ShippingController@track')->name('box.track');
 
     });
+
+    #CHECKOUT
+
     Route::prefix('checkout')->group(function () {
 
         Route::get('/address', 'App\Http\Controllers\LabelsController@showAddress')->name('checkout.address');
@@ -79,20 +88,37 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/subscription/create', 'App\Http\Controllers\SquareController@createSubscription')->name('subscription.upsert');
 
     });
+
+#LABELS
+
     Route::prefix('labels')->group(function () {
         Route::get('/home', 'App\Http\Controllers\ShippingController@ship')->name('labels.home');
 
         Route::get('/generate', 'App\Http\Controllers\LabelsController@generate')->name('labels.generate');
 
     });
+
+    #SHIPPING
+
     Route::prefix('shipping')->group(function () {
         Route::get('/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('shipping.addresses');
+
+    });
+
+    #TESTING
+
+    Route::prefix('test')->group(function () {
+
+        Route::get('/email', 'App\Http\Controllers\GoogleController@test');
 
     });
 
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('shipping.rates');
 
     Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
+
+
+#ACCOUNTS
 
     Route::prefix('account')->group(function () {
 
@@ -102,6 +128,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/address', 'App\Http\Controllers\AccountController@updateAddress')->name('account.address');
         Route::get('/suspend', 'App\Http\Controllers\AccountController@suspend')->name('account.suspend');
     });
+
+    #MESSAGES
 
     Route::group(['prefix' => 'messages'], function () {
         Route::get('/inbox', ['as' => 'messages', 'uses' => 'App\Http\Controllers\MessagesController@index']);
@@ -123,6 +151,8 @@ Route::post('/subscription/complete/{paypal}', 'App\Http\Controllers\Subscriptio
 
 Route::post('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
 Route::get('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
+
+#AUTH
 
 Route::group(['prefix' => 'auth'], function () {
     

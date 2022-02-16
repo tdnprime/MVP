@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\MailController;
+use App\Jobs\SendEmailJob;
+use App\Mail\WelcomeUser;
 use App\Models\User;
+use Cookie;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Facades\Socialite;
-use Cookie;
-
 
 class GoogleController extends Controller
 {
@@ -23,7 +23,16 @@ class GoogleController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
-
+    public function test()
+    {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        
+        $details['email'] = $user->email;
+       // $message = new OrderPlaced($user); to test, add class above
+        $response = SendEmailJob::dispatch($details, $message)->onQueue('emails');
+        dd($response);
+    }
     /**
      * Create a new controller instance.
      *
@@ -37,18 +46,21 @@ class GoogleController extends Controller
 
             if ($finduser) {
                 Auth::login($finduser);
+
+                #Redirect to box
                 if (isset($_COOKIE['box'])) {
                     $location = $_COOKIE['box'];
                     $cookie = Cookie::forget('box');
                     return redirect($location)->withCookie($cookie);
                 } else {
-                    if (Auth::user()->user_type == 'Adminstrator')
-                    {
+                    #Handle app admin
+                    if (Auth::user()->user_type == 'Adminstrator') {
                         return redirect('/admin/dashboard');
                     }
                     return redirect('/home/index');
                 }
             } else {
+                #Save new user
                 $avatar = $user->avatar;
                 $user = User::firstOrCreate([
                     'google_id' => $user->id,
@@ -59,17 +71,17 @@ class GoogleController extends Controller
                     'password' => encrypt('my-google'),
                 ]);
 
-
+                #Queue welcome email
                 Auth::login($user, true);
-
-                // Mail::to($user->email)->send(new WelcomeUser($user));
-               // $mail = new MailController();
-               // $mail->welcome();
-
+                $details['email'] = $user->email;
+                $message = new WelcomeUser($user);
+                SendEmailJob::dispatch($details, $message)->onQueue('emails');
+                
+                #Handle invitations
                 if (isset($_COOKIE['invited_by'])) {
 
                     $invitation = array(
-                        'google_id' => $user->id,
+                        'user_id' => $user->id,
                         'invited_by' => $_COOKIE['invited_by'],
                     );
 
@@ -92,6 +104,5 @@ class GoogleController extends Controller
             echo 0;
         }
     }
-
 
 }

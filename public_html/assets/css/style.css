@@ -2050,7 +2050,7 @@ ul, p {
   color: #023256;
 }
 
-ul, P, a, label {
+td, td, ul, P, a, label {
   font-size: 1.3em;
 }
 

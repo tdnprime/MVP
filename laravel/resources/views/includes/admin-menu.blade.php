@@ -2,7 +2,7 @@
     <a class='fadein' id="menu-close" href="#/" title='Close'><span class="material-icons">close</span></a>
     <a class='fadein' href="{{route('home.index')}}"><span class="material-icons">home</span>Home</a>
     <a class='fadein' href="{{route('admin.boxes')}}"><span class="material-icons">add_box</span>Boxes</a>
-    <a class='fadein' href="{{route('admin.subscription')}}"><span class="material-icons">add_box</span>Subscriptions</a>
+    <a class='fadein' href="{{route('admin.subscriptions')}}"><span class="material-icons">add_box</span>Subscriptions</a>
     <a class='fadein' href="{{route('admin.invitations')}}"><span class="material-icons">group_work</span>Invitations</a>
     <a class='fadein' href="{{route('admin.forms')}}"><span class="material-icons">monetization_on</span>
         Forms</a>

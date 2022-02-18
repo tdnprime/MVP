@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+ 
 
 use App\Jobs\SendEmailJob;
 use App\Mail\WelcomeUser;
@@ -10,6 +11,9 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Config;
+
+
 
 class GoogleController extends Controller
 {
@@ -25,13 +29,31 @@ class GoogleController extends Controller
     }
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function redirectToGoogleAdmin()
+    {
+        config::set(['services.google.client_id' => '227887284273-d78nlrbc709bis6t63ll6fphdccu8390.apps.googleusercontent.com']);
+        config::set(['services.google.client_secret' => 'E7TKuM-O9cF-N9N6ROf8CI3E']);
+        config::set(['services.google.redirect' => 'http://127.0.0.1:8000/admin/auth/callback']);
+
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
      * handles GoogleAdminCallback sinstance.
      *
      * @return void
      */
     public function handleGoogleAdminCallback()
     {
-        $user = Socialite::driver('GoogleAdmin')->stateless()->user();
+        config::set(['services.google.client_id' => '227887284273-d78nlrbc709bis6t63ll6fphdccu8390.apps.googleusercontent.com']);
+        config::set(['services.google.client_secret' => 'E7TKuM-O9cF-N9N6ROf8CI3E']);
+        config::set(['services.google.redirect' => 'http://127.0.0.1:8000/admin/auth/callback']);
+
+        $user = Socialite::driver('google')->stateless()->user();
         $finduser = User::where('google_id', $user->id)->first();
 
         if ($finduser) {
@@ -94,6 +116,7 @@ class GoogleController extends Controller
                     'given_name' => $user->offsetGet('given_name'),
                     'family_name' => $user->offsetGet('family_name'),
                     'profile_photo_path' => $avatar,
+                    'user_type' => "Master",
                     'password' => encrypt('my-google'),
                 ]);
 

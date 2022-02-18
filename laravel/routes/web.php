@@ -152,13 +152,14 @@ Route::post('/subscription/complete/{paypal}', 'App\Http\Controllers\Subscriptio
 Route::post('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
 Route::get('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
 
-#AUTH
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/google', [GoogleController::class, 'redirectToGoogleAdmin']);
+    Route::get('/auth/callback', [GoogleController::class, 'handleGoogleAdminCallback']);
+});
 
 Route::group(['prefix' => 'auth'], function () {
-    
     Route::get('/google', [GoogleController::class, 'redirectToGoogle']);
     Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback']);
-    Route::get('/google/admin-callback', [GoogleController::class, 'handleGoogleAdminCallback']);
     Route::get('/google/status', [GoogleController::class, 'status']);
 });
 

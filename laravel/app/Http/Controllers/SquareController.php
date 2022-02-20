@@ -158,6 +158,7 @@ class SquareController extends Controller
 
         $id = auth()->user()->id;
         $user = User::find($id);
+
         $subscription = Subscription::where('user_id', '=', $id)
             ->orderByDesc('created_at')
             ->limit(1)
@@ -231,6 +232,9 @@ class SquareController extends Controller
     public function createSubscription(Request $request)
     {
 
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        
         $sub = Subscription::where('user_id', '=', $id)
             ->orderByDesc('created_at')
             ->limit(1)
@@ -318,6 +322,7 @@ class SquareController extends Controller
                     'sub_id' => $response->subscription->id,
                     'card_id' => $response->subscription->card_id,
                     'status' => 1,
+                    'square_vid' => $response->subscription->version,
                 ]);
 
             SubscriptionController::updateStock(

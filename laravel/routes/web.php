@@ -119,9 +119,17 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     });
 
+    #SUBSCRIPTION
+
+    Route::prefix('subscription')->group(function () {
+
+        Route::post('/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
+        Route::post('/update', 'App\Http\Controllers\SubscriptionController@update')->name('subscription.update');
+
+    });
+
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('shipping.rates');
 
-    Route::post('/subscription/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
 
 
 #ACCOUNTS
@@ -154,7 +162,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::get('/commission/index', 'App\Http\Controllers\HomeController@commission')->name('commission.index');
-Route::post('/subscription/complete/{paypal}', 'App\Http\Controllers\SubscriptionController@complete')->name('subscription.complete');
 
 Route::post('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
 Route::get('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');

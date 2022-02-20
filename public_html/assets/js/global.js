@@ -970,12 +970,35 @@ Subscriptions = {
     });
 
   },
-  createUpdateUI: function () {
-
+  createUpdateUI: function (button) {
     var div = document.createElement("div");
     var form = document.createElement("form");
+    form.method = "post";
+    form.action = "/subscription/update";
+    
+    var input = document.createElement("input");
+    var input1 = document.createElement("input");
+    var input2 = document.createElement("input");
+
+    input.type = "hidden";
+    input.name = "_token";
+    input.value = document.querySelector('meta[name="csrf-token"]').content;
+
+    input1.type = "hidden";
+    input1.name = "creator_id";
+    input1.value = button.getAttribute("data-id");
+
+    input2.type = "hidden";
+    input2.name = "version";
+    input2.value = button.getAttribute("data-version");
+
+    form.appendChild(input);
+    form.appendChild(input1);
+    form.appendChild(input2);
+
 
     var button = document.createElement("button");
+    button.type = "submit";
     button.innerText = "Update";
     button.addEventListener("click", function(){
 

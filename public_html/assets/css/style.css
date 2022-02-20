@@ -343,7 +343,6 @@ dialog p{
   grid-gap: 1px;
   grid-template-rows: auto 50px auto auto;
   position: relative;
-  border-bottom: 1px solid #0c8dc445;
 }
 
 #container {
@@ -1850,7 +1849,7 @@ legend {
 
 footer {
   background-color: #f5f7fa;
-  border-top: 5px solid #fff;
+  border-top: 1px solid #fff;
   display: grid;
   margin: 0 auto;
   padding-bottom: 5em;

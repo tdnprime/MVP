@@ -274,16 +274,15 @@ class SubscriptionController extends Controller
         }
     }
 
-    public function update($box)
+    public function update(Request $request)
     {
 
-        $update = json_decode($box);
         $id = auth()->user()->id;
 
         // Get subscription ID
         $subscription = Subscription::where('user_id', '=', $id)
-            ->where('creator_id', '=', $update->creator_id)
-            ->where('version', '=', $update->version)
+            ->where('creator_id', '=', $request->input("creator_id"))
+            ->where('version', '=', $request->input("version"))
             ->get();
 
         // Update on Square
@@ -291,7 +290,7 @@ class SubscriptionController extends Controller
 
         $result = $square->updateSubscription([
 
-            'cadence' => $box->cadence,
+            'cadence' => $request->input("cadence"),
             'version' => $subscription[0]['square_vid'],
         ]);
 

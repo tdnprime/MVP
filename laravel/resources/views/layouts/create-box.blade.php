@@ -10,7 +10,7 @@
     <div id="container">
         <span></span><!-- Hack-->
         @include('includes.header')
-        @include('includes.menu')
+        @include('includes.menus.app')
 
         {{-- #FEEDBACK
 	/*This is the first point of contact in getting feedback from users.

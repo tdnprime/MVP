@@ -116,7 +116,7 @@ class GoogleController extends Controller
                     'given_name' => $user->offsetGet('given_name'),
                     'family_name' => $user->offsetGet('family_name'),
                     'profile_photo_path' => $avatar,
-                    'user_type' => "Master",
+                    'role' => "Master",
                     'password' => encrypt('my-google'),
                 ]);
 

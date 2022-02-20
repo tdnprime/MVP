@@ -16,7 +16,7 @@
 @else
 
     <div id='mobile-signin'>
-        <a class='signin centered center' href='{{ url('auth/google') }}'>
+        <a class='signin centered center' href='{{ url('admin/google') }}'>
             Sign in with Google
         </a>
     </div>

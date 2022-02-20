@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +40,7 @@ Route::get('/school/why', 'App\Http\Controllers\SchoolController@why')->name('sc
 
 #ADMIN
 
-Route::group(['middleware' => ['isAdmin']], function () {
+Route::group(['middleware' => ['admin']], function () {
     
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', 'App\Http\Controllers\AdminController@dashboard')->name('admin.dashboard');
@@ -50,6 +51,11 @@ Route::group(['middleware' => ['isAdmin']], function () {
         Route::get('/emails', 'App\Http\Controllers\AdminController@emails')->name('admin.emails');
         Route::get('/entry', 'App\Http\Controllers\AdminController@entry')->name('admin.entry');
     });
+});
+
+#CONTRIBUTOR MIDDLEWARE
+Route::group(['middleware' => ['auth:sanctum', 'contributor']], function () {
+    Route::get('/home/entry', 'App\Http\Controllers\HomeController@entry')->name('home.entry');
 });
 
 #AUTH MIDDLEWARE
@@ -146,6 +152,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/invitations/rewards', 'App\Http\Controllers\InvitationsController@rewards')->name('invitations.rewards');
 
 });
+
 Route::get('/commission/index', 'App\Http\Controllers\HomeController@commission')->name('commission.index');
 Route::post('/subscription/complete/{paypal}', 'App\Http\Controllers\SubscriptionController@complete')->name('subscription.complete');
 
@@ -153,6 +160,7 @@ Route::post('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
 Route::get('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/login', [AdminController::class, 'login']);
     Route::get('/google', [GoogleController::class, 'redirectToGoogleAdmin']);
     Route::get('/auth/callback', [GoogleController::class, 'handleGoogleAdminCallback']);
 });

@@ -1,5 +1,5 @@
 @component('mail::message')
-<img src="https://boxeon.com/assets/images/high-five.svg">
+<img src="https://boxeon.com/assets/images/high-five.png">
 
 # <h2>{{$user->given_name}}, welcome to {{ config('app.name') }}!</h2>
 

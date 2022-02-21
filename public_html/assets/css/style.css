@@ -353,12 +353,12 @@ dialog p{
 
   grid-gap: 7em;
   display: grid;
-  grid-template-columns: 3em 3em;
+  grid-template-columns: 3em;
   line-height: inherit !important;
   padding-left: 1.5em;
   position: absolute;
   right: 2em;
-  top: .8em;
+  top: 1em;
   color: #0c8dc4;
 }
 
@@ -1300,6 +1300,8 @@ a:visited {
 
 #headline h1 {
   color: #0c8dc4;
+  font-size: 5em;
+
 }
 
 .gpic {

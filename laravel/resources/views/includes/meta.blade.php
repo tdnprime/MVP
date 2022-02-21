@@ -3,7 +3,7 @@
 <meta property="og:description" content="Be a free spirit, start a subscription box, raise capital, it's easy." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://boxeon.com" />
-<meta property="og:image" content="{{ asset('../assets/images/high-five.svg') }}">
+<meta property="og:image" content="{{ asset('../assets/images/high-five.png') }}">
 <meta name="description"
     content="Start and grow a subscription box business and secure monthly income. It's the wave of the future." />
 <meta name="keywords"

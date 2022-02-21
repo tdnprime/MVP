@@ -19,8 +19,8 @@
         <div id='grid-2'>
             @auth
             <div id='current-user'>
-            <a href='/messages/inbox' title='Messages'><span class='material-icons'>mail</span><span
-                    id='unread-count'>@include('messenger.unread-count')</span></a>
+          {{--  <a href='/messages/inbox' title='Messages'><span class='material-icons'>mail</span><span
+                    id='unread-count'>@include('messenger.unread-count')</span></a>--}}
             <a href='/box/{{ $user ? $user->id : '0' }}/edit' title='Edit mode'>
                 <span><img id='header-user-icon' src='{{$user->profile_photo_path}}' alt='You'></span>
             </a>

@@ -64,7 +64,7 @@ class SquareController extends Controller
             "source_id" => $charge->sourceId,
             "autocomplete" => true,
             "location_id" => $charge->locationId,
-            "note" => "Shipping labels", // make dynamic
+            "note" => "Shipping labels", // make dynamic - change, not urgent
             "app_fee_money" => [
                 "amount" => 3,
                 "currency" => "USD"]]);

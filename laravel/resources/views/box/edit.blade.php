@@ -12,7 +12,6 @@
                     <p id="pitch">If you are in the Boxeon Partner Program, we will be
                         contacting you by email to help you finish creating your box. Please ensure our emails are not in
                         your spam folder.</p>
-                    <a href="/messages/inbox" class="button">Contact us</a>
                     <a href="/box/create" class="button clearnbtn">Create box</a>
                 </div>
             </div>

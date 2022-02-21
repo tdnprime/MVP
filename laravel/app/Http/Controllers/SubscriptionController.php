@@ -7,6 +7,7 @@ use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class SubscriptionController extends Controller
 {
@@ -18,7 +19,6 @@ class SubscriptionController extends Controller
         $this->config = parse_ini_file(dirname(__DIR__, 3) .
             "/config/app.ini", true);
     }
-
 
     public function checkout()
     {
@@ -111,6 +111,18 @@ class SubscriptionController extends Controller
             );
         }
 
+    }
+
+    public function convertCadence($frequency)
+    {
+
+        if ($frequency == 'MONTHLY') {
+            return 1;
+        } elseif ($frequency == 'EVERY_TWO_MONTHS') {
+            return 2;
+        } elseif ($frequency == 'NINETY_DAYS') {
+            return 3;
+        }
     }
     /**
      * Create a subscription plan
@@ -229,7 +241,9 @@ class SubscriptionController extends Controller
 
         $id = auth()->user()->id;
         $user = User::find($id);
+
         $remove = json_decode($box);
+
         DB::table('subscriptions')
             ->where('creator_id', '=', $remove->creator_id)
             ->where('version', '=', $remove->version)
@@ -273,11 +287,17 @@ class SubscriptionController extends Controller
             return 1;
         }
     }
-
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request)
     {
 
         $id = auth()->user()->id;
+        $user = User::find($id);
 
         // Get subscription ID
         $subscription = Subscription::where('user_id', '=', $id)
@@ -288,22 +308,29 @@ class SubscriptionController extends Controller
         // Update on Square
         $square = new SquareController();
 
-        $result = $square->updateSubscription([
+        $response = $square->updateSubscription([
 
             'cadence' => $request->input("cadence"),
-            'version' => $subscription[0]['square_vid'],
+            'square_vid' => (int) $subscription[0]['square_vid'],
+            'sub_id' => $subscription[0]['sub_id'],
         ]);
 
-        if(!isset($result->errors)){
+        if (!isset($response->subscription->id)) {
 
-            return $result->errors;
-            
-        }else{
+            return $response;
 
-            return $result;
+        } else {
+
+            // update on Boxeon
+            Subscription::where('user_id', '=', $id)
+                ->update([
+
+                    'frequency' => self::convertCadence($request->input("cadence")),
+                ]);
+            Session::flash('message', 'Subscription updated.');
+            return redirect()->route('home.subscriptions', $user);
         }
     }
-
 
     public function __destruct()
     {

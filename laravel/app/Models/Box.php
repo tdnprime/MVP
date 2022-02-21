@@ -38,6 +38,7 @@ class Box extends Model
         'country_code',
         'video',
         'shipping_count',
+        'page_name',
     ];
 
     public function user()

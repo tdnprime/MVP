@@ -1,7 +1,7 @@
 <main class="fadein">
     <section id="left-aside">
-        <h2>Home</h2>
-        <a class="message-create" href="/home/subscribers" data-type-id="">
+        <h2 class="secondary-color">Home</h2>
+        <a class="anchor-sub-menu clearbtn" href="/home/subscribers" data-type-id="">
             <div class='recipients-grid'>
                 <div class='position-relative'><span class="material-icons">people_alt</span>
                     Subscribers
@@ -10,7 +10,7 @@
                 </div>
             </div>
         </a>
-        <a class="message-create" href="/home/subscriptions" data-type-id="">
+        <a class="anchor-sub-menu clearbtn" href="/home/subscriptions" data-type-id="">
             <div class='recipients-grid'>
                 <div class='position-relative'><span class="material-icons">inventory_2</span>
                     Subscriptions

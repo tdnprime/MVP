@@ -1,6 +1,6 @@
 
-const appId = 'sandbox-sq0idb-FrLggaZMvpJBc2UDN3zKlg';
-const locationId = 'LABQBPRYSFTE8';
+const appId = 'sq0idp-7KMD1JWXnqdl81lRQJFLhA';
+const locationId = 'LKBK83NPX6T44';
 
 async function initializeCard(payments) {
 

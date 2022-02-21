@@ -173,7 +173,7 @@ class SquareController extends Controller
         )->post($this->config['square']['cardsEndpoint'], [
 
             "idempotency_key" => $request['source_id'],
-            "source_id" => "cnon:card-nonce-ok", // Change
+            "source_id" =>  $request['source_id'], 
             "card" => [
                 "billing_address" => [
                     "address_line_1" => $subscription[0]['address_line_1'],
@@ -360,21 +360,24 @@ class SquareController extends Controller
 
     }
 
-    public function updateSubscription(Request $request)
+    public function updateSubscription($request)
     {
-        return $response = Http::withHeaders(
+        
+         $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
                 'Content-Type' => 'application/json',
                 'Square-Version' => "2022-01-20",
             ]
-        )->put($this->config['square']['subscriptionsEndpoint'] . "/" . $subscription[0]['sub_id'], [
+        )->put($this->config['square']['subscriptionsEndpoint'] . "/" . $request['sub_id'], [
 
             "subscription" => [
-                "cadence" => $request->cadence,
-                "version" => $request->square_vid,
+                "cadence" => $request['cadence'],
+                "version" => $request['square_vid'],
             ],
         ]);
+
+        return json_decode($response);
 
     }
 

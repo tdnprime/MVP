@@ -5,7 +5,7 @@
     <main class='fadein'>
         <section id="left-aside">
             <h2>Learn</h2>
-            <a class="message-create" href="/school/home">
+            <a class="anchor-sub-menu clearbtn" href="/school/home">
                 <div class='recipients-grid'>
                     <div class='position-relative'><span class="material-icons">help_center</span>
                         What
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </a>
-            <a class="message-create" href="/school/how">
+            <a class="anchor-sub-menu clearbtn" href="/school/how">
                 <div class='recipients-grid'>
                     <div class='position-relative'><span class="material-icons">quiz</span>
                         How
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </a>
-            <a class="message-create" href="/school/why">
+            <a class="anchor-sub-menu clearbtn" href="/school/why">
                 <div class='recipients-grid'>
                     <div class='position-relative'><span class="material-icons">thumb_up</span>
                         Why

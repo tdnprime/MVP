@@ -16,7 +16,7 @@
             <section id="left-aside">
                 <h2>Messages</h2>
                 @if(isset($trevor))
-                <a class="message-create" href="/messages/create" data-type-id="{{ $trevor->id }}">
+                <a class="anchor-sub-menu clearbtn" href="/messages/create" data-type-id="{{ $trevor->id }}">
                     <div class='recipients-grid'>
                         <div><span><img id='header-user-icon' src='{{$trevor->profile_photo_path}}'/></span>
                             Customer Support
@@ -31,7 +31,7 @@
                 @if (isset($subs) && $subs->count() > 0)
                     
                     @foreach ($subs as $sub)
-                        <a class="message-create" href="/messages/create" data-type-id="{{ $sub->id }}">
+                        <a class="anchor-sub-menu clearbtn" href="/messages/create" data-type-id="{{ $sub->id }}">
                             <div class='recipients-grid'>
                                 <div><span><img id='header-user-icon' src='{{$sub->profile_photo_path}}'/></span>
                                     {{ $sub->given_name }}

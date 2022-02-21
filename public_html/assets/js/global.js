@@ -1470,8 +1470,9 @@ window.onload = function () {
 
   }
 
+// Google Analytics
 
-  window.dataLayer = window.dataLayer || [];
+ /* window.dataLayer = window.dataLayer || [];
 
   function gtag() {
 
@@ -1481,7 +1482,7 @@ window.onload = function () {
 
   gtag('js', new Date());
   gtag('config', 'G-EKYP1LECWS');
-}
+}*/
 
 window.addEventListener('onbeforeunload', function () {
 
@@ -1492,5 +1493,5 @@ window.addEventListener('onbeforeunload', function () {
 
 
 //import instance from './modules/messages.js'
-
+}
 

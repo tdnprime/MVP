@@ -1,0 +1,1 @@
+/Users/trevor/Desktop/htdocs/laravel/resources/views/mail/box-created.blade.php

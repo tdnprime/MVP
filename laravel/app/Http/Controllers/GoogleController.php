@@ -51,7 +51,7 @@ class GoogleController extends Controller
     {
         config::set(['services.google.client_id' => '227887284273-d78nlrbc709bis6t63ll6fphdccu8390.apps.googleusercontent.com']);
         config::set(['services.google.client_secret' => 'E7TKuM-O9cF-N9N6ROf8CI3E']);
-        config::set(['services.google.redirect' => 'http://127.0.0.1:8000/admin/auth/callback']);
+       config::set(['services.google.redirect' => 'http://127.0.0.1:8000/admin/auth/callback']);
 
         $user = Socialite::driver('google')->stateless()->user();
         $finduser = User::where('google_id', $user->id)->first();

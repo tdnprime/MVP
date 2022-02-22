@@ -389,6 +389,7 @@ dialog p{
 #left-aside h2 {
   position: relative;
   top: 2em;
+  text-shadow: 20px 20px 60px #0c8dc41a;
 }
 
 .anchor-sub-menu {

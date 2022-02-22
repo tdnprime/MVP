@@ -4,7 +4,7 @@
     <main class="fadein">
         <section id="left-aside">
             <h2>Invitations</h2>
-            <a class="message-create" href="/invitations/home" data-type-id="">
+            <a class="anchor-sub-menu clearbtn" href="/invitations/home" data-type-id="">
                 <div class='recipients-grid'>
                     <div class='position-relative'><span class="material-icons">insert_invitation</span>
                         Invitations
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </a>
-            <a class="message-create" href="/invitations/rewards" data-type-id="">
+            <a class="anchor-sub-menu clearbtn" href="/invitations/rewards" data-type-id="">
                 <div class='recipients-grid'>
                     <div class='position-relative'><span class="material-icons">emoji_events</span>
                         Rewards

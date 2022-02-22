@@ -29,7 +29,7 @@
                 <section id='box-headline'>
                     <h1 class='darkblue'>
                         <span id='page-name' class='ginormous primary-color'>
-                            {{ $user->given_name }} {{ $user->family_name }}</span>
+                            {{ $user->page_name }}</span>
                         <span class='break hack-br-1'><br></span> is shipping {{ $box->box_supply }} subscription boxes
                         <br>
                         to loyal fans
@@ -98,9 +98,9 @@
         <section class='section'>
             <div class='alt-section-inner-grid'>
                 <div class='secinner'>
-                    <h1 class='extra-large-font'>Enjoy {{ $user->given_name }}</h1>
+                    <h1 class='extra-large-font'>Enjoy {{ $user->page_name }}</h1>
                     <p>
-                        Subscribe to enjoy a curated experience that is uniquely {{ $user->given_name }}.</p>
+                        Subscribe to enjoy a curated experience that is uniquely {{ $user->page_name }}.</p>
                 </div>
                 <img src='../../assets/images/smith.svg' alt='subscription box'>
             </div>
@@ -108,10 +108,10 @@
         <section class='section'>
             <div class='section-inner-grid'> <img src='../../assets/images/freedom.svg' alt='subscription box'>
                 <div class='secinner'>
-                    <h1 class='extra-large-font'>Give {{ $user->given_name }} freedom</h1>
+                    <h1 class='extra-large-font'>Give {{ $user->page_name }} freedom</h1>
                     <p>
-                        {{ $user->given_name }}'s subscription box is the best way to support
-                        {{ $user->given_name }}'s quest
+                        {{ $user->page_name }}'s subscription box is the best way to support
+                        {{ $user->page_name }}'s quest
                         for financial freedom to continue making the content you deserve.</p>
                 </div>
             </div>
@@ -122,7 +122,7 @@
                     <h1 class='extra-large-font'>Special offer</h1>
                     <p>
                         The first ten fans to <b>pre-order</b> will receive a 30-minute phone call with
-                        {{ $user->given_name }}.
+                        {{ $user->page_name }}.
                         Pre-order sales ends <span class='primary-color'><b>{{ $box->preenddate}}</b></span>, and
                         boxes
                         will ship within
@@ -147,7 +147,7 @@
                 <div class='secinner'>
                     <h1 class='extra-large-font'> Save on shipping</h1>
                     <p>
-                        Subscribe to {{ $user->given_name }}'s box today to secure {{ $box->discount }} shipping.</p>
+                        Subscribe to {{ $user->page_name }}'s box today to secure {{ $box->discount }} shipping.</p>
                 </div>
                 <img src='../../assets/images/high-five.svg' alt='subscription box'>
             </div>
@@ -157,7 +157,6 @@
                 <div class='secinner'>
                     <h1 class='extra-large-font'>Money back guarantee</h1>
                     <p>We don't allow products of poor or medium quality on our platform.
-                        They don't have to be expensive; they have to be of excellent quality.
                         We will return any fees collected from a customer who successfully proves
                         their seller violated this policy.</p>
                 </div>
@@ -168,7 +167,7 @@
                 <div class='secinner'>
                     <h1 class='extra-large-font'>Cancel anytime</h1>
                     <p>
-                        If you're unsatisfied with {{ $user->given_name }}'s box, you may unsubscribe
+                        If you're unsatisfied with {{ $user->page_name }}'s box, you may unsubscribe
                         at anytime without hassle.</p>
                 </div>
                 <img src='../../assets/images/laptop.svg' alt='subscription box'>
@@ -195,8 +194,7 @@
                 <a href='#' id='exe-sub-alt' data-version='{{ $box->vid }}' data-product='{{ $box->product_id }}'
                     data-in-stock='{{ $box->in_stock }}' data-total='{{ $box->price }}'
                     data-shipping='{{ $box->shipping_cost }}' data-id='{{ $box->user_id }}' data-url='auth/google'
-                    data-video-id='{{ $box->video }}' data-plan-id='1' class='button'> Get started with
-                    {{ $user->given_name }} </a>
+                    data-video-id='{{ $box->video }}' data-plan-id='1' class='button'> Get started</a>
             </div>
         </section>
     </main>

@@ -114,8 +114,5 @@ class HomeController extends Controller
         return view('partner.index', compact('user'));
     }
 
-    public function square(){
-        $user = Auth::user();
-        header('location:/web-payments-quickstart/public/index.html ');
-    }
+
 }

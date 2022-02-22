@@ -12,7 +12,7 @@
         <div id="container">
         <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
         <script>
-               
+            
             window.onLoadCallback = function(){
              
                 gapi.load('auth2', function() {

@@ -16,7 +16,7 @@
                        
                          <tr> 
                                 <td><a href='/{{$creator->box_url}}'><img class='image-round' src='{{ $creator->profile_photo_path }}' /></a></td>
-                                <td>{{ $creator->given_name }}&nbsp;{{ $creator->family_name }} </td>
+                                <td>{{ $creator->page_name }} </td>
                                 <td>{{ $creator->proddesc }}</td>
                                 <td><b>{{ $subscribers }}</b> Subscribers</td>
                                 <td></td> 
@@ -38,7 +38,8 @@
                         <a class='button' href='/invitations/home'>Get started</a>
                     </div>
                 @else
-                    <svg width="147.049" height="121.639">
+                <br>
+                    <svg class="center" width="147.049" height="121.639">
                         <g data-name="Group 107">
                             <path data-name="Path 574"
                                 d="M129.164 80.771c15.139 16.742-28.745 40.869-64.2 40.869S4.972 102.946.764 80.771c-10.215-53.765 87.038-87.938 64.2-40.869-33.287 68.61 52.278 27.684 64.2 40.869z"

@@ -9,7 +9,7 @@
         <a class='fadein' href="/invitations/home"><span class="material-icons">insert_invitation</span>
             Invitations</a>
     <a class='fadein' href="/account/home"><span class="material-icons">manage_accounts</span>Account</a>
-    <a id="signout" class='fadein' href="/signout"><span class="material-icons">logout</span>Sign out</a>
+    <a id="signout" class='fadein' href='/signout'><span class="material-icons">logout</span>Sign out</a>
 </div>
 @auth
 

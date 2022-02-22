@@ -55,13 +55,20 @@
                 <input type='number' required value='' name='price' placeholder='1'>
             </fieldset>
             <fieldset>
-                <legend class='primary-color'>Brand</legend>
+                <legend class='primary-color'>Branding</legend>
                 <h3>Check availability of the URL you want for your page.</h3>
                 <label id='grid-custom-url'>
                     <p class='one-em-font'>https://boxeon.com/</p>
                     <input id='box-url' type='text' required autocomplete='off' value='' placeHolder='YourCustomURL' name='box_url'>
                     <input id='check-url' class='button' type='button' value='Check'>
                 </label>
+            </fieldset>
+            <fieldset>
+                <legend class='primary-color'>Branding</legend>
+                <h3>Provide a page name.</h3>
+                
+                    <input type='text' required autocomplete='off' value='' placeHolder='Exame: your YouTube channel name' name='page_name'>
+                
             </fieldset>
             <fieldset>
                 <legend class='primary-color'>Shipping</legend>

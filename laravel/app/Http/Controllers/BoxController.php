@@ -178,6 +178,7 @@ class BoxController extends Controller
         $box->postal_code = $request->input('postal_code');
         $box->prodname = $request->input('prodname');
         $box->proddesc = $request->input('proddesc');
+        $box->page_name = $request->input('page_name');
 
         $user->boxes()->save($box);
         

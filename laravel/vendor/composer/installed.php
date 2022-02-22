@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '54bf2d9913ff67080ab4fdfc94fd69efa7a5052e',
+        'reference' => '7a266e8365a70af88fda869a96f8d21cadbf90c2',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -35,15 +35,6 @@
             'install_path' => __DIR__ . '/../brick/math',
             'aliases' => array(),
             'reference' => 'ca57d18f028f84f777b2168cd1911b0dee2343ae',
-            'dev_requirement' => false,
-        ),
-        'cmgmyr/messenger' => array(
-            'pretty_version' => '2.26.0',
-            'version' => '2.26.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../cmgmyr/messenger',
-            'aliases' => array(),
-            'reference' => 'e719816aaca96dc8e4e163d738e4dd132a94959e',
             'dev_requirement' => false,
         ),
         'cordoval/hamcrest-php' => array(
@@ -472,7 +463,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '54bf2d9913ff67080ab4fdfc94fd69efa7a5052e',
+            'reference' => '7a266e8365a70af88fda869a96f8d21cadbf90c2',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

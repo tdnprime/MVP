@@ -179,7 +179,6 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         'C' => 
         array (
             'Cron\\' => 5,
-            'Cmgmyr\\Messenger\\' => 17,
             'Carbon\\' => 7,
         ),
         'B' => 
@@ -543,10 +542,6 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
-        'Cmgmyr\\Messenger\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/cmgmyr/messenger/src',
-        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -812,12 +807,6 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'Carbon\\TranslatorStrongTypeInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/TranslatorStrongTypeInterface.php',
-        'Cmgmyr\\Messenger\\MessengerServiceProvider' => __DIR__ . '/..' . '/cmgmyr/messenger/src/MessengerServiceProvider.php',
-        'Cmgmyr\\Messenger\\Models\\Message' => __DIR__ . '/..' . '/cmgmyr/messenger/src/Models/Message.php',
-        'Cmgmyr\\Messenger\\Models\\Models' => __DIR__ . '/..' . '/cmgmyr/messenger/src/Models/Models.php',
-        'Cmgmyr\\Messenger\\Models\\Participant' => __DIR__ . '/..' . '/cmgmyr/messenger/src/Models/Participant.php',
-        'Cmgmyr\\Messenger\\Models\\Thread' => __DIR__ . '/..' . '/cmgmyr/messenger/src/Models/Thread.php',
-        'Cmgmyr\\Messenger\\Traits\\Messagable' => __DIR__ . '/..' . '/cmgmyr/messenger/src/Traits/Messagable.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',

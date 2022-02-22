@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "860f6a05eebcf048fa9e7831cf22ae46",
+    "content-hash": "781026e9f55c067a0ace73c7b8ca902c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -175,77 +175,6 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
-        },
-        {
-            "name": "cmgmyr/messenger",
-            "version": "2.26.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cmgmyr/laravel-messenger.git",
-                "reference": "e719816aaca96dc8e4e163d738e4dd132a94959e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cmgmyr/laravel-messenger/zipball/e719816aaca96dc8e4e163d738e4dd132a94959e",
-                "reference": "e719816aaca96dc8e4e163d738e4dd132a94959e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/config": "^5.5|^6.0|^7.0|^8.0",
-                "illuminate/database": "^5.5|^6.0|^7.0|^8.0",
-                "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "doctrine/dbal": "^3.1.2|^2.13.3",
-                "fakerphp/faker": "^1.16",
-                "friendsofphp/php-cs-fixer": "^3.2|^2.18",
-                "orchestra/testbench": "^3.0|^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.0|^9.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Cmgmyr\\Messenger\\MessengerServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cmgmyr\\Messenger\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Gmyr",
-                    "email": "cmgmyr@gmail.com",
-                    "homepage": "https://github.com/cmgmyr",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Simple user messaging tool for Laravel",
-            "keywords": [
-                "Messenger",
-                "laravel",
-                "messaging",
-                "user messaging"
-            ],
-            "support": {
-                "issues": "https://github.com/cmgmyr/laravel-messenger/issues",
-                "source": "https://github.com/cmgmyr/laravel-messenger/tree/2.26.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/cmgmyr",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-01-31T15:13:45+00:00"
         },
         {
             "name": "daltcore/lara-pdf-merger",

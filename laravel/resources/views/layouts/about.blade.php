@@ -8,7 +8,7 @@
     <div id="container">
         <span></span><!-- Hack-->
         @include('includes.header')
-        @include('includes.menu.index')
+        @include('includes.menus.index')
         @yield('content')
 
     </div>

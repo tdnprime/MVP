@@ -588,7 +588,16 @@ a:visited {
   min-height: 70em;
   margin-bottom: 2em;
 }
-
+#about ul{
+  font-size: 1.3em;
+  list-style: circle;
+  padding:1em;
+  margin-left:2em;
+}
+#about table ul{
+  font-size: 1em;
+  list-style: circle;
+}
 #home-videos-wrapper {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;

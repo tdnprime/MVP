@@ -1,10 +1,9 @@
-@extends('layouts.home')
+@extends('layouts.about')
 @section('title', 'Terms of use')
 @section('content')
 
     <main>
-        <section id="left-aside"></section>
-        <aside id="panel">
+        <section class="section">
             <h1 class='extra-large-font centered darkblue'>Boxeon terms of use</h1>
             <p>Effective July 1, 2021</p>
 
@@ -14,7 +13,7 @@
 
             <p>Welcome to boxeon.com. Please read on to learn the rules and restrictions that govern your use of our
                 website(s), products, services and applications (the “Services”). If you have any questions, comments, or
-                concerns regarding these terms or the Services, please contact us at help@Boxeon.com</p>
+                concerns regarding these terms or the Services, please contact us at service@Boxeon.com</p>
 
             <p>These Terms of Use (the “Terms”) are a binding contract between you and Boxeon LLC (“Boxeon,” “we” and “us”).
                 You must agree to and accept all of the Terms, or you don’t have the right to use the Services. Your using
@@ -44,7 +43,7 @@
                 you are a child under 13, please do not attempt to register for the Services or send any personal
                 information about yourself to us. If we learn we have collected personal information from a child under 13,
                 we will delete that information as quickly as possible. If you believe that a child under 13 may have
-                provided us personal information, please contact us at help@Boxeon.com.</p>
+                provided us personal information, please contact us at service@Boxeon.com.</p>
 
             <h2>What are the basics of using Boxeon?
             </h2>
@@ -100,9 +99,7 @@
             </p>
             <p>(j) Decompiles, reverse engineers, or otherwise attempts to obtain the source code or underlying ideas or
                 information of or relating to the Services.</p>
-            <p>(l) Violates the PayPal <a
-                    href="https://www.paypal.com/us/webapps/mpp/ua/acceptableuse-full?_ga=1.252227273.1181550227.1636106594"
-                    target="_blank">Acceptable Use Policy</a>.</p>
+  
             <p>A violation of any of the foregoing is grounds for termination of your right to use or access the Services.
             </p>
 
@@ -211,7 +208,7 @@
                 credit card on file for each applicable billing period (depending on which payment plan you’ve selected)
                 until you cancel your Membership.
             </p>
-            <p>You may cancel your Membership at any time by contacting us at help@Boxeon.com. or by logging into your
+            <p>You may cancel your Membership at any time by contacting us at service@Boxeon.com. or by logging into your
                 account, scrolling down the the subscriptions dashboard, and clicking ‘cancel’ on the right side of the
                 subscription you would like to terminate. Cancellation requests must be received prior to the billing date
                 of the Membership renewal, or else you will be charged for the then-current billing period.</p>
@@ -234,7 +231,7 @@
                 or limit any orders and Memberships. We may refuse any cancellation requests for products and orders in our
                 sole discretion. We reserve the right to provide substantially similar products to fulfill your order.
             </p>
-            <p>If you receive a damaged or incomplete order, please contact us at help@boxeon.com within three [3] weeks of
+            <p>If you receive a damaged or incomplete order, please contact us at service@Boxeon.com within three [3] weeks of
                 receiving your order. We may offer any refunds or replacements solely in our discretion.
             </p>
             <p>We are no longer responsible for damage to your order or risk of loss once we deliver your order to the
@@ -279,7 +276,7 @@
             </p>
             <p>Message frequency is recurring. Consent is not a condition of purchase. Reply STOP to opt-out and HELP for
                 more information, including customer support. You understand and agree that attempting to opt-out by any
-                means other than texting the opt-out commands above, or requesting via email to help@Boxeon.com to be
+                means other than texting the opt-out commands above, or requesting via email to service@Boxeon.com to be
                 removed from our list, is not a reasonable means of opting out, except as required by law.
             </p>
             <p>In addition to any fee of which you are notified, your mobile provider’s standard message and data rates may
@@ -303,7 +300,7 @@
             </p>
 
             <h2>What if I want to stop using Boxeon</h2>
-            <p>You’re free to do that at any time, by contacting us at help@Boxeon.com; please refer to our Privacy Policy,
+            <p>You’re free to do that at any time, by contacting us at service@Boxeon.com; please refer to our Privacy Policy,
                 as well as the licenses above, to understand how we treat information you provide to us after you have
                 stopped using our Services.
             </p>
@@ -359,8 +356,8 @@
                 We may transfer, assign, or delegate these Terms and our rights and obligations without consent.</p>
 
             <p>Choice of Law; Arbitration. These Terms are governed by and will be construed under the laws of the State of
-                California, without regard to the conflicts of laws provisions thereof. Any dispute arising from or relating
-                to the subject matter of these Terms shall be finally settled in San Mateo County, California, in English,
+                New York, without regard to the conflicts of laws provisions thereof. Any dispute arising from or relating
+                to the subject matter of these Terms shall be finally settled in Kings County, New York, in English,
                 in accordance with the Streamlined Arbitration Rules and Procedures of Judicial Arbitration and Mediation
                 Services, Inc. ("JAMS") then in effect, by one commercial arbitrator with substantial experience in
                 resolving intellectual property and commercial contract disputes, who shall be selected from the appropriate
@@ -368,15 +365,15 @@
                 may be entered in any court of competent jurisdiction. Notwithstanding the foregoing obligation to arbitrate
                 disputes, each party shall have the right to pursue injunctive or other equitable relief at any time, from
                 any court of competent jurisdiction. For all purposes of this Agreement, the parties consent to exclusive
-                jurisdiction and venue in the state or federal courts located in, respectively, San Mateo County,
-                California, or the Northern District of California. Any arbitration under these Terms will take place on an
+                jurisdiction and venue in the state or federal courts located in Kings County,
+                New York. Any arbitration under these Terms will take place on an
                 individual basis: class arbitrations and class actions are not permitted. YOU UNDERSTAND AND AGREE THAT BY
                 ENTERING INTO THESE TERMS, YOU AND Boxeon ARE EACH WAIVING THE RIGHT TO TRIAL BY JURY OR TO PARTICIPATE IN A
                 CLASS ACTION.</p>
 
             <p>Miscellaneous. You will be responsible for paying, withholding, filing, and reporting all taxes, duties, and
                 other governmental assessments associated with your activity in connection with the Services, provided that
-                the Boxeon may, in its sole discretion, do any of the foregoing on your behalf or for itself as it sees fit.
+                Boxeon may, in its sole discretion, do any of the foregoing on your behalf or for itself as it sees fit.
                 The failure of either you or us to exercise, in any way, any right herein shall not be deemed a waiver of
                 any further rights hereunder. If any provision of these Terms is found to be unenforceable or invalid, that
                 provision will be limited or eliminated, to the minimum extent necessary, so that these Terms shall
@@ -387,8 +384,8 @@
                 partner, or joint venture of Boxeon, and you do not have any authority of any kind to bind Boxeon in any
                 respect whatsoever. You and Boxeon agree there are no third party beneficiaries intended under these Terms.
             </p>
-        </aside>
-        <section id='right-aside'></section>
+    
+        </section>
     </main>
 
 @endsection

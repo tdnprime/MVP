@@ -19,7 +19,7 @@ class SearchController extends Controller
             ->join('boxes', 'boxes.user_id', '=', 'users.id')
             ->where('users.given_name', 'like', '%' . $request['creator'] . '%')
             ->select('users.given_name', 'users.family_name',
-                'users.profile_photo_path', 'boxes.box_url',
+                'users.profile_photo_path', 'boxes.box_url', 'boxes.page_name',
                 'boxes.proddesc', 'users.id')
             ->get();
 

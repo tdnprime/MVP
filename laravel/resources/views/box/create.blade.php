@@ -60,14 +60,14 @@
                 <label id='grid-custom-url'>
                     <p class='one-em-font'>https://boxeon.com/</p>
                     <input id='box-url' type='text' required autocomplete='off' value='' placeHolder='YourCustomURL' name='box_url'>
-                    <input id='check-url' class='button' type='button' value='Check'>
+                    <input id='check-url' class='button clearbtn' type='button' value='Check'>
                 </label>
             </fieldset>
             <fieldset>
                 <legend class='primary-color'>Branding</legend>
                 <h3>Provide a page name.</h3>
                 
-                    <input type='text' required autocomplete='off' value='' placeHolder='Exame: your YouTube channel name' name='page_name'>
+                    <input type='text' required autocomplete='off' value='' placeHolder='Example: your YouTube channel name' name='page_name'>
                 
             </fieldset>
             <fieldset>
@@ -315,7 +315,7 @@
                     <p>Tells us in 127 max characters.</p>
                 </div>
                 <textarea class='optional' disabled required maxlength='127' name='proddesc' rows='2' cols='40'
-                    placeHolder='Example: Interesting finds from my African travels'></textarea>
+                    placeHolder='Example: Daily necessities and interesting finds from my travels'></textarea>
             </fieldset>
             <fieldset id='curation2'>
                 <legend class='primary-color'>Shipping address</legend>

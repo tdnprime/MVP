@@ -1030,7 +1030,6 @@ a:visited {
 
 #video-place-holder {
   background-color: #fff;
-  margin-top: 4em;
   padding: 2em;
   width: 50%;
 }
@@ -1110,14 +1109,19 @@ a:visited {
   max-width: 256px;
 
 }
-.alert {
+.alert,
+.alert-info{
   padding: 1em;
   padding-left:2.5em;
   padding-right:2.5em;
   display: block;
+  background: #f8f8c1;
+}
+.alert {
+ 
   font-weight: bold;
   border-radius: 25px;
-  background: #f8f8c1;
+
   box-shadow:  20px 20px 60px #d3d3a4;
   animation-name: alerts !important;
   animation-duration: 10s;

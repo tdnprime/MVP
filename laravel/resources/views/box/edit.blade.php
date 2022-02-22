@@ -2,6 +2,12 @@
 @section('title', 'Boxeon | Edit Box')
 @section('content')
 
+@if (session()->has('message'))
+<dialog class="alert">
+   <p class='centered'> {{ session()->get('message') }} Congrats!  Your box is live at&nbsp;<a class='one-em-font primary-color' href='/{{$box->box_url}}'> boxeon.com/{{$box->box_url}}</a></p>
+</div>  
+@endif
+
     @if(empty($box) || is_null($box->box_weight))
         <div id="masthead" class="fadein">
             <div id="headline">
@@ -20,16 +26,12 @@
     @else
 
         <div id='masthead'>
-            @if (session()->has('message'))
-            <dialog id="alert" class="alert">
-               <p class='centered'> {{ session()->get('message') }}&nbsp;<a class='one-em-font primary-color' href='/{{$box->box_url}}'> boxeon.com/{{$box->box_url}}</a></p>
-            </div>  
-        @endif
+     
             <div id='box-masthead-inner-wrapper'>
                 <section id='box-headline'>
                     <h1 class='darkblue'>
                         <span id='page-name' class='ginormous primary-color'>
-                            {{ $user->page_name }}</span>
+                            {{ $box->page_name }}</span>
                         <span class='break hack-br-1'><br></span> is shipping {{ $box->box_supply }} subscription boxes
                         <br>
                         to loyal fans
@@ -55,8 +57,7 @@
                 @if (!isset($box->video))
                     <div id='video-place-holder' class='centered'>
                         <h1 class='extra-large-font'>Embed Video</h1>
-                        <div class='alert'>
-                            <p class='material-icons'>info</p>
+                        <div class='alert-info'>
                             <p>To publish your page, embed a
                                 <a href='#' class='one-em-font underline' id='video-instructions'>call to action YouTube
                                     video</a>.
@@ -69,7 +70,7 @@
                             @csrf
                             @method('POST')
 
-                            <input required placeholder='Youtube video URL from browser' name='ytembed' type='url'>
+                            <input class='centered' required placeholder='Youtube video URL from browser' name='ytembed' type='url'>
                             <div class='buttonHolder'>
                                 <input type='submit' value='Embed'>
                             </div>

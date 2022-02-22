@@ -65,7 +65,7 @@ class ShippingController extends Controller
         }
 
         $toAddress = Shippo_Address::create(array(
-            "name" => $to->fullname,
+            "name" => $to->given_name . "" . $to->family_name,
             "company" => "Boxeon",
             "street1" => $to->address_line_1,
             "city" => $to->admin_area_2,

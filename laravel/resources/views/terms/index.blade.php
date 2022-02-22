@@ -34,7 +34,7 @@
                 effective unless in writing and signed by both you and us.</p>
 
             <h2>What about my privacy?</h2>
-            <p>Boxeon takes the privacy of its users very seriously. For the current Boxeon Privacy Policy, please <a
+            <p>Boxeon takes the privacy of its users very seriously. For the current Boxeon Privacy Policy, please <a class='one-em-font primary-color'
                     href="/privacy">click here</a>.</p>
 
             <p>The Children’s Online Privacy Protection Act (“COPPA”) requires that online service providers obtain parental

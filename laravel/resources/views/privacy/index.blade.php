@@ -15,7 +15,7 @@
       <h2>Your privacy rights and choices</h2>
       <p>When it comes to how your personal data is collected, stored, used, and shared, you have rights and choices.</p>
       <h2>Understanding your rights</h2>
-      <p>You have the right to request a copy of the personal data we’ve collected about you in the past 12 months. You also have the right to ask us to delete your personal data we have collected about you. If you want to see or delete your personal data, <a class='one-em-font' href='/contact/'>Contact Us</a>. We will not deny you services, charge you different prices, or provide you with a different level of service solely for exercising your privacy rights. If you are a California resident, learn more about how we have handled your <a class='one-em-font' href='#cali'>Privacy Rights</a>.</p>
+      <p>You have the right to request a copy of the personal data we’ve collected about you in the past 12 months. You also have the right to ask us to delete your personal data we have collected about you. If you want to see or delete your personal data, <a class='one-em-font primary-color'' href='/contact/'>Contact Us</a>. We will not deny you services, charge you different prices, or provide you with a different level of service solely for exercising your privacy rights. If you are a California resident, learn more about how we have handled your <a class='one-em-font primary-color'' href='#cali'>Privacy Rights</a>.</p>
       <p>If you request to see or delete your personal data, we’ll first need to verify who you are before we can respond to your request. If we can’t verify your identity, we will not be able to fulfill your request.</p>
       <p>If you want to delete your personal data, you have choices:</p>
       <ul>
@@ -24,13 +24,13 @@
       </ul>
       <p>If you close your account or request that we delete personal data, we still need to keep some personal data so we can:</p>
       <ul>
-        <li>Complete a transaction, provide goods or services you requested, or comply with our promises to you in the <a class='one-em-font' href='/terms/'>Terms of Use</a> or other contract you have with us</li>
+        <li>Complete a transaction, provide goods or services you requested, or comply with our promises to you in the <a class='one-em-font primary-color'' href='/terms/'>Terms of Use</a> or other contract you have with us</li>
         <li>Detect and prevent malicious, fraudulent, or illegal activity</li>
         <li>Protect your (or another person’s) legal rights, including the right to free speech</li>
         <li>Manage our internal business processes that are reasonably related to your expectations when using our services</li>
         <li>Comply with laws</li>
       </ul>
-      <p>Depending on where you live and what type of account you use, you may have different rights and choices for managing your personal data. For example, certain State privacy laws do not apply to personal data collected, processed, or disclosed by a financial institution according to federal laws, such as the Gramm-Leach-Bliley Act. Consumers may read our <a class='one-em-font' href='#cpn'>Consumer Privacy Notice</a> for more information about their rights under US federal law.</p>
+      <p>Depending on where you live and what type of account you use, you may have different rights and choices for managing your personal data. For example, certain State privacy laws do not apply to personal data collected, processed, or disclosed by a financial institution according to federal laws, such as the Gramm-Leach-Bliley Act. Consumers may read our <a class='one-em-font primary-color'' href='#cpn'>Consumer Privacy Notice</a> for more information about their rights under US federal law.</p>
       <h2>Understanding your choices</h2>
       <p>You can control how personal data is collected or shared, as well as how we communicate with you. Here are some of the ways you can customize your choices:</p>
       <h2>Choose how we collect personal data</h2>
@@ -143,7 +143,7 @@
         <li>Courts, governments, regulators and law enforcement when accompanied by a subpoena or other legal documentation that requires Boxeon or members of our corporate family to respond </li>
         <li> People involved in a transaction, such as other users or merchants and their service providers.</li>
         <li>Third parties that you asked us to connect with, such as other financial or social media apps. If you want us to stop sharing information with a third party, disconnect your account from that third party.</li>
-        <li>Third-party tools used to help fight spam and abuse. For instance, we use ReCaptcha to help determine whether you’re a person or a computer. When you use ReCaptcha, your personal data is subject to Google’s <a class='one-em-font' href='https://policies.google.com/privacy' title="Google Privacy">Privacy Policy</a> and <a class='one-em-font' href="https://policies.google.com/terms" title="Google Terms of Use">Terms of Use</a>.</li>
+        <li>Third-party tools used to help fight spam and abuse. For instance, we use ReCaptcha to help determine whether you’re a person or a computer. When you use ReCaptcha, your personal data is subject to Google’s <a class='one-em-font primary-color'' href='https://policies.google.com/privacy' title="Google Privacy">Privacy Policy</a> and <a class='one-em-font primary-color'' href="https://policies.google.com/terms" title="Google Terms of Use">Terms of Use</a>.</li>
       </ul>
       <p>Other third parties to:</p>
       <ul>
@@ -173,7 +173,7 @@
       <p>Call Boxeon Customer Service at 1-646-450-4671‬
         or email us at help@boxeon.com.</p>
       <h2>Consumer privacy notice</h2>
-      <a class='one-em-font' id='cpn' href='#cpn'></a>
+      <a class='one-em-font primary-color'' id='cpn' href='#cpn'></a>
       <p> Effective Date: March 12, 2021</p>
       <p>This Consumer Privacy Notice applies to you if you are an individual who resides in the United States and uses Boxeon sites or services for your own personal, family or household purposes.</p>
       <table>
@@ -261,7 +261,7 @@
         <tbody>
           <tr>
             <th style="width:33.0%">Questions?</th>
-            <th style="text-align:left;font-weight:normal"> <p>Call our customer service at  1-646-450-4671‬ or visit us at <a class='one-em-font' href="https://boxeon.com/contact"><strong>https://boxeon.com/contact</strong></a>. </p>
+            <th style="text-align:left;font-weight:normal"> <p>Call our customer service at  1-646-450-4671‬ or visit us at <a class='one-em-font primary-color'' href="https://boxeon.com/contact"><strong>https://boxeon.com/contact</strong></a>. </p>
             </th>
           </tr>
         </tbody>
@@ -344,11 +344,11 @@
           </tr>
           <tr>
             <td>We may transfer personal information to other countries, for example, for customer service or to process transactions.</p>
-              <a class='one-em-font' id='cali' href='#cali'><u>California: </u></a>Effective January 1, 2020, the California Consumer Act of 2018 (CCPA) permits consumers who are California residents to ask businesses covered under the act about personal data it has collected about the consumer, submit an access or deletion request, and opt-out of the sale of personal information, if applicable. These provisions do not apply to personal data collected, processed, shared, or disclosed by financial institutions pursuant to federal law such as the Gramm-Leach-Bliley Act. Contact us if you have questions about our privacy statement, this consumer notice, or your personal data. If your Boxeon account has a California mailing address, we will not share personal information we collect about you except to the extent permitted under California law.
-              To talk about your Boxeon account, call Boxeon Customer Service at  1-646-450-4671 or visit our <a class='one-em-font' href="https://boxeon.com/contact" pa-marked="1">Customer Service web portal</a>.
+              <a class='one-em-font primary-color'' id='cali' href='#cali'><u>California: </u></a>Effective January 1, 2020, the California Consumer Act of 2018 (CCPA) permits consumers who are California residents to ask businesses covered under the act about personal data it has collected about the consumer, submit an access or deletion request, and opt-out of the sale of personal information, if applicable. These provisions do not apply to personal data collected, processed, shared, or disclosed by financial institutions pursuant to federal law such as the Gramm-Leach-Bliley Act. Contact us if you have questions about our privacy statement, this consumer notice, or your personal data. If your Boxeon account has a California mailing address, we will not share personal information we collect about you except to the extent permitted under California law.
+              To talk about your Boxeon account, call Boxeon Customer Service at  1-646-450-4671 or visit our <a class='one-em-font primary-color'' href="https://boxeon.com/contact" pa-marked="1">Customer Service web portal</a>.
 <br>
               <u>Vermont</u>: If your Boxeon account has a Vermont mailing address, we will not share personal information we collect about you with non-affiliates unless the law allows or you provide authorization.</p>
-              <br><u>Nevada</u>: If your Boxeon account has a Nevada mailing address, we are providing this notice pursuant to Nevada law. If you prefer not to receive marketing calls from Boxeon, you may be placed on our internal Do Not Call List by calling  1-646-450-4671 or going to <a class='one-em-font' href="https://boxeon.com/contact" pa-marked="1"><strong>https://boxeon.com/contact</strong></a>. For more information, you can contact Boxeon at 589 Chester Street, Brooklyn, NY 11212 or you can contact the Bureau of Consumer Protection, Office of the Nevada Attorney General, 555 E. Washington St., Suite 3900, Las Vegas, NV 89101; telephone number: 1-702-486-3132; email: Aginfo@ag.nv.gov</td>
+              <br><u>Nevada</u>: If your Boxeon account has a Nevada mailing address, we are providing this notice pursuant to Nevada law. If you prefer not to receive marketing calls from Boxeon, you may be placed on our internal Do Not Call List by calling  1-646-450-4671 or going to <a class='one-em-font primary-color'' href="https://boxeon.com/contact" pa-marked="1"><strong>https://boxeon.com/contact</strong></a>. For more information, you can contact Boxeon at 589 Chester Street, Brooklyn, NY 11212 or you can contact the Bureau of Consumer Protection, Office of the Nevada Attorney General, 555 E. Washington St., Suite 3900, Las Vegas, NV 89101; telephone number: 1-702-486-3132; email: Aginfo@ag.nv.gov</td>
           </tr>
         </tbody>
       </table>

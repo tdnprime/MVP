@@ -176,8 +176,7 @@ background-size: contain;
   }
  
   #box-headline p {
-    display: inline-block;
-    margin-right: 4em;
+   
     margin-bottom: 2em;
     text-align: center;
   }

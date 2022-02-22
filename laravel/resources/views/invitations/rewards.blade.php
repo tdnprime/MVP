@@ -4,7 +4,7 @@
     <main class="fadein">
         <section id="left-aside">
             <h2>Invitations</h2>
-            <a class="message-create" href="/invitations/home">
+            <a class="anchor-sub-menu clearbtn" href="/invitations/home">
                 <div class='recipients-grid'>
                     <div class='position-relative'><span class="material-icons">insert_invitation</span>
                         Invitations
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </a>
-            <a class="message-create" href="/invitations/rewards">
+            <a class="anchor-sub-menu clearbtn" href="/invitations/rewards">
                 <div class='recipients-grid'>
                     <div class='position-relative'><span class="material-icons">money_off</span>
                         Rewards

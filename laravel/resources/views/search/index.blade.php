@@ -1,7 +1,7 @@
 @extends('layouts.home')
 @section('content')
     <main class='fadein'>
-        <section id='left-aside'></section>
+        <section></section>
         <aside id="panel">
             <form id='form-search-inline' class='centered' action="/search/creator" method="get">
                 {{ csrf_field() }}
@@ -181,6 +181,6 @@
             @endif
 
         </aside>
-        <section id='right-aside'></section>
+        <section id='right-aside'></section><!-- hack !-->
     </main>
 @endsection

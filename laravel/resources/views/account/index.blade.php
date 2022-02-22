@@ -5,7 +5,7 @@
     <main class='fadein'>
         <section id="left-aside">
             <h2>Account</h2>
-            <a class="message-create" href="/account/home">
+            <a class="anchor-sub-menu clearbtn" href="/account/home">
                 <div class='recipients-grid'>
                     <div class='position-relative'><span class="material-icons">settings</span>
                         Settings
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </a>
-            <a class="message-create" href="/account/earnings">
+            <a class="anchor-sub-menu clearbtn" href="/account/earnings">
                 <div class='recipients-grid'>
                     <div class='position-relative'><span class="material-icons">money</span>
                         Earnings
@@ -31,61 +31,61 @@
             </div>  
         @endif
             <div id='module'>
-                <h2>Box</h2>
+                <h2 class='centered'>Box</h2>
                 <form class='form-settings' method='post' action='{{route('account.box_url')}}'>
                     @csrf
                     @method('POST')
                     <fieldset class='fieldset-neuromorph'>
-                    <input type='text' name='box_url' value='' required placeholder='Url'>
-                    <input class='clearbtn display-block margin-top-2-em' type="submit" value='Update'>
+                    <input class='centered' type='text' name='box_url' value='' required placeholder='Url'>
+                    <input class='clearbtn display-block margin-top-2-em margin-auto margin-auto' type="submit" value='Update'>
                     </fieldset></form>
                 <form class='form-settings' action='/account/box' method='POST'>
                     @csrf
                     @method('POST')
                     <fieldset class='fieldset-neuromorph'>
-                    <input type='number' name='price' value='' required placeholder='Price'>
-                    <input class='clearbtn display-block margin-top-2-em' type="submit" value='Update'>
+                    <input class='centered' type='number' name='price' value='' required placeholder='Price'>
+                    <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
                     </fieldset> </form>
                 <form class='form-settings' action='/account/box' method='POST'>
                     @csrf
                     @method('POST')
                     <fieldset class='fieldset-neuromorph'>
-                    <input type='number' name='box_supply' value='' required placeholder='Supply'>
-                    <input class='clearbtn display-block margin-top-2-em' type="submit" value='Update'>
+                    <input type='number' class='centered' name='box_supply' value='' required placeholder='Supply'>
+                    <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
                     </fieldset></form>
                 <form class='form-settings' action='/account/box' method='POST'>
                     @csrf
                     @method('POST')
                    <fieldset class='fieldset-neuromorph'>
-                    <select required name='shipping_cost'>
+                    <select class='centered' required name='shipping_cost'>
                         <option selected disabled value=''>Change who pays shipping cost</option>
                         <option value='1'>I will pay</option>
                         <option value='0'>Buyers will pay</option>
                     </select>
-                    <input class='clearbtn display-block margin-top-2-em' type="submit" value='Update'>
+                    <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
                     </fieldset>
                 </form>
                 <form class='form-settings' action='/account/box' method='POST'>
                     @csrf
                     @method('POST')
                     <fieldset class='fieldset-neuromorph'>
-                    <input type='text' name='video' value='' required placeholder='Youtube video ID'>
-                    <input class='clearbtn display-block margin-top-2-em' type="submit" value='Update'>
+                    <input class='centered' type='text' name='video' value='' required placeholder='Youtube video ID'>
+                    <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
                     </fieldset> </form>
                 <br>
-                <h2>Address</h2>
-                <p>Update the shipping address where you receive subscriptions.</p>
+                <h2 class='centered'>Address</h2>
+                <p class='centered'>Update the shipping address where you receive subscriptions.</p>
                 <form class='form-settings' action='/account/address' method='POST'>
                     @csrf
                     @method('POST')
                     <fieldset class='fieldset-neuromorph'>
-                    <input name='address_line_1' type='text' class='optional' required value=''
+                    <input class='centered' name='address_line_1' type='text' class='optional' required value=''
                         placeHolder='Street address' />
-                    <input name='address_line_2' type='text' class='optional' value=''
+                    <input class='centered' name='address_line_2' type='text' class='optional' value=''
                         placeHolder='Address line 2 (optional)' />
-                    <input name='admin_area_2' type='text' class='optional' required value='' placeHolder='City' />
-                    <input name='admin_area_1' type='text' class='optional' required value='' placeHolder='State' />
-                    <select required name='country_code' class='optional form-control' id='country'>
+                    <input class='centered' name='admin_area_2' type='text' class='optional' required value='' placeHolder='City' />
+                    <input class='centered' name='admin_area_1' type='text' class='optional' required value='' placeHolder='State' />
+                    <select class='centered' required name='country_code' class='optional form-control' id='country'>
                         <option value='' invalid>Select your country </option>
                         <optgroup id='country-optgroup-Africa' label='Africa'>
                             <option value='DZ' label='Algeria'>Algeria</option>
@@ -359,9 +359,9 @@
                             <option value='WF' label='Wallis and Futuna'>Wallis and Futuna</option>
                         </optgroup>
                     </select>
-                    <input name='postal_code' type='text' class='optional' required value='' placeHolder='Postal code' />
+                    <input name='postal_code' type='text' class='centered' required value='' placeHolder='Postal code' />
 
-                    <input class='clearbtn display-block margin-top-2-em' type="submit" value='Update'>
+                    <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
                     </fieldset>
                 </form>
                

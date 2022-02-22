@@ -88,10 +88,10 @@ input[type="tel"], input[type="number"], input[type="email"], select, textarea, 
   margin-bottom: 1em;
   margin-top: 2em;
   width: 25em;
-  -ms-box-sizing: content-box !important;
-  -moz-box-sizing: content-box !important;
-  -webkit-box-sizing: content-box !important;
-  box-sizing: content-box !important;
+  -ms-box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
   box-shadow: 2px 4px 12px #0c8dc41a;
 }
 
@@ -155,7 +155,7 @@ input[type="submit"]:hover, .button:hover, button:active:hover {
 
 .masthead-forms {
   padding: 2em;
-  width: 70%;
+  width: min-content;
   height: fit-content;
   box-shadow: 2px 4px 12px #0c8dc41a;
 }

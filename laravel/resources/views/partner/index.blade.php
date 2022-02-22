@@ -2,11 +2,12 @@
 @section('title', 'Best place for creators to launch a subscription box at no cost | Boxeon')
 @section('content')
 
+
     <div id="masthead">
         @if (session()->has('message'))
-            <div class="alert alert-info">
-                <p class='centered'> {{ session()->get('message') }}</p>
-            </div>
+        <dialog class="alert">
+            <p class='centered'> {{ session()->get('message') }}</p>
+        </dialog>
         @endif
         <section id="headline">
             <div class="two-col-grid">

@@ -19,7 +19,7 @@ class PartnerController extends Controller
         $partner->platform = $request['platform'];
         $partner->country_code = $request['country_code'];
         $partner->save((array) $partner);
-        Session::flash('message', 'Thank you! Your application was received.'); 
+        Session::flash('message', 'Application received.'); 
         $user = Auth::user();
         return view('partner.index', compact('user'));
 

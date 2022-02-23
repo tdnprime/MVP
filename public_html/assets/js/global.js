@@ -533,9 +533,10 @@ Boxeon = {
 
     }
 
-    if (document.getElementsByTagName("main")[0]) {
-      document.getElementsByTagName("main")[0].style.margin = null;
-      document.getElementsByTagName("main")[0].style.marginLeft = "300px";
+
+    if ( document.getElementById("main-wrapper")) {
+
+      document.getElementById("main-wrapper").style.marginLeft = "300px";
 
     }
     if (document.getElementById("masthead")) {
@@ -560,9 +561,9 @@ Boxeon = {
     /* Return page to normal upon side navigation close */
     document.getElementById("menu").style.width = "0";
 
-    if (document.getElementsByTagName("main")[0]) {
+    if (document.getElementById("main-wrapper")) {
 
-      document.getElementsByTagName("main")[0].style.marginLeft = null;
+      document.getElementById("main-wrapper").style.marginLeft = null;
     }
 
     document.getElementsByTagName("footer")[0].style.marginLeft = null;

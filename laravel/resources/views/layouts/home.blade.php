@@ -13,8 +13,9 @@
         @include('includes.header')
         @include('includes.menus.index')
         <div class="margin-auto">
+            <div id='main-wrapper'>
             @yield('content')
-
+            </div>
         </div>
 
     </div>

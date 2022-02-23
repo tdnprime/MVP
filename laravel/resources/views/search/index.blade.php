@@ -5,7 +5,7 @@
         <aside id="panel">
             <form id='form-search-inline' class='centered' action="/search/creator" method="get">
                 {{ csrf_field() }}
-                <input type="text" value='' placeholder="Find a creator you love" name="creator">
+                <input type="text" value='' placeholder="Find a creator" name="creator">
                 <input class='button' type='submit' value='Search'>
             </form>
             <div class='centered margin-bottom-4-em'>

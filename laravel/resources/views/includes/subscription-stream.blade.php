@@ -20,7 +20,6 @@
             </div>
         </a>
     </section>
-
     <aside id="panel">
 
         @if (session()->has('message'))

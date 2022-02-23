@@ -30,8 +30,9 @@
             <dialog class="alert">
                <p class='centered'> {{ session()->get('message') }}</p>
             </dialog>  
-        @endif
+            @endif
             <div id='module'>
+                <img class='center image-cta' src="{{ '../assets/images/account.svg' }}" alt="Empty">
                 <h2 class='centered'>Box</h2>
                 <form class='form-settings' method='post' action='{{route('account.box_url')}}'>
                     @csrf
@@ -74,8 +75,10 @@
                     <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
                     </fieldset> </form>
                 <br>
+                <img class='center image-cta' src="{{ '../assets/images/address.svg' }}" alt="Empty">
+
                 <h2 class='centered'>Address</h2>
-                <p class='centered'>Update the shipping address where you receive subscriptions.</p>
+                <p class='center centered'>Update the shipping address where you receive subscriptions.</p>
                 <form class='form-settings' action='/account/address' method='POST'>
                     @csrf
                     @method('POST')
@@ -368,6 +371,8 @@
                
             </div>
         </aside>
+        
         <section id="right-aside"></section>
     </main>
+ 
 @endsection

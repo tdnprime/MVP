@@ -21,7 +21,7 @@ class AccountController extends Controller
             ->limit(1);
         $input = $request->except(['_token', '_method']);
         $box->update($input);
-        Session::flash('message', 'Your account has been updated.'); 
+        Session::flash('message', 'Account updated.'); 
         return view('account.index', compact('user', $user));
 
     }
@@ -35,7 +35,7 @@ class AccountController extends Controller
             ->limit(1);
         $input = $request->except(['_token', '_method']);
         $user->update($input);
-        Session::flash('message', 'Your account has been updated.'); 
+        Session::flash('message', 'Account updated.'); 
         return view('account.index', compact('user', $user));
 
 
@@ -50,7 +50,7 @@ class AccountController extends Controller
             ->limit(1);
         $input = $request->except(['_token', '_method']);
         $user->update($input);
-        Session::flash('message', 'Your account has been updated.'); 
+        Session::flash('message', 'Account updated.'); 
         return view('account.index', compact('user', $user));
 
 

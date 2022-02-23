@@ -534,7 +534,7 @@ Boxeon = {
     }
 
     if (document.getElementsByTagName("main")[0]) {
-
+      document.getElementsByTagName("main")[0].style.margin = null;
       document.getElementsByTagName("main")[0].style.marginLeft = "300px";
 
     }
@@ -543,7 +543,6 @@ Boxeon = {
       document.getElementById("masthead").style.marginLeft = "300px";
 
     }
-
 
     document.getElementsByTagName("header")[0].style.marginLeft = "300px";
 

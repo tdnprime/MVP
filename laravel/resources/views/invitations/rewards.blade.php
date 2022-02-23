@@ -7,7 +7,7 @@
             <a class="anchor-sub-menu clearbtn" href="/invitations/home">
                 <div class='recipients-grid'>
                     <div class='position-relative'><span class="material-icons">insert_invitation</span>
-                        Invitations
+                        Send
                     </div>
                     <div>
                     </div>

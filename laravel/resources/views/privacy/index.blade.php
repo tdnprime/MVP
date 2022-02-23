@@ -1,5 +1,5 @@
 @extends('layouts.about')
-@section('title', 'Privacy')
+@section('title', 'Boxeon | Privacy')
 @section('content')
 
 <main>

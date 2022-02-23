@@ -24,11 +24,12 @@
                 </div>
             </a>
         </section>
+        
         <aside id='panel'>
             @if (session()->has('message'))
-            <div class="alert alert-info">
+            <dialog class="alert">
                <p class='centered'> {{ session()->get('message') }}</p>
-            </div>  
+            </dialog>  
         @endif
             <div id='module'>
                 <h2 class='centered'>Box</h2>

@@ -13,6 +13,7 @@
                     </form>
                    
                     <div id="payment-status-container"></div>
+                
                 </div>
             </div>
 

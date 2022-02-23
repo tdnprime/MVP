@@ -519,9 +519,16 @@ a:visited {
 #about main p {
   line-height: 4em;
 }
+#iframe-example-label{
+  width:auto;
+height:500px;
+max-width:707px;
+
+}
 
 .image-cta {
   width: 50%;
+  max-width:707px;
 }
 
 #image-eating-pizza {
@@ -598,7 +605,6 @@ a:visited {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
 }
-
 
 
 #how-it-works {
@@ -1143,7 +1149,7 @@ a:visited {
 
 
 #image-error-page {
-  width: 30%;
+  width: 50%;
 }
 
 .alert .material-icons {
@@ -2003,6 +2009,9 @@ label {
 
 .fit-content {
   width: fit-content;
+}
+.max-content {
+  width: max-content;
 }
 
 nav {

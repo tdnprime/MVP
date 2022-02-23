@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Session;
 
 class AccountController extends Controller
 {
+    public function earnings(){
+
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        return view('account.earnings', compact('user', $user));
+
+    }
     public function updateBox(Request $request)
     {
 

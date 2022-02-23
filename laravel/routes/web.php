@@ -142,6 +142,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/users', 'App\Http\Controllers\AccountController@updateUsers')->name('account.users');
         Route::post('/address', 'App\Http\Controllers\AccountController@updateAddress')->name('account.address');
         Route::get('/suspend', 'App\Http\Controllers\AccountController@suspend')->name('account.suspend');
+        Route::get('/earnings', 'App\Http\Controllers\AccountController@earnings')->name('account.earnings');
+
     });
 
     #MESSAGES

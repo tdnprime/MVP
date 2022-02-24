@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\SubscriptionController;
+use App\Jobs\SendEmailJob;
+use App\Mail\OrderPlaced;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
-use App\Jobs\SendEmailJob;
-use App\Mail\OrderPlaced;
-
 
 class SquareController extends Controller
 {
@@ -25,10 +24,10 @@ class SquareController extends Controller
     }
 
     public function test()
-    { 
+    {
         $id = auth()->user()->id;
         $user = User::find($id);
-        
+
         return new OrderPlaced($user);
 
         #Queue an order-placed system email
@@ -173,7 +172,7 @@ class SquareController extends Controller
         )->post($this->config['square']['cardsEndpoint'], [
 
             "idempotency_key" => $request['source_id'],
-            "source_id" =>  $request['source_id'], 
+            "source_id" => $request['source_id'],
             "card" => [
                 "billing_address" => [
                     "address_line_1" => $subscription[0]['address_line_1'],
@@ -234,7 +233,7 @@ class SquareController extends Controller
 
         $id = auth()->user()->id;
         $user = User::find($id);
-        
+
         $sub = Subscription::where('user_id', '=', $id)
             ->orderByDesc('created_at')
             ->limit(1)
@@ -324,8 +323,9 @@ class SquareController extends Controller
                     'status' => 1,
                     'square_vid' => $response->subscription->version,
                 ]);
-
-            SubscriptionController::updateStock(
+                
+            $stock = new SubscriptionController();
+            $stock->updateStock(
 
                 $sub[0]['creator_id'], $sub[0]['version'], $sub[0]['stock']
             );
@@ -362,8 +362,8 @@ class SquareController extends Controller
 
     public function updateSubscription($request)
     {
-        
-         $response = Http::withHeaders(
+
+        $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],
                 'Content-Type' => 'application/json',

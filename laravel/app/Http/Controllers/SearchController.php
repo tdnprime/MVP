@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,15 +24,21 @@ class SearchController extends Controller
                 'boxes.proddesc', 'users.id')
             ->get();
 
-            if(!isset($creator[0]->id)){
+        if (!isset($creator[0]->id)) {
 
-                return view('search.index', compact('user', 'user'))
+            return view('search.index', compact('user', 'user'))
                 ->with('invite', $request['creator']);
-            }
+        }
 
-        $subscribers = DB::table('subscriptions')
-            ->where('creator_id', '=', $creator[0]->id)
-            ->select('creator_id')
+        $user = Auth::user();
+        $subscribers = DB::table("subscriptions")
+            ->join('users', 'users.id', '=', 'subscriptions.creator_id')
+            ->where('subscriptions.creator_id', '=', $user->id)
+            ->where('sub_id', '<>', null)
+            ->select('users.family_name', 'users.given_name',
+                'users.profile_photo_path', 'subscriptions.*',
+                'subscriptions.price', 'subscriptions.frequency',
+                'subscriptions.admin_area_1', 'subscriptions.country_code')
             ->get();
 
         return view('search.index', compact('user', 'user'))

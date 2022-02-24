@@ -74,7 +74,7 @@ class BoxController extends Controller
 
                 // self::createProduct($user->id); use if PayPal subscription is enabled
 
-                Session::flash('message', 'Congratulations! Your box is live at'); 
+                Session::flash('message', 'Your box is live at'); 
                 return redirect()->route('box.edit', $id);
             } else {
                 return redirect()->route('box.edit', $id)

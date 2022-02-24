@@ -211,7 +211,11 @@ class SubscriptionController extends Controller
 
     public function updateStock($creator_id, $version, $stock)
     {
-        $new = $stock - 1;
+        if($stock == 1){
+            $new = 0;
+        }else{
+            $new = $stock - 1;
+        }
         DB::table('boxes')
             ->where('user_id', '=', $creator_id)
             ->where('vid', '=', $version)
@@ -250,7 +254,7 @@ class SubscriptionController extends Controller
             ->where('user_id', '=', $user->id)
             ->delete();
         // Update in_stock
-        $this->addStock($box);
+        self::addStock($box);
     }
 
     protected function remove($box)
@@ -282,6 +286,7 @@ class SubscriptionController extends Controller
             return $result;
 
         } else {
+    
             // Remove from Boxeon
             $this->boxeonRemove($box);
             return 1;

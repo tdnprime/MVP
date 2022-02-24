@@ -1,11 +1,7 @@
 @extends('layouts.box')
 @section('title', 'Boxeon | Edit Box')
 @section('content')
-
-@if (session()->has('message'))
-<dialog class="alert">
-   <p class='centered'> {{ session()->get('message') }} Congrats!  Your box is live at&nbsp;<a class='one-em-font primary-color' href='/{{$box->box_url}}'> boxeon.com/{{$box->box_url}}</a></p>
-</div>  
+ 
 @endif
 
     @if(empty($box) || is_null($box->box_weight))

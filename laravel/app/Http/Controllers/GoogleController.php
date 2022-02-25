@@ -28,58 +28,6 @@ class GoogleController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function redirectToGoogleAdmin()
-    {
-        config::set(['services.google.client_id' => '227887284273-d78nlrbc709bis6t63ll6fphdccu8390.apps.googleusercontent.com']);
-        config::set(['services.google.client_secret' => 'E7TKuM-O9cF-N9N6ROf8CI3E']);
-        config::set(['services.google.redirect' => 'http://127.0.0.1:8000/admin/auth/callback']);
-
-        return Socialite::driver('google')->redirect();
-    }
-
-    /**
-     * handles GoogleAdminCallback sinstance.
-     *
-     * @return void
-     */
-    public function handleGoogleAdminCallback()
-    {
-        config::set(['services.google.client_id' => '227887284273-d78nlrbc709bis6t63ll6fphdccu8390.apps.googleusercontent.com']);
-        config::set(['services.google.client_secret' => 'E7TKuM-O9cF-N9N6ROf8CI3E']);
-       config::set(['services.google.redirect' => 'http://127.0.0.1:8000/admin/auth/callback']);
-
-        $user = Socialite::driver('google')->stateless()->user();
-        $finduser = User::where('google_id', $user->id)->first();
-
-        if ($finduser) {
-            Auth::login($finduser);
-            
-            if (Auth::user()->user_type == 'Adminstrator')
-            {
-                return redirect('/admin/dashboard');
-            }
-            return redirect('/home/index');
-        } else {
-            $avatar = $user->avatar;
-            $user = User::firstOrCreate([
-                'google_id' => $user->id,
-                'email' => $user->email,
-                'given_name' => $user->offsetGet('given_name'),
-                'family_name' => $user->offsetGet('family_name'),
-                'profile_photo_path' => $avatar,
-                'user_type' => "Adminstrator",
-                'password' => encrypt('my-google'),
-            ]);
-
-
-            Auth::login($user, true);
-        }
-    }
 
     /**
      * Create a new controller instance.
@@ -101,10 +49,7 @@ class GoogleController extends Controller
                     $cookie = Cookie::forget('box');
                     return redirect($location)->withCookie($cookie);
                 } else {
-                    #Handle app admin
-                    if (Auth::user()->user_type == 'Adminstrator') {
-                        return redirect('/admin/dashboard');
-                    }
+                
                     return redirect('/home/index');
                 }
             } else {

@@ -32,7 +32,8 @@ NOTE:
 
     }
     main{
-      margin:auto;
+      width: 80%; /* Do not change */
+     margin:auto;
     }
     #masthead-image-construction {
       background: url(../images/alt-makeitrain.svg) no-repeat 80% 7em;

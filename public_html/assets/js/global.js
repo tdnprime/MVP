@@ -231,7 +231,7 @@ Boxeon = {
 
     var grid = Boxeon.createElem("div");
     var wrapper = document.createElement("div");
-    wrapper.className = "asides";
+    wrapper.className = "asides width-auto";
     grid.id = "steps-left";
 
     var label1 = document.createTextNode(options.label1);
@@ -696,7 +696,7 @@ Shipping = {
   buildAddressInputForm: function (creator_uid) {
 
     document.getElementById("mc-header").innerHTML =
-      '<div class="asides"><div id="steps-line"></div><div id="steps-left">'
+      '<div class="asides width-auto"><div id="steps-line"></div><div id="steps-left">'
       + '<p class="step step-completed">L</p>'
       + '<p id="text-step0-label" class="centered">Schedule</p>'
       + '<p class="step step-current">2</p>'
@@ -899,7 +899,7 @@ Shipping = {
     Boxeon.createModalWindow();
 
     document.getElementById("mc-header").innerHTML =
-      '<div class="asides"><div id="steps-line"></div><div id="steps-left">'
+      '<div class="asides width-auto"><div id="steps-line"></div><div id="steps-left">'
       + '<p class="step step-completed">L</p>'
       + '<p id="text-step0-label" class="centered">Schedule</p>'
       + '<p class="step step-current">2</p>'
@@ -1142,7 +1142,7 @@ Subscriptions = {
 
     document.getElementById("mc-header").innerHTML =
 
-      '<div class="asides"><div id="steps-line"></div><div id="steps-left">'
+      '<div class="asides width-auto"><div id="steps-line"></div><div id="steps-left">'
       + '<p class="step step-completed">L</p>'
       + '<p id="text-step0-label" class="centered">Schedule</p>'
       + '<p class="step step-completed">L</p>'
@@ -1404,6 +1404,8 @@ window.onload = function () {
       Shipping.generateLabels();
     });
   }
+
+
   if (document.getElementsByClassName('message-create')) {
     let elem = document.getElementsByClassName('message-create');
     for (let i = 0; i < elem.length; i++) {
@@ -1439,7 +1441,7 @@ window.onload = function () {
       label2: "Embed video",
       label3: "Publish"
     }
-    document.getElementById("module").prepend(Boxeon.createStepsLeft(opts));
+    document.getElementById("prepend").prepend(Boxeon.createStepsLeft(opts));
 
     var el = "h2";
     var options = {

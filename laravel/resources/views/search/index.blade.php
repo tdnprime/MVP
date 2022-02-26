@@ -8,7 +8,7 @@
                 <input type="text" value='' placeholder="Find a creator" name="creator">
                 <input class='button' type='submit' value='Search'>
             </form>
-            <div class='centered margin-bottom-4-em'>
+            <div class='centered margin-bottom-4-em div-search-results-wrapper'>
 
                 @if (isset($results))
                     <table class='margin-top-4-em'>
@@ -19,7 +19,6 @@
                                 <td>{{ $creator->page_name }} </td>
                                 <td>{{ $creator->proddesc }}</td>
                                 <td><b>{{ $subscribers }}</b> Subscribers</td>
-                                <td></td> 
                             </tr>
                        
 

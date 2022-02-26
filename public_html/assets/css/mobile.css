@@ -23,6 +23,7 @@ NOTE:
 	}
 
   @media only screen and (max-width:1810px) {
+    
    #partner #headline h1{
       width:fit-content;
     }
@@ -306,9 +307,7 @@ background-size: contain;
   }
 }
 
-  .hide{
-    display:none;
-  }
+ 
 
   #getlabels {
     left: -9.5em !important;
@@ -365,6 +364,12 @@ background-size: contain;
   #current-user{
     display:none;
   } 
+  .hide{
+    display:none !important;
+  }
+  .width-auto{
+    width:auto !important;
+  }
   #signin {
     display: none;
   }
@@ -537,4 +542,18 @@ main, #masthead{
     line-height: 4em;
     position: static;
   }
+}
+
+@media only screen and (max-width: 320px) {
+
+  #headline{
+    width:fit-content !important;
+    max-width:100% !important;
+  }
+  #partner main {
+     margin-top: 20em !important; 
+}
+#index main {
+margin-top: 55em;
+}
 }

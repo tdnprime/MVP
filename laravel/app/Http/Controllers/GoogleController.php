@@ -61,7 +61,6 @@ class GoogleController extends Controller
                     'given_name' => $user->offsetGet('given_name'),
                     'family_name' => $user->offsetGet('family_name'),
                     'profile_photo_path' => $avatar,
-                    'role' => "Master",
                     'password' => encrypt('my-google'),
                 ]);
 
@@ -83,6 +82,7 @@ class GoogleController extends Controller
                         ->insert($invitation);
 
                 }
+                return redirect('/home/index');
 
             }
         } catch (Exception $e) {

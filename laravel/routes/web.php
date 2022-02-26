@@ -164,6 +164,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 });
 
+#GOOGLE CALLBACK
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+
 Route::get('/commission/index', 'App\Http\Controllers\HomeController@commission')->name('commission.index');
 
 Route::post('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
@@ -172,7 +176,6 @@ Route::get('/rates/fetch', 'App\Http\Controllers\ShippingController@rates');
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/login', [AdminController::class, 'login']);
     Route::get('/google', [GoogleController::class, 'redirectToGoogleAdmin']);
-    Route::get('/auth/callback', [GoogleController::class, 'handleGoogleAdminCallback']);
 });
 
 Route::group(['prefix' => 'auth'], function () {

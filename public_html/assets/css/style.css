@@ -200,24 +200,27 @@ Brown skin: #a0616a
   font-family: "Concert One";
   text-transform: uppercase;
 }
+
 #close-dialog:hover,
 #close:hover, #m-close:hover, #m-close:focus {
   color: red;
   cursor: pointer;
   text-decoration: none;
 }
-#close-dialog{
-  clear:both;
+
+#close-dialog {
+  clear: both;
   font-size: 1em;
 }
-dialog{
-  
-}
-dialog p{
-  max-width:400px;
+
+dialog {}
+
+dialog p {
+  max-width: 400px;
   min-width: 200px;
-  margin:auto;
+  margin: auto;
 }
+
 #text-step0-label {
   grid-column-start: 1;
   grid-row-start: 2;
@@ -519,16 +522,17 @@ a:visited {
 #about main p {
   line-height: 4em;
 }
-#iframe-example-label{
-  width:auto;
-height:500px;
-max-width:707px;
+
+#iframe-example-label {
+  width: auto;
+  height: 500px;
+  max-width: 707px;
 
 }
 
 .image-cta {
   width: 50%;
-  max-width:707px;
+  max-width: 707px;
 }
 
 #image-eating-pizza {
@@ -581,9 +585,11 @@ max-width:707px;
   margin-bottom: .5em;
   margin-right: 1em;
 }
-.margin-auto{
-  margin:auto !important;
+
+.margin-auto {
+  margin: auto !important;
 }
+
 #home main {
   display: grid;
   grid-gap: 3%;
@@ -591,16 +597,19 @@ max-width:707px;
   min-height: 70em;
   margin-bottom: 2em;
 }
-#about ul{
+
+#about ul {
   font-size: 1.3em;
   list-style: circle;
-  padding:1em;
-  margin-left:2em;
+  padding: 1em;
+  margin-left: 2em;
 }
-#about table ul{
+
+#about table ul {
   font-size: 1em;
   list-style: circle;
 }
+
 #home-videos-wrapper {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -763,8 +772,17 @@ max-width:707px;
 }
 
 #partner .two-col-grid {
-  background: url("../images/fall-4.svg") 3em 8em no-repeat, url("../images/fall-5.svg") 70em top no-repeat;
+  background: url("../images/fall-5.svg") no-repeat;
+  background-position-x: 70em;
+  background-position-y: 0;
 
+
+
+}
+.div-search-results-wrapper{
+  min-width: 200px;
+  overflow-x: scroll;
+  margin: auto;
 }
 
 /*#partner main{
@@ -1092,59 +1110,64 @@ max-width:707px;
 }
 
 
-.celebrate{
+.celebrate {
   background-image: url(../images/confetti-40.gif);
   background-repeat: repeat-x;
 }
 
 @keyframes alerts {
   0% {
-    opacity:1;
-    position:fixed;
-    top:-5em;
+    opacity: 1;
+    position: fixed;
+    top: -5em;
   }
+
   50% {
-    opacity:1;
-    position:fixed;
-    top:1em;
+    opacity: 1;
+    position: fixed;
+    top: 1em;
   }
+
   100% {
-    opacity:0;
+    opacity: 0;
   }
 
 }
 
 
 
-.subscriptions-stream{
+.subscriptions-stream {
   display: grid;
   grid-template-columns: auto auto auto auto;
 }
-.subscription-card{
+
+.subscription-card {
   margin: 2%;
   max-width: 256px;
 
 }
+
 .alert,
-.alert-info{
+.alert-info {
   padding: 1em;
-  padding-left:2.5em;
-  padding-right:2.5em;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
   display: block;
   background: #f8f8c1;
-  margin:auto;
+  margin: auto;
 }
+
 .alert {
   font-weight: bold;
   border-radius: 25px;
-  box-shadow:  20px 20px 60px #d3d3a4;
+  box-shadow: 20px 20px 60px #d3d3a4;
   animation-name: alerts !important;
   animation-duration: 10s;
   position: fixed;
-  top:1em;
-  opacity:0;
-  height:50px;
-  z-index:10000;
+  top: 1em;
+  opacity: 0;
+  height: 50px;
+  z-index: 10000;
 }
 
 
@@ -2010,6 +2033,7 @@ label {
 .fit-content {
   width: fit-content;
 }
+
 .max-content {
   width: max-content;
 }

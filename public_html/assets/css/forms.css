@@ -158,9 +158,8 @@ input[type="submit"]:hover, .button:hover, button:active:hover {
 
 .masthead-forms {
   padding: 2em;
-  width: min-content;
+  width: fit-content;
   height: fit-content;
-  box-shadow: 2px 4px 12px #0c8dc41a;
 }
 
 .masthead-forms form {
@@ -176,11 +175,6 @@ input[type="submit"]:hover, .button:hover, button:active:hover {
 }
 
 
-
-
-* {
-  box-sizing: border-box;
-}
 
 .row{
   margin-top:2em;

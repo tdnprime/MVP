@@ -707,7 +707,7 @@ Shipping = {
 
     document.getElementById("m-body").innerHTML =
       "<h2>2. Provide your address</h2><form id='checkout-address-form' onsubmit='return'>"
-      + "<fieldset> <input type='text' name='given_name' placeHolder='Given name on your credit / debit card' required value=''></input>"
+      + "<div class='row'><div class='col-75 centered'> <input type='text' name='given_name' placeHolder='Given name on your credit / debit card' required value=''></input>"
       + "<input type='text' name='family_name' placeHolder='Family name on your credit / debit card' required value=''></input>"
 
       + "<input type='text' name='address_line_1' placeHolder='Street address' required value=''></input>"
@@ -725,7 +725,7 @@ Shipping = {
       + "<input type='hidden' name='cpf' placeHolder='Cadastro de Pessoas Físicas' value='0'></input>"
       + "</fieldset><fieldset><br>"
       + "<input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input>"
-      + "</fieldset>"
+      + "</div></div>"
       + "</form>";
 
     var btn = document.getElementById("process-data");
@@ -846,26 +846,30 @@ Shipping = {
 
   buildRateCard: function (rates) {
 
-    var div = document.createElement("div");
+    var wrapper = document.createElement("div");
 
     var num = rates.results.length;
 
     for (var i = 0; i < num; i++) {
 
+      var div = document.createElement("div");
+
       var rate_plus = parseInt(rates.results[i].amount);
 
       var rate = document.createTextNode("$" + rate_plus);
 
-      var p1 = document.createElement("p");
-      var p2 = document.createElement("p");
-      var p3 = document.createElement("p");
+      var p1 = document.createElement("h3");
+      var p2 = document.createElement("h3");
+      var p3 = document.createElement("h3");
       var img = document.createElement("img");
       img.className = "img-carrier";
       var button = document.createElement("button");
       var serviceLevelName = document.createTextNode(rates.results[i].servicelevel.name);
-      var cta = document.createTextNode("Select");
+      var cta = document.createTextNode("Choose");
 
-      div.className = "four-col-grid margin-bottom-4-em row-gap-4-em";
+      div.className = "four-col-grid margin-bottom-4-em";
+      div.style.padding = "2em";
+      div.style.backgroundColor = "#fff";
 
       img.src = rates.results[i].provider_image_200;
       button.setAttribute("sub-carrier", rates.results[i].provider);
@@ -889,9 +893,9 @@ Shipping = {
         Subscriptions.createBillingPlan();
 
       });
-
+      wrapper.appendChild(div);
     }
-    Shipping.showRates(div);
+    Shipping.showRates(wrapper);
 
   },
   showRates: function (div) {

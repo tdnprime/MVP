@@ -18,6 +18,8 @@
 
                     <p id="pitch">If you're a creator with 2k+ average views and would like to launch a subscription box at
                         no cost to you, apply today.</p>
+                        <button class="partner-apply button">Apply</button>
+
                     <a href="#whatis" class="button clearbtn"> Learn more </a>
                 </div>
                 <div id="form-partner-apply-wrapper" class="masthead-forms">
@@ -415,7 +417,7 @@
             <div class="centered margin-bottom-10-em">
                 <h1 class="extra-large-font darkblue margin-top-4-em">It's that simple</h1>
                 <br>
-                <a class="button" href="#apply"> Apply now </a>
+                <button class="partner-apply button"> Apply now </button>
             </div>
         </section>
     </main>

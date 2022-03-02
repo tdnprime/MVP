@@ -867,7 +867,7 @@ Shipping = {
       var serviceLevelName = document.createTextNode(rates.results[i].servicelevel.name);
       var cta = document.createTextNode("Choose");
 
-      div.className = "four-col-grid margin-bottom-4-em";
+      div.className = "four-rows-grid margin-bottom-4-em";
       div.style.padding = "2em";
       div.style.backgroundColor = "#fff";
 
@@ -1380,6 +1380,25 @@ window.onload = function () {
       });
     }
   }
+
+  if (document.getElementById('form-partner-apply')) {
+    var btns = document.getElementsByClassName('partner-apply');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function () {
+       var form = document.getElementById('form-partner-apply-wrapper');
+       form.style.display = "block";
+       form.style.margin = "auto";
+       var wrapper = document.getElementById("partner-masthead-image");
+       wrapper.style.display = "none";
+       var main = document.getElementsByTagName("main")[0];
+       main.style.marginTop = "45em";
+       Boxeon.scrollToTop();
+      });
+    }
+  }
+
+
+
 
   if (document.getElementById('play-video')) {
     var btns = document.getElementsByClassName('playbtn');

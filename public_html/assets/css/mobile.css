@@ -18,9 +18,7 @@ NOTE:
 @tailwind components;
 @tailwind utilities;
 
-#partner-apply {
-  display: none;
-}
+
 
 @media only screen and (max-width:1810px) {
 
@@ -541,7 +539,7 @@ fieldset {
     margin-top: 45em;
   }
   #partner main {
-    margin-top: 25em;
+   margin-top: 25em;
   }
 
   #partner .two-col-grid {

@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/mfb1dd2691uf
-    - /bin/cp -R /home/mfb1dd2691uf/repositories/MVP2/ $DEPLOYPATH
+    - export DEPLOYPATH=/home/mfb1dd2691uf/public_html
+    - /bin/cp -R /home/mfb1dd2691uf/repositories/MVP2/public_html/ $DEPLOYPATH
  

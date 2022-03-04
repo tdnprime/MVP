@@ -427,10 +427,9 @@ fieldset {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 668px) {
 
-
-  #current-user {
-    display: none;
-  }
+  #left-aside {
+    padding-left: 0;
+}
 
   .hide {
     display: none !important;
@@ -536,7 +535,7 @@ fieldset {
   }
 
   #margin-top-45-em {
-    margin-top: 45em;
+    margin-top: 55em !important;
   }
   #partner main {
    margin-top: 25em;
@@ -585,7 +584,7 @@ fieldset {
     padding: 0;
   }
 
-  #box-headline p {
+  #box-headline #exe-sub {
     margin-right: 0;
   }
 
@@ -661,10 +660,8 @@ fieldset {
   }
 
   #partner main {
-    margin-top: 20em !important;
+    margin-top: 20em;
   }
 
-  #index main {
-    margin-top: 55em;
-  }
+ 
 }

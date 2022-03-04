@@ -4,8 +4,8 @@
 
 @if (session()->has('message'))
 <dialog class="alert">
-   <p class='centered'> {{ session()->get('message') }} Congrats!  Your box is live at&nbsp;<a class='one-em-font primary-color' href='/{{$box->box_url}}'> boxeon.com/{{$box->box_url}}</a></p>
-</div>  
+   <p class='centered'> {{ session()->get('message') }} Share&nbsp;<a class='one-em-font primary-color' href='/{{$box->box_url}}'> boxeon.com/{{$box->box_url}}</a></p>
+</dialog>  
 @endif
 
     @if(empty($box) || is_null($box->box_weight))
@@ -37,9 +37,9 @@
                         to loyal fans
                     </h1>
                     <div>
-                        <p><span class='highlighted darkblue'>${{ $box->price }}</span></span> per box
+                        <p class='margin-auto-no-important'><span class='highlighted darkblue'>${{ $box->price }}</span> <span class="break"><br></span>per box
                             ({{ $box->shipping }})</p>
-                        <p><span class='highlighted darkblue'>{{ $box->box_supply }}</span> boxes left in stock</p>
+                        <p class='margin-auto-no-important'><span class='highlighted darkblue'>{{ $box->box_supply }}</span> <span class="break"><br></span>boxes left in stock</p>
                         <span class='break hack-br-1'><br></span>
                         <div class='sub-btns'>
                             <a href='#' id='exe-sub' data-version='{{ $box->vid }}'

@@ -735,6 +735,7 @@ Shipping = {
       var f = this.parentNode.parentNode; // BAD
 
       var a = this;
+      a.disabled = "true";
 
       Shipping.processFormData(f);
 
@@ -1262,9 +1263,8 @@ window.onload = function () {
     document.getElementById('exe-sub').addEventListener('click', function () {
 
       Boxeon.loader();
-      var CTA = this;
-      Boxeon.working(CTA);
       var a = this;
+      a.disabled = "true";
       Boxeon.router(a);
     });
   }
@@ -1272,6 +1272,7 @@ window.onload = function () {
 
     document.getElementById('btn-update-subscription').addEventListener('click', function () {
       var button = this;
+      button.disabled = "true";
       Subscriptions.createUpdateUI(button);
 
     });
@@ -1282,6 +1283,7 @@ window.onload = function () {
     for (var i = 0; i < num; i++) {
       btns[i].addEventListener('click', function () {
         var a = this;
+        a.disabled = "true";
         Boxeon.router(a);
       });
     }
@@ -1291,8 +1293,7 @@ window.onload = function () {
     document.getElementById('exe-sub-alt').addEventListener('click', function () {
       var a = this;
       Boxeon.loader();
-      var CTA = this;
-      Boxeon.working(CTA);
+      a.disabled = "true";
       Boxeon.router(a);
     });
   }
@@ -1303,8 +1304,7 @@ window.onload = function () {
       let URL = document.getElementById("exe-sub").getAttribute("data-url");
       var a = this;
       Boxeon.loader();
-      var CTA = this;
-      Boxeon.working(CTA);
+      a.disabled = "true";
       Boxeon.router(a);
     });
   }
@@ -1391,12 +1391,15 @@ window.onload = function () {
        var wrapper = document.getElementById("partner-masthead-image");
        wrapper.style.display = "none";
        var main = document.getElementsByTagName("main")[0];
-       main.style.marginTop = "45em";
-       Boxeon.scrollToTop();
+       main.id = "margin-top-45-em";
+       form.scrollIntoView({behavior: 'smooth'});
       });
     }
   }
-
+  if (document.getElementById('video-place-holder')) {
+    var loc = document.getElementById('video-place-holder');
+    loc.scrollIntoView({behavior: 'smooth'});
+  }
 
 
 

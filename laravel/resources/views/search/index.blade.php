@@ -5,8 +5,11 @@
         <aside id="panel">
             <form id='form-search-inline' class='centered' action="/search/creator" method="get">
                 {{ csrf_field() }}
+                <div class="row">
+                    <div class="col-75">
                 <input type="text" value='' placeholder="Find a creator" name="creator">
                 <input class='button' type='submit' value='Search'>
+                    </div></div>
             </form>
             <div class='centered margin-bottom-4-em div-search-results-wrapper'>
 
@@ -34,7 +37,10 @@
                             Boxeon to
                             receive free shipping on any subscription box they offer.</p>
                         <br><br>
+                        <div class="row">
+                            <div class="col-75">
                         <a class='button' href='/invitations/home'>Get started</a>
+                            </div></div>
                     </div>
                 @else
                 <br>

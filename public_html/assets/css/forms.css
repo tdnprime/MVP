@@ -16,6 +16,11 @@ form {
   max-width:none;
 
 }
+.button:disabled,
+.button[disabled]{
+  background-color: #000;
+ 
+}
 
 #checkout-address-form select,
 #checkout-address-form input[type=text] {
@@ -146,12 +151,7 @@ input[type="submit"]:hover, .button:hover, button:active:hover {
   margin: 0 auto;
 }
 
-#form-search-inline input[type=submit] {
-  margin-left: 2em;
-}
-
 #form-search-inline input[type=text] {
-  width: 50%;
   background: transparent url("../images/search-icon.svg") no-repeat center left;
   padding-left: 2em;
 }

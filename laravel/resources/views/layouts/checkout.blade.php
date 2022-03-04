@@ -9,7 +9,7 @@
     @include('includes.meta')
     <link href="https://boxeon.com/assets/css/square.css" rel="stylesheet" />
     <script type="text/javascript" src="{{ asset('../assets/js/square.js') }}"></script>
-    <script defer type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+    <script defer type="text/javascript" src="https://web.squarecdn.com/v1/square.js"></script>
 </head>
 
 <body id='index'>

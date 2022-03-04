@@ -31,9 +31,9 @@
                         to loyal fans
                     </h1>
                     <div>
-                        <p><span class='highlighted darkblue'>${{ $box->price }}</span></span> per box
+                        <p class='margin-auto-no-important'><span class='highlighted darkblue'>${{ $box->price }}</span><span class="break"><br></span> per box
                             ({{ $box->shipping }})</p>
-                        <p><span class='highlighted darkblue'>{{ $box->box_supply }}</span> boxes left in stock</p>
+                        <p class='margin-auto-no-important'><span class='highlighted darkblue'>{{ $box->box_supply }}</span> <span class="break"><br></span>boxes left in stock</p>
                         <span class='break hack-br-1'><br></span>
                         <div class='sub-btns'>
                             <a href='#' id='exe-sub' data-version='{{ $box->vid }}'

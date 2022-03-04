@@ -4,9 +4,6 @@
 /storage/*.key
 /vendor
 .env
-/config/app.ini
-/config/app.php
-/config/services.php
 server.php
 ftp-sync.json
 .env.backup

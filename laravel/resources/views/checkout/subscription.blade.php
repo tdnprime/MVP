@@ -5,10 +5,13 @@
              
                 <div class="centered margin-bottom-4-em">
                     <p class="centered center">{{$user->given_name}}, {{ $subscription['description'] }}.</p>
-                    <form id="payment-form">
+                    <form id="">
                         <div id="card-container"></div>
+                     <div class='sub-btns'>
                         <button class='button' id="card-button" data-type-total="{{ $subscription['total'] }}"
                             type="button">Pay&nbsp;${{ $subscription['total'] }}</button>
+                     </div>
+                         
                         <input type='hidden' id='route' value='{{ $subscription['route'] }}'>
                     </form>
                    

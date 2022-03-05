@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/mfb1dd2691uf/
+    - /bin/cp -r /home/mfb1dd2691uf/repositories/Beta/* $DEPLOYPATH

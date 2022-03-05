@@ -130,9 +130,9 @@ class ShippingController extends Controller
         $Addresses = DB::table('subscriptions')
         ->where('creator_id', '=', $id)
         ->where('status', '=', 1)
-        ->where('order_id', '<>', null)
+        ->where('sub_id', '<>', null)
         ->where('rate_id', '<>', null)
-        ->select('fullname', 'address_line_1',
+        ->select('given_name','family_name', 'address_line_1',
         'address_line_2', 'admin_area_1',
         'admin_area_2', 'country_code', 'postal_code')
         ->get();

@@ -11,13 +11,16 @@ use LynX39\LaraPdfMerger\Facades\PdfMerger;
 use Shippo;
 use Shippo_Transaction;
 
+
+
+
 class LabelsController extends Controller
 {
     public $config;
 
     public function __construct(){
-        $this->config = parse_ini_file(dirname(__DIR__, 3) .
-        "/config/app.ini", true);
+
+        $this->config = parse_ini_file(dirname(__DIR__, 3) . "/config/app.ini", true);
     }
 
     private function storeTracking($transaction, $sub)
@@ -81,7 +84,7 @@ class LabelsController extends Controller
         $subs = DB::table('subscriptions')
             ->where('creator_id', '=', $id)
             ->where('status', '=', 1)
-            ->where('order_id', '<>', null)
+            ->where('sub_id', '<>', null)
             ->where('rate_id', '<>', null)
             ->select('rate_id', 'user_id')
             ->get();
@@ -134,7 +137,7 @@ class LabelsController extends Controller
         $subs = DB::table('subscriptions')
             ->where('creator_id', '=', $id)
             ->where('status', '=', 1)
-            ->where('order_id', '<>', null)
+            ->where('sub_id', '<>', null)
             ->where('rate_id', '<>', null)
             ->select('rate', 'user_id')
             ->get();
@@ -181,8 +184,8 @@ class LabelsController extends Controller
         $subs = DB::table('subscriptions')
             ->where('creator_id', '=', $user->id)
             ->where('status', '=', 1)
-            ->where('order_id', '<>', null)
-            ->select('fullname', 'creator_id', 'user_id', 'address_line_1', 'address_line_2',
+            ->where('sub_id', '<>', null)
+            ->select('given_name','family_name', 'creator_id', 'user_id', 'address_line_1', 'address_line_2',
                 'admin_area_1', 'admin_area_2',
                 'country_code', 'postal_code')
             ->get();

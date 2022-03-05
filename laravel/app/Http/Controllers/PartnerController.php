@@ -15,6 +15,7 @@ class PartnerController extends Controller
         $partner = new Partner();
         $partner->name = $request['name'];
         $partner->phone = $request['phone'];
+        $partner->email = $request['email'];
         $partner->views = $request['views'];
         $partner->platform = $request['platform'];
         $partner->country_code = $request['country_code'];

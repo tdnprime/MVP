@@ -3,15 +3,18 @@
 @section('content')
     <div id='module'>
         <div class="centered margin-bottom-4-em">
-        <form action='/checkout/labels' method='post'>
+        <form class='centered' action='/checkout/labels' method='post'>
             @csrf
             @method('POST')
-            <fieldset id='fieldset-shipping-addresss' class='fieldset-neuromorph'>
-                <p>Please confirm your shipping address.</p>
-                <legend class='primary-color'>Shipping address</legend>
+            <div class="row">
+                <div class="col-75">
+                <h3 class='centered'>Confirm shipping address to continue</h3>
                 @include('includes.address-collection')
-            </fieldset>
+                </div></div>
+                <div class="row">
+                    <div class="col-75">
             <input type='submit' value='Continue'>
+                </div></div>
         </form>
     </div>
     </div>   

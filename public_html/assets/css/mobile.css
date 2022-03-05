@@ -68,6 +68,9 @@ NOTE:
 }
 
 @media only screen and (max-width:1024px) {
+  .margin-auto-no-important {
+    margin: auto;
+  }
   #masthead-image-commission {
     margin: auto; 
 }

@@ -14,7 +14,7 @@ class MailController extends Controller
     {
 
         $id = auth()->user()->id;
-
+        $sent = 0;
         $creators = DB::table('mailing_list')->get();
         $num = count($creators);
         for ($i = 0; $i < $num; $i++) {
@@ -23,9 +23,11 @@ class MailController extends Controller
             #Queue an order-placed system email
             $details['email'] = $creator->email;
             $message = new Campaign($creator);
-            SendEmailJob::dispatch($details, $message)->onQueue('emails');
-            // dd($response);
+            $response = SendEmailJob::dispatch($details, $message)->onQueue('emails');
+           $sent =+ $i;
         }
+        echo $sent;
+        dd($response);
     }
 
 }

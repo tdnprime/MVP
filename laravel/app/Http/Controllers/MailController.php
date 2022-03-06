@@ -15,7 +15,7 @@ class MailController extends Controller
 
         $id = auth()->user()->id;
         $sent = 0;
-        $creators = DB::table('mailing_list')->get();
+        $creators = DB::table('test')->get();
         $num = count($creators);
         for ($i = 0; $i < $num; $i++) {
 

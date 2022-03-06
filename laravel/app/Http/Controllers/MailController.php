@@ -17,11 +17,11 @@ class MailController extends Controller
 
         $creators = DB::table('mailing_list')->get();
         $num = count($creators);
-        for ($i = 0; $i < $num; $i++) {
+        for ($i = 0; $i < 2; $i++) {
 
             $creator = (object) $creators[$i];
             #Queue an order-placed system email
-            $details['email'] = $creator->email;
+            $details['email'] = "trevorprimenyc@gmail.com";
             $message = new Campaign($creator);
             SendEmailJob::dispatch($details, $message)->onQueue('emails');
             // dd($response);

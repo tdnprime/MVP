@@ -32,4 +32,5 @@ whom it is addressed. If you are not the intended recipient please contact the
 sender and delete this message and any attachment from your system. 
 Unauthorized publication, use, dissemination, forwarding, printing or 
 copying of this E-Mail and its attachments is strictly prohibited.
+<img src="https://www.google-analytics.com/collect?v=1&tid=AW-10788250660&t=event&ec=email&ea=open"/>
 @endcomponent

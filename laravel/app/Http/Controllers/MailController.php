@@ -2,29 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Exception;
-use Illuminate\Support\Facades\Mail;
 use App\Jobs\SendEmailJob;
 use App\Mail\Campaign;
-
-
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class MailController extends Controller
 {
 
-    public function send(){
+    public function send()
+    {
 
         $id = auth()->user()->id;
-        $user = User::find($id);
 
-        return new Campaign($user);
+        $creators = DB::table('mailing_list')->get();
+        $num = count($creators);
+        for ($i = 0; $i < $num; $i++) {
 
-        #Queue an order-placed system email
-        $details['email'] = $user->email;
-        $message = new Campaign($user);
-        SendEmailJob::dispatch($details, $message)->onQueue('emails');
-        dd($response);
+            $creator = (object) $creators[$i];
+            #Queue an order-placed system email
+            $details['email'] = $creator->email;
+            $message = new Campaign($creator);
+            SendEmailJob::dispatch($details, $message)->onQueue('emails');
+            // dd($response);
+        }
     }
 
 }

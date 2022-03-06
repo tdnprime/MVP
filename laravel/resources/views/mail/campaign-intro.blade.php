@@ -1,21 +1,20 @@
 @component('mail::message')
-<img src="https://boxeon.com/assets/images/high-five.png">
 
-# <h2>Hey you!</h2>
+# Hello {{ucfirst( $creator->channel_name )}}!
+<br>
 
+Our startup is seeking creators to sponsor.
 
- <p>I'm in search of content creators to sponsor as part of the launch of a new platform for content creators.</p>
+But first -
 
- <p>The platform in question is boxeon.com and it allows creators to offer subscription boxes 
-     to their fans as a means to earn sustaintable, recurring income.
- </p>
+Congrats on the success of your channel. Attaining {{ $creator->average_views }} average views per video takes talent. We found you on Youtube and are convinced your {{ strtolower($creator->category) }} channel is a perfect fit for us to sponsor.
 
- <p>The sponsorship deal we're offering entails Boxeon assisting with the innitial capital for you to launch
-     a subscription box business on Boxeon.
- </p>
+We're sponsoring creators as part of the launch of our new platform.
+The platform in question is boxeon.com. Boxeon allows creators to offer subscription boxes to their fans to earn sustainable, recurring income.
 
-<p>If interested, please reach back out.</p>
+The sponsorship deal we're offering entails Boxeon providing the entire initial capital you'll need to launch a subscription box business on Boxeon.
 
+If you're interested, let's schedule a 30 - 45 minute Zoom call to discuss further. Until then, keep up the great work!
 
 <br><br>
 

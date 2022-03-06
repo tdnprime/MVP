@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/mfb1dd2691uf/
-    - /bin/cp -r /home/mfb1dd2691uf/repositories/MVP/ $DEPLOYPATH
+    - export DEPLOYPATH=/home/mfb1dd2691uf
+    - /bin/cp -r * $DEPLOYPATH

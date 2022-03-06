@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +10,10 @@ use Shippo;
 use Shippo_Address;
 use Shippo_Parcel;
 use Shippo_Shipment;
+use Illuminate\Support\Facades\Session;
+
+
+
 
 class ShippingController extends Controller
 {
@@ -25,7 +28,7 @@ class ShippingController extends Controller
 
     public function rates(Request $request)
     {
-       
+
         $to = json_decode($request["to"]);
         $id = $to->creator_id;
         $user = User::find($id);
@@ -52,7 +55,7 @@ class ShippingController extends Controller
         if (isset($box) && $box->ship_from == 1) {
 
             $fromAddress = Shippo_Address::create(array(
-                "name" => $box->name, 
+                "name" => $box->name,
                 "company" => "Boxeon",
                 "street1" => $this->config['boxeon']['address_line_1'],
                 "city" => $this->config['boxeon']['admin_area_2'],
@@ -116,32 +119,47 @@ class ShippingController extends Controller
     {
         $id = auth()->user()->id;
         $user = User::find($id);
+
         $subscriptions = DB::table('subscriptions')
-        ->where('creator_id', '=', $id)
-        ->select('*')
-        ->get();
+            ->where('creator_id', '=', $id)
+            ->select('*')
+            ->get();
         return view('shipping.ship', compact('user'))
-            ->with('outgoing', count( $subscriptions));
+            ->with('outgoing', count($subscriptions));
     }
 
+    public function addresses()
+    {
 
-    public function addresses(){
         $id = auth()->user()->id;
+        $user = User::find($id);
+
         $Addresses = DB::table('subscriptions')
-        ->where('creator_id', '=', $id)
-        ->where('status', '=', 1)
-        ->where('sub_id', '<>', null)
-        ->where('rate_id', '<>', null)
-        ->select('given_name','family_name', 'address_line_1',
-        'address_line_2', 'admin_area_1',
-        'admin_area_2', 'country_code', 'postal_code')
-        ->get();
-        return view('box.addresses', ['print'=>$Addresses]);
-      }
+            ->where('creator_id', '=', $id)
+            ->where('status', '=', 1)
+            ->where('sub_id', '<>', null)
+            ->where('rate_id', '<>', null)
+            ->select('given_name', 'family_name', 'address_line_1',
+                'address_line_2', 'admin_area_1',
+                'admin_area_2', 'country_code', 'postal_code')
+            ->get();
 
-      public function __destruct(){
+        if (count($Addresses) == 0) {
 
-          unset($this->config);
-      }
+            Session::flash('message', 'No addresses found');
+            return view("shipping.ship", compact('user', $user));
+
+        } else {
+
+            return view('box.addresses', ['print' => $Addresses]);
+        }
+
+    }
+
+    public function __destruct()
+    {
+
+        unset($this->config);
+    }
 
 }

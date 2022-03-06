@@ -99,6 +99,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 #LABELS
 
     Route::prefix('labels')->group(function () {
+        
         Route::get('/home', 'App\Http\Controllers\ShippingController@ship')->name('labels.home');
 
         Route::get('/generate', 'App\Http\Controllers\LabelsController@generate')->name('labels.generate');

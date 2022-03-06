@@ -7,18 +7,17 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use LynX39\LaraPdfMerger\Facades\PdfMerger;
 use Shippo;
 use Shippo_Transaction;
-
-
-
 
 class LabelsController extends Controller
 {
     public $config;
 
-    public function __construct(){
+    public function __construct()
+    {
 
         $this->config = parse_ini_file(dirname(__DIR__, 3) . "/config/app.ini", true);
     }
@@ -38,7 +37,6 @@ class LabelsController extends Controller
             ->update(['label' => $transaction['object_id']]);
     }
 
-
     private function getShippingCount($id)
     {
         $box = DB::table('boxes')
@@ -48,7 +46,6 @@ class LabelsController extends Controller
         return $box[0]->shipping_count;
     }
 
-
     private function updateShippingCount($id)
     {
         $count = self::getShippingCount($id) + 1;
@@ -56,7 +53,6 @@ class LabelsController extends Controller
             ->where('user_id', '=', $id)
             ->update(['shipping_count' => $count]);
     }
-
 
     private function permission($id)
     {
@@ -75,6 +71,8 @@ class LabelsController extends Controller
     {
 
         $id = auth()->user()->id;
+        $user = User::find($id);
+
         $permission = self::permission($id);
         if (is_array($permission)) {
             // denied
@@ -94,6 +92,12 @@ class LabelsController extends Controller
         $pdfMerger = PDFMerger::init();
 
         $count = count($subs);
+
+        if ($count == 0) {
+            Session::flash('message', 'No labels found');
+            return view("shipping.ship", compact('user', $user));
+        }
+
         for ($i = 0; $i < $count; $i++) {
             // Purchase the saved rate
             $transaction = Shippo_Transaction::create(array(
@@ -124,8 +128,16 @@ class LabelsController extends Controller
             }
 
         }
+
         self::updateShippingCount($id);
-        return $pdfMerger->save('labels.pdf', 'browser');
+
+        try {
+            $result = $pdfMerger->save('labels.pdf', 'browser');
+
+        } catch (Exception $e) {
+            return $e;
+        }
+        return $result;
 
     }
     public function due()
@@ -152,7 +164,7 @@ class LabelsController extends Controller
         $due = array(
             'total' => $subs->sum('rate'),
             'count' => $subs->count('rate'),
-            'route' => "/checkout/labels/charge/?charge=" 
+            'route' => "/checkout/labels/charge/?charge=",
         );
 
         return view('box.ship', compact('user', $user))
@@ -160,46 +172,52 @@ class LabelsController extends Controller
             ->with('address', $addr[0]);
     }
 
+    public function getShippingAddress($id)
+    {
 
-    public function getShippingAddress($id){
-
-      return DB::table('boxes')
-      ->where('user_id', $id)
-      ->select('address_line_1', 'address_line_2',
-          'admin_area_1', 'admin_area_2',
-          'country_code', 'postal_code')
-      ->get();
+        return DB::table('boxes')
+            ->where('user_id', $id)
+            ->select('address_line_1', 'address_line_2',
+                'admin_area_1', 'admin_area_2',
+                'country_code', 'postal_code')
+            ->get();
     }
 
-    
     // Gets the shipping rates for each subscriber
+    
     public function rates(Request $request)
     {
 
         $id = auth()->user()->id;
         $user = User::find($id);
-       
+
         // Use USPS.
 
         $subs = DB::table('subscriptions')
             ->where('creator_id', '=', $user->id)
             ->where('status', '=', 1)
             ->where('sub_id', '<>', null)
-            ->select('given_name','family_name', 'creator_id', 'user_id', 'address_line_1', 'address_line_2',
+            ->select('given_name', 'family_name', 'creator_id', 'user_id', 'address_line_1', 'address_line_2',
                 'admin_area_1', 'admin_area_2',
                 'country_code', 'postal_code')
             ->get();
-           
+
+        if (count($subs) == 0) {
+
+            Session::flash('message', 'No labels found');
+            return view("shipping.ship", compact('user', $user));
+        }
+
         $shipping = new ShippingController();
         $total = 0;
         $count = 0;
-        
+
         foreach ($subs as $to) {
-       
+
             $request['to'] = $to;
-        
+
             $rate = $shipping->rates($request);
-          
+
             $array = array(
                 'rate_id' => $rate['results'][1]->object_id,
                 'rate' => $rate['results'][1]->amount,
@@ -220,7 +238,7 @@ class LabelsController extends Controller
             'description' => 'Priority Mail Express',
             'appId' => $this->config['square']['appId'],
             'locationId' => $this->config['square']['locationId'],
-            'route' => "/checkout/labels/charge/?charge=" 
+            'route' => "/checkout/labels/charge/?charge=",
 
         );
         $address = self::getShippingAddress($id);
@@ -229,7 +247,6 @@ class LabelsController extends Controller
             ->with('address', $address[0]);
 
     }
-
 
     public function showAddress(Request $request)
     {
@@ -241,7 +258,8 @@ class LabelsController extends Controller
 
     }
 
-    public function __destruct(){
+    public function __destruct()
+    {
         unset($this->config);
     }
 

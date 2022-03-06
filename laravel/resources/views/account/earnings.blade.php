@@ -33,7 +33,7 @@
             @endif
             <div id='module'>
                 <img class='center image-cta' src="{{ '../assets/images/wallet.svg' }}" alt="wallet">
-                <br>
+                <h2 class='centered'>Your earnings</h2>
                 <table>
 
                     <thead>
@@ -50,10 +50,8 @@
 
                     </tr>
                 </table>
-                <form class="margin-top-4-em" action="/account/earnings" method="get">
-
-                    <button type="submit" class="clearbtn">Widthdraw</button>
-                </form>
+                <br>
+                    <button type="submit" class="clearbtn center">Widthdraw</button>
             </div>
 
         </aside>

@@ -16,7 +16,6 @@
                             <input type='hidden' id='route' value='{{ $due['route'] }}'>
                         </form>
                     <div id="payment-status-container"></div>
-                    <img id='image-square-logo' class='center' src='../../../assets/images/square-logo.png' alt='Square' />
                 </div>
             </div>
         

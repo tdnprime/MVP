@@ -8,6 +8,12 @@
 
 <body id='home'>
     <div id="container">
+        @if (session()->has('message'))
+        <dialog class="alert">
+            <p class='centered'> {{ session()->get('message') }}</p>
+        </dialog>
+        @php session()->forget('message'); @endphp
+    @endif
         <span></span><!-- Hack-->
         @include('includes.header')
         @include('includes.menus.app')

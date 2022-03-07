@@ -12,10 +12,11 @@ class MailController extends Controller
 
     public function send()
     {
-
+        error_reporting(0);
         $id = auth()->user()->id;
         $sent = 0;
         $creators = DB::table('test')->get();
+        
         $num = count($creators);
         for ($i = 0; $i < $num; $i++) {
 
@@ -27,7 +28,7 @@ class MailController extends Controller
            $sent =+ $i;
         }
         echo $sent;
-        dd($response);
+       print_r($response);
     }
 
 }

@@ -42,11 +42,11 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        //dispatch(function () {
+        dispatch(function () {
 
         Mail::to($this->details['email'])->cc(['service@boxeon.com'])->send($this->email);
 
-        //})->afterResponse();
+        })->afterResponse();
 
     }
 

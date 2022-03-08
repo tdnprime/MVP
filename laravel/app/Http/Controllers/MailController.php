@@ -28,7 +28,7 @@ class MailController extends Controller
            $sent =+ $i;
         }
         echo $sent;
-       // dd($response);
+       dd($response);
     }
 
 }

@@ -40,6 +40,10 @@ class SendEmailJob implements ShouldQueue
 
             Mail::to($this->details['email'])->cc(['service@boxeon.com'])->send($this->email);
 
+        })->catch(function (Throwable $e) {
+
+            print_r($e);
+
         })->afterResponse();
 
     }

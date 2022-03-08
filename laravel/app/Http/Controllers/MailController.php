@@ -24,7 +24,8 @@ class MailController extends Controller
             #Queue an order-placed system email
             $details['email'] = $creator->email;
             $message = new Campaign($creator);
-            SendEmailJob::dispatch($details, $message)->onQueue('emails');
+            SendEmailJob::dispatch($details, $message)->onQueue('emails')
+            ->delay(now()->addMinutes(1));
 
         }
     }

@@ -36,12 +36,12 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
+        dispatch(function () {
 
-        Mail::to($this->details['email'])->send($this->email);
+            Mail::to($this->details['email'])->send($this->email);
+
+        })->afterResponse();
+
     }
 
-    public function failed()
-    {
-        // Called when the job is failing...
-    }
 }

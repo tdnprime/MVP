@@ -16,6 +16,12 @@ class SendEmailJob implements ShouldQueue
     protected $details;
     protected $email;
     public $tries = 3;
+    /**
+     * The number of seconds to wait before retrying the job.
+     *
+     * @var int
+     */
+    public $backoff = 3;
 
     /**
      * Create a new job instance.
@@ -38,11 +44,9 @@ class SendEmailJob implements ShouldQueue
     {
         //dispatch(function () {
 
-            Mail::to($this->details['email'])->cc(['service@boxeon.com'])->send($this->email);
+        Mail::to($this->details['email'])->cc(['service@boxeon.com'])->send($this->email);
 
         //})->afterResponse();
-
-   
 
     }
 

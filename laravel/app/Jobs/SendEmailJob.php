@@ -8,6 +8,9 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail; 
+use App\Models\Jobs;
+
+
 
 class SendEmailJob implements ShouldQueue
 {
@@ -35,6 +38,7 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
+
         Mail::to($this->details['email'])->send($this->email);
     }
 }

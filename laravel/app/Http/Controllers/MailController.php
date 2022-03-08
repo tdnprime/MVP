@@ -15,7 +15,7 @@ class MailController extends Controller
         error_reporting(0);
         $id = auth()->user()->id;
         $sent = 0;
-        $creators = DB::table('test')->get();
+        $creators = DB::table('mailing_list')->get();
         
         $num = count($creators);
         for ($i = 0; $i < $num; $i++) {
@@ -28,7 +28,7 @@ class MailController extends Controller
            $sent =+ $i;
         }
         echo $sent;
-       print_r($response);
+       // dd($response);
     }
 
 }

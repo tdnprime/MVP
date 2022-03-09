@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class SendEmailJob implements ShouldQueue
 {
@@ -45,6 +46,10 @@ class SendEmailJob implements ShouldQueue
         dispatch(function () {
 
         Mail::to($this->details['email'])->cc(['service@boxeon.com'])->send($this->email);
+
+        DB::table('mailing_list')
+        ->where('email', '=', $this->details['email'])
+        ->update(['campaign'=> 1]);
 
         })->afterResponse();
 

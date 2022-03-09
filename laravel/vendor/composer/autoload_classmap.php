@@ -46,6 +46,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Jobs\\SendEmailJob' => $baseDir . '/app/Jobs/SendEmailJob.php',
     'App\\Mail\\ApplicationReceived' => $baseDir . '/app/Mail/ApplicationReceived.php',
+    'App\\Mail\\Campaign' => $baseDir . '/app/Mail/Campaign.php',
     'App\\Mail\\LabelsReady' => $baseDir . '/app/Mail/LabelsReady.php',
     'App\\Mail\\OrderCancelled' => $baseDir . '/app/Mail/OrderCancelled.php',
     'App\\Mail\\OrderPlaced' => $baseDir . '/app/Mail/OrderPlaced.php',

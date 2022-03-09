@@ -15,14 +15,19 @@ class MailController extends Controller
         error_reporting(0);
         $id = auth()->user()->id;
         $sent = 0;
-        $creators = DB::table('mailing_list')->get();
+        $creators = DB::table('mailing_list')
+        ->where('campaign', '<>', '1')
+        ->orderBy('channel_name', 'desc')
+        ->limit(15)
+        ->select('*')
+        ->get();
 
         $num = count($creators);
         for ($i = 0; $i < $num; $i++) {
 
             $creator = (object) $creators[$i];
             #Queue an order-placed system email
-            $details['email'] = $creator->email;
+            $details['email'] = $creator->email; 
             $message = new Campaign($creator);
             SendEmailJob::dispatch($details, $message)->onQueue('emails')
             ->delay(now()->addMinutes(1));

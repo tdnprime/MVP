@@ -17,7 +17,20 @@ class SendEmailJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $details;
     protected $email;
-    public $tries = 3;
+
+    /**
+     * The number of times the job may be attempted.
+     *
+     * @var int
+     */
+    public $tries = 1;
+
+    /**
+     * Indicate if the job should be marked as failed on timeout.
+     *
+     * @var bool
+     */
+    public $failOnTimeout = true;
     /**
      * The number of seconds to wait before retrying the job.
      *
@@ -30,6 +43,7 @@ class SendEmailJob implements ShouldQueue
      *
      * @return void
      */
+    
     public function __construct($details, $email)
     {
         $this->details = $details;

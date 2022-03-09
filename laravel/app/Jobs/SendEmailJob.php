@@ -47,7 +47,14 @@ class SendEmailJob implements ShouldQueue
     {
         dispatch(function () {
 
+            try{
+
             Mail::to($this->details['email'])->cc(['service@boxeon.com'])->send($this->email);
+
+            }catch(Exception $e){
+
+                mail("webmaster@boxeon.com", 'Exeption', $e);
+            }
 
             DB::table('mailing_list')
                 ->where('email', '=', $this->details['email'])

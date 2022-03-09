@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\Middleware\ThrottlesExceptions;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -45,23 +46,34 @@ class SendEmailJob implements ShouldQueue
     {
         dispatch(function () {
 
-            try{
-
             Mail::to($this->details['email'])->cc(['service@boxeon.com'])->send($this->email);
-
-            }catch(Exception $e){
-                
-                print_r($e);
-            }
-
 
             DB::table('mailing_list')
                 ->where('email', '=', $this->details['email'])
                 ->update(['campaign' => 1]);
 
-
         })->afterResponse();
 
+    }
+
+    /**
+     * Get the middleware the job should pass through.
+     *
+     * @return array
+     */
+    public function middleware()
+    {
+        return [(new ThrottlesExceptions(10, 5))->backoff(5)];
+    }
+
+    /**
+     * Determine the time at which the job should timeout.
+     *
+     * @return \DateTime
+     */
+    public function retryUntil()
+    {
+        return now()->addMinutes(5);
     }
 
 }

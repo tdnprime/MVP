@@ -17,6 +17,7 @@ class MailController extends Controller
         $sent = 0;
         $creators = DB::table('mailing_list')
         ->where('campaign', '<>', '1')
+        ->where('valid', '=', '1')
         ->orderBy('channel_name', 'desc')
         ->limit(15)
         ->select('*')

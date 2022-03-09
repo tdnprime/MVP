@@ -31,19 +31,13 @@ class SendEmailJob implements ShouldQueue
      * @var bool
      */
     public $failOnTimeout = true;
-    /**
-     * The number of seconds to wait before retrying the job.
-     *
-     * @var int
-     */
-    public $backoff = 3;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    
+
     public function __construct($details, $email)
     {
         $this->details = $details;
@@ -70,24 +64,8 @@ class SendEmailJob implements ShouldQueue
 
     }
 
-    /**
-     * Get the middleware the job should pass through.
-     *
-     * @return array
-     */
-    public function middleware()
-    {
-        return [(new ThrottlesExceptions(10, 5))->backoff(5)];
-    }
+   
 
-    /**
-     * Determine the time at which the job should timeout.
-     *
-     * @return \DateTime
-     */
-    public function retryUntil()
-    {
-        return now()->addMinutes(5);
-    }
+   
 
 }

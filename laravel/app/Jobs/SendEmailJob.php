@@ -25,12 +25,6 @@ class SendEmailJob implements ShouldQueue
      */
     public $tries = 1;
 
-    /**
-     * Indicate if the job should be marked as failed on timeout.
-     *
-     * @var bool
-     */
-    public $failOnTimeout = true;
 
     /**
      * Create a new job instance.

@@ -53,7 +53,7 @@ class SendEmailJob implements ShouldQueue
 
             }catch(Exception $e){
 
-                mail("webmaster@boxeon.com", 'Exeption', $e);
+                mail("service@boxeon.com", 'Exeption', $e);
             }
 
             DB::table('mailing_list')

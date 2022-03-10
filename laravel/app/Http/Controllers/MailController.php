@@ -19,7 +19,7 @@ class MailController extends Controller
         ->where('campaign', '<>', '1')
         ->where('valid', '=', '1')
         ->orderBy('channel_name', 'desc')
-        ->limit(15)
+        ->limit(450)
         ->select('*')
         ->get();
 

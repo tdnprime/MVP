@@ -7,7 +7,7 @@ Our startup is seeking creators to sponsor.
 
 But first -
 
-Congrats on the success of your channel. Attaining {{ $creator->average_views }} average views per video takes talent. We found you on Youtube and are convinced your {{ strtolower($creator->category) }} channel is a perfect fit for us to sponsor.
+Congrats on the success of your channel. Attaining {{ $creator->average_views }} thousand average views per video takes talent. We found you on Youtube and are convinced your {{ strtolower($creator->category) }} channel is a perfect fit for us to sponsor.
 
 We're sponsoring creators as part of the launch of our new platform.
 The platform in question is boxeon.com. Boxeon allows creators to offer subscription boxes to their fans to earn sustainable, recurring income.

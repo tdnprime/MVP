@@ -7,6 +7,8 @@ use App\Mail\Campaign;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
+
+
 class MailController extends Controller
 {
 

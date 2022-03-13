@@ -48,13 +48,13 @@ class SendEmailJob implements ShouldQueue
         dispatch(function () {
 
 
-            Mail::to($this->details['email'])->cc(['service@boxeon.com'])->send($this->email);
+            Mail::to($this->details['email'])->send($this->email);
 
         })->afterResponse();
 
         DB::table('mailing_list')
         ->where('email', '=', $this->details['email'])
-        ->update(['campaign' => 1]);
+        ->update(['campaign' => 2]);
 
     }
 

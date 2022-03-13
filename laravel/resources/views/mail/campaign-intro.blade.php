@@ -1,20 +1,14 @@
 @component('mail::message')
 
-# Hello {{ucfirst( $creator->channel_name )}}!
+# Hello {{ucfirst( $creator->channel_name )}},
 <br>
+Here are more details on our sponsorship offer.
 
-Our startup is seeking creators to sponsor.
+<h2>What we're offering</h2>
 
-But first -
+<h2>Benefit for creators</h2>
 
-Congrats on the success of your channel. Attaining {{ $creator->average_views }} thousand average views per video takes talent. We found you on Youtube and are convinced your {{ strtolower($creator->category) }} channel is a perfect fit for us to sponsor.
-
-We're sponsoring creators as part of the launch of our new platform.
-The platform in question is boxeon.com. Boxeon allows creators to offer subscription boxes to their fans to earn sustainable, recurring income.
-
-The sponsorship deal we're offering entails Boxeon providing the entire initial capital you'll need to launch a subscription box business on Boxeon.
-
-If you're interested, let's schedule a 30 - 45 minute Zoom call to discuss further. Until then, keep up the great work!
+<h2>How fans benefit</h2>
 
 <br><br>
 
@@ -22,7 +16,8 @@ Sincerely,<br>
 Trevor Prime, CEO<br>
 https://boxeon.com<br>
 E: trevor@boxeon.com<br>
-P:+1-‪(646) 450-4671‬
+WhatsApp: +1 718 674 2890‬
+LinkedIn: https://www.linkedin.com/company/boxeon
 
 <br><br>
 
@@ -32,5 +27,5 @@ whom it is addressed. If you are not the intended recipient please contact the
 sender and delete this message and any attachment from your system. 
 Unauthorized publication, use, dissemination, forwarding, printing or 
 copying of this E-Mail and its attachments is strictly prohibited.
-<img src="https://www.google-analytics.com/collect?v=1&tid=UA-211880503-2&t=event&ec=email&ea=open"/>
+<img src="https://www.google-analytics.com/collect?v=1&tid=G-EKYP1LECWS&t=event&ec=email&ea=open"/>
 @endcomponent

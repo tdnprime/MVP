@@ -6,6 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Alaouy\\Youtube\\Facades\\Youtube' => $vendorDir . '/alaouy/youtube/src/Facades/Youtube.php',
+    'Alaouy\\Youtube\\Rules\\ValidYoutubeVideo' => $vendorDir . '/alaouy/youtube/src/Rules/ValidYoutubeVideo.php',
+    'Alaouy\\Youtube\\Youtube' => $vendorDir . '/alaouy/youtube/src/Youtube.php',
+    'Alaouy\\Youtube\\YoutubeServiceProvider' => $vendorDir . '/alaouy/youtube/src/YoutubeServiceProvider.php',
     'App\\Actions\\Fortify\\CreateNewUser' => $baseDir . '/app/Actions/Fortify/CreateNewUser.php',
     'App\\Actions\\Fortify\\PasswordValidationRules' => $baseDir . '/app/Actions/Fortify/PasswordValidationRules.php',
     'App\\Actions\\Fortify\\ResetUserPassword' => $baseDir . '/app/Actions/Fortify/ResetUserPassword.php',

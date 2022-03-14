@@ -117,7 +117,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::prefix('test')->group(function () {
 
-        Route::get('/email', 'App\Http\Controllers\SquareController@test');
+        Route::get('/youtube', 'App\Http\Controllers\YoutubeController@test');
+
 
     });
 

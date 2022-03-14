@@ -190,6 +190,7 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         array (
             'Asm89\\Stack\\' => 12,
             'App\\' => 4,
+            'Alaouy\\Youtube\\' => 15,
         ),
     );
 
@@ -562,6 +563,10 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'Alaouy\\Youtube\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/alaouy/youtube/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -589,6 +594,10 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
     );
 
     public static $classMap = array (
+        'Alaouy\\Youtube\\Facades\\Youtube' => __DIR__ . '/..' . '/alaouy/youtube/src/Facades/Youtube.php',
+        'Alaouy\\Youtube\\Rules\\ValidYoutubeVideo' => __DIR__ . '/..' . '/alaouy/youtube/src/Rules/ValidYoutubeVideo.php',
+        'Alaouy\\Youtube\\Youtube' => __DIR__ . '/..' . '/alaouy/youtube/src/Youtube.php',
+        'Alaouy\\Youtube\\YoutubeServiceProvider' => __DIR__ . '/..' . '/alaouy/youtube/src/YoutubeServiceProvider.php',
         'App\\Actions\\Fortify\\CreateNewUser' => __DIR__ . '/../..' . '/app/Actions/Fortify/CreateNewUser.php',
         'App\\Actions\\Fortify\\PasswordValidationRules' => __DIR__ . '/../..' . '/app/Actions/Fortify/PasswordValidationRules.php',
         'App\\Actions\\Fortify\\ResetUserPassword' => __DIR__ . '/../..' . '/app/Actions/Fortify/ResetUserPassword.php',

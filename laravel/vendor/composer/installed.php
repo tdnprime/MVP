@@ -5,11 +5,20 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '03b1c03598bf928466cd3aff47684875cab79e6b',
+        'reference' => '4a749ec4c853213b31a09b341b6f46e46278fcec',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
+        'alaouy/youtube' => array(
+            'pretty_version' => 'v2.2.5',
+            'version' => '2.2.5.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../alaouy/youtube',
+            'aliases' => array(),
+            'reference' => '6cd66013b18a958b85f4e71f72fb6fac7dc25c14',
+            'dev_requirement' => false,
+        ),
         'asm89/stack-cors' => array(
             'pretty_version' => 'v2.1.1',
             'version' => '2.1.1.0',
@@ -463,7 +472,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '03b1c03598bf928466cd3aff47684875cab79e6b',
+            'reference' => '4a749ec4c853213b31a09b341b6f46e46278fcec',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

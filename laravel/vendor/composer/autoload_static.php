@@ -624,6 +624,7 @@ class ComposerStaticInita1a323e9c9e386c357b17c196fe1a05e
         'App\\Http\\Controllers\\ShippingController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShippingController.php',
         'App\\Http\\Controllers\\SquareController' => __DIR__ . '/../..' . '/app/Http/Controllers/SquareController.php',
         'App\\Http\\Controllers\\SubscriptionController' => __DIR__ . '/../..' . '/app/Http/Controllers/SubscriptionController.php',
+        'App\\Http\\Controllers\\YoutubeController' => __DIR__ . '/../..' . '/app/Http/Controllers/YoutubeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminMiddleware.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

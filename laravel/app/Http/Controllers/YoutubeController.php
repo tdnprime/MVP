@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Alaouy\Youtube\Facades\Youtube;
 
 class YoutubeController extends Controller
@@ -46,8 +46,12 @@ class YoutubeController extends Controller
 
       foreach ($search['results'] as $obj){
 
-        $channelID = $obj->snippet->channelId;
-        $channelTitle = $obj->snippet->title;
+        DB::table('_creators_')->insert([
+
+            'channel_id' => $obj->snippet->channelId,
+            'channel_name' => $obj->snippet->title
+        
+        ]);
 
       }
 

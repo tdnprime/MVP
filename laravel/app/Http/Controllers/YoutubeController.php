@@ -1,22 +1,58 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
+
 use Alaouy\Youtube\Facades\Youtube;
+use Illuminate\Support\Facades\DB;
 
 class YoutubeController extends Controller
 {
 
+    public $country = [
+        
+        'China',
+        'United States',
+        'Germany',
+        'France',
+        'United Kingdom',
+        'Canada',
+        'Australia',
+        'Japan',
+        'Mexico',
+        'Sweden'
+    ];
+
+    public $category = [
+
+        'fashion',
+        'family',
+        'beauty',
+        'unboxing',
+        'health',
+        'fitness',
+        'cooking',
+        'music',
+        'challenge',
+        'conspiracy',
+        'pranks',
+        'politics'
+
+    ];
+
+    public $type = [
+
+        'short films'
+    ];
+
     public function test()
     {
 
-
-       // Same params as before
+        // Same params as before
         $params = [
-            'q' => 'Travel vlog',
+            'q' => '',
             'type' => 'channel',
             'part' => 'id, snippet',
-            'maxResults' => 50,
+            'maxResults' => 500,
         ];
 
         $pageTokens = [];
@@ -24,39 +60,40 @@ class YoutubeController extends Controller
         // Make inital search
         $search = Youtube::paginateResults($params, null);
 
+        dd($search);
+
+        // Store token
+        $pageTokens[] = dd($search);;
+        dd(dd($search));
+        // Go to next page in result
+        $search = Youtube::paginateResults($params, $pageTokens[0]);
+
         // Store token
         $pageTokens[] = $search['info']['nextPageToken'];
 
         // Go to next page in result
-        $search = Youtube::paginateResults($params, $pageTokens[0]);
-
-       // Store token
-        $pageTokens[] = $search['info']['nextPageToken'];
-
-       // Go to next page in result
         $search = Youtube::paginateResults($params, $pageTokens[1]);
 
-       // Store token
+        // Store token
         $pageTokens[] = $search['info']['nextPageToken'];
 
-       // Go back a page
+        // Go back a page
         $search = Youtube::paginateResults($params, $pageTokens[0]);
 
-      // Add results key with info parameter set
+        // Add results key with info parameter set
 
-      foreach ($search['results'] as $obj){
+        foreach ($search['results'] as $obj) {
 
-        DB::table('_creators_')->insert([
+            DB::table('_creators_')->insert([
 
-            'channel_id' => $obj->snippet->channelId,
-            'channel_name' => $obj->snippet->title
-        
-        ]);
+                'channel_id' => $obj->snippet->channelId,
+                'channel_name' => $obj->snippet->title,
 
-      }
+            ]);
+
+        }
 
     }
-
 
     public function testted()
     {
@@ -94,8 +131,8 @@ class YoutubeController extends Controller
         // $results = Youtube::searchAdvanced([/* params */]);
 
 // Get channel data by channel name, return an STD PHP object
-        $channel = Youtube::getChannelByName('xdadevelopers');
-        dd($channel);
+        // $channel = Youtube::getChannelByName('xdadevelopers');
+        //dd($channel);
 
 // Get channel data by channel ID, return an STD PHP object
         // $channel = Youtube::getChannelById('UCk1SpWNzOs4MYmr0uICEntg');

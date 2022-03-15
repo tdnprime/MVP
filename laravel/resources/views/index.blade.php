@@ -63,7 +63,7 @@
       <div class="alt-section-inner-grid"><img src="../assets/images/gdpr.svg" alt="General Data Protection Regulation" />
         <div class="secinner">
           <h2 class="extra-large-font">Secure transactions</h2>
-          <p>Our financial transactions are conducted by secure services such as Paypal, World Remit, and CashApp.</p>
+          <p>Our financial transactions are conducted by secure services such as Square, World Remit, and CashApp.</p>
         </div>
       </div>
     </section>

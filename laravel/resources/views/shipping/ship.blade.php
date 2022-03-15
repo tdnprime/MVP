@@ -33,7 +33,7 @@
     @else
 
         <div class="centered margin-bottom-4-em">
-            <iframe id="iframe-example-label" class="center image-cta" src="../assets/images/label.pdf" ></iframe>
+            <img class="center image-cta" src="../assets/images/label.svg" >
             <h2>Your shipping labels</h2>
             <p class="centered center">You don't have any outgoing boxes to ship. </p>
             <br><br>

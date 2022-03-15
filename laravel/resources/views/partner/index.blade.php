@@ -382,7 +382,7 @@
                     alt="General Data Protection Regulation" />
                 <div class="secinner">
                     <h2 class="extra-large-font">Secure transactions</h2>
-                    <p>You and your fans will enjoy secure transactions via Paypal, World Remit, CashApp, Crypto Currency,
+                    <p>You and your fans will enjoy secure transactions via Square, World Remit, CashApp, Crypto Currency,
                         and more.</p>
                 </div>
             </div>

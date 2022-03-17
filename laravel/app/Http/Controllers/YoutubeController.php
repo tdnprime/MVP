@@ -20,9 +20,8 @@ class YoutubeController extends Controller
 
     public function __construct(Request $request)
     {
-            Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
-            error_reporting(0);
-     
+        Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
+        error_reporting(0);
 
     }
 
@@ -37,7 +36,6 @@ class YoutubeController extends Controller
             ->orderBy('id', 'desc')
             ->limit(1)
             ->get();
-
 
         return view("admin.entry", compact('user', $user))
             ->with('entry', $channel);
@@ -75,8 +73,6 @@ class YoutubeController extends Controller
 
         foreach ($tags as $keyword) {
 
-                
-
             self::search($keyword->tag);
 
             DB::table('tags')
@@ -109,7 +105,7 @@ class YoutubeController extends Controller
         DB::table('_creators_')
             ->where('channel_id', '=', $request->input('id'))
             ->update(['email' => $request->input('email')]);
-       // self::populate();
+        // self::populate();
         return self::entry($request);
 
     }
@@ -119,14 +115,13 @@ class YoutubeController extends Controller
         DB::table('_creators_')
             ->where('channel_id', '=', $request->input('id'))
             ->update(['email' => 'skipped']);
-       // self::populate();
+        // self::populate();
         return self::entry($request);
 
     }
 
     public function search($keyword)
     {
-            
 
         // Same params as before
         $params = [
@@ -161,28 +156,34 @@ class YoutubeController extends Controller
 
                 $channel = Youtube::getChannelById($obj->snippet->channelId);
 
-                if( $channel->statistics->videoCount > 0 ){
+                if ($channel->statistics->videoCount > 0) {
 
-                        $average_views = $channel->statistics->viewCount / $channel->statistics->videoCount;
+                    $average_views = $channel->statistics->viewCount / $channel->statistics->videoCount;
 
-                }else{
-                        $average_views = 0;
+                } else {
+                    $average_views = 0;
                 }
-                
-                if($average_views > 10000){
 
-                DB::table('_creators_')->insert([
+                if ($average_views > 10000) {
 
-                    'channel_id' => $obj->snippet->channelId,
-                    'channel_name' => $obj->snippet->title,
-                    'country' => $channel->snippet->country ?? null,
-                    'views' => $channel->statistics->viewCount,
-                    'videos' => $channel->statistics->videoCount,
+                    try {
 
-                ]);
-        }
+                        DB::table('_creators_')->insertOrIgnore([
 
-            } catch (Exception $e) {
+                            'channel_id' => $obj->snippet->channelId,
+                            'channel_name' => $obj->snippet->title,
+                            'country' => $channel->snippet->country ?? null,
+                            'views' => $channel->statistics->viewCount,
+                            'videos' => $channel->statistics->videoCount,
+
+                        ]);
+                    } catch (exception $e) {
+
+                        continue;
+                    }
+                }
+
+            } catch (exception $e) {
 
                 continue;
             }
@@ -213,7 +214,7 @@ class YoutubeController extends Controller
 
     public function __destruct()
     {
-       // unset();
+        // unset();
     }
 
     public function testted()

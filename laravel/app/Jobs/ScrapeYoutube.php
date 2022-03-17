@@ -39,7 +39,7 @@ class ScrapeYoutube implements ShouldQueue
            
         // Same params as before
         $params = [
-            'q' => $keyword,
+            'q' => $this->tag,
             'type' => 'channel',
             'part' => 'id, snippet',
             'maxResults' => 50,

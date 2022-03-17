@@ -534,7 +534,7 @@ Boxeon = {
     }
 
 
-    if ( document.getElementById("main-wrapper")) {
+    if (document.getElementById("main-wrapper")) {
 
       document.getElementById("main-wrapper").style.marginLeft = "300px";
 
@@ -980,7 +980,7 @@ Subscriptions = {
     var form = document.createElement("form");
     form.method = "post";
     form.action = "/subscription/update";
-    
+
     var input = document.createElement("input");
     var input1 = document.createElement("input");
     var input2 = document.createElement("input");
@@ -1005,7 +1005,7 @@ Subscriptions = {
     var button = document.createElement("button");
     button.type = "submit";
     button.innerText = "Update";
-    button.addEventListener("click", function(){
+    button.addEventListener("click", function () {
 
       var a = this;
 
@@ -1385,20 +1385,20 @@ window.onload = function () {
     var btns = document.getElementsByClassName('partner-apply');
     for (var i = 0; i < btns.length; i++) {
       btns[i].addEventListener('click', function () {
-       var form = document.getElementById('form-partner-apply-wrapper');
-       form.style.display = "block";
-       form.style.margin = "auto";
-       var wrapper = document.getElementById("partner-masthead-image");
-       wrapper.style.display = "none";
-       var main = document.getElementsByTagName("main")[0];
-       main.id = "margin-top-45-em";
-       form.scrollIntoView({behavior: 'smooth'});
+        var form = document.getElementById('form-partner-apply-wrapper');
+        form.style.display = "block";
+        form.style.margin = "auto";
+        var wrapper = document.getElementById("partner-masthead-image");
+        wrapper.style.display = "none";
+        var main = document.getElementsByTagName("main")[0];
+        main.id = "margin-top-45-em";
+        form.scrollIntoView({ behavior: 'smooth' });
       });
     }
   }
   if (document.getElementById('video-place-holder')) {
     var loc = document.getElementById('video-place-holder');
-    loc.scrollIntoView({behavior: 'smooth'});
+    loc.scrollIntoView({ behavior: 'smooth' });
   }
 
 
@@ -1458,6 +1458,14 @@ window.onload = function () {
       }
     });
   }
+  if (document.getElementById('new-window')) {
+    document.getElementById('new-window').addEventListener('click', function () {
+      var newwindow=window.open(this.getAttribute('data-type-href'), 'mywin','height=200,width=150');
+      if (window.focus) {newwindow.focus()}
+
+      return false;
+    });
+  }
 
   if (document.getElementById('create-box')) {
     var opts = {
@@ -1498,7 +1506,7 @@ window.onload = function () {
 
   }
 
-// Google Analytics
+  // Google Analytics
 
   window.dataLayer = window.dataLayer || [];
 
@@ -1512,14 +1520,14 @@ window.onload = function () {
   gtag('config', 'G-EKYP1LECWS');
 
 
-window.addEventListener('onbeforeunload', function () {
+  window.addEventListener('onbeforeunload', function () {
 
-  document.getElementBy("container").setAttribute("class", "fadeout");
-
-
-});
+    document.getElementBy("container").setAttribute("class", "fadeout");
 
 
-//import instance from './modules/messages.js'
+  });
+
+
+  //import instance from './modules/messages.js'
 }
 

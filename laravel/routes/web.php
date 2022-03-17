@@ -115,9 +115,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     #TESTING
 
-    Route::prefix('test')->group(function () {
+    Route::prefix('entry')->group(function () {
 
-        Route::get('/youtube', 'App\Http\Controllers\YoutubeController@test');
+        Route::get('/youtube', 'App\Http\Controllers\YoutubeController@entry');
+        Route::post('/save', 'App\Http\Controllers\YoutubeController@save');
+        Route::post('/skip', 'App\Http\Controllers\YoutubeController@skip');
+        Route::post('/set', 'App\Http\Controllers\YoutubeController@set');
+        Route::get('/update/key', 'App\Http\Controllers\YoutubeController@deleteCookie');
+
+
 
 
     });

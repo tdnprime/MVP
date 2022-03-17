@@ -3,56 +3,133 @@
 namespace App\Http\Controllers;
 
 use Alaouy\Youtube\Facades\Youtube;
+use App\Models\User;
+use Cookie;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class YoutubeController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
-    public $country = [
-        
-        'China',
-        'United States',
-        'Germany',
-        'France',
-        'United Kingdom',
-        'Canada',
-        'Australia',
-        'Japan',
-        'Mexico',
-        'Sweden'
-    ];
+    public function __construct(Request $request)
+    {
+            Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
+     
 
-    public $category = [
+    }
 
-        'fashion',
-        'family',
-        'beauty',
-        'unboxing',
-        'health',
-        'fitness',
-        'cooking',
-        'music',
-        'challenge',
-        'conspiracy',
-        'pranks',
-        'politics'
+    public function entry(Request $request)
+    {
 
-    ];
+        $id = auth()->user()->id;
+        $user = User::find($id);
 
-    public $type = [
+        $channel = DB::table('_creators_')
+            ->where('email', '=', null)
+            ->orderBy('id', 'desc')
+            ->limit(1)
+            ->get();
 
-        'short films'
-    ];
 
-    public function test()
+        return view("admin.entry", compact('user', $user))
+            ->with('entry', $channel);
+    }
+
+    public function savekeywords()
+    {
+
+        $file = fopen(dirname(__DIR__, 3) . "/php/tags.txt", 'r');
+        $keywords = fgetcsv($file, ',');
+
+        foreach ($keywords as $key) {
+
+            try {
+
+                DB::table('tags')->insert([
+
+                    'tag' => $key,
+                    'status' => 0,
+
+                ]);
+            } catch (Exception $e) {
+                //
+            }
+        }
+    }
+
+    public function populate()
+    {
+        $tags = DB::table('tags')
+            ->where('status', '<>', 1)
+            ->orderBy('id', 'desc')
+            ->limit(1)
+            ->get();
+
+        foreach ($tags as $keyword) {
+
+            self::search($keyword->tag);
+
+            DB::table('tags')
+                ->where('id', '=', $keyword->id)
+                ->update(['status' => 1]);
+        }
+
+    }
+
+    public function set(Request $request)
+    {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        $channel = DB::table('_creators_')
+            ->where('email', '=', null)
+            ->orderBy('id', 'desc')
+            ->limit(1)
+            ->get();
+
+        return view("admin.entry", compact('user', $user))
+            ->withCookie(cookie('key', $request->input('key'), 1440))
+            ->with('entry', $channel);
+
+    }
+
+    public function save(Request $request)
+    {
+
+        DB::table('_creators_')
+            ->where('channel_id', '=', $request->input('id'))
+            ->update(['email' => $request->input('email')]);
+       // self::populate();
+        return self::entry($request);
+
+    }
+    public function skip(Request $request)
+    {
+
+        DB::table('_creators_')
+            ->where('channel_id', '=', $request->input('id'))
+            ->update(['email' => 'skipped']);
+       // self::populate();
+        return self::entry($request);
+
+    }
+
+    public function search($keyword)
     {
 
         // Same params as before
         $params = [
-            'q' => '',
+            'q' => $keyword,
             'type' => 'channel',
             'part' => 'id, snippet',
-            'maxResults' => 500,
+            'maxResults' => 50,
         ];
 
         $pageTokens = [];
@@ -60,11 +137,9 @@ class YoutubeController extends Controller
         // Make inital search
         $search = Youtube::paginateResults($params, null);
 
-        dd($search);
-
         // Store token
-        $pageTokens[] = dd($search);;
-        dd(dd($search));
+        $pageTokens[] = $search['info']['nextPageToken'];
+
         // Go to next page in result
         $search = Youtube::paginateResults($params, $pageTokens[0]);
 
@@ -78,20 +153,61 @@ class YoutubeController extends Controller
         $pageTokens[] = $search['info']['nextPageToken'];
 
         // Go back a page
-        $search = Youtube::paginateResults($params, $pageTokens[0]);
+        // $search = Youtube::paginateResults($params, $pageTokens[0]);
 
         // Add results key with info parameter set
 
         foreach ($search['results'] as $obj) {
 
-            DB::table('_creators_')->insert([
+            try {
 
-                'channel_id' => $obj->snippet->channelId,
-                'channel_name' => $obj->snippet->title,
+                $channel = Youtube::getChannelById($obj->snippet->channelId);
 
-            ]);
+                $test = DB::table('_creators_')
+                    ->where('channel_id', '=', $obj->snippet->channelId)
+                    ->get();
+
+                if (!isset($test[0]->channel_id)) { // TO DO: Skip loop
+
+                    continue;
+                }
+
+                DB::table('_creators_')->insert([
+
+                    'channel_id' => $obj->snippet->channelId,
+                    'channel_name' => $obj->snippet->title,
+                    'country' => $channel->snippet->country ?? null,
+                    'views' => $channel->statistics->viewCount,
+                    'videos' => $channel->statistics->videoCount,
+
+                ]);
+
+            } catch (Exception $e) {
+
+                //
+            }
 
         }
+
+    }
+    public function deleteCookie()
+    {
+
+        $cookie = Cookie::forget('key');
+
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        $channel = DB::table('_creators_')
+            ->where('email', '=', null)
+            ->orderBy('id', 'desc')
+            ->limit(1)
+            ->get();
+
+        return view("admin.entry", compact('user', $user))
+            ->with('entry', $channel)
+            ->with('api', 'true')
+            ->withCookie($cookie);
 
     }
 

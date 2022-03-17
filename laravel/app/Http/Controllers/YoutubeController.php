@@ -21,7 +21,7 @@ class YoutubeController extends Controller
     public function __construct(Request $request)
     {
         Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
-        error_reporting(0);
+        
 
     }
 
@@ -57,7 +57,7 @@ class YoutubeController extends Controller
                     'status' => 0,
 
                 ]);
-            } catch (Exception $e) {
+            } catch (exception $e) {
                 //
             }
         }
@@ -65,6 +65,7 @@ class YoutubeController extends Controller
 
     public function populate()
     {
+            return 1;
         $tags = DB::table('tags')
             ->where('status', '=', 0)
             ->orderBy('id', 'desc')
@@ -149,7 +150,6 @@ class YoutubeController extends Controller
         // $search = Youtube::paginateResults($params, $pageTokens[0]);
 
         // Add results key with info parameter set
-
         foreach ($search['results'] as $obj) {
 
             try {
@@ -166,7 +166,6 @@ class YoutubeController extends Controller
 
                 if ($average_views > 10000) {
 
-                    try {
 
                         DB::table('_creators_')->insertOrIgnore([
 
@@ -177,10 +176,7 @@ class YoutubeController extends Controller
                             'videos' => $channel->statistics->videoCount,
 
                         ]);
-                    } catch (exception $e) {
-
-                        continue;
-                    }
+                  
                 }
 
             } catch (exception $e) {

@@ -113,7 +113,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     });
 
-    #TESTING
+    #ENTRY
 
     Route::prefix('entry')->group(function () {
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Jobs\ScrapeYoutube;
 
 class YoutubeController extends Controller
 {
@@ -73,11 +74,13 @@ class YoutubeController extends Controller
 
         foreach ($tags as $keyword) {
 
-            self::search($keyword->tag);
-
             DB::table('tags')
-                ->where('id', '=', $keyword->id)
-                ->update(['status' => 1]);
+            ->where('id', '=', $keyword->id)
+            ->update(['status' => 1]);
+
+            ScrapeYoutube::dispatch($keyword->tag)->onQueue('scrape')
+            ->delay(now()->addMinutes(1));
+
         }
 
     }

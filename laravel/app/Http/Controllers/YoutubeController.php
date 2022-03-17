@@ -11,18 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class YoutubeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function __construct(Request $request)
-    {
-        Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
-        
-
-    }
+   
 
     public function entry(Request $request)
     {

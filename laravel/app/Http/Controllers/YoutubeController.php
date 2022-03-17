@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Alaouy\Youtube\Facades\Youtube;
 use App\Models\User;
 use Cookie;

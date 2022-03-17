@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Alaouy\Youtube\Facades\youtube;
+use Alaouy\Youtube\Facades\Youtube;
 use App\Models\User;
 use Cookie;
 use Illuminate\Http\Request;
@@ -19,7 +19,7 @@ class YoutubeController extends Controller
 
     public function __construct(Request $request)
     {
-        youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
+        Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
         
 
     }

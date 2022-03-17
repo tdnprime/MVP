@@ -65,7 +65,7 @@ class YoutubeController extends Controller
 
     public function populate()
     {
-            return 1;
+
         $tags = DB::table('tags')
             ->where('status', '=', 0)
             ->orderBy('id', 'desc')

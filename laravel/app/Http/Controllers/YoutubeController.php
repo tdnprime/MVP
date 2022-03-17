@@ -21,6 +21,7 @@ class YoutubeController extends Controller
     public function __construct(Request $request)
     {
             Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
+            error_reporting(0);
      
 
     }
@@ -67,12 +68,14 @@ class YoutubeController extends Controller
     public function populate()
     {
         $tags = DB::table('tags')
-            ->where('status', '<>', 1)
+            ->where('status', '=', 0)
             ->orderBy('id', 'desc')
             ->limit(1)
             ->get();
 
         foreach ($tags as $keyword) {
+
+                
 
             self::search($keyword->tag);
 
@@ -123,6 +126,7 @@ class YoutubeController extends Controller
 
     public function search($keyword)
     {
+            
 
         // Same params as before
         $params = [
@@ -136,22 +140,16 @@ class YoutubeController extends Controller
 
         // Make inital search
         $search = Youtube::paginateResults($params, null);
-
         // Store token
         $pageTokens[] = $search['info']['nextPageToken'];
-
         // Go to next page in result
         $search = Youtube::paginateResults($params, $pageTokens[0]);
-
         // Store token
         $pageTokens[] = $search['info']['nextPageToken'];
-
         // Go to next page in result
         $search = Youtube::paginateResults($params, $pageTokens[1]);
-
         // Store token
         $pageTokens[] = $search['info']['nextPageToken'];
-
         // Go back a page
         // $search = Youtube::paginateResults($params, $pageTokens[0]);
 
@@ -163,14 +161,15 @@ class YoutubeController extends Controller
 
                 $channel = Youtube::getChannelById($obj->snippet->channelId);
 
-                $test = DB::table('_creators_')
-                    ->where('channel_id', '=', $obj->snippet->channelId)
-                    ->get();
+                if( $channel->statistics->videoCount > 0 ){
 
-                if (!isset($test[0]->channel_id)) { // TO DO: Skip loop
+                        $average_views = $channel->statistics->viewCount / $channel->statistics->videoCount;
 
-                    continue;
+                }else{
+                        $average_views = 0;
                 }
+                
+                if($average_views > 10000){
 
                 DB::table('_creators_')->insert([
 
@@ -181,10 +180,11 @@ class YoutubeController extends Controller
                     'videos' => $channel->statistics->videoCount,
 
                 ]);
+        }
 
             } catch (Exception $e) {
 
-                //
+                continue;
             }
 
         }
@@ -209,6 +209,11 @@ class YoutubeController extends Controller
             ->with('api', 'true')
             ->withCookie($cookie);
 
+    }
+
+    public function __destruct()
+    {
+       // unset();
     }
 
     public function testted()

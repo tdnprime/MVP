@@ -122,6 +122,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/skip', 'App\Http\Controllers\YoutubeController@skip');
         Route::post('/set', 'App\Http\Controllers\YoutubeController@set');
         Route::get('/update/key', 'App\Http\Controllers\YoutubeController@deleteCookie');
+        Route::get('/populate', 'App\Http\Controllers\YoutubeController@populate');
+
 
 
 

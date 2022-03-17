@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Alaouy\Youtube\Facades\Youtube;
+use Youtube;
 use App\Models\User;
 use Cookie;
 use Illuminate\Http\Request;

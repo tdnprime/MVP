@@ -20,7 +20,9 @@ class YoutubeController extends Controller
 
     public function __construct(Request $request)
     {
-        Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
+        //Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
+        Youtube::setApiKey('AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw');
+
         
 
     }

@@ -1,45 +1,28 @@
 <?php
 
 namespace App\Jobs;
+use App\Models\Jobs;
+
 
 use Alaouy\Youtube\Facades\Youtube;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 
-class ScrapeYoutube implements ShouldQueue
+
+class YoutubeSearch
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public $tag;
+    public function __construct(){
 
-    public function __construct($keyword)
-    {
         Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
-        $this->tag = $keyword;
-
     }
 
-    /**
-     * Execute the job.
-     *
-     * @return void
-     */
-    public function handle()
+    public function search($tag)
     {
-        dispatch(function () {
 
-           
         // Same params as before
         $params = [
-            'q' => $this->tag,
+
+            'q' => $tag,
             'type' => 'channel',
             'part' => 'id, snippet',
             'maxResults' => 50,
@@ -77,19 +60,18 @@ class ScrapeYoutube implements ShouldQueue
                     $average_views = 0;
                 }
 
-                if ($average_views > 10000) {
+                if ($average_views > 5000) {
 
+                    DB::table('_creators_')->insertOrIgnore([
 
-                        DB::table('_creators_')->insertOrIgnore([
+                        'channel_id' => $obj->snippet->channelId,
+                        'channel_name' => $obj->snippet->title,
+                        'country' => $channel->snippet->country ?? null,
+                        'views' => $channel->statistics->viewCount,
+                        'videos' => $channel->statistics->videoCount,
 
-                            'channel_id' => $obj->snippet->channelId,
-                            'channel_name' => $obj->snippet->title,
-                            'country' => $channel->snippet->country ?? null,
-                            'views' => $channel->statistics->viewCount,
-                            'videos' => $channel->statistics->videoCount,
+                    ]);
 
-                        ]);
-                  
                 }
 
             } catch (exception $e) {
@@ -98,8 +80,6 @@ class ScrapeYoutube implements ShouldQueue
             }
 
         }
-
-        })->afterResponse();
 
     }
 }

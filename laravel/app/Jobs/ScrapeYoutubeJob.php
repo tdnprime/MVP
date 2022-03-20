@@ -19,6 +19,7 @@ class ScrapeYoutubeJob implements ShouldQueue
      * @var int
      */
     public $tries = 3;
+    public $key;
 
     /**
      * Create a new job instance.
@@ -27,9 +28,10 @@ class ScrapeYoutubeJob implements ShouldQueue
      */
     public $tag;
 
-    public function __construct($tag)
+    public function __construct($tag, $key)
     {
         $this->tag = $tag;
+        $this->key = $key;
 
     }
 
@@ -43,7 +45,7 @@ class ScrapeYoutubeJob implements ShouldQueue
     {
         dispatch(function () {
 
-            $search = new YoutubeSearch();
+            $search = new YoutubeSearch($this->key);
             $search::search($this->tag);
 
         })->afterResponse();

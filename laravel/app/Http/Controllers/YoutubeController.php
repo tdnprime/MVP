@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Jobs\ScrapeYoutubeJob;
 use App\Models\User;
 use Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Jobs\ScrapeYoutubeJob;
 
 class YoutubeController extends Controller
 {
@@ -16,15 +17,6 @@ class YoutubeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct(Request $request)
-    {
-        //Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
-        //Youtube::setApiKey('AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw');
-
-        
-
-    }
 
     public function entry(Request $request)
     {
@@ -66,20 +58,32 @@ class YoutubeController extends Controller
 
     public function populate()
     {
-        $tags = DB::table('tags')
-            ->where('status', '=', 0)
-            ->orderBy('id', 'desc')
-            ->limit(49)
-            ->get();
+        $keys = [
 
-        foreach ($tags as $keyword) {
+            'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
+            'AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw',
+            'AIzaSyCg1sR5FdvwU91cxJT-dj-nJVodg7DRhf4',
+            'AIzaSyCtfj-I5p6EJ2_VmGEvX6_QyQw4PHoSZew'
+        ];
 
-            DB::table('tags')
-            ->where('id', '=', $keyword->id)
-            ->update(['status' => 1]);
+        foreach ($keys as $key) {
 
-            ScrapeYoutubeJob::dispatch($keyword->tag)->onQueue('scrape');
+            $tags = DB::table('tags')
+                ->where('status', '=', 0)
+                ->orderBy('id', 'desc')
+                ->limit(49)
+                ->get();
 
+            foreach ($tags as $keyword) {
+
+                DB::table('tags')
+                    ->where('id', '=', $keyword->id)
+                    ->update(['status' => 1]);
+
+                ScrapeYoutubeJob::dispatch($keyword->tag, $key)->onQueue('scrape')
+                    ->delay(now()->addMinutes(1));
+
+            }
         }
 
     }
@@ -141,11 +145,6 @@ class YoutubeController extends Controller
             ->with('api', 'true')
             ->withCookie($cookie);
 
-    }
-
-    public function __destruct()
-    {
-        // unset();
     }
 
     public function testted()

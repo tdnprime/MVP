@@ -11,10 +11,9 @@ use Illuminate\Support\Facades\DB;
 class YoutubeSearch
 {
 
-    public function __construct(){
+    public function __construct($key){
 
-       Youtube::setApiKey('AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw');
-       //Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
+       Youtube::setApiKey($key);
     }
 
     public function search($tag)

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Alaouy\Youtube\Facades\Youtube;
 use App\Models\User;
 use Cookie;
 use Illuminate\Http\Request;
@@ -21,7 +20,7 @@ class YoutubeController extends Controller
     public function __construct(Request $request)
     {
         //Youtube::setApiKey('AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc');
-        Youtube::setApiKey('AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw');
+        //Youtube::setApiKey('AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw');
 
         
 
@@ -70,7 +69,7 @@ class YoutubeController extends Controller
         $tags = DB::table('tags')
             ->where('status', '=', 0)
             ->orderBy('id', 'desc')
-            ->limit(1)
+            ->limit(49)
             ->get();
 
         foreach ($tags as $keyword) {

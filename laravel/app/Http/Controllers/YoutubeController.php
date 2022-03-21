@@ -58,6 +58,8 @@ class YoutubeController extends Controller
 
     public function populate()
     {
+        $count = 0;
+        
         $keys = [
 
             'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
@@ -76,15 +78,19 @@ class YoutubeController extends Controller
 
             foreach ($tags as $keyword) {
 
-                DB::table('tags')
-                    ->where('id', '=', $keyword->id)
-                    ->update(['status' => 1]);
-
-                ScrapeYoutubeJob::dispatch($keyword->tag, $key)->onQueue('scrape')
+              $count += 1;
+              ScrapeYoutubeJob::dispatch($keyword->tag, $key)->onQueue('scrape')
                     ->delay(now()->addMinutes(1));
 
+
+                DB::table('tags')
+                ->where('id', '=', $keyword->id)
+                ->update(['status' => 1]);
+
             }
+           
         }
+         echo $count;
 
     }
 

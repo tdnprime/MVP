@@ -2,10 +2,10 @@
 
 namespace App\Jobs;
 use App\Models\Jobs;
-
-
 use Alaouy\Youtube\Facades\Youtube;
 use Illuminate\Support\Facades\DB;
+
+
 
 
 class YoutubeSearch
@@ -75,7 +75,7 @@ class YoutubeSearch
                 }
 
             } catch (exception $e) {
-
+                mail("trevorprimenyc@gmail.com", 'Youtube Exception', $e);
                 continue;
             }
 

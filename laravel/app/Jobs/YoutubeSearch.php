@@ -75,7 +75,7 @@ class YoutubeSearch
                 }
 
             } catch (exception $e) {
-                mail("trevorprimenyc@gmail.com", 'Youtube Exception', $e);
+                mail("trevorprimenyc@gmail.com", 'Youtube Exception', 'Error');
                 continue;
             }
 

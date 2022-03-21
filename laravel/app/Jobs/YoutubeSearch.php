@@ -13,7 +13,7 @@ class YoutubeSearch
 
     public function __construct($key){
 
-       Youtube::setApiKey($key);
+       Youtube::setApiKey($key); 
     }
 
     public function search($tag)
@@ -32,6 +32,7 @@ class YoutubeSearch
 
         // Make inital search
         $search = Youtube::paginateResults($params, null);
+    
         // Store token
         $pageTokens[] = $search['info']['nextPageToken'];
         // Go to next page in result
@@ -75,7 +76,7 @@ class YoutubeSearch
                 }
 
             } catch (exception $e) {
-                mail("trevorprimenyc@gmail.com", 'Youtube Exception', 'Error');
+               // mail("trevorprimenyc@gmail.com", 'Youtube Exception', 'Error');
                 continue;
             }
 

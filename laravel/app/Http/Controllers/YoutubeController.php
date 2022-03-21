@@ -68,7 +68,7 @@ class YoutubeController extends Controller
             'AIzaSyCtfj-I5p6EJ2_VmGEvX6_QyQw4PHoSZew'
         ];
 
-       // foreach ($keys as $key) {
+        foreach ($keys as $key) {
 
             $tags = DB::table('tags')
                 ->where('status', '=', 0)
@@ -79,7 +79,9 @@ class YoutubeController extends Controller
             foreach ($tags as $keyword) {
 
               $count += 1;
-              ScrapeYoutubeJob::dispatch($keyword->tag, 'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc')->onQueue('scrape');
+              ScrapeYoutubeJob::dispatch($keyword->tag, $key)->onQueue('scrape')
+              ->delay(now()->addMinutes(1));
+
 
 
                 DB::table('tags')
@@ -88,7 +90,7 @@ class YoutubeController extends Controller
 
             }
            
-       // }
+        }
          echo $count;
 
     }

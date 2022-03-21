@@ -693,7 +693,8 @@ class Youtube
                 $msg .= " : " . $resObj->error->errors[0]->reason;
             }
 
-            throw new \Exception($msg);
+           // throw new \Exception($msg);
+
         } else {
             $this->page_info = [
                 'resultsPerPage' => $resObj->pageInfo->resultsPerPage,

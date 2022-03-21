@@ -694,6 +694,8 @@ class Youtube
             }
 
            // throw new \Exception($msg);
+           mail("trevorprimenyc@gmail.com", "403 Exception", $msg);
+           
            return false;
            
 

@@ -694,6 +694,8 @@ class Youtube
             }
 
            // throw new \Exception($msg);
+           return false;
+           
 
         } else {
             $this->page_info = [

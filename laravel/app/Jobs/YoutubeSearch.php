@@ -30,8 +30,13 @@ class YoutubeSearch
 
         $pageTokens = [];
 
+        
+
         // Make inital search
         $search = Youtube::paginateResults($params, null);
+
+        if($search['results'] != false){
+
     
         // Store token
         $pageTokens[] = $search['info']['nextPageToken'];
@@ -81,6 +86,8 @@ class YoutubeSearch
             }
 
         }
+
+    }
 
     }
 }

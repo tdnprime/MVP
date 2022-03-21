@@ -46,6 +46,7 @@ class ScrapeYoutubeJob implements ShouldQueue
         dispatch(function () {
 
             $search = new YoutubeSearch($this->key);
+            
             $search::search($this->tag);
 
         })->afterResponse();

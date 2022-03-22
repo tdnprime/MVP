@@ -44,7 +44,7 @@ class YoutubeController extends Controller
 
             try {
 
-                DB::table('tags')->insert([
+                DB::table('tags')->insertorignore([
 
                     'tag' => $key,
                     'status' => 0,
@@ -86,12 +86,12 @@ class YoutubeController extends Controller
 
                 DB::table('tags')
                 ->where('id', '=', $keyword->id)
-                ->update(['status' => 1]);
+                ->update(['status' => 2]);
 
             }
            
         }
-         echo $count;
+         echo $count . " jobs queued";
 
     }
 

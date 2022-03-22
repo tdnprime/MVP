@@ -118,6 +118,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::prefix('entry')->group(function () {
 
         Route::get('/youtube', 'App\Http\Controllers\YoutubeController@entry');
+        Route::get('/keywords', 'App\Http\Controllers\YoutubeController@savekeywords');
         Route::post('/save', 'App\Http\Controllers\YoutubeController@save');
         Route::post('/skip', 'App\Http\Controllers\YoutubeController@skip');
         Route::post('/set', 'App\Http\Controllers\YoutubeController@set');

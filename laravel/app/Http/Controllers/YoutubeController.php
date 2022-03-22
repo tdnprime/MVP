@@ -72,7 +72,7 @@ class YoutubeController extends Controller
 
             $tags = DB::table('tags')
                 ->where('status', '=', 0)
-                ->orderBy('id', 'desc')
+                ->orderBy('id', 'asc')
                 ->limit(49)
                 ->get();
 

@@ -51,7 +51,7 @@ class YoutubeController extends Controller
 
                 ]);
             } catch (exception $e) {
-                //
+                dd($e);
             }
         }
     }

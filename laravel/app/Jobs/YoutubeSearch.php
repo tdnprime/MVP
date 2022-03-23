@@ -1,27 +1,24 @@
 <?php
 
 namespace App\Jobs;
-use App\Models\Jobs;
+
 use Alaouy\Youtube\Facades\Youtube;
+use App\Models\Jobs;
 use Illuminate\Support\Facades\DB;
-
-
-
 
 class YoutubeSearch
 {
 
-    public function __construct($key){
+    public function __construct($key)
+    {
 
-       Youtube::setApiKey($key); 
+        Youtube::setApiKey($key);
     }
 
     public function search($tag)
     {
 
-        // Same params as before
         $params = [
-
             'q' => $tag,
             'type' => 'channel',
             'part' => 'id, snippet',
@@ -29,65 +26,76 @@ class YoutubeSearch
         ];
 
         $pageTokens = [];
+        $results = [];
 
-        
-
-        // Make inital search
         $search = Youtube::paginateResults($params, null);
 
-        if($search['results'] != false){
+        if ($search['results'] != false) {
 
-    
-        // Store token
-        $pageTokens[] = $search['info']['nextPageToken'];
-        // Go to next page in result
-        $search = Youtube::paginateResults($params, $pageTokens[0]);
-        // Store token
-        $pageTokens[] = $search['info']['nextPageToken'];
-        // Go to next page in result
-        $search = Youtube::paginateResults($params, $pageTokens[1]);
-        // Store token
-        $pageTokens[] = $search['info']['nextPageToken'];
-        // Go back a page
-        // $search = Youtube::paginateResults($params, $pageTokens[0]);
+            $total = $search['pageInfo']['totalResults'];
+            $pages = $search['pageInfo']['resultsPerPage'];
+            $counter = $total / $pages;
 
-        // Add results key with info parameter set
-        foreach ($search['results'] as $obj) {
+            foreach ($search['results'] as $obj) {
 
-            try {
+                array_push($results, $obj);
+            }
 
-                $channel = Youtube::getChannelById($obj->snippet->channelId);
+            // Store token (2nd page)
+            array_push($pageTokens, $search['info']['nextPageToken']);
 
-                if ($channel->statistics->videoCount > 0) {
+            for ($i = 1; $i < $counter; $i++) {
 
-                   echo $average_views = $channel->statistics->viewCount / $channel->statistics->videoCount;
+                // Go to next page
+                $search = Youtube::paginateResults($params, $pageTokens[$i]);
 
-                } else {
-                    $average_views = 0;
+                if ($search['results'] != false) {
+                    // Store tokens
+                    array_push($pageTokens, $search['info']['nextPageToken']);
+
+                    foreach ($search['results'] as $obj) {
+
+                        array_push($results, $obj);
+                    }
                 }
 
-                if ($average_views > 5000) {
+            }
 
-                    DB::table('_creators_')->insertOrIgnore([
+            foreach ($results as $obj) {
 
-                        'channel_id' => $obj->snippet->channelId,
-                        'channel_name' => $obj->snippet->title,
-                        'country' => $channel->snippet->country ?? null,
-                        'views' => $channel->statistics->viewCount,
-                        'videos' => $channel->statistics->videoCount,
+                try {
 
-                    ]);
+                    $channel = Youtube::getChannelById($obj->snippet->channelId);
 
+                    if ($channel->statistics->videoCount > 0) {
+
+                        echo $average_views = $channel->statistics->viewCount / $channel->statistics->videoCount;
+
+                    } else {
+                        $average_views = 0;
+                    }
+
+                    if ($average_views > 5000) {
+
+                        DB::table('_creators_')->insertOrIgnore([
+
+                            'channel_id' => $obj->snippet->channelId,
+                            'channel_name' => $obj->snippet->title,
+                            'country' => $channel->snippet->country ?? null,
+                            'views' => $channel->statistics->viewCount,
+                            'videos' => $channel->statistics->videoCount,
+
+                        ]);
+
+                    }
+
+                } catch (exception $e) {
+                    continue;
                 }
 
-            } catch (exception $e) {
-               // mail("trevorprimenyc@gmail.com", 'Youtube Exception', 'Error');
-                continue;
             }
 
         }
-
-    }
 
     }
 }

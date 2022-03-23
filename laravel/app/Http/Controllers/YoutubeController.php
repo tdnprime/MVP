@@ -82,8 +82,6 @@ class YoutubeController extends Controller
               ScrapeYoutubeJob::dispatch($keyword->tag, $key)->onQueue('scrape')
               ->delay(now()->addMinutes(1));
 
-
-
                 DB::table('tags')
                 ->where('id', '=', $keyword->id)
                 ->update(['status' => 2]);

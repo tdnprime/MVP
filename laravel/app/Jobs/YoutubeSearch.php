@@ -69,7 +69,7 @@ class YoutubeSearch
 
                     if ($channel->statistics->videoCount > 0) {
 
-                        echo $average_views = $channel->statistics->viewCount / $channel->statistics->videoCount;
+                        $average_views = $channel->statistics->viewCount / $channel->statistics->videoCount;
 
                     } else {
                         $average_views = 0;

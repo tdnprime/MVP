@@ -62,8 +62,8 @@ class YoutubeController extends Controller
 
         $keys = [
 
-            'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
-           // 'AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw',
+           // 'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
+           'AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw'
            // 'AIzaSyCg1sR5FdvwU91cxJT-dj-nJVodg7DRhf4',
            // 'AIzaSyCtfj-I5p6EJ2_VmGEvX6_QyQw4PHoSZew'
         ];
@@ -73,7 +73,7 @@ class YoutubeController extends Controller
             $tags = DB::table('tags')
                 ->where('status', '=', 0)
                 ->orderBy('id', 'asc')
-                ->limit(49)
+                ->limit(1)
                 ->get();
 
             foreach ($tags as $keyword) {
@@ -84,7 +84,7 @@ class YoutubeController extends Controller
 
                 DB::table('tags')
                 ->where('id', '=', $keyword->id)
-                ->update(['status' => 2]);
+                ->update(['status' => 1]);
 
             }
            

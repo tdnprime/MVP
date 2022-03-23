@@ -50,6 +50,7 @@ class YoutubeController extends Controller
                     'status' => 0,
 
                 ]);
+
             } catch (exception $e) {
 
                 dd($e);
@@ -62,6 +63,7 @@ class YoutubeController extends Controller
         $count = 0;
 
         $keys = [
+
            'AIzaSyCkvTo6KCIPZN2tcCr_mSbpK94HWbvZpAo',
            'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
            'AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw',
@@ -78,6 +80,7 @@ class YoutubeController extends Controller
                 ->get();
 
             foreach ($tags as $keyword) {
+                
               $count += 1;
               ScrapeYoutubeJob::dispatch($keyword->tag, $key)->onQueue('scrape')
               ->delay(now()->addMinutes(1));

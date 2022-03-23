@@ -29,11 +29,12 @@ class YoutubeSearch
         $results = [];
 
         $search = Youtube::paginateResults($params, null);
+        
 
         if ($search['results'] != false) {
 
-            $total = $search['pageInfo']['totalResults'];
-            $pages = $search['pageInfo']['resultsPerPage'];
+            $total = $search['info']['totalResults'];
+            $pages = $search['info']['resultsPerPage'];
             $counter = $total / $pages;
 
             foreach ($search['results'] as $obj) {
@@ -44,7 +45,7 @@ class YoutubeSearch
             // Store token (2nd page)
             array_push($pageTokens, $search['info']['nextPageToken']);
 
-            for ($i = 1; $i < $counter; $i++) {
+            for ($i = 0; $i < $counter; $i++) {
 
                 // Go to next page
                 $search = Youtube::paginateResults($params, $pageTokens[$i]);

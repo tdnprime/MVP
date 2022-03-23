@@ -72,12 +72,11 @@ class YoutubeController extends Controller
 
             $tags = DB::table('tags')
                 ->where('status', '=', 0)
-                ->orderBy('id', 'asc')
+                ->orderBy('id', 'desc')
                 ->limit(1)
                 ->get();
 
             foreach ($tags as $keyword) {
-
               $count += 1;
               ScrapeYoutubeJob::dispatch($keyword->tag, $key)->onQueue('scrape')
               ->delay(now()->addMinutes(1));

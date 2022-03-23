@@ -22,7 +22,7 @@ class YoutubeSearch
             'q' => $tag,
             'type' => 'channel',
             'part' => 'id, snippet',
-            'maxResults' => 50,
+            'maxResults' => 100000,
         ];
 
         $pageTokens = [];

@@ -91,6 +91,7 @@ class YoutubeSearch
                     }
 
                 } catch (exception $e) {
+                    
                     continue;
                 }
 

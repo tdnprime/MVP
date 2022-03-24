@@ -11,7 +11,7 @@ class ExtensionController extends Controller
 
         $creators = DB::table('_creators_')
         ->where('email', '=', null)
-        ->orderBy('id', 'desc')
+        ->orderBy('id', 'asc')
         ->limit(49)
         ->get();
 

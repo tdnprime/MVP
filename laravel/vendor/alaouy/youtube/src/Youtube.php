@@ -639,7 +639,8 @@ class Youtube
                 $msg .= " : " . $resObj->error->errors[0]->reason;
             }
 
-            throw new \Exception($msg);
+           // throw new \Exception($msg);
+
         } else {
             $itemsArray = $resObj->items;
             if (!is_array($itemsArray) || count($itemsArray) == 0) {
@@ -666,7 +667,8 @@ class Youtube
                 $msg .= " : " . $resObj->error->errors[0]->reason;
             }
 
-            throw new \Exception($msg);
+           // throw new \Exception($msg);
+
         } else {
             $itemsArray = $resObj->items;
             if (!is_array($itemsArray)) {
@@ -692,7 +694,9 @@ class Youtube
             if (isset($resObj->error->errors[0])) {
                 $msg .= " : " . $resObj->error->errors[0]->reason;
             }
+
               mail("trevorprimenyc@gmail.com", "403 Exception", 'test');
+              return false;
                       
 
         } else {
@@ -752,10 +756,12 @@ class Youtube
         curl_setopt($tuCurl, CURLOPT_RETURNTRANSFER, 1);
         $tuData = curl_exec($tuCurl);
         if (curl_errno($tuCurl)) {
-            throw new \Exception('Curl Error : ' . curl_error($tuCurl));
-        }
+           // throw new \Exception('Curl Error : ' . curl_error($tuCurl));
+        }else{
 
         return $tuData;
+
+        }
     }
 
     /**

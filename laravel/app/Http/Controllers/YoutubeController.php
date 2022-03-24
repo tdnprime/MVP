@@ -64,10 +64,10 @@ class YoutubeController extends Controller
 
         $keys = [
 
-          // 'AIzaSyCkvTo6KCIPZN2tcCr_mSbpK94HWbvZpAo',
-          // 'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
-           //'AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw',
-          // 'AIzaSyCg1sR5FdvwU91cxJT-dj-nJVodg7DRhf4',
+          'AIzaSyCkvTo6KCIPZN2tcCr_mSbpK94HWbvZpAo',
+          'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
+           'AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw',
+          'AIzaSyCg1sR5FdvwU91cxJT-dj-nJVodg7DRhf4',
            'AIzaSyCtfj-I5p6EJ2_VmGEvX6_QyQw4PHoSZew'
         ];
 

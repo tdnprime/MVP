@@ -12,7 +12,7 @@ class ExtensionController extends Controller
         $creators = DB::table('_creators_')
         ->where('email', '=', null)
         ->orderBy('id', 'asc')
-        ->limit(49)
+        ->limit(1)
         ->get();
 
         return json_encode($creators);

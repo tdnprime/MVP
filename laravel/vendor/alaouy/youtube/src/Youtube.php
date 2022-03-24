@@ -696,7 +696,7 @@ class Youtube
 
            //throw new \Exception($msg);
            
-           return false;
+           //return false;
            
 
         } else {

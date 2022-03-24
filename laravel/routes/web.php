@@ -124,8 +124,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/set', 'App\Http\Controllers\YoutubeController@set');
         Route::get('/update/key', 'App\Http\Controllers\YoutubeController@deleteCookie');
         Route::get('/populate', 'App\Http\Controllers\YoutubeController@populate');
-        Route::get('/search', 'App\Jobs\YoutubeSearch@search');
-
+        Route::get('/fetch', 'App\Http\Controllers\ExtensionController@fetch');
+        Route::get('/extsave', 'App\Http\Controllers\ExtensionController@save');
+        Route::post('/extsave', 'App\Http\Controllers\ExtensionController@save');
 
 
 

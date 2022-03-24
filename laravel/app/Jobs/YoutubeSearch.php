@@ -5,6 +5,7 @@ namespace App\Jobs;
 use Alaouy\Youtube\Facades\Youtube;
 use App\Models\Jobs;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class YoutubeSearch
 {
@@ -19,6 +20,7 @@ class YoutubeSearch
     {
 
         $params = [
+            
             'q' => $tag,
             'type' => 'channel',
             'part' => 'id, snippet',
@@ -91,7 +93,7 @@ class YoutubeSearch
                     }
 
                 } catch (exception $e) {
-                    
+                    Log::info('Storing channel', [$key => $e]);
                     continue;
                 }
 

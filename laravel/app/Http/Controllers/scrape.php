@@ -1,4 +1,5 @@
 <?php
+namespace App\Http\Controllers;
 
 use App\Jobs\ScrapeYoutubeJob;
 use Illuminate\Support\Facades\DB;
@@ -6,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 
 
+function populate()
+{
 
     $keys = [
 
@@ -37,3 +40,6 @@ use Illuminate\Support\Facades\DB;
         }
        
     }
+
+}
+populate();

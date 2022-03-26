@@ -37,6 +37,8 @@ function populate()
             ->where('id', '=', $keyword->id)
             ->update(['status' => 1]);
 
+            mail("trevorprimenyc@gmail.com", "Executed", $keyword->tag);
+
         }
        
     }

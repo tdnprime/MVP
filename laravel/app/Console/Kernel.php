@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+
+            Commands\Scraper::class
+        
     ];
 
     /**
@@ -24,7 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+         $schedule->command('minute:scrape')
+         ->dailyAt('04:00');
     }
 
     /**

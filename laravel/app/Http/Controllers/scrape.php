@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 
 
-//function populate()
-//{
-
     $keys = [
 
       'AIzaSyCkvTo6KCIPZN2tcCr_mSbpK94HWbvZpAo',
@@ -43,7 +40,5 @@ use Illuminate\Support\Facades\DB;
        
     }
 
-}
-//populate();
 
 ?>

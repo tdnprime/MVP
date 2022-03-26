@@ -3,6 +3,8 @@
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -123,12 +125,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/skip', 'App\Http\Controllers\YoutubeController@skip');
         Route::post('/set', 'App\Http\Controllers\YoutubeController@set');
         Route::get('/update/key', 'App\Http\Controllers\YoutubeController@deleteCookie');
-        Route::get('/populate', 'App\Http\Controllers\YoutubeController@populate');
         Route::get('/fetch', 'App\Http\Controllers\ExtensionController@fetch');
         Route::get('/extsave', 'App\Http\Controllers\ExtensionController@save');
         Route::post('/extsave', 'App\Http\Controllers\ExtensionController@save');
+        Route::get('/populate', function () {
 
-
+            Artisan::queue('minute:scraper')->onQueue('commands');
+        });
 
 
     });

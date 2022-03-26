@@ -98,6 +98,7 @@ class YoutubeSearch
                 }
 
             }
+            mail("trevorprimenyc@gmail.com", "Pages", count($results));
 
         }
 

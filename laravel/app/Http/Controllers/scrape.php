@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 
 
-function populate()
-{
+//function populate()
+//{
 
     $keys = [
 
@@ -37,13 +37,13 @@ function populate()
             ->where('id', '=', $keyword->id)
             ->update(['status' => 1]);
 
-            mail("trevorprimenyc@gmail.com", "Executed", $keyword->tag);
+            mail("trevorprimenyc@gmail.com", "Executed", );
 
         }
        
     }
 
 }
-populate();
+//populate();
 
 ?>

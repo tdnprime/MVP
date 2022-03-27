@@ -98,7 +98,7 @@ class YoutubeSearch
                 }
 
             }
-            mail("trevorprimenyc@gmail.com", "Pages", count($results));
+            mail("trevorprimenyc@gmail.com", "Pages Scraped", (string)count($results));
 
         }
 

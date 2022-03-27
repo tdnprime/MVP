@@ -76,7 +76,7 @@ class YoutubeController extends Controller
             $tags = DB::table('tags')
                 ->where('status', '=', 0)
                 ->orderBy('id', 'desc')
-                ->limit(49)
+                ->limit(50)
                 ->get();
 
             foreach ($tags as $keyword) {
@@ -87,7 +87,7 @@ class YoutubeController extends Controller
 
                 DB::table('tags')
                 ->where('id', '=', $keyword->id)
-                ->update(['status' => 1]);
+                ->update(['status' => 3]);
 
             }
            

@@ -21,7 +21,7 @@ class YoutubeSearch
 
         $params = [
             
-            'q' => $tag,
+            'q' => substr($tag, 3),
             'type' => 'channel',
             'part' => 'id, snippet',
             'maxResults' => 100000,
@@ -93,6 +93,7 @@ class YoutubeSearch
                     }
 
                 } catch (exception $e) {
+                    
                     Log::info('Storing channel', [$key => $e]);
                     continue;
                 }

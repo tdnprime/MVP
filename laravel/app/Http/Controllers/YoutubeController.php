@@ -64,6 +64,8 @@ class YoutubeController extends Controller
 
         $keys = [
 
+          'AIzaSyAUrxYpXdRMJ4w7ZpcuPaVqJPjOdU2z0Ck',
+          'AIzaSyDxe4_07YZPOu5tMFEAa_wTZJM9zboZNHk',
           'AIzaSyCkvTo6KCIPZN2tcCr_mSbpK94HWbvZpAo',
           'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
           'AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw',

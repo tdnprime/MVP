@@ -38,7 +38,7 @@ class YoutubeSearch
         $search = Youtube::paginateResults($params, null);
         
 
-        if ($search['results'] != false) {
+       // if ($search['results'] != false) {
 
             // $total = $search['info']['totalResults'];
             // $pages = $search['info']['resultsPerPage'];
@@ -68,9 +68,9 @@ class YoutubeSearch
                 //         array_push($results, $obj);
                 //     }
                 // }
-            }
+            //}
 
-            }
+            //}
 
             foreach ($search['results'] as $obj) {
 
@@ -111,10 +111,10 @@ class YoutubeSearch
 
             }
 
-        }
+        //}
 
     }
-    public function destruct(){
+    public function __destruct(){
 
         mail("trevorprimenyc@gmail.com", "Pages Scraped", $this->send);
 

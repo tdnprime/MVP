@@ -72,7 +72,7 @@ class YoutubeController extends Controller
         'AIzaSyCg1sR5FdvwU91cxJT-dj-nJVodg7DRhf4',
         'AIzaSyCtfj-I5p6EJ2_VmGEvX6_QyQw4PHoSZew',
         'AIzaSyAY3ui82lIA_g_3nnQKqtErrbSTpva0vv8'
-        
+
         ];
 
         foreach ($keys as $key) {
@@ -80,7 +80,7 @@ class YoutubeController extends Controller
             $tags = DB::table('tags')
                 ->where('status', '=', 0)
                 ->orderBy('id', 'desc')
-                ->limit(1)
+                ->limit(50)
                 ->get();
 
             foreach ($tags as $keyword) {

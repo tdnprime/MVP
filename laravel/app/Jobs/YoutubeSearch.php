@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Log;
 
 class YoutubeSearch
 {
-    public $sent;
+  //  public $sent;
 
     public function __construct($key)
     {
 
         Youtube::setApiKey($key);
-        $this->sent = 0;
+       // $this->sent = 0;
     }
 
     public function search($tag)
@@ -38,7 +38,7 @@ class YoutubeSearch
         $search = Youtube::paginateResults($params, null);
         
 
-       // if ($search['results'] != false) {
+        if ($search['results'] != false) {
 
             // $total = $search['info']['totalResults'];
             // $pages = $search['info']['resultsPerPage'];
@@ -74,7 +74,7 @@ class YoutubeSearch
 
             foreach ($search['results'] as $obj) {
 
-                $this->send += 1;
+               // $this->sent += 1;
 
                 try {
 
@@ -108,6 +108,7 @@ class YoutubeSearch
                     Log::info('Storing channel', [$key => $e]);
                     continue;
                 }
+            }
 
             }
 
@@ -116,7 +117,7 @@ class YoutubeSearch
     }
     public function __destruct(){
 
-        mail("trevorprimenyc@gmail.com", "Pages Scraped", $this->send);
+        mail("trevorprimenyc@gmail.com", "Pages Scraped", 'Completed');
 
     }
 }

@@ -64,13 +64,15 @@ class YoutubeController extends Controller
 
         $keys = [
 
-          'AIzaSyAUrxYpXdRMJ4w7ZpcuPaVqJPjOdU2z0Ck',
-          'AIzaSyDxe4_07YZPOu5tMFEAa_wTZJM9zboZNHk',
-          'AIzaSyCkvTo6KCIPZN2tcCr_mSbpK94HWbvZpAo',
-          'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
-          'AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw',
-          'AIzaSyCg1sR5FdvwU91cxJT-dj-nJVodg7DRhf4',
-          'AIzaSyCtfj-I5p6EJ2_VmGEvX6_QyQw4PHoSZew'
+        'AIzaSyAUrxYpXdRMJ4w7ZpcuPaVqJPjOdU2z0Ck',
+        'AIzaSyDxe4_07YZPOu5tMFEAa_wTZJM9zboZNHk',
+        'AIzaSyCkvTo6KCIPZN2tcCr_mSbpK94HWbvZpAo',
+        'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
+        'AIzaSyBneHI51930L1b_yJYJZ0Iy-d0BPsfKBFw',
+        'AIzaSyCg1sR5FdvwU91cxJT-dj-nJVodg7DRhf4',
+        'AIzaSyCtfj-I5p6EJ2_VmGEvX6_QyQw4PHoSZew',
+        'AIzaSyAY3ui82lIA_g_3nnQKqtErrbSTpva0vv8'
+        
         ];
 
         foreach ($keys as $key) {
@@ -78,7 +80,7 @@ class YoutubeController extends Controller
             $tags = DB::table('tags')
                 ->where('status', '=', 0)
                 ->orderBy('id', 'desc')
-                ->limit(50)
+                ->limit(1)
                 ->get();
 
             foreach ($tags as $keyword) {

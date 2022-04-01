@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+
 use App\Models\Box;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use App\Http\controllers\SquareController;
-
 
 class BoxController extends Controller
 {
@@ -19,7 +18,7 @@ class BoxController extends Controller
      */
     public function index()
     {
-        if($user = Auth::user()){
+        if ($user = Auth::user()) {
             $id = auth()->user()->id;
             $user = User::find($id);
         }
@@ -32,24 +31,28 @@ class BoxController extends Controller
             ->select('boxes.*', 'users.given_name', 'users.family_name')
             ->get();
 
-        $box = $box[0];
-        self::setThumb($box);
-        self::setShippingDetails($box);
-        //$user = User::find($box->user_id);
-        return view('box.index', compact('user', 'user'))
-        ->with('box', $box);
+        if (isset($box[0])) {
+            $box = $box[0];
+            self::setThumb($box);
+            self::setShippingDetails($box);
+            //$user = User::find($box->user_id);
+            return view('box.index', compact('user', 'user'))
+                ->with('box', $box);
+        }
     }
-    public function setCookie(Request $request){
+    public function setCookie(Request $request)
+    {
         $minutes = 10;
         $response = new Response('Set Cookie');
         $response->withCookie(cookie('name', 'box', $minutes));
         return $response;
-     }
-     public function createProduct($id){
+    }
+    public function createProduct($id)
+    {
 
         //Create a Product on PayPal
 
-     }
+    }
     /**
      * Gets and saves Youtube video ID.
      *
@@ -74,11 +77,11 @@ class BoxController extends Controller
 
                 // self::createProduct($user->id); use if PayPal subscription is enabled
 
-                Session::flash('message', 'Your box is live at'); 
+                Session::flash('message', 'Your box is live at');
                 return redirect()->route('box.edit', $id);
             } else {
                 return redirect()->route('box.edit', $id)
-                ->with('message', 'Oops! Something went wrong. Please try again.');
+                    ->with('message', 'Oops! Something went wrong. Please try again.');
             }
         }
     }
@@ -88,7 +91,7 @@ class BoxController extends Controller
         $response = get_headers($img, 1);
         return $file_exists = strpos($response[0], '404') === false;
     }
-    
+
     private function setThumb($box)
     {
         $img0 = 'https://img.youtube.com/vi/' . $box->video . '/maxres0.jpg';
@@ -114,7 +117,7 @@ class BoxController extends Controller
     private function setShippingDetails($box)
     {
         //;
-       
+
         $box->preenddate = $box->created_at->addMonths(1)->diffForHumans();
         if ($box->shipping_cost == 0) {
             $box->shipping = '+ shipping';
@@ -181,7 +184,7 @@ class BoxController extends Controller
         $box->page_name = $request->input('page_name');
 
         $user->boxes()->save($box);
-        
+
         return redirect()->route('box.edit', $id)
             ->with(['box' => $box]);
 
@@ -209,9 +212,9 @@ class BoxController extends Controller
         $user = User::find($user_id);
 
         $box = $user->boxes()->first();
-        if(isset($box)){
-        self::setThumb($box);
-        self::setShippingDetails($box);
+        if (isset($box)) {
+            self::setThumb($box);
+            self::setShippingDetails($box);
         }
         return view('box.edit', compact('box', 'user'));
     }
@@ -246,21 +249,21 @@ class BoxController extends Controller
         return redirect()->route('box.index')
             ->with('success', 'Subscription Box updated successfully');
     }
-    protected function url(Request $request){
+    protected function url(Request $request)
+    {
 
         $box_url = json_decode($request['url']);
         $re = DB::table('boxes')
-        ->where('box_url', '=', $box_url->url)
-        ->select('box_url')
-        ->get();
-        if( isset($re[0])){
+            ->where('box_url', '=', $box_url->url)
+            ->select('box_url')
+            ->get();
+        if (isset($re[0])) {
             return json_encode(array('msg' => 'Unavailable'));
-           // return route('box.url', 'url');
-        }else{
+            // return route('box.url', 'url');
+        } else {
             return json_encode($url = array('msg' => 'Available'));
             //return route('box.url', 'url');
         }
-     
 
     }
 

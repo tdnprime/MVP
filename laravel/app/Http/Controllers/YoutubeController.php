@@ -82,7 +82,7 @@ class YoutubeController extends Controller
             $tags = DB::table('tags')
                 ->where('status', '=', 0)
                 ->orderBy('id', 'desc')
-                ->limit(50)
+                ->limit(1)
                 ->get();
 
             foreach ($tags as $keyword) {

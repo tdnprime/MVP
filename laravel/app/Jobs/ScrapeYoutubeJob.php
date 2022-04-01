@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Jobs;
-use App\Models\Jobs;
 
 use App\Jobs\YoutubeSearch;
+use App\Models\Jobs;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -18,7 +18,7 @@ class ScrapeYoutubeJob implements ShouldQueue
      *
      * @var int
      */
-    public $tries = 3;
+    public $tries = 1;
     public $key;
 
     /**
@@ -46,8 +46,16 @@ class ScrapeYoutubeJob implements ShouldQueue
         dispatch(function () {
 
             $search = new YoutubeSearch($this->key);
-            
-            $search::search($this->tag);
+
+            try {
+
+                $search::search($this->tag);
+
+            } catch (exception $exception) {
+
+                $this->fail($exception);
+
+            }
 
         })->afterResponse();
 

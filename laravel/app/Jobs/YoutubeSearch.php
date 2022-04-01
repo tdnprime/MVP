@@ -117,7 +117,7 @@ class YoutubeSearch
     }
     public function __destruct(){
 
-        mail("trevorprimenyc@gmail.com", "Pages Scraped", 'Completed');
+        Log::info('Channel Stored:', ['class' => 'destructed']);
 
     }
 }

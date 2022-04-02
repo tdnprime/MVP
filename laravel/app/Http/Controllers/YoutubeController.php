@@ -64,7 +64,7 @@ class YoutubeController extends Controller
 
         $keys = [
 
-        /*'AIzaSyAUrxYpXdRMJ4w7ZpcuPaVqJPjOdU2z0Ck',
+        'AIzaSyAUrxYpXdRMJ4w7ZpcuPaVqJPjOdU2z0Ck',
         'AIzaSyDxe4_07YZPOu5tMFEAa_wTZJM9zboZNHk',
         'AIzaSyCkvTo6KCIPZN2tcCr_mSbpK94HWbvZpAo',
         'AIzaSyC3cOLS4KvLW0FfnOtVxRvf9qGDroNpZuc',
@@ -73,7 +73,7 @@ class YoutubeController extends Controller
         'AIzaSyCtfj-I5p6EJ2_VmGEvX6_QyQw4PHoSZew',
         'AIzaSyAY3ui82lIA_g_3nnQKqtErrbSTpva0vv8',
         'AIzaSyB_xYwboPSgZv59lX8xC8Aw-2gQ3fFtDZ8',
-        'AIzaSyBfd12qh3Iwn3FlLOHnhr4wmSbgGRwj6c8',*/
+        'AIzaSyBfd12qh3Iwn3FlLOHnhr4wmSbgGRwj6c8',
         'AIzaSyAKd2cfpE5pMLGvCJIoJceI1AHz1t5kc2M',
         'AIzaSyCu5Sl7gv_BeH-0xuIHdduDtz2Xv67HpX0',
         'AIzaSyCUvuBoonWRglkwCTdrdlHtDSgTVs_1BYI'

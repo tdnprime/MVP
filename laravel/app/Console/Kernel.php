@@ -27,7 +27,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
          $schedule->command('minute:scrape')
-         ->dailyAt('04:00');
+         ->everyMinute()
+         ->timezone('America/New_York')
+          ->between('03:00', '04:00')
+          ->emailOutputTo('trevorprimenyc@gmail.com');
     }
 
     /**

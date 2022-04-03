@@ -1229,7 +1229,9 @@ a:visited {
   background-position: left;
 }*/
 
-
+.no-float label{
+  float:none !important;
+}
 .button:hover {
   text-decoration: none;
 }

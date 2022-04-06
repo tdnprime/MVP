@@ -35,7 +35,15 @@ class Subscription extends Model
         'card_id',
         'last_shipping',
         'label',
-        'carrier'
+        'carrier',
+        'billing_given_name',
+        'billing_family_name',
+        'billing_address_line_1',
+        'billing_address_line_2',
+        'billing_admin_area_1',
+        'billing_admin_area_2',
+        'billing_postal_code',
+        'billing_country_code'
     ];
     public function user()
     {

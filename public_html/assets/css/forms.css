@@ -16,6 +16,9 @@ form {
   max-width:none;
 
 }
+#fieldset-billing-address{
+  display:none;
+}
 .button:disabled,
 .button[disabled]{
   background-color: #000;

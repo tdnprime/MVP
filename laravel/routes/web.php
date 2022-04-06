@@ -143,6 +143,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         Route::post('/remove/{box}', 'App\Http\Controllers\SubscriptionController@remove')->name('subscription.remove');
         Route::post('/update', 'App\Http\Controllers\SubscriptionController@update')->name('subscription.update');
+        Route::get('/billing', 'App\Http\Controllers\SubscriptionController@billingAddress')->name('subscription.billing');
 
     });
 

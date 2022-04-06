@@ -181,10 +181,11 @@ class SubscriptionController extends Controller
      */
     public function store($data)
     {
+        if(empty($data->cpf)){$data->cpf = 0;}
+
         $id = auth()->user()->id;
         $user = User::find($id);
         $subscription = new Subscription();
-
         $subscription->creator_id = $data->creator_id;
         $subscription->user_id = $user->id;
         $subscription->version = $data->version;
@@ -193,7 +194,7 @@ class SubscriptionController extends Controller
         $subscription->cpf = $data->cpf; // Cadastro de Pessoas Físicas.
         $subscription->plan_id = $data->plan_id;
         $subscription->address_line_1 = $data->address_line_1;
-        $subscription->address_line_2 = $data->address_line_2;
+        $subscription->address_line_2 = $data->address_line_2 ?? null;
         $subscription->admin_area_1 = $data->admin_area_1;
         $subscription->admin_area_2 = $data->admin_area_2;
         $subscription->postal_code = $data->postal_code;
@@ -205,7 +206,14 @@ class SubscriptionController extends Controller
         $subscription->family_name = $data->family_name;
         $subscription->status = 2; // 2 = pending - the subscription is not yet paid for
         $subscription->carrier = $data->carrier;
-
+        $subscription->billing_given_name = $data->given_name ?? null;
+        $subscription->billing_family_name = $data->family_name ?? null;
+        $subscription->billing_address_line_1 = $data->address_line_1 ?? null;
+        $subscription->billing_address_line_2 = $data->address_line_2 ?? null;
+        $subscription->billing_admin_area_1 = $data->admin_area_1 ?? null;
+        $subscription->billing_admin_area_2 = $data->admin_area_2 ?? null;
+        $subscription->billing_postal_code = $data->postal_code ?? null;
+        $subscription->billing_country_code = $data->country_code ?? null;
         $user->subscription()->save($subscription);
     }
 
@@ -335,6 +343,17 @@ class SubscriptionController extends Controller
             Session::flash('message', 'Subscription updated.');
             return redirect()->route('home.subscriptions', $user);
         }
+    }
+
+    public function billingAddress(){
+
+
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+       $address = Subscription::where('user_id', '=', $id)
+        ->get();
+        return json_encode($address);
     }
 
     public function __destruct()

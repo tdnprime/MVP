@@ -344,7 +344,7 @@
         <aside class="asides">
             <h1 class="extra-large-font darkblue">What's a subscription box?</h1>
             <p class="centered center font-1-5-em">In this business model, content creators put together a box of products
-                around a theme, and their most loyal fans subscribe to receive these boxes for the thematic experience. </p>
+                around a theme, and their most loyal fans subscribe to receive these boxes for the thematic experience. For proof of concept, checkout our <a href='https://boxeon.com/ukraine' class='primary-color underline one-em-font'>Ukraine box</a>. </p>
             <br>
         </aside>
         <section class="section">

@@ -206,14 +206,14 @@ class SubscriptionController extends Controller
         $subscription->family_name = $data->family_name;
         $subscription->status = 2; // 2 = pending - the subscription is not yet paid for
         $subscription->carrier = $data->carrier;
-        $subscription->billing_given_name = $data->given_name ?? null;
-        $subscription->billing_family_name = $data->family_name ?? null;
-        $subscription->billing_address_line_1 = $data->address_line_1 ?? null;
-        $subscription->billing_address_line_2 = $data->address_line_2 ?? null;
-        $subscription->billing_admin_area_1 = $data->admin_area_1 ?? null;
-        $subscription->billing_admin_area_2 = $data->admin_area_2 ?? null;
-        $subscription->billing_postal_code = $data->postal_code ?? null;
-        $subscription->billing_country_code = $data->country_code ?? null;
+        $subscription->billing_given_name = $data->billing_given_name ?? null;
+        $subscription->billing_family_name = $data->billing_family_name ?? null;
+        $subscription->billing_address_line_1 = $data->billing_address_line_1 ?? null;
+        $subscription->billing_address_line_2 = $data->billing_address_line_2 ?? null;
+        $subscription->billing_admin_area_1 = $data->billing_admin_area_1 ?? null;
+        $subscription->billing_admin_area_2 = $data->billing_admin_area_2 ?? null;
+        $subscription->billing_postal_code = $data->billing_postal_code ?? null;
+        $subscription->billing_country_code = $data->billing_country_code ?? null;
         $user->subscription()->save($subscription);
     }
 

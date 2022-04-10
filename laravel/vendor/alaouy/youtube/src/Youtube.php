@@ -695,7 +695,7 @@ class Youtube
                 $msg .= " : " . $resObj->error->errors[0]->reason;
             }
 
-              mail("trevorprimenyc@gmail.com", "403 Exception", 'test');
+              mail("trevorprimenyc@gmail.com", "403 Exception", $msg);
               return false;
                       
 

@@ -25,6 +25,8 @@ class SquareController extends Controller
 
     public function test()
     {
+        return redirect('/home/subscriptions');
+
         $id = auth()->user()->id;
         $user = User::find($id);
 
@@ -233,7 +235,8 @@ class SquareController extends Controller
 
     public function createSubscription(Request $request)
     {
-
+  return redirect('/home/subscriptions');
+  
         $id = auth()->user()->id;
         $user = User::find($id);
 

@@ -233,7 +233,7 @@ class SquareController extends Controller
 
         $id = auth()->user()->id;
         $user = User::find($id);
-dd($user);
+
         $sub = Subscription::where('user_id', '=', $id)
             ->orderByDesc('created_at')
             ->limit(1)
@@ -241,7 +241,7 @@ dd($user);
 
         $subscription = json_decode($request['upsert']);
         $price = SubscriptionController::amount();
-
+        dd($price);
         // Checkpoint 1.
         $payment_id = self::createPayment([
 

@@ -338,9 +338,9 @@ class SquareController extends Controller
             );
 
             #Queue an order placed system email
-            $details['email'] = $user->email;
-            $message = new OrderPlaced($user);
-            SendEmailJob::dispatch($details, $message)->onQueue('emails');
+            //$details['email'] = $user->email;
+            //$message = new OrderPlaced($user);
+           // SendEmailJob::dispatch($details, $message)->onQueue('emails');
 
             Session::flash('message', 'Thanks for your subscription!');
             return json_encode(array('redirectTo' => '/home/subscriptions'));

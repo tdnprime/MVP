@@ -240,13 +240,13 @@ class SquareController extends Controller
             ->get();
 
         $subscription = json_decode($request['upsert']);
-        $price = SubscriptionController::amount();
+       // $price = SubscriptionController::amount();
 
         // Checkpoint 1.
         $payment_id = self::createPayment([
 
             'source_id' => $subscription->sourceId,
-            'amount' => $price['amount'] * 100,
+            'amount' => 1 * 100,
             'id' => $sub[0]['creator_id'],
 
         ]);
@@ -344,6 +344,8 @@ class SquareController extends Controller
         }
 
     }
+
+
 
     public function deleteSubscription($request)
     {

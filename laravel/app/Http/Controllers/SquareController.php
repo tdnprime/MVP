@@ -149,6 +149,9 @@ class SquareController extends Controller
         if (isset($created->payment->id)) {
 
             return $created->payment->id;
+        }else{
+
+            dd($response);
         }
     }
 

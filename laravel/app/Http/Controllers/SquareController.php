@@ -144,7 +144,7 @@ class SquareController extends Controller
             "reference_id" => "creator-id-" . $request['id'],
 
         ]);
-
+dd($response);
         $created = json_decode($response);
 
         if (isset($created->payment->id)) {

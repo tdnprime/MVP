@@ -124,7 +124,7 @@ class SquareController extends Controller
 
     public function createPayment($request)
     {
-
+dd($request);
         $response = Http::withHeaders(
             [
                 'Authorization' => "Bearer " . $this->config['square']['access_token'],

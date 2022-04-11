@@ -341,7 +341,7 @@ class SquareController extends Controller
 
             Session::flash('message', 'Thank you for your subscription!');
             //return json_encode(array('redirectTo' => '/home/subscriptions'));
-            return redirect()->route('home.subscriptions');
+            return redirect('/home/subscriptions');
 
         } else {
 

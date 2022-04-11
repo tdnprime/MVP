@@ -144,7 +144,6 @@ class SquareController extends Controller
             "reference_id" => "creator-id-" . $request['id'],
 
         ]);
-        dd($response);
 
         $created = json_decode($response);
 
@@ -254,7 +253,7 @@ class SquareController extends Controller
             'id' => $sub[0]['creator_id'],
 
         ]);
-        dd($payment_id);
+
 
         // Checkpoint 2.
         if (!isset($user->customer_id)) {

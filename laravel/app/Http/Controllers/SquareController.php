@@ -235,7 +235,6 @@ class SquareController extends Controller
 
     public function createSubscription(Request $request)
     {
-    return json_encode(array('redirectTo' => '/home/subscriptions'));
 
 
         $id = auth()->user()->id;
@@ -343,9 +342,8 @@ class SquareController extends Controller
             $message = new OrderPlaced($user);
             SendEmailJob::dispatch($details, $message)->onQueue('emails');
 
-            Session::flash('message', 'Thank you for your subscription!');
-            //return json_encode(array('redirectTo' => '/home/subscriptions'));
-            return redirect('/home/subscriptions');
+            Session::flash('message', 'Thanks for your subscription!');
+            return json_encode(array('redirectTo' => '/home/subscriptions'));
 
         } else {
 

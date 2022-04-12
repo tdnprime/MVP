@@ -106,8 +106,8 @@ class SquareController extends Controller
             ]
         )->post($this->config['square']['customersEndpoint'], [
 
-            "given_name" => $subscription[0]['given_name'],
-            "family_name" => $subscription[0]['family_name'],
+            "given_name" =>  $subscription[0]['billing_given_name'] ?? $subscription[0]['given_name'],
+            "family_name" => $subscription[0]['billing_family_name'] ?? $subscription[0]['family_name'],
             "email_address" => $user->email,
             "address" => [
                 "address_line_1" =>  $subscription[0]['billing_address_line_1'] ?? $subscription[0]['address_line_1'],
@@ -117,7 +117,7 @@ class SquareController extends Controller
                 "postal_code" => $subscription[0]['billing_postal_code'] ?? $subscription[0]['postal_code'],
                 "country" => $subscription[0]['billing_country_code'] ?? $subscription[0]['country_code'],
             ],
-            "cardholder_name" => $subscription[0]['given_name'] . "" . $subscription[0]['family_name'],
+            "cardholder_name" => $subscription[0]['billing_ given_name']  ?? $subscription[0]['given_name'] . "" . $subscription[0]['billing_family_name'] ?? $subscription[0]['family_name'],
             "reference_id" => '#early',
         ]);
         return json_decode($response);
@@ -233,6 +233,10 @@ class SquareController extends Controller
 
     }
 
+
+
+
+
     public function createSubscription(Request $request)
     {
 
@@ -283,7 +287,7 @@ class SquareController extends Controller
         $saved = self::createCard([
 
             'source_id' => $payment_id,
-            'fullname' => $sub[0]['given_name'] . "" . $sub[0]['family_name'],
+            'fullname' => $sub[0]['billing_given_name'] ?? $sub[0]['given_name'] . "" . $sub[0]['billing_family_name'] ?? $sub[0]['family_name'],
             'customer_id' => $user->customer_id,
             'id' => $sub[0]['creator_id'],
 

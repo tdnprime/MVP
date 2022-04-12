@@ -23,7 +23,7 @@
     <aside id="panel">
 
         @if (session()->has('message'))
-            <dialog id='alert' class="alert">
+            <dialog class="alert">
                 <p class='centered'> {{ session()->get('message') }}</p>
             </dialog>
         @endif
@@ -42,7 +42,7 @@
                     @endphp
                     <div class="center">
                         <div class='subscription-card'>
-                            <a href='/{{ $box->box_url }}'><img id='image-youtube-thumb'
+                            <a href='/{{ $box->box_url }}'><img class='image-youtube-thumb'
                                     src='http://img.youtube.com/vi/{{ $box->video }}/mqdefault.jpg' /></a>
                             <div class=''>
                                 <div>

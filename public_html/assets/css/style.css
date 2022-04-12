@@ -894,7 +894,7 @@ a:visited {
 #page-name {
   font-family: "Concert One";
   line-height: 1em;
-  word-break: break-all;
+  //word-break: break-all;
 }
 
 #m-content, #panel {

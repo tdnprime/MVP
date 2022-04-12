@@ -342,7 +342,7 @@ class SquareController extends Controller
             $message = new OrderPlaced($user);
             SendEmailJob::dispatch($details, $message)->onQueue('emails');
 
-            Session::flash('message', 'Thanks for your subscription!');
+            Session::flash('message', 'Thank you!');
             return json_encode(array('redirectTo' => '/home/subscriptions'));
 
         } else {

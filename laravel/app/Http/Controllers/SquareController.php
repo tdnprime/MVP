@@ -320,7 +320,7 @@ class SquareController extends Controller
                 "name" => "Boxeon",
             ]]);
 
-        $response = json_decode($response);
+        $response = json_decode($response); dd($response);
 
         if (isset($response->subscription->id)) {
 

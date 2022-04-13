@@ -295,7 +295,7 @@ class SquareController extends Controller
 
         if (!isset($saved->card->id)) {
 
-            return $saved; // errors
+            return json_encode(array('status' => 'FAILURE'));
         }
 
         // Create the subscription

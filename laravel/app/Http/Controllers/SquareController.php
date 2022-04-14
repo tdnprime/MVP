@@ -106,18 +106,18 @@ class SquareController extends Controller
             ]
         )->post($this->config['square']['customersEndpoint'], [
 
-            "given_name" =>  $subscription[0]['billing_given_name'] ?? $subscription[0]['given_name'],
+            "given_name" => $subscription[0]['billing_given_name'] ?? $subscription[0]['given_name'],
             "family_name" => $subscription[0]['billing_family_name'] ?? $subscription[0]['family_name'],
             "email_address" => $user->email,
             "address" => [
-                "address_line_1" =>  $subscription[0]['billing_address_line_1'] ?? $subscription[0]['address_line_1'],
+                "address_line_1" => $subscription[0]['billing_address_line_1'] ?? $subscription[0]['address_line_1'],
                 "address_line_2" => $subscription[0]['billing_address_line_2'] ?? $subscription[0]['address_line_2'] ?? "",
                 "locality" => $subscription[0]['billing_admin_area_2'] ?? $subscription[0]['admin_area_2'],
                 "administrative_district_level_1" => $subscription[0]['billing_admin_area_1'] ?? $subscription[0]['admin_area_1'],
                 "postal_code" => $subscription[0]['billing_postal_code'] ?? $subscription[0]['postal_code'],
                 "country" => $subscription[0]['billing_country_code'] ?? $subscription[0]['country_code'],
             ],
-            "cardholder_name" => $subscription[0]['billing_ given_name']  ?? $subscription[0]['given_name'] . "" . $subscription[0]['billing_family_name'] ?? $subscription[0]['family_name'],
+            "cardholder_name" => $subscription[0]['billing_ given_name'] ?? $subscription[0]['given_name'] . "" . $subscription[0]['billing_family_name'] ?? $subscription[0]['family_name'],
             "reference_id" => '#early',
         ]);
         return json_decode($response);
@@ -152,9 +152,12 @@ class SquareController extends Controller
         if (isset($created->payment->id)) {
 
             return $created->payment->id;
+
+        } else {
+
+            return false;
         }
 
-    
     }
 
     public function createCard($request)
@@ -180,7 +183,7 @@ class SquareController extends Controller
             "source_id" => $request['source_id'],
             "card" => [
                 "billing_address" => [
-                    "address_line_1" =>  $subscription[0]['billing_address_line_1'] ?? $subscription[0]['address_line_1'],
+                    "address_line_1" => $subscription[0]['billing_address_line_1'] ?? $subscription[0]['address_line_1'],
                     "address_line_2" => $subscription[0]['billing_address_line_2'] ?? $subscription[0]['address_line_2'] ?? "",
                     "locality" => $subscription[0]['billing_admin_area_2'] ?? $subscription[0]['admin_area_2'],
                     "administrative_district_level_1" => $subscription[0]['billing_admin_area_1'] ?? $subscription[0]['admin_area_1'],
@@ -233,13 +236,8 @@ class SquareController extends Controller
 
     }
 
-
-
-
-
     public function createSubscription(Request $request)
     {
-
 
         $id = auth()->user()->id;
         $user = User::find($id);
@@ -251,7 +249,7 @@ class SquareController extends Controller
 
         $subscription = json_decode($request['upsert']);
         $price = SubscriptionController::amount();
-        
+
         // Checkpoint 1.
         $payment_id = self::createPayment([
 
@@ -261,6 +259,18 @@ class SquareController extends Controller
 
         ]);
 
+        if ($payment_id == false) {
+
+         /*   Subscription::where('user_id', '=', $id)
+                ->orderByDesc('created_at')
+                ->limit(1)
+                ->delete();
+
+                */
+
+            return json_encode(array('status' => 'FAILURE'));
+
+        }
 
         // Checkpoint 2.
         if (!isset($user->customer_id)) {
@@ -276,7 +286,8 @@ class SquareController extends Controller
 
             } else {
 
-                return $new; //errors
+                return json_encode(array('status' => 'FAILURE'));
+
             }
         }
 
@@ -334,7 +345,7 @@ class SquareController extends Controller
                     'status' => 1,
                     'square_vid' => $response->subscription->version,
                 ]);
-                
+
             $stock = new SubscriptionController();
             $stock->updateStock(
 
@@ -355,8 +366,6 @@ class SquareController extends Controller
         }
 
     }
-
-    
 
     public function deleteSubscription($request)
     {

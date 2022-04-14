@@ -29,6 +29,9 @@ class LabelsController extends Controller
             ->where('user_id', '=', $sub->user_id)
             ->update(['tracking' => $transaction['tracking_number']]);
     }
+
+
+
     private function storeLabel($transaction, $sub)
     {
 
@@ -36,6 +39,8 @@ class LabelsController extends Controller
             ->where('user_id', '=', $sub->user_id)
             ->update(['label' => $transaction['object_id']]);
     }
+
+
 
     private function getShippingCount($id)
     {
@@ -46,6 +51,9 @@ class LabelsController extends Controller
         return $box[0]->shipping_count;
     }
 
+
+
+
     private function updateShippingCount($id)
     {
         $count = self::getShippingCount($id) + 1;
@@ -53,6 +61,8 @@ class LabelsController extends Controller
             ->where('user_id', '=', $id)
             ->update(['shipping_count' => $count]);
     }
+
+
 
     private function permission($id)
     {
@@ -66,6 +76,8 @@ class LabelsController extends Controller
             return true;
         }
     }
+
+
 
     public function generate()
     {
@@ -81,7 +93,7 @@ class LabelsController extends Controller
 
         $subs = DB::table('subscriptions')
             ->where('creator_id', '=', $id)
-            ->where('status', '=', 1)
+            ->where('status', '=', 1) 
             ->where('sub_id', '<>', null)
             ->where('rate_id', '<>', null)
             ->select('rate_id', 'user_id')
@@ -140,6 +152,9 @@ class LabelsController extends Controller
         return $result;
 
     }
+
+
+
     public function due()
     {
 
@@ -172,6 +187,8 @@ class LabelsController extends Controller
             ->with('address', $addr[0]);
     }
 
+
+
     public function getShippingAddress($id)
     {
 
@@ -182,6 +199,8 @@ class LabelsController extends Controller
                 'country_code', 'postal_code')
             ->get();
     }
+
+
 
     // Gets the shipping rates for each subscriber
     
@@ -248,6 +267,8 @@ class LabelsController extends Controller
 
     }
 
+
+
     public function showAddress(Request $request)
     {
         $id = auth()->user()->id;
@@ -262,6 +283,7 @@ class LabelsController extends Controller
         }
 
     }
+
 
     public function __destruct()
     {

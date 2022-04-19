@@ -2,13 +2,17 @@
 
 # Hello {{ucfirst( $creator->channel_name )}},
 <br>
-Here are more details on our sponsorship offer.
+Boxeon would like to partner with you. 
 
-<h2>What we're offering</h2>
+Boxeon is a platform for creators to offer subscription boxes to their fans. Boxeon is like Patreon but for subscription boxes.
 
-<h2>Benefit for creators</h2>
+You will receive 86% of the profits.
 
-<h2>How fans benefit</h2>
+If necessary, we will help with warehousing, packaging, and fulfillment.
+
+Starting capital won't be an issue. We may offer the subscription box in pre-sales for the first four weeks and use pre-sales funds to acquire and ship initial inventory.
+
+For more info, please check out https://boxeon.com/partner
 
 <br><br>
 

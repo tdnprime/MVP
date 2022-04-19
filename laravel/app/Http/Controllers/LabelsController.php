@@ -71,7 +71,8 @@ class LabelsController extends Controller
             ->select('shipping_cost')
             ->get();
         if (isset($box[0]) && $box[0]->shipping_cost == 1) {
-            return array('msg' => 'You don\'t have shipping labels because your buyers aren\'t paying for shipping.');
+           // Session::flash('message', 'No labels found');
+           return array('msg' => 'You don\'t have labels to print because your buyers aren\'t paying for shipping.');
         } else {
             return true;
         }
@@ -221,11 +222,12 @@ class LabelsController extends Controller
                 'country_code', 'postal_code')
             ->get();
 
-        if (count($subs) == 0) {
+       if (count($subs) == 0) {
 
-            Session::flash('message', 'No labels found');
-            return view("shipping.ship", compact('user', $user));
-        }
+           Session::flash('message', 'No labels found');
+           return view("shipping.ship", compact('user', $user));
+       }
+       
 
         $shipping = new ShippingController();
         $total = 0;
@@ -233,7 +235,7 @@ class LabelsController extends Controller
 
         foreach ($subs as $to) {
 
-            $request['to'] = $to;
+            $request['to'] = json_encode($to);
 
             $rate = $shipping->rates($request);
 

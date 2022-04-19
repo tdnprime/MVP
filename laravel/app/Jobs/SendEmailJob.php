@@ -54,7 +54,7 @@ class SendEmailJob implements ShouldQueue
 
         DB::table('mailing_list')
         ->where('email', '=', $this->details['email'])
-        ->update(['campaign' => 2]);
+        ->update(['campaign' => 4]);
 
     }
 

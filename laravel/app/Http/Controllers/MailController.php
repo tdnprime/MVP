@@ -18,6 +18,7 @@ class MailController extends Controller
             $id = auth()->user()->id;
             $sent = 0;
             $creators = DB::table('mailing_list')
+            ->where('country', '=', 'US')
             ->where('valid', '=', '1')
             ->orderBy('channel_name', 'desc')
             ->limit(1)
@@ -46,7 +47,7 @@ class MailController extends Controller
         $creators = DB::table('mailing_list')
         ->where('country', '=', 'US')
         ->where('valid', '=', '1')
-        ->orderBy('channel_name', 'desc')
+        ->orderBy('channel_name', 'asc')
         ->limit(100)
         ->select('*')
         ->get();

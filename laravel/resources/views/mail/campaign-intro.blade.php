@@ -2,10 +2,7 @@
 
 # Hello {{ucfirst( $creator->channel_name )}},
 
-<br>
 Boxeon would like to partner with you. 
-
-<br>
 
 Boxeon is a platform for creators to offer subscription boxes to their fans. Boxeon is like Patreon but for subscription boxes.
 

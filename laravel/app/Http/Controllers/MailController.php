@@ -50,7 +50,7 @@ class MailController extends Controller
         ->where('country', '=', 'USA')
         ->where('valid', '=', '1')
         ->orderBy('id', 'desc')
-        ->limit(100)
+        ->limit(50)
         ->select('*')
         ->get();
 

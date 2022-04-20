@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
 
             Commands\Scraper::class,
-            App\Console\Commands\DispatchCampaign::class
+            Commands\DispatchCampaign::class
         
     ];
 

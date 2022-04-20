@@ -49,7 +49,7 @@ class MailController extends Controller
         ->where('campaign', '<>', '4')
         ->where('country', '=', 'USA')
         ->where('valid', '=', '1')
-        ->orderBy('channel_name', 'asc')
+        ->orderBy('id', 'desc')
         ->limit(100)
         ->select('*')
         ->get();
@@ -58,11 +58,10 @@ class MailController extends Controller
         for ($i = 0; $i < $num; $i++) {
 
             $creator = (object) $creators[$i];
-            #Queue an order-placed system email
             $details['email'] = $creator->email; 
             $message = new Campaign($creator);
             SendEmailJob::dispatch($details, $message)->onQueue('emails')
-            ->delay(now()->addMinutes(1));
+            ->delay(now()->addMinutes(5));
 
         }
     }

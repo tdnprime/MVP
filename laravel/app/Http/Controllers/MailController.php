@@ -47,7 +47,7 @@ class MailController extends Controller
         $sent = 0;
         $creators = DB::table('mailing_list')
         ->where('campaign', '<>', '4')
-        ->where('country', '=', 'US')
+        ->where('country', '=', 'USA')
         ->where('valid', '=', '1')
         ->orderBy('channel_name', 'asc')
         ->limit(100)

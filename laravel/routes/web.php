@@ -153,6 +153,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         Route::get('/intro', 'App\Http\Controllers\MailController@send')->name('campaign.send');
         Route::get('/test', 'App\Http\Controllers\MailController@test')->name('campaign.intro');
+        Route::get('/unsubscribe', 'App\Http\Controllers\MailController@unsub')->name('campaign.unsub');
+
 
 
     });

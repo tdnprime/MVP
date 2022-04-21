@@ -10,7 +10,7 @@
 
 <p>We also handle the warehousing, shipping, and packaging of boxes. Therefore, creators will only be responsible for communicating with their viewers and driving them to subscribe.</p>
 
-<p>In our partnership program, we give creators 86% of the profits made from the sale of their boxes.</p>
+<p>In our partnership program, we give creators 86% of the profits made from their boxes.</p>
 
 <p>Starting capital won't be an issue. We may offer the subscription box in pre-sales for the first four weeks and use pre-sales funds to acquire and ship initial inventory.</p>
 
@@ -23,8 +23,7 @@
 Sincerely,<br>
 Trevor Prime, CEO<br>
 https://boxeon.com<br>
-E: trevor@boxeon.com<br>
-WhatsApp: +1 718 674 2890‬
-LinkedIn: https://www.linkedin.com/company/boxeon
-
+E: trevor@boxeon.com<br>‬
+<br><br>
+<p><a target='_blank' href='https://boxeon.com/campaign/unsubscribe?e={{$creator->email}}'>Unsubscribe</a> from receiving emails from Boxeon</p>
 @endcomponent

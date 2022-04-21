@@ -48,7 +48,6 @@ class MailController extends Controller
         $creators = DB::table('mailing_list')
         ->where('campaign', '<>', '4')
         ->where('country', '=', 'USA')
-        ->where('valid', '=', '1')
         ->orderBy('id', 'desc')
         ->limit(50)
         ->select('*')

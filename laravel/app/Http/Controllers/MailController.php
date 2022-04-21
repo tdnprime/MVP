@@ -47,9 +47,8 @@ class MailController extends Controller
         $sent = 0;
         $creators = DB::table('mailing_list')
         ->where('campaign', '<>', '4')
-        ->where('country', '=', 'Canada')
         ->orderBy('id', 'desc')
-        ->limit(50)
+        ->limit(500)
         ->select('*')
         ->get();
 
@@ -59,8 +58,7 @@ class MailController extends Controller
             $creator = (object) $creators[$i];
             $details['email'] = $creator->email; 
             $message = new Campaign($creator);
-            SendEmailJob::dispatch($details, $message)->onQueue('emails')
-            ->delay(now()->addMinutes(5));
+            SendEmailJob::dispatch($details, $message)->onQueue('emails');
 
         }
     }

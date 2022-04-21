@@ -2,20 +2,21 @@
 
 # Hello {{ucfirst( $creator->channel_name )}},
 
-Boxeon would like to partner with you. 
+<p>Boxeon would like to partner with you.</p>
 
-Boxeon is a platform for creators to offer subscription boxes to their fans. Boxeon is like Patreon but for subscription boxes.
+<p>We provide a platform for creators to sell subscription boxes to their fans. Fans can subscribe to receive these boxes via https://boxeon.com. They may subscribe to receive said boxes every month, two months, or three months.</p>
 
-You will receive 86% of the profits.
+<p>In addition to providing this platform, we assist creators with curating their boxes. We have many suppliers with whom we work, so; we can acquire a range of products to satisfy any demographic. </p>
 
-If necessary, we will help with warehousing, packaging, and fulfillment.
+<p>We also handle the warehousing, shipping, and packaging of boxes. Therefore, creators will only be responsible for communicating with their viewers and driving them to subscribe.</p>
 
-Starting capital won't be an issue. We may offer the subscription box in pre-sales for the first four weeks and use pre-sales funds to acquire and ship initial inventory.
+<p>In our partnership program, we give creators 86% of the profits made from the sale of their boxes.</p>
 
-We suggest that the first set of boxes are offered in support of Ukraine relief efforts. We do have a product curator
-who is Ukrainian and she will be able to help curate a box of Ukrainian-made products.
+<p>Starting capital won't be an issue. We may offer the subscription box in pre-sales for the first four weeks and use pre-sales funds to acquire and ship initial inventory.</p>
 
-For more info, please check out https://boxeon.com/partner
+<p>We're interested in partnering with you to offer your fans a subscription box of Ukraine-made daily essential products. Boxeon will donate part of its proceeds to Ukraine relief efforts.</p>
+
+<p>Do let us know what you think.</p>
 
 <br><br>
 
@@ -26,13 +27,4 @@ E: trevor@boxeon.com<br>
 WhatsApp: +1 718 674 2890‬
 LinkedIn: https://www.linkedin.com/company/boxeon
 
-<br><br>
-
-CONFIDENTIALITY NOTICE: This message is from Boxeon LLC and may contain confidential 
-business information. It is intended solely for the use of the individual to 
-whom it is addressed. If you are not the intended recipient please contact the 
-sender and delete this message and any attachment from your system. 
-Unauthorized publication, use, dissemination, forwarding, printing or 
-copying of this E-Mail and its attachments is strictly prohibited.
-<img src="https://www.google-analytics.com/collect?v=1&tid=G-EKYP1LECWS&t=event&ec=email&ea=open"/>
 @endcomponent

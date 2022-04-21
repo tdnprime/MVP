@@ -10,6 +10,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Queue\Middleware\ThrottlesExceptions;
+
 
 class SendEmailJob implements ShouldQueue
 {
@@ -57,8 +59,26 @@ class SendEmailJob implements ShouldQueue
         ->update(['campaign' => 4]);
 
     }
-
-   
+ 
+    /**
+     * Get the middleware the job should pass through.
+     *
+     * @return array
+     */
+    public function middleware()
+    {
+        return [new ThrottlesExceptions(1, 5)];
+    }
+     
+    /**
+     * Determine the time at which the job should timeout.
+     *
+     * @return \DateTime
+     */
+    public function retryUntil()
+    {
+        return now()->addMinutes(5);
+    }
 
    
 

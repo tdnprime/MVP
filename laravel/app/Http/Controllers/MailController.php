@@ -47,7 +47,7 @@ class MailController extends Controller
         $sent = 0;
         $creators = DB::table('mailing_list')
         ->where('campaign', '<>', '4')
-        ->where('country', '=', 'USA')
+        ->where('country', '=', 'Canada')
         ->orderBy('id', 'desc')
         ->limit(50)
         ->select('*')

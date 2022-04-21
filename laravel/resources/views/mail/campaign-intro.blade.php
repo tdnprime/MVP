@@ -25,5 +25,5 @@ Trevor Prime, CEO<br>
 https://boxeon.com<br>
 E: trevor@boxeon.com<br>‬
 <br><br>
-<p><a target='_blank' href='https://boxeon.com/campaign/unsubscribe?e={{$creator->email}}'>Unsubscribe</a> from receiving emails from Boxeon</p>
+<p><a target='_blank' href='https://boxeon.com/mail/unsubscribe?e={{$creator->email}}'>Unsubscribe</a> from receiving emails from Boxeon</p>
 @endcomponent

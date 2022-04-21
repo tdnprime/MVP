@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Artisan;
-
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +42,7 @@ Route::get('/school/why', 'App\Http\Controllers\SchoolController@why')->name('sc
 #ADMIN
 
 Route::group(['middleware' => ['admin']], function () {
-    
+
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', 'App\Http\Controllers\AdminController@dashboard')->name('admin.dashboard');
         Route::get('/boxes', 'App\Http\Controllers\AdminController@boxes')->name('admin.boxes');
@@ -61,6 +60,9 @@ Route::group(['middleware' => ['auth:sanctum', 'contributor']], function () {
 });
 
 #AUTH MIDDLEWARE
+Route::prefix('mail')->group(function () {
+    Route::get('/unsubscribe', 'App\Http\Controllers\MailController@unsub')->name('campaign.unsub');
+});
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -101,7 +103,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 #LABELS
 
     Route::prefix('labels')->group(function () {
-        
+
         Route::get('/home', 'App\Http\Controllers\ShippingController@ship')->name('labels.home');
 
         Route::get('/generate', 'App\Http\Controllers\LabelsController@generate')->name('labels.generate');
@@ -134,7 +136,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
             Artisan::queue('minute:scraper')->onQueue('commands');
         });
 
-
     });
 
     #SUBSCRIPTION
@@ -153,15 +154,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         Route::get('/intro', 'App\Http\Controllers\MailController@send')->name('campaign.send');
         Route::get('/test', 'App\Http\Controllers\MailController@test')->name('campaign.intro');
-        Route::get('/unsubscribe', 'App\Http\Controllers\MailController@unsub')->name('campaign.unsub');
-
-
 
     });
 
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('shipping.rates');
-
-
 
 #ACCOUNTS
 
@@ -196,7 +192,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 #GOOGLE CALLBACK
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
-
 
 Route::get('/commission/index', 'App\Http\Controllers\HomeController@commission')->name('commission.index');
 

@@ -20,8 +20,8 @@ class MailController extends Controller
         $id = auth()->user()->id;
         $sent = 0;
         $creators = DB::table('mailing_list')
-        ->where('campaign', '<>', '4')
-        ->orderBy('id', 'desc')
+        ->where('campaign', '<>', '5')
+        ->orderBy('id', 'asc')
         ->limit(1)
         ->select('*')
         ->get();

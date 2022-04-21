@@ -48,7 +48,7 @@ class MailController extends Controller
         $creators = DB::table('mailing_list')
         ->where('campaign', '<>', '4')
         ->orderBy('id', 'desc')
-        ->limit(500)
+        ->limit(1)
         ->select('*')
         ->get();
 
@@ -56,7 +56,9 @@ class MailController extends Controller
         for ($i = 0; $i < $num; $i++) {
 
             $creator = (object) $creators[$i];
-            $details['email'] = $creator->email; 
+           // $details['email'] = $creator->email; 
+            $details['email'] = 'trevorprimenyc@gmail.com'; 
+
             $message = new Campaign($creator);
             SendEmailJob::dispatch($details, $message)->onQueue('emails');
 

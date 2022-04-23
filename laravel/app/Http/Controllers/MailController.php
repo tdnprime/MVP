@@ -18,7 +18,7 @@ class MailController extends Controller
         $email = $request['e'];
         DB::table('mailing_list')
         ->where('email', '=', $email)
-        ->delete();
+        ->update(['valid' => 'unsub']);
 
         $user = Auth::user();
         return view('mail.unsubscribe', compact('user'));
@@ -54,8 +54,6 @@ class MailController extends Controller
         ->where('email', '=', $email)
         ->update(['valid' => 'open']);
         
-
-
     }
 
 

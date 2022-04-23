@@ -32,7 +32,7 @@ class MailController extends Controller
         $creators = DB::table('mailing_list')
             ->where('campaign', '<>', '5')
             ->orderBy('id', 'asc')
-            ->limit(50)
+            ->limit(1)
             ->select('*')
             ->get();
 

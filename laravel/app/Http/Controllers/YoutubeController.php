@@ -26,6 +26,7 @@ class YoutubeController extends Controller
 
         $channel = DB::table('_creators_')
             ->where('email', '=', null)
+            ->where('country', '=', 'US')
             ->orderBy('id', 'desc')
             ->limit(1)
             ->get();

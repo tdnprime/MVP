@@ -52,7 +52,7 @@ class MailController extends Controller
         $email = $request['email'];
         DB::table('mailing_list')
         ->where('email', '=', $email)
-        ->update(['campaign' => 'open']);
+        ->update(['valid' => 'open']);
         
 
 

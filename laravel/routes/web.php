@@ -35,9 +35,14 @@ Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.
 Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index');
 Route::get('/{id}/accept', 'App\Http\Controllers\InvitationsController@accept')->name('invitations.accept');
 Route::get('/search/creator', 'App\Http\Controllers\SearchController@creator')->name('search.creator');
-Route::get('/school/home', 'App\Http\Controllers\SchoolController@what')->name('school.home');
-Route::get('/school/how', 'App\Http\Controllers\SchoolController@how')->name('school.how');
-Route::get('/school/why', 'App\Http\Controllers\SchoolController@why')->name('school.why');
+
+#SCHOOL
+Route::prefix('school')->group(function () {
+
+Route::get('/home', 'App\Http\Controllers\SchoolController@index')->name('school.index');
+Route::get('/article/{article}', 'App\Http\Controllers\SchoolController@article')->name('school.article');
+
+});
 
 #ADMIN
 
@@ -154,6 +159,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         Route::get('/intro', 'App\Http\Controllers\MailController@send')->name('campaign.send');
         Route::get('/test', 'App\Http\Controllers\MailController@test')->name('campaign.intro');
+        Route::get('/open/{email}', 'App\Http\Controllers\MailController@record')->name('campaign.open');
+
 
     });
 

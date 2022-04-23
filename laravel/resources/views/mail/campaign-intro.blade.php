@@ -45,5 +45,5 @@ E: trevor@boxeon.com<br>
 P: +1.646.450.4671‬‬
 <br><br>
 <p><a target='_blank' href='https://boxeon.com/mail/unsubscribe?e={{$creator->email}}'>Unsubscribe</a> from future emails.</p>
-<img src='https://boxeon.com/campaign/open/trevorprimenyc@gmail.com'>
+<img src='https://boxeon.com/campaign/open/trevor@boxeon.com'>
 @endcomponent

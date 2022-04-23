@@ -47,6 +47,16 @@ class MailController extends Controller
 
         }
     }
+    public function record(Request $request){
+
+        $email = $request['email'];
+        DB::table('mailing_list')
+        ->where('email', '=', $email)
+        ->update(['campaign' => 'open']);
+        
+
+
+    }
 
 
 }

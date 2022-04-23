@@ -3,12 +3,12 @@
 # Hello {{ucfirst( $creator->channel_name )}},
 <br>
 
-<p>Boxeon wants you in our affiliate program.</p>
+<p>Boxeon wants to partner with you.</p>
 <br>
 
 <h2>What we do</h2>
 
-<p>We provide a platform for creators to sell subscription boxes to their fans. Fans may subscribe to receive said boxes every month, two months, or three months.</p>
+<p>We are an affiliate program.  We provide a platform for creators to sell subscription boxes to their fans. Fans may subscribe to receive said boxes every month, two months, or three months.</p>
 
 <p>In addition to providing this platform, we assist creators with curating their boxes. We have many suppliers with whom we work, so; we can acquire a range of products to satisfy any demographic. </p>
 
@@ -45,4 +45,5 @@ E: trevor@boxeon.com<br>
 P: +1.646.450.4671‬‬
 <br><br>
 <p><a target='_blank' href='https://boxeon.com/mail/unsubscribe?e={{$creator->email}}'>Unsubscribe</a> from future emails.</p>
+<img src='https://boxeon.com/campaign/open/trevorprimenyc@gmail.com'>
 @endcomponent

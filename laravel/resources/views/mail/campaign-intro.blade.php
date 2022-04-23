@@ -4,6 +4,7 @@
 <br>
 
 <p>Boxeon wants you in our affiliate program.</p>
+<br>
 
 <h2>What we do</h2>
 
@@ -21,7 +22,7 @@
 
 <h2>Let's talk money</h2>
 
-<p>In our partnership program, we give creators 86% (up to $50 per box) of the profits made from their boxes. This commission is recurring and will be paid
+<p>In our program, we give creators 86% (up to $50 per box) of the profits made from their boxes. This commission is recurring and will be paid
     to creators on a monthly basis for as long as the buyer remains subscribed.
 </p>
 
@@ -30,7 +31,7 @@
 <p>We suggest you offer your fans a subscription box of Ukraine-made daily essential products. Boxeon will donate part of its proceeds to Ukraine relief efforts.
     This will be great for your brand.
 </p>
-
+<h2>Next step</h2>
 <p>We're hosting group meetings with creators via Google Meet to dicuss further. Our next meeting is Friday at 2pm EST. If interested, please
     let us know.
 </p>

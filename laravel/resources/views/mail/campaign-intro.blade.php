@@ -31,7 +31,9 @@
     This will be great for your brand.
 </p>
 
-<p>Do let us know what you think.</p>
+<p>We're hosting group meetings with creators via Google Meet to dicuss further. Our next meeting is Friday at 2pm EST. If interested, please
+    let us know.
+</p>
 
 <br><br>
 

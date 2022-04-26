@@ -8,7 +8,7 @@
 
 <h2>What we do</h2>
 
-<p>We are a a startup based in New York and opperating in the subscription box industry.  We are working with creators to sell subscription boxes to their fans.</p>
+<p>We are a a startup based in New York, opperating in the subscription box industry.  We are working with creators to sell subscription boxes to their fans.</p>
 
 <p>We have many suppliers with whom we work, so; we can acquire a range of products to satisfy any demographic. </p>
 
@@ -16,8 +16,8 @@
 
 <h2>Your role</h2>
     
-<p>You will be responsible for communicating with your viewers and driving them to subscribe. Both you and
-    Boxeon will decide what goes into every box.
+<p>You will be responsible for communicating with your viewers and driving them to subscribe.  You will promote your Boxeon in the same fashion creators promote their Patreon.</p>
+<p>Both you and Boxeon will decide what goes into every box.
 </p>
 
 <h2>Your pay</h2>

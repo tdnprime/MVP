@@ -3,73 +3,164 @@
 
 @section('content')
     <main class='fadein'>
-        <section id="left-aside">
-            <h2>Learn</h2>
-            <a class="anchor-sub-menu clearbtn" href="/school/home">
-                <div class='recipients-grid'>
-                    <div class='position-relative'><span class="material-icons">help_center</span>
-                        What
-                    </div>
+        <section id="">
+
+            <div class='grid-gap margin-bottom-10-em'>
+                <img class='w300' src='../assets/images/{{$article[0]->img}}' alt='Youtube creator'>
+              
+                <div class='display-grid'>
+                    <span></span>
+
                     <div>
+                        <h1 class='w300'>{{$article[0]->title}}</h1>
+                        <audio controls>
+                            <source src="horse.ogg" type="audio/ogg">
+                            <source src="horse.mp3" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                          </audio>
                     </div>
+
                 </div>
-            </a>
-            <a class="anchor-sub-menu clearbtn" href="/school/how">
-                <div class='recipients-grid'>
-                    <div class='position-relative'><span class="material-icons">quiz</span>
-                        How
-                    </div>
-                    <div>
-                    </div>
+            </div>
+
+            <div class='grid-gap margin-bottom-10-em'>
+                <img class='w300' src='../assets/images/{{$article[1]->img}}' alt='Youtube creator'>
+                <div class='display-grid'>
+                    <span></span>
+
+                   <div>
+
+                        <h1 class='w300'>{{$article[1]->title}}</h1>
+                        <audio controls>
+                            <source src="horse.ogg" type="audio/ogg">
+                            <source src="horse.mp3" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                          </audio>
+                   </div>
                 </div>
-            </a>
-            <a class="anchor-sub-menu clearbtn" href="/school/why">
-                <div class='recipients-grid'>
-                    <div class='position-relative'><span class="material-icons">thumb_up</span>
-                        Why
-                    </div>
-                    <div>
-                    </div>
-                </div>
-            </a>
+            </div>
         </section>
 
-        <aside class='filter-grayscale' id='panel'>
-
-            @if (isset($what) && count($what) > 0)
+        <aside id='panel'>
 
 
-                @foreach ($what as $video)
-                    <div id='{{$video}}' class='position-relative margin-bottom-4-em'>
-                        <img class='center display-block image-youtube-thumb'
-                            src='http://img.youtube.com/vi/{{ $video }}/maxres2.jpg' />
-                        <a href="#/" class="play-video" data-video-id="{{ $video }}">
-                            <img class="playbtn" src="/assets/images/playbtn.png" alt="Play video"></a>
+            <div class='grid-gap margin-bottom-10-em'>
+                <img class='w600' src='../assets/images/{{$article[2]->img}}' alt='Youtube creator'>
+                <div class='display-grid'>
+                    <span></span>
+
+                    <div>
+
+                        <h2 class='w600'>{{$article[2]->title}}</h2>
+                        <audio controls>
+                            <source src="horse.ogg" type="audio/ogg">
+                            <source src="horse.mp3" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                          </audio>
                     </div>
-                @endforeach
+                </div>
+            </div>
+
+            <br>
+
+            <div class='two-col-grid grid-gap margin-bottom-10-em'>
+                <img class='w300' src='../assets/images/{{$article[3]->img}}' alt='Youtube creator'>
+                <div class='display-grid'>
+                    <span></span>
+
+                    <div>
+
+                        <h1 class='w300'>{{$article[3]->title}}</h1>
+                        <audio controls>
+                            <source src="horse.ogg" type="audio/ogg">
+                            <source src="horse.mp3" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class=' two-col-grid grid-gap margin-bottom-10-em'>
+                <div class='display-grid'>
+                    <span></span>
+
+                    <div>
+
+                        <h1 class='w300'>{{$article[4]->title}}</h1>
+                        <audio controls>
+                            <source src="horse.ogg" type="audio/ogg">
+                            <source src="horse.mp3" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                          </audio>
+                    </div>
+                </div>
+                    <img class='w300' src='../assets/images/{{$article[4]->img}}' alt='Youtube creator'>
+
+                
+            </div>
+            <div class='two-col-grid grid-gap margin-bottom-10-em'>
+                <img class='w300' src='../assets/images/{{$article[5]->img}}' alt='Youtube creator'>
+                <div class='display-grid'>
+                    <span></span>
+                    <div>
+                        <h1 class='w300'>{{$article[5]->title}}</h1>
+                        <audio controls>
+                            <source src="horse.ogg" type="audio/ogg">
+                            <source src="horse.mp3" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                          </audio>
+                    </div>
+                </div>
+            </div>
 
 
-            @elseif (isset($how) && count($how) > 0)
-                @foreach ($how as $video)
-                    <div id='{{$video}}' class='position-relative margin-bottom-4-em'>
-                        <img class='center display-block image-youtube-thumb'
-                            src='http://img.youtube.com/vi/{{ $video }}/maxres1.jpg' />
-                            <a href="#/" class="play-video" data-video-id="{{ $video }}">
-                        <img class="playbtn" src="/assets/images/playbtn.png" alt="Play video"></a>
+            <div class='two-col-grid grid-gap margin-bottom-10-em'>
+                <div class='display-grid'>
+                    <span></span>
+                    <div>
+                        <h1 class='w300'>{{$article[6]->title}}</h1>
+                        <audio controls>
+                            <source src="horse.ogg" type="audio/ogg">
+                            <source src="horse.mp3" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                          </audio>
                     </div>
-                @endforeach
-            @elseif (isset($why) && count($why) > 0)
-                @foreach ($why as $video)
-                    <div id='{{$video}}' class='position-relative margin-bottom-4-em'>
-                        <img class='center display-block image-youtube-thumb'
-                            src='http://img.youtube.com/vi/{{ $video }}/maxres1.jpg' />
-                            <a href="#/" class="play-video" data-video-id="{{ $video }}">
-                        <img class="playbtn" src="/assets/images/playbtn.png" alt="Play video"></a>
-                    </div>
-                @endforeach
-            @endif
+                </div>
+                    <img class='w300' src='../assets/images/{{$article[6]->img}}' alt='Youtube creator'>
+            </div>
+
 
         </aside>
-        <section id="right-aside"></section>
+        <section id="right-aside">
+            <div class='grid-gap margin-bottom-10-em'>
+                <img class='w300' src='../assets/images/{{$article[7]->img}}' alt='Youtube creator'>
+                <div class='display-grid'>
+                    <span></span>
+                    <div>
+                        <h1 class='w300'>{{$article[7]->title}}</h1>
+                        <audio controls>
+                            <source src="horse.ogg" type="audio/ogg">
+                            <source src="horse.mp3" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+                <div class='grid-gap margin-bottom-10-em'>
+                    <img class='w300' src='../assets/images/{{$article[8]->img}}' alt='Youtube creator'>
+                    <div class='display-grid'>
+                        <span></span>
+                        <div>
+                            <h1 class='w300'>{{$article[8]->title}}</h1>
+                            <audio controls>
+                                <source src="horse.ogg" type="audio/ogg">
+                                <source src="horse.mp3" type="audio/mpeg">
+                              Your browser does not support the audio element.
+                              </audio>
+                        </div>
+                    </div>
+                </div>
+        </section>
     </main>
 @endsection

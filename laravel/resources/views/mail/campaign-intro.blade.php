@@ -3,14 +3,14 @@
 # Hello {{ucfirst( $creator->channel_name )}},
 <br>
 
-<p>Boxeon wants to partner with you.</p>
+<p>We wants to hire you.</p>
 <br>
 
 <h2>What we do</h2>
 
-<p>We are an affiliate program.  We provide a platform for creators to sell subscription boxes to their fans. Fans may subscribe to receive said boxes every month, two months, or three months.</p>
+<p>We are a a startup based in New York and opperating in the subscription box industry.  We are working with creators to sell subscription boxes to their fans. Fans may subscribe to receive said boxes every month, two months, or three months.</p>
 
-<p>In addition to providing this platform, we assist creators with curating their boxes. We have many suppliers with whom we work, so; we can acquire a range of products to satisfy any demographic. </p>
+<p>We have many suppliers with whom we work, so; we can acquire a range of products to satisfy any demographic. </p>
 
 <p>We also handle the warehousing, shipping, and packaging of boxes. </p>
 
@@ -20,11 +20,17 @@
     Boxeon will decide what goes into every box.
 </p>
 
-<h2>Let's talk money</h2>
+<h2>Your pay</h2>
 
-<p>In our program, we give creators 86% (up to $50 per box) of the profits made from their boxes. This commission is recurring and will be paid
-    to creators on a monthly basis for as long as the buyer remains subscribed.
+<p>As far as pay is concerned, our standard offer is this:
 </p>
+<ol>
+<li>$1000 per month with a 12 month contract</li>
+<li>$10 per month per box sold</li>
+
+</ol>
+<p>The above offer comes with a 90-day probationary period.</p>
+
 
 <h2>A suggestion</h2>
 

@@ -3,60 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SchoolController extends Controller
 {
-    public function what()
+    public function index()
     {
-        if ($user = Auth::user()) {
-            $id = auth()->user()->id;
-            $user = User::find($id);
-        }
-        $array = array(
-            'R0l1vo_AEvQ',
-            'xJUbw7hiKV4',
-            'HVxmzVoAzZM',
-            'gRrw-UquIJE',
-            'wXQ5zy9hC5Y',
-           
-            'HcjNe0ZJeZY'
-        );
-
+        $articles = DB::table('school')->get();
+        $user = Auth::user();
         return view('school.index', compact('user', $user))
-            ->with('what', $array);
+                ->with('article', $articles);
     }
-    public function how()
-    {
-        if ($user = Auth::user()) {
-            $id = auth()->user()->id;
-            $user = User::find($id);
-            $array = array(
-                'wLLCcOlQ284',
-                'g1Yd3P3iuUg',
-                'DCRV1FZei9c',
-                'u4CpXQuYTZw'
-            );
 
-            return view('school.index', compact('user', $user))
-                ->with('how', $array);
-        }
-    }
-    public function why()
+    public function article(Request $request)
     {
-        if ($user = Auth::user()) {
-            $id = auth()->user()->id;
-            $user = User::find($id);
-        }
-        $array = array(
-    
-            '_Es46L1ayNg',
-            'PfT4wHmSBfs',
-            'dRnPvobdpew'
-            
-        );
-
-        return view('school.index', compact('user', $user))
-            ->with('why', $array);
+        $article = $request['article'];
+        $user = Auth::user();
+        return view('school.' . $article, compact('user', $user));
     }
+
 }

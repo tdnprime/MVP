@@ -2,8 +2,8 @@
 @section('title', 'Boxeon | Learn')
 
 @section('content')
-    <main class='fadein'>
-        <section id="">
+    <main class='fadein' id="podcast">
+        <section>
 
             <div class='grid-gap margin-bottom-10-em'>
                 <img class='w300' src='../assets/images/{{$article[0]->img}}' alt='Youtube creator'>

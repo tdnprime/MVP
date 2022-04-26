@@ -22,6 +22,10 @@ NOTE:
 
 @media only screen and (max-width:1810px) {
 
+  #podcast .two-col-grid{
+    display: block;
+  }
+
   #partner #headline h1 {
     width: fit-content;
   }
@@ -65,9 +69,26 @@ NOTE:
   main, #masthead {
     width: 100%;
   }
+  #podcast section div *{
+    margin-left: auto;
+    margin-right:auto;
+  }
+  #podcast #panel div *{
+    margin-left: auto;
+    margin-right:auto;
+  }
+  #podcast #panel{
+    box-shadow: none;
+  }
+  #podcast audio{
+    width:100%;
+    margin-bottom:1em;
+  }
 }
 
 @media only screen and (max-width:1024px) {
+
+
   .margin-auto-no-important {
     margin: auto;
   }
@@ -429,6 +450,8 @@ fieldset {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 668px) {
+
+ 
 
   #left-aside {
     padding-left: 0;

@@ -8,7 +8,7 @@
 
 <h2>What we do</h2>
 
-<p>We are a a startup based in New York and opperating in the subscription box industry.  We are working with creators to sell subscription boxes to their fans. Fans may subscribe to receive said boxes every month, two months, or three months.</p>
+<p>We are a a startup based in New York and opperating in the subscription box industry.  We are working with creators to sell subscription boxes to their fans.</p>
 
 <p>We have many suppliers with whom we work, so; we can acquire a range of products to satisfy any demographic. </p>
 
@@ -32,14 +32,13 @@
 <p>The above offer comes with a 90-day probationary period.</p>
 
 
-<h2>A suggestion</h2>
+<h2>What can you put in a box?</h2>
 
-<p>We suggest you offer your fans a subscription box of Ukraine-made daily essential products. Boxeon will donate part of its proceeds to Ukraine relief efforts.
-    This will be great for your brand.
+<p>As mentioned earlier, we work with various suppliers so we can curate boxes to satisfy almost any demographic.  For example: if you wanted to do a subscription box of Ukraine-made daily essential products in support of Ukraine refugee relief efforts,
+    we can make that happen.
 </p>
 <h2>Next step</h2>
-<p>We're hosting group meetings with creators via Google Meet to dicuss further. Our next meeting is Friday at 2pm EST. If interested, please
-    let us know.
+<p>We're hosting weekly Friday meetings at 2pm EST via Google Meet to discuss further. If you'd like to attend a meeting please let us know.
 </p>
 
 <br><br>

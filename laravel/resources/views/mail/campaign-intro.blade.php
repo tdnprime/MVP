@@ -3,7 +3,7 @@
 # Hello {{ucfirst( $creator->channel_name )}},
 <br>
 
-<p>We want to hire you at $1000+ per month.</p>
+<p>We want to hire you at $1000 per month.</p>
 <br>
 
 <h2>What we do</h2>
@@ -24,11 +24,9 @@
 
 <p>As far as pay is concerned, our standard offer is this:
 </p>
-<ol>
+<ul>
 <li>$1000 per month with a 12 month contract</li>
-<li>$5 per month per box sold</li>
-
-</ol>
+</ul>
 <p>The above offer comes with a 90-day probationary period.</p>
 
 

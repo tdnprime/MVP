@@ -32,7 +32,7 @@ class Campaign extends Mailable
      */
     public function build()
     {
-        return $this->subject('Job Offer')->markdown('mail.campaign-intro');
+        return $this->subject('We\'re hiring content creators')->markdown('mail.campaign-intro');
 
     }
 }

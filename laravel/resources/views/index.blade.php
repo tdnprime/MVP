@@ -16,7 +16,7 @@
     <main id='margin-top-45-em'> <a id='whatis' href='#whatis'></a> 
     <aside class="asides">
       <h1 class="extra-large-font darkblue">What's Boxeon?</h1>
-      <p class="centered center font-1-5-em">Boxeon is a remote job for content creators and influencers. We provide you with a flat monthly income for offering a subscription box to your most loyal fans. </p>
+      <p class="centered center font-1-5-em">Boxeon is a remote job for content creators and influencers. We provide you with a flat monthly income to offer a subscription box to your most loyal fans. Limited positions available.</p>
     <br></aside>
 	<section class="section">
       <div class="alt-section-inner-grid">
@@ -32,7 +32,7 @@
         <div class="secinner">
           
           <h2 class="extra-large-font">We'll be your hero!</h2>
-          <p>We pay creators a monthly salary of $1000 per month. But there is room to negotiate for more.</p>
+          <p>We pay creators a monthly salary of $1000 per month. But there is room to negotiate for more. Limited positions available.</p>
       </div>
         </div>
       </div>

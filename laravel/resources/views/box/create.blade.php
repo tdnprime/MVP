@@ -60,7 +60,7 @@
                             any price.</p>
                         <p>Change this at any time in Accounts.</p>
                     </div>
-                    <input type='number' required value='' name='price' placeholder='1'>
+                    <input type='number' required value='20' name='price'>
                 </div>
             </div>
             <div class="row">
@@ -100,13 +100,12 @@
                     </div>
                     <label>
                         <select required name='shipping_cost'>
-                            <option value='1'>Yes</option>
-                            <option value='0'>No</option>
+                            <option selected value='0'>No</option>
                         </select>
                     </label>
                 </div>
             </div>
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-75">
                     <label class='float-left'>Are you in our partner program?</label>
                     <label class='float-left'>Yes
@@ -117,7 +116,7 @@
                         <input type='radio' id='show-disabled' value='0' name='curation' />
                     </label>
                 </div>
-            </div>
+            </div>!-->
 
 
             <div id="curation1" class="row">

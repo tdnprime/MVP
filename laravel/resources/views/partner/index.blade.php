@@ -1,5 +1,5 @@
 @extends('layouts.partner')
-@section('title', 'Best remote job for creators to earn flat pay | Boxeon')
+@section('title', 'Apply for a remote job at Boxeon')
 @section('content')
 
 
@@ -17,7 +17,7 @@
                     <h1 class="ginormous">Take the leap, Boxeon will give you wings</h1>
 
                     <p id="pitch">If you're a creator who would like to be paid $1000+ per month to offer a subscription box to
-                        your fans, apply today.</p>
+                        your fans, apply today. Limited positions available.</p>
                        
 
                     <a href="#whatis" class="button clearbtn"> Learn more </a>
@@ -26,6 +26,7 @@
                     <div class="row">
                         <div class="col-75">
                             <h2 id='apply' href='#apply'>Apply now</h2>
+                            <p>Limited positions available.</p>
                         </div>
                     </div>
 
@@ -343,7 +344,7 @@
     <main> <a id='whatis' href='#whatis'></a>
         <aside class="asides">
             <h1 class="extra-large-font darkblue">What's Boxeon?</h1>
-            <p class="centered center font-1-5-em">Boxeon is a remote job for content creators and influencers. We provide you with a flat monthly income for offering a subscription box to your most loyal fans.</p>
+            <p class="centered center font-1-5-em">Boxeon is a remote job for content creators and influencers. We provide you with a flat monthly income to offer a subscription box to your most loyal fans.</p>
             <br>
         </aside>
         <section class="section">
@@ -360,7 +361,7 @@
             <div class="section-inner-grid"> <img src="../assets/images/hero.svg" alt='Why Boxeon' />
                 <div class="secinner">
                     <h2 class="extra-large-font">We'll be your hero!</h2>
-                    <p>We pay creators a monthly salary of $1000 per month. But there is room to negotiate for more.</p>
+                    <p>We pay creators a monthly salary of $1000 per month. But there is room to negotiate for more. Limited positions available.</p>
                 </div>
             </div>
         </section>

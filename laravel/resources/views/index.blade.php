@@ -32,7 +32,7 @@
         <div class="secinner">
           
           <h2 class="extra-large-font">We'll be your hero!</h2>
-          <p>We pay creators a monthly salary of $1000+ per month. But there is room to negotiate for more.</p>
+          <p>We pay creators a monthly salary of $1000 per month. But there is room to negotiate for more.</p>
       </div>
         </div>
       </div>
@@ -80,8 +80,8 @@
     <section class="section margin-bottom-10-em">
       <div class="alt-section-inner-grid"><img src="../assets/images/slamdunk.svg" alt="Easy business" />
         <div class="secinner">
-          <h2 class="extra-large-font">It's easier than you think</h2>
-          <p>You can offer a subscription box on any schedule that's easy for you to slam dunk. For proof of concept, checkout our <a href='https://boxeon.com/ukraine' class='primary-color underline one-em-font'>Ukraine box</a>.</p>
+          <h2 class="extra-large-font">Boxeon is easy to slamdunk</h2>
+          <p>We have no minimum requirement for the amount of content you need to produce for your subscription box. For proof of concept, checkout our <a href='https://boxeon.com/ukraine' class='primary-color underline one-em-font'>Ukraine box</a> prototype.</p>
         </div>
       </div>
     </section>
@@ -91,7 +91,7 @@
         <div> <img src="../assets/images/computer.svg" alt="Computer"/> <h2>Survey fans</h2></div>
         <div> <img src="../assets/images/box.svg" alt="Box"/> <h2>Create box</h2></div>
         <div> <img src="../assets/images/camera.svg" alt="Camera"/> <h2>Share box</h2></div>
-        <div> <img src="../assets/images/growth.svg" alt="Growth"/> <h2>Grow</h2></div>
+        <div> <img src="../assets/images/growth.svg" alt="Growth"/> <h2>Earn</h2></div>
       </div>
       <section class='section'> <br>
         <div class="centered margin-bottom-10-em">

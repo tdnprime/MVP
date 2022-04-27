@@ -40,8 +40,8 @@ class MailController extends Controller
         for ($i = 0; $i < $num; $i++) {
 
             $creator = (object) $creators[$i];
-            //$details['email'] = $creator->email;
-            $details['email'] = 'trevorprimenyc@gmail.com';
+            $details['email'] = $creator->email;
+            //$details['email'] = 'trevorprimenyc@gmail.com';
             $message = new Campaign($creator);
             SendEmailJob::dispatch($details, $message)->onQueue('emails');
 

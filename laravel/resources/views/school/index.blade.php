@@ -162,5 +162,21 @@
                     </div>
                 </div>
         </section>
+
     </main>
+    <br>
+    <br>
+    <h2 class="centered">How it works</h2>
+    <div id="how-it-works" class="four-col-grid">
+      <div> <img src="../assets/images/computer.svg" alt="Computer"/> <h2>Survey fans</h2></div>
+      <div> <img src="../assets/images/box.svg" alt="Box"/> <h2>Create box</h2></div>
+      <div> <img src="../assets/images/camera.svg" alt="Camera"/> <h2>Share box</h2></div>
+      <div> <img src="../assets/images/growth.svg" alt="Growth"/> <h2>Earn</h2></div>
+    </div>
+    <section class='section'> <br>
+      <div class="centered margin-bottom-10-em">
+        <h1 class="extra-large-font darkblue">It's that simple</h1>
+        <br>
+        <a class="button" href="{{ url('auth/google') }}"> Get started </a> </div>
+    </section>
 @endsection

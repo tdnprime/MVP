@@ -342,9 +342,8 @@
     </div>
     <main> <a id='whatis' href='#whatis'></a>
         <aside class="asides">
-            <h1 class="extra-large-font darkblue">What's a subscription box?</h1>
-            <p class="centered center font-1-5-em">In this business model, content creators put together a box of products
-                around a theme, and their most loyal fans subscribe to receive these boxes for the thematic experience. For proof of concept, checkout our <a href='https://boxeon.com/ukraine' class='primary-color underline one-em-font'>Ukraine box</a> prototype. </p>
+            <h1 class="extra-large-font darkblue">What's Boxeon?</h1>
+            <p class="centered center font-1-5-em">Boxeon is a remote job for content creators and influencers. We provide you with a flat monthly income for offering a subscription box to your most loyal fans.</p>
             <br>
         </aside>
         <section class="section">

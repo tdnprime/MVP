@@ -8,7 +8,7 @@
 
 <h2>What we do</h2>
 
-<p>We are a startup based in New York, opperating in the subscription box industry.  We are working with creators to sell subscription boxes to their fans.</p>
+<p>Boxeon is a remote job for content creators. We are a startup based in New York, opperating in the subscription box industry.  We are hiring creators to sell subscription boxes to their fans.</p>
 
 <p>We have many suppliers with whom we work, so; we can acquire a range of products to satisfy any demographic. </p>
 

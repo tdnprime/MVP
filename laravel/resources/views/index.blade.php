@@ -5,7 +5,7 @@
     <div id="masthead">
       <section id="headline">
         <p class="text-heading-label">BE A FREE SPIRIT WITH</p>
-        <h1 class="ginormous">Liberating, monthly, sustainable income</h1>
+        <h1 class="ginormous">Liberating, flat, monthly income</h1>
         <p id="pitch">Finally, content creators can achieve the freedom they desire with a remote job offering their fans subscription boxes. Boxeon makes it a breeze - ask Marilyn.</p>
       <a class="button" href="{{ url('auth/google') }}"> Apply now </a>
         <a href="#whatis" class="button clearbtn hide"> Learn more </a> </section>
@@ -15,8 +15,8 @@
 
     <main id='margin-top-45-em'> <a id='whatis' href='#whatis'></a> 
     <aside class="asides">
-      <h1 class="extra-large-font darkblue">What's a subscription box?</h1>
-      <p class="centered center font-1-5-em">In this business model, content creators put together a box of products around a theme, and their most loyal fans subscribe to receive these boxes for the thematic experience. </p>
+      <h1 class="extra-large-font darkblue">What's Boxeon?</h1>
+      <p class="centered center font-1-5-em">Boxeon is a remote job for content creators and influencers. We provide you with a flat monthly income for offering a subscription box to your most loyal fans. </p>
     <br></aside>
 	<section class="section">
       <div class="alt-section-inner-grid">

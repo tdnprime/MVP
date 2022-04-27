@@ -16,8 +16,8 @@
 
                     <h1 class="ginormous">Take the leap, Boxeon will give you wings</h1>
 
-                    <p id="pitch">If you're a creator with 2k+ average views and would like to launch a subscription box at
-                        no cost to you, apply today.</p>
+                    <p id="pitch">If you're a creator who would like to be paid $1000+ per month to offer a subscription box to
+                        your fans, apply today.</p>
                         <button class="partner-apply button">Apply</button>
 
                     <a href="#whatis" class="button clearbtn"> Learn more </a>
@@ -361,8 +361,7 @@
             <div class="section-inner-grid"> <img src="../assets/images/hero.svg" alt='Why Boxeon' />
                 <div class="secinner">
                     <h2 class="extra-large-font">We'll be your hero!</h2>
-                    <p>We're offering you a monthly salary of up to $2500 per month with a minimum commitment of three
-                        months. Plus, a budget of $15, 000 to finance your subscription box.</p>
+                    <p>We pay creators a monthly salary of up to $1000 per month. But there is room to negotiate for more.</p>
                 </div>
             </div>
         </section>

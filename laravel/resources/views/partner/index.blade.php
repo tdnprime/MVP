@@ -1,5 +1,5 @@
 @extends('layouts.partner')
-@section('title', 'Best place for creators to launch a subscription box at no cost | Boxeon')
+@section('title', 'Best remote job for creators to earn flat pay | Boxeon')
 @section('content')
 
 
@@ -18,7 +18,7 @@
 
                     <p id="pitch">If you're a creator who would like to be paid $1000+ per month to offer a subscription box to
                         your fans, apply today.</p>
-                        <button class="partner-apply button">Apply</button>
+                       
 
                     <a href="#whatis" class="button clearbtn"> Learn more </a>
                 </div>

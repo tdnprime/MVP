@@ -7,7 +7,7 @@
         <p class="text-heading-label">BE A FREE SPIRIT WITH</p>
         <h1 class="ginormous">Liberating, monthly, sustainable income</h1>
         <p id="pitch">Finally, content creators can achieve the freedom they desire with a remote job offering their fans subscription boxes. Boxeon makes it a breeze - ask Marilyn.</p>
-      <a class="button" href="{{ url('auth/google') }}"> Get started </a>
+      <a class="button" href="{{ url('auth/google') }}"> Apply now </a>
         <a href="#whatis" class="button clearbtn hide"> Learn more </a> </section>
       <div id="masthead-image"> </div>
     </div>
@@ -97,7 +97,7 @@
         <div class="centered margin-bottom-10-em">
           <h1 class="extra-large-font darkblue">It's that simple</h1>
           <br>
-          <a class="button" href="{{ url('auth/google') }}"> Get started </a> </div>
+          <a class="button" href="{{ url('auth/google') }}"> Apply now </a> </div>
       </section>
     </main>
 

@@ -164,8 +164,8 @@
         </section>
 
     </main>
-    <br>
-    <br>
+    <span class='display-block margin-bottom-10-em'></span>
+    
     <h2 class="centered">How it works</h2>
     <div id="how-it-works" class="four-col-grid">
       <div> <img src="../assets/images/computer.svg" alt="Computer"/> <h2>Survey fans</h2></div>
@@ -177,6 +177,6 @@
       <div class="centered margin-bottom-10-em">
         <h1 class="extra-large-font darkblue">It's that simple</h1>
         <br>
-        <a class="button" href="{{ url('auth/google') }}"> Get started </a> </div>
+        <a class="button" href="{{ url('auth/google') }}"> Apply now </a> </div>
     </section>
 @endsection

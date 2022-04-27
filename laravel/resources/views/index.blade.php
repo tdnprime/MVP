@@ -1,12 +1,12 @@
 @extends('layouts.index')
-@section('title', 'Best place for content creators to earn monthly, sustainable income')
+@section('title', 'Best remote job for content creators to earn monthly, sustainable income')
 @section('content')
 
     <div id="masthead">
       <section id="headline">
         <p class="text-heading-label">BE A FREE SPIRIT WITH</p>
         <h1 class="ginormous">Liberating, monthly, sustainable income</h1>
-        <p id="pitch">Finally, content creators can achieve the freedom they desire by offering their fans subscription boxes. Boxeon makes it a breeze - ask Marilyn.</p>
+        <p id="pitch">Finally, content creators can achieve the freedom they desire with a remote job offering their fans subscription boxes. Boxeon makes it a breeze - ask Marilyn.</p>
       <a class="button" href="{{ url('auth/google') }}"> Get started </a>
         <a href="#whatis" class="button clearbtn hide"> Learn more </a> </section>
       <div id="masthead-image"> </div>
@@ -22,7 +22,7 @@
       <div class="alt-section-inner-grid">
         <div class="secinner">
           <h2 class="extra-large-font">Product curators are waiting</h2>
-          <p>Boxeon's professional product curators are ready, willing, and able to help you
+          <p>Boxeon's professional product curators are ready, willing, and able to
 			  curate a unique experience for your fans.</p>
         </div>
         <img src="../assets/images/curators.svg" alt="Product curators" /> </div>
@@ -30,8 +30,10 @@
     <section class="section padding-top-6-em">
       <div class="section-inner-grid"> <img src="../assets/images/hero.svg" alt='Why Boxeon'/>
         <div class="secinner">
-          <h2 class="extra-large-font">Let your fans be heroes</h2>
-          <p>Don't have the cash to start a subscription box? Raise the capital by using your Boxeon page to have fans pre-order.</p>
+          
+          <h2 class="extra-large-font">We'll be your hero!</h2>
+          <p>We pay creators a monthly salary of $1000+ per month. But there is room to negotiate for more.</p>
+      </div>
         </div>
       </div>
     </section>
@@ -39,7 +41,7 @@
       <div class="alt-section-inner-grid">
         <div class="secinner">
           <h2 class="extra-large-font">Ship from mars</h2>
-          <p>Ship from anywhere in the universe at no cost to you. We'll handle complicated details like address verification, customs, and more.</p>
+          <p>We ship from anywhere in the universe and are experts with complicated details like address verification, customs, and more.</p>
         </div>
         <img src="../assets/images/rocket.svg" alt="Shipping" /> </div>
     </section>
@@ -47,7 +49,7 @@
       <div class="section-inner-grid"> <img src="../assets/images/winning.svg" alt="Winner"/>
         <div class="secinner">
           <h2 class="extra-large-font">Go faster</h2>
-          <p>The profit margin on subscription boxes is 44.6% higher than the average Patreon donation, and will take you to the finish line faster.</p>
+          <p>The security of having a remote job will allow you to get where you wish to go faster.</p>
         </div>
       </div>
     </section>
@@ -55,7 +57,7 @@
       <div class="alt-section-inner-grid">
         <div class="secinner">
           <h2 class="extra-large-font">We ride together</h2>
-          <p>We have no upfront fees and your sales are subject to a 14% commission. So where you go, we go, and we'll treat you like it.</p>
+          <p>The Boxeon team will work closely with you to ensure your subscription box is a success for both of us.</p>
         </div>
         <img src="../assets/images/car.svg" alt="Ferrari" /> </div>
     </section>
@@ -70,7 +72,7 @@
     <section class="section">
       <div class="alt-section-inner-grid">
         <div class="secinner">
-          <h2 class="extra-large-font">The numbers love you</h2>
+          <h2 class="extra-large-font">The numbers love us</h2>
           <p>Only two YouTubers sell subscription boxes as of 2021. But there's a whopping 951k monthly Youtube searches for the phrase "subscription box." Source: TubeBuddy.</p>
         </div>
         <img src="../assets/images/love.svg" alt="Shoppers"/> </div>

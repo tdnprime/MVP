@@ -361,7 +361,7 @@
             <div class="section-inner-grid"> <img src="../assets/images/hero.svg" alt='Why Boxeon' />
                 <div class="secinner">
                     <h2 class="extra-large-font">We'll be your hero!</h2>
-                    <p>We pay creators a monthly salary of up to $1000 per month. But there is room to negotiate for more.</p>
+                    <p>We pay creators a monthly salary of $1000+ per month. But there is room to negotiate for more.</p>
                 </div>
             </div>
         </section>

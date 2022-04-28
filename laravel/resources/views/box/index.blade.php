@@ -94,7 +94,7 @@
         <a id='whatis' href='#whatis'></a>
         <aside class="asides">
             <h1 class="extra-large-font darkblue">How it works</h1>
-            <p class="centered center font-1-5-em">As a subscribers you'll receive a recurring shipment of products to try. If you like any product enough, you may choose to have it included in their box going forward. Cancel anytime.</p>
+            <p class="centered center font-1-5-em">As a subscriber you'll receive a recurring shipment of products to sample. If you like any product enough, you may choose to have it included in your box going forward. Cancel anytime.</p>
           <br></aside>
         <section class='section'>
             <div class='alt-section-inner-grid'>
@@ -111,7 +111,7 @@
                 <div class='secinner'>
                     <h1 class='extra-large-font'>Subscribe and save</h1>
                     <p>
-                        Subscribe to receive $54 worth of products for only $20 per box.</p>
+                        Subscribe to receive $64 worth of products for only $20 per box.</p>
                 </div>
             </div>
         </section>

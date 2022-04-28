@@ -32,9 +32,9 @@
                     <h1 class='darkblue'>
                         <span id='page-name' class='ginormous primary-color'>
                             {{ $box->page_name }}</span>
-                        <span class='break hack-br-1'><br></span> is shipping {{ $box->box_supply }} subscription boxes
+                        <span class='break hack-br-1'><br></span> is curating {{ $box->box_supply }} subscription boxes
                         <br>
-                        to loyal fans
+                        for loyal fans
                     </h1>
                     <div>
                         <p class='margin-auto-no-important'><span class='highlighted darkblue'>${{ $box->price }}</span> <span class="break"><br></span>per box

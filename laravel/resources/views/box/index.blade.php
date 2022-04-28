@@ -94,7 +94,7 @@
         <a id='whatis' href='#whatis'></a>
         <aside class="asides">
             <h1 class="extra-large-font darkblue">How it works</h1>
-            <p class="centered center font-1-5-em">Subscribers will receive a recurring shipment of products to try. If they like any product enough, they can choose to have it included in their box going forward.</p>
+            <p class="centered center font-1-5-em">Subscribers will receive a recurring shipment of products to try. If they like any product enough, they can choose to have it included in their box going forward. Cancel anytime.</p>
           <br></aside>
         <section class='section'>
             <div class='alt-section-inner-grid'>
@@ -103,7 +103,7 @@
                     <p>
                     {{ $box->page_name }} is curating a limited number of boxes per month. Subscribe while supplies last.</p>
                 </div>
-                <img src='../../assets/images/smith.svg' alt='subscription box'>
+                <img src='../../assets/images/logistics.svg' alt='subscription box'>
             </div>
         </section>
         <section class='section'>

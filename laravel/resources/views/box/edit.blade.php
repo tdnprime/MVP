@@ -107,7 +107,7 @@
                     <p>
                     {{ $box->page_name }} is curating a limited number of boxes per month. Subscribe while supplies last.</p>
                 </div>
-                <img src='../../assets/images/smith.svg' alt='subscription box'>
+                <img src='../../assets/images/logistics.svg' alt='subscription box'>
             </div>
         </section>
         <section class='section'>

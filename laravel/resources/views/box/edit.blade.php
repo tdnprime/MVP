@@ -113,11 +113,9 @@
         <section class='section'>
             <div class='section-inner-grid'> <img src='../../assets/images/freedom.svg' alt='subscription box'>
                 <div class='secinner'>
-                    <h1 class='extra-large-font'>Give {{ $box->page_name }} freedom</h1>
+                    <h1 class='extra-large-font'>Subscribe and save</h1>
                     <p>
-                        {{ $user->page_name }}'s subscription box is the best way to support
-                        {{ $user->page_name }}'s quest
-                        for financial freedom to continue making the content you deserve.</p>
+                        Subscribe to receive $54 worth of products for only $20 per box.</p>
                 </div>
             </div>
         </section>

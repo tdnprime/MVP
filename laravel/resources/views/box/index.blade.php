@@ -118,11 +118,11 @@
         <section class='section'>
             <div class='alt-section-inner-grid'>
                 <div class='secinner'>
-                    <h1 class='extra-large-font'>Customize your box</h1>
+                    <h1 class='extra-large-font'>Build your box</h1>
                     <p>
                        In your home page, you may customize the products you receive, change your shipping address, and much more at any time.</p>
                 </div>
-                <img src='../../assets/images/fireworks.svg' alt='subscription box'>
+                <img src='../../assets/images/under_construction.svg' alt='subscription box'>
             </div>
         </section>
         <section class='section'>

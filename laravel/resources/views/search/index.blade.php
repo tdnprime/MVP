@@ -21,7 +21,7 @@
                                 <td><a href='/{{$creator->box_url}}'><img class='image-round' src='{{ $creator->profile_photo_path }}' /></a></td>
                                 <td>{{ $creator->page_name }} </td>
                                 <td>{{ $creator->proddesc }}</td>
-                                <td><b>{{ $subscribers }}</b> Subscribers</td>
+                               
                             </tr>
                        
 

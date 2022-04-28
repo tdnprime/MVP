@@ -122,7 +122,7 @@
                     <p>
                        In your home page, you may customize the products you receive, change your shipping address, and much more at any time.</p>
                 </div>
-                <img src='../../assets/images/under_construction.svg' alt='subscription box'>
+                <img src='../../assets/images/under-construction.svg' alt='subscription box'>
             </div>
         </section>
         <section class='section'>

@@ -92,12 +92,16 @@
     </div>
     <main class='fadein'>
         <a id='whatis' href='#whatis'></a>
+        <aside class="asides">
+            <h1 class="extra-large-font darkblue">How it works</h1>
+            <p class="centered center font-1-5-em">Subscribers will receive a recurring shipment of products to try. If they like any product enough, they can choose to have it included in their box going forward.</p>
+          <br></aside>
         <section class='section'>
             <div class='alt-section-inner-grid'>
                 <div class='secinner'>
-                    <h1 class='extra-large-font'>Enjoy {{ $box->page_name }}</h1>
+                    <h1 class='extra-large-font'>Limited boxes available</h1>
                     <p>
-                        Subscribe to enjoy a curated experience that is uniquely {{ $box->page_name }}.</p>
+                    {{ $box->page_name }} is curating a limited number of boxes per month. Subscribe while supplies last.</p>
                 </div>
                 <img src='../../assets/images/smith.svg' alt='subscription box'>
             </div>
@@ -105,26 +109,18 @@
         <section class='section'>
             <div class='section-inner-grid'> <img src='../../assets/images/freedom.svg' alt='subscription box'>
                 <div class='secinner'>
-                    <h1 class='extra-large-font'>Give {{ $box->page_name }} freedom</h1>
+                    <h1 class='extra-large-font'>Subscribe and save</h1>
                     <p>
-                        {{ $box->page_name }}'s subscription box is the best way to support
-                        {{ $box->page_name }}'s quest
-                        for financial freedom to continue making the content you deserve.</p>
+                        Subscribe to receive $54 worth of products for only $20 per box.</p>
                 </div>
             </div>
         </section>
         <section class='section'>
             <div class='alt-section-inner-grid'>
                 <div class='secinner'>
-                    <h1 class='extra-large-font'>Special offer</h1>
+                    <h1 class='extra-large-font'>Customize your box</h1>
                     <p>
-                        The first ten fans to <b>pre-order</b> will receive a 30-minute phone call with
-                        {{ $box->page_name }}.
-                        Pre-order sales ends <span class='primary-color'><b>{{ $box->preenddate }}</b></span>, and
-                        boxes
-                        will ship within
-                        one month after
-                        pre-order sales have ended.</p>
+                       In your home page, you may customize the products you receive, change your shipping address, and much more at any time.</p>
                 </div>
                 <img src='../../assets/images/fireworks.svg' alt='subscription box'>
             </div>
@@ -135,7 +131,7 @@
                     <h1 class='extra-large-font'>Rest secured</h1>
                     <p>
                         We conduct all financial transactions securely via Square. No Square account
-                        is necessary to subscribe.</p>
+                        is necessary.</p>
                 </div>
             </div>
         </section>
@@ -144,7 +140,7 @@
                 <div class='secinner'>
                     <h1 class='extra-large-font'> Save on shipping</h1>
                     <p>
-                        Subscribe to {{ $box->page_name }}'s box today to secure {{ $box->discount }} shipping.</p>
+                        Subscribe to {{ $box->page_name }}'s box today to save up to 90% off on shipping.</p>
                 </div>
                 <img src='../../assets/images/high-five.svg' alt='subscription box'>
             </div>
@@ -153,9 +149,7 @@
             <div class='section-inner-grid'><img src='../../assets/images/makeitrain.svg' alt='subscription box'>
                 <div class='secinner'>
                     <h1 class='extra-large-font'>Money back guarantee</h1>
-                    <p>We don't allow products of poor or medium quality on our platform.
-                        We will return any fees collected from a customer who successfully proves
-                        their seller violated this policy.</p>
+                    <p>We'll issue full refunds to any subscriber who successfully prove they didn't receive a box.</p>
                 </div>
             </div>
         </section>
@@ -170,28 +164,16 @@
                 <img src='../../assets/images/laptop.svg' alt='subscription box'>
             </div>
         </section>
-        <h2 class='centered'>How it works</h2><br>
-        <div id='how-it-works' class='three-col-grid'>
-
-            <div> <img src='../../assets/images/computer.svg' alt='Box' />
-                <h2>Watch video</h2>
-            </div>
-            <div> <img src='../../assets/images/card.svg' alt='Card' />
-                <h2>Subscribe</h2>
-            </div>
-            <div> <img src='../../assets/images/present.svg' alt='Box' />
-                <h2>Receive boxes</h2>
-            </div>
-        </div>
+    
         <br>
         <section class='margin-bottom-10-em'>
             <div class='centered'>
-                <h1 class='extra-large-font darkblue'>It's that easy</h1>
+                <h1 class='extra-large-font darkblue'>Subscribe and save!</h1>
                 <br>
                 <a href='#' id='exe-sub-alt' data-version='{{ $box->vid }}' data-product='{{ $box->product_id }}'
                     data-in-stock='{{ $box->in_stock }}' data-total='{{ $box->price }}'
                     data-shipping='{{ $box->shipping_cost }}' data-id='{{ $box->user_id }}' data-url='auth/google'
-                    data-video-id='{{ $box->video }}' data-plan-id='1' class='button'> Get started</a>
+                    data-video-id='{{ $box->video }}' data-plan-id='1' class='button'> Get your box</a>
             </div>
         </section>
     </main>

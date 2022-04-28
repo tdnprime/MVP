@@ -725,6 +725,10 @@ audio{
   width: 100%;
 }
 
+#box #masthead{
+  height:51em;
+}
+
 #masthead, main {
   opacity: 0;
 }

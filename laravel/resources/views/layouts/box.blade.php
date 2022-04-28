@@ -13,7 +13,7 @@
     <div id="container">
         <span></span><!-- Hack-->
         @include('includes.header')
-        @include('includes.menus.app')
+        @include('includes.menus.index')
 
         @yield('content')
 

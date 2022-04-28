@@ -96,12 +96,16 @@
     </div>
     <main class='fadein'>
         <a id='whatis' href='#whatis'></a>
+        <aside class="asides">
+            <h1 class="extra-large-font darkblue">How it works</h1>
+            <p class="centered center font-1-5-em">Subscribers will receive a recurring shipment of products to try. If they like any product enough, they can choose to have it included in their box going forward.</p>
+          <br></aside>
         <section class='section'>
             <div class='alt-section-inner-grid'>
                 <div class='secinner'>
-                    <h1 class='extra-large-font'>Enjoy {{ $user->page_name }}</h1>
+                    <h1 class='extra-large-font'>Limited boxes available</h1>
                     <p>
-                        Subscribe to enjoy a curated experience that is uniquely {{ $user->page_name }}.</p>
+                    {{ $box->page_name }} is curating a limited number of boxes per month. Subscribe while supplies last.</p>
                 </div>
                 <img src='../../assets/images/smith.svg' alt='subscription box'>
             </div>
@@ -109,7 +113,7 @@
         <section class='section'>
             <div class='section-inner-grid'> <img src='../../assets/images/freedom.svg' alt='subscription box'>
                 <div class='secinner'>
-                    <h1 class='extra-large-font'>Give {{ $user->page_name }} freedom</h1>
+                    <h1 class='extra-large-font'>Give {{ $box->page_name }} freedom</h1>
                     <p>
                         {{ $user->page_name }}'s subscription box is the best way to support
                         {{ $user->page_name }}'s quest
@@ -120,15 +124,9 @@
         <section class='section'>
             <div class='alt-section-inner-grid'>
                 <div class='secinner'>
-                    <h1 class='extra-large-font'>Special offer</h1>
-                    <p>
-                        The first ten fans to <b>pre-order</b> will receive a 30-minute phone call with
-                        {{ $user->page_name }}.
-                        Pre-order sales ends <span class='primary-color'><b>{{ $box->preenddate}}</b></span>, and
-                        boxes
-                        will ship within
-                        one month after
-                        pre-order sales have ended.</p>
+                    <h1 class='extra-large-font'>Customize your box</h1>
+                    <p> In your home page, you may customize the products you receive, change your shipping address, and much more at any time.</p>
+
                 </div>
                 <img src='../../assets/images/fireworks.svg' alt='subscription box'>
             </div>
@@ -138,8 +136,8 @@
                 <div class='secinner'>
                     <h1 class='extra-large-font'>Rest secured</h1>
                     <p>
-                        We conduct all financial transactions securely via PayPal. No PayPal account
-                        is necessary to subscribe.</p>
+                        We conduct all financial transactions securely via Square. No Square account
+                        is necessary.</p>
                 </div>
             </div>
         </section>
@@ -148,7 +146,7 @@
                 <div class='secinner'>
                     <h1 class='extra-large-font'> Save on shipping</h1>
                     <p>
-                        Subscribe to {{ $user->page_name }}'s box today to secure {{ $box->discount }} shipping.</p>
+                        Subscribe to {{ $box->page_name }}'s box today to secure up to 90% off on shipping.</p>
                 </div>
                 <img src='../../assets/images/high-five.svg' alt='subscription box'>
             </div>
@@ -157,9 +155,8 @@
             <div class='section-inner-grid'><img src='../../assets/images/makeitrain.svg' alt='subscription box'>
                 <div class='secinner'>
                     <h1 class='extra-large-font'>Money back guarantee</h1>
-                    <p>We don't allow products of poor or medium quality on our platform.
-                        We will return any fees collected from a customer who successfully proves
-                        their seller violated this policy.</p>
+                    <p>We'll issue full refunds to any subscriber who successfully prove they didn't receive a box.</p>
+
                 </div>
             </div>
         </section>
@@ -174,23 +171,12 @@
                 <img src='../../assets/images/laptop.svg' alt='subscription box'>
             </div>
         </section>
-        <h2 class='centered'>How it works</h2><br>
-        <div id='how-it-works' class='three-col-grid'>
-
-            <div> <img src='../../assets/images/computer.svg' alt='Box' />
-                <h2>Watch video</h2>
-            </div>
-            <div> <img src='../../assets/images/card.svg' alt='Card' />
-                <h2>Subscribe</h2>
-            </div>
-            <div> <img src='../../assets/images/present.svg' alt='Box' />
-                <h2>Receive boxes</h2>
-            </div>
-        </div>
+        
+     
         <br>
         <section class='margin-bottom-10-em'>
             <div class='centered'>
-                <h1 class='extra-large-font darkblue'>It's that easy</h1>
+                <h1 class='extra-large-font darkblue'>Subscribe and save!</h1>
                 <br>
                 <a href='#' id='exe-sub-alt' data-version='{{ $box->vid }}' data-product='{{ $box->product_id }}'
                     data-in-stock='{{ $box->in_stock }}' data-total='{{ $box->price }}'

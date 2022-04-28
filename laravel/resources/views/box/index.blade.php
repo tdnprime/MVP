@@ -94,7 +94,7 @@
         <a id='whatis' href='#whatis'></a>
         <aside class="asides">
             <h1 class="extra-large-font darkblue">How it works</h1>
-            <p class="centered center font-1-5-em">Subscribers will receive a recurring shipment of products to try. If they like any product enough, they can choose to have it included in their box going forward. Cancel anytime.</p>
+            <p class="centered center font-1-5-em">As a subscribers you'll receive a recurring shipment of products to try. If you like any product enough, you may choose to have it included in their box going forward. Cancel anytime.</p>
           <br></aside>
         <section class='section'>
             <div class='alt-section-inner-grid'>

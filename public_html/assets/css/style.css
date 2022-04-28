@@ -813,9 +813,14 @@ audio{
 
 }
 .div-search-results-wrapper{
-  min-width: 200px;
-  overflow-x: scroll;
-  margin: auto;
+display:grid;
+grid-template-columns: 30% auto;
+}
+.search-result-page-name{
+
+  margin-left: 0!important;
+  font-weight: bold;
+
 }
 
 /*#partner main{

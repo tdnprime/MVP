@@ -7,42 +7,42 @@
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-75">
-                <input type="text" value='' placeholder="Find a creator" name="creator">
-                <input class='button' type='submit' value='Search'>
-                    </div></div>
+                        <input type="text" value='' placeholder="Find a creator" name="creator">
+                        <input class='button' type='submit' value='Search'>
+                    </div>
+                </div>
             </form>
-            <div class='centered margin-bottom-4-em div-search-results-wrapper'>
+            <div class='centered margin-bottom-4-em'>
 
                 @if (isset($results))
-                    <table class='margin-top-4-em'>
+                    <div class='row margin-top-4-em'>
                         @foreach ($results as $creator)
-                       
-                         <tr> 
-                                <td><a href='/{{$creator->box_url}}'><img class='image-round' src='{{ $creator->profile_photo_path }}' /></a></td>
-                                <td><b><a href='/{{$creator->box_url}}'>{{ $creator->page_name }} </a></b></td>
-                               
-                            </tr>
-                       
+                            <div class='div-search-results-wrapper'>
+                                <a href='/{{ $creator->box_url }}'><img class='image-round'
+                                        src='{{ $creator->profile_photo_path }}' /></a>
+                            <a class='margin-auto search-result-page-name' href='/{{ $creator->box_url }}'>{{ $creator->page_name }}</a>
 
+                            </div>
                         @endforeach
-                    </table>
+                    </div>
                 @elseif(isset($invite))
-
                     <div class='centered margin-bottom-4-em'>
                         <img class='center image-cta' src="{{ '../assets/images/congratulations.svg' }}"
                             alt="congratulations">
                         <h2 class='centered'>Congratulations!</h2>
-                        <p class='center'>You can be the first to invite <a href='{{route('invitations.home')}}' class='primary-color'>{{ ucwords($invite) }} </a> to
+                        <p class='center'>You can be the first to invite <a href='{{ route('invitations.home') }}'
+                                class='primary-color'>{{ ucwords($invite) }} </a> to
                             Boxeon to
                             receive free shipping on any subscription box they offer.</p>
                         <br><br>
                         <div class="row">
                             <div class="col-75">
-                        <a class='button' href='/invitations/home'>Get started</a>
-                            </div></div>
+                                <a class='button' href='/invitations/home'>Get started</a>
+                            </div>
+                        </div>
                     </div>
                 @else
-                <br>
+                    <br>
                     <svg class="center" width="147.049" height="121.639">
                         <g data-name="Group 107">
                             <path data-name="Path 574"
@@ -181,7 +181,6 @@
                     <br>
                     <p class='center'>Waiting to search!</p>
             </div>
-
             @endif
 
         </aside>

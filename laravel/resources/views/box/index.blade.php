@@ -1,5 +1,5 @@
 @extends('layouts.box')
-@section('title', $box->page_name . ' is shipping ' . $box->box_supply . ' subscription boxes to loyal fans')
+@section('title', $box->page_name . ' is curating ' . $box->box_supply . ' subscription boxes to loyal fans')
 @section('content')
 
 

@@ -80,8 +80,8 @@
     <section class="section margin-bottom-10-em">
       <div class="alt-section-inner-grid"><img src="../assets/images/slamdunk.svg" alt="Easy business" />
         <div class="secinner">
-          <h2 class="extra-large-font">Boxeon is easy to slamdunk</h2>
-          <p>We have no minimum requirement for the amount of content you need to produce for your subscription box. For proof of concept, checkout our <a href='https://boxeon.com/ukraine' class='primary-color underline one-em-font'>Ukraine box</a> prototype.</p>
+          <h2 class="extra-large-font">Our subscription model is a slamdunk</h2>
+          <p>For an idea of how Boxeon subscriptions will work from a buyers perspective, checkout our <a href='https://boxeon.com/ukraine' class='primary-color underline one-em-font'>prototype</a>.</p>
         </div>
       </div>
     </section>

@@ -81,7 +81,7 @@
       <div class="alt-section-inner-grid"><img src="../assets/images/slamdunk.svg" alt="Easy business" />
         <div class="secinner">
           <h2 class="extra-large-font">Our subscription model is a slamdunk</h2>
-          <p>To live preview how Boxeon subscriptions will work from a buyers perspective, checkout Allie's <a href='https://boxeon.com/allie' class='primary-color underline one-em-font'>subscription box</a>.</p>
+          <p>To live preview how Boxeon subscriptions work from a buyer's perspective, check out Allie's <a href='https://boxeon.com/allie' class='primary-color underline one-em-font'>subscription box</a>.</p>
         </div>
       </div>
     </section>

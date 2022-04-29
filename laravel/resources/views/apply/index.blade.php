@@ -360,7 +360,7 @@
             <div class="section-inner-grid"> <img src="../assets/images/refreshing.svg" alt='Party' />
                 <div class="secinner">
                     <h2 class="extra-large-font">Enjoy paid time off</h2>
-                    <p>After a year of working for us, creators will get a one-month paid time off every year.</p>
+                    <p>After a year, creators will get a yearly one-month paid time off.</p>
                 </div>
             </div>
         </section>
@@ -380,7 +380,7 @@
                     alt="General Data Protection Regulation" />
                 <div class="secinner">
                     <h2 class="extra-large-font">Get paid weekly</h2>
-                    <p>After a year, creators will get a yearly one-month paid time off.</p>
+                    <p>Boxeon pays weekly, so you can have your money as soon as you earn it.</p>
                 </div>
             </div>
         </section>

@@ -13,14 +13,15 @@
 <p>We have many suppliers with whom we work, so; we can acquire a range of products to satisfy any demographic. </p>
 
 <p>We also handle the warehousing, shipping, and packaging of boxes. </p>
+<p>Presently, we're seaking to hire <b>ten</p> creators to be a part of our beta launch.</p>
 
-<h2>Your role</h2>
+<h2>Creator's role</h2>
     
-<p>You will promote your Boxeon in the same fashion creators promote their Patreon.</p>
-<p>Both you and Boxeon will decide what goes into every box.
+<p>Creators will promote their subscription box in the same fashion creators promote their Patreon.</p>
+<p>Both the creator and Boxeon will decide what goes into every box.
 </p>
 
-<h2>Your pay</h2>
+<h2>Creator's pay</h2>
 
 <p>As far as pay is concerned, our standard offer is this:
 </p>

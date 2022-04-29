@@ -1996,6 +1996,9 @@ footer {
 .display-block {
   display: block;
 }
+.display-inline {
+  display: inline;
+}
 .display-grid {
   display: grid;
   grid-template-columns: 30px auto;

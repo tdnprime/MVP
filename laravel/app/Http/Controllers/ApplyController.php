@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
 
-class PartnerController extends Controller
+class ApplyController extends Controller
 {
     public function apply(Request $request)
     {
@@ -22,7 +22,7 @@ class PartnerController extends Controller
         $partner->save((array) $partner);
         Session::flash('message', 'Application received.'); 
         $user = Auth::user();
-        return view('partner.index', compact('user'));
+        return view('apply.index', compact('user'));
 
     }
 }

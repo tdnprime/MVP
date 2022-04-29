@@ -29,8 +29,8 @@ Route::get('/privacy', 'App\Http\Controllers\HomeController@privacy')->name('pri
 Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('contact');
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about');
 
-Route::get('/partner', 'App\Http\Controllers\HomeController@partner')->name('partner.apply');
-Route::post('/partner/apply', 'App\Http\Controllers\PartnerController@apply')->name('apply');
+Route::get('/apply', 'App\Http\Controllers\HomeController@partner')->name('partner.apply');
+Route::post('/apply/apply', 'App\Http\Controllers\ApplyController@apply')->name('apply');
 Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
 Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index');
 Route::get('/{id}/accept', 'App\Http\Controllers\InvitationsController@accept')->name('invitations.accept');

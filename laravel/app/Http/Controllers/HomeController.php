@@ -111,7 +111,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        return view('partner.index', compact('user'));
+        return view('apply.index', compact('user'));
     }
 
 

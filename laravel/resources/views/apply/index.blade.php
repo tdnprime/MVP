@@ -16,8 +16,8 @@
 
                     <h1 class="ginormous">Take the leap, Boxeon will give you wings</h1>
 
-                    <p id="pitch">If you're a creator who would like to be paid $1000+ per month to offer a subscription box to
-                        your fans, apply today. Limited positions available.</p>
+                    <p id="pitch">We're hiring content creators at $1000 per month with a 12-month contract. In this remote job, creators will offer a subscription box to
+                        their loyal fans. Limited positions available.</p>
                        
 
                     <a href="#whatis" class="button clearbtn"> Learn more </a>
@@ -350,52 +350,50 @@
         <section class="section">
             <div class="alt-section-inner-grid">
                 <div class="secinner">
-                    <h2 class="extra-large-font">Professional curators await</h2>
-                    <p>Boxeon's professional product curators are ready, willing, and able to collaborate with you
-                        in curating unique experiences for your fans.</p>
+                    <h2 class="extra-large-font">Keep doing you</h2>
+                    <p>If Boxeon hires you, it's because you're already doing what we'd like for you to do. So don't worry about if we'll try to dictate your content.</p>
                 </div>
-                <img src="../assets/images/curators.svg" alt="Product curators" />
+                <img src="../assets/images/startup.svg" alt="Content"/>
             </div>
         </section>
         <section class="section padding-top-6-em">
-            <div class="section-inner-grid"> <img src="../assets/images/hero.svg" alt='Why Boxeon' />
+            <div class="section-inner-grid"> <img src="../assets/images/refreshing.svg" alt='Party' />
                 <div class="secinner">
-                    <h2 class="extra-large-font">We'll be your hero!</h2>
-                    <p>We pay creators a monthly salary of $1000 per month. But there is room to negotiate for more. Limited positions available.</p>
+                    <h2 class="extra-large-font">Enjoy paid time off</h2>
+                    <p>After a year of working for us, creators will get a one-month paid time off every year.</p>
                 </div>
             </div>
         </section>
         <section class="section">
             <div class="alt-section-inner-grid">
                 <div class="secinner">
-                    <h2 class="extra-large-font">We'll handle the rocket science</h2>
-                    <p>We'll take care of customer service and fulfillment so you can devote your time to being creative.
+                    <h2 class="extra-large-font">Earn regular bonuses</h2>
+                    <p>We pay monthly bonuses for surpassing the prior month's sales figures.
                     </p>
                 </div>
-                <img src="../assets/images/rocket.svg" alt="Shipping" />
+                <img src="../assets/images/makeitrain.svg" alt="Shipping" />
             </div>
         </section>
 
         <section class="section">
-            <div class="alt-section-inner-grid"><img src="../assets/images/gdpr.svg"
+            <div class="alt-section-inner-grid"><img src="../assets/images/welcome.svg"
                     alt="General Data Protection Regulation" />
                 <div class="secinner">
-                    <h2 class="extra-large-font">Secure transactions</h2>
-                    <p>You and your fans will enjoy secure transactions via Square, World Remit, CashApp, Crypto Currency,
-                        and more.</p>
+                    <h2 class="extra-large-font">Get paid weekly</h2>
+                    <p>After a year, creators will get a yearly one-month paid time off.</p>
                 </div>
             </div>
         </section>
-        <section class="section margin-bottom-10-em">
+        <section class="section">
             <div class="alt-section-inner-grid">
-                <div class="secinner">
-                    <h2 class="extra-large-font">The numbers love us</h2>
-                    <p>Only two YouTubers sell subscription boxes as of 2021. But there's a whopping 951k monthly Youtube
-                        searches for the phrase "subscription box." Source: TubeBuddy.</p>
-                </div>
-                <img src="../assets/images/love.svg" alt="Shoppers" />
+              <div class="secinner">
+                <h2 class="extra-large-font">Do it for charity</h2>
+                <p>Boxeon will donate 10% of the profits made on your subscription box to your favorite charitable cause. You will have the option of doing the actual giving on camera. In other words, Boxeon will be great for your brand.</p>
+              </div>
+              <img src="../assets/images/boy.svg" alt="Boy" />
+      
             </div>
-        </section>
+          </section>
         <section class="section margin-bottom-10-em">
             <div class="alt-section-inner-grid"><img src="../assets/images/slamdunk.svg" alt="Easy business" />
               <div class="secinner">
@@ -408,7 +406,7 @@
         <h2 class="centered">How it works</h2><br>
         <div id="how-it-works" class="four-col-grid">
             <div> <img src="../assets/images/computer.svg" alt="Computer" />
-                <h2>Survey fans</h2>
+                <h2>Apply</h2>
             </div>
             <div> <img src="../assets/images/box.svg" alt="Box" />
                 <h2>Approve box</h2>

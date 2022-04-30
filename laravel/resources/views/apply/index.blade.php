@@ -17,7 +17,7 @@
                     <h1 class="ginormous">Now hiring creators, $1000 monthly</h1>
 
                     <p id="pitch">Boxeon is hiring content creators at $1000 per month with a 3 - 12-month contract. In this remote job, creators will offer a subscription box to
-                        their loyal fans. Limited positions available.</p>
+                        their loyal fans.</p>
                        
 
                     <a href="#whatis" class="button clearbtn"> Learn more </a>
@@ -407,7 +407,7 @@
             <div class="alt-section-inner-grid">
               <div class="secinner">
                 <h2 class="extra-large-font">Be advised</h2>
-                <p>To qualify for this remote job, applicants must have a clue and at least 20k average views on YouTube or its equivalent on another platform.</p>
+                <p>Applicants must have a clue and at least 20k average views on YouTube or its equivalent on another platform.</p>
               </div>
               <img src="../assets/images/warning.svg" alt="Boy" />
       

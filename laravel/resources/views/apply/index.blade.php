@@ -407,7 +407,7 @@
             <div class="alt-section-inner-grid">
               <div class="secinner">
                 <h2 class="extra-large-font">Be advised</h2>
-                <p>Applicants must have a clue and at least 20k average views on YouTube or its equivalent on another platform.</p>
+                <p>Applicants must have a clue and at least 20k average views per video or its equivalent.</p>
               </div>
               <img src="../assets/images/warning.svg" alt="Boy" />
       

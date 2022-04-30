@@ -16,8 +16,8 @@
 
                     <h1 class="ginormous">Now hiring creators, $1000 monthly</h1>
 
-                    <p id="pitch">Boxeon is hiring content creators at $1000 per month with a 3 - 12-month contract. In this remote job, creators will offer a subscription box to
-                        their loyal fans.</p>
+                    <p id="pitch">Boxeon is hiring content creators for a 3 - 12-month contract. In this remote job, you will offer a subscription box to
+                        your fans through the videos you already make.</p>
                        
 
                     <a href="#whatis" class="button clearbtn"> Learn more </a>
@@ -380,7 +380,7 @@
                     alt="General Data Protection Regulation" />
                 <div class="secinner">
                     <h2 class="extra-large-font">Get paid weekly</h2>
-                    <p>Boxeon pays weekly, so you can have your money as soon as you earn it.</p>
+                    <p>You may choose to be paid weekly, so you can have your money as soon as you earn it.</p>
                 </div>
             </div>
         </section>

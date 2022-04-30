@@ -8,6 +8,8 @@
     <br>
     <img id='footer-logo' src='{{ asset('../assets/images/logo.svg') }}' alt='logo'/>
     <p class='centered one-em-font'>
+        626 Wilshire Blvd<br>
+        Los Angeles, CA 90017<br>
     service@boxeon.com<br>
     +1.646.450.4671‬</p>
 </footer>

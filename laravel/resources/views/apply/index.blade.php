@@ -14,9 +14,9 @@
                 <div>
                     <p class="text-heading-label">DON'T HESITATE</p>
 
-                    <h1 class="ginormous">Take the leap, Boxeon will give you wings</h1>
+                    <h1 class="ginormous">We're hiring creators at $1000 per month</h1>
 
-                    <p id="pitch">We're hiring content creators at $1000 per month with a 12-month contract. In this remote job, creators will offer a subscription box to
+                    <p id="pitch">Boxeon is hiring content creators at $1000 per month with a 3 - 12-month contract. In this remote job, creators will offer a subscription box to
                         their loyal fans. Limited positions available.</p>
                        
 
@@ -394,12 +394,23 @@
       
             </div>
           </section>
-        <section class="section margin-bottom-10-em">
+        <section class="section">
             <div class="alt-section-inner-grid"><img src="../assets/images/slamdunk.svg" alt="Easy business" />
               <div class="secinner">
-                <h2 class="extra-large-font">Our subscription model is a slamdunk</h2>
-                <p>To live preview how Boxeon subscriptions work from a buyer's perspective, check out Allie's <a href='https://boxeon.com/allie' class='primary-color underline one-em-font'>subscription box</a>.</p>
+                <h2 class="extra-large-font">It's easy to slamdunk</h2>
+                <p>We use a subscription model that's already proven in the marketplace by billion dollar companies. For a live preview, check out Allie's <a target='_blank' href='https://boxeon.com/allie' class='primary-color underline one-em-font'>subscription box</a>.</p>
+
+            </div>
+            </div>
+          </section>
+          <section class="section  margin-bottom-10-em">
+            <div class="alt-section-inner-grid">
+              <div class="secinner">
+                <h2 class="extra-large-font">Be advised</h2>
+                <p>To qualify for this remote job, applicants must have at least 20k average views on YouTube or its equivalent on another platform.</p>
               </div>
+              <img src="../assets/images/warning.svg" alt="Boy" />
+      
             </div>
           </section>
         <br>

@@ -79,7 +79,7 @@
       <div class="alt-section-inner-grid">
         <img src="../assets/images/slamdunk.svg" alt="Shoppers"/> 
         <div class="secinner">
-          <h2 class="extra-large-font">Our subscription model is a slamdunk</h2>
+          <h2 class="extra-large-font">It's easy to slamdunk</h2>
           <p>We use a subscription model that's already proven in the marketplace by billion dollar companies. For a live preview, check out Allie's <a href='https://boxeon.com/allie' class='primary-color underline one-em-font'>subscription box</a>.</p>
         </div>
       </div>

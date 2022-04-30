@@ -12,9 +12,9 @@
         <section id="headline">
             <div class="two-col-grid">
                 <div>
-                    <p class="text-heading-label">DON'T HESITATE</p>
+                    <p class="text-heading-label">HELP WANTED</p>
 
-                    <h1 class="ginormous">We're hiring creators at $1000 per month</h1>
+                    <h1 class="ginormous">Now hiring creators, $1000 monthly</h1>
 
                     <p id="pitch">Boxeon is hiring content creators at $1000 per month with a 3 - 12-month contract. In this remote job, creators will offer a subscription box to
                         their loyal fans. Limited positions available.</p>
@@ -407,7 +407,7 @@
             <div class="alt-section-inner-grid">
               <div class="secinner">
                 <h2 class="extra-large-font">Be advised</h2>
-                <p>To qualify for this remote job, applicants must have at least 20k average views on YouTube or its equivalent on another platform.</p>
+                <p>To qualify for this remote job, applicants must have a clue and at least 20k average views on YouTube or its equivalent on another platform.</p>
               </div>
               <img src="../assets/images/warning.svg" alt="Boy" />
       

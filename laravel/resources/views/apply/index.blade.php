@@ -344,7 +344,7 @@
     <main> <a id='whatis' href='#whatis'></a>
         <aside class="asides">
             <h1 class="extra-large-font darkblue">What's Boxeon?</h1>
-            <p class="centered center font-1-5-em">Boxeon is a remote job for content creators and influencers. We provide you with a flat monthly income to offer a subscription box to your most loyal fans.</p>
+            <p class="centered center font-1-5-em">Boxeon is a remote job for content creators. We provide you with a flat monthly income to curate and offer a subscription box to your loyal fans. Check out our <a class='primary-color underline one-em-font' href='/catalog/'>product catalog</a>.</p>
             <br>
         </aside>
         <section class="section">

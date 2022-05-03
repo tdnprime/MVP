@@ -105,7 +105,7 @@
                     </label>
                 </div>
             </div>
-            <!--<div class="row">
+            <div class="row">
                 <div class="col-75">
                     <label class='float-left'>Are you in our partner program?</label>
                     <label class='float-left'>Yes
@@ -116,7 +116,7 @@
                         <input type='radio' id='show-disabled' value='0' name='curation' />
                     </label>
                 </div>
-            </div>!-->
+            </div>
 
 
             <div id="curation1" class="row">

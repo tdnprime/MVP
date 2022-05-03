@@ -28,6 +28,8 @@ Route::get('/terms', 'App\Http\Controllers\HomeController@terms')->name('terms')
 Route::get('/privacy', 'App\Http\Controllers\HomeController@privacy')->name('privacy');
 Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('contact');
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about');
+Route::get('/catalog', 'App\Http\Controllers\CatalogController@index')->name('catalog.products');
+
 
 Route::get('/apply', 'App\Http\Controllers\HomeController@partner')->name('partner.apply');
 Route::post('/apply/apply', 'App\Http\Controllers\ApplyController@apply')->name('apply');
@@ -43,6 +45,13 @@ Route::get('/home', 'App\Http\Controllers\SchoolController@index')->name('school
 Route::get('/article/{article}', 'App\Http\Controllers\SchoolController@article')->name('school.article');
 
 });
+
+#SHOP
+Route::prefix('shop')->group(function () {
+
+    Route::get('/home', 'App\Http\Controllers\ShopController@index')->name('shop.home');
+    
+    });
 
 #ADMIN
 

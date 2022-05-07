@@ -1,5 +1,5 @@
 @extends('layouts.box')
-@section('title', $box->page_name . ' is curating ' . $box->box_supply . ' subscription boxes to loyal fans')
+@section('title', 'Boxeon.com Africa to the world subscription box')
 @section('content')
 
 
@@ -25,15 +25,12 @@
                 <section id='box-headline'>
                     <h1 class='darkblue'>
                         <span id='page-name' class='ginormous primary-color'>
-                            {{ $box->page_name }}</span>
-                        <span class='break hack-br-1'><br></span> is curating {{ $box->box_supply }} subscription boxes
-                        <br>
-                        for loyal fans
+                        Get the Africa to the world box
                     </h1>
                     <div>
-                        <p class='margin-auto-no-important'><span class='highlighted darkblue'>${{ $box->price }}</span><span class="break"><br></span> per box
+                        <p class='margin-auto-no-important'><span class='highlighted darkblue'>${{ $box->price }}</span><span class="break"><br></span>/subscription
                             ({{ $box->shipping }})</p>
-                        <p class='margin-auto-no-important'><span class='highlighted darkblue'>{{ $box->in_stock }}</span> <span class="break"><br></span>boxes left in stock</p>
+                        <p class='margin-auto-no-important'><span class='highlighted darkblue'>{{ $box->in_stock }}</span> <span class="break"><br></span> subscriptions in stock</p>
                         <span class='break hack-br-1'><br></span>
                         <div class='sub-btns'>
                             <a href='#' id='exe-sub' data-version='{{ $box->vid }}'

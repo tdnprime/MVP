@@ -30,7 +30,6 @@ Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('con
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about');
 Route::get('/catalog', 'App\Http\Controllers\CatalogController@index')->name('catalog.products');
 
-
 Route::get('/apply', 'App\Http\Controllers\HomeController@partner')->name('partner.apply');
 Route::post('/apply/apply', 'App\Http\Controllers\ApplyController@apply')->name('apply');
 Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
@@ -41,17 +40,17 @@ Route::get('/search/creator', 'App\Http\Controllers\SearchController@creator')->
 #SCHOOL
 Route::prefix('school')->group(function () {
 
-Route::get('/home', 'App\Http\Controllers\SchoolController@index')->name('school.index');
-Route::get('/article/{article}', 'App\Http\Controllers\SchoolController@article')->name('school.article');
+    Route::get('/home', 'App\Http\Controllers\SchoolController@index')->name('school.index');
+    Route::get('/article/{article}', 'App\Http\Controllers\SchoolController@article')->name('school.article');
 
 });
 
 #SHOP
 Route::prefix('shop')->group(function () {
+    Route::get('/item', 'App\Http\Controllers\ShopController@item')->name('shop.item');
+    Route::get('/{category}', 'App\Http\Controllers\ShopController@index')->name('shop.index');
 
-    Route::get('/home', 'App\Http\Controllers\ShopController@index')->name('shop.home');
-    
-    });
+});
 
 #ADMIN
 
@@ -170,7 +169,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/test', 'App\Http\Controllers\MailController@test')->name('campaign.intro');
         Route::get('/open/{email}/{png}', 'App\Http\Controllers\MailController@record')->name('campaign.open');
 
-
     });
 
     Route::get('/rates', 'App\Http\Controllers\ShippingController@rates')->name('shipping.rates');
@@ -203,6 +201,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/invitations/home', 'App\Http\Controllers\InvitationsController@home')->name('invitations.home');
     Route::get('/invitations/rewards', 'App\Http\Controllers\InvitationsController@rewards')->name('invitations.rewards');
+
+    #SHOP
+    Route::prefix('cart')->group(function () {
+        Route::get('/index', 'App\Http\Controllers\CartController@index')->name('cart.index');
+
+    });
 
 });
 

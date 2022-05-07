@@ -12,15 +12,11 @@
         <section id="headline">
             <div class="two-col-grid">
                 <div>
-                    <p class="text-heading-label">HELP WANTED</p>
-
-                    <h1 class="ginormous">Now hiring creators, $1000 monthly</h1>
-
-                    <p id="pitch">Boxeon is hiring content creators for a 3 - 12-month contract. In this remote job, you will offer a subscription box to
-                        your fans through the videos you already make.</p>
-                       
-
-                    <a href="#whatis" class="button clearbtn"> Learn more </a>
+                    <p class="text-heading-label">BE A FREE SPIRIT WITH</p>
+                    <h1 class="ginormous">Liberating, flat, monthly income</h1>
+                    <p id="pitch">Finally, content creators can achieve the freedom they desire with a remote job offering their fans subscription boxes. Boxeon makes it a breeze.</p>
+                  
+                    <a href="#whatis" class="button clearbtn hide"> Learn more </a>
                 </div>
                 <div id="form-partner-apply-wrapper" class="masthead-forms">
                     <div class="row">
@@ -344,7 +340,8 @@
     <main> <a id='whatis' href='#whatis'></a>
         <aside class="asides">
             <h1 class="extra-large-font darkblue">What's Boxeon?</h1>
-            <p class="centered center font-1-5-em">Boxeon is a remote job for content creators. We provide you with a flat monthly income to curate and offer a subscription box to your loyal fans. Check out our <a class='primary-color underline one-em-font' href='/catalog/'>product catalog</a>.</p>
+      <p class="centered center font-1-5-em">We're not an affiliate program. Boxeon is a remote job for content creators. We provide you with a flat, monthly income to offer a subscription box to your loyal fans.</p>
+
             <br>
         </aside>
         <section class="section">

@@ -4,10 +4,11 @@
 <header>
     <div id='grid-1'>
       
-        <a id='logo' href="/home/index" title='Boxeon home'>
+        <a id='logo' href="/" title='Boxeon'>
             <img id='logo' src='{{ asset('../assets/images/logo.svg') }}' alt='logo' />
             <span id="beta">Beta</span></a>
-        <b><a id='menu-icon' class='underline' href="#">Shop</a></b>
+        <a id='menu-icon' href="#">Shop</a>
+        <a href="/home/index">Subscriptions</a>
         <span id="search-ico" class="material-icons"> </span>
         <form class='search hiden' action="/search/creator" method="get">
             {{ csrf_field() }}
@@ -18,11 +19,11 @@
     <div id='grid-2'>
 <ul id='nav-header-right'>
     <li>
-        <a id='cart' class='one-em-font' href='/cart/' title='#'><span class='material-icons'>shopping_cart</span>cart<span></span></a>
+        <a id='cart' class='one-em-font' href='/cart/index' title='#'><span class='material-icons'>shopping_cart</span>cart<span></span></a>
     </li>
         @auth
             <li id='current-user'>
-   <a id="signout" class='fadein' href='/signout'
+   <a id="signout" class='fadein' href='/signout'>
                     <span><img id='header-user-icon' src='{{ $user->profile_photo_path }}' alt='You'></span>
             </a>
         </li>
@@ -32,7 +33,7 @@
         @if (!Auth::check())
         <li>
             <a class='one-em-font' id='signin' href='{{ url('auth/google') }}'>
-                Sign in with Google
+                Sign in
             </a>
         </li>
         @endif

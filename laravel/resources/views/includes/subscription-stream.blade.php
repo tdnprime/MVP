@@ -1,16 +1,5 @@
 <main class="fadein">
     <section id="left-aside">
-        <h2 class="secondary-color">Home</h2>
-
-        <a class="anchor-sub-menu clearbtn" href="/home/subscriptions" data-type-id="">
-            <div class='recipients-grid'>
-                <div class='position-relative'><span class="material-icons">inventory_2</span>
-                    Subscriptions
-                </div>
-                <div>
-                </div>
-            </div>
-        </a>
     </section>
     <aside id="panel">
 

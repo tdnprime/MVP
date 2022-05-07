@@ -1,104 +1,143 @@
 @extends('layouts.index')
-@section('title', 'Best remote job for content creators to earn monthly, sustainable income')
+@section('title', 'Boxeon.com Support Causes With Monthly Subscription Boxes')
 @section('content')
 
     <div id="masthead">
-      <section id="headline">
-        <p class="text-heading-label">BE A FREE SPIRIT WITH</p>
-        <h1 class="ginormous">Liberating, flat, monthly income</h1>
-        <p id="pitch">Finally, content creators can achieve the freedom they desire with a remote job offering their fans subscription boxes. Boxeon makes it a breeze - ask Marilyn.</p>
-      <a class="button" href="/apply/"> Apply now </a>
-        <a href="#whatis" class="button clearbtn hide"> Learn more </a> </section>
-      <div id="masthead-image"> </div>
+        <div id="banner" class="center"></div>
+        <aside class="centered asides">
+            <h2 class="gin">Support social causes with subscription boxes</h2>
+            <p class="centered center font-1-5-em">Our subscription boxes are curated to allow subscribers to replace the
+                daily essential products they purchase from faceless corporations with products that support their favorite
+                cause.</p>
+        </aside>
+
     </div>
 
 
-    <main id='margin-top-45-em'> <a id='whatis' href='#whatis'></a> 
-    <aside class="asides">
-      <h1 class="extra-large-font darkblue">What's Boxeon?</h1>
-      <p class="centered center font-1-5-em">Boxeon is a remote job for content creators. We provide you with a flat monthly income to curate and offer a subscription box to your loyal fans. Check out your options in our <a class='primary-color underline one-em-font' href='/catalog/'>catalog</a>.</p>
-    <br></aside>
+    <main id='margin-top-45-em'> <a id='whatis' href='#whatis'></a>
+        <section class="section margin-bottom-4-em">
+            <div class="center">
+                <h2 class='centered'>Choose your subscription:<h2>
+                        <h2 class='centered'>Monthly billing</h2>
+                        <div class="four-col pricing-panel">
+                            <div class="pricing">
+                                <div class='plans-pricing-header'><span class='plan-header-text'>monthly plan</span></div>
+                                <h2>$20/month</h2>
+                                <span class='parens'>(billed monthly)</span>
+                                <p>Committing to 1 month </p>
+                                <button class="button">GET YOUR BOX</button>
+                            </div>
+                            <div class="pricing">
+                                <div class='plans-pricing-header'><span class='plan-header-text'>3 month plan</span></div>
+                                <h2>$20/month</h2>
+                                <span class='parens'>(billed monthly)</span>
+                                <p>Committing to 3 months <br></p>
+                                <button class="button">GET YOUR BOX</button>
+                            </div>
+                            <div class="pricing">
+                                <div class='plans-pricing-header'><span class='plan-header-text'>6 month plan</span></div>
+                                <h2>$19/month</h2>
+                                <span class='parens'>(billed monthly)</span>
+                                <p>Committing to 6 months <br></p>
+                                <button class="button">GET YOUR BOX</button>
+                            </div>
+                            <div class="pricing">
+                                <div class='plans-pricing-header'><span class='plan-header-text'>12 month plan</span></div>
+                                <h2>$18/month</h2>
 
-    <section class="section padding-top-6-em">
-      <div class="section-inner-grid"> <img src="../assets/images/hero.svg" alt='Rock'/>
-        <div class="secinner">
-          
-          <h2 class="extra-large-font">We'll be your rock</h2>
-          <p>We pay creators a flat monthly salary of $1000 per month with a 12 month contract. So this is a remote job you can rely on.</p>
-      </div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="alt-section-inner-grid">
-        <div class="secinner">
-          <h2 class="extra-large-font">Do it for charity</h2>
-          <p>Boxeon will donate 10% of the profits made on your subscription box to your favorite charitable cause. You will have the option of doing the actual giving on camera. In other words, Boxeon will be great for your brand.</p>
-        </div>
-        <img src="../assets/images/boy.svg" alt="Boy" />
+                                <span class='parens'>(billed monthly)</span>
+                                <p>Committing to 12 months</p>
+                                <button class="button">GET YOUR BOX</button>
+                            </div>
 
-      </div>
-    </section>
-    <section class="section">
-      <div class="alt-section-inner-grid">
-        <img src="../assets/images/love.svg" alt="Shoppers"/> 
-        <div class="secinner">
-          <h2 class="extra-large-font">The numbers love us</h2>
-          <p>Only two YouTubers sell subscription boxes as of 2021. But there's a whopping 951k monthly Youtube searches for the phrase "subscription box." Source: TubeBuddy.</p>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="alt-section-inner-grid">
-        <div class="secinner">
-          <h2 class="extra-large-font">Ship to mars</h2>
-          <p>Because we're based in Silicon Valley, we're able to ship with every global shipping company. Moreover, we've already secured for your buyers up to 90% off on shipping.</p>
-        </div>
-        <img src="../assets/images/rocket.svg" alt="Shipping" /> </div>
-    </section>
+                        </div>
+            </div>
+            <div class="center">
+                <h2 class='centered'>Prepaid plans</h2>
+                <div class="three-col pricing-panel">
+                    <div class="pricing">
+                        <div class='plans-pricing-header'><span class='plan-header-text'>3 month plan</span></div>
+                        <h2>$45</h2>
+                        <p>Billed every 3 months at $45 </p>
+                        <p>Committing to 3 months </p>
+                        <button class="button">GET YOUR BOX</button>
+                    </div>
 
-    <section class="section">
-      <div class="alt-section-inner-grid">
-        <img src="../assets/images/car.svg" alt="Ferrari" />
-        <div class="secinner">
-          <h2 class="extra-large-font">We ride together</h2>
-          <p>The Boxeon team will work closely with you to ensure your subscription box is a success for both of us.</p>
-        </div></div>
-    </section>
-    <section class="section">
-      <div class="alt-section-inner-grid">
-        <div class="secinner">
-          <h2 class="extra-large-font">Secure transactions</h2>
-          <p>Our financial transactions are conducted by secure services such as Square, World Remit, and CashApp.</p>
-        </div>
-        <img src="../assets/images/gdpr.svg" alt="General Data Protection Regulation" />
+                    <div class="pricing">
+                        <div class='plans-pricing-header'><span class='plan-header-text'>6 month plan</span></div>
+                        <h2>$84</h2>
 
-      </div>
-    </section>
-    <section class="section margin-bottom-10-em">
-      <div class="alt-section-inner-grid">
-        <img src="../assets/images/slamdunk.svg" alt="Shoppers"/> 
-        <div class="secinner">
-          <h2 class="extra-large-font">It's easy to slamdunk</h2>
-          <p>We use a subscription model that's already proven in the marketplace by billion dollar companies. For a live preview, check out Allie's <a href='https://boxeon.com/allie' class='primary-color underline one-em-font'>subscription box</a>.</p>
-        </div>
-      </div>
-    </section>
+                        <p>Billed every 6 months at $84</p>
+                        <p>Committing to 6 months</p>
+                        <button class="button">GET YOUR BOX</button>
+                    </div>
+                    <div class="pricing">
+                        <div class='plans-pricing-header'><span class='plan-header-text'>12 month plan</span></div>
+                        <h2>$156</h2>
+                        <p>Billed every 6 months at $156</p>
+                        <p>Committing to 12 months</p>
+                        <button class="button">GET YOUR BOX</button>
+                    </div>
 
-      <br>
-      <h2 class="centered">How it works</h2>
-      <div id="how-it-works" class="four-col-grid">
-        <div> <img src="../assets/images/computer.svg" alt="Computer"/> <h2>Survey fans</h2></div>
-        <div> <img src="../assets/images/box.svg" alt="Box"/> <h2>Plan box</h2></div>
-        <div> <img src="../assets/images/camera.svg" alt="Camera"/> <h2>Share box</h2></div>
-        <div> <img src="../assets/images/growth.svg" alt="Growth"/> <h2>Earn</h2></div>
-      </div>
-      <section class='section'> <br>
-        <div class="centered margin-bottom-10-em">
-          <h1 class="extra-large-font darkblue">It's that simple</h1>
-          <br>
-          <a class="button" href="/apply/"> Apply now </a> </div>
-      </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="wide section padding-top-6-em">
+            <div class="new-section-inner-grid">
+                <span></span>
+                <img src="../assets/images/celebrate.svg" alt='Rock' />
+                <div class="secinner">
+                    <h2 class="white">Hey Creators!</h2>
+                    <p class="w600 white">If you're a creator and would like help with your social cause, we want to hear from you.</p>
+                    <a href="/catalog/" class="button clearbtn">Learn more</a>
+                </div>
+                <span></span>
+            </div>
+            </div>
+        </section>
+        <section class="section margin-top-4-em">
+            <div class="three-rows-grid">
+
+                <div class="div-limited-editions-panel two-col-grid">
+                    <div>
+                        <h2>Limited box: Slava Ukraine</h2>
+                        <p>Dry, limp hair, be gone! It’s time to give your locks the TLC they need. From shine-inducing
+                            masks to nourishing scalp treatments to rich shampoos, this kit is mane magic in a box. A great
+                            gift for every hair type, including your own.</p>
+                            <a href="/catalog/" class='button'>GET IT HERE!</a>
+                    </div> 
+                    <img src="../assets/images/medium-product-img.png" alt='products' />
+                </div>
+                <div class="div-limited-editions-panel two-col-grid">
+                  <img src="../assets/images/medium-product-img.png" alt='products' />
+                    <div>
+                        <h2>Limited box: Africa to the world</h2>
+                        <p>Dry, limp hair, be gone! It’s time to give your locks the TLC they need. From shine-inducing
+                            masks to nourishing scalp treatments to rich shampoos, this kit is mane magic in a box. A great
+                            gift for every hair type, including your own.</p>
+                            <a href="/catalog/" class='button'>SHOP THE BOX</a>
+                    </div>
+                    
+                </div>
+                <div class="div-limited-editions-panel two-col-grid">
+                    <div>
+                        <h2>Limited box: Ghana Beyond Aid</h2>
+                        <p>Dry, limp hair, be gone! It’s time to give your locks the TLC they need. From shine-inducing
+                            masks to nourishing scalp treatments to rich shampoos, this kit is mane magic in a box. A great
+                            gift for every hair type, including your own.</p>
+                            <a href="/catalog/" class='button'>SHOP THE BOX</a>
+
+                    </div> <img src="../assets/images/medium-product-img.png" alt='products' />
+                </div>
+            </div>
+
+        </section>
+        <div class="div-horizontal-rule center"></div>
+        <section class="section">
+          <h2 class="centered">Subscribe via a creator</h2>
+          <a class="center" href="/allie"><img class="creator-ego" src="../assets/images/allie.webp" alt="Allie"/></a>
+        </section>
     </main>
 
 

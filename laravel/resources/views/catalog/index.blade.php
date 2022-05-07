@@ -36,7 +36,7 @@
                      
                     </div>
 
-                    <h2 class="extra-large-font">Starts with samples</h2>
+                    <h2 class="extra-large-font">For Ukraine refugees</h2>
                     <p>We pay creators a flat monthly salary of $1000 per month with a 12 month contract. So this is a
                         remote job you can rely on.</p>
                 </div>
@@ -56,18 +56,6 @@
 
                 </div>
             </div>
-            </div>
-        </section>
-        <section class="section">
-            <div class="alt-section-inner-grid">
-                <div class="secinner">
-                    <h2 class="extra-large-font">Upgrades to full box</h2>
-                    <p>Boxeon will donate 10% of the profits made on your subscription box to your favorite charitable
-                        cause. You will have the option of doing the actual giving on camera. In other words, Boxeon will be
-                        great for your brand.</p>
-                </div>
-                <img class='box-mockup' src="../assets/images/ukraine-box-mockup-larger.png" alt="Boy" />
-
             </div>
         </section>
         <section class="section">

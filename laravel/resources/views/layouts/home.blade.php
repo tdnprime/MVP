@@ -12,14 +12,8 @@
         <span></span><!-- Hack-->
         @include('includes.header')
         @include('includes.menus.index')
-        <div class="margin-auto">
-            <div id='main-wrapper'>
-            @yield('content')
-            </div>
-        </div>
-
-    </div>
-    @include('includes.footer')
+        @yield('content')
+        @include('includes.footer')
 </body>
 
 </html>

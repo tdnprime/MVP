@@ -692,7 +692,7 @@ Shipping = {
     Shipping.buildAddressInputForm(creator_uid);
 
   },
-  colledShippingAddress:function(){
+  colledShippingAddress: function () {
 
     var fieldset = document.getElementById("fieldset-billing-address");
     fieldset.style.display = "block";
@@ -998,11 +998,11 @@ Shipping = {
       + "<input class='centered' type='radio' name='billing' value='1'></input></label>"
       + "<label>No <input id='show' class='centered' type='radio' name='billing' value='0'></input></label></fieldset>"
       + "<fieldset>"
-    
-      +"<fieldset id='fieldset-billing-address'>"
-      +"<h2>Provide billing details</h2>"
-      +"<p class='centered'>Enter the billing info associated with the card you'll use in Checkout.</p>"
-      +"<input disabled type='text' name='billing_given_name' placeHolder='Given name'   value=''></input>"
+
+      + "<fieldset id='fieldset-billing-address'>"
+      + "<h2>Provide billing details</h2>"
+      + "<p class='centered'>Enter the billing info associated with the card you'll use in Checkout.</p>"
+      + "<input disabled type='text' name='billing_given_name' placeHolder='Given name'   value=''></input>"
       + "<input  disabled type='text' name='billing_family_name' placeHolder='Family name'   value=''></input>"
       + "<input  disabled type='text' name='billing_address_line_1' placeHolder='Street address'   value=''></input>"
       + "<input  disabled type='text' name='billing_address_line_2' placeHolder='Street address line 2 (optional)' value=''></input>"
@@ -1275,7 +1275,7 @@ Shipping = {
       + "</optgroup>"
       + "</select>"
       + "<input  disabled type='text' name='billing_postal_code' placeHolder='Postal code' value=''></input>"
-      +"</fieldset><br>"
+      + "</fieldset><br>"
       + "<input id='process-data' data-id='" + creator_uid + "' type='submit' value='Continue'></input></fieldset>"
       + "</div></div>"
       + "</form>";
@@ -1319,20 +1319,20 @@ Shipping = {
 
         var value = nl[i].value;
 
-        }
-
-        if (value == "" && key !== "cpf") {
-         // var value = 0;
-         // let field = document.getElementsByName(key)[0];
-         // field.style.border = "red 1px solid";
-         // return;
-
-        } else {
-
-          Shipping.arr[key] = value;
-        }
       }
-    
+
+      if (value == "" && key !== "cpf") {
+        // var value = 0;
+        // let field = document.getElementsByName(key)[0];
+        // field.style.border = "red 1px solid";
+        // return;
+
+      } else {
+
+        Shipping.arr[key] = value;
+      }
+    }
+
 
     var n = f.getElementsByTagName("select");
 
@@ -1886,6 +1886,16 @@ window.onload = function () {
 
     });
   }
+  if (document.getElementById('current-user')) {
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    document.getElementById('showDropdown').addEventListener('click', function () {
+    
+      document.getElementById("myDropdown").classList.toggle("show");
+    
+  });
+
+  }
 
 
   /*  if (document.getElementsByClassName('switch-plan')) {
@@ -2109,15 +2119,31 @@ function showSlides(n) {
   let slides = document.getElementsByClassName("mySlides");
   let dots = document.getElementsByClassName("demo");
   let captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+  captionText.innerHTML = dots[slideIndex - 1].alt;
+}
+
+
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function (event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 }

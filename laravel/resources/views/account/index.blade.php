@@ -1,28 +1,10 @@
 @extends("layouts.home")
-@section('title', 'Boxeon | Account')
+@section('title', 'Boxeon Account')
 @section('content')
 
     <main class='fadein'>
         <section id="left-aside">
-            <h2>Account</h2>
-            <a class="anchor-sub-menu clearbtn" href="/account/home">
-                <div class='recipients-grid'>
-                    <div class='position-relative'><span class="material-icons">settings</span>
-                        Settings
-                    </div>
-                    <div>
-                    </div>
-                </div>
-            </a>
-            <a class="anchor-sub-menu clearbtn" href="/account/earnings">
-                <div class='recipients-grid'>
-                    <div class='position-relative'><span class="material-icons">money</span>
-                        Earnings
-                    </div>
-                    <div>
-                    </div>
-                </div>
-            </a>
+
         </section>
 
         <aside id='panel'>
@@ -32,85 +14,22 @@
                 </dialog>
             @endif
             <div id='module'>
-                <img class='center image-cta' src="{{ '../assets/images/account.svg' }}" alt="Empty">
-                <h2 class='centered'>Box</h2>
-                <form class='form-settings' method='post' action='{{ route('account.box_url') }}'>
+                <h2 class='centered'>Your account</h2>
+                <p class='center centered'>Update shipping address where you receive subscriptions.</p>
+                <form id="account-form" class='form-settings' action='/account/address' method='POST'>
                     @csrf
                     @method('POST')
                     <div class="row">
                         <div class="col-75">
-                            <input class='centered' type='text' name='box_url' value='' required placeholder='Url'>
-                            <input class='clearbtn display-block margin-top-2-em margin-auto margin-auto' type="submit"
-                                value='Update'>
-                        </div>
-                    </div>
-                </form>
-                <form class='form-settings' action='/account/box' method='POST'>
-                    @csrf
-                    @method('POST')
-
-                    <div class="row">
-                        <div class="col-75">
-                            <input class='centered' type='number' name='price' value='' required placeholder='Price'>
-                            <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
-                        </div>
-                    </div>
-                </form>
-                <form class='form-settings' action='/account/box' method='POST'>
-                    @csrf
-                    @method('POST')
-
-                    <div class="row">
-                        <div class="col-75">
-                            <input type='number' class='centered' name='box_supply' value='' required placeholder='Supply'>
-                            <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
-                        </div>
-                    </div>
-                </form>
-                <form class='form-settings' action='/account/box' method='POST'>
-                    @csrf
-                    @method('POST')
-                    <div class="row">
-                        <div class="col-75">
-                            <select class='centered' required name='shipping_cost'>
-                                <option selected disabled value=''>Change who pays shipping cost</option>
-                                <option value='1'>I will pay</option>
-                                <option value='0'>Buyers will pay</option>
-                            </select>
-                            <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
-                        </div>
-                    </div>
-                </form>
-                <form class='form-settings' action='/account/box' method='POST'>
-                    @csrf
-                    @method('POST')
-                    <div class="row">
-                        <div class="col-75">
-                            <input class='centered' type='text' name='video' value='' required
-                                placeholder='Youtube video ID'>
-                            <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
-                        </div>
-                    </div>
-                </form>
-                <br>
-                <img class='center image-cta' src="{{ '../assets/images/address.svg' }}" alt="Empty">
-
-                <h2 class='centered'>Address</h2>
-                <p class='center centered'>Update the shipping address where you receive subscriptions.</p>
-                <form class='form-settings' action='/account/address' method='POST'>
-                    @csrf
-                    @method('POST')
-                    <div class="row">
-                        <div class="col-75">
-                            <input class='centered' name='address_line_1' type='text' class='optional' required value=''
+                            <input class='center' name='address_line_1' type='text' class='optional' required value=''
                                 placeHolder='Street address' />
-                            <input class='centered' name='address_line_2' type='text' class='optional' value=''
+                            <input class='center' name='address_line_2' type='text' class='optional' value=''
                                 placeHolder='Address line 2 (optional)' />
-                            <input class='centered' name='admin_area_2' type='text' class='optional' required value=''
+                            <input class='center' name='admin_area_2' type='text' class='optional' required value=''
                                 placeHolder='City' />
-                            <input class='centered' name='admin_area_1' type='text' class='optional' required value=''
+                            <input class='center' name='admin_area_1' type='text' class='optional' required value=''
                                 placeHolder='State' />
-                            <select class='centered' required name='country_code' class='optional form-control'
+                            <select class='center' required name='country_code' class='optional form-control'
                                 id='country'>
                                 <option value='' invalid>Select your country </option>
                                 <optgroup id='country-optgroup-Africa' label='Africa'>
@@ -394,7 +313,7 @@
                             <input name='postal_code' type='text' class='centered' required value=''
                                 placeHolder='Postal code' />
 
-                            <input class='clearbtn display-block margin-top-2-em margin-auto' type="submit" value='Update'>
+                            <input class='button display-block margin-top-2-em margin-auto w100per' type="submit" value='Update'>
                         </div>
                     </div>
                 </form>

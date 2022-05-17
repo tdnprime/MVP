@@ -1,13 +1,59 @@
-
-
 <main id="cart-main" class="fadein">
 
     <section class="cart-section">
+        <div class="cart-banner">
+            
+            <div>
+                <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
+                <a class="one-em-font" href="/shop/item?id=productID">
+                    <h3 class="">Product name</h3>
+                </a>
+                <p class="">$15</p>
+                <button class="clearbtn">BUY</button>
+                <button class="button">ADD TO BOX</button>
+            </div>
+            <div>
+                <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
+                <a class="one-em-font" href="/shop/item?id=productID">
+                    <h3 class="">Product name</h3>
+                </a>
+                <p class="">$15</p>
+                <button class="clearbtn">BUY</button>
+                <button class="clearbtn">ADD TO BOX</button>
+            </div>
+            <div>
+                <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
+                <a class="one-em-font" href="/shop/item?id=productID">
+                    <h3 class="">Product name</h3>
+                </a>
+                <p class="">$15</p>
+                <button class="clearbtn">BUY</button>
+                <button class="clearbtn">ADD TO BOX</button>
+            </div>
+            <div>
+                <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
+                <a class="one-em-font" href="/shop/item?id=productID">
+                    <h3 class="">Product name</h3>
+                </a>
+                <p class="">$15</p>
+                <button class="clearbtn">BUY</button>
+                <button class="clearbtn">ADD TO BOX</button>
+            </div>
 
+        </div>
         <div class="cart-header">
             <h2>Shopping cart</h2>
-            <a href="#" class="primary-color">Delete all items</a>
         </div>
+
+        <section class="display-none">
+            <div class="card-white-bg">
+                <b>
+                    <p>Subtotal (# items) $cost</p>
+                </b>
+                <button class="button yellowbtn">Proceed to checkout</button>
+            </div>
+
+        </section>
 
         <div class="cart-item">
 
@@ -42,7 +88,7 @@
 
     </section>
 
-    <section>
+    <section class="hide">
         <div class="card-white-bg">
             <b>
                 <p>Subtotal (# items) $cost</p>
@@ -50,8 +96,16 @@
             <button class="button yellowbtn">Proceed to checkout</button>
         </div>
         <div class="card-white-bg">
-            <h3>Add these products</h3>
-           
+            <h3>Add these items</h3>
+            <div class="sidebar-prducts-stream">
+            <div>
+                <img src="../assets/images/thumb.jpg" alt=""/>
+                <a href="#">Product name</a>
+                <p>Price</p>
+                <button class="clearbtn">ADD TO BOX</button>
+            </div>
+            </div>
+
         </div>
     </section>
 </main>

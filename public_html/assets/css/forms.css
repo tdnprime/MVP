@@ -114,6 +114,7 @@ input[type="submit"], .button, button {
   box-sizing: border-box;
   color: #ffffff;
   min-width: 200px;
+  width:200px;
   text-align: center;
   cursor: pointer;
   font-weight: bold;
@@ -121,7 +122,6 @@ input[type="submit"], .button, button {
   max-height: 49px;
   letter-spacing: 1px;
   margin-bottom: 1em;
-  margin-right: 1em;
   outline: none;
   padding: .8em 1.5em .8em 1.5em;
 

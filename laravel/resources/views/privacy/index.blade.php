@@ -5,7 +5,7 @@
 <main>
  
     
-      <section class='section'>
+      <section class='section maxw1036'>
       <h1 class='extra-large-font centered darkblue'>Boxeon privacy statement</h1>
       <p>Effective July 1, 2021</p>
       <h2>Overview</h2>

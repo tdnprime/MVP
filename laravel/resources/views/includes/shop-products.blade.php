@@ -10,9 +10,8 @@
 <div class='products-stream margin-bottom-4-em'>
     <div>
         <a href="/shop/item?id=productID"><img src="../assets/images/products.webp"></a>
-        <a class="one-em-font" href="/shop/item?id=productID"><h2 class="product-name">Product name</h2></a>
-    <p class="price-tag">PRICE</p>
-    <button class="add-to-cart button">ADD TO CART</button>
+        <a class="one-em-font" href="/shop/item?id=productID"><h3 class="product-name">Product name</h3></a>
+    <p class="price-tag">$15</p>
     </div>
     <div><img src="../assets/images/products.webp"></div>
     <div><img src="../assets/images/products.webp"></div>

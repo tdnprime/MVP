@@ -40,6 +40,21 @@ class BoxController extends Controller
                 ->with('box', $box);
         }
     }
+
+public function serve(Request $request){
+
+    $box_name = $request["name"];
+
+    if ($user = Auth::user()) {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+    }
+
+    return view('box.'. $box_name, compact('user', 'user'));
+
+
+}
+
     public function setCookie(Request $request)
     {
         $minutes = 10;
@@ -141,9 +156,6 @@ class BoxController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
 
-        if ($user->boxes()->first() != null) {
-            return redirect()->route('box.edit', $id);
-        }
 
         return view('box.create', compact('user'));
     }

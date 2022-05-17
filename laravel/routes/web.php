@@ -48,7 +48,7 @@ Route::prefix('school')->group(function () {
 #SHOP
 Route::prefix('shop')->group(function () {
     Route::get('/item', 'App\Http\Controllers\ShopController@item')->name('shop.item');
-    Route::get('/{category}', 'App\Http\Controllers\ShopController@index')->name('shop.index');
+    Route::get('/index', 'App\Http\Controllers\ShopController@index')->name('shop.index');
 
 });
 
@@ -91,6 +91,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/embed', 'App\Http\Controllers\BoxController@embed')->name('box.embed');
         Route::post('/url', 'App\Http\Controllers\BoxController@url')->name('box.url');
         Route::get('/url', 'App\Http\Controllers\BoxController@url')->name('box.url');
+        Route::get('/{name}', 'App\Http\Controllers\BoxController@serve')->name('box.serve');
         Route::post('/', 'App\Http\Controllers\BoxController@store')->name('box.store');
         Route::get('/{vid}/edit', 'App\Http\Controllers\BoxController@edit')->name('box.edit');
         Route::post('/{vid}/edit', 'App\Http\Controllers\BoxController@edit')->name('box.edit');
@@ -202,7 +203,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/invitations/home', 'App\Http\Controllers\InvitationsController@home')->name('invitations.home');
     Route::get('/invitations/rewards', 'App\Http\Controllers\InvitationsController@rewards')->name('invitations.rewards');
 
-    #SHOP
+    #CART
     Route::prefix('cart')->group(function () {
         Route::get('/index', 'App\Http\Controllers\CartController@index')->name('cart.index');
 

@@ -2,7 +2,6 @@
 @section('title', 'Boxeon.com Support Causes With Monthly Subscription Boxes')
 @section('content')
 
-
 <main class='boxes' id='margin-top-45-em'>
     <div class='maxw1036 margin-auto'>
         <section id="boxes-panel" class="section margin-top-4-em">
@@ -32,6 +31,7 @@
                 <div>
                     <p class="red-tag">A $63 VALUE</p>
                     <h2>Africa to the world box</h2>
+                   
                     <div class="stars-grid">
                         <span class="material-icons">star</span>
                         <span class="material-icons">star</span>
@@ -40,6 +40,7 @@
                         <span class="material-icons">star</span>
                         <a id='#jumptoreviews' href='' class='reviews-jump-to underline'># reviews</a>
                     </div>
+                    <p>100 In Stock.</p>
                     <p>Enjoy organic African superfoods and products, repatriate your dollars,
                         build trade, and spark an industrial revolution. This box consist of daily essential
                         products seen on the Wode Maya and Vanessa Kanbi YouTube channels.<span><b>&nbsp;<a class="one-em-font underline" href="#">Read more</a></b></span>

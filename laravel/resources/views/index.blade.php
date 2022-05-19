@@ -5,10 +5,9 @@
     <div id="masthead">
         <div id="banner" class="center"></div>
         <aside class="centered asides call-out">
-            <h2 class="gin">Support social causes with subscription boxes</h2>
-            <p class="centered center font-1-5-em">Our subscription boxes are curated to allow subscribers to replace the
-                products they purchase from bad corporations with products that support their favorite
-                cause.</p>
+            <h2 class="gin">Build a better world with subscription boxes</h2>
+            <p class="centered center font-1-5-em">Our subscription boxes allow you to replace the
+                products you purchase from evil corporations with products that build black economies.</p>
         </aside>
 
     </div>
@@ -89,8 +88,8 @@
                 <img src="../assets/images/creator.png" alt='Rock' />
                 <div class="secinner">
                     <h2 class="white">Hey Creators!</h2>
-                    <p class="w600 white">If you'd like to support a social cause, let's do a livestream.</p>
-                    <a href="#" class="button clearbtn">Reach out</a>
+                    <p class="w600 white">If you'd like to promote a box, send us your rates.</p>
+                    <a href="#" class="button clearbtn">Send rates</a>
                 </div>
                 <span class="hide"></span>
             </div>
@@ -124,10 +123,10 @@
                 <div class="div-limited-editions-panel two-col-grid">
                     <img src="../assets/images/medium-product-img.png" alt='products' />
                     <div>
-                        <h2>Slava Ukraine box</h2>
+                        <h2>Caribbean Seafood box</h2>
                         <p>Lorem ipsum. Savor Ghana's distinct chocolate flavors, and support Nana Akufo Ado's push to make Ghana a chocolate exporter.
                         </p>
-                        <a href="/box/slava" class='button'>GET IT HERE!</a>
+                        <a href="/box/seafood" class='button'>GET IT HERE!</a>
                     </div>
                 </div>
             </div>

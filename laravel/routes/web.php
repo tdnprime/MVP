@@ -25,6 +25,7 @@ Route::get('/signout', function () {
 });
 
 Route::get('/terms', 'App\Http\Controllers\HomeController@terms')->name('terms');
+Route::get('/returns', 'App\Http\Controllers\HomeController@returns')->name('returns');
 Route::get('/privacy', 'App\Http\Controllers\HomeController@privacy')->name('privacy');
 Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('contact');
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about');

@@ -60,11 +60,11 @@ form {
   font-size: 1em;
 }
 
-.form-settings input[type=number],
+/* .form-settings input[type=number],
 .form-settings input[type=url],
 .form-settings input[type=text] {
   margin-right: 4%;
-}
+} */
 
 input:checked+.slider {
   background-color: #2196F3;
@@ -89,14 +89,17 @@ input[type="tel"], input[type="number"], input[type="email"], select, textarea, 
   clear: both;
   margin-bottom: 1em;
   margin-top: 2em;
-  max-width: 25em;
   -ms-box-sizing: border-box !important;
   -moz-box-sizing: border-box !important;
   -webkit-box-sizing: border-box !important;
   box-sizing: border-box !important;
-  box-shadow: 2px 4px 12px #0c8dc41a;
+ // box-shadow: 2px 4px 12px #0c8dc41a;
   width: 100%;
   resize: vertical;
+}
+
+.margin-top-zero{
+  margin-top: 0;
 }
 
 select:required:invalid {

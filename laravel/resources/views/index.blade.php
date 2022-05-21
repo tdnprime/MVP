@@ -88,13 +88,13 @@
                 <img src="../assets/images/creator.png" alt='Rock' />
                 <div class="secinner">
                     <h2 class="white">Hey Creators!</h2>
-                    <p class="w600 white">If you'd like to promote a box, send us your rates.</p>
-                    <a href="#" class="button clearbtn">Send rates</a>
+                    <p class="w600 white">If you'd like to support a box, we want to hear from you.</p>
+                    <a href="#" class="button clearbtn">Reach out</a>
                 </div>
                 <span class="hide"></span>
             </div>
         </section>
-        
+
         <section id="boxes-panel" class="section margin-top-4-em">
             <div class="three-rows-grid">
                 <div class="div-limited-editions-panel two-col-grid">
@@ -118,13 +118,14 @@
                             make Ghana a chocolate exporter.</p>
                         <a href="/box/ghana" class='button'>SHOP THE BOX</a>
 
-                    </div> 
+                    </div>
                 </div>
                 <div class="div-limited-editions-panel two-col-grid">
                     <img src="../assets/images/medium-product-img.png" alt='products' />
                     <div>
                         <h2>Caribbean Seafood box</h2>
-                        <p>Lorem ipsum. Savor Ghana's distinct chocolate flavors, and support Nana Akufo Ado's push to make Ghana a chocolate exporter.
+                        <p>Lorem ipsum. Savor Ghana's distinct chocolate flavors, and support Nana Akufo Ado's push to make
+                            Ghana a chocolate exporter.
                         </p>
                         <a href="/box/seafood" class='button'>GET IT HERE!</a>
                     </div>
@@ -133,12 +134,20 @@
 
         </section>
         <div class="div-horizontal-rule center"></div>
-        <section id="creators-bar" class="section">
-            <h2 class="centered">Subscribe via creators</h2>
-            <a class="center" href="/allie"><img class="creator-ego" src="../assets/images/allie.webp"
-                    alt="Allie" /></a>
+        <section id="creators-bar" class="max-width-1035 section">
+            <h2 class="centered">As Seen On</h2>
+            <div id="as-seen-on" class="four-col-grid">
+                <a class="center" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"
+                    target="_blank"><img class="creator-ego" src="../assets/images/tayo-aina.png" alt="Allie" /></a>
+                <a class="center" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"
+                    target="_blank"><img class="creator-ego" src="../assets/images/african-tigress.png" alt="Allie" /></a>
+                <a class="center" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"
+                    target="_blank"><img class="creator-ego" src="../assets/images/vanessa-kanbi.png" alt="Allie" /></a>
+                <a class="center" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"
+                    target="_blank"><img class="creator-ego" src="../assets/images/miss-trudy.png" alt="Allie" /></a>
+            </div>
         </section>
-    
+
     </main>
 
 

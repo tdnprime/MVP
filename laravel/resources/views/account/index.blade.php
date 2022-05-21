@@ -21,15 +21,15 @@
                     @method('POST')
                     <div class="row">
                         <div class="col-75">
-                            <input class='center' name='address_line_1' type='text' class='optional' required value=''
+                            <input  name='address_line_1' type='text' class='optional' required value=''
                                 placeHolder='Street address' />
-                            <input class='center' name='address_line_2' type='text' class='optional' value=''
+                            <input  name='address_line_2' type='text' class='optional' value=''
                                 placeHolder='Address line 2 (optional)' />
-                            <input class='center' name='admin_area_2' type='text' class='optional' required value=''
+                            <input  name='admin_area_2' type='text' class='optional' required value=''
                                 placeHolder='City' />
-                            <input class='center' name='admin_area_1' type='text' class='optional' required value=''
+                            <input  name='admin_area_1' type='text' class='optional' required value=''
                                 placeHolder='State' />
-                            <select class='center' required name='country_code' class='optional form-control'
+                            <select  required name='country_code' class='optional form-control'
                                 id='country'>
                                 <option value='' invalid>Select your country </option>
                                 <optgroup id='country-optgroup-Africa' label='Africa'>

@@ -15,7 +15,34 @@
             <div id="team-wrapper" class="three-rows-grid">
                 <div class="four-col-grid">
                     <span></span>
-                    <img src="../assets/images/user.svg" alt="CEO">
+                    <img src="../assets/images/medium-placeholder.png" alt="CEO">
+                    <div><b><p class="uppercase">Trevor Devon Nathaniel Prime</p></b>
+                        <p>FOUNDER & CEO</p>
+                    <p>He is our visionary leader for whom quality is king. He tirelessly pursued the reduction of poverty in the Southern United States, Central America, and the Caribbean while working at the United Nations for the Southern Caucus of NGOs. He has been an entrepeneur since age sixteen and studied Business Administration at Medgar Evers College. His personal motto is "make an impact, and the income will follow."</p>
+                    </div>
+                    <span></span>
+                </div>
+                <div class="four-col-grid">
+                    <span></span>
+                    <img src="../assets/images/medium-placeholder.png" alt="CEO">
+                    <div><b><p class="uppercase">Trevor Devon Nathaniel Prime</p></b>
+                        <p>FOUNDER & CEO</p>
+                    <p>He is our visionary leader for whom quality is king. He tirelessly pursued the reduction of poverty in the Southern United States, Central America, and the Caribbean while working at the United Nations for the Southern Caucus of NGOs. He has been an entrepeneur since age sixteen and studied Business Administration at Medgar Evers College. His personal motto is "make an impact, and the income will follow."</p>
+                    </div>
+                    <span></span>
+                </div>
+                <div class="four-col-grid">
+                    <span></span>
+                    <img src="../assets/images/medium-placeholder.png" alt="CEO">
+                    <div><b><p class="uppercase">Luana Nascimento</p></b>
+                        <p>TECHNOLOGY CONSULTANT</p>
+                    <p>He is our visionary leader for whom quality is king. He tirelessly pursued the reduction of poverty in the Southern United States, Central America, and the Caribbean while working at the United Nations for the Southern Caucus of NGOs. He has been an entrepeneur since age sixteen and studied Business Administration at Medgar Evers College. His personal motto is "make an impact, and the income will follow."</p>
+                    </div>
+                    <span></span>
+                </div>
+                <div class="four-col-grid">
+                    <span></span>
+                    <img src="../assets/images/medium-placeholder.png" alt="CEO">
                     <div><b><p class="uppercase">Trevor Devon Nathaniel Prime</p></b>
                         <p>FOUNDER & CEO</p>
                     <p>He is our visionary leader for whom quality is king. He tirelessly pursued the reduction of poverty in the Southern United States, Central America, and the Caribbean while working at the United Nations for the Southern Caucus of NGOs. He has been an entrepeneur since age sixteen and studied Business Administration at Medgar Evers College. His personal motto is "make an impact, and the income will follow."</p>

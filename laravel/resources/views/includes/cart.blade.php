@@ -8,9 +8,13 @@
                 <a class="one-em-font" href="/shop/item?id=productID">
                     <h3 class="">Product name</h3>
                 </a>
-                <p class="">$15</p>
-                <button class="clearbtn">BUY</button>
-                <button class="button">ADD TO BOX</button>
+                <form action="/cart" method="post">
+                    @csrf
+                    <select class="margin-top-zero">
+                        <option>$22/month - billed monthly for 1 month</option>
+                    </select>
+                    <input type="submit" value="ADD TO CART">
+                </form>
             </div>
             <div>
                 <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
@@ -19,7 +23,6 @@
                 </a>
                 <p class="">$15</p>
                 <button class="clearbtn">BUY</button>
-                <button class="clearbtn">ADD TO BOX</button>
             </div>
             <div>
                 <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
@@ -92,8 +95,10 @@
         <div class="card-white-bg">
             <b>
                 <p>Subtotal (# items) $cost</p>
-            </b>
-            <button class="button yellowbtn">Proceed to checkout</button>
+            </b><form action="/checkout/index" method="post">
+                @csrf
+            <input type="submit" class="button yellowbtn" value="Proceed to checkout">
+            </form>
         </div>
         <div class="card-white-bg">
             <h3>Add these items</h3>

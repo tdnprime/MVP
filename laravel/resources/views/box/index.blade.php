@@ -9,14 +9,14 @@
                 <div class="secinner">
                     <div class="slideshow">
                         <div class='slideshow-main-image'>
-                            <img src="../assets/images/shampoo.png" alt='Black soap' />
+                            <img src="../assets/images/product-large.png" alt='product' />
                         </div>
                     </div>
                     <div class='slideshow-navigation'>
                         <img id='image-previous-arrow' src="../assets/images/arrow.svg" alt='Previous' />
                         <div class="image-products-thumbs">
                             <ul class='ul-products-thumbs'>
-                                <li><img src="../assets/images/blacksoap-thumb.png" alt='Black soap' /></li>
+                                <li class="border"><img src="../assets/images/blacksoap-thumb.png" alt='Black soap' /></li>
                                 <li><img src="../assets/images/blacksoap-thumb.png" alt='Black soap' /></li>
                                 <li><img src="../assets/images/blacksoap-thumb.png" alt='Black soap' /></li>
                                 <li><img src="../assets/images/blacksoap-thumb.png" alt='Black soap' /></li>
@@ -40,7 +40,7 @@
                         <span class="material-icons">star</span>
                         <a id='#jumptoreviews' href='' class='reviews-jump-to underline'># reviews</a>
                     </div>
-                    <p>100 In Stock.</p>
+                    <p class="green">100 In Stock.</p>
                     <p>Enjoy organic African superfoods and products, repatriate your dollars,
                         build trade, and spark an industrial revolution. This box consist of daily essential
                         products seen on the Wode Maya and Vanessa Kanbi YouTube channels.<span><b>&nbsp;<a class="one-em-font underline" href="#">Read more</a></b></span>
@@ -53,6 +53,8 @@
                         <select>
                             <option>$22/month - billed monthly for 1 month</option>
                         </select>
+                        <br>
+                        <br>
                         <input type="submit" value="ADD TO CART">
                     </form>
                 </div>
@@ -61,6 +63,7 @@
         </section>
         <section class='reviews-section'>
             <h2 class='center'>Reviews</h2>
+            <br>
             <div id="ratings-overview" class='four-col-grid'>
                 <span></span>
                 <div>

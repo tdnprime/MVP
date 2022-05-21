@@ -78,8 +78,13 @@ Brown skin: #a0616a
   max-width: 350px;
   overflow: hidden;
   height: 200px;
+  position: relative;
+  right: 1.5em;
 
+}
 
+.border {
+  border: 2px solid #005ea6;
 }
 
 .slideshow-main-image * {
@@ -89,7 +94,7 @@ Brown skin: #a0616a
 
 .slideshow-navigation {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto 70% auto;
   align-items: center;
   grid-column-start: 2;
   grid-gap: .5em;
@@ -630,7 +635,9 @@ a:visited {
 }
 
 .maxw1036 {
-  width: 1036px;
+  max-width: 1036px;
+  width: 100;
+
 }
 
 #account-form {
@@ -811,6 +818,11 @@ a:visited {
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
+}
+
+.max-width-1035 {
+  width: 100%;
+  max-width: 1035px;
 }
 
 #banner-slogan {
@@ -1625,7 +1637,7 @@ audio {
 }
 
 .yellowbtn {
-
+  width: 100% !important;
   background-color: #ffd814 !important;
   color: #000 !important;
   border: 1px solid #e4c00c !important;
@@ -1684,8 +1696,16 @@ audio {
   margin-top: 10em;
 }
 
+.margin-top-6-em {
+  margin-top: 6.5em !important;
+}
+
 .font-1-5-em {
   font-size: 1.5em;
+}
+
+.font-size-2-em {
+  font-size: 2em;
 }
 
 .four-col-grid {
@@ -2040,6 +2060,10 @@ the side navigation*/
   margin: auto;
 }
 
+#as-seen-on {
+  grid-gap: 5%;
+}
+
 .price-options-grid input {
   margin-left: .5em;
 }
@@ -2172,7 +2196,7 @@ the side navigation*/
 }
 
 .green {
-  background-color: #00a61c;
+  color: #007600;
 
 }
 
@@ -2271,7 +2295,7 @@ the side navigation*/
 
 #team-wrapper .four-col-grid {
   place-items: center;
-  width: 800px;
+  width: 950px;
   margin: auto;
   grid-gap: 3em;
 }
@@ -2557,9 +2581,13 @@ header {
 }
 
 .creator-ego {
-  width: 150px !important;
-  height: auto !important;
+
   margin: 0 !important;
+}
+
+.creator-ego:hover {
+  box-shadow: 20px 20px 60px #0c8dc41a, -20px -20px 60px #ffffff;
+  opacity: .5;
 }
 
 .div-limited-editions-panel {
@@ -2649,9 +2677,82 @@ ul {
   /* Remove default bullets */
 }
 
+#order-summary {
+  padding: 4%;
+  border-radius: .5em;
+}
+
+#order-summary .two-col-grid {
+  grid-template-columns: 90% 10%;
+}
+
+#checkout-main {
+  width: 50%;
+  margin: auto;
+  grid-gap: 2%;
+}
+
+#order-summary .two-col-grid p {
+  margin: 0;
+  padding: 0;
+  margin-top: 0.5em;
+}
+
+#checkout-content .two-col-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 2em;
+
+}
+
+#checkout-content .step-wrapper {
+  border: 1px solid #cfe4f4;
+  ;
+  padding: 4%;
+
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 60px;
+}
+
 #iframe-checkout {
   width: 100%;
   height: 300px;
+}
+
+#checkout-content {
+  width: 100%;
+  margin: auto;
+}
+
+#checkout-header {
+  max-width: 1235px;
+  width: 100%;
+  align-items: start;
+  grid-template-columns: 30% 50% 10%;
+}
+
+#checkout-header-wrapper {
+  padding: 1.5em;
+  background-image: url("../images/checkout-header-bg.png");
+  background-size: contain;
+  background-repeat: repeat-x;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+#checkout-header * {
+  margin: 0;
+}
+
+#checkout-content .three-col-grid {
+  width: 100%;
+  place-content: flex-start;
+  grid-template-columns: 30% 60% 10%;
 }
 
 #contact ul li::before {

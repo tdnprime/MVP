@@ -4,7 +4,6 @@
         @if (isset($subscription))
              
                 <div class="centered margin-bottom-4-em">
-                    <p class="centered center">{{$user->given_name}}, {{ $subscription['description'] }}.</p>
                     <form id="">
                         <div id="card-container"></div>
                      <div class='sub-btns'>

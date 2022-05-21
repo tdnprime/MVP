@@ -242,12 +242,14 @@
     grid-column-start: auto;
     grid-row-start: auto;
   }
-
+.reviews-section,
   #creators-bar,
   #boxes-panel {
     width: 80%;
   }
-
+.maxw1035{
+  
+}
   .creator-ego {
     width: 75px !important;
   }

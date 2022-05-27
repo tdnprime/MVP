@@ -23,7 +23,7 @@
     <div id='grid-2'>
 <ul id='nav-header-right'>
     <li>
-        <a id='cart' class='one-em-font' href='/cart/index' title='#'><span class='material-icons'>shopping_cart</span><span id="cart-text">cart</span></a>
+        <a id='cart' class='one-em-font' href='/cart/index' title='#'><span class='material-icons'>shopping_cart</span><span id="cart-count"></span></a>
     </li>
         @auth
             <li id='current-user'>

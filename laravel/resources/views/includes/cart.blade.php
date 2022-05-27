@@ -1,8 +1,9 @@
 <main id="cart-main" class="fadein">
 
     <section class="cart-section">
+       
         <div class="cart-banner">
-            
+             
             <div>
                 <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
                 <a class="one-em-font" href="/shop/item?id=productID">
@@ -11,37 +12,74 @@
                 <form action="/cart" method="post">
                     @csrf
                     <select class="margin-top-zero">
+                        <option selected>Choose price</option>
                         <option>$22/month - billed monthly for 1 month</option>
                     </select>
                     <input type="submit" value="ADD TO CART">
                 </form>
             </div>
+
             <div>
                 <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
                 <a class="one-em-font" href="/shop/item?id=productID">
                     <h3 class="">Product name</h3>
                 </a>
-                <p class="">$15</p>
-                <button class="clearbtn">BUY</button>
+                <form action="/cart" method="post">
+                    @csrf
+                    <select class="margin-top-zero">
+                        <option selected>Choose price</option>
+                        <option>$22/month - billed monthly for 1 month</option>
+                    </select>
+                    <input type="submit" value="ADD TO CART">
+                </form>
             </div>
+
             <div>
                 <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
                 <a class="one-em-font" href="/shop/item?id=productID">
                     <h3 class="">Product name</h3>
                 </a>
-                <p class="">$15</p>
-                <button class="clearbtn">BUY</button>
-                <button class="clearbtn">ADD TO BOX</button>
+                <form action="/cart" method="post">
+                    @csrf
+                    <select class="margin-top-zero">
+                        <option selected>Choose price</option>
+                        <option>$22/month - billed monthly for 1 month</option>
+                    </select>
+                    <input type="submit" value="ADD TO CART">
+                </form>
             </div>
+
             <div>
                 <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
                 <a class="one-em-font" href="/shop/item?id=productID">
                     <h3 class="">Product name</h3>
                 </a>
-                <p class="">$15</p>
-                <button class="clearbtn">BUY</button>
-                <button class="clearbtn">ADD TO BOX</button>
+                <form action="/cart" method="post">
+                    @csrf
+                    <select class="margin-top-zero">
+                        <option selected>Choose price</option>
+                        <option>$22/month - billed monthly for 1 month</option>
+                    </select>
+                    <input type="submit" value="ADD TO CART">
+                </form>
             </div>
+
+            <div>
+                <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
+                <a class="one-em-font" href="/shop/item?id=productID">
+                    <h3 class="">Product name</h3>
+                </a>
+                <form action="/cart" method="post">
+                    @csrf
+                    <select class="margin-top-zero">
+                        <option selected>Choose price</option>
+                        <option>$22/month - billed monthly for 1 month</option>
+                    </select>
+                    <input type="submit" value="ADD TO CART">
+                </form>
+            </div>
+        
+      
 
         </div>
         <div class="cart-header">
@@ -51,7 +89,7 @@
         <section class="display-none">
             <div class="card-white-bg">
                 <b>
-                    <p>Subtotal (# items) $cost</p>
+                    <h2 class="cart-subtotal black-font font-size-2-em">Subtotal (# items) $cost</h2>
                 </b>
                 <button class="button yellowbtn">Proceed to checkout</button>
             </div>
@@ -86,15 +124,14 @@
             <p class='cart-item-price'>Price</p>
         </div>
 
-
-        <p class="cart-subtotal">Subtotal (# items) $cost</p>
+        <h2 class="cart-subtotal black-font font-size-2-em">Subtotal (# items) $cost</h2>
 
     </section>
 
     <section class="hide">
         <div class="card-white-bg">
             <b>
-                <p>Subtotal (# items) $cost</p>
+                <h2 class="cart-subtotal black-font font-size-2-em">Subtotal (# items) $cost</h2>
             </b><form action="/checkout/index" method="post">
                 @csrf
             <input type="submit" class="button yellowbtn" value="Proceed to checkout">

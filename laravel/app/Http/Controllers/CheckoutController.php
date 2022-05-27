@@ -17,4 +17,10 @@ class CheckoutController extends Controller
         $user = User::find($id);
         return view('checkout.index', compact('user'));
     }
+    public function referal(){
+
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        return view('checkout.referal', compact('user'));
+    }
 }

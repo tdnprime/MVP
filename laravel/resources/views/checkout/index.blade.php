@@ -56,7 +56,7 @@
                             <input type="submit" class="yellowbtn" value="Place your order">
                         </form>
                         <div>
-                            <p>Order total</p>
+                            <h3 class="text-red">Order total</h3>
                             <p class="one-em-font">By placing your order, you agree to Boxeon's <a href="/terms"
                                     class="one-em-font underline primary-color">Terms of Use</a></p>
                         </div>
@@ -72,9 +72,10 @@
                         @csrf
                         <input type="submit" class="yellowbtn" value="Place your order">
                     </form>
-                    <p class="one-em-font centered">By placing your order, you agree to Boxeon's <a href="/terms"
+                    <p class="one-em-font move-up centered">By placing your order, you agree to Boxeon's <a href="/privacy"
+                        class="one-em-font underline primary-color">Privacy Policy</a> and <a href="/terms"
                             class="one-em-font underline primary-color">Terms of Use</a></p>
-                    <h3>Order summary</h3>
+                    <h3>Order Summary</h3>
                     <div>
                         <div class="two-col-grid">
                             <p>item(s):</p>
@@ -82,19 +83,23 @@
                         </div>
                         <div class="two-col-grid">
                             <p>Shipping & handling:</p>
+                            <div>
                             <p>total</p>
+                            <hr>
+                            </div>
                         </div>
                         <div class="two-col-grid">
                             <p>Total before tax:</p>
                             <p>total</p>
                         </div>
                         <div class="two-col-grid">
-                            <p>Estimated tax to be collected:</p>
+                            <p>Estimated tax:</p>
                             <p>total</p>
                         </div>
+                        <hr>
                         <div class="two-col-grid">
-                            <p>Order total:</p>
-                            <p>total</p>
+                            <h3 class="text-red">Order total:</h3>
+                            <h3 class="text-red">total</h3>
                         </div>
                     </div>
                 </div>

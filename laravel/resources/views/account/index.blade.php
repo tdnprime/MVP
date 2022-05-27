@@ -14,8 +14,9 @@
                 </dialog>
             @endif
             <div id='module'>
-                <h2 class='centered'>Your account</h2>
-                <p class='center centered'>Update shipping address where you receive subscriptions.</p>
+                <h2>Your account</h2>
+                <div class="div-horizontal-rule"></div>
+                <p>Update the shipping address where you receive subscriptions.</p>
                 <form id="account-form" class='form-settings' action='/account/address' method='POST'>
                     @csrf
                     @method('POST')
@@ -310,14 +311,15 @@
                                     <option value='WF' label='Wallis and Futuna'>Wallis and Futuna</option>
                                 </optgroup>
                             </select>
-                            <input name='postal_code' type='text' class='centered' required value=''
+                            <input name='postal_code' type='text' required value=''
                                 placeHolder='Postal code' />
 
-                            <input class='button display-block margin-top-2-em margin-auto w100per' type="submit" value='Update'>
+                            <input class='button display-block margin-top-2-em w100per' type="submit" value='Update'>
                         </div>
                     </div>
                 </form>
-
+                <div class="div-horizontal-rule"></div>
+<a href="#" class="primary-color">Delete account</a>
             </div>
         </aside>
 

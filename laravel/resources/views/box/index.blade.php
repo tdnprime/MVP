@@ -55,7 +55,8 @@
                         </select>
                         <br>
                         <br>
-                        <input type="submit" value="ADD TO CART">
+                        <input type="submit" value="ADD TO CART">&nbsp;&nbsp;
+                        <button class="clearbtn" id="share">SHARE INSTEAD</button>
                     </form>
                 </div>
 

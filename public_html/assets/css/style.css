@@ -18,7 +18,7 @@ Brown skin: #a0616a
     box-sizing: border-box;
     color: #ffffff;
     font-weight: bold;
-    height: 3.5em;
+    height: 52PX;
     letter-spacing: 1px;
     margin-bottom: 1em;
     margin-right: 1em;
@@ -290,13 +290,13 @@ Brown skin: #a0616a
   font-size: 1em;
 }
 
-dialog {}
 
-dialog p {
+
+/* dialog p {
   max-width: 400px;
   min-width: 200px;
   margin: auto;
-}
+} */
 
 #text-step0-label {
   grid-column-start: 1;
@@ -636,12 +636,12 @@ a:visited {
 
 .maxw1036 {
   max-width: 1036px;
-  width: 100;
+  width: 100%;
 
 }
 
 #account-form {
-  max-width: 500px;
+
   width: 100%;
 }
 
@@ -660,14 +660,16 @@ a:visited {
 }
 
 .margin-auto {
-  margin: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block;
 }
 
 
 #cart-main {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: 75% 25% !important;
+  grid-template-columns: 85% 15% !important;
   margin: auto;
   margin-top: 2em;
   min-height: 70em;
@@ -776,6 +778,10 @@ a:visited {
   text-align: center;
 }
 
+.pricing h2 {
+  margin-top: 0;
+}
+
 .pricing-panel {
   display: grid;
   grid-template-columns: auto auto auto auto;
@@ -798,7 +804,7 @@ a:visited {
 
 .pricing {
   width: 250px;
-  height: 350px;
+  height: 300px;
   border: 1px solid #0c86c4;
   padding: 1em;
 }
@@ -813,7 +819,7 @@ a:visited {
 
 #banner {
   max-width: 1036px;
-  height: 300px;
+  height: 275px;
   background-image: url("../images/banner.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -825,7 +831,7 @@ a:visited {
   max-width: 1035px;
 }
 
-#banner-slogan {
+#banner-slogan{
   position: relative;
   top: 0.4em;
 }
@@ -1058,6 +1064,10 @@ audio {
   display: block;
 }
 
+.black-font {
+  color: inherit;
+}
+
 .icon {
   height: 25px;
   width: 25px;
@@ -1074,11 +1084,15 @@ audio {
 
 #m-shop,
 #m-subs,
-#cart-text,
+#cart-count,
 #m-log-in {
   display: none;
 }
 
+#cart-count {
+  color: #B12704;
+  font-weight: bold;
+}
 
 #m-window {
   background-color: #f5f7fa;
@@ -1094,18 +1108,90 @@ audio {
   font-size: 1.2em;
 }
 
-#page-name {
-  font-family: "Concert One";
-  line-height: 1em;
-  //word-break: break-all;
+#dialog-feedback {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  left: auto;
+  z-index: 1;
+  width: 100%;
+  max-width: 482px;
+  display: none;
+
 }
 
-#m-content, #panel {
+#dialog-feedback fieldset {
+
+  border: none;
+}
+
+#dialog-feedback textarea {
+
+  border: none;
+  border-bottom: 4px solid #0c86c4;
+  border-radius: 0;
+}
+
+#dialog-feedback #start label {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1em;
+  padding-left: 2em;
+  padding-left: 2em;
+}
+
+#dialog-feedback #start label:hover {
+  background-color: #0c86c4;
+  color: #fff;
+  cursor: pointer;
+}
+
+.ten-col-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  width: 100%;
+}
+
+.ten-col-grid * {
+  padding: .5%;
+  border: 1px solid #b5daf7;
+  margin-left: .5%;
+  text-align: center;
+}
+
+.ten-col-grid *:hover {
+  background-color: #0c86c4;
+  color: #fff;
+  text-decoration: none;
+}
+
+#text-nps-scale {
+  display: grid;
+  grid-template-columns: auto 65% auto;
+  margin-top: .5em;
+}
+
+#like label, #dislike label, #suggestion label {
+  text-transform: uppercase;
+}
+
+#nps {
+  margin-bottom: 2em;
+}
+
+#start, #like, #dislike, #suggestion {
+  display: none;
+}
+
+#panel {
   height: fit-content;
-  width: fit-content;
+  max-width: 1035px;
+  width: 100%;
   margin: auto;
   margin-top: 4em;
   border-radius: .5em;
+  padding: 3%;
 }
 
 #m-content {
@@ -1400,7 +1486,7 @@ audio {
   margin-bottom: 16px;
   margin-bottom: 0;
 }
-}
+
 
 .stars-grid {
   display: grid;
@@ -1414,6 +1500,17 @@ audio {
 .stars-grid span {
   margin: auto;
 
+}
+
+#feedback {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 0;
+  border-radius: 15px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  height: 50px;
 }
 
 .shop-item img {
@@ -1443,6 +1540,7 @@ audio {
 .cart-banner img {
   max-width: 250px;
   width: 100%;
+  height: 200px;
 }
 
 .cart-banner div {
@@ -1466,9 +1564,18 @@ audio {
 .products-stream {
   width: 55%;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+
   margin-left: auto;
   margin-right: auto;
+}
+
+.products-stream {
+  grid-gap:2%;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.cart-banner {
+  grid-template-columns: 20% 20% 20% 20% 20%;
 }
 
 .subscription-card {
@@ -1481,7 +1588,7 @@ audio {
   width: 100%;
   padding: 2em;
   background-color: #fff;
-  border-bottom: 1px solid #0c86c4;
+  border-bottom: 1px solid #cfe4f4;
 }
 
 .form-cart-item-select {
@@ -1490,7 +1597,7 @@ audio {
 }
 
 .w300px {
-  width: 300px;
+  width: 300px !important;
 }
 
 .w100pr {
@@ -1515,7 +1622,7 @@ audio {
   display: grid;
   grid-template-columns: 50px 300px auto 50px;
   grid-gap: 1em;
-  border-bottom: 1px solid #0c86c4;
+  border-bottom: 1px solid #cfe4f4;
   padding-bottom: 1em;
   padding-top: 1em;
   background-color: #fff;
@@ -1527,10 +1634,15 @@ audio {
   font-weight: bold;
 }
 
+.font-size-3-em {
+  font-size: 3em;
+}
+
 .card-white-bg {
   padding: 1em;
   background-color: #fff;
   margin-bottom: 2em;
+
 }
 
 .alert,
@@ -1704,6 +1816,10 @@ audio {
   font-size: 1.5em;
 }
 
+.font-size-1-5-em {
+  font-size: 1.5em;
+}
+
 .font-size-2-em {
   font-size: 2em;
 }
@@ -1861,7 +1977,6 @@ audio {
 #myDropdown {
   right: 0;
   top: 1em;
-
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -1897,7 +2012,16 @@ audio {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #ddd
+  background-color: #0c86c4;
+  color: #fff;
+  cursor: pointer;
+}
+
+#text-phone {
+  margin-top: .5em;
+  display: block;
+  font-size: 1.5em;
+  font-family: "Concert One";
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
@@ -2060,8 +2184,15 @@ the side navigation*/
   margin: auto;
 }
 
-#as-seen-on {
-  grid-gap: 5%;
+.as-seen-on {
+  padding: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color: #B12704;
+  color: #fff;
+  font-weight: bold;
+  border-radius:.5em;
+  max-width: fit-content !important;
 }
 
 .price-options-grid input {
@@ -2469,6 +2600,8 @@ body {
 
 fieldset {
   border: none;
+  border: 1px solid #cfe4f4;
+  padding: 4% !important;
 }
 
 .fieldset-neuromorph,
@@ -2494,6 +2627,7 @@ footer {
   padding-top: 10em;
   width: 100%;
   margin-bottom: 4em;
+  margin-top: 4em;
 }
 
 #image-raised-fist {
@@ -2585,6 +2719,16 @@ header {
   margin: 0 !important;
 }
 
+.text-red {
+  color: #B12704 !important;
+}
+
+.move-up {
+  position: relative;
+  top: -1.8em;
+  line-height: 16px;
+}
+
 .creator-ego:hover {
   box-shadow: 20px 20px 60px #0c8dc41a, -20px -20px 60px #ffffff;
   opacity: .5;
@@ -2602,7 +2746,7 @@ header {
   margin-bottom: 3em;
   margin-top: 3em;
   max-width: 1035px;
-  width: 80%;
+  width: 100%;
 }
 
 .div-wide-horizontal-rule {
@@ -2680,10 +2824,11 @@ ul {
 #order-summary {
   padding: 4%;
   border-radius: .5em;
+  max-width: 290px;
 }
 
 #order-summary .two-col-grid {
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 80% 20%;
 }
 
 #checkout-main {
@@ -2816,7 +2961,7 @@ option[value=""][disabled] {
 }
 
 .asides p {
-  max-width: 30em;
+  max-width: 35em;
 }
 
 padding-top-6-em {
@@ -2868,10 +3013,10 @@ td, td, ul, P, a, label {
   max-width: 600px;
 }
 
-label {
+/* label {
   float: left;
   clear: both;
-}
+} */
 
 #create-box fieldset {
 

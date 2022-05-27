@@ -106,6 +106,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::prefix('checkout')->group(function () {
         Route::post('/index', 'App\Http\Controllers\CheckoutController@index')->name('checkout.index');
+        Route::get('/referal', 'App\Http\Controllers\CheckoutController@referal')->name('checkout.referal');
         Route::get('/address', 'App\Http\Controllers\LabelsController@showAddress')->name('checkout.address');
         Route::post('/labels', 'App\Http\Controllers\LabelsController@rates')->name('labels.purchase');
         Route::get('/labels/charge', 'App\Http\Controllers\SquareController@charge');

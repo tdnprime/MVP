@@ -83,7 +83,7 @@ label {
 
 input[type="tel"], input[type="number"], input[type="email"], select, textarea, input[type="text"], input[type="url"] {
   background-color: #fff;
-  border: none;
+  border: 1px solid #cfe4f4;
   border-radius: 1em;
   padding: .7em;
   clear: both;
@@ -120,10 +120,10 @@ input[type="submit"], .button, button {
   width:200px;
   text-align: center;
   cursor: pointer;
+  font-size: 14px;
   font-weight: bold;
-  height: 3.5em;
-  max-height: 49px;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
+  height: 52px;
   margin-bottom: 1em;
   outline: none;
   padding: .8em 1.5em .8em 1.5em;
@@ -155,11 +155,7 @@ input[type="submit"]:hover, .button:hover, button:active:hover {
   padding-left: 2em;
 }
 
-.masthead-forms {
-  padding: 2em;
-  width: fit-content;
-  height: fit-content;
-}
+
 
 .masthead-forms form {
   margin-top: 1.5em;
@@ -192,8 +188,8 @@ input[type="submit"]:hover, .button:hover, button:active:hover {
 }
 
 .col-75 {
-  margin:auto;
-  width: 75%;
+
+  width: 100%;
   margin-top: 6px;
 }
 

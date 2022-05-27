@@ -7,8 +7,8 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     @include('includes.meta')
-    <link href="../assets/css/square.css" rel="stylesheet" />
-    <script type="text/javascript" src="{{ asset('../assets/js/square.js') }}"></script>
+   <!-- <link href="../assets/css/square.css" rel="stylesheet" />!-->
+   <script type="text/javascript" src="{{ asset('../assets/js/square.js') }}"></script>
     <script defer type="text/javascript" src="https://web.squarecdn.com/v1/square.js"></script>
 </head>
 
@@ -20,8 +20,8 @@
     <a id='logo' href="/cart/index" title='Boxeon'>
         <img id='logo' src='{{ asset('../assets/images/logo.svg') }}' alt='logo' />
         </a>
-        <div><p class="font-size-2-em">Checkout (# items)</p></div>
-        <div class="material-icons">lock</div>
+        <div><p class="font-size-2-em">Checkout (<a class="one-em-font primary-color" href="/cart/index"># items)</a></p></div>
+        <a href="/privacy"><div class="material-icons">lock</div></a>
 </div></div>
     @yield('content')
 </div>

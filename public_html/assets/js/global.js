@@ -1213,44 +1213,7 @@ window.onload = function () {
     });
   }
 
-  if (document.getElementById('create-box')) {
-    var opts = {
-      className: "step step-incomplete",
-      length: 3,
-      label1: "Details",
-      label2: "Embed video",
-      label3: "Publish"
-    }
-    document.getElementById("prepend").prepend(Boxeon.createStepsLeft(opts));
 
-    var el = "h2";
-    var options = {
-      msg: "1. Details",
-      className: "primary-color centered"
-    }
-    document.getElementById("create-box").prepend(Boxeon.createElem(el, options));
-    // create box form
-    var preOrder = document.getElementById("pre-order");
-    preOrder.addEventListener("change", function () {
-      if (this.value == 1) {
-        var specialOffer = document.getElementById("special-offer");
-        specialOffer.style.display = "grid";
-        var specialOffer = document.getElementsByClassName("special-offer");
-        specialOffer[0].style.display = "block";
-        // specialOffer[1].style.display = "block";
-        specialOffer[0].removeAttribute("disabled");
-      } else if (this.value == 0) {
-        var specialOffer = document.getElementById("special-offer");
-        specialOffer.style.display = "none";
-        var specialOffer = document.getElementsByClassName("special-offer");
-        specialOffer[0].style.display = "none";
-        //specialOffer[1].style.display = "none";
-        specialOffer[0].setAttribute("disabled", "disabled");
-      }
-
-    });
-
-  }
 
   // Google Analytics
 

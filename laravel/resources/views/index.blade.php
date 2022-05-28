@@ -20,28 +20,28 @@
                                 <h2>$22/month</h2>
                                 <span class='parens'>(billed monthly)</span>
                                 <p>Committing to 1 month </p>
-                                <button class="button">GET YOUR BOX</button>
+                                <a href="/box/create" class="button">BUILD YOUR BOX</a>
                             </div>
                             <div class="pricing">
                                 <div class='plans-pricing-header'><span class='plan-header-text'>3 month plan</span></div>
                                 <h2>$22/month</h2>
                                 <span class='parens'>(billed monthly)</span>
                                 <p>Committing to 3 months <br></p>
-                                <button class="button">GET YOUR BOX</button>
+                                <a href="/box/create" class="button">BUILD YOUR BOX</a>
                             </div>
                             <div class="pricing">
                                 <div class='plans-pricing-header'><span class='plan-header-text'>6 month plan</span></div>
                                 <h2>$21/month</h2>
                                 <span class='parens'>(billed monthly)</span>
                                 <p>Committing to 6 months <br></p>
-                                <button class="button">GET YOUR BOX</button>
+                                <a href="/box/create" class="button">BUILD YOUR BOX</a>
                             </div>
                             <div class="pricing">
                                 <div class='plans-pricing-header'><span class='plan-header-text'>12 month plan</span></div>
                                 <h2>$20/month</h2>
                                 <span class='parens'>(billed monthly)</span>
                                 <p>Committing to 12 months</p>
-                                <button class="button">GET YOUR BOX</button>
+                                <a href="/box/create" class="button">BUILD YOUR BOX</a>
                             </div>
                         </div>
             </div>
@@ -53,21 +53,21 @@
                         <h2>$45</h2>
                         <p>Billed every 3 months at $45 </p>
                         <p>Committing to 3 months </p>
-                        <button class="button">GET YOUR BOX</button>
+                        <a href="/box/create" class="button">BUILD YOUR BOX</a>
                     </div>
                     <div class="pricing">
                         <div class='plans-pricing-header'><span class='plan-header-text'>6 month plan</span></div>
                         <h2>$84</h2>
                         <p>Billed every 6 months at $84</p>
                         <p>Committing to 6 months</p>
-                        <button class="button">GET YOUR BOX</button>
+                        <a href="/box/create" class="button">BUILD YOUR BOX</a>
                     </div>
                     <div class="pricing">
                         <div class='plans-pricing-header'><span class='plan-header-text'>12 month plan</span></div>
                         <h2>$156</h2>
                         <p>Billed every 6 months at $156</p>
                         <p>Committing to 12 months</p>
-                        <button class="button">GET YOUR BOX</button>
+                        <a href="/box/create" class="button">BUILD YOUR BOX</a>
                     </div>
                 </div>
             </div>

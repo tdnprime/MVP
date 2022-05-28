@@ -1565,14 +1565,19 @@ audio {
 .products-stream {
   width: 55%;
   display: grid;
-
   margin-left: auto;
   margin-right: auto;
 }
-
+.products-stream button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
 .products-stream {
+  max-width:1035px;
+  width:100%;
   grid-gap:2%;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 32% 32% 32%;
 }
 
 .cart-banner {

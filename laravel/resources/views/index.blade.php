@@ -78,7 +78,7 @@
                 <img src="../assets/images/creator.png" alt='Rock' />
                 <div class="secinner">
                     <h2 class="white">Hey Creators!</h2>
-                    <p class="w600 white">If you'd like to promote a box, make us an offer.</p>
+                    <p class="w600 white">If you'd like to promote our brand, make us an offer.</p>
                 <br>
                     <a href="/apply" class="button clearbtn">MAKE OFFER</a>
                 </div>
@@ -90,7 +90,7 @@
                 <div class="div-limited-editions-panel two-col-grid">
                     <img src="../assets/images/medium-product-img.png" alt='products' />
                     <div>
-                        <h2>Limited Box: Africa to the world</h2>
+                        <h2>Organic African Superfood box</h2>
                         <p>Enjoy organic African superfoods and products, repatriate your dollars,
                             build trade, and spark an industrial revolution. This box consist of daily essential
                             products seen on the Wode Maya and Vanessa Kanbi YouTube channels.
@@ -102,20 +102,18 @@
                 <div class="div-limited-editions-panel two-col-grid">
                     <img class="flip-right" src="../assets/images/medium-product-img.png" alt='products' />
                     <div class="flip-left">
-                        <h2>Limited Box: Ghana Beyond Aid</h2>
-                        <p>Savor Ghana's distinct chocolate flavors, and support Nana Akufo Ado's push to
-                            make Ghana a chocolate exporter.</p>
-                        <a href="/box/ghana" class='button'>SHOP THE BOX</a>
+                        <h2>African Child Skincare Kit</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <a href="/box/ghana" class='button'>GET IT HERE!</a>
                     </div>
                 </div>
                 <div class="div-limited-editions-panel two-col-grid">
                     <img src="../assets/images/medium-product-img.png" alt='products' />
                     <div>
-                        <h2>Limited Box: Caribbean Seafood</h2>
-                        <p>Lorem ipsum. Savor Ghana's distinct chocolate flavors, and support Nana Akufo Ado's push to make
-                            Ghana a chocolate exporter.
+                        <h2>Traditional African Body Routine box</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
-                        <a href="/box/seafood" class='button'>GET IT HERE!</a>
+                        <a href="/box/seafood" class='button'>SHOP THE BOX</a>
                     </div>
                 </div>
             </div>

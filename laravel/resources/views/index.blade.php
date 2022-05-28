@@ -5,7 +5,7 @@
         <div id="banner" class="center"></div>
         <aside class="centered asides call-out">
             <h2 class="font-size-3-em">Develop Africa without leaving your couch</h2>
-            <p class="centered center font-1-5-em">An effortless, simple way to build Africa. We’ll send you 7 daily essential products manufactured in Africa to help spark industrial revolutions on the continent. It’s really that easy, we promise.</p>
+            <p class="centered center font-1-5-em">An effortless, simple way to build Africa. We’ll send your choice of 7 products manufactured in Africa to help spark industrial revolutions on the continent. It’s really that easy, we promise.</p>
         </aside>
         <br><br>
     </div>
@@ -46,7 +46,9 @@
                         </div>
             </div>
             <div class="module">
+                <br>
                 <h2 class='centered'>Prepaid Plans</h2>
+
                 <div class="pricing-panel-prepaid">
                     <div class="pricing">
                         <div class='plans-pricing-header'><span class='plan-header-text'>3 month plan</span></div>

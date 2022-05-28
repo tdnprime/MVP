@@ -103,7 +103,7 @@
 
             <div>
                 <div>
-                    <h3>Africa to the world</h3>
+                    <h3>3-month Reliable Develop Africa Subscription</h3>
                     <p class="stock">In stock</p>
                 </div>
                 <div class="cart-item-updater">

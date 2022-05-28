@@ -21,14 +21,7 @@
                 <a class="one-em-font" href="/shop/item?id=productID">
                     <h3 class="product-name">Product name</h3>
                 </a>
-                  <form action="/cart" method="post">
-                    @csrf
-                    <select class="margin-top-zero">
-                        <option selected>Choose price</option>
-                        <option>$22/month - billed monthly for 1 month</option>
-                    </select>
-                    <input type="submit" value="ADD TO CART">
-                </form>
+                <p class="price-tag">$15</p>
             </div>
             <div>
                 <img src="../assets/images/product.png">
@@ -52,14 +45,7 @@
                 <a class="one-em-font" href="/shop/item?id=productID">
                     <h3 class="product-name">Product name</h3>
                 </a>
-                  <form action="/cart" method="post">
-                    @csrf
-                    <select class="margin-top-zero">
-                        <option selected>Choose price</option>
-                        <option>$22/month - billed monthly for 1 month</option>
-                    </select>
-                    <input type="submit" value="ADD TO CART">
-                </form>
+                <p class="price-tag">$15</p>
             </div>
             <div>
                 <img src="../assets/images/product.png">
@@ -81,14 +67,7 @@
                 <a class="one-em-font" href="/shop/item?id=productID">
                     <h3 class="product-name">Product name</h3>
                 </a>
-                  <form action="/cart" method="post">
-                    @csrf
-                    <select class="margin-top-zero">
-                        <option selected>Choose price</option>
-                        <option>$22/month - billed monthly for 1 month</option>
-                    </select>
-                    <input type="submit" value="ADD TO CART">
-                </form>
+                <p class="price-tag">$15</p>
             </div>
             <div>
                 <img src="../assets/images/product.png">
@@ -112,14 +91,7 @@
                 <a class="one-em-font" href="/shop/item?id=productID">
                     <h3 class="product-name">Product name</h3>
                 </a>
-                  <form action="/cart" method="post">
-                    @csrf
-                    <select class="margin-top-zero">
-                        <option selected>Choose price</option>
-                        <option>$22/month - billed monthly for 1 month</option>
-                    </select>
-                    <input type="submit" value="ADD TO CART">
-                </form>
+                <p class="price-tag">$15</p>
             </div>
             <div>
                 <img src="../assets/images/product.png">
@@ -144,14 +116,7 @@
                 <a class="one-em-font" href="/shop/item?id=productID">
                     <h3 class="product-name">Product name</h3>
                 </a>
-                  <form action="/cart" method="post">
-                    @csrf
-                    <select class="margin-top-zero">
-                        <option selected>Choose price</option>
-                        <option>$22/month - billed monthly for 1 month</option>
-                    </select>
-                    <input type="submit" value="ADD TO CART">
-                </form>
+                <p class="price-tag">$15</p>
             </div>
             <div>
                 <img src="../assets/images/product.png">
@@ -160,6 +125,6 @@
         </div>
 
     </div>
-
+    
     <span></span>
 </main>

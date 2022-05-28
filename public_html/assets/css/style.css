@@ -809,12 +809,13 @@ a:visited {
   padding: 1em;
 }
 
-#category-banner {
-  width: 1900px;
-  height: 400px;
+#div-banner-blank {
+  max-width: 1036px;
+  height: 275px;
   background-image: url("../images/banner.png");
   background-size: cover;
   background-repeat: no-repeat;
+  color: #fff;
 }
 
 #banner {

@@ -1,5 +1,5 @@
 <section class='section maxw1036'>
-    <div id="banner">
+    <div id="div-banner-blank">
         <h1 id="banner-slogan" class="centered ginormous">Shop and build</h1>
     </div>
 </section>

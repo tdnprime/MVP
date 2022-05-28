@@ -5,7 +5,7 @@
     <main>
 
         <section class='section maxw1036'>
-            <div id="banner">
+            <div id="div-banner-blank">
                 <h1 id="banner-slogan" class="centered ginormous">Sky's the limit</h1>
             </div>
             <div class="pitch">

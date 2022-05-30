@@ -10,9 +10,9 @@
             </div>
             <div class="pitch">
                 <aside class="asides">
-                    <h1 class="text-3em">We're a Pan-African cadre with an acute desire to spark industrial
-                        revolutions. In service of such, we've created Boxeon to skyrocket the consumption of products
-                        manufactured in Africa.</h1>
+                    <h1 class="text-3em">We're an international cadre with an acute desire to spark industrial
+                        revolutions in the Global South. In service of this, we've created Boxeon to skyrocket the diaspora's consumption of products
+                        manufactured in the South. Join this historic endevour.</h1>
                 </aside>
             </div>
             <h1 id="banner-slogan" class="centered ginormous primary-color">The Team</h1>

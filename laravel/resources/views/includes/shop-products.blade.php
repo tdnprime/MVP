@@ -5,7 +5,7 @@
 </section>
 <main>
     <span></span>
-    <div>
+    <div class="container">
 
         <aside class="asides">
             <h1 class="extra-large-font darkblue">As seen on Wode Maya</h1>
@@ -125,6 +125,5 @@
         </div>
 
     </div>
-    
     <span></span>
 </main>

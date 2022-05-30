@@ -15,7 +15,7 @@
                     labore et dolore magna aliqua.</p>
                 <br>
             </aside>
-            <div class='products-stream'>
+            <div class='products-stream margin-bottom-4-em'>
                 <div>
                     <a href="/shop/item?id=productID"><img src="../assets/images/product.png"></a>
                     <p class="as-seen-on center centered">As seen on Wode Maya</p>
@@ -43,7 +43,7 @@
                 </div>
             </div>
     
-    
+           
             <aside class="asides">
                 <h1 class="extra-large-font darkblue">Cosmetics</h1>
                 <p class="centered center font-1-5-em">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -51,7 +51,7 @@
                     labore et dolore magna aliqua.</p>
                 <br>
             </aside>
-            <div class='products-stream'>
+            <div class='products-stream  margin-bottom-4-em'>
                 <div>
                     <a href="/shop/item?id=productID"><img src="../assets/images/product.png"></a>
     
@@ -73,7 +73,7 @@
                     labore et dolore magna aliqua.</p>
                 <br>
             </aside>
-            <div class='products-stream'>
+            <div class='products-stream  margin-bottom-4-em'>
                 <div>
                     <a href="/shop/item?id=productID"><img src="../assets/images/product.png"></a>
     
@@ -97,7 +97,7 @@
                     labore et dolore magna aliqua.</p>
                 <br>
             </aside>
-            <div class='products-stream'>
+            <div class='products-stream  margin-bottom-4-em'>
                 <div>
                     <a href="/shop/item?id=productID"><img src="../assets/images/product.png"></a>
     

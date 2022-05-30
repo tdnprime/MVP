@@ -5,20 +5,20 @@
         <div id="banner" class="center"></div>
         <aside class="centered asides call-out">
             <h2 class="font-size-3-em">Develop Africa without leaving your couch</h2>
-            <p class="centered center font-1-5-em">An effortless, simple way to build Africa. We’ll send your choice of 7 products manufactured in Africa to help spark industrial revolutions on the continent. It’s really that easy, we promise.</p>
+            <p class="centered center font-1-5-em">An effortless, simple way to build Africa. We’ll send your choice of 7 products produced in Africa to help you spark industrial revolutions on the continent. It’s really that easy, we promise.</p>
         </aside>
         <br><br>
     </div>
     <main id='margin-top-45-em'> <a id='whatis' href='#whatis'></a>
         <section class="section margin-bottom-4-em">
             <div class="module">
-                <h2 class='centered'>Choose your subscription:<h2>
-                        <h2 class='centered'>Monthly Billing</h2>
+                <h2 class='centered'>Subscribe and save:<h2>
+                        <h2 class='black-font centered'>Save 60% with automatic deliveries</h2><br>
                         <div class=" pricing-panel">
                             <div class="pricing">
                                 <div class='plans-pricing-header'><span class='plan-header-text'>monthly plan</span></div>
                                 <h2>$22/month</h2>
-                                <span class='parens'>(billed monthly)</span>
+                                <span class='parens'>(billed for 1 month)</span>
                                 <p>Committing to 1 month </p>
                                 <a href="/box/create" class="button">BUILD YOUR BOX</a>
                             </div>
@@ -36,7 +36,7 @@
                                 <p>Committing to 6 months <br></p>
                                 <a href="/box/create" class="button">BUILD YOUR BOX</a>
                             </div>
-                            <div class="pricing">
+                            <div class="pricing hide">
                                 <div class='plans-pricing-header'><span class='plan-header-text'>12 month plan</span></div>
                                 <h2>$20/month</h2>
                                 <span class='parens'>(billed monthly)</span>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
             </div>
-            <div class="module">
+            <div class="module hide">
                 <br>
                 <h2 class='centered'>Prepaid Plans</h2>
 
@@ -130,7 +130,7 @@
                     target="_blank"><img class="creator-ego" src="../assets/images/african-tigress.png" alt="Allie" /></a>
                 <a class="center" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"
                     target="_blank"><img class="creator-ego" src="../assets/images/vanessa-kanbi.png" alt="Allie" /></a>
-                <a class="center" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"
+                <a class="center hide" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"
                     target="_blank"><img class="creator-ego" src="../assets/images/miss-trudy.png" alt="Allie" /></a>
             </div>
         </section>

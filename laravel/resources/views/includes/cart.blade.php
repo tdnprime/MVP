@@ -2,7 +2,7 @@
 
     <section class="cart-section">
        
-        <div class="cart-banner">
+        <div class="cart-banner hide">
              
             <div>
                 <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>

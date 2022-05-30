@@ -12,8 +12,8 @@
     <main id='margin-top-45-em'> <a id='whatis' href='#whatis'></a>
         <section class="section margin-bottom-4-em">
             <div class="module">
-                <h2 class='centered'>Subscribe and save:<h2>
-                        <h2 class='black-font centered'>Save 60% with automatic deliveries</h2><br>
+    
+                        <h2 class='black-font centered'>Subscribe & save 60% with <br>automatic deliveries</h2><br>
                         <div class=" pricing-panel">
                             <div class="pricing">
                                 <div class='plans-pricing-header'><span class='plan-header-text'>monthly plan</span></div>

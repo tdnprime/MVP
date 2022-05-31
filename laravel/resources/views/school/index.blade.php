@@ -1,182 +1,80 @@
-@extends('layouts.home')
-@section('title', 'Boxeon | Learn')
-
+@extends('layouts.about')
+@section('title', 'Boxeon.com About Subscriptions')
 @section('content')
-    <main class='fadein' id="podcast">
-        <section>
 
-            <div class='grid-gap margin-bottom-10-em'>
-                <img class='w300' src='../assets/images/{{$article[0]->img}}' alt='Youtube creator'>
-              
-                <div class='display-grid'>
-                    <span></span>
-
-                    <div>
-                        <h1 class='w300'>{{$article[0]->title}}</h1>
-                        <audio controls>
-                            <source src="horse.ogg" type="audio/ogg">
-                            <source src="horse.mp3" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                          </audio>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class='grid-gap margin-bottom-10-em'>
-                <img class='w300' src='../assets/images/{{$article[1]->img}}' alt='Youtube creator'>
-                <div class='display-grid'>
-                    <span></span>
-
-                   <div>
-
-                        <h1 class='w300'>{{$article[1]->title}}</h1>
-                        <audio controls>
-                            <source src="horse.ogg" type="audio/ogg">
-                            <source src="horse.mp3" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                          </audio>
-                   </div>
-                </div>
-            </div>
-        </section>
-
-        <aside id='panel'>
+    <main>
 
 
-            <div class='grid-gap margin-bottom-10-em'>
-                <img class='w600' src='../assets/images/{{$article[2]->img}}' alt='Youtube creator'>
-                <div class='display-grid'>
-                    <span></span>
+        <section class='section maxw1036'>
+            <h1 class='extra-large-font centered darkblue'>Returns</h1>
+            <p>
+                When you return an item, your refund amount and refund method may vary. Check the payment method refunded
+                and the status of your refund in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a>.</p>
 
-                    <div>
+<h2>Where is my refund? </h2>
+            <p>Check the status of your refund in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a></p>
 
-                        <h2 class='w600'>{{$article[2]->title}}</h2>
-                        <audio  class='w600' controls>
-                            <source src="horse.ogg" type="audio/ogg">
-                            <source src="horse.mp3" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                          </audio>
-                    </div>
-                </div>
-            </div>
+            <h2>How Long Do Refunds Take? </h2>
+            <p>When returning an item, you have the option to choose your preferred refund method in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a>.</p>
 
-            <br>
+            <p>After the carrier receives your item, it can take up to two weeks for us to receive and process your return.
+                We typically process returns within 3-5 business days after the carrier delivers the item to our Returns
+                Center. When we complete processing your return, we issue a refund to the selected payment method.</p>
 
-            <div class='two-col-grid grid-gap margin-bottom-10-em'>
-                <img class='w300' src='../assets/images/{{$article[3]->img}}' alt='Youtube creator'>
-                <div class='display-grid'>
-                    <span></span>
-
-                    <div>
-
-                        <h1 class='w300'>{{$article[3]->title}}</h1>
-                        <audio controls>
-                            <source src="horse.ogg" type="audio/ogg">
-                            <source src="horse.mp3" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                          </audio>
-                    </div>
-                </div>
-            </div>
-
-            <div class=' two-col-grid grid-gap margin-bottom-10-em'>
-                <div class='display-grid'>
-                    <span></span>
-
-                    <div>
-
-                        <h1 class='w300'>{{$article[4]->title}}</h1>
-                        <audio controls>
-                            <source src="horse.ogg" type="audio/ogg">
-                            <source src="horse.mp3" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                          </audio>
-                    </div>
-                </div>
-                    <img class='w300' src='../assets/images/{{$article[4]->img}}' alt='Youtube creator'>
-
-                
-            </div>
-            <div class='two-col-grid grid-gap margin-bottom-10-em'>
-                <img class='w300' src='../assets/images/{{$article[5]->img}}' alt='Youtube creator'>
-                <div class='display-grid'>
-                    <span></span>
-                    <div>
-                        <h1 class='w300'>{{$article[5]->title}}</h1>
-                        <audio controls>
-                            <source src="horse.ogg" type="audio/ogg">
-                            <source src="horse.mp3" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                          </audio>
-                    </div>
-                </div>
-            </div>
+            <h2>Refund Times</h2>
+            <p>Once we issue your refund, it takes additional time for your financial institution to make funds available in
+                your account. Refer to following table for more details.</p>
 
 
-            <div class='two-col-grid grid-gap margin-bottom-10-em'>
-                <div class='display-grid'>
-                    <span></span>
-                    <div>
-                        <h1 class='w300'>{{$article[6]->title}}</h1>
-                        <audio controls>
-                            <source src="horse.ogg" type="audio/ogg">
-                            <source src="horse.mp3" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                          </audio>
-                    </div>
-                </div>
-                    <img class='w300' src='../assets/images/{{$article[6]->img}}' alt='Youtube creator'>
-            </div>
+            <table>
+                <tr>
+                    <th>Refund Method</th>
+                    <th>Refund Time (After Refund Is Processed)</th>
+                </tr>
+                <tr>
+                    <td>Credit card</td>
+                    <td>Three to five business days</td>
+                </tr>
+                <tr>
+                    <td>Debit card</td>
+                    <td>Up to 10 business days</td>
+                </tr>
+                <tr>
+                    <td>Checking account</td>
+                    <td>Up to 10 business days</td>
+                </tr>
+                <tr>
+                    <td>SNAP EBT card</td>
+                    <td>Up to 10 business days</td>
+                </tr>
+                <tr>
+                    <td>Promotional Certificate</td>
+                    <td>No refund issued</td>
+                </tr>
+                <tr>
+                    <td>Pay in Cash (at a participating location)</td>
+                    <td>Up to 10 business days</td>
+                </tr>
+                <tr>
+                    <td>Pre-paid credit card</td>
+                    <td>Up to 30 days (depending on the issuer of the card)</td>
+                </tr>
+            </table>
+            <h2>Partial Refunds or Restocking Fees</h2>
+            <table>
+                <tr>
+                    <th> Item</th>
+                    <th>Refund</th>
+                </tr>
 
-
-        </aside>
-        <section id="right-aside">
-            <div class='grid-gap margin-bottom-10-em'>
-                <img class='w300' src='../assets/images/{{$article[7]->img}}' alt='Youtube creator'>
-                <div class='display-grid'>
-                    <span></span>
-                    <div>
-                        <h1 class='w300'>{{$article[7]->title}}</h1>
-                        <audio controls>
-                            <source src="horse.ogg" type="audio/ogg">
-                            <source src="horse.mp3" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                          </audio>
-                    </div>
-                </div>
-            </div>
-
-                <div class='grid-gap margin-bottom-10-em'>
-                    <img class='w300' src='../assets/images/{{$article[8]->img}}' alt='Youtube creator'>
-                    <div class='display-grid'>
-                        <span></span>
-                        <div>
-                            <h1 class='w300'>{{$article[8]->title}}</h1>
-                            <audio controls>
-                                <source src="horse.ogg" type="audio/ogg">
-                                <source src="horse.mp3" type="audio/mpeg">
-                              Your browser does not support the audio element.
-                              </audio>
-                        </div>
-                    </div>
-                </div>
+                <tr>
+                    <td> Items in original condition past the return window*</td>
+                    <td>80% of item price</td>
+                </tr>
+            </table>
+            <p>*For most items, the return window is 30 days after delivery. To check the return window for an item you've ordered, go to <a class="one-em-font primary-color" href="/home/index">Subscriptions</a> and select Return or Replace Items.</p>
         </section>
 
     </main>
-    <span class='display-block margin-bottom-10-em'></span>
-    
-    <h2 class="centered">How it works</h2>
-    <div id="how-it-works" class="four-col-grid">
-      <div> <img src="../assets/images/computer.svg" alt="Computer"/> <h2>Survey fans</h2></div>
-      <div> <img src="../assets/images/box.svg" alt="Box"/> <h2>Create box</h2></div>
-      <div> <img src="../assets/images/camera.svg" alt="Camera"/> <h2>Share box</h2></div>
-      <div> <img src="../assets/images/growth.svg" alt="Growth"/> <h2>Earn</h2></div>
-    </div>
-    <section class='section'> <br>
-      <div class="centered margin-bottom-10-em">
-        <h1 class="extra-large-font darkblue">It's that simple</h1>
-        <br>
-        <a class="button" href="{{ url('auth/google') }}"> Apply now </a> </div>
-    </section>
+
 @endsection

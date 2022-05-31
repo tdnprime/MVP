@@ -41,7 +41,7 @@ Route::get('/search/creator', 'App\Http\Controllers\SearchController@creator')->
 #SCHOOL
 Route::prefix('school')->group(function () {
 
-    Route::get('/home', 'App\Http\Controllers\SchoolController@index')->name('school.index');
+    Route::get('/subscriptions', 'App\Http\Controllers\SchoolController@index')->name('school.index');
     Route::get('/article/{article}', 'App\Http\Controllers\SchoolController@article')->name('school.article');
 
 });

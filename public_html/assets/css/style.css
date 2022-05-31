@@ -1748,7 +1748,7 @@ audio {
 }
 
 .clearbtn {
-  background-color: #f5f7fa !important;
+  background-color: #fff !important;
   color: #0c8dc4 !important;
   border: 1px solid #b5daf7 !important;
 }
@@ -1775,6 +1775,7 @@ audio {
   position: relative;
   top: .4em;
 }
+
 
 .extra-large-font, h2 {
   font-size: 2.5em;
@@ -2406,8 +2407,8 @@ the side navigation*/
 .wide {
   width: 100%;
   background-color: #005ea6;
-  background-image: url("../images/widebg.png");
-  background-size: cover;
+  background-image: url("../images/widebg.png"), url("../images/widebg.png");
+  background-repeat: no-repeat;
   margin-top: 2em;
   margin-bottom: 2em;
 
@@ -2452,7 +2453,7 @@ the side navigation*/
 .new-section-inner-grid {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: auto 25% 25% auto;
+  grid-template-columns: auto 5% 36% auto;
   align-items: center;
   position: relative;
 
@@ -2461,6 +2462,12 @@ the side navigation*/
 .wide img {
   margin-top: 0;
   margin-bottom: 0;
+  width:75px;
+  -ms-transform: scaleX(-1) rotate(-35deg);
+  /* IE 9 */
+  -webkit-transform: scaleX(-1) rotate(-35deg);
+  /* Chrome, Safari, Opera */
+  transform: scaleX(-1) rotate(-35deg);
 
 }
 
@@ -2592,6 +2599,12 @@ a:active {
 a:hover {
   text-decoration: underline;
 }
+
+.learn-more:hover {
+  text-decoration: none;
+ 
+}
+
 
 body {
   background-color: #f5f7fa;

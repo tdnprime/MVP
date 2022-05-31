@@ -100,10 +100,10 @@ class HomeController extends Controller
             ->join('users', 'users.id', '=', 'subscriptions.creator_id')
             ->where('subscriptions.creator_id', '=', $user->id)
             ->where('sub_id', '<>', null)
-            ->select('users.family_name', 'users.given_name', 
-            'users.profile_photo_path', 'subscriptions.*', 
-            'subscriptions.price', 'subscriptions.frequency', 
-            'subscriptions.admin_area_1', 'subscriptions.country_code')
+            ->select('users.family_name', 'users.given_name',
+                'users.profile_photo_path', 'subscriptions.*',
+                'subscriptions.price', 'subscriptions.frequency',
+                'subscriptions.admin_area_1', 'subscriptions.country_code')
             ->get();
 
         return view('home.index', compact('user'))
@@ -113,10 +113,13 @@ class HomeController extends Controller
 
     public function partner()
     {
+
+     
+        dd($_SERVER);
+
         $user = Auth::user();
 
         return view('apply.index', compact('user'));
     }
-
 
 }

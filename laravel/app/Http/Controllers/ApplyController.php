@@ -12,6 +12,7 @@ class ApplyController extends Controller
     public function apply(Request $request)
     {
 
+
         $partner = new Partner();
         $partner->name = $request['name'];
         $partner->phone = $request['phone'];

@@ -6,7 +6,29 @@
         <div id="">
             <section id="checkout-content" class="margin-top-6-em max-width-1035 three-rows-grid">
                 <div class="step-wrapper">
-                    <h3>1.&nbsp;&nbsp;&nbsp;Shipping address</h3>
+                    <div>
+                        <h3>1.&nbsp;&nbsp;&nbsp;Apply coupon code</h3>
+                    </div>
+                    <div id="payment-method">
+                        <form action='/checkout/coupon' method='post'>
+                            @csrf
+                            @method('POST')
+                            <div class="row">
+                                <div class="col-75">
+                                    <input type="text" name="coupon" placeholder="Coupon code">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-75">
+                                    <input type='submit' value='Apply'>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="step-wrapper">
+                    <h3>2.&nbsp;&nbsp;&nbsp;Shipping address</h3>
                     <div>
                         <form action='/checkout/address' method='post'>
                             @csrf
@@ -27,7 +49,7 @@
                 </div>
                 <div class="step-wrapper">
                     <div>
-                        <h3>2.&nbsp;&nbsp;&nbsp;Payment method</h3>
+                        <h3>3.&nbsp;&nbsp;&nbsp;Payment method</h3>
                     </div>
                     <div id="payment-method">
                         <form action='/checkout/address' method='post'>
@@ -47,6 +69,7 @@
                     </div>
                     <div></div>
                 </div>
+   
                 <div class="step-wrapper">
                     <div class="two-col-grid">
 

@@ -13,7 +13,7 @@
         <section class="section margin-bottom-4-em">
             <div class="module">
     
-                        <h2 class='black-font centered'>Subscribe & save 60% with <br>automatic deliveries</h2><br>
+                        <h2 class='centered'>Subscribe to save <br>15% with automatic deliveries</h2><br>
                         <div class=" pricing-panel">
                             <div class="pricing">
                                 <div class='plans-pricing-header'><span class='plan-header-text'>monthly plan</span></div>
@@ -77,12 +77,9 @@
         <section class="wide section padding-top-6-em">
             <div class="new-section-inner-grid">
                 <span class="hide"></span>
-                <img src="../assets/images/creator.png" alt='Rock' />
+                <img src="../assets/images/mouse.svg" alt='Mouse' />
                 <div class="secinner">
-                    <h2 class="white">Hey Creators!</h2>
-                    <p class="w600 white">If you'd like to promote our brand, make us an offer.</p>
-                <br>
-                    <a href="/apply" class="button clearbtn">MAKE OFFER</a>
+                    <a href="/school" class="learn-more"><h2 class="white">Learn more about Boxeon subscriptions<span class="material-icons">navigate_next</span></h2></a>
                 </div>
                 <span class="hide"></span>
             </div>

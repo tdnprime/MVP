@@ -109,6 +109,20 @@
             <div class="div-wide-horizontal-rule center"></div>
 
             <button class="button center">WRITE A REVIEW</button>
+            <form action='/review/submit' method='post'>
+                @csrf
+                @method('POST')
+                <div class="row">
+                    <div class="col-75">
+                      <textarea name="review" placeholder="Write a review"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-75">
+                        <input type='submit' value='Submit review'>
+                    </div>
+                </div>
+            </form>
         </section>
 
     </div>

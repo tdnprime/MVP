@@ -147,8 +147,6 @@ class HomeController extends Controller
     public function partner()
     {
 
-        dd($_SERVER);
-
         $user = Auth::user();
 
         return view('apply.index', compact('user'));

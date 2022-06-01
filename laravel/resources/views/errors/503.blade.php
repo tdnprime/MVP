@@ -7,9 +7,14 @@
 
 <body id='index'>
 
-    <div id='container' class="display-block">
+    <div id='container' class="{{$celebrate}} display-block">
+        @if (session()->has('message'))
+            <dialog class="alert">
+                <p class='centered'> {{ session()->get('message') }}</p>
+            </dialog>
+        @endif
         <div id='masthead'>
-        
+
             <div id="banner" class="center"></div>
             <aside class="centered asides call-out">
                 <h2 class="font-size-3-em">Develop Africa without leaving your couch</h2>
@@ -30,7 +35,7 @@
                     <span class="503-hide"></span>
                     <img class="hide" src="../assets/images/mouse.svg" alt='Mouse' />
                     <div>
-                        <form id="mailing-list-form" action="pmf/email" method="post">
+                        <form id="mailing-list-form" action="/pmf/email" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-75 two-col-grid">

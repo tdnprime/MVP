@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+Route::post('/pmf/email', 'App\Http\Controllers\HomeController@waiting')->name('waiting');
+
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('index');
 //Handle Laravel logout
 Route::get('/out', 'App\Http\Controllers\LogoutController@perform')->name('logout.perform');

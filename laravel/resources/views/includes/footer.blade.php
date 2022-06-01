@@ -3,10 +3,10 @@
     <div id="footer-content-wrapper"> <a>&copy; {{ date('Y') }} Boxeon LLC.&nbsp;&nbsp;&nbsp;<span
                 class="display-inline">Made For The Diaspora&nbsp;<img class="display-inline" src="../assets/images/heart.svg"
                     alt="Heart"></span></span></a>
-        <a href="/terms">Terms Of Use</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/returns">Returns & Refunds</a>
-        <a href="/about">About</a>
+        <a href="#">Terms Of Use</a>
+        <a href="#">Privacy</a>
+        <a href="#">Returns & Refunds</a>
+        <a href="#">About</a>
 
     </div>
     <br>

@@ -19,7 +19,7 @@
             <aside class="centered asides call-out">
                
                 <h2 class="font-size-3-em">Develop Africa without leaving your couch <span> <img src="../assets/images/us-flag-icon.jpg" alt="US Flag" class="display-inline"/></span></h2>
-                <p class="centered center font-1-5-em">Automatic deliveries of Africa products delivered straight to your doorstep. We’ll send your choice
+                <p class="centered center font-1-5-em">Automatic deliveries of African products delivered straight to your doorstep. We’ll send your choice
                     of 7 products produced in Africa to help you spark industrial revolutions on the continent. It’s
                     really that easy, we promise.</p>
             </aside>

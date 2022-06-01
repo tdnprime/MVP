@@ -8,5 +8,5 @@
 
 
 Thanks you,<br>
-- The {{ config('app.name') }} Team
+The {{ config('app.name') }} Team
 @endcomponent

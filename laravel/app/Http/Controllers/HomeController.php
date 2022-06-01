@@ -28,6 +28,13 @@ class HomeController extends Controller
 
         $email = $request["email"];
 
+        # Save
+
+        DB::table("waiting")->insert([
+            "email" => $email,
+            "campaign"=> "Develop Africa"
+        ]);
+
         #Queue welcome email
 
         $details['email'] = $email;

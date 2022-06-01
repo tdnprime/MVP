@@ -2457,7 +2457,7 @@ the side navigation*/
 .new-section-inner-grid {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: 25% 5% 36% auto;
+  grid-template-columns: auto 36% auto;
   align-items: center;
   position: relative;
 

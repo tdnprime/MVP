@@ -807,6 +807,7 @@ a:visited {
   height: 300px;
   border: 1px solid #0c86c4;
   padding: 1em;
+  background-color: #ffffff;
 }
 
 #div-banner-blank {
@@ -1977,6 +1978,9 @@ audio {
 .margin-bottom-4-em {
   margin-bottom: 4em !important;
 }
+.margin-bottom-0 {
+  margin-bottom: 0 !important;
+}
 
 /* Dropdown */
 
@@ -2453,7 +2457,7 @@ the side navigation*/
 .new-section-inner-grid {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: auto 5% 36% auto;
+  grid-template-columns: 25% 5% 36% auto;
   align-items: center;
   position: relative;
 
@@ -2671,7 +2675,7 @@ footer {
 }
 
 .display-block {
-  display: block;
+  display: block !important;
 }
 
 .display-inline {

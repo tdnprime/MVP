@@ -18,8 +18,8 @@
                             <div class="pricing">
                                 <div class='plans-pricing-header'><span class='plan-header-text'>monthly plan</span></div>
                                 <h2>$22/month</h2>
-                                <span class='parens'>(billed for 1 month)</span>
-                                <p>Committing to 1 month </p>
+                                <span class='parens'>(billed monthly)</span>
+                                <p>No commitment</p>
                                 <a href="/box/create" class="button">BUILD YOUR BOX</a>
                             </div>
                             <div class="pricing">
@@ -77,7 +77,7 @@
         <section class="wide section padding-top-6-em">
             <div class="new-section-inner-grid">
                 <span class="hide"></span>
-                <img src="../assets/images/mouse.svg" alt='Mouse' />
+                <img class="hide" src="../assets/images/mouse.svg" alt='Mouse' />
                 <div class="secinner">
                     <a href="/school/subscriptions" class="learn-more"><h2 class="white">Learn more about Boxeon subscriptions<span class="material-icons">navigate_next</span></h2></a>
                 </div>
@@ -89,7 +89,7 @@
                 <div class="div-limited-editions-panel two-col-grid">
                     <img src="../assets/images/medium-product-img.png" alt='products' />
                     <div>
-                        <h2>Organic African Superfood box</h2>
+                        <h2>Limited-Edition box: Africa To The World</h2>
                         <p>Enjoy organic African superfoods and products, repatriate your dollars,
                             build trade, and spark an industrial revolution. This box consist of daily essential
                             products seen on the Wode Maya and Vanessa Kanbi YouTube channels.
@@ -101,7 +101,7 @@
                 <div class="div-limited-editions-panel two-col-grid">
                     <img class="flip-right" src="../assets/images/medium-product-img.png" alt='products' />
                     <div class="flip-left">
-                        <h2>African Child Skincare Kit</h2>
+                        <h2>limited-Edition Box: African Child Skincare Kit</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                         <a href="/box/ghana" class='button'>GET IT HERE!</a>
                     </div>
@@ -109,7 +109,7 @@
                 <div class="div-limited-editions-panel two-col-grid">
                     <img src="../assets/images/medium-product-img.png" alt='products' />
                     <div>
-                        <h2>Traditional African Body Routine box</h2>
+                        <h2>Limited-Edition Box: Traditional African Body Routine</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
                         <a href="/box/seafood" class='button'>SHOP THE BOX</a>

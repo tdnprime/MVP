@@ -6,73 +6,85 @@
 
 
         <section class='section maxw1036'>
-            <h1 class='extra-large-font centered darkblue'>Returns</h1>
-            <p>
-                When you return an item, your refund amount and refund method may vary. Check the payment method refunded
-                and the status of your refund in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a>.</p>
+            <h1 class='extra-large-font centered'>HOW TO GET STARTED?</h1>
+            <div class="three-col-grid">
+                <h3>Save time and money</h3>
+                <h3>Subscribe more. Save more.</h3>
+                <h3>Easy to manage</h3>
+            </div>
 
-<h2>Where is my refund? </h2>
-            <p>Check the status of your refund in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a></p>
-
-            <h2>How Long Do Refunds Take? </h2>
-            <p>When returning an item, you have the option to choose your preferred refund method in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a>.</p>
-
-            <p>After the carrier receives your item, it can take up to two weeks for us to receive and process your return.
-                We typically process returns within 3-5 business days after the carrier delivers the item to our Returns
-                Center. When we complete processing your return, we issue a refund to the selected payment method.</p>
-
-            <h2>Refund Times</h2>
-            <p>Once we issue your refund, it takes additional time for your financial institution to make funds available in
-                your account. Refer to following table for more details.</p>
+            <div class="div-horizontal-rule center"></div>
+            <h1 class='extra-large-font centered'> Frequently Asked Questions</h1>
 
 
-            <table>
-                <tr>
-                    <th>Refund Method</th>
-                    <th>Refund Time (After Refund Is Processed)</th>
-                </tr>
-                <tr>
-                    <td>Credit card</td>
-                    <td>Three to five business days</td>
-                </tr>
-                <tr>
-                    <td>Debit card</td>
-                    <td>Up to 10 business days</td>
-                </tr>
-                <tr>
-                    <td>Checking account</td>
-                    <td>Up to 10 business days</td>
-                </tr>
-                <tr>
-                    <td>SNAP EBT card</td>
-                    <td>Up to 10 business days</td>
-                </tr>
-                <tr>
-                    <td>Promotional Certificate</td>
-                    <td>No refund issued</td>
-                </tr>
-                <tr>
-                    <td>Pay in Cash (at a participating location)</td>
-                    <td>Up to 10 business days</td>
-                </tr>
-                <tr>
-                    <td>Pre-paid credit card</td>
-                    <td>Up to 30 days (depending on the issuer of the card)</td>
-                </tr>
-            </table>
-            <h2>Partial Refunds or Restocking Fees</h2>
-            <table>
-                <tr>
-                    <th> Item</th>
-                    <th>Refund</th>
-                </tr>
+            <h2> How does it work?</h2>
+            <p> Set up regularly scheduled deliveries and earn savings with Subscribe & Save. Unlock extra savings on
+                eligible subscriptions when you receive five or more products in one auto-delivery to one address. From
+                diapers to toothpaste to dog treats, you can subscribe to thousands of everyday products.</p>
 
-                <tr>
-                    <td> Items in original condition past the return window*</td>
-                    <td>80% of item price</td>
-                </tr>
-            </table>
-            <p>*For most items, the return window is 30 days after delivery. To check the return window for an item you've ordered, go to <a class="one-em-font primary-color" href="/home/index">Subscriptions</a> and select Return or Replace Items.</p>
+            <h2>How do I start a subscription?</h2>
+
+            <ol>
+                <li>Select "Subscribe and Save" on the
+                    detail page for thousands of eligible products.</li>
+                <li>Select the quantity and schedule that works for you.</li>
+                <li>Skip your deliveries or cancel your subscriptions at any time by visiting Manage Your Subscriptions</li>
+                <li>In advance of each delivery, we will send you a reminder email showing the item price and any applicable
+                    discount for your upcoming delivery. The price of the item may decrease or increase from delivery to
+                    delivery, depending on the Amazon.com price of the item at the time we process your order.</li>
+            </ol>
+            <h2>How do I save up to 15% on my auto-deliveries?</h2>
+            <p>Save up to 15% off when receiving 5 or more products in one auto-delivery to one address.</p>
+
+            <h2>How to skip your next delivery?</h2>
+            <ol>
+                <li>Go to Manage Your Subscriptions.</li>
+                <li>Click on the Skip link, next to the subscription product you want to skip.</li>
+                <li>Click Confirm.</li>
+            </ol>
+            <h2>How to change your Subscribe & Save delivery day?</h2>
+            <ol>
+                <li>Go to Manage Your Subscriptions.</li>
+                <li>At the top of the page you will see three tabs: Deliveries, Subscriptions, and Settings. Click on the
+                    Settings tab.</li>
+                <li>On the Settings tab, you will see your Arrive by date. Click to edit.</li>
+            </ol>
+            <h2>
+                How to change your Subscribe & Save delivery schedule or quantity?</h2>
+            <ol>
+                <li>Go to Manage Your Subscriptions.</li>
+                <li>On the Deliveries tab you will see a blue link with your auto-delivered frequency (such as,
+                    Auto-delivered: Monthly).</li>
+                <li>Click on the frequency.</li>
+                This opens a page where you can change your quantity, frequency, and next delivery date.</li>
+                <li>After you have made changes, click Apply.</li>
+            </ol>
+            <h2>How to cancel your Subscribe & Save auto-delivery?</h2>
+            <ol>
+                <li>Go to Manage Your Subscriptions.</li>
+                <li>From either the Deliveries or Subscription tab, you can Click on the subscription for the item you'd
+                    like to
+                    modify.</li>
+                <li>Click Cancel subscription, then click Confirm cancellation.</li>
+            </ol>
+            <h2>How to change your Subscribe & Save payment method?</h2>
+            <ol>
+                <li>Go to Manage Your Subscriptions. From there you have two options:</li>
+                <li>To change your payment method for all subscriptions, click on the Settings tab. Then click Change under
+                    Payment Method.</li>
+                <li>Or, to change the payment method associated with a single subscription, click on the Deliveries or
+                    Subscriptions tabs. Click on the subscription you want to edit and then click Change Payment.</li>
+            </ol>
+            <h2>Why did the price of my item change?</h2>
+            <p>While you will always receive a Subscribe & Save discount, individual product prices can go up or down over
+                time. If the price of your subscribed product changes, the new price will be displayed in your order review
+                email and will be applied only on future shipments. You can review your subscription price and edit or
+                cancel your subscription at any time.</p>
+
+            <h2>Need help?</h2>
+            <div>
+                Contact customer service | Terms & Conditions
+            </div>
         </section>
 
     </main>

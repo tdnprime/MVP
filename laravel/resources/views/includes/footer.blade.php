@@ -1,7 +1,7 @@
 <footer>
 
     <div id="footer-content-wrapper"> <a>&copy; {{ date('Y') }} Boxeon LLC.&nbsp;&nbsp;&nbsp;<span
-                class="display-inline">Made for diasporans&nbsp;<img class="display-inline" src="../assets/images/heart.svg"
+                class="display-inline">Made For The Diaspora&nbsp;<img class="display-inline" src="../assets/images/heart.svg"
                     alt="Heart"></span></span></a>
         <a href="/terms">Terms Of Use</a>
         <a href="/privacy">Privacy</a>
@@ -17,7 +17,7 @@
         service@boxeon.com<br>
         <span>Text 646.450.4670‬</span></p>
 </footer>
-
+<!--
 <dialog id="dialog-feedback" open>
     <form action="/feedback/Send feedback" method="post">
         @csrf
@@ -81,3 +81,4 @@
 
 
 <button id="feedback"><span class="material-icons">message</span>&nbsp;Feedback</button>
+!-->

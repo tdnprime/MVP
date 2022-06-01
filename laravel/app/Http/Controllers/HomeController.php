@@ -3,15 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use App\Mail\WelcomeUser;
+use App\Jobs\SendEmailJob;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $user = Auth::user();
-        return view('index', compact('user'));
+        return view('errors.503', compact('user'))
+            ->with('celebrate', 'zero');
+    }
+
+
+    
+    public function waiting(Request $request)
+    {
+
+        $user = Auth::user();
+
+        $email = $request["email"];
+
+        #Queue welcome email
+
+        $details['email'] = $email;
+        $message = new WelcomeUser($user);
+        SendEmailJob::dispatch($details, $message)->onQueue('emails');
+
+        Session::flash('message', 'Success!');
+
+        return view('errors.503', compact('user'))
+            ->with('celebrate', 'celebrate');
     }
     public function returns()
     {
@@ -114,7 +140,6 @@ class HomeController extends Controller
     public function partner()
     {
 
-     
         dd($_SERVER);
 
         $user = Auth::user();

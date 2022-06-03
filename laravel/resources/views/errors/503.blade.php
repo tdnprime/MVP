@@ -15,13 +15,14 @@
         @endif
         <div id='masthead'>
 
-            <div id="banner" class="center"></div>
+            <div id="banner" class="center">
+                
+            </div>
             <aside class="centered asides call-out">
                
-                <h2 class="font-size-3-em">Develop Africa without leaving your couch <span> <img src="../assets/images/us-flag-icon.jpg" alt="US Flag" class="display-inline"/></span></h2>
-                <p class="centered center font-1-5-em">Automatic deliveries of African products delivered straight to your doorstep. We’ll send your choice
-                    of 7 products produced in Africa to help you spark industrial revolutions on the continent. It’s
-                    really that easy, we promise.</p>
+                <h2 id="headline-h1" class="center centered ginormous">The Best Platform For Creators To Earn Liberating, Sustainable, Monthly Income, Is Coming To America</h2>
+                <br>
+                <p class="centered center font-1-5-em">Boxeon is geared to allow content creators to make money on Youtube by promoting our subscription boxes as a monthly remote job. You promote. We do the rest. A percent of sales will be donated to African children in need.</p>
             </aside>
             <br>
             <br>

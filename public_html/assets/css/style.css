@@ -563,10 +563,9 @@ a:visited {
   z-index: 1;
 }
 
-#headline h1 {
-  font-size: 2.5em;
-  width: 45%;
-  font-family: "concert one";
+#headline-h1 {
+  max-width: 900px;
+  width:100%;
 }
 
 #about #headline {
@@ -822,7 +821,7 @@ a:visited {
 #banner {
   max-width: 1036px;
   height: 275px;
-  background-image: url("../images/banner-large.png");
+ background-image: url("../images/banner-large.png");
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;

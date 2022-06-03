@@ -1,4 +1,4 @@
-<title>@yield('title', config('app.name'))</title>
+<title>@yield('title', config('app.name')).com Monthly African Subscription Boxes</title>
 <meta property="og:title" content="Boxeon.com Skyrocket Black Economies" />
 <meta property="og:description" content="Buy African & Caribbean products, subscription boxes, spark industrial revolutions." />
 <meta property="og:type" content="website" />

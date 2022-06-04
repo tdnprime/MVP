@@ -20,9 +20,9 @@
             </div>
             <aside class="centered asides call-out">
                
-                <h2 id="headline-h1" class="center centered ginormous">The Best Platform For Creators To Earn Liberating, Sustainable, Monthly Income, Is Coming To America</h2>
+                <h2 id="headline_h1" class="font-size-3-em center centered">Develop Africa without leaving your couch&nbsp;<span class="display-inline"><img src="../assets/images/us-flag-icon.png" alt="USA Flag"/></span></h2>
                 <br>
-                <p class="centered center font-1-5-em">Boxeon is geared to allow content creators to make money on Youtube by promoting our subscription boxes as a monthly remote job. You promote. We do the rest. A percent of sales will be donated to African children in need.</p>
+                <p class="white centered center font-1-5-em">The Amazon of African foods is coming to America soon. Our aim is to make African foods popular in America to help spark industrial revolutions on the African continent. Join our waiting list to keep informed.</p>
             </aside>
             <br>
             <br>
@@ -31,8 +31,7 @@
         <main id='margin-top-45-e'> <a id='whatis' href='#whatis'></a>
 
             <section class="wide section padding-top-6-em">
-                <h2 class='centered white margin-bottom-0'>Be first to know when we launch.</h2>
-                <h2 class='centered white margin-bottom-0'>Join our waiting list.</h2>
+                <h2 class='centered white margin-bottom-0'>Be first to know when we launch. Join our waiting list.</h2>
                 <div class="new-section-inner-grid margin-bottom-2-em">
                     <span class="503-hide"></span>
                     <div>

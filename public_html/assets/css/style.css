@@ -895,6 +895,8 @@ audio {
 
 #index #masthead {
   height: auto !important;
+  background-color:#025ea6;
+  color:#fff;
 }
 
 #box #masthead {
@@ -1886,9 +1888,9 @@ audio {
   font-weight: 100;
 }
 
-#headline h1 {
-  color: #0c8dc4;
-  font-size: 5em;
+#headline_h1 {
+  color:#ffeb3b;
+  font-size: 4em;
 
 }
 
@@ -2678,7 +2680,7 @@ footer {
 }
 
 .display-inline {
-  display: inline;
+  display: inline !important;
 }
 
 .display-grid {

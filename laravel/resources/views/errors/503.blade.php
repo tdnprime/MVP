@@ -20,9 +20,9 @@
             </div>
             <aside class="centered asides call-out">
                
-                <h2 id="headline_h1" class="font-size-3-em center centered">Develop Africa without leaving your couch&nbsp;<span class="display-inline"><img src="../assets/images/us-flag-icon.png" alt="USA Flag"/></span></h2>
+                <h2 id="headline_h1" class="font-size-3-em center centered">Join the Africa superfood movement&nbsp;<span class="display-inline"><img src="../assets/images/us-flag-icon.png" alt="USA Flag"/></span></h2>
                 <br>
-                <p class="white centered center font-1-5-em">The Amazon of African foods is coming to America soon. Our aim is to make African foods popular in America to help spark industrial revolutions on the African continent. Join our waiting list to keep informed.</p>
+                <p class="white centered center font-1-5-em">The Amazon of African superfoods is coming to America soon. Our aim is to make African foods popular in America to help spark industrial revolutions on the African continent. Join our waiting list to keep informed.</p>
             </aside>
             <br>
             <br>

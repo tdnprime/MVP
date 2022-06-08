@@ -47,19 +47,15 @@ class HomeController extends Controller
 
         $user = Auth::user();
 
-        if (isset($request["email"])) {
+        
             $email = $request["email"];
             $message = $request["message"];
             # Update
             DB::table("waiting")->where("email", "=", $email)->update([
                 "message" => $message]);
             Session::flash('message', 'Success!');
-
-            return view('apply.survey', compact('user'))
-                ->with('email', $email);
-        } else {
             return view('apply.survey', compact('user'));
-        }
+        
     }
 
     public function returns()

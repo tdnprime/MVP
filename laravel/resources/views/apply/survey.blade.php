@@ -32,18 +32,18 @@
                     <form id='form-partner-apply' action="/apply/survey" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
-                        <fieldset>
+                      
 
                             @php
                             if(!isset($email)){
 
-                                echo "<p>Please enter your email address</p><input type='email' name='email' placeHolder='Your primary email'/>";
+                                echo "<fieldset><p>Please enter your email address</p><input type='email' name='email' placeHolder='Your primary email'/> </fieldset><br>";
 
                             }
                             @endphp
 
-                        </fieldset>
-                        <br>
+                       
+
                         <fieldset>
                             <p>What African food products are you having issues finding in your area?
                             </p>

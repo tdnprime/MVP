@@ -2,25 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmailJob;
+use App\Mail\WelcomeUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use App\Mail\WelcomeUser;
-use App\Jobs\SendEmailJob;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $user = Auth::user();
-        return view('errors.503', compact('user'))
-            ->with('celebrate', 'zero');
+        return view('errors.503', compact('user'));
     }
 
-
-    
     public function waiting(Request $request)
     {
 
@@ -32,7 +29,7 @@ class HomeController extends Controller
 
         DB::table("waiting")->insert([
             "email" => $email,
-            "campaign"=> "Develop Africa"
+            "campaign" => "African Foods",
         ]);
 
         #Queue welcome email
@@ -41,11 +38,30 @@ class HomeController extends Controller
         $message = new WelcomeUser($user);
         SendEmailJob::dispatch($details, $message)->onQueue('emails');
 
-        Session::flash('message', 'Success!');
-
-        return view('errors.503', compact('user'))
-            ->with('celebrate', 'celebrate');
+        return view('apply.survey', compact('user'))
+            ->with('email', $email);
     }
+
+    public function survey(Request $request)
+    {
+
+        $user = Auth::user();
+
+        if (isset($request["email"])) {
+            $email = $request["email"];
+            $message = $request["message"];
+            # Update
+            DB::table("waiting")->where("email", "=", $email)->update([
+                "message" => $message]);
+            Session::flash('message', 'Success!');
+
+            return view('apply.survey', compact('user'))
+                ->with('email', $email);
+        } else {
+            return view('apply.survey', compact('user'));
+        }
+    }
+
     public function returns()
     {
         $user = Auth::user();

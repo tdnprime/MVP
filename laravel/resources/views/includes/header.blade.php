@@ -3,28 +3,18 @@
 <span></span><!-- Hack !-->
 <header>
     <span id="top-bar"></span>
-    <div id="header-2nd-row">
-    <div id='grid-1'>
+    <div id="header-inner-wrapper">
+    <div>
       
         <a id='logo' href="/" title='Boxeon'>
-            <img id='logo' src='{{ asset('../assets/images/logo.svg') }}' alt='logo' />
+            <img id='logo' src='{{ asset('../assets/images/logo.png') }}' alt='logo' />
             </a>
-        <a href="/shop/index">Shop</a>
+        
         
             <a id='m-shop' class='one-em-font' href='/search/products' title='#'><span class='material-icons'>search</span></a>
         
-        <span id="search-ico" class="material-icons"> </span>
-        <form class='search hiden' action="/search/creator" method="get">
-            {{ csrf_field() }}
-            <input type="search" value='' placeholder="Find creator" name="creator">
-
-        </form>
-    </div>
-    <div id='grid-2'>
-<ul id='nav-header-right'>
-    <li>
-        <a id='cart' class='nudge-left one-em-font' href='/cart/index' title='#'><span class='material-icons'>shopping_cart</span><span id="cart-count"></span></a>
-    </li>
+   
+<ul id='nav-header-right' class='display-inline'>
         @auth
             <li id='current-user'>
    <a id="showDropdown" class='fadein' href='#'>
@@ -43,9 +33,11 @@
 
 
         @if (!Auth::check())
-        <li>
-            <a class='one-em-font' id='signin' href='{{ url('auth/google') }}'>
-                Sign in
+        <li class="hide">
+            <a class='button margin-auto' id='signi' href='/apply/survey'>
+
+            <!-- <a class='button margin-auto' id='signi' href={'{' url('auth/google') }}'>!-->
+                Get 16 free foods + 3 surprise gifts
             </a>
         </li>
  

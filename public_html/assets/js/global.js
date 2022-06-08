@@ -1,3 +1,4 @@
+
 /* GLOBAL */
 
 var Boxeon = Boxeon || {};
@@ -1239,7 +1240,7 @@ window.onload = function () {
 
   //import instance from './modules/messages.js'
 }
-
+/*
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -1270,7 +1271,7 @@ function showSlides(n) {
   dots[slideIndex - 1].className += " active";
   captionText.innerHTML = dots[slideIndex - 1].alt;
 }
-
+*/
 
 
 // Close the dropdown menu if the user clicks outside of it

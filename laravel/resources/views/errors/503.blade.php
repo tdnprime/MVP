@@ -1,55 +1,39 @@
-<!DOCTYPE html>
-<html lang="en" prefix="og: https://ogp.me/ns#">
+@extends('layouts.index')
+@section('title', 'Boxeon.com Monthly African Food Subscription Box')
+@section('content')
 
-<head>
-    @include('includes.meta')
-</head>
+    <div id="masthead">
 
-<body id='index'>
-
-    <div id='container' class="{{$celebrate}} display-block">
-        @if (session()->has('message'))
-            <dialog class="alert">
-                <p class='centered'> {{ session()->get('message') }}</p>
-            </dialog>
-        @endif
-        <div id='masthead'>
-
-            <div id="banner" class="center">
-                
-            </div>
-            <aside class="centered asides call-out">
-               
-                <h2 id="headline_h1" class="font-size-3-em center centered">Join the Africa superfood movement&nbsp;<span class="display-inline"><img src="../assets/images/us-flag-icon.png" alt="USA Flag"/></span></h2>
-                <br>
-                <p class="white centered center font-1-5-em">The Amazon of African superfoods is coming to America soon. Our aim is to make African foods popular in America to help spark industrial revolutions on the African continent. Join our waiting list to keep informed.</p>
-            </aside>
-            <br>
-            <br>
-        </div>
-
-        <main id='margin-top-45-e'> <a id='whatis' href='#whatis'></a>
-
-            <section class="wide section padding-top-6-em">
-                <h2 class='centered white margin-bottom-0'>Be first to know when we launch. Join our waiting list.</h2>
-                <div class="new-section-inner-grid margin-bottom-2-em">
-                    <span class="503-hide"></span>
-                    <div>
-                        <form id="mailing-list-form" action="/pmf/email" method="post">
-                            @csrf
-                            <div class="row">
-                                <div class="col-75 two-col-grid">
-                                    <input type="email" placeholder="Primary email" name="email">
-                                    <input type='submit' value="JOIN NOW">
-                                </div>
+        <aside class="centered asides call-out"><br>
+            <img id="move-down" class="center" src="../assets/images/logo.png" alt="BOXEON" />
+            <h2 id="headline_h1" class="font-size-3-em">Get 16 Free foods + 3 Surprise Gifts</h2>
+            <p class="centered center font-1-5-em">An effortless way to enjoy the African foods you love from home. We'll send you, your choice of foods at a monthly schedule convinient to you.</p><br>
+            <a href="/apply/survey" class="button uppercase">Personalize Your Box</a>
+        </aside>
+        <br><br>
+        <section class="wide section padding-top-6-em">
+            <h2 class='centered center w600 margin-bottom-0'>Be first to know when we launch. Join our waiting list.</h2>
+            <div class="new-section-inner-grid margin-bottom-2-em">
+                <span class="hide"></span>
+                <div class="w600">
+                    <form id="mailing-list-form" action="/pmf/email" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-75 two-col-grid">
+                                <input type="email" placeholder="Primary email" name="email">
+                                <input type='submit' value="JOIN NOW">
                             </div>
+                        </div>
 
-                        </form>
-                    </div>
-                    <span class="hide"></span>
+                    </form>
                 </div>
-            </section>
+                <span class="hide"></span>
+            </div>
+        </section>
+    </div>
+    <main id='margin-top-45-em'> <a id='whatis' href='#whatis'></a>
+
         </main>
 
     </div>
-    @include('includes.footer')
+ 

@@ -1,7 +1,7 @@
 <footer>
 
     <div id="footer-content-wrapper"> <a>&copy; {{ date('Y') }} Boxeon LLC.&nbsp;&nbsp;&nbsp;<span
-                class="display-inline">Made For The Diaspora&nbsp;<img class="display-inline" src="../assets/images/heart.svg"
+                class="display-inline">Made in New York with&nbsp;<img class="display-inline" src="../assets/images/heart.svg"
                     alt="Heart"></span></span></a>
         <a href="#">Terms Of Use</a>
         <a href="#">Privacy</a>
@@ -10,7 +10,7 @@
 
     </div>
     <br>
-    <img id='footer-logo' src='{{ asset('../assets/images/logo.svg') }}' alt='logo' />
+    <img id='footer-logo' src='{{ asset('../assets/images/logo.png') }}' alt='logo' />
     <p class='centered one-em-font'>
         244 5th Avenue, Suite 7<br>
         New York, NY 10001<br>

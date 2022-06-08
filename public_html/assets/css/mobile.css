@@ -1,6 +1,10 @@
 /* Extra small devices (phones, 476px and down) */
 @media only screen and (max-width: 476px) {
 
+  .hide{
+    display: none !important;
+  }
+
   .row .two-col-grid {
     grid-gap:1em;
     grid-template-rows: 50% 50%;
@@ -75,6 +79,7 @@ header a{
     background-color: #f5f7fa;
     display: block;
     left: 0;
+    display: none;
   }
 
   #mobile-signin a {
@@ -88,6 +93,7 @@ header a{
 
   #mobile-signin {
     display: block;
+    display: none;
   }
 
 
@@ -240,9 +246,9 @@ header a{
   }
 
   .new-section-inner-grid {
-
-    grid-template-columns: 50% 50%;
-    grid-template-columns: auto;
+    grid-template-columns: auto 72% auto;
+    //grid-template-columns: 50% 50%;
+    //grid-template-columns: auto;
 
   }
 
@@ -291,7 +297,7 @@ header a{
   } */
 
   .hide {
-    display: none;
+   // display: none;
   }
 
   section,
@@ -313,6 +319,8 @@ header a{
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+
+
   .cart-banner img {
     max-width: 200px;
 }
@@ -335,10 +343,18 @@ header a{
 
   }
 
+  
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+
+  .new-section-inner-grid {
+    grid-template-columns: auto 48% auto;
+  
+
+  }
 
   .cart-item {
     display: grid;
@@ -400,6 +416,15 @@ header a{
 
 /* Extra large devices (large laptops and desktops, 1000px and up) */
 @media only screen and (min-width: 1200px) {
+
+
+  .new-section-inner-grid {
+    grid-template-columns: auto 35% auto;
+  
+
+  }
+
+
   /* Shop */
   .cart-banner {
    grid-template-columns: 24% 24% 24% 24%;

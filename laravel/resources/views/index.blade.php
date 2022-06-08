@@ -1,85 +1,52 @@
 @extends('layouts.index')
-@section('title', 'Boxeon.com Monthly African Subscription Boxes')
+@section('title', 'Meal Kit Delivery Service | Boxeon')
 @section('content')
+
     <div id="masthead">
-        <div id="banner" class="center"></div>
-        <aside class="centered asides call-out">
-            <h2 class="font-size-3-em">Develop Africa without leaving your couch</h2>
-            <p class="centered center font-1-5-em">An effortless, simple way to build Africa. We’ll send your choice of 7 products produced in Africa to help you spark industrial revolutions on the continent. It’s really that easy, we promise.</p>
+
+        <aside class="centered asides call-out"><br>
+            <img class="center" src="../assets/images/logo.png" alt="BOXEON" />
+            <h2 id="headline_h1" class="font-size-3-em">Get 16 Free foods + 3 Surprise Gifts</h2>
+            <p class="centered center font-1-5-em">An effortless way to enjoy the African superfoods you love from home. We'll send you, your choice of African foods at a recurring schedule convinient to you.</p><br>
+            <a href="/box/create" class="button uppercase">Personalize Your Box</a>
         </aside>
         <br><br>
     </div>
     <main id='margin-top-45-em'> <a id='whatis' href='#whatis'></a>
         <section class="section margin-bottom-4-em">
-            <div class="module">
-    
-                        <h2 class='centered'>Subscribe to save <br>15% on your choice of 7 products</h2><br>
-                        <div class=" pricing-panel">
-                            <div class="pricing">
-                                <div class='plans-pricing-header'><span class='plan-header-text'>monthly plan</span></div>
-                                <h2>$22/month</h2>
-                                <span class='parens'>(billed monthly)</span>
-                                <p>No commitment</p>
-                                <a href="/box/create" class="button">BUILD YOUR BOX</a>
-                            </div>
-                            <div class="pricing">
-                                <div class='plans-pricing-header'><span class='plan-header-text'>3 month plan</span></div>
-                                <h2>$22/month</h2>
-                                <span class='parens'>(billed monthly)</span>
-                                <p>Committing to 3 months <br></p>
-                                <a href="/box/create" class="button">BUILD YOUR BOX</a>
-                            </div>
-                            <div class="pricing">
-                                <div class='plans-pricing-header'><span class='plan-header-text'>6 month plan</span></div>
-                                <h2>$21/month</h2>
-                                <span class='parens'>(billed monthly)</span>
-                                <p>Committing to 6 months <br></p>
-                                <a href="/box/create" class="button">BUILD YOUR BOX</a>
-                            </div>
-                            <div class="pricing hide">
-                                <div class='plans-pricing-header'><span class='plan-header-text'>12 month plan</span></div>
-                                <h2>$20/month</h2>
-                                <span class='parens'>(billed monthly)</span>
-                                <p>Committing to 12 months</p>
-                                <a href="/box/create" class="button">BUILD YOUR BOX</a>
-                            </div>
-                        </div>
-            </div>
-            <div class="module hide">
-                <br>
-                <h2 class='centered'>Prepaid Plans</h2>
 
-                <div class="pricing-panel-prepaid">
-                    <div class="pricing">
-                        <div class='plans-pricing-header'><span class='plan-header-text'>3 month plan</span></div>
-                        <h2>$45</h2>
-                        <p>Billed every 3 months at $45 </p>
-                        <p>Committing to 3 months </p>
-                        <a href="/box/create" class="button">BUILD YOUR BOX</a>
+            <div class="module">
+
+                <h2 class='centered'>Dinner, Delivered. How it works.</h2><br>
+
+                <div class="three-col-grid">
+                    <div>
+                        <h3>More Choice, Less Boredom</h3>
                     </div>
-                    <div class="pricing">
-                        <div class='plans-pricing-header'><span class='plan-header-text'>6 month plan</span></div>
-                        <h2>$84</h2>
-                        <p>Billed every 6 months at $84</p>
-                        <p>Committing to 6 months</p>
-                        <a href="/box/create" class="button">BUILD YOUR BOX</a>
+                    <div>
+                        <h3>Faster Recipes, Less Prep Work</h3>
                     </div>
-                    <div class="pricing">
-                        <div class='plans-pricing-header'><span class='plan-header-text'>12 month plan</span></div>
-                        <h2>$156</h2>
-                        <p>Billed every 6 months at $156</p>
-                        <p>Committing to 12 months</p>
-                        <a href="/box/create" class="button">BUILD YOUR BOX</a>
+                    <div>
+                        <h3>Flexible Plans, Less Hassle</h3>
                     </div>
+
                 </div>
-            </div>
         </section>
         <section class="wide section padding-top-6-em">
-            <div class="new-section-inner-grid">
-                <span class="hide"></span>
-                <img class="hide" src="../assets/images/mouse.svg" alt='Mouse' />
-                <div class="secinner">
-                    <a href="/school/subscriptions" class="learn-more"><h2 class="white">Learn more about Boxeon subscriptions<span class="material-icons">navigate_next</span></h2></a>
+            <h2 class='centered margin-bottom-0'>Be first to know when we launch. Join our waiting list.</h2>
+            <div class="new-section-inner-grid margin-bottom-2-em">
+                <span class="503-hide"></span>
+                <div>
+                    <form id="mailing-list-form" action="/pmf/email" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-75 two-col-grid">
+                                <input type="email" placeholder="Primary email" name="email">
+                                <input type='submit' value="JOIN NOW">
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
                 <span class="hide"></span>
             </div>
@@ -102,7 +69,9 @@
                     <img class="flip-right" src="../assets/images/medium-product-img.png" alt='products' />
                     <div class="flip-left">
                         <h2>limited-Edition Box: African Child Skincare Kit</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. </p>
                         <a href="/box/ghana" class='button'>GET IT HERE!</a>
                     </div>
                 </div>
@@ -110,7 +79,9 @@
                     <img src="../assets/images/medium-product-img.png" alt='products' />
                     <div>
                         <h2>Limited-Edition Box: Traditional African Body Routine</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
                         <a href="/box/seafood" class='button'>SHOP THE BOX</a>
                     </div>
@@ -124,7 +95,8 @@
                 <a class="center" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"
                     target="_blank"><img class="creator-ego" src="../assets/images/tayo-aina.png" alt="Allie" /></a>
                 <a class="center" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"
-                    target="_blank"><img class="creator-ego" src="../assets/images/african-tigress.png" alt="Allie" /></a>
+                    target="_blank"><img class="creator-ego" src="../assets/images/african-tigress.png"
+                        alt="Allie" /></a>
                 <a class="center" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"
                     target="_blank"><img class="creator-ego" src="../assets/images/vanessa-kanbi.png" alt="Allie" /></a>
                 <a class="center hide" href="https://www.youtube.com/channel/UCxjZrfFw9XpEsKZ5hOa4EZA"

@@ -34,6 +34,7 @@ Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about')
 Route::get('/catalog', 'App\Http\Controllers\CatalogController@index')->name('catalog.products');
 
 Route::get('/apply', 'App\Http\Controllers\HomeController@partner')->name('partner.apply');
+Route::get('/apply/survey', 'App\Http\Controllers\HomeController@survey')->name('survey');
 Route::post('/apply/apply', 'App\Http\Controllers\ApplyController@apply')->name('apply');
 Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
 Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index');

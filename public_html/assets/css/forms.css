@@ -99,12 +99,12 @@ label {
 
   margin:auto;
 
-
 }
+
 input[type="tel"], input[type="number"], input[type="email"], select, textarea, input[type="text"], input[type="url"] {
   background-color: #fff;
-  border: 1px solid #cfe4f4;
-  border-radius: 1em;
+  border: 1px solid rgba(248, 61, 61, 0.644);
+ 
   padding: .7em;
   clear: both;
   margin-bottom: 1em;
@@ -131,17 +131,16 @@ option[value=""][disabled] {
 }
 
 input[type="submit"], .button, button {
-  background-color: #0c8dc4;
-  border: 1px solid #087FB0;
-  border-radius: 25px;
+  background-color: #067A46;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+
+  border: 1px solid #3a883d;
   box-sizing: border-box;
   color: #ffffff;
   min-width: 200px;
-  width:200px;
   text-align: center;
   cursor: pointer;
   font-size: 14px;
-  font-weight: bold;
   letter-spacing: 0.1em;
   height: 52px;
   margin-bottom: 1em;
@@ -151,7 +150,7 @@ input[type="submit"], .button, button {
 }
 
 input[type="submit"]:active, .button:active, button:active {
-  background: #005ea6;
+  
   color: #fff;
 }
 
@@ -161,7 +160,8 @@ header .material-icons {
 }
 
 input[type="submit"]:hover, .button:hover, button:active:hover {
-  background: #005ea6;
+  box-shadow: 0 10px 18px 0 rgb(0 0 0 / 30%);
+  background: #067A46;
 }
 
 #embed-form {

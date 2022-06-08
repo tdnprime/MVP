@@ -45,6 +45,11 @@ Brown skin: #a0616a
   height: auto;
 }
 
+#logo-text {
+  font-family: Anton;
+  font-size: 3em;
+}
+
 #box .sub-btns {
   margin-right: 2.5em;
 }
@@ -61,9 +66,7 @@ Brown skin: #a0616a
   //top: -3.5em;
 }
 
-#signin, #current-user, h2, h1 {
-  font-family: 'Concert One';
-}
+
 
 #box-headline h1 {
   width: 90%;
@@ -84,7 +87,7 @@ Brown skin: #a0616a
 }
 
 .border {
-  border: 2px solid #005ea6;
+  border: 2px solid #009688;
 }
 
 .slideshow-main-image * {
@@ -107,7 +110,7 @@ Brown skin: #a0616a
   height: 8px;
   background-color: #0c8dc4;
   display: none;
-
+  background-image: url("../images/top-bar.png");
   background-position: 50% 50%;
   background-repeat: repeat;
   background-size: auto 8px;
@@ -194,7 +197,7 @@ Brown skin: #a0616a
 
 
 #bar {
-  background-color: #005ea6;
+  background-color: #009688;
   color: white;
   height: 5px;
   line-height: 30px;
@@ -236,7 +239,8 @@ Brown skin: #a0616a
   margin: auto;
   padding-top: 3%;
   text-align: center;
-  width: 80%;
+  max-width: 500px;
+  width: 100%;
 }
 
 #buyers-guide {
@@ -274,7 +278,6 @@ Brown skin: #a0616a
 #close-dialog,
 #close, #m-close {
   color: #8C8C8C;
-  font-family: "Concert One";
   text-transform: uppercase;
 }
 
@@ -292,11 +295,11 @@ Brown skin: #a0616a
 
 
 
-/* dialog p {
+ dialog p {
   max-width: 400px;
   min-width: 200px;
   margin: auto;
-} */
+} 
 
 #text-step0-label {
   grid-column-start: 1;
@@ -424,12 +427,12 @@ Brown skin: #a0616a
 #container {
   display: grid;
   grid-gap: 1px;
-  grid-template-rows: auto 50px auto auto;
+  grid-template-rows: auto 70px auto auto;
   position: relative;
 }
 
 #container {
-  background-color: #f5f7fa;
+  // background-color: #f5f7fa;
 }
 
 /*
@@ -520,7 +523,7 @@ a:visited {
 }
 
 #footer-content-wrapper a {
-  color: #4a4a4a;
+  color: #343434;
   font-size: 1em;
   padding: .5em;
 }
@@ -531,7 +534,7 @@ a:visited {
 }
 
 #footer-logo, #logo {
-  height: 30px;
+  height: 40px;
   width: auto;
 }
 
@@ -549,12 +552,9 @@ a:visited {
 #guideh1 {
   padding-bottom: 2em;
   padding-top: 2em;
-  font-family: "concert one";
+
 }
 
-.font-concert-one {
-  font-family: "concert one" !important;
-}
 
 #headline {
   margin-left: clamp(7%, 10%, 12%);
@@ -565,7 +565,7 @@ a:visited {
 
 #headline-h1 {
   max-width: 900px;
-  width:100%;
+  width: 100%;
 }
 
 #about #headline {
@@ -762,7 +762,7 @@ a:visited {
   text-transform: uppercase;
   position: relative;
   top: -2em;
-  border-top: 30px solid #005ea6;
+  border-top: 30px solid #ea474b;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   max-width: 200px;
@@ -804,7 +804,7 @@ a:visited {
 .pricing {
   width: 250px;
   height: 300px;
-  border: 1px solid #0c86c4;
+  border: 3px solid rgb(241, 241, 241);
   padding: 1em;
   background-color: #ffffff;
 }
@@ -821,7 +821,7 @@ a:visited {
 #banner {
   max-width: 1036px;
   height: 275px;
- background-image: url("../images/banner-large.png");
+  background-image: url("../images/banner-large.png");
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
@@ -832,7 +832,7 @@ a:visited {
   max-width: 1035px;
 }
 
-#banner-slogan{
+#banner-slogan {
   position: relative;
   top: 0.4em;
 }
@@ -881,9 +881,13 @@ audio {
 }
 
 #logo {
-  display: inline;
+  display: inline-block;
   margin: auto;
   /*width: max-content;*/
+  position: relative;
+  top: 50%;
+  margin-top: -6px;
+}
 }
 
 #masthead {
@@ -894,9 +898,13 @@ audio {
 }
 
 #index #masthead {
-  height: auto !important;
-  background-color:#025ea6;
-  color:#fff;
+  background-color: #d3fb95;
+  background-image: url("../images/groceries.png"), url("../images/jerk-shrimp.png");
+  background-position-x: left, right;
+  background-position-y: bottom, top;
+  background-size: 50%, 30%;
+  background-repeat: no-repeat;
+ 
 }
 
 #box #masthead {
@@ -1297,7 +1305,7 @@ audio {
   font-size: 1em;
   background-image: url("../images/alt-blue-bg.svg");
   box-shadow: 2px 4px 12px #0c8dc41a;
-  color: #005ea6;
+  color: #009688;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -1495,7 +1503,7 @@ audio {
   grid-template-columns: auto auto auto auto auto 75px;
   width: 200px;
 
-  color: #005ea6 !important;
+  color: #009688 !important;
   margin-bottom: 2em;
 }
 
@@ -1569,15 +1577,17 @@ audio {
   margin-left: auto;
   margin-right: auto;
 }
+
 .products-stream button {
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
+
 .products-stream {
-  max-width:1035px;
-  width:100%;
-  grid-gap:2%;
+  max-width: 1035px;
+  width: 100%;
+  grid-gap: 2%;
   grid-template-columns: 32% 32% 32%;
 }
 
@@ -1682,7 +1692,7 @@ audio {
 }
 
 .alert .material-icons {
-  color: #005ea6;
+  color: #009688;
   position: relative;
   bottom: .2em;
 }
@@ -1750,8 +1760,7 @@ audio {
 }
 
 .clearbtn {
-  background-color: #fff !important;
-  color: #0c8dc4 !important;
+  background-color: #009688 !important;
   border: 1px solid #b5daf7 !important;
 }
 
@@ -1781,9 +1790,8 @@ audio {
 
 .extra-large-font, h2 {
   font-size: 2.5em;
-  font-weight: bold;
-  color: #0c8dc4;
-
+  font-weight: 500;
+  font-family: "Corda Std", Georgia, serif;
 }
 
 .div-limited-editions-panel h2 {
@@ -1854,7 +1862,7 @@ audio {
 }
 
 .secondary_color {
-  color: #005ea6;
+  color: #009688;
 }
 
 .three-col-grid {
@@ -1889,8 +1897,10 @@ audio {
 }
 
 #headline_h1 {
-  color:#ffeb3b;
-  font-size: 4em;
+  font-size: 3.25rem;
+  line-height: 3.5rem;
+  margin-top: 5px;
+  margin-bottom: 20px;
 
 }
 
@@ -1979,6 +1989,7 @@ audio {
 .margin-bottom-4-em {
   margin-bottom: 4em !important;
 }
+
 .margin-bottom-0 {
   margin-bottom: 0 !important;
 }
@@ -2081,7 +2092,7 @@ audio {
 }
 
 #menu-icon {
-  color: #4a4a4a;
+  color: #343434;
 }
 
 /*Pushes the page 
@@ -2202,7 +2213,7 @@ the side navigation*/
   background-color: #B12704;
   color: #fff;
   font-weight: bold;
-  border-radius:.5em;
+  border-radius: .5em;
   max-width: fit-content !important;
 }
 
@@ -2224,7 +2235,7 @@ the side navigation*/
 }
 
 .privacy #panel a {
-  color: #005ea6;
+  color: #009688;
   text-decoration: underline;
 }
 
@@ -2411,10 +2422,8 @@ the side navigation*/
 
 .wide {
   width: 100%;
-  background-color: #005ea6;
-  background-image: url("../images/widebg.png");
-  background-repeat: no-repeat;
-  margin-top: 2em;
+  /* background-image: url("../images/widebg.png");
+  background-repeat: no-repeat; */
   margin-bottom: 2em;
 
 }
@@ -2458,16 +2467,20 @@ the side navigation*/
 .new-section-inner-grid {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: auto 36% auto;
+  grid-template-columns: auto 25% auto;
   align-items: center;
   position: relative;
 
 }
 
+#move-down{
+  width: 200px;
+  margin-top: 4em;
+}
 .wide img {
   margin-top: 0;
   margin-bottom: 0;
-  width:75px;
+  width: 75px;
   -ms-transform: scaleX(-1) rotate(-35deg);
   /* IE 9 */
   -webkit-transform: scaleX(-1) rotate(-35deg);
@@ -2607,13 +2620,13 @@ a:hover {
 
 .learn-more:hover {
   text-decoration: none;
- 
+
 }
 
 
 body {
-  background-color: #f5f7fa;
-  color: #4a4a4a;
+  //background-color: #f5f7fa;
+  color: #343434;
   font-size: 12.06px;
   height: auto;
   margin: 0;
@@ -2623,8 +2636,9 @@ body {
 
 fieldset {
   border: none;
-  border: 1px solid #cfe4f4;
+  border: 1px solid #ccfdc2;
   padding: 4% !important;
+  margin-bottom:2em;
 }
 
 .fieldset-neuromorph,
@@ -2642,8 +2656,7 @@ legend {
 }
 
 footer {
-  background-color: #f5f7fa;
-  border-top: 1px solid #fff;
+
   display: grid;
   margin: 0 auto;
   padding-bottom: 5em;
@@ -2709,13 +2722,11 @@ h4 {
 }
 
 header {
-  background: #f5f7fa;
-  box-shadow: 20px 20px 60px #0c8dc41a, -20px -20px 60px #ffffff;
-  display: grid;
+
   grid-row-end: 2;
   grid-row-start: 2;
-  grid-template-rows: auto auto;
-  height: 50px;
+  background-color: #ffffff;
+  height: 70px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -2723,12 +2734,12 @@ header {
 
 }
 
-#header-2nd-row {
-  padding-left: 2em;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: grid;
-  grid-template-columns: 84% 15%;
+#header-inner-wrapper {
+  position: relative;
+  max-width: 1135px;
+  margin: auto;
+  top: 50%;
+  margin-top: -26px;
 
 }
 
@@ -2799,7 +2810,7 @@ header #grid-2 {
 
 #nav-header-right {
   position: absolute;
-  right: 1.5em;
+  right: 0;
 }
 
 #nav-header-right li {
@@ -2815,7 +2826,7 @@ header>* {
 }
 
 header #user-icon,
-header #logo,
+header,
 header .material-icons {
   margin: auto;
   display: inline;
@@ -2926,7 +2937,7 @@ ul {
 #contact ul li::before {
   content: "\2022";
   /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  color: #4a4a4a;
+  color: #343434;
   ;
   /* Change the color */
   font-weight: bold;
@@ -2984,7 +2995,7 @@ option[value=""][disabled] {
 }
 
 .asides p {
-  max-width: 35em;
+  max-width: 25em;
 }
 
 padding-top-6-em {
@@ -3051,9 +3062,9 @@ td, td, ul, P, a, label {
 }
 
 h3 {
-  color: #0c8dc4;
+ 
   font-size: 2em;
-  font-family: 'Concert One';
+
 }
 
 html, body {

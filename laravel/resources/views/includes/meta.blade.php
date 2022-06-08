@@ -21,6 +21,7 @@
     href="{{ asset('../assets/css/mobile.css?v=3.6') }}" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert%20One">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
 <script defer type="module" src="{{ asset('../assets/js/global.js?v=2.1') }}"></script>
 <script async defer src="https://www.googletagmanager.com/gtag/js?id=AW-10788250660"></script>
 <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>

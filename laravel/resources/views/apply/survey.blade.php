@@ -16,46 +16,41 @@
                         <div class="col-75">
                             <h2 id='apply' href='#apply'>
                                 @php
-                                if(isset($email)){
-                                    echo "Finish Your Enrollment";
-
-                                }else{
-
-                                    echo "Be the first to know when we launch. Join Our Waiting List!";
-
-                                }
+                                    if (isset($email)) {
+                                        echo 'Finish Your Enrollment';
+                                    } else {
+                                        echo 'Be the first to know when we launch. Join Our Waiting List!';
+                                    }
                                 @endphp
                             </h2>
 
                         </div>
                     </div>
                     <form id='form-partner-apply' action="/apply/survey" method="post">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
-                      
-
-                            @php
-                            if(!isset($email)){
-
-                                echo "<fieldset><p>Please enter your email address</p><input type='email' name='email' placeHolder='Your primary email'/> </fieldset><br>";
-
+                        @csrf
+                        @php
+                            if (!isset($email)) {
+                                echo "<fieldset><p>Please enter your email address</p><input required type='email' name='email' placeHolder='Your primary email'/> </fieldset><br>";
                             }
-                            @endphp
+                        @endphp
 
-                       
+
 
                         <fieldset>
                             <p>What African food products are you having issues finding in your area?
                             </p>
                             <div class="row">
                                 <div class="col-75">
-                                    <textarea name="message" placeholder="List products"></textarea>
-                                    @php
-                                    if(isset($email)){
-                                       echo '<input name="email" type="hidden" value="{{ $email ?? ""}}" />';
-                                    }
-                                    @endphp
-                                   
+                                    <textarea required name="message" placeholder="List products"></textarea>
+
+                                    @if(isset($email))
+                                 
+                                            <input name="email" type="hidden" value="{{ $email ?? ""}}" />
+
+                                            @endif
+                                        
+                    
+
                                 </div>
                             </div>
                         </fieldset>

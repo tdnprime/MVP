@@ -7,7 +7,7 @@
         <aside class="centered asides call-out"><br>
             <img id="move-down" class="center" src="../assets/images/logo.png" alt="BOXEON" />
             <h2 id="headline_h1" class="font-size-3-em">Get 16 Free foods + 3 Surprise Gifts</h2>
-            <p class="centered center font-1-5-em">An effortless way to enjoy the African foods you love from home. We'll send you, your choice of foods at a monthly schedule convinient to you.</p><br>
+            <p class="centered center font-1-5-em">Enjoy authentic African foods from home. We'll send you, your choice of foods at a monthly schedule convinient to you.</p><br>
             <a href="/apply/survey" class="button uppercase">Personalize Your Box</a>
         </aside>
         <br><br>
@@ -20,7 +20,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-75 two-col-grid">
-                                <input type="email" placeholder="Primary email" name="email">
+                                <input required type="email" placeholder="Primary email" name="email">
                                 <input type='submit' value="JOIN NOW">
                             </div>
                         </div>

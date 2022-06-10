@@ -900,7 +900,7 @@ audio {
 #index #masthead {
   background-color: #d3fb95;
   background-image: url("../images/groceries.png"), url("../images/jerk-shrimp.png");
-  background-position-x: left, right;
+  background-position-x: -5%, right;
   background-position-y: bottom, top;
   background-size: 50%, 30%;
   background-repeat: no-repeat;

@@ -30,6 +30,12 @@
 
   /* General */
 
+  #index #masthead {
+    height:1100px;
+    background-size: 100%, 30%;
+ 
+}
+
   .display-none {
     display: block;
   }

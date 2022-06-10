@@ -50,11 +50,32 @@ class HomeController extends Controller
         
             $email = $request["email"];
             $message = $request["message"];
-            # Update
+
+            $test = DB::table("waiting")->where("email", "=", $email)
+            ->get();
+
+        if(!empty($test['email'])){
+            
+        # Update
             DB::table("waiting")->where("email", "=", $email)->update([
                 "message" => $message]);
             Session::flash('message', 'Success!');
             return view('apply.survey', compact('user'));
+        }
+        if(empty($test['email']) && isset($message)){
+            # Insert
+            DB::table("waiting")->insert([
+                'email' => $email,
+                'campaign' => "African Foods",
+                'message'=> $message,
+            ]);
+            Session::flash('message', 'Success!');
+            return view('apply.survey', compact('user'));
+
+        }
+        return view('apply.survey', compact('user'));
+
+        
         
     }
 

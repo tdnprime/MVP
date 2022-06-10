@@ -15,7 +15,7 @@
         244 5th Avenue, Suite 7<br>
         New York, NY 10001<br>
         service@boxeon.com<br>
-        <span>Text 646.450.4670‬</span></p>
+        <span>646.450.4670‬</span></p>
 </footer>
 <!--
 <dialog id="dialog-feedback" open>

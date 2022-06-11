@@ -57,7 +57,7 @@
 
                         <div class="row">
                             <div class="col-75">
-                                <input type='submit' value='SUBMIT'>
+                                <input id="survey" type='submit' value='SUBMIT'>
                             </div>
                         </div>
                     </form>

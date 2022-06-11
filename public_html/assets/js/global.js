@@ -1099,10 +1099,10 @@ window.onload = function () {
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
     document.getElementById('showDropdown').addEventListener('click', function () {
-    
+
       document.getElementById("myDropdown").classList.toggle("show");
-    
-  });
+
+    });
 
   }
 
@@ -1236,6 +1236,25 @@ window.onload = function () {
 
 
   });
+
+  // Event snippet for Waiting List Signup conversion page
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof (url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-10788250660/CKWeCNWaosUDEKTInpgo',
+      'event_callback': callback
+    });
+    return false;
+  }
+  if (document.getElementById('survey')) {
+    document.getElementById('survey').addEventListener('click', function () {
+      gtag_report_conversion();
+    });
+  }
 
 
   //import instance from './modules/messages.js'

@@ -1,4 +1,4 @@
-<title>@yield('title', config('app.name')).com Monthly African Subscription Boxes</title>
+<title>@yield('title', config('app.name'))</title>
 <meta property="og:title" content="Boxeon.com Skyrocket Black Economies" />
 <meta property="og:description" content="Buy African & Caribbean products, subscription boxes, spark industrial revolutions." />
 <meta property="og:type" content="website" />
@@ -7,7 +7,7 @@
 <meta name="description"
     content="Buy African & Caribbean products, subscription boxes, spark industrial revolutions." />
 <meta name="keywords"
-    content="Boxeon, buy black, we buy black, subscription box, African products, Caribbean seafood, Wode Maya, buy black movement">
+    content="Boxeon, buy black, subscription box, African foods">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />

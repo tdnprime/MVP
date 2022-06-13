@@ -13,7 +13,7 @@
 
 <!-- Event snippet for Submit form conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-<script nonce="{{$hash}}">
+<script nonce="@php echo $hash; @endphp">
     function gtag_report_conversion(url) {
       var callback = function () {
         if (typeof(url) != 'undefined') {

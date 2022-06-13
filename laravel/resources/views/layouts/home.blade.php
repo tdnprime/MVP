@@ -4,6 +4,25 @@
 <head>
     @include('includes.meta')
 
+<!-- Event snippet for Submit form conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script nonce="">
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-10788250660/hYw9CJC838UDEKTInpgo',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+    
+  
+
 </head>
 
 <body id='home'>

@@ -1251,6 +1251,7 @@ window.onload = function () {
     });
     return false;
   }
+
   if (document.getElementById('survey')) {
     document.getElementById('survey').addEventListener('click', function () {
       gtag_report_conversion("https://boxeon.com/apply/survey");
@@ -1258,7 +1259,7 @@ window.onload = function () {
     });
   }
 
-
+  
   //import instance from './modules/messages.js'
 }
 /*

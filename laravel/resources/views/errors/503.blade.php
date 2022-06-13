@@ -1,5 +1,4 @@
 @extends('layouts.index')
-@section('title', 'Boxeon.com Monthly African Food Subscription Box')
 @section('content')
 
     <div id="masthead">

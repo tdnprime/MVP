@@ -1239,6 +1239,7 @@ window.onload = function () {
 
   // Event snippet for Waiting List Signup conversion page
   function gtag_report_conversion(url) {
+  
     var callback = function () {
       if (typeof (url) != 'undefined') {
         window.location = url;
@@ -1252,7 +1253,8 @@ window.onload = function () {
   }
   if (document.getElementById('survey')) {
     document.getElementById('survey').addEventListener('click', function () {
-      gtag_report_conversion();
+      gtag_report_conversion("https://boxeon.com/apply/survey");
+      
     });
   }
 

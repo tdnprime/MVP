@@ -1,5 +1,5 @@
 @extends('layouts.home')
-@section('title', 'Boxeon .com User Survey')
+@section('title', 'Boxeon.com User Survey')
 @section('content')
     <main>
         <section id="left-aside"></section>

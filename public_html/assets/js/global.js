@@ -1100,7 +1100,8 @@ window.onload = function () {
     toggle between hiding and showing the dropdown content */
     document.getElementById('showDropdown').addEventListener('click', function () {
 
-      document.getElementById("myDropdown").classList.toggle("show");
+      document.getElementById("myDropdown").style.display="block";
+      
 
     });
 

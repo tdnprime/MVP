@@ -153,6 +153,7 @@ Brown skin: #a0616a
 #home main {
   display: grid;
   grid-template-columns: auto auto auto;
+  background-color: #8bc34a0a;
 
 }
 
@@ -167,6 +168,10 @@ Brown skin: #a0616a
   padding-bottom: 4em;
   border-radius: .5em;
   box-shadow: 20px 20px 60px #0a7bac1a, -20px -20px 60px #ffffff;
+}
+
+.deprecated {
+  display: none !important;
 }
 
 #alt-home-main {
@@ -293,13 +298,15 @@ Brown skin: #a0616a
   font-size: 1em;
 }
 
+h1, h2, h3, h4 {
+  font-family: 'Concert One';
+}
 
-
- dialog p {
+dialog p {
   max-width: 400px;
   min-width: 200px;
   margin: auto;
-} 
+}
 
 #text-step0-label {
   grid-column-start: 1;
@@ -403,7 +410,7 @@ Brown skin: #a0616a
   width: 30px;
   border-radius: 9999px;
   text-align: center;
-  color: #0c8dc4;
+  color: green;
   font-size: 1.3em;
   margin: auto;
   position: relative;
@@ -432,7 +439,7 @@ Brown skin: #a0616a
 }
 
 #container {
-  // background-color: #f5f7fa;
+  background-color: #8bc34a0a;
 }
 
 /*
@@ -493,16 +500,11 @@ Brown skin: #a0616a
   grid-column-start: 2;
 }
 
-a:visited {
-  color: none;
-}
-
 
 .image-round {
   border-radius: 9999px;
   max-width: 70px;
 }
-
 
 
 #footer-content-wrapper {
@@ -533,6 +535,11 @@ a:visited {
   margin: auto;
 }
 
+#checkout-logo {
+  top: 0;
+}
+
+#checkout-logo,
 #footer-logo, #logo {
   height: 40px;
   width: auto;
@@ -633,8 +640,9 @@ a:visited {
   width: 100%;
 }
 
-.maxw1036 {
-  max-width: 1036px;
+.maxw1036,
+.maxw1035 {
+  max-width: 1035px;
   width: 100%;
 
 }
@@ -668,7 +676,8 @@ a:visited {
 #cart-main {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: 85% 15% !important;
+  grid-template-columns: 75% 25% !important;
+  max-width: 1235px;
   margin: auto;
   margin-top: 2em;
   min-height: 70em;
@@ -691,18 +700,11 @@ a:visited {
 
 
 #how-it-works {
-  filter: grayscale(1);
-  font-size: .6em;
-  margin: 5em;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+
+  grid-template-columns: 33% 33% 33%;
 }
 
-#how-it-works img {
-  height: 100px;
-  width: 100px;
-}
+
 
 #image-video-frame {
   position: absolute;
@@ -888,7 +890,7 @@ audio {
   top: 50%;
   margin-top: -6px;
 }
-}
+
 
 #masthead {
   grid-row-end: 3;
@@ -897,14 +899,26 @@ audio {
   width: 100%;
 }
 
+.image-how-it-works {
+  max-width: 200px;
+}
+
+#img-gifts,
+#img-reminder,
+#img-shopping {
+  max-height: 124px;
+  width: auto;
+  margin: auto;
+  display: block;
+}
+
 #index #masthead {
   background-color: #d3fb95;
-  background-image: url("../images/groceries.png"), url("../images/jerk-shrimp.png");
-  background-position-x: -5%, right;
-  background-position-y: bottom, top;
-  background-size: 50%, 30%;
+  background-image: url('../images/shop.png');
+  background-size: contain;
   background-repeat: no-repeat;
- 
+  height: 46em;
+
 }
 
 #box #masthead {
@@ -1230,7 +1244,7 @@ audio {
 }
 
 .primary-color {
-  color: #0c8dc4;
+  color: green;
 }
 
 #profile-ego {
@@ -1242,7 +1256,7 @@ audio {
 #header-user-icon {
   border-radius: 9999px;
   float: left;
-  height: 24px;
+  height: 40px;
   margin-right: 0.5em;
 }
 
@@ -1279,8 +1293,7 @@ audio {
 }
 
 #signin {
-  color: #0c8dc4;
-  line-height: inherit !important;
+
   padding-left: 2em;
   width: 200px;
   position: relative;
@@ -1491,8 +1504,8 @@ audio {
   padding: 0px 8px;
   height: 24px;
   line-height: 22px;
-  background-color: rgb(248, 173, 173);
-  color: rgb(31, 31, 31);
+  background-color: red;
+  color: white;
   margin-bottom: 16px;
   margin-bottom: 0;
 }
@@ -1578,11 +1591,7 @@ audio {
   margin-right: auto;
 }
 
-.products-stream button {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
+
 
 .products-stream {
   max-width: 1035px;
@@ -1639,7 +1648,7 @@ audio {
   display: grid;
   grid-template-columns: 50px 300px auto 50px;
   grid-gap: 1em;
-  border-bottom: 1px solid #cfe4f4;
+  border-bottom: 1px solid #8bc34a;
   padding-bottom: 1em;
   padding-top: 1em;
   background-color: #fff;
@@ -1791,7 +1800,7 @@ audio {
 .extra-large-font, h2 {
   font-size: 2.5em;
   font-weight: 500;
-  font-family: "Corda Std", Georgia, serif;
+  font-family: 'Concert One';
 }
 
 .div-limited-editions-panel h2 {
@@ -1901,7 +1910,19 @@ audio {
   line-height: 3.5rem;
   margin-top: 5px;
   margin-bottom: 20px;
+  text-align: center;
+  /* background-color: red; */
+  padding: .2em;
+  border-radius: .2em;
+  /* color: #fff;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%); */
+}
 
+.call-out p {
+ /*  border-radius: .2em;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+  background-color: yellow; */
+  padding: .3em;
 }
 
 .gpic {
@@ -1998,8 +2019,8 @@ audio {
 
 #myDropdown {
   right: 0;
-  top: 1em;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  top: 1.5em;
+  //font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /* Dropdown button on hover & focus */
@@ -2019,14 +2040,13 @@ audio {
   display: none;
   position: absolute;
   min-width: 160px;
-  background: #f5f7fa;
-  box-shadow: 2px 4px 12px #0c8dc41a;
+  background:green;
   z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-  color: black;
+  color:white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -2034,8 +2054,8 @@ audio {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #0c86c4;
-  color: #fff;
+  background-color: red;
+  color:yellow;
   cursor: pointer;
 }
 
@@ -2046,7 +2066,9 @@ audio {
   font-family: "Concert One";
 }
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+/* Show the dropdown menu 
+(use JS to add this class to the .dropdown-content 
+container when the user clicks on the dropdown button) */
 .show {
   display: block;
 }
@@ -2419,15 +2441,25 @@ the side navigation*/
 .section h3 {
   font-weight: bold;
 }
+.maxw800px{
+  max-width:800px;
+}
+.block {
+  width: 100%;
+  background-color: green;
+  color: #fff;
+  padding: 2em;
+  margin-bottom: 2em;
+  height: 10em;
 
+}
 .wide {
   width: 100%;
-  /* background-image: url("../images/widebg.png");
-  background-repeat: no-repeat; */
+  background-color:#eff5ef;
+  padding: 2em;
   margin-bottom: 2em;
 
 }
-
 .white {
   color: #fff !important;
 }
@@ -2473,10 +2505,11 @@ the side navigation*/
 
 }
 
-#move-down{
-  width: 200px;
-  margin-top: 4em;
+#move-down {
+
+  margin-top: 6em;
 }
+
 .wide img {
   margin-top: 0;
   margin-bottom: 0;
@@ -2638,7 +2671,7 @@ fieldset {
   border: none;
   border: 1px solid #ccfdc2;
   padding: 4% !important;
-  margin-bottom:2em;
+  margin-bottom: 2em;
 }
 
 .fieldset-neuromorph,
@@ -2648,6 +2681,9 @@ fieldset {
 
 }
 
+.font-size-30px {
+  font-size: 30px !important;
+}
 
 legend {
   font-size: 1.5em;
@@ -2656,14 +2692,14 @@ legend {
 }
 
 footer {
-
+  background-color: #8bc34a0a;
   display: grid;
   margin: 0 auto;
   padding-bottom: 5em;
   padding-top: 10em;
   width: 100%;
   margin-bottom: 4em;
-  margin-top: 4em;
+
 }
 
 #image-raised-fist {
@@ -2676,6 +2712,7 @@ footer {
 
 #about .section img {
   height: 100%;
+  max-height: 200px;
   margin-bottom: auto;
 
 }
@@ -2725,8 +2762,8 @@ header {
 
   grid-row-end: 2;
   grid-row-start: 2;
-  background-color: #ffffff;
-  height: 70px;
+  background-color: green;
+  height: 78px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -2736,7 +2773,7 @@ header {
 
 #header-inner-wrapper {
   position: relative;
-  max-width: 1135px;
+  max-width: 1035px;
   margin: auto;
   top: 50%;
   margin-top: -26px;
@@ -2776,7 +2813,7 @@ header {
 }
 
 .div-horizontal-rule {
-  border-bottom: 2px solid #cfe4f4;
+  border-bottom: 1px solid #8bc34a;
   margin-bottom: 3em;
   margin-top: 3em;
   max-width: 1035px;
@@ -2811,6 +2848,8 @@ header #grid-2 {
 #nav-header-right {
   position: absolute;
   right: 0;
+  top: 50%;
+  margin-top: -16px;
 }
 
 #nav-header-right li {
@@ -2823,6 +2862,10 @@ header #grid-2 {
 header>* {
   margin: auto;
   margin-left: 0;
+}
+
+#header-user-icon {
+  border: 3px solid yellow;
 }
 
 header #user-icon,
@@ -2885,8 +2928,7 @@ ul {
 }
 
 #checkout-content .step-wrapper {
-  border: 1px solid #cfe4f4;
-  ;
+  border: 1px solid #8bc34a;
   padding: 4%;
 
 }
@@ -2916,12 +2958,13 @@ ul {
 
 #checkout-header-wrapper {
   padding: 1.5em;
-  background-image: url("../images/checkout-header-bg.png");
+  background-color: green;
   background-size: contain;
   background-repeat: repeat-x;
   position: fixed;
   top: 0;
   width: 100%;
+  color: white;
 }
 
 #checkout-header * {
@@ -3062,7 +3105,7 @@ td, td, ul, P, a, label {
 }
 
 h3 {
- 
+
   font-size: 2em;
 
 }

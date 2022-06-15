@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('errors.503', compact('user'));
+        return view('index', compact('user'));
     }
 
     public function waiting(Request $request)

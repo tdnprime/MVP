@@ -6,12 +6,7 @@
 
 
         <section class='section maxw1036'>
-            <h1 class='extra-large-font centered'>HOW TO GET STARTED?</h1>
-            <div class="three-col-grid">
-                <h3>Save time and money</h3>
-                <h3>Subscribe more. Save more.</h3>
-                <h3>Easy to manage</h3>
-            </div>
+            @include("includes.works")
 
             <div class="div-horizontal-rule center"></div>
             <h1 class='extra-large-font centered'> Frequently Asked Questions</h1>

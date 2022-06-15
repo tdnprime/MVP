@@ -40,6 +40,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         @include('includes.menus.index')
         @yield('content')
         @include('includes.footer')
+  
 </body>
 
 </html>

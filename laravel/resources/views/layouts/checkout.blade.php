@@ -17,10 +17,10 @@
     <div id="checkout-header-wrapper">
 <div id="checkout-header" class="three-col-grid">
 
-    <a id='logo' href="/cart/index" title='Boxeon'>
-        <img id='logo' src='{{ asset('../assets/images/logo.svg') }}' alt='logo' />
+    <a href="/cart/index" title='Boxeon'>
+        <img id='checkout-logo' src='{{ asset('../assets/images/logo.png') }}' alt='logo' />
         </a>
-        <div><p class="font-size-2-em">Checkout (<a class="one-em-font primary-color" href="/cart/index"># items)</a></p></div>
+        <div><p class="white font-size-2-em">Checkout (<a class="one-em-font white" href="/cart/index"># items)</a></p></div>
         <a href="/privacy"><div class="material-icons">lock</div></a>
 </div></div>
     @yield('content')

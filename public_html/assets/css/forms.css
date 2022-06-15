@@ -131,9 +131,9 @@ option[value=""][disabled] {
 }
 
 input[type="submit"], .button, button {
-  background-color: #067A46;
-    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
-
+  background-color: green;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+border-radius: 25px;
   border: 1px solid #3a883d;
   box-sizing: border-box;
   color: #ffffff;
@@ -161,7 +161,8 @@ header .material-icons {
 
 input[type="submit"]:hover, .button:hover, button:active:hover {
   box-shadow: 0 10px 18px 0 rgb(0 0 0 / 30%);
-  background: #067A46;
+  background:red;
+  color:yellow;
 }
 
 #embed-form {

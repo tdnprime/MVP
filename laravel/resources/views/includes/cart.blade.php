@@ -1,87 +1,7 @@
 <main id="cart-main" class="fadein">
 
-    <section class="cart-section">
-       
-        <div class="cart-banner hide">
-             
-            <div>
-                <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
-                <a class="one-em-font" href="/shop/item?id=productID">
-                    <h3 class="">Product name</h3>
-                </a>
-                <form action="/cart" method="post">
-                    @csrf
-                    <select class="margin-top-zero">
-                        <option selected>Choose price</option>
-                        <option>$22/month - billed monthly for 1 month</option>
-                    </select>
-                    <input type="submit" value="ADD TO CART">
-                </form>
-            </div>
+    <section class="cart-section center">
 
-            <div>
-                <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
-                <a class="one-em-font" href="/shop/item?id=productID">
-                    <h3 class="">Product name</h3>
-                </a>
-                <form action="/cart" method="post">
-                    @csrf
-                    <select class="margin-top-zero">
-                        <option selected>Choose price</option>
-                        <option>$22/month - billed monthly for 1 month</option>
-                    </select>
-                    <input type="submit" value="ADD TO CART">
-                </form>
-            </div>
-
-            <div>
-                <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
-                <a class="one-em-font" href="/shop/item?id=productID">
-                    <h3 class="">Product name</h3>
-                </a>
-                <form action="/cart" method="post">
-                    @csrf
-                    <select class="margin-top-zero">
-                        <option selected>Choose price</option>
-                        <option>$22/month - billed monthly for 1 month</option>
-                    </select>
-                    <input type="submit" value="ADD TO CART">
-                </form>
-            </div>
-
-            <div>
-                <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
-                <a class="one-em-font" href="/shop/item?id=productID">
-                    <h3 class="">Product name</h3>
-                </a>
-                <form action="/cart" method="post">
-                    @csrf
-                    <select class="margin-top-zero">
-                        <option selected>Choose price</option>
-                        <option>$22/month - billed monthly for 1 month</option>
-                    </select>
-                    <input type="submit" value="ADD TO CART">
-                </form>
-            </div>
-
-            <div>
-                <a href="/shop/item?id=productID"><img src="../assets/images/medium-product-img.png"></a>
-                <a class="one-em-font" href="/shop/item?id=productID">
-                    <h3 class="">Product name</h3>
-                </a>
-                <form action="/cart" method="post">
-                    @csrf
-                    <select class="margin-top-zero">
-                        <option selected>Choose price</option>
-                        <option>$22/month - billed monthly for 1 month</option>
-                    </select>
-                    <input type="submit" value="ADD TO CART">
-                </form>
-            </div>
-        
-      
-
-        </div>
         <div class="cart-header">
             <h2>Shopping cart</h2>
         </div>
@@ -132,22 +52,11 @@
         <div class="card-white-bg">
             <b>
                 <h2 class="cart-subtotal black-font font-size-2-em">Subtotal (# items) $cost</h2>
-            </b><form action="/checkout/index" method="post">
+            </b>
+            <form action="/checkout/index" method="post">
                 @csrf
-            <input type="submit" class="button yellowbtn" value="Proceed to checkout">
+                <input type="submit" class="button yellowbtn" value="Proceed to checkout">
             </form>
-        </div>
-        <div class="card-white-bg">
-            <h3>Add these items</h3>
-            <div class="sidebar-prducts-stream">
-            <div>
-                <img src="../assets/images/thumb.jpg" alt=""/>
-                <a href="#">Product name</a>
-                <p>Price</p>
-                <button class="clearbtn">ADD TO BOX</button>
-            </div>
-            </div>
-
         </div>
     </section>
 </main>

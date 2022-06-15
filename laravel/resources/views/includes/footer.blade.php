@@ -1,12 +1,28 @@
 <footer>
+    <section class="section wide">
+    <h2 class="centered center extra-large-font">Get 16 Free Foods + 3 Surprise Gifts</h2>
+    <p class="centered center">Sign up and receive exclusive offers, sneak peeks of new imports, and more!</p>
+   
+    <form id="mailing-list-form" action="/pmf/email" method="post">
+        @csrf
+        <div class="row">
+            <div class="col-75 two-col-grid">
+                <input required type="email" placeholder="Primary email" name="email">
+                <input type='submit' value="SIGN UP">
+            </div>
+        </div>
 
+    </form>
+</section>
+<br><br>
+    
     <div id="footer-content-wrapper"> <a>&copy; {{ date('Y') }} Boxeon LLC.&nbsp;&nbsp;&nbsp;<span
-                class="display-inline">Made in New York with&nbsp;<img class="display-inline" src="../assets/images/heart.svg"
-                    alt="Heart"></span></span></a>
-        <a href="#">Terms Of Use</a>
-        <a href="#">Privacy</a>
-        <a href="#">Returns & Refunds</a>
-        <a href="#">About</a>
+                class="display-inline">Made in New York With&nbsp;<img class="display-inline"
+                    src="../assets/images/heart.svg" alt="Heart"></span></span></a>
+        <a href="/terms">Terms Of Use</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/returns">Returns & Refunds</a>
+        <a href="/about">About</a>
 
     </div>
     <br>
@@ -15,9 +31,10 @@
         244 5th Avenue, Suite 7<br>
         New York, NY 10001<br>
         service@boxeon.com<br>
-        <span>646.450.4670‬</span></p>
+        <span>646.450.4670‬</span>
+    </p>
 </footer>
-<!--
+
 <dialog id="dialog-feedback" open>
     <form action="/feedback/Send feedback" method="post">
         @csrf
@@ -81,4 +98,3 @@
 
 
 <button id="feedback"><span class="material-icons">message</span>&nbsp;Feedback</button>
-!-->

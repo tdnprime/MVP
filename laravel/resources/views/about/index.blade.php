@@ -1,25 +1,29 @@
 @extends('layouts.about')
-@section('title', 'Boxeon.com About')
+@section('title', 'About Boxeon And Our Values')
 @section('content')
 
     <main>
+        <section class="section wide">
+            <h1 id="banner-slogan" class="centered ginormous">Welcome! You've made it to ground zero of an industrial revolution.</h1>
+        </section>
 
-        <section class='section maxw1036'>
-            <div id="div-banner-blank">
-                <h1 id="banner-slogan" class="centered ginormous">Sky's the limit</h1>
-            </div>
+        <section class='section maxw1035'>
+            
+               
+            
             <div class="pitch">
-                <aside class="asides">
-                    <h1 class="text-3em">We're an international cadre with an acute desire to spark industrial
-                        revolutions in the Global South. In service of this, we've created Boxeon to skyrocket the diaspora's consumption of products
-                        manufactured in the South. Join this historic endevour.</h1>
+                <aside class="asides maxw800px">
+                    <h1 class="text-3em">Our mission is to skyrocket the popularity of African consumer packaged foods to spark an industrial
+                        revolution on the continent, one country at a time.</h1>
                 </aside>
             </div>
-            <h1 id="banner-slogan" class="centered ginormous primary-color">The Team</h1>
+            <section class="section wide">
+            <h1 class="centered ginormous primary-color">OUR VALUES</h1>
+            </section>
             <div id="team-wrapper" class="three-rows-grid">
                 <div class="four-col-grid">
                     <span></span>
-                    <img src="../assets/images/medium-placeholder.png" alt="CEO">
+                    <img src="../assets/images/pledge-1.png" alt="CEO">
                     <div><b>
                             <p class="uppercase">Trevor Devon Nathaniel Prime</p>
                         </b>
@@ -32,7 +36,7 @@
                 </div>
                 <div class="four-col-grid">
                     <span></span>
-                    <img src="../assets/images/medium-placeholder.png" alt="CEO">
+                    <img src="../assets/images/pledge-2.png" alt="CEO">
                     <div><b>
                             <p class="uppercase">Lorem Ipsum</p>
                         </b>
@@ -45,7 +49,7 @@
                 </div>
                 <div class="four-col-grid">
                     <span></span>
-                    <img src="../assets/images/medium-placeholder.png" alt="CEO">
+                    <img src="../assets/images/pledge-3.png" alt="CEO">
                     <div><b>
                             <p class="uppercase">Luana Nascimento</p>
                         </b>
@@ -58,7 +62,7 @@
                 </div>
                 <div class="four-col-grid">
                     <span></span>
-                    <img src="../assets/images/medium-placeholder.png" alt="CEO">
+                    <img src="../assets/images/pledge-4.png" alt="CEO">
                     <div><b>
                             <p class="uppercase">Lorem Ipsum</p>
                         </b>

@@ -13,9 +13,10 @@
         
             <a id='m-shop' class='one-em-font' href='/search/products' title='#'><span class='material-icons'>search</span></a>
         
-   
+           
 <ul id='nav-header-right' class='display-inline'>
         @auth
+       <li> <a href="/cart/index" class="material-icons white">shopping_cart</a></li>
             <li id='current-user'>
    <a id="showDropdown" class='fadein' href='#'>
                     <span><img id='header-user-icon' src='{{ $user->profile_photo_path }}' alt='You'></span>
@@ -34,10 +35,9 @@
 
         @if (!Auth::check())
         <li class="hide">
-            <a class='button margin-auto' id='signi' href='/apply/survey'>
 
-            <!-- <a class='button margin-auto' id='signi' href={'{' url('auth/google') }}'>!-->
-                Get 16 free foods + 3 surprise gifts
+            <a class='button margin-auto' id='signin' href='{{url('auth/google') }}'>
+                Sign In
             </a>
         </li>
  

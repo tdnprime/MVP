@@ -1,19 +1,19 @@
 <title>@yield('title', config('app.name'))</title>
-<meta property="og:title" content="Boxeon.com Skyrocket Black Economies" />
-<meta property="og:description" content="Buy African & Caribbean products, subscription boxes, spark industrial revolutions." />
+<meta property="og:title" content="Boxeon.com Monthly African Food Subscription Box" />
+<meta property="og:description" content="African store online, Shop African food online, African snacks" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://boxeon.com" />
 <meta property="og:image" content="{{ asset('../assets/images/high-five.png') }}">
 <meta name="description"
-    content="Buy African & Caribbean products, subscription boxes, spark industrial revolutions." />
+    content="African store online, Shop African food online, African snacks." />
 <meta name="keywords"
     content="Boxeon, buy black, subscription box, African foods">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<link rel="icon" type="image/svg+xml" href="{{ asset('../assets/images/favicon.svg') }}">
-<link rel="alternate icon" href="{{ asset('../assets/images/favicon.svg') }}">
-<link rel="mask-icon" href="https://boxeon.com/images/favicon.svg" color="#fff">
+<link rel="icon" type="image/svg+xml" href="{{ asset('../assets/images/favicon.png') }}">
+<link rel="alternate icon" href="{{ asset('../assets/images/favicon.png') }}">
+<link rel="mask-icon" href="https://boxeon.com/images/favicon.png" color="#fff">
 <link rel="stylesheet" href="{{ asset('../assets/css/style.css?v=35') }}">
 <link rel="stylesheet" href="{{ asset('../assets/css/forms.css?v=35') }}">
 <link rel="stylesheet" href="{{ asset('../css/app.css') }}">

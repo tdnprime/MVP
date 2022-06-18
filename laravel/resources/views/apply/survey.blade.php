@@ -14,7 +14,7 @@
                 <div class="masthead-forms">
                     <div class="row">
                         <div class="col-75">
-                            <h2 id='apply' href='#apply'>
+                            <h2 id='apply' class="text-red" href='#apply'>
                                 @php
                                     if (isset($email)) {
                                         echo 'Finish Your Enrollment';

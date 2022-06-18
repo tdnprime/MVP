@@ -4,7 +4,7 @@
 
     <main>
         <section class="section wide">
-            <h1 id="banner-slogan" class="centered ginormous">Welcome! You've made it to ground zero of an industrial revolution.</h1>
+            <h1 id="banner-slogan" class="centered ginormous">Welcome to ground zero of an industrial revolution.</h1>
         </section>
 
         <section class='section maxw1035'>

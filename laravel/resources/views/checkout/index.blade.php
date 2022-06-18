@@ -7,7 +7,7 @@
             <section id="checkout-content" class="margin-top-6-em max-width-1035 three-rows-grid">
                 <div class="step-wrapper">
                     <div>
-                        <h3>1.&nbsp;&nbsp;&nbsp;Apply coupon code</h3>
+                        <h3>1.&nbsp;&nbsp;&nbsp;Apply coupon code </h3>
                     </div>
                     <div id="payment-method">
                         <form action='/checkout/coupon' method='post'>
@@ -15,7 +15,7 @@
                             @method('POST')
                             <div class="row">
                                 <div class="col-75">
-                                    <input type="text" name="coupon" placeholder="Coupon code">
+                                    <input type="text" name="coupon" placeholder="Coupon code (optional)">
                                 </div>
                             </div>
                             <div class="row">

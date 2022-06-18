@@ -1011,6 +1011,14 @@ window.onload = function () {
 
   }
 
+  // Close Feedback Dialog
+  if (document.getElementById('close-dialog')) {
+    document.getElementById('close-dialog').addEventListener('click', function () {
+      document.getElementById('dialog-feedback').style.display = 'none';
+
+    })
+  }
+
   if (document.getElementById('alert')) {
 
     document.getElementById('alert').show();
@@ -1083,6 +1091,66 @@ window.onload = function () {
 
     });
   }
+
+  // Reviews
+  if (document.getElementById('show-review-form')) {
+    document.getElementById('show-review-form').addEventListener('click', function () {
+      document.getElementById('form-reviews').style.display = "block";
+
+    });
+  }
+
+  // Feedback 
+  if (document.getElementById('feedback')) {
+    document.getElementById('feedback').addEventListener('click', function () {
+      document.getElementById('dialog-feedback').style.display = "block";
+
+    });
+  }
+  if (document.getElementsByClassName('sentiment')) {
+    
+    let choices = document.getElementsByClassName('sentiment'); 
+    var num = choices.length;
+
+    for (let i = 0; i < num; i++) {
+
+      choices[i].addEventListener('click', function () {
+        
+        var feedback = choices[i].id; 
+
+        document.getElementById('start').style.display = "none";
+
+        if (feedback == "thumb_up") {
+          document.getElementById('like').style.display = "block";
+        }
+        if (feedback == "thumb_down") {
+          document.getElementById('dislike').style.display = "block";
+        }
+        if (feedback == "lightbulb") {
+          document.getElementById('suggestion').style.display = "block";
+        }
+
+      });
+    }
+  }
+
+
+  if (document.getElementsByClassName('send-feedback')) {
+    let choices = document.getElementsByClassName('send-feedback'); 
+    var num = choices.length;
+    for (let i = 0; i < num; i++) {
+      choices[i].addEventListener('click', function (event) {
+        event.preventDefault();
+        var message = this.parentNode.getElementsByTagName("textarea")[0].value;
+        this.parentNode.style.display = "none";
+        document.getElementById('nps').style.display = "block";
+        return false;
+      });
+    }
+  }
+
+
+  // Sign Out
   if (document.getElementById('signout')) {
     document.getElementById('signout').addEventListener('click', function () {
       Boxeon.signOut();
@@ -1100,8 +1168,8 @@ window.onload = function () {
     toggle between hiding and showing the dropdown content */
     document.getElementById('showDropdown').addEventListener('click', function () {
 
-      document.getElementById("myDropdown").style.display="block";
-      
+      document.getElementById("myDropdown").style.display = "block";
+
 
     });
 
@@ -1240,7 +1308,7 @@ window.onload = function () {
 
   // Event snippet for Waiting List Signup conversion page
   function gtag_report_conversion(url) {
-  
+
     var callback = function () {
       if (typeof (url) != 'undefined') {
         window.location = url;
@@ -1256,11 +1324,11 @@ window.onload = function () {
   if (document.getElementById('survey')) {
     document.getElementById('survey').addEventListener('click', function () {
       gtag_report_conversion("https://boxeon.com/apply/survey");
-      
+
     });
   }
 
-  
+
   //import instance from './modules/messages.js'
 }
 /*

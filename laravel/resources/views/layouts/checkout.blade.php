@@ -12,7 +12,7 @@
     <script defer type="text/javascript" src="https://web.squarecdn.com/v1/square.js"></script>
 </head>
 
-<body id='home'>
+<body id='checkout'>
     <div id="container">
     <div id="checkout-header-wrapper">
 <div id="checkout-header" class="three-col-grid">

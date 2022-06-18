@@ -1,21 +1,22 @@
-
-#check-url{
+#check-url {
   line-height: 1em !important;
 }
 
 #form-search-inline, .search {
 
   width: 100%;
-  max-width:none;
+  max-width: none;
 
 }
-#fieldset-billing-address{
-  display:none;
+
+#fieldset-billing-address {
+  display: none;
 }
+
 .button:disabled,
-.button[disabled]{
+.button[disabled] {
   background-color: #000;
- 
+
 }
 
 #checkout-address-form select,
@@ -80,31 +81,39 @@ label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
-.row .two-col-grid{
 
-  background-color:#fcec63;
-  padding:2em;
+.row .two-col-grid {
+
+  background-color: #fcec63;
+  padding: 2em;
   border-radius: .5em;
 
 
 }
 
-#mailing-list-form{
+#form-reviews {
+
+  display: none;
+
+}
+
+#mailing-list-form {
   max-width: 460px;
-  width:100%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
-.row .two-col-grid input{
 
-  margin:auto;
+.row .two-col-grid input {
+
+  margin: auto;
 
 }
 
 input[type="tel"], input[type="number"], input[type="email"], select, textarea, input[type="text"], input[type="url"] {
   background-color: #fff;
   border: 1px solid rgba(248, 61, 61, 0.644);
- 
+
   padding: .7em;
   clear: both;
   margin-bottom: 1em;
@@ -113,12 +122,12 @@ input[type="tel"], input[type="number"], input[type="email"], select, textarea, 
   -moz-box-sizing: border-box !important;
   -webkit-box-sizing: border-box !important;
   box-sizing: border-box !important;
- // box-shadow: 2px 4px 12px #0c8dc41a;
+  // box-shadow: 2px 4px 12px #0c8dc41a;
   width: 100%;
   resize: vertical;
 }
 
-.margin-top-zero{
+.margin-top-zero {
   margin-top: 0;
 }
 
@@ -133,7 +142,7 @@ option[value=""][disabled] {
 input[type="submit"], .button, button {
   background-color: green;
   box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
-border-radius: 25px;
+  border-radius: 25px;
   border: 1px solid #3a883d;
   box-sizing: border-box;
   color: #ffffff;
@@ -148,9 +157,19 @@ border-radius: 25px;
   padding: .8em 1.5em .8em 1.5em;
 
 }
+.select-plan,
+.products-stream form select {
+  max-width: fit-content;
+  border-radius: 25px;
+}
+
+.products-stream .button {
+  max-width: 331px;
+  width: 100%;
+}
 
 input[type="submit"]:active, .button:active, button:active {
-  
+
   color: #fff;
 }
 
@@ -161,8 +180,8 @@ header .material-icons {
 
 input[type="submit"]:hover, .button:hover, button:active:hover {
   box-shadow: 0 10px 18px 0 rgb(0 0 0 / 30%);
-  background:red;
-  color:yellow;
+  background: red;
+  color: yellow;
 }
 
 #embed-form {
@@ -192,18 +211,19 @@ input[type="submit"]:hover, .button:hover, button:active:hover {
 
 
 
-.row{
-  margin-top:2em;
-  margin-bottom:1em;
+.row {
+  margin-top: 2em;
+  margin-bottom: 1em;
 }
+
 .container {
   border-radius: 5px;
   padding: 20px;
-  margin:auto;
+  margin: auto;
 }
 
 .col-25 {
-  margin:auto;
+  margin: auto;
   width: 25%;
   margin-top: 6px;
 }

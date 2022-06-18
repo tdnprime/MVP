@@ -1,7 +1,7 @@
 <footer>
     <section class="section wide">
-    <h2 class="centered center extra-large-font">Get 16 Free Foods + 3 Surprise Gifts</h2>
-    <p class="centered center">Sign up and receive exclusive offers, sneak peeks of new imports, and more!</p>
+    <h2 class="centered center extra-large-font">Get 16 foods + 3 surprises for the price of 1!</h2>
+    <p class="centered center">Sign up and answer a survey question to qualify. Offer ends soon.</p>
    
     <form id="mailing-list-form" action="/pmf/email" method="post">
         @csrf
@@ -36,44 +36,45 @@
 </footer>
 
 <dialog id="dialog-feedback" open>
-    <form action="/feedback/Send feedback" method="post">
-        @csrf
-        <fieldset>
-            <img class="center" src="../assets/images/logo.svg" alt="logo">
+    <a href="#" id="close-dialog">X</a>
+    <form>
+        <fieldset class="border-bottom">
+            <img class="center display-block" src="../assets/images/b.png" alt="Logo">
             <br>
             <b>
-                <p class="centered">Help us improve our business</p>
+                <p class="centered">Help us serve you better</p>
             </b>
-            <div class="div-horizontal-rule center"></div>
+
         </fieldset>
         <fieldset id="start">
-            <label><span class="material-icons">thumb_up</span>I like something
+            <h2>What's your feedback?</h2>
+            <label id="thumb_up"  class="sentiment"><span class="material-icons">thumb_up</span>I like something
             </label>
-            <label><span class="material-icons">thumb_down</span>I don't like something
+            <label id="thumb_down" class="sentiment"><span class="material-icons">thumb_down</span>I don't like something
             </label>
-            <label><span class="material-icons">lightbulb</span>I have a suggestion
+            <label id="lightbulb" class="sentiment"><span class="material-icons">lightbulb</span>I have a suggestion
             </label>
         </fieldset>
         <fieldset id="like">
-            <label>What did you like?</label>
+            <h2>What did you like?</h2>
             <textarea name="message" placeholder="Type your feedback here"></textarea>
             <br>
-            <input type="submit" value="Send feedback">
+            <input type="submit" class="send-feedback" value="Send feedback">
         </fieldset>
         <fieldset id="dislike">
-            <label>What didn't you like?</label>
+            <h2>What didn't you like?</h2>
             <textarea name="message" placeholder="Type your feedback here"></textarea>
             <br>
-            <input type="submit" value="Send feedback">
+            <input type="submit" class="send-feedback" value="Send feedback">
         </fieldset>
         <fieldset id="suggestion">
-            <label>What's your suggestion?</label>
+            <h2>What's your suggestion?</h2>
             <textarea name="message" placeholder="Type your feedback here"></textarea>
             <br>
-            <input type="submit" value="Send feedback">
+            <input type="submit" class="send-feedback" value="Send feedback">
         </fieldset>
         <fieldset id="nps">
-            <label>On a scale of 1 to 10, how likely are you to recommend Boxeon to someone?</label>
+            <h2>On a scale of 1 to 10, how likely are you to recommend Boxeon to someone?</h2>
             <div class="ten-col-grid">
                 <a class="scale" data-type-value="1" href="#">1</a>
                 <a class="scale" data-type-value="2" href="#">2</a>

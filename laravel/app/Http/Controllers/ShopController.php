@@ -16,19 +16,17 @@ class ShopController extends Controller
      */
     public function index()
     {
-
         if ($user = Auth::user()) {
             $id = auth()->user()->id;
             $user = User::find($id);
         }
+   
 
-        return view('shop.index', compact('user', 'user'))
-        ->with("heading", "Subscribe And Save")
-        ->with("pitch", "Choose the African foods you want, then choose your subscription plan. Cancel anytime.");
+        return view('shop.index', compact('user', 'user'));
     }
     public function item(Request $request)
     {
-        $id = $request["id"]; 
+        $id = $request["id"];
 
         if ($user = Auth::user()) {
             $id = auth()->user()->id;
@@ -41,6 +39,6 @@ class ShopController extends Controller
             ->get();
 
         return view('shop.item', compact('user', 'user'))
-        ->with("product", $product);
+            ->with("product", $product);
     }
 }

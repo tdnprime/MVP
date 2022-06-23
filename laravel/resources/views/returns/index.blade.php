@@ -1,21 +1,22 @@
 @extends('layouts.about')
 @section('title', 'Boxeon | Privacy')
 @section('content')
-
     <main>
-
-
-        <section class='section maxw1036'>
-            <h1 class='extra-large-font centered darkblue'>Returns</h1>
+        <section class='section rounded-corners card maxw1036 margin-top-4-em'>
+            <h2>Returns & Refunds</h2>
+            <div class="div-horizontal-rule"></div>
             <p>
                 When you return an item, your refund amount and refund method may vary. Check the payment method refunded
-                and the status of your refund in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a>.</p>
+                and the status of your refund in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a>.
+            </p>
 
-<h2>Where is my refund? </h2>
-            <p>Check the status of your refund in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a></p>
+            <h2>Where is my refund? </h2>
+            <p>Check the status of your refund in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a>
+            </p>
 
             <h2>How Long Do Refunds Take? </h2>
-            <p>When returning an item, you have the option to choose your preferred refund method in <a class="one-em-font primary-color" href="/home/index">Subscriptions</a>.</p>
+            <p>When returning an item, you have the option to choose your preferred refund method in <a
+                    class="one-em-font primary-color" href="/home/index">Subscriptions</a>.</p>
 
             <p>After the carrier receives your item, it can take up to two weeks for us to receive and process your return.
                 We typically process returns within 3-5 business days after the carrier delivers the item to our Returns
@@ -72,7 +73,9 @@
                     <td>80% of item price</td>
                 </tr>
             </table>
-            <p>*For most items, the return window is 30 days after delivery. To check the return window for an item you've ordered, go to <a class="one-em-font primary-color" href="/home/index">Subscriptions</a> and select Return or Replace Items.</p>
+            <p>*For most items, the return window is 30 days after delivery. To check the return window for an item you've
+                ordered, go to <a class="one-em-font primary-color" href="/home/index">Subscriptions</a> and select Return or
+                Replace Items.</p>
         </section>
 
     </main>

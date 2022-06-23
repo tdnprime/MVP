@@ -9,12 +9,12 @@
             </dialog>
         @endif
         <aside id="panel">
-            <div id="module">
+            <div id="module" class="rounded-corners card">
                 <span></span>
                 <div class="masthead-forms">
                     <div class="row">
                         <div class="col-75">
-                            <h2 id='apply' class="text-red" href='#apply'>
+                            <h2 id='apply' class="text-red ginormous" href='#apply'>
                                 @php
                                     if (isset($email)) {
                                         echo 'Finish Your Enrollment';
@@ -37,8 +37,8 @@
 
 
                         <fieldset>
-                            <p>What African food products are you having issues finding in your area?
-                            </p>
+                            <h2>What African food products are you having issues finding in your area?
+                            </h2>
                             <div class="row">
                                 <div class="col-75">
                                     <textarea required name="message" placeholder="List products"></textarea>

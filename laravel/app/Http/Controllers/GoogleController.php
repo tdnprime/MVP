@@ -43,14 +43,14 @@ class GoogleController extends Controller
             if ($finduser) {
                 Auth::login($finduser);
 
-                #Redirect to box
-                if (isset($_COOKIE['box'])) {
-                    $location = $_COOKIE['box'];
-                    $cookie = Cookie::forget('box');
+                #Redirect to checkout
+                if (isset($_COOKIE['checkout'])) {
+                    $location = "/checkout/index";
+                    $cookie = Cookie::forget('checkout');
                     return redirect($location)->withCookie($cookie);
                 } else {
                 
-                    return redirect('/home/index');
+                   return redirect('/home/index');
                 }
             } else {
                 #Save new user

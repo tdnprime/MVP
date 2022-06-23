@@ -13,7 +13,7 @@
                     <p class='centered'> {{ session()->get('message') }}</p>
                 </dialog>
             @endif
-            <div id='module'>
+            <div id='module' class="rounded-corners card">
                 <h2>Your account</h2>
                 <div class="div-horizontal-rule"></div>
                 <p>Update the shipping address where you receive subscriptions.</p>

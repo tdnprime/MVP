@@ -142,11 +142,12 @@ option[value=""][disabled] {
 input[type="submit"], .button, button {
   background-color: green;
   box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
-  border-radius: 25px;
+  border-radius: 0;
   border: 1px solid #3a883d;
   box-sizing: border-box;
   color: #ffffff;
   min-width: 200px;
+  font-weight: 100;
   text-align: center;
   cursor: pointer;
   font-size: 14px;
@@ -159,24 +160,30 @@ input[type="submit"], .button, button {
 }
 .select-plan,
 .products-stream form select {
-  max-width: fit-content;
-  border-radius: 25px;
-}
+  background-color: #0000000d;
+  border: 1px solid #0000001c;
 
-.products-stream .button {
-  max-width: 331px;
+}
+.form-plan{
+  display: grid;
+  grid-template-columns: 30% 69%;
+  grid-gap:1%;
+  max-width: 303px;
+}
+.cart-add{
+  max-width: 303px;
   width: 100%;
 }
 
+#nav-categories a:hover {
+  background-color:#0000000d !important;
+}
 input[type="submit"]:active, .button:active, button:active {
 
   color: #fff;
 }
 
-#text-modes-switch .material-icons,
-header .material-icons {
-  padding-right: 0 !important;
-}
+
 
 input[type="submit"]:hover, .button:hover, button:active:hover {
   box-shadow: 0 10px 18px 0 rgb(0 0 0 / 30%);

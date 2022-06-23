@@ -1,11 +1,11 @@
-@extends('layouts.about')
+@extends('layouts.index')
 @section('title', 'Boxeon.com About Subscriptions')
 @section('content')
 
     <main>
 
 
-        <section class='section maxw1036'>
+        <section class='section maxw1035 rounded-corner card'>
             @include("includes.works")
 
             <div class="div-horizontal-rule center"></div>
@@ -78,7 +78,7 @@
 
             <h2>Need help?</h2>
             <div>
-                Contact customer service | Terms & Conditions
+               <p> Contact customer service at 646-450-4671‬.</p>
             </div>
         </section>
 

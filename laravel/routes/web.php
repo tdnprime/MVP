@@ -110,6 +110,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::prefix('checkout')->group(function () {
         Route::post('/index', 'App\Http\Controllers\CheckoutController@index')->name('checkout.index');
+        Route::get('/index', 'App\Http\Controllers\CheckoutController@index')->name('checkout.index');
         Route::get('/referal', 'App\Http\Controllers\CheckoutController@referal')->name('checkout.referal');
         Route::get('/address', 'App\Http\Controllers\LabelsController@showAddress')->name('checkout.address');
         Route::post('/labels', 'App\Http\Controllers\LabelsController@rates')->name('labels.purchase');
@@ -209,13 +210,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/invitations/home', 'App\Http\Controllers\InvitationsController@home')->name('invitations.home');
     Route::get('/invitations/rewards', 'App\Http\Controllers\InvitationsController@rewards')->name('invitations.rewards');
 
+
+});
+
+
     #CART
     Route::prefix('cart')->group(function () {
         Route::get('/index', 'App\Http\Controllers\CartController@index')->name('cart.index');
 
     });
-
-});
 
 #GOOGLE CALLBACK
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

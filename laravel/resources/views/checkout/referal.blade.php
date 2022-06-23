@@ -1,6 +1,8 @@
 @extends('layouts.checkout')
 @section('title', 'Boxeon.com Referal Program')
+
 @section('content')
+
     <main id="checkout-main">
         <span></span>
         <div id="">

@@ -1,4 +1,4 @@
-@extends('layouts.create-box')
+@extends('layouts.home')
 @section('title', 'Boxeon.com Build Your Box')
 @section('content')
 

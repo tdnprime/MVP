@@ -3,7 +3,7 @@
     <section class="cart-section center">
 
         <div class="cart-header">
-            <h2>Shopping cart</h2>
+            <h2 class="font-size-2-em">Shopping cart</h2>
         </div>
 
         <section class="display-none">
@@ -23,8 +23,9 @@
 
             <div>
                 <div>
-                    <h3>3-month Reliable Develop Africa Subscription</h3>
-                    <p class="stock">In stock</p>
+                    <h2>3-month Reliable Develop Africa Subscription</h2>
+                    <p class="stock green">In stock</p>
+                    <h2 class='cart-item-price text-red'>Price</h2>
                 </div>
                 <div class="cart-item-updater">
                     <form><select name="quantity">
@@ -41,18 +42,17 @@
                 </div>
             </div>
 
-            <p class='cart-item-price'>Price</p>
         </div>
 
-        <h2 class="cart-subtotal black-font font-size-2-em">Subtotal (# items) $cost</h2>
+        <h2 class="cart-subtotal text-red">Subtotal (# items) $cost</h2>
 
     </section>
 
     <section class="hide">
         <div class="card-white-bg">
-            <b>
-                <h2 class="cart-subtotal black-font font-size-2-em">Subtotal (# items) $cost</h2>
-            </b>
+          
+                <h2 class="text-red">Subtotal (# items) $cost</h2>
+            
             <form action="/checkout/index" method="post">
                 @csrf
                 <input type="submit" class="button yellowbtn" value="Proceed to checkout">

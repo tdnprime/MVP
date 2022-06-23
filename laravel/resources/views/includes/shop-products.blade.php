@@ -1,48 +1,45 @@
 @php
 
-$products = DB::table('products')
-    ->where('category', '=', 'Staple')
-    ->get();
-$count = count($products);
+if (isset($_GET['c'])) {
+    $query = ucfirst($_GET['c']);
+
+    $product = DB::table('products')
+        ->where('category', '=', $query)
+        ->get();
+} else {
+    $product = DB::table('products')
+        ->where('category', '=', 'Staple')
+        ->get();
+
+        $sellers = DB::table('products')
+        ->where('category', '=', 'Produce')
+        ->get();
+}
 
 @endphp
 
 <span></span>
-<div class="container">
-    <h2>{{ $heading ?? '' }}</h2>
-    @if (isset($heading))
-        <div class="div-horizontal-rule"></div>
-    @endif
-    <p>{{ $pitch ?? '' }}</p>
-    <div class="products-stream">
+<div class="container margin-top-4-em">
 
-        @for ($i = 0; $i < $count; $i++)
+    <div id="nav-categories">
+        <a href="/shop/index?c=staple" class="button clearbtn">Staples</a>
+        <a href="/shop/index?c=spice" class="button clearbtn">Herbs & Spices</a>
+        <a href="/shop/index?c=produce" class="button clearbtn">Fruits & Produce</a>
+        <a href="/shop/index?c=body" class="button clearbtn">Bath & Body</a>
+        <a href="/shop/index?c=snack" class="button clearbtn">Snacks</a>
+    </div>
+    <div class="products-stream margin-top-4-em">
+        @for ($i = 0; $i < count($product); $i++)
             <div>
-                <a href="/shop/item?id={{ $products[$i]->id }}"><img src="../assets/images/{{ $products[$i]->img }}"
-                        alt="{{ $products[$i]->name }}"></a>
-                <!-- <p class="as-seen-on center centered">5% / 15%</p>!-->
-                <a class="" href="/shop/item?id={{ $products[$i]->id }}">
-                    <p>{{ $products[$i]->name }}</p>
+                <a href="/shop/item?id={{ $product[$i]->id }}"><img src="../assets/images/{{ $product[$i]->img }}"
+                        alt="{{ $product[$i]->name }}"></a>
+                <a class="" href="/shop/item?id={{ $product[$i]->id }}">
+                    <p>{{ $product[$i]->name }}</p>
                 </a>
                 @include('includes.stars')
-                   
-                <form>
-                    <select class="margin-top-zero" name="quantity">
-                        <option selected value="1">Qty: 1</option>
-                        <option value="2">Qty: 2</option>
-                        <option value="3">Qty: 3</option>
-                        <option value="4">Qty: 4</option>
-                        <option value="5">Qty: 5</option>
-                        <option value="6">Qty: 6</option>
-                        <option value="7">Qty: 7</option>
-                    </select>&nbsp;&nbsp;
-                    <select class="margin-top-zero" name="plan">
-                        <option invalid>Choose price/plan</option>
-                        <option value="{{ $products[$i]->price }}">${{ $products[$i]->price }} Every month</option>
-                    </select>
-                </form>
-            
-                <button id="cart-add" class="button">SUBSCRIBE NOW</button>
+
+                @include('includes.plan-form')
+
             </div>
         @endfor
     </div>

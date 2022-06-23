@@ -86,6 +86,39 @@ Boxeon = {
       }
     }
   },
+  allStorage:function() {
+
+      var archive = [],
+          keys = Object.keys(localStorage),
+          i = 0, key;
+  
+      for (; key = keys[i]; i++) {
+          archive.push( key + '=' + localStorage.getItem(key));
+      }
+  
+      return archive;
+  
+},
+  addToFlyout: function () {
+
+    let products = Boxeon.allStorage();
+    for(var i = 0; i < products.length; i++){
+
+      console.log( products);
+
+    let flyOut = document.getElementById("flyout");
+    var img = document.createElement("img");
+    var div = document.createElement("div");
+    var p = document.createElement("p");
+    var txt = document.createTextNode("Price");
+    div.className = "cart-item";
+    img.src = "../assets/images/" + products[i]['13-img'];
+    div.appendChild(img);
+    p.appendChild(txt);
+    div.appendChild(p);
+    flyOut.appendChild(div);
+    }
+  },
 
   generateUUID: function () {
     let time = new Date().getTime();
@@ -348,7 +381,7 @@ Boxeon = {
     radio4.addEventListener('click', function () {
       Boxeon.switchPlan(this);
     });
-    sessionStorage.setItem("sub-freq", 1);
+    localStorage.setItem("sub-freq", 1);
     return form;
   },
 
@@ -360,7 +393,7 @@ Boxeon = {
     wrapper.id = "subs-btns";
     var btn = document.createElement("button");
     btn.id = 'exe-sub';
-    sessionStorage.setItem("sub-creator-id", creator_uid);
+    localStorage.setItem("sub-creator-id", creator_uid);
     // btn.setAttribute("data-url", "URL");
     btn.innerText = "Continue";
     //Event listener
@@ -473,7 +506,7 @@ Boxeon = {
 
     var frequency = a.value;
 
-    sessionStorage.setItem("sub-freq", frequency);
+    localStorage.setItem("sub-freq", frequency);
 
   },
 
@@ -522,121 +555,68 @@ Boxeon = {
 
   },
 
-  menu: function () {
+  slideOutCart: function () {
 
     if (screen.width <= 600) {
 
-      document.getElementById("menu").style.width = "100%";
+
+      document.getElementById("menu").className = "slideOutCart";
+      document.getElementById('menu').style.display = "block";
+      document.getElementById("cart_overlay").className = "cart_overlay_show";
 
     } else {
 
-      document.getElementById("menu").style.width = "300px";
+      document.getElementById("menu").className = "slideOutCart";
+      document.getElementById('menu').style.display = "block";
+
+      document.getElementById("cart_overlay").className = "cart_overlay_show";
+
 
     }
-
-
-    if (document.getElementById("main-wrapper")) {
-
-      document.getElementById("main-wrapper").style.marginLeft = "300px";
-
-    }
-    if (document.getElementById("masthead")) {
-
-      document.getElementById("masthead").style.marginLeft = "300px";
-
-    }
-
-    document.getElementsByTagName("header")[0].style.marginLeft = "300px";
 
 
   },
 
-  signOut: function () {
+  slideInCart: function () {
 
-    sessionStorage.clear();
+    document.getElementById("menu").className = "slideInCart";
+    document.getElementById('menu').style.display = "none";
+
+
 
   },
 
-  closeMenu: function () {
 
-    /* Return page to normal upon side navigation close */
-    document.getElementById("menu").style.width = "0";
 
-    if (document.getElementById("main-wrapper")) {
 
-      document.getElementById("main-wrapper").style.marginLeft = null;
-    }
-
-    document.getElementsByTagName("footer")[0].style.marginLeft = null;
-
-    document.getElementsByTagName("header")[0].style.marginLeft = null;
-
-    if (document.getElementById("masthead")) {
-
-      document.getElementById("masthead").style.marginLeft = null;
-
-    }
-  },
 
   router: function (a) {
 
-    let URL = a.getAttribute("data-url");
 
-    if (a.id == 'exe-sub' || a.id == 'exe-sub-alt' || a.id == 'play-video') {
+    // In case of page reload
+    if (a.id == 'exe-sub') {
 
-      // In case of page reload
-      if (a.id == 'exe-sub') {
-
-        sessionStorage.setItem('sub', 1);
-
-      } else if (a.className == 'exe-unsub clearbtn') {
-
-
-        sessionStorage.setItem('sub', 0);
-
-      }
-
-      //  sessionStorage.setItem('sub', 1);
-
-      var video_id = a.getAttribute("data-video-id");
-
-      sessionStorage.setItem('sub-vid', video_id);
-
-      var creator_id = a.getAttribute("data-id");
-
-      sessionStorage.setItem('sub-cid', creator_id);
-
-      // sub-creator-id is already set in sessionStorage
-      sessionStorage.setItem("sub-total", a.getAttribute("data-total"));
-
-      sessionStorage.setItem("sub-product", a.getAttribute("data-product"));
-
-      sessionStorage.setItem("sub-in-stock", a.getAttribute("data-in-stock"));
-
-      sessionStorage.setItem('sub-shipping', a.getAttribute("data-shipping"));
-
-      sessionStorage.setItem('sub-version', a.getAttribute("data-version"));
-
-      Auth.check(video_id, creator_id);
+      localStorage.setItem('sub', 1);
 
     } else if (a.className == 'exe-unsub clearbtn') {
 
-      sessionStorage.setItem('sub', 0); // in case of page reload
 
-      Subscriptions.unsubCheck(a);
+      localStorage.setItem('sub', 0);
 
     }
 
-    if (sessionStorage.getItem('sub') == 1) {
-      // Save for later
-      sessionStorage.setItem("sub-carrier", a.getAttribute("data-carrier"));
 
-      sessionStorage.setItem("sub-rate", a.getAttribute("data-rate"));
+    localStorage.setItem(a.getAttribute("data-id") + "-total", a.getAttribute("data-price"));
 
-      sessionStorage.setItem("sub-rate-id", a.getAttribute("data-rate-id"));
+    localStorage.setItem(a.getAttribute("data-id") + "-product", a.getAttribute("data-id"));
 
-      sessionStorage.setItem("sub-shipment", a.getAttribute("data-shipment"));
-    }
+    localStorage.setItem(a.getAttribute("data-id") + '-plan', a.getAttribute("data-plan"));
+
+    localStorage.setItem(a.getAttribute("data-id") + '-img', a.getAttribute("data-img"));
+
+    Boxeon.addToFlyout();
+
+
 
   },
 
@@ -882,7 +862,7 @@ Subscriptions = {
 
     function callback(re) {
       if (re == 1) {
-        sessionStorage.clear();
+        localStorage.clear();
         location.href = "/home/index";
       }
     }
@@ -902,10 +882,10 @@ Subscriptions = {
       Shipping.arr['rate_id'] = null;
       Shipping.arr['carrier'] = null;
     }
-    Shipping.arr['version'] = sessionStorage.getItem('sub-version');
-    Shipping.arr['total'] = sessionStorage.getItem('sub-total');
-    Shipping.arr['creator_id'] = sessionStorage.getItem('sub-creator-id');
-    Shipping.arr['frequency'] = sessionStorage.getItem('sub-freq');
+    Shipping.arr['version'] = localStorage.getItem('sub-version');
+    Shipping.arr['total'] = localStorage.getItem('sub-total');
+    Shipping.arr['creator_id'] = localStorage.getItem('sub-creator-id');
+    Shipping.arr['frequency'] = localStorage.getItem('sub-freq');
     Shipping.arr['key'] = Boxeon.generateUUID();
     //Shipping.arr["_token"] = document.querySelector('meta[name="csrf-token"]').content;
 
@@ -921,7 +901,7 @@ Subscriptions = {
       try {
         var json = JSON.parse(r);
         if (!json.errors) {
-          sessionStorage.setItem("sub-plan_id", json['plan_id']);
+          localStorage.setItem("sub-plan_id", json['plan_id']);
           document.getElementById("m-window").remove();
           Subscriptions.showPaymentOptions();
 
@@ -1045,6 +1025,17 @@ window.onload = function () {
       Boxeon.router(a);
     });
   }
+
+  if (document.getElementById('cart_overlay')) {
+
+    document.getElementById('cart_overlay').addEventListener('click', function () {
+      document.getElementById('cart_overlay').className = "cart_overlay_hide";
+      document.getElementById('menu').className = "slideInCart";
+      document.getElementById('menu').style.display = "none";
+
+    });
+  }
+
   if (document.getElementById('btn-update-subscription')) {
 
     document.getElementById('btn-update-subscription').addEventListener('click', function () {
@@ -1085,11 +1076,20 @@ window.onload = function () {
       Boxeon.router(a);
     });
   }
-  if (document.getElementById('menu-icon')) {
-    document.getElementById('menu-icon').addEventListener('click', function () {
-      Boxeon.menu();
+  if (document.getElementsByClassName('cart-add')) {
+    let btns = document.getElementsByClassName('cart-add');
+    var total = btns.length;
+    for (var i = 0; i < total; i++) {
+      btns[i].addEventListener('click', function () {
+        var a = this;
+        Boxeon.router(a);
 
-    });
+        Boxeon.slideOutCart();
+
+
+
+      });
+    }
   }
 
   // Reviews
@@ -1108,15 +1108,15 @@ window.onload = function () {
     });
   }
   if (document.getElementsByClassName('sentiment')) {
-    
-    let choices = document.getElementsByClassName('sentiment'); 
+
+    let choices = document.getElementsByClassName('sentiment');
     var num = choices.length;
 
     for (let i = 0; i < num; i++) {
 
       choices[i].addEventListener('click', function () {
-        
-        var feedback = choices[i].id; 
+
+        var feedback = choices[i].id;
 
         document.getElementById('start').style.display = "none";
 
@@ -1136,7 +1136,7 @@ window.onload = function () {
 
 
   if (document.getElementsByClassName('send-feedback')) {
-    let choices = document.getElementsByClassName('send-feedback'); 
+    let choices = document.getElementsByClassName('send-feedback');
     var num = choices.length;
     for (let i = 0; i < num; i++) {
       choices[i].addEventListener('click', function (event) {
@@ -1156,14 +1156,8 @@ window.onload = function () {
       Boxeon.signOut();
     });
   }
-  if (document.getElementById('menu-close')) {
 
-    document.getElementById('menu-close').addEventListener('click', function () {
-      Boxeon.closeMenu();
-
-    });
-  }
-  if (document.getElementById('current-user')) {
+  if (document.getElementById('showDropdown')) {
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
     document.getElementById('showDropdown').addEventListener('click', function () {
@@ -1233,7 +1227,7 @@ window.onload = function () {
   if (document.getElementById('signin')) {
     document.getElementById('signin').addEventListener('click', function () {
       if (location.href == "https://boxeon.com/partner") {
-        sessionStorage.setItem("last", "https://boxeon.com/partner");
+        localStorage.setItem("last", "https://boxeon.com/partner");
       }
     });
   }
@@ -1253,12 +1247,12 @@ window.onload = function () {
     for (let i = 0; i < elem.length; i++) {
       elem[i].addEventListener('click', function () {
         let id = this.getAttribute("data-type-id");
-        sessionStorage.setItem('recipient', id);
+        localStorage.setItem('recipient', id);
       });
     }
   }
   if (document.getElementById('form-message-store')) {
-    let id = sessionStorage.getItem('recipient');
+    let id = localStorage.getItem('recipient');
     document.getElementById('recipient').setAttribute("value", id);
   }
   if (document.getElementById('check-url')) {
@@ -1379,3 +1373,4 @@ window.onclick = function (event) {
   }
 }
 
+// document.cookie = "checkout=/checkout/index";

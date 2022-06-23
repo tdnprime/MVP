@@ -3,21 +3,21 @@
 @section('content')
 
     <main>
-        <section class="section wide">
-            <h1 id="banner-slogan" class="centered ginormous">Welcome to ground zero of an industrial revolution.</h1>
+        <section id="banner" class="section wide">
+            <h1 id="banner-slogan" class="centered ginormous"><i>Welcome!</i> You've reached the Africa In A Box Movement</h1>
         </section>
 
-        <section class='section maxw1035'>
+        <section class='section maxw1035'>     
             
-               
-            
-            <div class="pitch">
+            <div class="pitch margin-bottom-4-em">
                 <aside class="asides maxw800px">
-                    <h1 class="text-3em">Our mission is to skyrocket the popularity of African consumer packaged foods to spark an industrial
-                        revolution on the continent, one country at a time.</h1>
+                    <h1 class="text-3em">We started Boxeon to make it simple for the diaspora to enjoy the foods they love from home. But we quickly learned that Boxeon is much more than that. If you've ever had problems with time management and stress; if you've ever worried about the processed foods you eat; if you've ever wished to experience more of your home culture; we're here for you.</h1>
+                    <h1 class="text-3em">We're here for anyone and everyone who wants to consume from back home but rather not spend hours scouring the Internet to come up short.</h1>
+                    <h1 class="text-3em"> We're a service for diasporans with busy lives to automate and repatriate their grocery shopping.</h1>
+                    <h1 class="text-3em">We believe that a culture of "work abroad, but consume from home" will one day spark industrial revolutions in the places we left. That's what Boxeon is about.</h1>
                 </aside>
             </div>
-            <section class="section wide">
+            <section class="section wide margin-bottom-4-em">
             <h1 class="centered ginormous primary-color">OUR VALUES</h1>
             </section>
             <div id="team-wrapper" class="three-rows-grid">

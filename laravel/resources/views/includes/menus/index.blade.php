@@ -1,16 +1,24 @@
-<div id="menu" class="menu ">
-    <a class='fadein' id="menu-close" href="#/" title='Close'><span class="material-icons">close</span></a>
-    <a class='fadein' href="/shop/groceries">Groceries</a>
-    <a class='fadein' href="/shop/cosmetics">Cosmetics</a>
-    <a class='fadein' href="/shop/bath">Bath</a>
-    <a class='fadein' href="/shop/body">Body</a>
-    <a class='fadein' href="/shop/health">Health</a>
-    <a class='fadein' href="/shop/gifts">Gifts</a>
-    <a class='fadein' href="/shop/men">Men</a>
-    <a class='fadein' href="/shop/women">Women</a>
-    <a class='fadein' href="/shop/boys">Boys</a>
-    <a class='fadein' href="/shop/girls">Girls</a>
+<div id="menu" class="menu">
+    <span id="cart-left-arrow" class="material-icons white">arrow_left</span>
+<h2>Your cart</h2>
+
+
+<div id="flyout">
+
 </div>
+
+<section class="fix-to-bottom">
+    <div class="card-white-bg">
+        <b>
+            <h2 class="cart-subtotal text-red">Subtotal (# items) $cost</h2>
+        </b>
+        <form action="/checkout/index" method="post">
+            @csrf
+            <input type="submit" class="button yellowbtn" value="Proceed to checkout">
+        </form>
+    </div>
+</div>
+<div id="cart_overlay"></div>
 @auth
 
 @else

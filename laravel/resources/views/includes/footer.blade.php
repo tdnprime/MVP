@@ -1,5 +1,7 @@
 <footer>
-    <section class="section wide">
+    <section id="banner-footer" class="section wide">
+        <img id="img-gifts" class="center image-how-it-works" src="../assets/images/gifts.svg" alt="Gifts" />
+
     <h2 class="centered center extra-large-font">Get 16 foods + 3 surprises for the price of 1!</h2>
     <p class="centered center">Sign up and answer a survey question to qualify. Offer ends soon.</p>
    
@@ -26,7 +28,7 @@
 
     </div>
     <br>
-    <img id='footer-logo' src='{{ asset('../assets/images/logo.png') }}' alt='logo' />
+    <img id='footer-logo' src='{{ asset('../assets/images/logo-black.png') }}' alt='logo' />
     <p class='centered one-em-font'>
         244 5th Avenue, Suite 7<br>
         New York, NY 10001<br>

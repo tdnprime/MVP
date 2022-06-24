@@ -7,7 +7,7 @@
     <div class='maxw1036 margin-auto'>
     
         <section id="boxes-panel" class="section margin-top-4-em">
-       
+            @include("includes.category-nav")
             <div class="div-limited-editions-panel two-col-grid">
                 <div class="secinner">
                     <div class="slideshow">
@@ -28,9 +28,31 @@
 
                     </p>
                 
-                    <p>Ships from the United States.</p>
+                    <p class="text-red">Original price: ${{ $product[0]->price + 3}}</p>
                  
-                    @include('includes.plan-form')
+                    <form class="form-plan" action="/cart" method="post">
+
+                        <select class="select-plan margin-top-zero" name="quantity">
+                            <option invalid>Select quantity</option>
+                            <option selected value="1">Qty: 1</option>
+                            <option value="2">Qty: 2</option>
+                            <option value="3">Qty: 3</option>
+                            <option value="4">Qty: 4</option>
+                            <option value="5">Qty: 5</option>
+                            <option value="6">Qty: 6</option>
+                            <option value="7">Qty: 7</option>
+                        </select>
+                        <select class="select-plan margin-top-zero">
+                            <option invalid>Select Subscription</option>
+                            <option value="1" selected>${{ $product[0]->price }} - Every month</option>
+                            <option value="2">${{ $product[0]->price + 1}} - Every 2 months</option>
+                            <option value="3">${{ $product[0]->price + 2}} - Every 3 months</option>
+                            <option value="0">${{ $product[0]->price + 3}} - One-time purchase</option>
+                        </select>
+                    
+                    </form>
+                    <button data-plan="1" data-img="{{ $product[0]->img }}" data-id="{{ $product[0]->id }}" data-price="{{$product[0]->price }}" class="cart-add" class="button">SUBSCRIBE NOW</button>
+                    
 
                 </div>
 
@@ -68,7 +90,7 @@
             <div class="div-wide-horizontal-rule center"></div>
             <div class="two-col-grid">
                 <div class="three-col-grid reviewer-grid">
-                <img src="../assets/images/user.svg">
+                <img src="../assets/images/user.png">
                 <b><p>User Name</p></b>
                 <div class="stars-grid">
                     <span class="material-icons">star</span>

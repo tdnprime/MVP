@@ -18,7 +18,7 @@
         @auth
 
             <a href="tel:+1646-450-4671‬" class="button one-em-font hide">646-450-4671‬</a>
-            <a href="/cart/index" class="white button"><span><img id="cart" class="w40px" src="../assets/images/cart.png"
+            <a href="/cart/index" class="white button"><span><img id="cart" class="w30px" src="../assets/images/cart.png"
                         alt="Cart" /></span></a>
 
             <div>

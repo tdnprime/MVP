@@ -10,11 +10,12 @@ $product = DB::table("products")
 @endphp
 
 <div class='shop-item margin-bottom-4-em'>
-    <img src="../assets/images/{{$product[$i]->img}}">
+ @include("includes.category-nav")
+    <img src="../assets/images/{{$product[0]->img}}">
     <aside class="shop-item-details asides">
-        <h2>{{$product[$i]->name}}</h2>
-        <p>{{$product[$i]->description}}.</p>
-        <p>{{$product[$i]->price}}</p>
+        <h2>{{$product[0]->name}}</h2>
+        <p>{{$product[0]->description}}.</p>
+        <p>{{$product[0]->price}}</p>
         <div class="stars-grid">
             <span class="material-icons">star</span>
             <span class="material-icons">star</span>

@@ -6,8 +6,8 @@
 
         <aside class="centered asides call-out mobile-scroll"><br>
             <h2 id="headline_h1" class="font-size-3-em">African Groceries Delivered To Your Doorstep</h2>
-            <p class="centered center font-1-5-em">Home in a box. Subscribe to your favorite foods from home on a monthly
-                schedule to save yourself time and money. Cancel anytime.</p><br>
+            <p class="centered center font-1-5-em">Home in a box. Subscribe to your favorite foods from home 
+                to save time and money with automatic deliveries. Cancel anytime.</p><br>
             <a href="/shop/index" class="button uppercase">SUBSCRIBE NOW</a>
         </aside>
         <br><br>
@@ -42,7 +42,7 @@
             <div id="as-seen-on" class="four-col-grid">
                 @php
                     $sellers = DB::table('products')
-                        ->where('category', '=', 'Spice')
+                        ->where('category', '=', 'Snack')
                         ->take(4)
                         ->get();
                     

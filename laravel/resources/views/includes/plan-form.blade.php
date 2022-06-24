@@ -1,3 +1,4 @@
+<p class="text-red">Original price: ${{ $product[$i]->price + 3}}</p>
 <form class="form-plan" action="/cart" method="post">
 
     <select class="select-plan margin-top-zero" name="quantity">
@@ -12,8 +13,11 @@
     </select>
     <select class="select-plan margin-top-zero">
         <option invalid>Select Subscription</option>
-        <option selected>${{ $product[0]->price }} - Every month</option>
+        <option value="1" selected>${{ $product[$i]->price }} - Every month</option>
+        <option value="2">${{ $product[$i]->price + 1}} - Every 2 months</option>
+        <option value="3">${{ $product[$i]->price + 2}} - Every 3 months</option>
+        <option value="0">${{ $product[$i]->price + 3}} - One-time purchase</option>
     </select>
 
 </form>
-<button data-plan="1" data-img="{{ $product[0]->img }}" data-id="{{ $product[0]->id }}" data-price="{{$product[0]->price }}" class="cart-add" class="button">SUBSCRIBE NOW</button>
+<button data-plan="1" data-img="{{ $product[$i]->img }}" data-id="{{ $product[$i]->id }}" data-price="{{$product[$i]->price }}" class="cart-add" class="button">SUBSCRIBE NOW</button>

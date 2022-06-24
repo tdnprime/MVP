@@ -60,7 +60,7 @@ Brown skin: #a0616a
 }
 
 #unread-count {
-  color: red;
+  color: #B12704;
 }
 
 #box-headline {
@@ -296,7 +296,7 @@ Brown skin: #a0616a
 
 #close-dialog:hover,
 #close:hover, #m-close:hover, #m-close:focus {
-  color: red;
+  color: #B12704;
   cursor: pointer;
   text-decoration: none;
 }
@@ -1181,7 +1181,7 @@ audio {
 #dialog-feedback textarea {
 
   border: none;
-  border-bottom: 4px solid red;
+  border-bottom: 4px solid #B12704;
   border-radius: 0;
 }
 
@@ -1647,7 +1647,7 @@ audio {
   padding: 0px 8px;
   height: 24px;
   line-height: 22px;
-  background-color: red;
+  background-color: #B12704;
   color: white;
   margin-bottom: 16px;
   margin-bottom: 0;
@@ -2082,7 +2082,7 @@ ol, ul,
   margin-top: 5px;
   margin-bottom: 20px;
   text-align: center;
-  /* background-color: red; */
+  /* background-color: #B12704; */
   padding: .2em;
   border-radius: .2em;
   /* color: #fff;
@@ -2230,7 +2230,7 @@ ol, ul,
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: red;
+  background-color: #B12704;
   color: yellow;
   cursor: pointer;
 }
@@ -2948,6 +2948,9 @@ header {
 
 .w40px {
   width: 40px;
+}
+.w30px {
+  width: 30px;
 }
 .card{
   background-color: white;

@@ -2,22 +2,31 @@
     <section id="banner-footer" class="section wide">
         <img id="img-gifts" class="center image-how-it-works" src="../assets/images/gifts.svg" alt="Gifts" />
 
-    <h2 class="centered center extra-large-font">Get 16 foods + 3 surprises for the price of 1!</h2>
-    <p class="centered center">Sign up and answer a survey question to qualify. Offer ends soon.</p>
-   
-    <form id="mailing-list-form" action="/pmf/email" method="post">
-        @csrf
-        <div class="row">
-            <div class="col-75 two-col-grid">
-                <input required type="email" placeholder="Primary email" name="email">
-                <input type='submit' value="SIGN UP">
-            </div>
-        </div>
+        <h2 class="centered center extra-large-font">Get 16 foods + 3 surprises for the price of 1!</h2>
+        <p class="centered center">Sign up and answer a survey question to qualify. Offer ends soon.</p>
 
-    </form>
-</section>
-<br><br>
-    
+        <form id="mailing-list-form" action="/pmf/email" method="post">
+            @csrf
+            <div class="row">
+                <div class="col-75 two-col-grid">
+                    <input required type="email" placeholder="Primary email" name="email">
+                    <input type='submit' value="SIGN UP">
+                </div>
+            </div>
+
+        </form>
+    </section>
+
+    <section class="wide">
+        <h2 class="centered uppercase primary-color"> Boxeon is a proud member of</h2><br>
+        <div id="orgs-logos" class="centered three-col-grid maxw600px">
+            <img class="h70px" src="../assets/images/google-for-startups-logo.png" alt="Google For Startups" />
+            <img class="h70px" src="../assets/images/nyta-logo.png" alt="NY Tech Alliance" />
+            <img class="h70px" src="../assets/images/microsoft-for-startups-logo.png"
+                alt="Microsoft For Startups" />
+        </div>
+    </section>
+
     <div id="footer-content-wrapper"> <a>&copy; {{ date('Y') }} Boxeon LLC.&nbsp;&nbsp;&nbsp;<span
                 class="display-inline">Made in New York With&nbsp;<img class="display-inline"
                     src="../assets/images/heart.svg" alt="Heart"></span></span></a>
@@ -50,11 +59,13 @@
         </fieldset>
         <fieldset id="start">
             <h2>What's your feedback?</h2>
-            <label id="thumb_up"  class="sentiment"><span class="material-icons">thumb_up</span>I like something
+            <label id="thumb_up" class="sentiment"><span class="material-icons">thumb_up</span>I like something
             </label>
-            <label id="thumb_down" class="sentiment"><span class="material-icons">thumb_down</span>I don't like something
+            <label id="thumb_down" class="sentiment"><span class="material-icons">thumb_down</span>I don't like
+                something
             </label>
-            <label id="lightbulb" class="sentiment"><span class="material-icons">lightbulb</span>I have a suggestion
+            <label id="lightbulb" class="sentiment"><span class="material-icons">lightbulb</span>I have a
+                suggestion
             </label>
         </fieldset>
         <fieldset id="like">
@@ -99,5 +110,11 @@
     </form>
 </dialog>
 
+<div id="m-menu" class="three-col-grid">
+    <a id="menu-icon" href="#" class="button white"><span class="material-icons">shop</span>&nbsp;Shop</a>
 
-<button id="feedback"><span class="material-icons">message</span>&nbsp;Feedback</button>
+<a href="/cart/index" class="white button"><span><img class="w30px"
+    src="../assets/images/cart.png" alt="Cart" /></span>&nbsp;Cart</a>
+
+<button id="feedback" class="button"><span class="hide material-icons">message</span>&nbsp;Feedback</button>
+</div>

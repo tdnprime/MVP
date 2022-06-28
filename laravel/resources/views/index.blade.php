@@ -1,13 +1,13 @@
 @extends('layouts.index')
-@section('title', 'African Groceries Delivered To Your Doorstep | Boxeon')
+@section('title', 'Monthly African Groceries Delivery | Boxeon')
 @section('content')
 
     <div id="masthead">
 
         <aside class="centered asides call-out mobile-scroll"><br>
-            <h2 id="headline_h1" class="font-size-3-em">African Groceries Delivered To Your Doorstep</h2>
-            <p class="centered center font-1-5-em">Home in a box. Subscribe to your favorite foods from home 
-                to save time and money with automatic deliveries. Cancel anytime.</p><br>
+            <h2 id="headline_h1" class="font-size-3-em">African Groceries Delivered To You Monthly</h2>
+            <p class="centered center font-1-5-em">Home in a box. Subscribe to monthly deliveries of your favorite foods from home 
+                to save time and money. Cancel anytime.</p><br>
             <a href="/shop/index" class="button uppercase">SUBSCRIBE NOW</a>
         </aside>
         <br><br>

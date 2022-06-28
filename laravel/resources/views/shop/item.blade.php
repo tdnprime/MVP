@@ -58,7 +58,7 @@
 
             </div>
         </section>
-        <section class='reviews-section'>
+        <section class='reviews-section hide'>
             <h2 class='center'>Reviews</h2>
             <br>
             <div id="ratings-overview" class='four-col-grid'>

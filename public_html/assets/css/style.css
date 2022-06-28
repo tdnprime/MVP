@@ -656,6 +656,12 @@ dialog p {
 .fix-to-bottom {
   position: fixed;
   bottom: 0;
+  background-color: #fff;
+
+}
+
+.maxw65per {
+  max-width: 65%;
 }
 
 .maxw1036,
@@ -879,6 +885,7 @@ dialog p {
   margin: 0 auto;
 }
 
+#m-menu,
 #invites-menu {
   display: none;
 }
@@ -948,9 +955,11 @@ audio {
 #box #masthead {
   height: 51em;
 }
+
 #sub-nav {
   display: none;
 }
+
 #masthead, main {
   opacity: 0;
 }
@@ -1285,7 +1294,7 @@ audio {
 .image-user-icon,
 #header-user-icon {
   border-radius: 9999px;
-  height: 30px;
+  height: 24px;
 
 }
 
@@ -1604,12 +1613,14 @@ audio {
   z-index: 1000;
 }
 
-.padding-2-per{
-  padding:2%;
+.padding-2-per {
+  padding: 2%;
 }
-.bg-color-yellow{
+
+.bg-color-yellow {
   background-color: #fcec63;
 }
+
 .cart-banner {
   width: 100% !important;
   background-color: #fff;
@@ -1725,7 +1736,7 @@ audio {
 
   width: 100%;
   height: 434px;
-  max-width: 316px;
+  max-width: 300px;
 
 }
 
@@ -1762,9 +1773,12 @@ audio {
 
 }
 
+.padding-1-em {
+  padding: 1em;
+}
+
 .cart-header {
   width: 100%;
-  padding: 2em;
   background-color: #fff;
   border-bottom: 1px solid #8bc34a;
 }
@@ -1821,6 +1835,16 @@ audio {
   background-color: #fff;
   margin-bottom: 2em;
 
+}
+
+.padding-zero {
+  padding: 0 !important;
+}
+
+#flyout {
+  height: 90%;
+  overflow-y: scroll;
+  padding: 1em;
 }
 
 .alert,
@@ -1952,7 +1976,7 @@ audio {
 }
 
 #banner-footer {
-  background-image: url("../images/bottomimage-banner-desktop.webp");
+  background-image: url("../images/bottomimage-banner-desktop.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #d3fb95;
@@ -2596,6 +2620,12 @@ container when the user clicks on the dropdown button) */
 
 .maxw800px {
   max-width: 800px;
+  width: 100%;
+}
+
+.maxw600px {
+  max-width: 600px;
+  width: 100%;
 }
 
 .block {
@@ -2608,12 +2638,20 @@ container when the user clicks on the dropdown button) */
 
 }
 
+#orgs-logos {
+  place-content: center;
+  grid-gap: 10%;
+}
+
 .wide {
   width: 100%;
-  background-color: #eff5ef;
   padding: 2em;
   margin-bottom: 2em;
 
+}
+
+.greybg {
+  background-color: #eff5ef;
 }
 
 .white {
@@ -2867,7 +2905,14 @@ footer {
   width: 50px;
 }
 
-#about .section img {
+#about .pitch img {
+  height: 100%;
+  max-height: 500px;
+  margin-bottom: auto;
+
+}
+
+#about #team-wrapper img {
   height: 100%;
   max-height: 200px;
   margin-bottom: auto;
@@ -2941,24 +2986,38 @@ header {
   grid-template-columns: auto auto auto 15% auto auto auto;
 }
 
+#m-menu .button,
 #header-inner-wrapper .button {
   box-shadow: none;
   border: none;
 }
 
+.h70px {
+  height: 70px;
+}
+
 .w40px {
   width: 40px;
 }
+
 .w30px {
   width: 30px;
 }
-.card{
+
+.card {
   background-color: white;
-  padding:2%;
+  padding: 2%;
 }
-.rounded-corners{
-  border-radius:.5em;
+
+.rounded-corners {
+  border-radius: .5em;
 }
+
+#orgs {
+  grid-gap: 5%;
+}
+
+#m-menu .button:hover,
 #header-inner-wrapper .button:hover {
   box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
   background-color: transparent !important;
@@ -3071,6 +3130,7 @@ header #grid-2 {
   font-size: 1em;
 }
 
+#m-menu>*,
 header>* {
   margin: auto;
   margin-left: 0;

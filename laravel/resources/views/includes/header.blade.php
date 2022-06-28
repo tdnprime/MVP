@@ -37,7 +37,7 @@
         @if (!Auth::check())
             <a href="tel:+1646-450-4671‬" class="button hide">646-450-4671‬</a>
 
-            <a href="/cart/index" class="white button"><span><img class="w40px"
+            <a href="/cart/index" class="white button"><span><img class="w30px"
                         src="../assets/images/cart.png" alt="Cart" /></span></a>
 
             <a class='button' id='signin' href='{{ url('auth/google') }}'>

@@ -12,7 +12,7 @@
         <b>
             <h2 class="cart-subtotal text-red">Subtotal (# items) $cost</h2>
         </b>
-        <form action="/checkout/index" method="post">
+        <form class="maxw65per" action="/checkout/index" method="post">
             @csrf
             <input type="submit" class="button yellowbtn" value="Proceed to checkout">
         </form>

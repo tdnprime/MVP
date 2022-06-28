@@ -1,15 +1,15 @@
 <main id="cart-main" class="fadein">
 
-    <section class="cart-section center">
+    <section class="cart-section center padding-1-em">
 
         <div class="cart-header">
             <h2 class="font-size-2-em">Shopping cart</h2>
         </div>
 
         <section class="display-none">
-            <div class="card-white-bg">
+            <div class="card-white-bg padding-zero">
                 <b>
-                    <h2 class="cart-subtotal black-font font-size-2-em">Subtotal (# items) $cost</h2>
+                    <h2 class="cart-subtotal black-font text-red">Subtotal (# items) $cost</h2>
                 </b>
                 <button class="button yellowbtn">Proceed to checkout</button>
             </div>
@@ -48,10 +48,10 @@
 
     </section>
 
-    <section class="hide">
+    <section>
         <div class="card-white-bg">
           
-                <h2 class="text-red">Subtotal (# items) $cost</h2>
+                <h2 class="text-red hide">Subtotal (# items) $cost</h2>
             
             <form action="/checkout/index" method="post">
                 @csrf

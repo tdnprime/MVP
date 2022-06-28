@@ -6,7 +6,43 @@
 
 
         <section class='section maxw1035 rounded-corner card'>
-            @include("includes.works")
+
+            <h2 class=" extra-large-font centered">Our Subscriptions Support</h2>
+            
+            <div id="orgs" class="three-col-grid maxw800px">
+                <div>
+                    <a href="https://www.timeout4africa.com/stem-camp-for-girls" target="_blank">
+                        <img id="img-reminder" class="image-how-it-works h70px"
+                            src="../assets/images/time-out-africa-logo.png" alt="Timeout 4 Africa" />
+                    </a>
+                    <h2 class="centered">STEM Camp for Girls</h2>
+                </div>
+                <div>
+                    <a href="https://wtec.org.ng/" target="_blank">
+                        <img id="img-gifts" class="image-how-it-works h70px" src="../assets/images/wtec-logo.png"
+                            alt="WTEC" />
+                    </a>
+                    <h2 class="centered">Women's Tech Empowerment</h2>
+                </div>
+                <div>
+                    <a href="https://tabithahome.org/" target="_blank">
+                        <img id="img-shopping" class="image-how-it-works h70px" src="../assets/images/tabitha-home-logo.png"
+                            alt="Hope Rising" />
+                    </a>
+                    <h2 class="centered">Tabitha Homes</h2>
+                </div>
+          
+
+            </div>
+            <div class="div-horizontal-rule center"></div>
+            <div class="two-col-grid">
+                <img class="w100per" src="../assets/images/egusi-soup.jpg" alt="Egusi Soup"/>
+                <div>
+                <h2 class="text-red extra-large-font">Save 53+ hours of your time per year!</h2>
+                <p class="w600">According to the Time Use Institute, we spend more than 53 hours each year just grocery shopping. A Boxeon grocery subscription saves you this precious time so you can take back control of your busy schedule - which will inevitably lead to more free time for yourself and loved ones.</p>
+           <a href="/shop/index" class="button uppercase">Subscribe & Save</a>
+                </div>
+            </div>
 
             <div class="div-horizontal-rule center"></div>
             <h1 class='extra-large-font centered'> Frequently Asked Questions</h1>
@@ -78,7 +114,7 @@
 
             <h2>Need help?</h2>
             <div>
-               <p> Contact customer service at 646-450-4671‬.</p>
+                <p> Contact customer service at 646-450-4671‬.</p>
             </div>
         </section>
 

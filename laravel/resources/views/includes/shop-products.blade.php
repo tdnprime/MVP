@@ -19,11 +19,11 @@ if (isset($_GET['c'])) {
 @endphp
 
 <span></span>
-<div class="container margin-top-4-em">
-
+<div class="contai">
+    <div class="margin-top-4-em hide"></div>
     @include("includes.category-nav")
     
-    <div class="products-stream margin-top-4-em">
+    <div class="products-stream">
         @for ($i = 0; $i < count($product); $i++)
             <div>
                 <a href="/shop/item?id={{ $product[$i]->id }}"><img src="../assets/images/{{ $product[$i]->img }}"

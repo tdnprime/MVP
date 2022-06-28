@@ -24,6 +24,42 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
+  #checkout-main{
+    
+      width: auto;
+  }
+  #dialog-feedback {
+    right: 0;
+  }
+  .h70px {
+    height: 45px;
+}
+  .cart-subtotal {
+    float: none; 
+   
+}
+#boxes-panel p{
+  max-width: 300px;
+}
+
+#m-menu{
+  width:100%;
+  display:grid;
+  height:70px;
+  background-color: green;
+  position:fixed;
+  bottom:0;
+}
+#feedback{
+  position: relative;
+  right:auto;
+  bottom:auto;
+  box-shadow: none;
+  border:none;
+}
+#feedback:hover{
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+}
   #sub-nav {
     display: block;
   }
@@ -38,7 +74,8 @@
   .button {
     min-width: 40px;
   }
-
+  .lock,
+#checkout-logo,
   #logo {
     height: 20px;
     margin-left: 2%;
@@ -52,7 +89,7 @@
 
 
   .display-none {
-    display: block;
+    display: block !important;
   }
 
   .nudge-left {
@@ -86,8 +123,7 @@
   }
 
   #cart-text,
-  #header-subs,
-  #menu-icon {
+  #header-subs {
     display: none;
   }
 
@@ -426,7 +462,7 @@
 
   #index #masthead {
  
-    max-height: 40em;
+    max-height: 44em;
   }
   .block {
    height: auto;
@@ -439,6 +475,7 @@
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
+
 @media only screen and (min-width: 992px) {
   
  
@@ -449,6 +486,7 @@
 
 
   .new-section-inner-grid {
+
     grid-template-columns: auto 48% auto;
 
 

@@ -37,7 +37,7 @@
 
 
                         <fieldset>
-                            <h2>What African food products are you having issues finding in your area?
+                            <h2>What African food products would you like us to offer?
                             </h2>
                             <div class="row">
                                 <div class="col-75">

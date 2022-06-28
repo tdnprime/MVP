@@ -184,10 +184,10 @@ input[type="submit"]:active, .button:active, button:active {
 }
 
 
-
+button:hover,
 input[type="submit"]:hover, .button:hover, button:active:hover {
   box-shadow: 0 10px 18px 0 rgb(0 0 0 / 30%);
-  background: red;
+  background: #B12704;
   color: yellow;
 }
 

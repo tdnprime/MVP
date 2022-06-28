@@ -8,6 +8,7 @@ var Subscriptions = Subscriptions || {};
 var controller = new AbortController();
 var signal = controller.signal;
 
+
 //import instance from './modules/messages.js'
 
 
@@ -86,38 +87,41 @@ Boxeon = {
       }
     }
   },
-  allStorage:function() {
+  allStorage: function () {
 
-      var archive = [],
-          keys = Object.keys(localStorage),
-          i = 0, key;
-  
-      for (; key = keys[i]; i++) {
-          archive.push( key + '=' + localStorage.getItem(key));
-      }
-  
-      return archive;
-  
-},
+    var archive = [],
+      keys = Object.keys(localStorage),
+      i = 0, key;
+
+    for (; key = keys[i]; i++) {
+      archive.push(key + '=' + localStorage.getItem(key));
+    }
+
+    return archive;
+
+  },
   addToFlyout: function () {
 
-    let products = Boxeon.allStorage();
-    for(var i = 0; i < products.length; i++){
+    let products = JSON.parse(Boxeon.getCookie("cart"));
 
-      console.log( products);
+    for (var i = 0; i < products.length; i++) {
 
-    let flyOut = document.getElementById("flyout");
-    var img = document.createElement("img");
-    var div = document.createElement("div");
-    var p = document.createElement("p");
-    var txt = document.createTextNode("Price");
-    div.className = "cart-item";
-    img.src = "../assets/images/" + products[i]['13-img'];
-    div.appendChild(img);
-    p.appendChild(txt);
-    div.appendChild(p);
-    flyOut.appendChild(div);
+
+      let flyOut = document.getElementById("flyout");
+      var img = document.createElement("img");
+      var div = document.createElement("div");
+      var p = document.createElement("p");
+      var txt = document.createTextNode("$" + products[i]['price']);
+      div.className = "cart-item";
+      div.id = products[i]["product"];
+      img.src = "../assets/images/" + products[i]['img'];
+      img.className = "h70px";
+      div.appendChild(img);
+      p.appendChild(txt);
+      div.appendChild(p);
+      flyOut.appendChild(div);
     }
+
   },
 
   generateUUID: function () {
@@ -590,34 +594,55 @@ Boxeon = {
 
 
 
-  router: function (a) {
+  cartPush: function (a) {
 
+   
 
-    // In case of page reload
-    if (a.id == 'exe-sub') {
+    if (Boxeon.getCookie("cart")) {
 
-      localStorage.setItem('sub', 1);
+      let cookie = JSON.parse(Boxeon.getCookie("cart"));
+    
+    cookie.push({
 
-    } else if (a.className == 'exe-unsub clearbtn') {
+      "price": a.getAttribute("data-price"),
+      "product": a.getAttribute("data-id"),
+      "plan": a.getAttribute("data-plan"),
+      "img": a.getAttribute("data-img")
 
+    });
 
-      localStorage.setItem('sub', 0);
+    document.cookie = "cart=" + JSON.stringify(cookie);
 
+  }else{
+
+    let cookie = [];
+    cookie.push({
+
+      "price": a.getAttribute("data-price"),
+      "product": a.getAttribute("data-id"),
+      "plan": a.getAttribute("data-plan"),
+      "img": a.getAttribute("data-img")
+
+    });
+    document.cookie = "cart=" + JSON.stringify(cookie);
+
+  }
+
+  },
+  getCookie: function (cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
     }
-
-
-    localStorage.setItem(a.getAttribute("data-id") + "-total", a.getAttribute("data-price"));
-
-    localStorage.setItem(a.getAttribute("data-id") + "-product", a.getAttribute("data-id"));
-
-    localStorage.setItem(a.getAttribute("data-id") + '-plan', a.getAttribute("data-plan"));
-
-    localStorage.setItem(a.getAttribute("data-id") + '-img', a.getAttribute("data-img"));
-
-    Boxeon.addToFlyout();
-
-
-
+    return "";
   },
 
   disable: function () {
@@ -862,7 +887,7 @@ Subscriptions = {
 
     function callback(re) {
       if (re == 1) {
-        localStorage.clear();
+        //  localStorage.clear();
         location.href = "/home/index";
       }
     }
@@ -1082,15 +1107,18 @@ window.onload = function () {
     for (var i = 0; i < total; i++) {
       btns[i].addEventListener('click', function () {
         var a = this;
-        Boxeon.router(a);
-
+        Boxeon.cartPush(a);
+        Boxeon.addToFlyout();
         Boxeon.slideOutCart();
-
+        // READ: https://stackoverflow.com/questions/55328748/how-to-store-and-retrieve-shopping-cart-items-in-localstorage
 
 
       });
     }
   }
+
+  // Cart
+  //Boxeon.addToFlyout();
 
   // Reviews
   if (document.getElementById('show-review-form')) {

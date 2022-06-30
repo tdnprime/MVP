@@ -17,7 +17,7 @@
         </form>
     </section>
 
-    <section class="wide">
+   {{-- <section class="wide">
         <h2 class="centered uppercase primary-color"> Boxeon is a proud member of</h2><br>
         <div id="orgs-logos" class="centered three-col-grid maxw600px">
             <img class="h70px" src="../assets/images/google-for-startups-logo.png" alt="Google For Startups" />
@@ -25,9 +25,9 @@
             <img class="h70px" src="../assets/images/microsoft-for-startups-logo.png"
                 alt="Microsoft For Startups" />
         </div>
-    </section>
+    </section>--}}
 
-    <div id="footer-content-wrapper"> <a>&copy; {{ date('Y') }} Boxeon LLC.&nbsp;&nbsp;&nbsp;<span
+    <div id="footer-content-wrapper" class="margin-top-4-em"> <a>&copy; {{ date('Y') }} Boxeon LLC.&nbsp;&nbsp;&nbsp;<span
                 class="display-inline">Made in New York With&nbsp;<img class="display-inline"
                     src="../assets/images/heart.svg" alt="Heart"></span></span></a>
         <a href="/terms">Terms Of Use</a>
@@ -39,7 +39,7 @@
     <br>
     <img id='footer-logo' src='{{ asset('../assets/images/logo-black.png') }}' alt='logo' />
     <p class='centered one-em-font'>
-        244 5th Avenue, Suite 7<br>
+        244 5th Avenue, Suite 7,&nbsp;
         New York, NY 10001<br>
         service@boxeon.com<br>
         <span>646.450.4670‬</span>
@@ -109,12 +109,13 @@
 
     </form>
 </dialog>
+<button id="feedback" class="button"><span class="show material-icons">message</span>&nbsp;Feedback</button>
 
 <div id="m-menu" class="three-col-grid">
     <a id="menu-icon" href="#" class="button white"><span class="material-icons">shop</span>&nbsp;Shop</a>
 
 <a href="/cart/index" class="white button"><span><img class="w30px"
-    src="../assets/images/cart.png" alt="Cart" /></span>&nbsp;Cart</a>
+    src="../assets/images/cart.png" alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
 
-<button id="feedback" class="button"><span class="hide material-icons">message</span>&nbsp;Feedback</button>
+<button id="feedback" class="button"><span class=" hide material-icons">message</span>&nbsp;Feedback</button>
 </div>

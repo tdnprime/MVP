@@ -24,7 +24,9 @@
                     @include("includes.stars")
 
                     <p class="green">In Stock</p>
-                    <p>{{$product[0]->description}}<span><b>&nbsp;<a class="one-em-font underline" href="#">Read more</a></b></span>
+                    <p class="w300">{{$product[0]->description}}</p>
+                    <h4 class="uppercase">Product details</h4>
+                    <p>Weight: {{$product[0]->weight}} pound(s)</p>
 
                     </p>
                 
@@ -51,7 +53,7 @@
                         </select>
                     
                     </form>
-                    <button data-plan="1" data-img="{{ $product[0]->img }}" data-id="{{ $product[0]->id }}" data-price="{{$product[0]->price }}" class="cart-add" class="button">SUBSCRIBE NOW</button>
+                    <button  data-name="{{ $product[0]->name }}" data-plan="1" data-img="{{ $product[0]->img }}" data-id="{{ $product[0]->id }}" data-price="{{$product[0]->price }}" class="cart-add" class="button">SUBSCRIBE NOW</button>
                     
 
                 </div>

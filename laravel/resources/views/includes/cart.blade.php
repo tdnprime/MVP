@@ -1,62 +1,110 @@
-<main id="cart-main" class="fadein">
+@if (isset($cart))
+    <main id="cart-main" class="fadein">
+        <section class="cart-section center w100per padding-1-em">
 
-    <section class="cart-section center padding-1-em">
-
-        <div class="cart-header">
-            <h2 class="font-size-2-em">Shopping cart</h2>
-        </div>
-
-        <section class="display-none">
-            <div class="card-white-bg padding-zero">
-                <b>
-                    <h2 class="cart-subtotal black-font text-red">Subtotal (# items) $cost</h2>
-                </b>
-                <button class="button yellowbtn">Proceed to checkout</button>
+            <div class="cart-header">
+                <h2 class="font-size-2-em">Shopping cart</h2>
             </div>
 
-        </section>
-
-        <div class="cart-item">
-
-            <form class="form-cart-item-select"><input checked value='productID' type="checkbox" /></form>
-            <img class="w300px" src="../assets/images/medium-product-img.png" alt='products' />
-
-            <div>
-                <div>
-                    <h2>3-month Reliable Develop Africa Subscription</h2>
-                    <p class="stock green">In stock</p>
-                    <h2 class='cart-item-price text-red'>Price</h2>
+            <section class="display-none">
+                <div class="card-white-bg padding-zero">
+                    <b>
+                        <h2 class="cart-subtotal black-font">Subtotal (<span class="cart-count"></span>&nbsp;items)
+                            <span class="cart-total text-red">&nbsp;</span></h2>
+                    </b>
+                    <button class="button yellowbtn">Proceed to checkout</button>
                 </div>
-                <div class="cart-item-updater">
-                    <form><select name="quantity">
-                            <option value="1">Qty: 1</option>
-                            <option value="2">Qty: 2</option>
-                            <option value="3">Qty: 3</option>
-                            <option value="4">Qty: 4</option>
-                            <option value="5">Qty: 5</option>
-                            <option value="6">Qty: 6</option>
-                            <option value="7">Qty: 7</option>
-                        </select></form>
-                    <a class="primary-color" href="#">Delete</a>
-                    <a class="primary-color" href="#">Save for later</a>
+
+            </section>
+            @for ($i = 0; $i < count($cart); $i++)
+                <div class="cart-items">
+
+                    <img class="w300px" src="../assets/images/products/{{ $cart[$i]->img }}"
+                        alt="{{ $cart[$i]->name }}" />
+
+                    <div>
+                        <div>
+                            <h2>{{ $cart[$i]->name }}</h2>
+                            <p class="stock green">In stock</p>
+                            <h2 id="itemprice{{ $cart[$i]->product }}" class='cart-item-price text-red'>
+                                @if($cart[$i]->plan == 1)
+                                ${{ $cart[$i]->price * $cart[$i]->quantity }}</h2>
+                                @elseif($cart[$i]->plan == 2)
+                                ${{ $cart[$i]->price + 1 * $cart[$i]->quantity }}</h2>
+                                @elseif($cart[$i]->plan == 3)
+                                ${{ $cart[$i]->price + 2 * $cart[$i]->quantity }}</h2>
+                                @elseif($cart[$i]->plan == 0)
+                                ${{ $cart[$i]->price + 2 * $cart[$i]->quantity }}</h2>
+                                @endif 
+                        </div>
+                        <div class="cart-item-updater">
+                            <form class="form-plan" action="/cart" method="post">
+                                <select data-product="{{ $cart[$i]->product }}" data-price={{ $cart[$i]->price }}
+                                    class="select-plan margin-top-zero" name="quantity">
+                                    <option invalid>Select Quantity</option>
+                                    @php
+                                        $selected = $cart[$i]->quantity;
+                                    @endphp
+                                    @for ($e = 1; $e < 7; $e++)
+                                        @if ($selected == $e)
+                                            <option selected value="{{ $e }}">Qty: {{ $e }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $e }}">Qty: {{ $e }}</option>
+                                        @endif
+                                    @endfor
+                                </select>
+                                <select data-product="{{ $cart[$i]->product }}" data-price={{$cart[$i]->price}} name="plan"
+                                    class="select-plan margin-top-zero">
+                                    <option invalid>Select Subscription</option>
+                                    <option value="1" data-price="{{ $cart[$i]->price }}"
+                                        @if ($cart[$i]->plan == 1) selected @endif>${{ $cart[$i]->price }} -
+                                        Every month</option>
+                                    <option value="2" data-price="{{ $cart[$i]->price + 1 }}"
+                                        @if ($cart[$i]->plan == 2) selected @endif>${{ $cart[$i]->price + 1 }}
+                                        - Every 2 months</option>
+                                    <option value="3" data-price="{{ $cart[$i]->price + 2 }}"
+                                        @if ($cart[$i]->plan == 3) selected @endif>${{ $cart[$i]->price + 2 }}
+                                        - Every 3 months</option>
+                                    <option value="0" data-price="{{ $cart[$i]->price + 3 }}"
+                                        @if ($cart[$i]->plan == 0) selected @endif>${{ $cart[$i]->price + 3 }}
+                                        - One-time purchase</option>
+                                </select>
+                            </form>
+                            <a href="#" title="Delete"><span data-product="{{ $cart[$i]->product }}" class="material-icons delete-icon">delete_forever</span></a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endfor
 
-        </div>
-
-        <h2 class="cart-subtotal text-red">Subtotal (# items) $cost</h2>
-
-    </section>
-
-    <section>
-        <div class="card-white-bg">
-          
-                <h2 class="text-red hide">Subtotal (# items) $cost</h2>
-            
-            <form action="/checkout/index" method="post">
+            <h2 class="cart-subtotal">Subtotal (<span class="cart-count">&nbsp;</span> items) <span
+                    class="cart-total text-red">&nbsp;</span></h2>
+            <form class="hide" action="/checkout/index" method="post">
                 @csrf
                 <input type="submit" class="button yellowbtn" value="Proceed to checkout">
             </form>
+
+        </section>
+
+        <section>
+            <div class="card-white-bg">
+
+                <h2 class="hide">Subtotal (<span class="cart-count">&nbsp;</span> items) <span
+                        class="cart-total text-red">&nbsp;</span></h2>
+
+                <form action="/checkout/index" method="post">
+                    @csrf
+                    <input type="submit" class="button yellowbtn" value="Proceed to checkout">
+                </form>
+            </div>
+        </section>
+    </main>
+@else
+    <section class="section margin-top-4-em maxw1035">
+        <div class="alert-info w100per">
+            <p><span class="material-icons">info</span>&nbsp;Your cart is empty.</p>
         </div>
     </section>
-</main>
+
+    @include('includes.shop-products')
+@endif

@@ -1,7 +1,6 @@
 <main class="fadein">
-    <section id="left-aside">
-    </section>
-    <aside id="panel">
+   
+    <div class="contaner">
 
         @if (session()->has('message'))
             <dialog class="alert">
@@ -10,77 +9,18 @@
         @endif
 
         @if (isset($subscriptions) && count($subscriptions) > 0)
-            <div class='subscriptions-stream'>
-                @foreach ($subscriptions as $box)
-                    @php
-                        if ($box->frequency == 1) {
-                            $box->cadence = 'monthly';
-                        } elseif ($box->frequency == 2) {
-                            $box->cadence = 'every two months';
-                        } elseif ($box->frequency == 3) {
-                            $box->cadence = 'every ninety days';
-                        }
-                    @endphp
-                    <div class="center">
-                        <div class='subscription-card'>
-                            <a href='/{{ $box->box_url }}'><img class='image-youtube-thumb'
-                                    src='http://img.youtube.com/vi/{{ $box->video }}/mqdefault.jpg' /></a>
-                            <div class=''>
-                                <div>
-                                    <b> <a href='/{{ $box->box_url }}'>
-                                            <h3>{{ $box->page_name }}&nbsp;ships to you {{ $box->cadence }}.</h3>
-                                        </a></b>
-
-                                </div>
-                                <div id='subscriptions-btns'>
-                                    <button class='clearbtn' data-version='{{ $box->version }}'
-                                        data-id='{{ $box->creator_id }}' id='btn-update-subscription'>Update</button>
-                                    <button class='exe-unsub clearbtn' data-version='{{ $box->version }}'
-                                        data-id='{{ $box->creator_id }}'>Unsubscribe</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-
-        @elseif (isset($subscribers) && count($subscribers) > 0)
-            <table class='subscriber'>
-                <tr>
-                    <th></th>
-                    <th>Paying</th>
-                    <th>Interval</th>
-                    <th>Location</th>
-                    <th>Started</th>
-                </tr>
-
-                @foreach ($subscribers as $sub)
-                    @php
-                        if ($sub->frequency == 1) {
-                            $sub->cadence = 'Monthly';
-                        } elseif ($box->frequency == 2) {
-                            $sub->cadence = 'Every two months';
-                        } elseif ($box->frequency == 3) {
-                            $sub->cadence = 'Every ninety days';
-                        }
-                    @endphp
-                    <tr>
-                        <td><img class='image-user-icon' src='{{ $sub->profile_photo_path }}' />
-                            {{ $sub->given_name }}&nbsp;{{ $sub->family_name }}</td>
-                        <td> ${{ $sub->price }}</td>
-                        <td> {{ $sub->cadence }}</td>
-                        <td> {{ $sub->admin_area_1 }}, {{ $sub->country_code }}</td>
-                        <td>{{ $sub->created_at }}</td>
-                    </tr>
-                @endforeach
-            </table>
+        @include('includes.shop-products')
         @else
+        <section class="section margin-top-4-em maxw1035">
+            <div class="alert-info w100per">
+                <p><span class="material-icons">info</span>&nbsp;You don't have any subscriptions.</p>
+            </div>
+        </section>
 
-            @include('includes.home-default')
+        @include('includes.shop-products')
+
         @endif
 
-    </aside>
-    <aside></aside>
-    <section id="right-aside"></section>
+</div>
+   
 </main>

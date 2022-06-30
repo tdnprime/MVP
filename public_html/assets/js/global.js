@@ -87,6 +87,29 @@ Boxeon = {
       }
     }
   },
+
+  delete: function (product) {
+
+    // Update Cookie
+    let newCart = [];
+
+    let cart = JSON.parse(Boxeon.getCookie("cart"));
+
+    for (var i = 0; i < cart.length; i++) {
+
+      if (cart[i]["product"] != product) {
+
+        newCart.push(cart[i]);
+
+      }
+
+
+    }
+
+    document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
+    Boxeon.showCartTotal();
+  },
+
   allStorage: function () {
 
     var archive = [],
@@ -100,27 +123,89 @@ Boxeon = {
     return archive;
 
   },
+
+  showCartCount: function () {
+    if (Boxeon.getCookie("cart")) {
+      let cart = JSON.parse(Boxeon.getCookie("cart"));
+      let count = cart.length;
+      let span = document.getElementsByClassName("cart-count");
+      for (var i = 0; i < span.length; i++) {
+        let text = document.createTextNode(count);
+        span[i].innerText = count;
+      }
+    }
+
+  },
+  showCartTotal: function () {
+
+    if (Boxeon.getCookie("cart")) {
+
+      const total = [];
+
+      let cart = JSON.parse(Boxeon.getCookie("cart"));
+
+      let count = cart.length;
+
+
+      for (var i = 0; i < count; i++) {
+
+        var cadence = cart[i]['plan'];
+
+        var basePrice = parseInt(cart[i]['price']);
+        if (cadence == 1) {
+          var price = basePrice;
+        } else if (cadence == 2) {
+          var price = basePrice + 1;
+        } else if (cadence == 3) {
+          var price = basePrice + 2;
+        } else if (cadence == 0) {
+          var price = basePrice + 3;
+        }
+        total.push(price * parseInt(cart[i]['quantity']));
+      }
+
+
+
+      const sum = total.reduce((a, b) => a + b);
+
+      let span = document.getElementsByClassName("cart-total");
+
+      for (var i = 0; i < span.length; i++) {
+        span[i].innerText = "$" + sum;
+
+      }
+    }
+  },
   addToFlyout: function () {
 
     let products = JSON.parse(Boxeon.getCookie("cart"));
 
     for (var i = 0; i < products.length; i++) {
 
-
-      let flyOut = document.getElementById("flyout");
-      var img = document.createElement("img");
-      var div = document.createElement("div");
-      var p = document.createElement("p");
-      var txt = document.createTextNode("$" + products[i]['price']);
-      div.className = "cart-item";
-      div.id = products[i]["product"];
-      img.src = "../assets/images/" + products[i]['img'];
-      img.className = "h70px";
-      div.appendChild(img);
-      p.appendChild(txt);
-      div.appendChild(p);
-      flyOut.appendChild(div);
+      if (!document.getElementById(products[i]['product'])) {
+        let flyOut = document.getElementById("flyout");
+        var img = document.createElement("img");
+        var div = document.createElement("div");
+        var p = document.createElement("p");
+        var txt = document.createTextNode("$" + products[i]['price']);
+        div.className = "cart-item";
+        div.id = products[i]["product"];
+        img.src = "../assets/images/products/" + products[i]['img'];
+        img.className = "h70px";
+        div.appendChild(img);
+        p.appendChild(txt);
+        div.appendChild(p);
+        if (flyOut.getElementsByClassName("cart-item")[0]) {
+          flyOut.insertBefore(div,
+            flyOut.getElementsByClassName("cart-item")[0]
+          );
+        } else {
+          flyOut.appendChild(div);
+        }
+      }
     }
+    Boxeon.showCartCount();
+    Boxeon.showCartTotal();
 
   },
 
@@ -596,39 +681,43 @@ Boxeon = {
 
   cartPush: function (a) {
 
-   
 
     if (Boxeon.getCookie("cart")) {
 
       let cookie = JSON.parse(Boxeon.getCookie("cart"));
-    
-    cookie.push({
+      //parseInt(a.getAttribute("data-price")) * parseInt(a.getAttribute("data-quantity"))
 
-      "price": a.getAttribute("data-price"),
-      "product": a.getAttribute("data-id"),
-      "plan": a.getAttribute("data-plan"),
-      "img": a.getAttribute("data-img")
+      cookie.push({
+        "name": a.getAttribute("data-name"),
+        "quantity": a.getAttribute("data-quantity"),
+        "price": a.getAttribute("data-price"),
+        "product": a.getAttribute("data-id"),
+        "plan": a.getAttribute("data-plan"),
+        "img": a.getAttribute("data-img")
 
-    });
+      });
 
-    document.cookie = "cart=" + JSON.stringify(cookie);
+      document.cookie = "cart=" + JSON.stringify(cookie) + ";" + "path=/";
 
-  }else{
+    } else {
 
-    let cookie = [];
-    cookie.push({
+      let cookie = [];
+      cookie.push({
+        "name": a.getAttribute("data-name"),
+        "quantity": a.getAttribute("data-quantity"),
+        "price": a.getAttribute("data-price"),
+        "product": a.getAttribute("data-id"),
+        "plan": a.getAttribute("data-plan"),
+        "img": a.getAttribute("data-img")
 
-      "price": a.getAttribute("data-price"),
-      "product": a.getAttribute("data-id"),
-      "plan": a.getAttribute("data-plan"),
-      "img": a.getAttribute("data-img")
+      });
+      document.cookie = "cart=" + JSON.stringify(cookie) + ";" + "path=/";
 
-    });
-    document.cookie = "cart=" + JSON.stringify(cookie);
-
-  }
+    }
 
   },
+
+
   getCookie: function (cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -642,7 +731,65 @@ Boxeon = {
         return c.substring(name.length, c.length);
       }
     }
-    return "";
+    return false;
+  },
+  cartQuantityUpdate: function (quantity, product) {
+
+    // Update Cookie
+
+    let newCart = [];
+
+    let cart = JSON.parse(Boxeon.getCookie("cart"));
+
+    for (var i = 0; i < cart.length; i++) {
+
+      if (cart[i]["product"] == product) {
+
+        cart[i]["quantity"] = quantity;
+
+      }
+
+      newCart.push(cart[i]);
+
+    }
+
+    document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
+    Boxeon.showCartTotal();
+
+
+  },
+  cartPlanUpdate: function (cadence, product) {
+
+    // Update Cookie
+    let newCart = [];
+
+    let cart = JSON.parse(Boxeon.getCookie("cart"));
+
+    for (var i = 0; i < cart.length; i++) {
+
+      if (cart[i]["product"] == product) {
+
+        cart[i]["plan"] = cadence;
+
+      }
+
+      newCart.push(cart[i]);
+
+    }
+
+    document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
+    Boxeon.showCartTotal();
+
+
+  },
+
+  cartUpdatePrice: function (quantity, product, price) {
+    // Update in UI
+
+    var newPrice = price * parseInt(quantity)
+    var h2 = document.getElementById("itemprice" + product);
+    h2.innerText = "$" + newPrice;
+
   },
 
   disable: function () {
@@ -1016,6 +1163,114 @@ window.onload = function () {
 
   }
 
+  if (document.getElementsByClassName("delete-icon")) {
+
+    let icons = document.getElementsByClassName("delete-icon");
+    for (var i = 0; i < icons.length; i++) {
+
+      let product = parseInt(icons[i].getAttribute("data-product"));
+
+      icons[i].addEventListener("click", function () {
+
+        Boxeon.delete(product);
+
+      });
+
+    }
+  }
+
+  if (document.getElementsByClassName("select-plan")) {
+
+    var selects = document.getElementsByClassName("select-plan");
+
+    for (var i = 0; i < selects.length; i++) {
+
+      if (selects[i].getAttribute("name") == "quantity") {
+
+        let product = selects[i].getAttribute("data-product");
+        let basePrice = parseInt(selects[i].getAttribute("data-price"));
+
+
+
+        selects[i].addEventListener("change", function () {
+
+          var quantity = parseInt(this.value);
+          var cadence = parseInt(this.parentNode.getElementsByTagName("select")[1].value);
+
+          if (cadence == 1) {
+            var price = basePrice;
+          } else if (cadence == 2) {
+            var price = basePrice + 1;
+          } else if (cadence == 3) {
+            var price = basePrice + 2;
+          } else if (cadence == 0) {
+            var price = basePrice + 3;
+          }
+
+          // Update in storage/cookie
+          Boxeon.cartQuantityUpdate(quantity, product);
+          // Update HTML
+          if (this.parentNode.parentNode.getElementsByTagName("button")[0]) {
+            this.parentNode.parentNode.getElementsByTagName("button")[0].
+              setAttribute("data-quantity", quantity);
+          }
+          //Update in UI price
+          Boxeon.cartUpdatePrice(quantity, product, price);
+
+        })
+
+      }
+    }
+
+  }
+
+  if (document.getElementsByClassName("select-plan")) {
+
+    var selects = document.getElementsByClassName("select-plan");
+
+    for (var i = 0; i < selects.length; i++) {
+
+
+      if (selects[i].getAttribute("name") == "plan") {
+
+
+        let product = selects[i].getAttribute("data-product");
+
+        selects[i].addEventListener("change", function () {
+          var quantity = this.parentNode.getElementsByTagName("select")[0].value;
+          var cadence = this.value;
+          var basePrice = parseInt(this.getAttribute("data-price"));
+          if (cadence == 1) {
+            var price = basePrice;
+          } else if (cadence == 2) {
+            var price = basePrice + 1;
+          } else if (cadence == 3) {
+            var price = basePrice + 2;
+          } else if (cadence == 0) {
+            var price = basePrice + 3;
+          }
+          // Update in storage
+          Boxeon.cartPlanUpdate(cadence, product);
+          let subButton = this.parentNode.parentNode.
+            getElementsByTagName("button")[0];
+          // Update HTML
+          if (subButton) {
+            this.parentNode.parentNode.getElementsByTagName("button")[0].
+              setAttribute("data-plan", cadence);
+            this.parentNode.parentNode.getElementsByTagName("button")[0].
+              setAttribute("data-price", price);
+          }
+
+          //Update price in UI
+          Boxeon.cartUpdatePrice(quantity, product, price);
+
+        })
+
+      }
+    }
+
+  }
+
   // Close Feedback Dialog
   if (document.getElementById('close-dialog')) {
     document.getElementById('close-dialog').addEventListener('click', function () {
@@ -1092,15 +1347,6 @@ window.onload = function () {
   }
 
 
-  if (document.getElementById('play-video')) {
-    document.getElementById('play-video').addEventListener('click', function () {
-      let URL = document.getElementById("exe-sub").getAttribute("data-url");
-      var a = this;
-      Boxeon.loader();
-      a.disabled = "true";
-      Boxeon.router(a);
-    });
-  }
   if (document.getElementsByClassName('cart-add')) {
     let btns = document.getElementsByClassName('cart-add');
     var total = btns.length;
@@ -1118,7 +1364,9 @@ window.onload = function () {
   }
 
   // Cart
-  //Boxeon.addToFlyout();
+
+  Boxeon.showCartCount();
+  Boxeon.showCartTotal();
 
   // Reviews
   if (document.getElementById('show-review-form')) {

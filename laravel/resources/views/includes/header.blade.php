@@ -19,11 +19,11 @@
 
             <a href="tel:+1646-450-4671‬" class="button one-em-font hide">646-450-4671‬</a>
             <a href="/cart/index" class="white button"><span><img id="cart" class="w30px" src="../assets/images/cart.png"
-                        alt="Cart" /></span></a>
+                        alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
 
             <div>
-                <a id="showDropdown" class='fadein button' href='#'>
-                    <img id='header-user-icon' src='{{ $user->profile_photo_path }}' alt='You'>
+                <a id="showDropdown" class='fadein button' href='#'><span class="material-icons">account_circle</span>
+                    {{--<img id='header-user-icon' src='{{ $user->profile_photo_path }}' alt='You'>--}}
                 </a>
                 <div class="dropdown">
                     <div id="myDropdown" class="dropdown-content">
@@ -38,7 +38,7 @@
             <a href="tel:+1646-450-4671‬" class="button hide">646-450-4671‬</a>
 
             <a href="/cart/index" class="white button"><span><img class="w30px"
-                        src="../assets/images/cart.png" alt="Cart" /></span></a>
+                        src="../assets/images/cart.png" alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
 
             <a class='button' id='signin' href='{{ url('auth/google') }}'>
                 Sign In With Google

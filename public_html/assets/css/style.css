@@ -34,6 +34,17 @@ Brown skin: #a0616a
   display: none;
 }
 
+.text-cart-count {
+  position: relative;
+  right: 1.2em;
+  bottom: 1.4em;
+}
+
+.fit-content {
+  max-width: fit-content;
+
+}
+
 #product-categories {
   grid-gap: 1em;
   width: fit-content;
@@ -1331,6 +1342,12 @@ audio {
   border-radius: 0;
 }
 
+#nav-categories {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-gap: 2%;
+}
+
 #phone-1,
 #cart {
 
@@ -1645,11 +1662,19 @@ audio {
 
 .cart-items {
   display: grid;
-  grid-template-columns: auto auto;
-  width: 55%;
+  grid-template-columns: 40% 59%;
+  border-bottom: 1px solid #8bc34a;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  background-color: #fff;
   align-items: center;
+  grid-gap: 1%;
+  width: 100%;
 }
-
+.delete-icon:hover{
+  color:#B12704;
+  cursor:pointer;
+}
 .red-tag {
   display: inline-block;
   font-size: 14px;
@@ -1669,6 +1694,9 @@ audio {
   display: grid;
   grid-template-columns: auto auto auto auto auto 75px;
   width: 200px;
+}
+
+.margin-bottom-2-em {
   margin-bottom: 2em;
 }
 
@@ -1804,7 +1832,8 @@ audio {
 .cart-item-updater {
   display: grid;
   grid-template-columns: auto auto auto;
-  width: 300px;
+  width: fit-content;
+
   align-items: baseline;
   grid-gap: 1.5em;
 
@@ -1812,7 +1841,7 @@ audio {
 
 .cart-item {
   display: grid;
-  grid-template-columns: 50px 300px auto 50px;
+  grid-template-columns: 80px 300px auto 50px;
   grid-gap: 1em;
   border-bottom: 1px solid #8bc34a;
   padding-bottom: 1em;
@@ -1842,8 +1871,9 @@ audio {
 }
 
 #flyout {
-  height: 90%;
+  height: 75%;
   overflow-y: scroll;
+  overflow-x: hidden;
   padding: 1em;
 }
 
@@ -1855,6 +1885,7 @@ audio {
   display: block;
   background: #f8f8c1;
   margin: auto;
+  border: 1px solid gold;
 }
 
 .alert {
@@ -1949,7 +1980,6 @@ audio {
   border: 1px solid #8bc34a;
   color: black !important;
   box-shadow: none !important;
-  margin-right: 2em;
 }
 
 .yellowbtn {

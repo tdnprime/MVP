@@ -11,7 +11,7 @@ if (isset($_GET['c'])) {
         ->where('category', '=', 'Staple')
         ->get();
 
-        $sellers = DB::table('products')
+    $sellers = DB::table('products')
         ->where('category', '=', 'Produce')
         ->get();
 }
@@ -21,18 +21,17 @@ if (isset($_GET['c'])) {
 <span></span>
 <div class="contai">
     <div class="margin-top-4-em hide"></div>
-    @include("includes.category-nav")
-    
+    @include('includes.category-nav')
     <div class="products-stream">
         @for ($i = 0; $i < count($product); $i++)
-            <div>
-                <a href="/shop/item?id={{ $product[$i]->id }}"><img src="../assets/images/{{ $product[$i]->img }}"
+            <div class="fit-content margin-auto">
+                <a href="/shop/item?id={{ $product[$i]->id }}"><img src="../assets/images/products/{{ $product[$i]->img }}"
                         alt="{{ $product[$i]->name }}"></a>
                 <a class="" href="/shop/item?id={{ $product[$i]->id }}">
                     <p>{{ $product[$i]->name }}</p>
                 </a>
+                <p>Weight: {{$product[$i]->weight}} pound(s)</p>
                 @include('includes.stars')
-
                 @include('includes.plan-form')
 
             </div>

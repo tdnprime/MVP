@@ -166,7 +166,7 @@ input[type="submit"], .button, button {
 }
 .form-plan{
   display: grid;
-  grid-template-columns: 30% 69%;
+  grid-template-columns: 32% 66%;
   grid-gap:1%;
   max-width: 303px;
 }

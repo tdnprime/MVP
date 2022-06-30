@@ -11,7 +11,7 @@ $product = DB::table("products")
 
 <div class='shop-item margin-bottom-4-em'>
  @include("includes.category-nav")
-    <img src="../assets/images/{{$product[0]->img}}">
+    <img src="../assets/images/products/{{$product[0]->img}}">
     <aside class="shop-item-details asides">
         <h2>{{$product[0]->name}}</h2>
         <p>{{$product[0]->description}}.</p>

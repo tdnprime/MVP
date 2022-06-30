@@ -10,7 +10,7 @@
 <section class="fix-to-bottom">
     <div class="card-white-bg">
         <b>
-            <h2 class="cart-subtotal text-red">Subtotal (# items) $cost</h2>
+            <h2 class="cart-subtotal">Subtotal (<span class="cart-count">&nbsp;</span> items) <span class="cart-total text-red">&nbsp;</span></h2>
         </b>
         <form class="maxw65per" action="/checkout/index" method="post">
             @csrf

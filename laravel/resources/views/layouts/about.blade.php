@@ -4,8 +4,8 @@
     @include('includes.meta')
 </head>
 
-<body id='about'>
-    <div id="container">
+<body id='about' class="neon-green-bg">
+    <div id="container" class="neon-green-bg">
         <span></span><!-- Hack-->
         @include('includes.header')
         @include('includes.menus.index')

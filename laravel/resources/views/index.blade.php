@@ -21,11 +21,11 @@
         <section class="block maxw1035 section">
             <div class="three-col-grid">
                 <span></span>
-                <div>
-                    <img class="float-left" src="../assets/images/b.png" alt="Boxeon" />
+                <div class="learn-more-index-wrapper">
+                    <img class="float-left h70px border-radius margin-right-1-em border-yellow" src="../assets/images/tabitha-girl.jpg" alt="Boxeon" />
                     <a class="learn-more" href="/school/subscriptions">
                         <h2>Learn more about Boxeon subscriptions<span
-                                class="material-icons">arrow_forward_ios</span></h2>
+                                class="material-icons">arrow_forward</span></h2>
                     </a>
                 </div>
                 <span></span>
@@ -49,7 +49,7 @@
                 @endphp
                 @for ($i = 0; $i < count($sellers); $i++)
                 <div>
-                    <a href="/shop/item?id={{ $sellers[$i]->id }}"><img class="maxw200px" src="../assets/images/{{ $sellers[$i]->img }}"></a>
+                    <a href="/shop/item?id={{ $sellers[$i]->id }}"><img class="maxw200px" src="../assets/images/products/{{ $sellers[$i]->img }}"></a>
                     <a class="" href="/shop/item?id={{ $sellers[$i]->id }}">
                         <p>{{ $sellers[$i]->name }}</p>
                     </a>

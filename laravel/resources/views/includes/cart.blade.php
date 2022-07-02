@@ -1,6 +1,6 @@
 @if (isset($cart))
     <main id="cart-main" class="fadein">
-        <section class="cart-section center w100per padding-1-em">
+        <section class="card cart-section center w100per padding-1-em">
 
             <div class="cart-header">
                 <h2 class="font-size-2-em">Shopping cart</h2>
@@ -58,18 +58,20 @@
                                     class="select-plan margin-top-zero">
                                     <option invalid>Select Subscription</option>
                                     <option value="1" data-price="{{ $cart[$i]->price }}"
-                                        @if ($cart[$i]->plan == 1) selected @endif>${{ $cart[$i]->price }} -
+                                        @if ($cart[$i]->plan == 1) selected @endif>${{ $cart[$i]->basePrice }} -
                                         Every month</option>
-                                    <option value="2" data-price="{{ $cart[$i]->price + 1 }}"
-                                        @if ($cart[$i]->plan == 2) selected @endif>${{ $cart[$i]->price + 1 }}
+                                    <option value="2" data-price="{{ $cart[$i]->basePrice + 1 }}"
+                                        @if ($cart[$i]->plan == 2) selected @endif>${{ $cart[$i]->basePrice + 1 }}
                                         - Every 2 months</option>
-                                    <option value="3" data-price="{{ $cart[$i]->price + 2 }}"
-                                        @if ($cart[$i]->plan == 3) selected @endif>${{ $cart[$i]->price + 2 }}
+                                    <option value="3" data-price="{{ $cart[$i]->basePrice + 2 }}"
+                                        @if ($cart[$i]->plan == 3) selected @endif>${{ $cart[$i]->basePrice + 2 }}
                                         - Every 3 months</option>
-                                    <option value="0" data-price="{{ $cart[$i]->price + 3 }}"
-                                        @if ($cart[$i]->plan == 0) selected @endif>${{ $cart[$i]->price + 3 }}
+                                    <option value="0" data-price="{{ $cart[$i]->basePrice + 3 }}"
+                                        @if ($cart[$i]->plan == 0) selected @endif>${{ $cart[$i]->basePrice + 3 }}
                                         - One-time purchase</option>
                                 </select>
+                                <button data-quantity="1" data-name="{{ $cart[$i]->name }}" data-plan="1" data-img="{{ $cart[$i]->img }}" data-id="{{ $cart[$i]->product }}" data-basePrice="{{$cart[$i]->price }}" data-price="{{$cart[$i]->price }}" class="cart-add button display-none">SUBSCRIBE NOW</button>
+
                             </form>
                             <a href="#" title="Delete"><span data-product="{{ $cart[$i]->product }}" class="material-icons delete-icon">delete_forever</span></a>
                         </div>
@@ -86,7 +88,7 @@
 
         </section>
 
-        <section>
+        <section id="order-summary">
             <div class="card-white-bg">
 
                 <h2 class="hide">Subtotal (<span class="cart-count">&nbsp;</span> items) <span

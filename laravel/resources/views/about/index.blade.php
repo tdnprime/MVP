@@ -3,7 +3,7 @@
 @section('content')
 
     <main>
-        <section id="banner" class="hide section wide greybg">
+        <section id="banner" class="hide section wide bg-color-yellow">
             <h1 id="banner-slogan" class="centered ginormous"><i>Welcome!</i> You've reached the Home In A Box Movement</h1>
         </section>
 
@@ -21,8 +21,8 @@
                     <img src="../assets/images/draw-soup.png" alt="Draw Soup"/>
                 </div>
             </div>
-            <section class="section wide margin-bottom-4-em greybg">
-            <h1 class="centered ginormous primary-color">OUR VALUES</h1>
+            <section class="section wide margin-bottom-4-em bg-color-yellow">
+            <h1 class="centered ginormous">OUR VALUES</h1>
             </section>
             <div id="team-wrapper" class="three-rows-grid">
                 <div class="four-col-grid">

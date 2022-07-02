@@ -46,8 +46,8 @@
     </p>
 </footer>
 
-<dialog id="dialog-feedback" open>
-    <a href="#" id="close-dialog">X</a>
+<dialog id="dialog-feedback">
+    <a href="#" class="close-dialog">X</a>
     <form>
         <fieldset class="border-bottom">
             <img class="center display-block" src="../assets/images/b.png" alt="Logo">
@@ -115,7 +115,7 @@
     <a id="menu-icon" href="#" class="button white"><span class="material-icons">shop</span>&nbsp;Shop</a>
 
 <a href="/cart/index" class="white button"><span><img class="w30px"
-    src="../assets/images/cart.png" alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
+    src="../assets/images/products/cart.png" alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
 
 <button id="feedback" class="button"><span class=" hide material-icons">message</span>&nbsp;Feedback</button>
 </div>

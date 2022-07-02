@@ -1,10 +1,11 @@
-@extends('layouts.about')
-@section('title', 'Boxeon | Terms Of Use')
+@extends('layouts.index')
+@section('title', 'Boxeon.com Terms Of Use')
 @section('content')
 
     <main>
-        <section class="section maxw1036">
-            <h1 class='extra-large-font centered darkblue'>Boxeon terms of use</h1>
+        <section class="section card maxw1036">
+            @include('includes.category-nav')
+            <h1 class='extra-large-font centered darkblue'>Boxeon Terms of Use</h1>
             <p>Effective July 1, 2021</p>
 
             <p>PLEASE NOTE THAT YOUR USE OF AND ACCESS TO OUR SERVICES (DEFINED BELOW) ARE SUBJECT TO THE FOLLOWING TERMS;

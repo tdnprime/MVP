@@ -57,7 +57,7 @@
                             @method('POST')
                             <div class="row">
                                 <div class="col-75">
-                                    @include('includes.address-collection')
+                                    @include('shipping.to-address')
                                 </div>
                             </div>
                             <div class="row">
@@ -102,27 +102,27 @@
                     <div>
                         <div class="two-col-grid">
                             <p>item(s):</p>
-                            <p>total</p>
+                            <p>{{count($cart)}}</p>
                         </div>
                         <div class="two-col-grid">
                             <p>Shipping & handling:</p>
                             <div>
-                            <p>total</p>
+                            <p>0.00</p>
                             <hr>
                             </div>
                         </div>
                         <div class="two-col-grid">
                             <p>Total before tax:</p>
-                            <p>total</p>
+                            <p class="cart-total"></p>
                         </div>
                         <div class="two-col-grid">
                             <p>Estimated tax:</p>
-                            <p>total</p>
+                            <p>0.00</p>
                         </div>
                         <hr>
                         <div class="two-col-grid">
                             <h3 class="text-red">Order total:</h3>
-                            <h3 class="text-red">total</h3>
+                            <h3 class="text-red cart-total"></h3>
                         </div>
                     </div>
                 </div>

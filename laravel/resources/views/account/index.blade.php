@@ -7,14 +7,14 @@
 
         </section>
 
-        <aside id='panel'>
+        
             @if (session()->has('message'))
                 <dialog class="alert">
                     <p class='centered'> {{ session()->get('message') }}</p>
                 </dialog>
             @endif
-            <div id='module' class="rounded-corners card">
-                <h2>Your account</h2>
+            <section class="section rounded-corners card maxw1035">
+                <h2>Manage your account</h2>
                 <div class="div-horizontal-rule"></div>
                 <p>Update the shipping address where you receive subscriptions.</p>
                 <form id="account-form" class='form-settings' action='/account/address' method='POST'>
@@ -320,8 +320,8 @@
                 </form>
                 <div class="div-horizontal-rule"></div>
 <a href="#" class="primary-color">Delete account</a>
-            </div>
-        </aside>
+            </section>
+    
 
         <section id="right-aside"></section>
     </main>

@@ -19,8 +19,7 @@ if (isset($_GET['c'])) {
 @endphp
 
 <span></span>
-<div class="contai">
-    <div class="margin-top-4-em hide"></div>
+<section class='section card maxw1036'>
     @include('includes.category-nav')
     <div class="products-stream">
         @for ($i = 0; $i < count($product); $i++)
@@ -36,7 +35,7 @@ if (isset($_GET['c'])) {
 
             </div>
         @endfor
+      
     </div>
-
-
-</div>
+</section>
+@include('includes.preorder-form')

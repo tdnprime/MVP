@@ -1,15 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Cookie;
-use App\Http\Controllers\SquareController;
-use App\Models\Subscription;
+
 use App\Models\User;
+use Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
-
 
 class CheckoutController extends Controller
 {
@@ -20,15 +16,20 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
 
         $id = auth()->user()->id;
         $user = User::find($id);
-       $cookie = self::setCookie($request); 
-  
-        return view('checkout.index', compact('user'));
+        //$cookie = self::setCookie($request);
+        if (isset($_COOKIE["cart"])) {
+            $cart = json_decode($_COOKIE["cart"]);
+            return view('checkout.index', compact('user'))
+            ->with("cart", $cart);
+        }
     }
-    public function referal(){
+    public function referal()
+    {
 
         $id = auth()->user()->id;
         $user = User::find($id);

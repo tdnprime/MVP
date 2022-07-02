@@ -1,9 +1,10 @@
-@extends('layouts.about')
+@extends('layouts.home')
 @section('title', 'Boxeon | Privacy')
 @section('content')
     <main>
-        <section class='section rounded-corners card maxw1036 margin-top-4-em'>
-            <h2>Returns & Refunds</h2>
+        <section class='section rounded-corners card maxw1036'>
+            @include('includes.category-nav')
+            <h2>Returns & refunds</h2>
             <div class="div-horizontal-rule"></div>
             <p>
                 When you return an item, your refund amount and refund method may vary. Check the payment method refunded

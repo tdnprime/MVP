@@ -79,13 +79,18 @@ Boxeon = {
 
         } catch (e) {
 
-          console.log(e);
+          //error
         }
 
         back(this.responseText);
 
       }
     }
+  },
+  deleteCookie: function (name) {
+
+    document.cookie = name + "=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+
   },
 
   delete: function (product) {
@@ -103,11 +108,18 @@ Boxeon = {
 
       }
 
+    }
+    if (cart.length > 1) {
+
+      document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
+
+      Boxeon.showCartTotal();
+    } else {
+      Boxeon.deleteCookie("cart");
+      location.reload();
 
     }
 
-    document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
-    Boxeon.showCartTotal();
   },
 
   allStorage: function () {
@@ -151,7 +163,8 @@ Boxeon = {
 
         var cadence = cart[i]['plan'];
 
-        var basePrice = parseInt(cart[i]['price']);
+        var basePrice = parseInt(cart[i]['basePrice']);
+
         if (cadence == 1) {
           var price = basePrice;
         } else if (cadence == 2) {
@@ -161,12 +174,13 @@ Boxeon = {
         } else if (cadence == 0) {
           var price = basePrice + 3;
         }
+
         total.push(price * parseInt(cart[i]['quantity']));
       }
 
+      if (total.length == 0) { return; }
 
-
-      const sum = total.reduce((a, b) => a + b);
+      let sum = total.reduce((a, b) => a + b);
 
       let span = document.getElementsByClassName("cart-total");
 
@@ -176,36 +190,43 @@ Boxeon = {
       }
     }
   },
+
   addToFlyout: function () {
 
-    let products = JSON.parse(Boxeon.getCookie("cart"));
+    
 
-    for (var i = 0; i < products.length; i++) {
+      let products = JSON.parse(Boxeon.getCookie("cart"));
 
-      if (!document.getElementById(products[i]['product'])) {
-        let flyOut = document.getElementById("flyout");
-        var img = document.createElement("img");
-        var div = document.createElement("div");
-        var p = document.createElement("p");
-        var txt = document.createTextNode("$" + products[i]['price']);
-        div.className = "cart-item";
-        div.id = products[i]["product"];
-        img.src = "../assets/images/products/" + products[i]['img'];
-        img.className = "h70px";
-        div.appendChild(img);
-        p.appendChild(txt);
-        div.appendChild(p);
-        if (flyOut.getElementsByClassName("cart-item")[0]) {
-          flyOut.insertBefore(div,
-            flyOut.getElementsByClassName("cart-item")[0]
-          );
-        } else {
-          flyOut.appendChild(div);
+      for (var i = 0; i < products.length; i++) {
+
+        if (!document.getElementById(products[i]['product'])) {
+          let flyOut = document.getElementById("flyout");
+          var img = document.createElement("img");
+          var div = document.createElement("div");
+          var p = document.createElement("p");
+          var price = products[i]['price'] * parseInt(products[i]['quantity']); // moved to own line
+          var txt = document.createTextNode("$" + price);
+          div.className = "cart-item";
+          div.id = products[i]["product"];
+          img.src = "../assets/images/products/" + products[i]['img'];
+          img.className = "h70px";
+          div.appendChild(img);
+          p.appendChild(txt);
+          div.appendChild(p);
+          if (flyOut.getElementsByClassName("cart-item")[0]) {
+            flyOut.insertBefore(div,
+              flyOut.getElementsByClassName("cart-item")[0]
+            );
+          } else {
+            flyOut.appendChild(div);
+          }
         }
       }
-    }
-    Boxeon.showCartCount();
-    Boxeon.showCartTotal();
+
+      Boxeon.showCartCount();
+      Boxeon.showCartTotal();
+   
+
 
   },
 
@@ -495,16 +516,6 @@ Boxeon = {
     return wrapper;
   },
 
-  closeModal: function () {
-    try {
-      var m = document.getElementById("m-window");
-      m.remove();
-      //document.getElementsByTagName("header")[0].style.display = "grid";
-    } catch (e) {
-      //console.log(e);
-    }
-  },
-
   dialog: function (txt) {
 
     if (document.getElementsByTagName('dialog')[0]) {
@@ -532,47 +543,6 @@ Boxeon = {
     c.appendChild(d);
     d.showModal();
 
-  },
-
-  createModalWindow: function () {
-
-    var m = document.createElement("div");
-    var mc = document.createElement("div");
-    var mb = document.createElement("div");
-    var mch = document.createElement("div");
-    var x = document.createElement("span");
-    m.id = "m-window";
-    mc.id = "m-content";
-    mc.className = "fadein";
-    m.className = "fadein";
-    x.id = "m-close";
-    x.className = "material-icons";
-    x.innerText = 'close';
-    mch.id = "mc-header";
-    mb.id = "m-body";
-    x.addEventListener("click", Boxeon.closeModal);
-    mc.appendChild(x);
-    m.appendChild(mc);
-    mc.appendChild(mch);
-    mc.appendChild(mb);
-    x.innerHTML = "&times;";
-
-    if (document.getElementById('m-window')) {
-
-      var m_window = document.getElementById("m-window");
-
-      var m_content = document.getElementById("m-window").firstChild;
-
-      m_content.remove();
-
-      m_window.appendChild(mc);
-
-    } else {
-
-      document.getElementById("container").appendChild(m);
-
-    }
-    Boxeon.scrollToTop();
   },
 
   loadScript: function (url) {
@@ -676,21 +646,18 @@ Boxeon = {
   },
 
 
-
-
-
   cartPush: function (a) {
 
 
     if (Boxeon.getCookie("cart")) {
 
       let cookie = JSON.parse(Boxeon.getCookie("cart"));
-      //parseInt(a.getAttribute("data-price")) * parseInt(a.getAttribute("data-quantity"))
 
       cookie.push({
         "name": a.getAttribute("data-name"),
         "quantity": a.getAttribute("data-quantity"),
         "price": a.getAttribute("data-price"),
+        "basePrice": a.getAttribute("data-basePrice"),
         "product": a.getAttribute("data-id"),
         "plan": a.getAttribute("data-plan"),
         "img": a.getAttribute("data-img")
@@ -702,10 +669,12 @@ Boxeon = {
     } else {
 
       let cookie = [];
+
       cookie.push({
         "name": a.getAttribute("data-name"),
         "quantity": a.getAttribute("data-quantity"),
         "price": a.getAttribute("data-price"),
+        "basePrice": a.getAttribute("data-basePrice"),
         "product": a.getAttribute("data-id"),
         "plan": a.getAttribute("data-plan"),
         "img": a.getAttribute("data-img")
@@ -723,28 +692,27 @@ Boxeon = {
     let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
     for (let i = 0; i < ca.length; i++) {
+
       let c = ca[i];
       while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
-      if (c.indexOf(name) == 0) {
+      if (c.indexOf(cname) == 0) {
         return c.substring(name.length, c.length);
       }
     }
     return false;
   },
+
+
   cartQuantityUpdate: function (quantity, product) {
-
-    // Update Cookie
-
+    // Updates Cookie
+    if (!Boxeon.getCookie("cart")) { return; }
     let newCart = [];
-
     let cart = JSON.parse(Boxeon.getCookie("cart"));
 
     for (var i = 0; i < cart.length; i++) {
-
       if (cart[i]["product"] == product) {
-
         cart[i]["quantity"] = quantity;
 
       }
@@ -752,18 +720,19 @@ Boxeon = {
       newCart.push(cart[i]);
 
     }
-
     document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
     Boxeon.showCartTotal();
-
-
   },
+
+
   cartPlanUpdate: function (cadence, product) {
 
     // Update Cookie
     let newCart = [];
 
     let cart = JSON.parse(Boxeon.getCookie("cart"));
+
+    if (cart.length == 0) { return; }
 
     for (var i = 0; i < cart.length; i++) {
 
@@ -785,10 +754,13 @@ Boxeon = {
 
   cartUpdatePrice: function (quantity, product, price) {
     // Update in UI
+    if (!document.getElementById("itemprice" + product)) { return; }
 
-    var newPrice = price * parseInt(quantity)
+    var newPrice = price * parseInt(quantity);
     var h2 = document.getElementById("itemprice" + product);
     h2.innerText = "$" + newPrice;
+
+    Boxeon.showCartTotal();
 
   },
 
@@ -1140,10 +1112,10 @@ window.onload = function () {
 
   // Presentation: fades in pages on load
   if (document.getElementsByTagName("main")[0]) {
-    document.getElementsByTagName("main")[0].setAttribute("class", "fadein");
+    document.getElementsByTagName("main")[0].classList.add("fadein");
   }
   if (document.getElementById("masthead")) {
-    document.getElementById("masthead").setAttribute("class", "fadein");
+    document.getElementById("masthead").classList.add("fadein");
   }
 
   // LISTENERS
@@ -1173,6 +1145,8 @@ window.onload = function () {
       icons[i].addEventListener("click", function () {
 
         Boxeon.delete(product);
+
+        icons[i].parentNode.parentNode.parentNode.parentNode.remove();
 
       });
 
@@ -1237,9 +1211,11 @@ window.onload = function () {
         let product = selects[i].getAttribute("data-product");
 
         selects[i].addEventListener("change", function () {
+
           var quantity = this.parentNode.getElementsByTagName("select")[0].value;
           var cadence = this.value;
           var basePrice = parseInt(this.getAttribute("data-price"));
+
           if (cadence == 1) {
             var price = basePrice;
           } else if (cadence == 2) {
@@ -1251,8 +1227,7 @@ window.onload = function () {
           }
           // Update in storage
           Boxeon.cartPlanUpdate(cadence, product);
-          let subButton = this.parentNode.parentNode.
-            getElementsByTagName("button")[0];
+          let subButton = this.parentNode.parentNode.getElementsByTagName("button")[0];
           // Update HTML
           if (subButton) {
             this.parentNode.parentNode.getElementsByTagName("button")[0].
@@ -1271,12 +1246,16 @@ window.onload = function () {
 
   }
 
-  // Close Feedback Dialog
-  if (document.getElementById('close-dialog')) {
-    document.getElementById('close-dialog').addEventListener('click', function () {
-      document.getElementById('dialog-feedback').style.display = 'none';
+  // Close Dialog
+  if (document.getElementsByClassName('close-dialog')) {
+    let x = document.getElementsByClassName('close-dialog');
+    for (let i = 0; i < x.length; i++) {
+      x[i].addEventListener('click', function () {
 
-    })
+        this.parentNode.style.display = "none";
+
+      })
+    }
   }
 
   if (document.getElementById('alert')) {
@@ -1347,23 +1326,24 @@ window.onload = function () {
   }
 
 
+
   if (document.getElementsByClassName('cart-add')) {
     let btns = document.getElementsByClassName('cart-add');
     var total = btns.length;
     for (var i = 0; i < total; i++) {
       btns[i].addEventListener('click', function () {
-        var a = this;
+        let a = this;
+
         Boxeon.cartPush(a);
-        Boxeon.addToFlyout();
         Boxeon.slideOutCart();
-        // READ: https://stackoverflow.com/questions/55328748/how-to-store-and-retrieve-shopping-cart-items-in-localstorage
+        Boxeon.addToFlyout();
 
 
       });
     }
   }
 
-  // Cart
+  // Cart Ready State
 
   Boxeon.showCartCount();
   Boxeon.showCartTotal();
@@ -1551,6 +1531,12 @@ window.onload = function () {
 
       return false;
     });
+
+
+  }
+
+  if (document.getElementsByClassName("loader")[0]) {
+    Boxeon.removeLoader();
   }
 
 
@@ -1590,6 +1576,9 @@ window.onload = function () {
     });
     return false;
   }
+  0
+
+
 
   if (document.getElementById('survey')) {
     document.getElementById('survey').addEventListener('click', function () {
@@ -1598,6 +1587,10 @@ window.onload = function () {
     });
   }
 
+  // Exit Intent Popup
+  document.addEventListener("mouseleave", function () {
+    //document.getElementById('popup').open = true;
+  });
 
   //import instance from './modules/messages.js'
 }
@@ -1650,3 +1643,22 @@ window.onclick = function (event) {
 }
 
 // document.cookie = "checkout=/checkout/index";
+if (!document.getElementsByClassName("loader")[0]) {
+
+  let div = document.createElement("div");
+
+  div.className = "loader";
+
+  if (document.getElementById("container")) {
+
+    let container = document.getElementById("container");
+
+  } else if (document.getElementById("m-window")) {
+
+    let container = document.getElementById("m-window");
+  }
+
+  container.prepend(div);
+
+  div.style.position = "absolute";
+}

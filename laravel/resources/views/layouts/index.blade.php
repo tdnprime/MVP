@@ -4,9 +4,9 @@
     @include('includes.meta')
 </head>
 
-<body id='index'>
+<body id='index' class="page">
     <div id="container">
-        <span></span><!-- Hack-->
+        <span id="loader" class="loader"></span><!-- Hack-->
         @include('includes.header')
         @include('includes.menus.index')
 

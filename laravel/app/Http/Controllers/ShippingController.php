@@ -6,14 +6,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Shippo;
 use Shippo_Address;
 use Shippo_Parcel;
 use Shippo_Shipment;
-use Illuminate\Support\Facades\Session;
-
-
-
 
 class ShippingController extends Controller
 {
@@ -30,46 +27,22 @@ class ShippingController extends Controller
     {
 
         $to = json_decode($request["to"]);
-        $id = $to->creator_id;
-        $user = User::find($id);
-        $box = $user->boxes()->first();
 
-        $id = $to->creator_id;
-        $user = User::find($id);
-        $box = $user->boxes()->first();
-
-        if (isset($box) && $box->ship_from == 0) {
-            $fromAddress = Shippo_Address::create(array(
-                "name" => $box->name,
-                "company" => env('APP_NAME'),
-                "street1" => $box->address_line_1,
-                "city" => $box->admin_area_2,
-                "state" => $box->admin_area_1,
-                "zip" => $box->postal_code,
-                "country" => $box->country_code,
-                "phone" => env('US_PHONE'),
-                "email" => env('SERVICE_EMAIL'),
-            ));
-        }
-
-        if (isset($box) && $box->ship_from == 1) {
-
-            $fromAddress = Shippo_Address::create(array(
-                "name" => $box->name,
-                "company" => "Boxeon",
-                "street1" => $this->config['boxeon']['address_line_1'],
-                "city" => $this->config['boxeon']['admin_area_2'],
-                "state" => $this->config['boxeon']['admin_area_1'],
-                "zip" => $this->config['boxeon']['postal_code'],
-                "country" => $this->config['boxeon']['country_code'],
-                "phone" => $this->config['boxeon']['USPhone'],
-                "email" => $this->config['boxeon']['serviceEmail'],
-            ));
-        }
+        $fromAddress = Shippo_Address::create(array(
+            "name" => $box->name,
+            "company" => "Boxeon.com",
+            "street1" => $this->config['boxeon']['address_line_1'],
+            "city" => $this->config['boxeon']['admin_area_2'],
+            "state" => $this->config['boxeon']['admin_area_1'],
+            "zip" => $this->config['boxeon']['postal_code'],
+            "country" => $this->config['boxeon']['country_code'],
+            "phone" => $this->config['boxeon']['USPhone'],
+            "email" => $this->config['boxeon']['serviceEmail'],
+        ));
 
         $toAddress = Shippo_Address::create(array(
             "name" => $to->given_name . "" . $to->family_name,
-            "company" => "Boxeon",
+            "company" => "",
             "street1" => $to->address_line_1,
             "city" => $to->admin_area_2,
             "state" => $to->admin_area_1,

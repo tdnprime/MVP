@@ -3,7 +3,7 @@
 
 var Boxeon = Boxeon || {};
 var Shipping = Shipping || {};
-var Auth = Auth || {};
+var Cart = Shipping || {};
 var Subscriptions = Subscriptions || {};
 var controller = new AbortController();
 var signal = controller.signal;
@@ -14,47 +14,9 @@ var signal = controller.signal;
 
 
 /**
- * Checks user auth status
- */
-Auth = {
-
-  check: function (video_id, creator_id) {
-
-    var data = {
-
-      method: "GET",
-
-      action: "/auth/google/status",
-
-      contentType: "application/json; charset=utf-8",
-
-      _token: document.querySelector('meta[name="csrf-token"]').content
-
-    }
-
-    function callback(status) {
-
-      if (status == 0) {
-
-        document.cookie = "box=" + window.location.href;
-
-        location.assign("/auth/google");
-
-      } else if (status == 1) {
-
-        // Play video in UI
-        Boxeon.playVideo(video_id, creator_id);
-      }
-    }
-    Boxeon.loader();
-    Boxeon.sendAjax(data, callback);
-
-  }
-};
-
-/**
  * Utility functions
  */
+
 Boxeon = {
 
   sendAjax: function (data, back) {
@@ -122,20 +84,6 @@ Boxeon = {
 
   },
 
-  allStorage: function () {
-
-    var archive = [],
-      keys = Object.keys(localStorage),
-      i = 0, key;
-
-    for (; key = keys[i]; i++) {
-      archive.push(key + '=' + localStorage.getItem(key));
-    }
-
-    return archive;
-
-  },
-
   showCartCount: function () {
     if (Boxeon.getCookie("cart")) {
       let cart = JSON.parse(Boxeon.getCookie("cart"));
@@ -148,6 +96,7 @@ Boxeon = {
     }
 
   },
+
   showCartTotal: function () {
 
     if (Boxeon.getCookie("cart")) {
@@ -188,44 +137,52 @@ Boxeon = {
         span[i].innerText = "$" + sum;
 
       }
+
+      if (document.getElementsByClassName("checkout-total")) {
+        let target = document.getElementsByClassName("checkout-total");
+        for (var i = 0; i < target.length; i++) {
+          target[i].innerText = "$" + (sum + 17);
+
+        }
+      }
     }
   },
 
   addToFlyout: function () {
 
-    
 
-      let products = JSON.parse(Boxeon.getCookie("cart"));
 
-      for (var i = 0; i < products.length; i++) {
+    let products = JSON.parse(Boxeon.getCookie("cart"));
 
-        if (!document.getElementById(products[i]['product'])) {
-          let flyOut = document.getElementById("flyout");
-          var img = document.createElement("img");
-          var div = document.createElement("div");
-          var p = document.createElement("p");
-          var price = products[i]['price'] * parseInt(products[i]['quantity']); // moved to own line
-          var txt = document.createTextNode("$" + price);
-          div.className = "cart-item";
-          div.id = products[i]["product"];
-          img.src = "../assets/images/products/" + products[i]['img'];
-          img.className = "h70px";
-          div.appendChild(img);
-          p.appendChild(txt);
-          div.appendChild(p);
-          if (flyOut.getElementsByClassName("cart-item")[0]) {
-            flyOut.insertBefore(div,
-              flyOut.getElementsByClassName("cart-item")[0]
-            );
-          } else {
-            flyOut.appendChild(div);
-          }
+    for (var i = 0; i < products.length; i++) {
+
+      if (!document.getElementById(products[i]['product'])) {
+        let flyOut = document.getElementById("flyout");
+        var img = document.createElement("img");
+        var div = document.createElement("div");
+        var p = document.createElement("p");
+        var price = products[i]['price'] * parseInt(products[i]['quantity']); // moved to own line
+        var txt = document.createTextNode("$" + price);
+        div.className = "cart-item";
+        div.id = products[i]["product"];
+        img.src = "../assets/images/products/" + products[i]['img'];
+        img.className = "h70px";
+        div.appendChild(img);
+        p.appendChild(txt);
+        div.appendChild(p);
+        if (flyOut.getElementsByClassName("cart-item")[0]) {
+          flyOut.insertBefore(div,
+            flyOut.getElementsByClassName("cart-item")[0]
+          );
+        } else {
+          flyOut.appendChild(div);
         }
       }
+    }
 
-      Boxeon.showCartCount();
-      Boxeon.showCartTotal();
-   
+    Boxeon.showCartCount();
+    Boxeon.showCartTotal();
+
 
 
   },
@@ -242,31 +199,6 @@ Boxeon = {
     });
   },
 
-  checkUrl: function (input) {
-
-    let json = JSON.stringify({ url: input });
-    var data = {
-      method: "POST",
-      action: "/box/url/?url=" + json + "",
-      contentType: "application/json; charset=utf-8",
-      customHeader: "X-CSRF-TOKEN",
-      payload: document.querySelector('meta[name="csrf-token"]').content
-    }
-
-    function callback(re) {
-      let msg = JSON.parse(re);
-      if (msg.msg == "Available") {
-        document.getElementById("box-url").
-          style.backgroundColor = '#00800087';
-      } else if (msg.msg == "Unavailable") {
-        document.getElementById("box-url").
-          style.backgroundColor = '#e2042987';
-      }
-
-    }
-    Boxeon.loader();
-    Boxeon.sendAjax(data, callback);
-  },
 
   disableLink: function (link) {
 
@@ -285,53 +217,26 @@ Boxeon = {
   },
 
   loader: function () {
-
     if (!document.getElementsByClassName("loader")[0]) {
-
       let div = document.createElement("div");
-
       div.className = "loader";
-
       if (document.getElementById("container")) {
-
         let container = document.getElementById("container");
-
       } else if (document.getElementById("m-window")) {
-
         let container = document.getElementById("m-window");
       }
-
       container.prepend(div);
-
       div.style.position = "absolute";
     }
   },
 
   removeLoader: function () {
-
     if (document.getElementsByClassName("loader")[0]) {
-
       var loader = document.getElementsByClassName("loader")[0];
-
       loader.remove();
-
-      if (Boxeon.CTA) {
-
-        Boxeon.CTA.value = Boxeon.ctaValue;
-
-      }
     }
   },
 
-  working: function (CTA) {
-
-    Boxeon.CTA = CTA;
-
-    Boxeon.ctaValue = CTA.value;
-
-    CTA.value = 'Working...';
-
-  },
 
   changeImageOnMouseover: function (img, src) {
 
@@ -339,310 +244,32 @@ Boxeon = {
 
   },
 
-  playVideo: function (video_id, creator_uid) {
-
-    Boxeon.createModalWindow();
-    var mbody = document.getElementById("m-body");
-    mbody.innerHTML = Boxeon.createVideoHTML(video_id);
-    var mbodyNode = mbody.childNodes[0].parentNode;
-    var el = "h2";
-    var options = {
-      msg: "1. Choose subscription schedule",
-      className: "primary-color margin-top-2-em"
-    }
-    mbodyNode.appendChild(Boxeon.createElem(el, options));
-    mbodyNode.appendChild(Boxeon.createPlanOptions());
-    mbodyNode.appendChild(Boxeon.createSubsButton(creator_uid));
-    var header = document.getElementById("mc-header");
-    var opts = {
-      className: "step step-incomplete",
-      label1: "Schedule",
-      label2: "Shipping",
-      label3: "Checkout",
-      length: 3
-    }
-    header.appendChild(Boxeon.createStepsLeft(opts));
-  },
-
-  createVideoHTML: function (id) {
-    return "<div id='remove-black-bar'><iframe src=https://www.youtube.com/embed/"
-      + id + "?rel=0&autoplay=1&frameborder=0&mute=1></iframe></div>";
-
-
-  },
-
-  createStepsLeft: function (options) {
-
-    var grid = Boxeon.createElem("div");
-    var wrapper = document.createElement("div");
-    wrapper.className = "asides width-auto";
-    grid.id = "steps-left";
-
-    var label1 = document.createTextNode(options.label1);
-    var label2 = document.createTextNode(options.label2);
-    var label3 = document.createTextNode(options.label3);
-
-    var p = [];
-    p[0] = document.createElement("p");
-    p[1] = document.createElement("p");
-    p[2] = document.createElement("p");
-
-    p[0].id = "text-step0-label";
-    p[1].id = "text-step1-label";
-    p[2].id = "text-step2-label";
-
-    p[0].className = "centered";
-    p[1].className = "centered";
-    p[2].className = "centered";
-
-    p[0].appendChild(label1);
-    p[1].appendChild(label2);
-    p[2].appendChild(label3);
-
-    for (var i = 0; i < options.length; i++) {
-      var span = Boxeon.createElem("p", options);
-      if (i == 0) {
-        span.className = "step step-current";
-        span.id = "span-step" + 0 + "-circle";
-      }
-
-      var number = document.createTextNode(i + 1);
-      span.appendChild(number);
-      grid.appendChild(span);
-      grid.append(p[i]);
-    }
-    var line = document.createElement("div");
-    line.id = "steps-line";
-    wrapper.appendChild(line);
-    wrapper.appendChild(grid);
-    return wrapper;
-
-  },
-
-  createElem: function (el, options = false) {
-
-    var elem = document.createElement(el);
-    if (options.className) {
-      elem.className = options.className;
-    }
-    if (options.id) {
-      elem.id = options.id;
-    }
-    if (options.msg) {
-      var txt = document.createTextNode(options.msg);
-      elem.appendChild(txt);
-    }
-    return elem;
-  },
-
-  createPlanOptions: function () {
-
-    var form = document.createElement("form");
-    var label1 = document.createElement("label");
-    var label2 = document.createElement("label");
-    var label3 = document.createElement("label");
-    var label4 = document.createElement("label");
-    var txt1 = document.createTextNode("Every month");
-    var txt2 = document.createTextNode("Every 2 months");
-    var txt3 = document.createTextNode("Every 3 months");
-    var radio1 = document.createElement("input");
-    var radio2 = document.createElement("input");
-    var radio3 = document.createElement("input");
-    var radio4 = document.createElement("input");
-    radio1.setAttribute("type", "radio");
-    radio1.setAttribute("checked", "checked");
-    radio2.setAttribute("type", "radio");
-    radio3.setAttribute("type", "radio");
-    radio1.setAttribute("name", "freq");
-    radio2.setAttribute("name", "freq");
-    radio3.setAttribute("name", "freq");
-    radio4.setAttribute("name", "freq");
-    radio1.className = "switch-plan";
-    radio2.className = "switch-plan";
-    radio3.className = "switch-plan";
-    radio4.className = "switch-plan";
-    radio1.value = 1;
-    radio2.value = 2;
-    radio3.value = 3;
-    radio4.value = 0;
-    label1.appendChild(txt1);
-    label2.appendChild(txt2);
-    label3.appendChild(txt3);
-    form.className = "price-options-grid bg-yellow";
-    label1.appendChild(txt1);
-    label1.appendChild(radio1);
-    form.appendChild(label1);
-    label2.appendChild(txt2);
-    label2.appendChild(radio2);
-    form.appendChild(label2);
-    label3.appendChild(txt3);
-    label3.appendChild(radio3);
-    form.appendChild(label3);
-    radio1.addEventListener('click', function () {
-
-      Boxeon.switchPlan(this);
-    });
-    radio2.addEventListener('click', function () {
-      Boxeon.switchPlan(this);
-    });
-    radio3.addEventListener('click', function () {
-      Boxeon.switchPlan(this);
-    });
-    radio4.addEventListener('click', function () {
-      Boxeon.switchPlan(this);
-    });
-    localStorage.setItem("sub-freq", 1);
-    return form;
-  },
-
-
-  /* SUBSCRIPTION CHECKOUT FLOW  **********/
-
-  createSubsButton: function (creator_uid) {
-    var wrapper = document.createElement("div");
-    wrapper.id = "subs-btns";
-    var btn = document.createElement("button");
-    btn.id = 'exe-sub';
-    localStorage.setItem("sub-creator-id", creator_uid);
-    // btn.setAttribute("data-url", "URL");
-    btn.innerText = "Continue";
-    //Event listener
-    btn.addEventListener('click', function () {
-      // Send to next step(step 2) in checkout flow
-      var a = this;
-      Shipping.collectUserAddress(creator_uid);
-    });
-    wrapper.appendChild(btn);
-    return wrapper;
-  },
-
-  dialog: function (txt) {
-
-    if (document.getElementsByTagName('dialog')[0]) {
-      document.getElementsByTagName('dialog')[0].remove();
-    }
-    var d = document.createElement('dialog');
-    var c = document.getElementById('container');
-    var h3 = document.createElement("h3");
-    var text = document.createTextNode(txt);
-    h3.appendChild(text)
-
-    var anchor = document.createElement("a");
-    anchor.href = "#/";
-    var span = document.createElement("span");
-    span.className = "material-icons";
-    span.innerText = "close";
-    span.style.float = "right";
-    anchor.appendChild(span);
-
-    anchor.addEventListener('click', function () {
-      d.remove();
-    });
-    d.appendChild(anchor);
-    d.appendChild(h3);
-    c.appendChild(d);
-    d.showModal();
-
-  },
 
   loadScript: function (url) {
-
     var s = document.createElement('script');
-
     s.type = 'text/javascript';
-
     s.async = true;
-
     s.src = url;
-
     var x = document.getElementsByTagName('head')[0];
-
     x.appendChild(s);
-
-  },
-
-  switchPlan: function (a) {
-
-    var frequency = a.value;
-
-    localStorage.setItem("sub-freq", frequency);
-
-  },
-
-  showDisabled: function () {
-
-    var fieldset = document.getElementById("curation1");
-
-    fieldset.style.display = "block";
-
-    var elems = fieldset.getElementsByTagName("*");
-
-    for (var i = 0; i < elems.length; i++) {
-
-      elems[i].removeAttribute("disabled");
-
-    }
-
-    var fieldset = document.getElementById("curation2");
-
-    fieldset.style.display = "block";
-
-    var elems = fieldset.getElementsByTagName("*");
-
-    for (var i = 0; i < elems.length; i++) {
-
-      elems[i].removeAttribute("disabled");
-
-    }
-
-    var hiden = document.getElementsByClassName('hiden');
-
-    for (var i = 0; i < hiden.length; i++) {
-
-      hiden[i].style.display = "block";
-
-      let optional = hiden[i].getElementsByClassName('optional');
-
-      let count = optional.length;
-
-      for (let e = 0; e < count; e++) {
-
-        optional[e].removeAttribute("disabled");
-
-      }
-    }
-
   },
 
   slideOutCart: function () {
-
     if (screen.width <= 600) {
-
-
       document.getElementById("menu").className = "slideOutCart";
       document.getElementById('menu').style.display = "block";
       document.getElementById("cart_overlay").className = "cart_overlay_show";
-
     } else {
-
       document.getElementById("menu").className = "slideOutCart";
       document.getElementById('menu').style.display = "block";
-
       document.getElementById("cart_overlay").className = "cart_overlay_show";
-
 
     }
-
-
   },
 
   slideInCart: function () {
-
     document.getElementById("menu").className = "slideInCart";
     document.getElementById('menu').style.display = "none";
-
-
-
   },
 
 
@@ -686,7 +313,9 @@ Boxeon = {
 
   },
 
+  showDetailsPreview: function (elem) {
 
+  },
   getCookie: function (cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -764,56 +393,14 @@ Boxeon = {
 
   },
 
-  disable: function () {
-
-    var fieldset = document.getElementById("curation1");
-
-    fieldset.style.display = "none";
-
-    var elems = fieldset.getElementsByTagName("*");
-
-    for (var i = 0; i < elems.length; i++) {
-
-      elems[i].setAttribute("disabled", "disabled");
-
-    }
-    var fieldset = document.getElementById("curation2");
-
-    fieldset.style.display = "none";
-
-    var elems = fieldset.getElementsByTagName("*");
-
-    for (var i = 0; i < elems.length; i++) {
-
-      elems[i].setAttribute("disabled", "disabled");
-
-    }
-    var hiden = document.getElementsByClassName('hiden');
-
-    for (var i = 0; i < hiden.length; i++) {
-
-      hiden[i].style.display = "none";
-
-      let optional = hiden[i].getElementsByClassName('optional');
-
-      let count = optional.length;
-
-      for (let e = 0; e < count; e++) {
-
-        optional[e].setAttribute("disabled", "disabled");
-
-      }
-    }
-
-  },
 };
 
 Shipping = {
 
 
-  getRates: function () {
+  getRates: function (address) {
 
-    var json = JSON.stringify(Shipping.arr);
+    var json = JSON.stringify(address);
 
     var manifest = {
 
@@ -839,29 +426,8 @@ Shipping = {
     Boxeon.sendAjax(manifest, callback);
 
   },
-
-
-  generateLabels: function () {
-
-    var data = {
-      method: "GET",
-      action: "/box/labels",
-      contentType: "application/json; charset=utf-8",
-      customHeader: "X-CSRF-TOKEN",
-      payload: document.querySelector('meta[name="csrf-token"]').content
-    }
-
-    function callback(re) {
-      let msg = JSON.parse(re);
-      alert(msg.msg);
-
-    }
-    Boxeon.loader();
-    Boxeon.sendAjax(data, callback);
-  }
-
-
 };
+
 
 Subscriptions = {
 
@@ -995,6 +561,8 @@ Subscriptions = {
     Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
+
+
   complete: function (json) {
     var data = {
       method: "POST",
@@ -1014,53 +582,6 @@ Subscriptions = {
     Boxeon.sendAjax(data, callback);
   },
 
-  createBillingPlan: function () {
-    if (Shipping.rateSelected) {
-      Shipping.arr['rate'] = Shipping.rateSelected.getAttribute('sub-rate');
-      Shipping.arr['shipment'] = Shipping.rateSelected.getAttribute('sub-shipment');
-      Shipping.arr['rate_id'] = Shipping.rateSelected.getAttribute('sub-rate-id');
-      Shipping.arr['carrier'] = Shipping.rateSelected.getAttribute('sub-carrier');
-    } else {
-      Shipping.arr['rate'] = 0;
-      Shipping.arr['shipment'] = null;
-      Shipping.arr['rate_id'] = null;
-      Shipping.arr['carrier'] = null;
-    }
-    Shipping.arr['version'] = localStorage.getItem('sub-version');
-    Shipping.arr['total'] = localStorage.getItem('sub-total');
-    Shipping.arr['creator_id'] = localStorage.getItem('sub-creator-id');
-    Shipping.arr['frequency'] = localStorage.getItem('sub-freq');
-    Shipping.arr['key'] = Boxeon.generateUUID();
-    //Shipping.arr["_token"] = document.querySelector('meta[name="csrf-token"]').content;
-
-    var json = JSON.stringify(Shipping.arr);
-    var data = {
-      method: "POST",
-      action: "/plan/create/?plan=" + json + "",
-      contentType: "application/json; charset=utf-8",
-      customHeader: "X-CSRF-TOKEN",
-      payload: document.querySelector('meta[name="csrf-token"]').content
-    }
-    function callback(r) {
-      try {
-        var json = JSON.parse(r);
-        if (!json.errors) {
-          localStorage.setItem("sub-plan_id", json['plan_id']);
-          document.getElementById("m-window").remove();
-          Subscriptions.showPaymentOptions();
-
-        } else {
-          alert("Sorry! Something went wrong on our end. Please try again later.");
-        }
-      } catch (e) {
-        console.log(e);
-
-      }
-
-    }
-    Boxeon.loader();
-    Boxeon.sendAjax(data, callback);
-  },
 
   showPaymentOptions: function () {
 
@@ -1088,6 +609,8 @@ Subscriptions = {
     Boxeon.loader();
     Boxeon.sendAjax(data, callback);
   },
+
+
   showRecommended: function () {
     var data = {
       method: "POST",
@@ -1107,6 +630,7 @@ Subscriptions = {
 };
 
 
+// APP
 window.onload = function () {
 
 
@@ -1163,8 +687,6 @@ window.onload = function () {
 
         let product = selects[i].getAttribute("data-product");
         let basePrice = parseInt(selects[i].getAttribute("data-price"));
-
-
 
         selects[i].addEventListener("change", function () {
 
@@ -1251,7 +773,6 @@ window.onload = function () {
     let x = document.getElementsByClassName('close-dialog');
     for (let i = 0; i < x.length; i++) {
       x[i].addEventListener('click', function () {
-
         this.parentNode.style.display = "none";
 
       })
@@ -1259,15 +780,10 @@ window.onload = function () {
   }
 
   if (document.getElementById('alert')) {
-
     document.getElementById('alert').show();
-
     if (document.getElementById('close-dialog')) {
-
       document.getElementById('close-dialog').addEventListener('click', function () {
-
         document.getElementById('alert').remove();
-
       })
 
       // alert ();
@@ -1275,9 +791,7 @@ window.onload = function () {
     }
   }
   if (document.getElementById('exe-sub')) {
-
     document.getElementById('exe-sub').addEventListener('click', function () {
-
       Boxeon.loader();
       var a = this;
       a.disabled = "true";
@@ -1286,7 +800,6 @@ window.onload = function () {
   }
 
   if (document.getElementById('cart_overlay')) {
-
     document.getElementById('cart_overlay').addEventListener('click', function () {
       document.getElementById('cart_overlay').className = "cart_overlay_hide";
       document.getElementById('menu').className = "slideInCart";
@@ -1296,7 +809,6 @@ window.onload = function () {
   }
 
   if (document.getElementById('btn-update-subscription')) {
-
     document.getElementById('btn-update-subscription').addEventListener('click', function () {
       var button = this;
       button.disabled = "true";
@@ -1304,6 +816,7 @@ window.onload = function () {
 
     });
   }
+
   if (document.getElementsByClassName('exe-unsub')) {
     var btns = document.getElementsByClassName('exe-unsub');
     var num = btns.length;
@@ -1316,6 +829,7 @@ window.onload = function () {
     }
 
   }
+
   if (document.getElementById('exe-sub-alt')) {
     document.getElementById('exe-sub-alt').addEventListener('click', function () {
       var a = this;
@@ -1333,11 +847,9 @@ window.onload = function () {
     for (var i = 0; i < total; i++) {
       btns[i].addEventListener('click', function () {
         let a = this;
-
         Boxeon.cartPush(a);
         Boxeon.slideOutCart();
         Boxeon.addToFlyout();
-
 
       });
     }
@@ -1364,18 +876,12 @@ window.onload = function () {
     });
   }
   if (document.getElementsByClassName('sentiment')) {
-
     let choices = document.getElementsByClassName('sentiment');
     var num = choices.length;
-
     for (let i = 0; i < num; i++) {
-
       choices[i].addEventListener('click', function () {
-
         var feedback = choices[i].id;
-
         document.getElementById('start').style.display = "none";
-
         if (feedback == "thumb_up") {
           document.getElementById('like').style.display = "block";
         }
@@ -1426,26 +932,6 @@ window.onload = function () {
   }
 
 
-  /*  if (document.getElementsByClassName('switch-plan')) {
-      var radios = document.getElementsByClassName('switch-plan');
-      for (var i = 0; i < radios.length; i++) {
-        radios[i].addEventListener('click', function () {
-          Boxeon.switchPlan(this);
-        });
-      }
-    }
-    */
-
-  if (document.getElementById('box-url')) {
-    document.getElementById('box-url').addEventListener('keydown', function (e) {
-      var key = e.keyCode;
-      if (key === 32) {
-        event.preventDefault();
-      }
-    });
-  }
-
-
   if (document.getElementById('show-disabled')) {
     document.getElementById('show-disabled').addEventListener('click', function () {
       Boxeon.showDisabled();
@@ -1458,189 +944,171 @@ window.onload = function () {
   }
 
 
-
-  if (document.getElementById('form-partner-apply')) {
-    var btns = document.getElementsByClassName('partner-apply');
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener('click', function () {
-        var form = document.getElementById('form-partner-apply-wrapper');
-        form.style.display = "block";
-        form.style.margin = "auto";
-        var wrapper = document.getElementById("partner-masthead-image");
-        wrapper.style.display = "none";
-        var main = document.getElementsByTagName("main")[0];
-        main.id = "margin-top-45-em";
-        form.scrollIntoView({ behavior: 'smooth' });
-      });
-    }
-  }
   if (document.getElementById('video-place-holder')) {
     var loc = document.getElementById('video-place-holder');
     loc.scrollIntoView({ behavior: 'smooth' });
   }
 
+  // Save shipping address
+  if (document.getElementById("shipping-address")) {
+    let div = document.getElementById("shipping-address");
+    div.addEventListener("submit", function (event) {
+      event.preventDefault();
+      let array = [];
+      var formData = new FormData(this);
+      // div.classList.add("fadeout");
+      div.style.display = "none";
+      for (var [key, value] of formData) {
+        array.push([key = value]);
+        if (value == 0) {
 
-  if (document.getElementById('signin')) {
-    document.getElementById('signin').addEventListener('click', function () {
-      if (location.href == "https://boxeon.com/partner") {
-        localStorage.setItem("last", "https://boxeon.com/partner");
+          document.getElementById("billing-address").style.display = "block";
+
+        } else if (value == 1) {
+          var pre = document.getElementsByClassName("preview");
+          for (var xe = 0; xe < pre.length; xe++) {
+            if (pre[xe].getAttribute("data-type-id") == "billing-address") {
+              pre[xe].innerText = array[2] + " ...";
+            }
+          }
+        }
+
       }
+      var p = document.getElementsByClassName("preview");
+      for (var x = 0; x < p.length; x++) {
+        if (p[x].getAttribute("data-type-id") == div.id) {
+          p[x].innerText = array[2] + " ...";
+        }
+      }
+      Boxeon.scrollToTop();
+      //Send to server (array);
     });
-  }
 
-  if (document.getElementById('generate-labels')) {
-    document.getElementById('generate-labels').addEventListener('click', function () {
-      Boxeon.loader();
-      var CTA = this;
-      Boxeon.working(CTA);
-      Shipping.generateLabels();
-    });
-  }
+    // Saves billing address
+    if (document.getElementById("billing-address")) {
+      let div = document.getElementById("billing-address");
+      div.addEventListener("submit", function (event) {
+        event.preventDefault();
+        let array = [];
+        var formData = new FormData(this);
+        //  div.classList.add("fadeout");
+        div.style.display = "none";
+        for (var [key, value] of formData) {
+          array.push([key = value]);
 
+        }
+        var p = document.getElementsByClassName("preview");
+        for (var x = 0; x < p.length; x++) {
+          if (p[x].getAttribute("data-type-id") == div.id) {
+            p[x].innerText = array[2] + " ...";
+          }
+        }
 
-  if (document.getElementsByClassName('message-create')) {
-    let elem = document.getElementsByClassName('message-create');
-    for (let i = 0; i < elem.length; i++) {
-      elem[i].addEventListener('click', function () {
-        let id = this.getAttribute("data-type-id");
-        localStorage.setItem('recipient', id);
+        document.getElementById("payment").style.display = "block";
+        //Send to server (array);
+        Boxeon.scrollToTop();
       });
     }
-  }
-  if (document.getElementById('form-message-store')) {
-    let id = localStorage.getItem('recipient');
-    document.getElementById('recipient').setAttribute("value", id);
-  }
-  if (document.getElementById('check-url')) {
-    document.getElementById('check-url').addEventListener('click', function () {
-      Boxeon.loader();
-      var CTA = this;
-      Boxeon.working(CTA);
-      if (document.getElementById("box-url").value) {
-        var input = document.getElementById("box-url").value;
-        Boxeon.checkUrl(input);
-      } else {
-        //
+
+    // Place order
+    if (document.getElementsByClassName("place-order")) {
+      let form = document.getElementsByClassName("place-order");
+      for (let i = 0; i < form.length; i++) {
+        form[i].addEventListener("submit", function (event) {
+          event.preventDefault();
+
+        });
       }
-    });
-  }
-  if (document.getElementById('new-window')) {
-    document.getElementById('new-window').addEventListener('click', function () {
-      var newwindow = window.open(this.getAttribute('data-type-href'), 'mywin', 'height=200,width=150');
-      if (window.focus) { newwindow.focus() }
+    }
 
+    // Checkout page EDIT buttons
+    if (document.getElementById("billing-address")) {
+
+      let btns = document.getElementsByClassName("edit-btn");
+      for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          var id = btns[i].getAttribute("data-type-id");
+          document.getElementById(id).style.display = "block";
+        });
+
+      }
+
+    }
+
+
+
+    // Google Analytics -- SHOULD THIS BE MOVED UP?
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+
+      window.dataLayer.push(arguments);
+
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-EKYP1LECWS');
+
+
+    window.addEventListener('onbeforeunload', function () {
+
+      document.getElementBy("container").setAttribute("class", "fadeout");
+
+
+    });
+
+    // Event snippet for Waiting List Signup conversion page
+    function gtag_report_conversion(url) {
+
+      var callback = function () {
+        if (typeof (url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-10788250660/CKWeCNWaosUDEKTInpgo',
+        'event_callback': callback
+      });
       return false;
+    }
+
+    if (document.getElementById('survey')) {
+      document.getElementById('survey').addEventListener('click', function () {
+        gtag_report_conversion("https://boxeon.com/apply/survey");
+
+      });
+    }
+
+    // Exit Intent Popup
+    document.addEventListener("mouseleave", function () {
+      //document.getElementById('popup').open = true;
     });
 
+    //import instance from './modules/messages.js'
+  }
 
+
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
   }
 
   if (document.getElementsByClassName("loader")[0]) {
     Boxeon.removeLoader();
   }
 
+};
 
-
-  // Google Analytics
-
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-
-    window.dataLayer.push(arguments);
-
-  }
-
-  gtag('js', new Date());
-  gtag('config', 'G-EKYP1LECWS');
-
-
-  window.addEventListener('onbeforeunload', function () {
-
-    document.getElementBy("container").setAttribute("class", "fadeout");
-
-
-  });
-
-  // Event snippet for Waiting List Signup conversion page
-  function gtag_report_conversion(url) {
-
-    var callback = function () {
-      if (typeof (url) != 'undefined') {
-        window.location = url;
-      }
-    };
-    gtag('event', 'conversion', {
-      'send_to': 'AW-10788250660/CKWeCNWaosUDEKTInpgo',
-      'event_callback': callback
-    });
-    return false;
-  }
-  0
-
-
-
-  if (document.getElementById('survey')) {
-    document.getElementById('survey').addEventListener('click', function () {
-      gtag_report_conversion("https://boxeon.com/apply/survey");
-
-    });
-  }
-
-  // Exit Intent Popup
-  document.addEventListener("mouseleave", function () {
-    //document.getElementById('popup').open = true;
-  });
-
-  //import instance from './modules/messages.js'
-}
-/*
-let slideIndex = 1;
-showSlides(slideIndex);
-
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("demo");
-  let captionText = document.getElementById("caption");
-  if (n > slides.length) { slideIndex = 1 }
-  if (n < 1) { slideIndex = slides.length }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-  captionText.innerHTML = dots[slideIndex - 1].alt;
-}
-*/
-
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function (event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
 
 // document.cookie = "checkout=/checkout/index";
 if (!document.getElementsByClassName("loader")[0]) {

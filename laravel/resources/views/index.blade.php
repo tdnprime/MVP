@@ -42,7 +42,7 @@
             <div id="as-seen-on" class="four-col-grid">
                 @php
                     $sellers = DB::table('products')
-                        ->where('category', '=', 'Snack')
+                        ->where('category', '=', 'Spice')
                         ->take(4)
                         ->get();
                     

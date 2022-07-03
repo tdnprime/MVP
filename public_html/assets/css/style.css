@@ -338,7 +338,7 @@ dialog p {
 }
 
 .step-completed {
-  background-color: #0c8dc4;
+  background-color: green;
   -ms-transform: scaleX(-1) rotate(-35deg);
   /* IE 9 */
   -webkit-transform: scaleX(-1) rotate(-35deg);
@@ -655,8 +655,8 @@ dialog p {
 #card-button {
   background-image: url("../images/lock.png");
   background-repeat: no-repeat;
-  background-position: left;
-  background-position: 40%;
+  background-position: left !important;
+  background-position: 30% !important;
 }
 
 #home input[type="radio"] {
@@ -1058,7 +1058,9 @@ audio {
   width: fit-content;
   margin: auto;
 }
-
+.margin-bottom-zero{
+  margin-bottom: 0;
+}
 #dialog-feedback {
   position: fixed;
   right: 1%;
@@ -1600,6 +1602,9 @@ audio {
   display: none !important;
 }
 
+.display-none-unimportant {
+  display: none;
+}
 
 .price-tag,
 .product-name,
@@ -1871,12 +1876,13 @@ audio {
   top: .4em;
 }
 
-#banner-footer {
+#index #banner-footer {
   background-image: url("../images/bottomimage-banner-desktop.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #d3fb95;
   background-position-x: -35em;
+  padding:2em;
 }
 
 .height60px {
@@ -3137,6 +3143,7 @@ ul {
 #checkout-content {
   width: 100%;
   margin: auto;
+  width: 585px;
 }
 
 #checkout-header {

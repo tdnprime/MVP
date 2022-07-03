@@ -27,53 +27,27 @@
             <div id="team-wrapper" class="three-rows-grid">
                 <div class="four-col-grid">
                     <span></span>
-                    <img src="../assets/images/pledge-1.png" alt="CEO">
-                    <div><b>
-                            <p class="uppercase">Trevor Devon Nathaniel Prime</p>
-                        </b>
-                        <p>FOUNDER & CEO</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <img src="../assets/images/pledge-1.png" alt="Sustainability pledge">
+                    <div>
+                       
+                        <p>To make it easy for you, our community, to work eco-friendly, sustainably-minded choices into your food consumption. We’re focused on three areas: Reducing waste, Recyclability. and Reusability.</p>
                     </div>
                     <span></span>
                 </div>
                 <div class="four-col-grid">
                     <span></span>
-                    <img src="../assets/images/pledge-2.png" alt="CEO">
-                    <div><b>
-                            <p class="uppercase">Lorem Ipsum</p>
-                        </b>
-                        <p>LOREM IPSUM</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p>               
+                    <img src="../assets/images/pledge-2.png" alt="Women's pledge">
+                    <div>
+                        <p>We’re committed to lifting up and celebrating women in business to honor their accomplishments. We intentionally partner with women-founded, owned, and run food brands, making it easy for our community to shop with their values while finding products that suit their needs. We engage in opportunities to speak to and mentor women in all stages and types of careers. We partner with women-founded, owned, owned and run companies and non-profits with women-centered missions.</p>               
                     </div>
                     <span></span>
                 </div>
+    
                 <div class="four-col-grid">
                     <span></span>
-                    <img src="../assets/images/pledge-3.png" alt="CEO">
-                    <div><b>
-                            <p class="uppercase">Luana Nascimento</p>
-                        </b>
-                        <p>TECHNOLOGY CONSULTANT</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                    <span></span>
-                </div>
-                <div class="four-col-grid">
-                    <span></span>
-                    <img src="../assets/images/pledge-4.png" alt="CEO">
-                    <div><b>
-                            <p class="uppercase">Lorem Ipsum</p>
-                        </b>
-                        <p>LOREM IPSUM</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <img src="../assets/images/pledge-3.png" alt="Pan African pledge">
+                    <div>
+                        <p>To make it easy for our community to experience the best Afro food products, we extend our search for the best quality food products throughout various African countries, the Caribbean, and the Afro Americas.</p>
                     </div>
                     <span></span>
                 </div>

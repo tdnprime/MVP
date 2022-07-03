@@ -21,7 +21,7 @@
                     <img id='checkout-logo' src='{{ asset('../assets/images/logo.png') }}' alt='logo' />
                 </a>
                 <div>
-                    <p class="white hide font-size-2-em">Checkout (<a class="one-em-font white" href="/cart/index">{{count($cart)}}&nbsp;items)</a></p>
+                    <p class="white hide font-size-2-em">Checkout (<a class="one-em-font white underline" href="/cart/index">{{count($cart)}}&nbsp;items</a>)</p>
                 </div>
                 <a href="/privacy">
                     <div class="material-icons">lock</div>

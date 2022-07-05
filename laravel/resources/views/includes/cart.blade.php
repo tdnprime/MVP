@@ -7,12 +7,14 @@
             </div>
 
             <section class="display-none">
-                <div class="card-white-bg padding-zero">
+                <div id="m-checkout-summary" class="card-white-bg">
                     <b>
                         <h2 class="cart-subtotal black-font">Subtotal (<span class="cart-count"></span>&nbsp;items)
                             <span class="cart-total text-red">&nbsp;</span></h2>
                     </b>
                     <button class="button yellowbtn">Proceed to checkout</button>
+                    <p class="float-right">Secure checkout powered by</p>
+                    <img class="float-right" src="../assets/images/square-logo.png" alt="Square">
                 </div>
 
             </section>
@@ -27,19 +29,14 @@
                             <h2>{{ $cart[$i]->name }}</h2>
                             <p class="stock green">In stock</p>
                             <h2 id="itemprice{{ $cart[$i]->product }}" class='cart-item-price text-red'>
-                                @if($cart[$i]->plan == 1)
-                                ${{ $cart[$i]->price * $cart[$i]->quantity }}</h2>
-                                @elseif($cart[$i]->plan == 2)
-                                ${{ $cart[$i]->price + 1 * $cart[$i]->quantity }}</h2>
-                                @elseif($cart[$i]->plan == 3)
-                                ${{ $cart[$i]->price + 2 * $cart[$i]->quantity }}</h2>
-                                @elseif($cart[$i]->plan == 0)
-                                ${{ $cart[$i]->price + 2 * $cart[$i]->quantity }}</h2>
-                                @endif 
+                            
+                                ${{ (int)$cart[$i]->price * (int)$cart[$i]->quantity }}</h2>
+                              
+                                
                         </div>
                         <div class="cart-item-updater">
                             <form class="form-plan" action="/cart" method="post">
-                                <select data-product="{{ $cart[$i]->product }}" data-price={{ $cart[$i]->price }}
+                                <select data-product="{{ $cart[$i]->product }}" data-price={{ $cart[$i]->basePrice }}
                                     class="select-plan margin-top-zero" name="quantity">
                                     <option invalid>Select Quantity</option>
                                     @php
@@ -54,7 +51,7 @@
                                         @endif
                                     @endfor
                                 </select>
-                                <select data-product="{{ $cart[$i]->product }}" data-price={{$cart[$i]->price}} name="plan"
+                                <select data-product="{{ $cart[$i]->product }}" data-price={{$cart[$i]->basePrice}} name="plan"
                                     class="select-plan margin-top-zero">
                                     <option invalid>Select Subscription</option>
                                     <option value="1" data-price="{{ $cart[$i]->price }}"
@@ -81,9 +78,11 @@
 
             <h2 class="cart-subtotal">Subtotal (<span class="cart-count">&nbsp;</span> items) <span
                     class="cart-total text-red">&nbsp;</span></h2>
-            <form class="hide" action="/checkout/index" method="post">
+            <form class="hide w300 float-right clear-both" action="/checkout/index" method="post">
                 @csrf
                 <input type="submit" class="button yellowbtn" value="Proceed to checkout">
+                <p class="float-right">Secure checkout powered by</p>
+                <img class="float-right clear-both" src="../assets/images/square-logo.png" alt="Square">
             </form>
 
         </section>
@@ -97,6 +96,8 @@
                 <form action="/checkout/index" method="post">
                     @csrf
                     <input type="submit" class="button yellowbtn" value="Proceed to checkout">
+                    <p class="float-right">Secure checkout powered by</p>
+                    <img class="float-right" src="../assets/images/square-logo.png" alt="Square">
                 </form>
             </div>
         </section>

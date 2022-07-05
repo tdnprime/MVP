@@ -78,9 +78,9 @@ Boxeon = {
       Boxeon.showCartTotal();
     } else {
       Boxeon.deleteCookie("cart");
-      location.reload();
 
     }
+    location.reload();
 
   },
 
@@ -150,8 +150,6 @@ Boxeon = {
 
   addToFlyout: function () {
 
-
-
     let products = JSON.parse(Boxeon.getCookie("cart"));
 
     for (var i = 0; i < products.length; i++) {
@@ -161,7 +159,8 @@ Boxeon = {
         var img = document.createElement("img");
         var div = document.createElement("div");
         var p = document.createElement("p");
-        var price = products[i]['price'] * parseInt(products[i]['quantity']); // moved to own line
+        var quantity = parseInt(products[i]['quantity']);
+        var price = products[i]['price'] * quantity; // moved last half to own line?
         var txt = document.createTextNode("$" + price);
         div.className = "cart-item";
         div.id = products[i]["product"];
@@ -382,12 +381,31 @@ Boxeon = {
   },
 
   cartUpdatePrice: function (quantity, product, price) {
+    //alert(price);
     // Update in UI
     if (!document.getElementById("itemprice" + product)) { return; }
-
-    var newPrice = price * parseInt(quantity);
+    var newPrice = price * quantity;
     var h2 = document.getElementById("itemprice" + product);
     h2.innerText = "$" + newPrice;
+
+    // Update Cookie
+
+    let newCart = [];
+    let cart = JSON.parse(Boxeon.getCookie("cart"));
+
+    for (var i = 0; i < cart.length; i++) {
+
+      if (cart[i]["product"] == product) {
+
+        cart[i]["price"] = price;
+
+      }
+
+      newCart.push(cart[i]);
+
+    }
+
+    document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
 
     Boxeon.showCartTotal();
 
@@ -726,9 +744,7 @@ window.onload = function () {
 
     for (var i = 0; i < selects.length; i++) {
 
-
       if (selects[i].getAttribute("name") == "plan") {
-
 
         let product = selects[i].getAttribute("data-product");
 
@@ -773,7 +789,7 @@ window.onload = function () {
     let x = document.getElementsByClassName('close-dialog');
     for (let i = 0; i < x.length; i++) {
       x[i].addEventListener('click', function () {
-        this.parentNode.style.display = "none";
+        this.parentNode.close();
 
       })
     }
@@ -786,10 +802,9 @@ window.onload = function () {
         document.getElementById('alert').remove();
       })
 
-      // alert ();
-
     }
   }
+
   if (document.getElementById('exe-sub')) {
     document.getElementById('exe-sub').addEventListener('click', function () {
       Boxeon.loader();
@@ -870,11 +885,12 @@ window.onload = function () {
 
   // Feedback 
   if (document.getElementById('feedback')) {
-    document.getElementById('feedback').addEventListener('click', function () {
-      document.getElementById('dialog-feedback').style.display = "block";
-
+    let d = document.getElementById('feedback');
+    d.addEventListener('click', function () {
+      document.getElementById('dialog-feedback').show();
     });
   }
+
   if (document.getElementsByClassName('sentiment')) {
     let choices = document.getElementsByClassName('sentiment');
     var num = choices.length;
@@ -1108,7 +1124,11 @@ window.onload = function () {
   }
 
 };
-
+if (document.getElementById('menu-icon')) {
+  document.getElementById('menu-icon').addEventListener("click", function () {
+    document.getElementById("m").show();
+  });
+}
 
 // document.cookie = "checkout=/checkout/index";
 if (!document.getElementsByClassName("loader")[0]) {

@@ -1,12 +1,39 @@
 /* Extra small devices (phones, 476px and down) */
 @media only screen and (max-width: 476px) {
-
+  
+  
   .hide {
     display: none !important;
   }
+
+  .float-right {
+    float: none;
+  }
+
+
+.form-plan {
+    display: block;
+   
+}
+
   #sub-nav {
     display: block;
   }
+.cart-items{
+  display: block;
+}
+.w100per{
+  width:80%;
+}
+  #m-checkout-summary {
+    position: fixed;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 2%;
+  }
+
   .row .two-col-grid {
     grid-gap: 1em;
     grid-template-rows: 50% 50%;
@@ -23,46 +50,93 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
-  #checkout-main{
-    
-      width: auto;
+ 
+  #index main {
+    display: block;
   }
+
+  #order-summary {
+    display: none !important;
+  }
+
+  .four-col-grid {
+    grid-template-columns: none;
+  }
+
+  .w70per {
+    width: 70%;
+  }
+
+  .div-limited-editions-panel img {
+    width: 86%;
+    margin: auto;
+  }
+
+  .slideshow-main-image * {
+    max-width: 300px;
+    margin: auto;
+    display: block;
+
+  }
+
+  #index #banner-footer {
+    background-image: none;
+
+  }
+
+  .index #container {
+    top: 40px;
+    grid-template-rows: auto 250px auto auto;
+
+  }
+
+  #checkout-main {
+
+    width: auto;
+  }
+
   #dialog-feedback {
     right: 0;
   }
+
   .h70px {
     height: 45px;
-}
-  .cart-subtotal {
-    float: none; 
-   
-}
-#boxes-panel p{
-  max-width: 300px;
-}
+  }
 
-#m-menu{
-  width:100%;
-  display:grid;
-  height:70px;
-  background-color: green;
-  position:fixed;
-  bottom:0;
-}
-#feedback{
-  position: relative;
-  right:auto;
-  bottom:auto;
-  box-shadow: none;
-  border:none;
-}
-#feedback:hover{
-  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
-}
+  .cart-subtotal {
+    float: none;
+
+  }
+
+  #boxes-panel p {
+    max-width: 300px;
+  }
+
+  #m-menu {
+    width: 100%;
+    display: grid;
+    height: 70px;
+    background-color: green;
+    position: fixed;
+    bottom: 0;
+  }
+
+  #feedback {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    box-shadow: none;
+    border: none;
+  }
+
+  #feedback:hover {
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+  }
+
   #sub-nav {
     display: block;
   }
+
   /* General */
 
   #index #masthead {
@@ -74,8 +148,9 @@
   .button {
     min-width: 40px;
   }
+
   .lock,
-#checkout-logo,
+  #checkout-logo,
   #logo {
     height: 20px;
     margin-left: 2%;
@@ -89,7 +164,7 @@
 
 
   .display-none {
-    display: block !important;
+   // display: block !important;
   }
 
   .nudge-left {
@@ -232,7 +307,7 @@
 
     background-image: none;
   }
- 
+
 
   #creators-bar,
   #boxes-panel {
@@ -282,14 +357,15 @@
   }
 
   .hide {
-  //  display: none !important;
+    //  display: none !important;
   }
 
   #header-inner-wrapper {
 
     grid-template-columns: auto auto auto auto;
   }
-  #header-inner-wrapper .button{
+
+  #header-inner-wrapper .button {
     min-width: 50px !important;
   }
 
@@ -324,8 +400,8 @@
 
   .new-section-inner-grid {
     grid-template-columns: auto 72% auto;
-    //grid-template-columns: 50% 50%;
-    //grid-template-columns: auto;
+    /* grid-template-columns: 50% 50%;
+    grid-template-columns: auto; */
 
   }
 
@@ -374,9 +450,9 @@
 
   } */
 
-  .hide {
-    // display: none;
-  }
+  /* .hide {
+     display: none;
+  } */
 
   section,
   .pricing,
@@ -406,6 +482,7 @@
   #sub-nav {
     display: block !important;
   }
+
   .cart-banner img {
     max-width: 200px;
   }
@@ -440,45 +517,50 @@
 
 /* Large devices (laptops/desktops, 992px and down) */
 @media only screen and (max-width: 992px) {
-  
- 
+
+
   #header-inner-wrapper {
 
     grid-template-columns: auto auto auto;
   }
-  #header-inner-wrapper .hide{
-    display:none;
+
+  #header-inner-wrapper .hide {
+    display: none;
   }
+
   #index #masthead,
   #banner-footer {
     background-image: none;
 
-}
-#index #how-it-works{
-  display: block;
+  }
+
+  #index #how-it-works {
+    display: block;
     width: 80%;
 
-}
+  }
 
   #index #masthead {
- 
+
     max-height: 44em;
   }
+
   .block {
-   height: auto;
-   display:none;
-}
-.mobile-scroll{
-  max-width: 100%;
-  overflow-x: scroll;
-}
+    height: auto;
+    display: none;
+  }
+
+  .mobile-scroll {
+    max-width: 100%;
+    overflow-x: scroll;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 
 @media only screen and (min-width: 992px) {
-  
- 
+
+
   #header-inner-wrapper {
 
     grid-template-columns: auto auto auto 15% auto auto auto;
@@ -556,6 +638,7 @@
   #sub-nav {
     display: none !important;
   }
+
   .new-section-inner-grid {
     grid-template-columns: auto 35% auto;
 

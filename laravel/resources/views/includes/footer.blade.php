@@ -2,7 +2,7 @@
     <section id="banner-footer" class="section wide">
         <img id="img-gifts" class="center image-how-it-works" src="../assets/images/gifts.svg" alt="Gifts" />
 
-        <h2 class="centered center extra-large-font">Get 16 foods + 3 surprises for the price of 1!</h2>
+        <h2 class="centered center font-2-5-em">Get 16 foods + 3 surprises for the price of 1!</h2>
         <p class="centered center">Sign up and answer a survey question to qualify. Offer ends soon.</p>
 
         <form id="mailing-list-form" action="/pmf/email" method="post">
@@ -17,18 +17,8 @@
         </form>
     </section>
 
-   {{-- <section class="wide">
-        <h2 class="centered uppercase primary-color"> Boxeon is a proud member of</h2><br>
-        <div id="orgs-logos" class="centered three-col-grid maxw600px">
-            <img class="h70px" src="../assets/images/google-for-startups-logo.png" alt="Google For Startups" />
-            <img class="h70px" src="../assets/images/nyta-logo.png" alt="NY Tech Alliance" />
-            <img class="h70px" src="../assets/images/microsoft-for-startups-logo.png"
-                alt="Microsoft For Startups" />
-        </div>
-    </section>--}}
-
-    <div id="footer-content-wrapper" class="margin-top-4-em"> <a>&copy; {{ date('Y') }} Boxeon LLC.&nbsp;&nbsp;&nbsp;<span
-                class="display-inline">Made in New York With&nbsp;<img class="display-inline"
+    <div id="footer-content-wrapper" class="margin-top-4-em"> <a>&copy; {{ date('Y') }} Boxeon
+            LLC.&nbsp;&nbsp;&nbsp;<span class="display-inline">Made in New York With&nbsp;<img class="display-inline"
                     src="../assets/images/heart.svg" alt="Heart"></span></span></a>
         <a href="/terms">Terms Of Use</a>
         <a href="/privacy">Privacy</a>
@@ -106,16 +96,24 @@
                 <p>Very likely</p>
             </div>
         </fieldset>
-
     </form>
 </dialog>
+
+<dialog id="m">
+    <a href="#" class="close-dialog">X</a><br>
+    <a href="/shop/index?c=staple" class="button clearbtn">Staple Essentials</a>
+    <a href="/shop/index?c=spice" class="button clearbtn">Seasoning Essentials</a>
+    <a href="/shop/index?c=produce" class="button clearbtn">15 Minute Meals</a>
+    <a href="/shop/index?c=body" class="button clearbtn">Body Essentials</a>
+    <a href="/shop/index?c=snack" class="button clearbtn">Snacks</a>
+</dialog>
+
 <button id="feedback" class="button"><span class="show material-icons">message</span>&nbsp;Feedback</button>
 
 <div id="m-menu" class="three-col-grid">
     <a id="menu-icon" href="#" class="button white"><span class="material-icons">shop</span>&nbsp;Shop</a>
-
-<a href="/cart/index" class="white button"><span><img class="w30px"
-    src="../assets/images/products/cart.png" alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
-
-<button id="feedback" class="button"><span class=" hide material-icons">message</span>&nbsp;Feedback</button>
+    <a href="/cart/index" class="white button"><span><img class="w30px" src="../assets/images/cart.png"
+                alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
+    <button id="feedback" class="button"><span
+            class=" hide material-icons">message</span>&nbsp;Feedback</button>
 </div>

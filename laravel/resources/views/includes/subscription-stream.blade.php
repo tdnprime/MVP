@@ -11,7 +11,7 @@
         @if (isset($subscriptions) && count($subscriptions) > 0)
         @include('includes.shop-products')
         @else
-        <section class="section margin-top-4-em maxw1035">
+        <section class="section maxw1035">
             <div class="alert-info w100per">
                 <p><span class="material-icons text-red">info</span>&nbsp;You don't have any subscriptions.</p>
             </div>

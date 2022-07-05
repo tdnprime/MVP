@@ -6,15 +6,12 @@
             <section class="card maxw1036 section">
                 @include('includes.category-nav')
                 <div class="div-limited-editions-panel two-col-grid">
-                    <div class="secinner">
                         <div class="slideshow">
                             <div class='slideshow-main-image'>
                                 <img src="../assets/images/products/{{ $product[0]->img }}" alt='{{ $product[0]->name }}' />
                             </div>
                         </div>
-                    </div>
-
-                    <div>
+                    <div class="w70per margin-auto">
                         <p class="red-tag">SUBSCRIBE & SAVE</p>
                         <h2>{{ $product[0]->name }}</h2>
 
@@ -62,10 +59,10 @@
                     </div>
 
                 </div>
-         
+         {{--
                 <h2 class='center margin-top-4-em'>Customer Reviews</h2>
                 <br>
-                <div id="ratings-overview" class='four-col-grid'>
+                <div id="ratings-overview" class='four-col-grid display-none'>
                     <span></span>
                     <div>
                         <p class='centered'>AVERAGE RATING</p>
@@ -129,7 +126,7 @@
                             <input type='submit' value='Submit review'>
                         </div>
                     </div>
-                </form>
+                </form>--}}
             </section>
 
         

@@ -1061,6 +1061,7 @@ audio {
 .margin-bottom-zero{
   margin-bottom: 0;
 }
+#m,
 #dialog-feedback {
   position: fixed;
   right: 1%;
@@ -1070,10 +1071,13 @@ audio {
   z-index: 1;
   width: 100%;
   max-width: 482px;
-  display: none;
   box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
 }
 
+#m {
+
+  right: 0;
+}
 #dialog-feedback fieldset {
 
   border: none;
@@ -1875,7 +1879,12 @@ audio {
   position: relative;
   top: .4em;
 }
-
+.float-right{
+  float:right;
+}
+.clear-both{
+  clear:both;
+}
 #index #banner-footer {
   background-image: url("../images/bottomimage-banner-desktop.png");
   background-size: cover;
@@ -2431,7 +2440,9 @@ container when the user clicks on the dropdown button) */
   transform: scaleX(-1);
 
 }
-
+.font-2-5-em{
+  font-size: 2.5em;
+}
 .secinner {
 
   margin-bottom: auto;

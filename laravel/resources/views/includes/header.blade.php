@@ -50,6 +50,7 @@
 
 
 </header>
+{{--
 <section id="sub-nav" class="bg-color-yellow padding-2-per">
 
     <form id="mailing-list-form" action="/shop/search" method="post">
@@ -69,3 +70,4 @@
     <span></span>
 </div>
 </section>
+--}}

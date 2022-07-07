@@ -12,7 +12,7 @@
     <script defer type="text/javascript" src="https://web.squarecdn.com/v1/square.js"></script>
 </head>
 
-<body id='checkout'>
+<body id='index' class="checkout">
     <div id="container">
         <div id="checkout-header-wrapper">
             <div id="checkout-header" class="three-col-grid">
@@ -23,7 +23,7 @@
                 <div>
                     <p class="white hide font-size-2-em">Checkout (<a class="one-em-font white underline" href="/cart/index">{{count($cart)}}&nbsp;items</a>)</p>
                 </div>
-                <a href="/privacy">
+                <a href="/privacy" class="m-padding-right-zero">
                     <div class="material-icons">lock</div>
                 </a>
             </div>

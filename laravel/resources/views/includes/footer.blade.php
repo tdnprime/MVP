@@ -1,10 +1,11 @@
 <footer>
     <section id="banner-footer" class="section wide">
+        <div class="row">
         <img id="img-gifts" class="center image-how-it-works" src="../assets/images/gifts.svg" alt="Gifts" />
 
-        <h2 class="centered center font-2-5-em">Get 16 foods + 3 surprises for the price of 1!</h2>
+        <h2 class="centered center extra-large-font">Get 16 foods + 3 surprises for the price of 1!</h2>
         <p class="centered center">Sign up and answer a survey question to qualify. Offer ends soon.</p>
-
+        </div>
         <form id="mailing-list-form" action="/pmf/email" method="post">
             @csrf
             <div class="row">
@@ -18,8 +19,7 @@
     </section>
 
     <div id="footer-content-wrapper" class="margin-top-4-em"> <a>&copy; {{ date('Y') }} Boxeon
-            LLC.&nbsp;&nbsp;&nbsp;<span class="display-inline">Made in New York With&nbsp;<img class="display-inline"
-                    src="../assets/images/heart.svg" alt="Heart"></span></span></a>
+            LLC.</a>
         <a href="/terms">Terms Of Use</a>
         <a href="/privacy">Privacy</a>
         <a href="/returns">Returns & Refunds</a>
@@ -114,6 +114,6 @@
     <a id="menu-icon" href="#" class="button white"><span class="material-icons">shop</span>&nbsp;Shop</a>
     <a href="/cart/index" class="white button"><span><img class="w30px" src="../assets/images/cart.png"
                 alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
-    <button id="feedback" class="button"><span
+    <button id="m-feedback" class="button m-padding-right-zero"><span
             class=" hide material-icons">message</span>&nbsp;Feedback</button>
 </div>

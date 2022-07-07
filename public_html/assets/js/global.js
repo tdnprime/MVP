@@ -890,6 +890,12 @@ window.onload = function () {
       document.getElementById('dialog-feedback').show();
     });
   }
+  if (document.getElementById('m-feedback')) {
+    let d = document.getElementById('m-feedback');
+    d.addEventListener('click', function () {
+      document.getElementById('dialog-feedback').show();
+    });
+  }
 
   if (document.getElementsByClassName('sentiment')) {
     let choices = document.getElementsByClassName('sentiment');

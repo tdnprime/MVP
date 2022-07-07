@@ -1,38 +1,20 @@
 @if (isset($cart))
     <main id="cart-main" class="fadein">
         <section class="card cart-section center w100per padding-1-em">
-
             <div class="cart-header">
                 <h2 class="font-size-2-em">Shopping cart</h2>
             </div>
-
-            <section class="display-none">
-                <div id="m-checkout-summary" class="card-white-bg">
-                    <b>
-                        <h2 class="cart-subtotal black-font">Subtotal (<span class="cart-count"></span>&nbsp;items)
-                            <span class="cart-total text-red">&nbsp;</span></h2>
-                    </b>
-                    <button class="button yellowbtn">Proceed to checkout</button>
-                    <p class="float-right">Secure checkout powered by</p>
-                    <img class="float-right" src="../assets/images/square-logo.png" alt="Square">
-                </div>
-
-            </section>
             @for ($i = 0; $i < count($cart); $i++)
                 <div class="cart-items">
-
                     <img class="w300px" src="../assets/images/products/{{ $cart[$i]->img }}"
                         alt="{{ $cart[$i]->name }}" />
-
                     <div>
                         <div>
                             <h2>{{ $cart[$i]->name }}</h2>
                             <p class="stock green">In stock</p>
                             <h2 id="itemprice{{ $cart[$i]->product }}" class='cart-item-price text-red'>
                             
-                                ${{ (int)$cart[$i]->price * (int)$cart[$i]->quantity }}</h2>
-                              
-                                
+                                ${{ (int)$cart[$i]->price * (int)$cart[$i]->quantity }}</h2>      
                         </div>
                         <div class="cart-item-updater">
                             <form class="form-plan" action="/cart" method="post">
@@ -68,25 +50,25 @@
                                         - One-time purchase</option>
                                 </select>
                                 <button data-quantity="1" data-name="{{ $cart[$i]->name }}" data-plan="1" data-img="{{ $cart[$i]->img }}" data-id="{{ $cart[$i]->product }}" data-basePrice="{{$cart[$i]->price }}" data-price="{{$cart[$i]->price }}" class="cart-add button display-none">SUBSCRIBE NOW</button>
-
                             </form>
-                            <a href="#" title="Delete"><span data-product="{{ $cart[$i]->product }}" class="material-icons delete-icon">delete_forever</span></a>
+                            <a href="#" title="Delete"><span data-product="{{ $cart[$i]->product }}" class="material-icons delete-icon w300">delete_forever</span></a>
                         </div>
                     </div>
                 </div>
             @endfor
-
+            <div id="m-checkout-summary">
+                <div  class="card-white-bg w100per m-checkout-summary">
             <h2 class="cart-subtotal">Subtotal (<span class="cart-count">&nbsp;</span> items) <span
                     class="cart-total text-red">&nbsp;</span></h2>
-            <form class="hide w300 float-right clear-both" action="/checkout/index" method="post">
+            <form class="w300 float-right clear-both" action="/checkout/index" method="post">
                 @csrf
                 <input type="submit" class="button yellowbtn" value="Proceed to checkout">
                 <p class="float-right">Secure checkout powered by</p>
                 <img class="float-right clear-both" src="../assets/images/square-logo.png" alt="Square">
             </form>
-
+        </div>
+        </div>
         </section>
-
         <section id="order-summary">
             <div class="card-white-bg">
 
@@ -97,13 +79,13 @@
                     @csrf
                     <input type="submit" class="button yellowbtn" value="Proceed to checkout">
                     <p class="float-right">Secure checkout powered by</p>
-                    <img class="float-right" src="../assets/images/square-logo.png" alt="Square">
+                    <img class="float-right" src="../assets/images/square-logo.png" alt="Square"><br>
                 </form>
             </div>
         </section>
     </main>
 @else
-    <section class="section margin-top-4-em maxw1035">
+    <section class="section maxw1035">
         <div class="alert-info w100per">
             <p><span class="material-icons">info</span>&nbsp;Your cart is empty.</p>
         </div>

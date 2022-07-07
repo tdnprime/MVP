@@ -4,10 +4,7 @@
 
     <main class='fadein'>
         <section id="left-aside">
-
         </section>
-
-        
             @if (session()->has('message'))
                 <dialog class="alert">
                     <p class='centered'> {{ session()->get('message') }}</p>
@@ -15,10 +12,10 @@
             @endif
             <section class="section rounded-corners card maxw1035">
                 @include("includes.category-nav")
-                <h2>Manage your account</h2>
+                <h2 class="margin-bottom-zero font-size-2-em">Manage your account</h2>
                 <div class="div-horizontal-rule"></div>
                 <div class="card step-wrapper">
-                    <h3>Shipping address</h3>
+                    <h2>Shipping address</h2>
                     <p><span class="material-icons">pin_drop</span><span data-type-id="shipping-address" class="preview">{{ $address->address_line_1 ?? 'Edit your shipping address.'}}</span></p>
                     <button data-type-id="shipping-address" class="button edit-btn">EDIT</button>
                     <div>
@@ -45,7 +42,7 @@
                     <div></div>
                 </div>
                 <div class="card step-wrapper">
-                    <h3>Billing address</h3>
+                    <h2>Billing address</h2>
                     <p><span class="material-icons">pin_drop</span><span data-type-id="billing-address" class="preview">{{ $address->billing_address_line_1 ?? 'Edit your billing address.'}}</span></p>
                     <button data-type-id="billing-address" class="button edit-btn">EDIT</button>
                     <div>
@@ -67,7 +64,7 @@
                 </div>
                 <div class="card step-wrapper">
                     <div>
-                        <h3>Payment method</h3>
+                        <h2>Payment method</h2>
                         <p><span class="material-icons">credit_card</span>&nbsp;<span data-type-id="payment" class="preview">Edit payment method and details.</span></p>
                         <button data-type-id="payment" class="button edit-btn">EDIT</button>
                     </div>
@@ -86,7 +83,7 @@
                     <div></div>
                 </div>
                 <div class="div-horizontal-rule"></div>
-<a href="#" class="primary-color">Delete account</a>
+<a href="#" class="button clearbtn primary-color">Delete account</a>
             </section>
     
 

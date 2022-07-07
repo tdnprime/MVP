@@ -13,7 +13,7 @@
         @else
         <section class="section maxw1035">
             <div class="alert-info w100per">
-                <p><span class="material-icons text-red">info</span>&nbsp;You don't have any subscriptions.</p>
+                <p><span class="material-icons text-red">info</span>&nbsp;You don't have subscriptions.</p>
             </div>
             <br>
         </section>

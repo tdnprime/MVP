@@ -71,8 +71,6 @@ input:checked+.slider {
   background-color: green;
 }
 
-
-
 input:focus+.slider {
   box-shadow: 20px 20px 60px #0c8dc41a;
 }
@@ -80,6 +78,7 @@ input:focus+.slider {
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
+  font-size: 1.3em;
 }
 
 .row .two-col-grid {
@@ -87,7 +86,6 @@ label {
   background-color: #fcec63;
   padding: 2em;
   border-radius: .5em;
-
 
 }
 

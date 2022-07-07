@@ -9,7 +9,7 @@
             <section id="checkout-content" class="margin-top-6-em max-width-1035 three-rows-grid">
                 <div class="card step-wrapper display-none-unimportant">
                     <div>
-                        <h3>0.&nbsp;&nbsp;&nbsp;Apply coupon code </h3>
+                        <h2>0.&nbsp;&nbsp;&nbsp;Apply coupon code </h2>
                     </div>
                     <div id="coupon">
                         <form onsubmit="return false" action='/checkout/coupon' method='post'>
@@ -30,7 +30,7 @@
                     <div></div>
                 </div>
                 <div class="card step-wrapper">
-                    <h3>1.&nbsp;&nbsp;&nbsp;Shipping address</h3>
+                    <h2>1.&nbsp;&nbsp;&nbsp;Shipping address</h2>
                     <p><span class="material-icons">pin_drop</span><span data-type-id="shipping-address" class="preview">{{ $address->address_line_1 ?? 'Enter your shipping address to continue.'}}</span></p>
                     <button data-type-id="shipping-address" class="button edit-btn">EDIT</button>
                     <div>
@@ -57,7 +57,7 @@
                     <div></div>
                 </div>
                 <div class="card step-wrapper">
-                    <h3>2.&nbsp;&nbsp;&nbsp;Billing address</h3>
+                    <h2>2.&nbsp;&nbsp;&nbsp;Billing address</h2>
                     <p><span class="material-icons">pin_drop</span><span data-type-id="billing-address" class="preview">{{ $address->billing_address_line_1 ?? 'Enter the billing address for your payment method.'}}</span></p>
                     <button data-type-id="billing-address" class="button edit-btn">EDIT</button>
                     <div>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="card step-wrapper">
                     <div>
-                        <h3>3.&nbsp;&nbsp;&nbsp;Payment method</h3>
+                        <h2>3.&nbsp;&nbsp;&nbsp;Payment method</h2>
                         <p><span class="material-icons">credit_card</span>&nbsp;<span data-type-id="payment" class="preview">Provide your card info to place your order.</span></p>
                         <button data-type-id="payment" class="button edit-btn">EDIT</button>
                     </div>
@@ -97,13 +97,15 @@
                     </div>
                     <div></div>
                 </div>
-                <div class="card step-wrapper">
-                    <div class="two-col-grid">
+                <div id="m-checkout-summary" class="card step-wrapper">
+                    <div  class="card-white-bg w100per m-checkout-summary">
+                       <div class="show"> <h2 class="text-red margin-top-zero margin-bottom-zero">Order total:&nbsp;&nbsp;<span class="checkout-total"></span></h2><p>(Tax & shipping included)</p><br></div>
+
                         <form onsubmit="return false"  class="place-order">
                             <input type="submit" class="yellowbtn" value="Place your order">
                         </form>
                         <div>
-                            <h3 class="text-red margin-top-zero margin-bottom-zero">Order total:&nbsp;&nbsp;<span class="checkout-total"></span></h3>
+                            <h2 class="hide text-red margin-top-zero margin-bottom-zero">Order total:&nbsp;&nbsp;<span class="checkout-total"></span></h2>
                             <p class="one-em-font margin-top-zero">By placing your order, you agree to Boxeon's <a href="/terms"
                                     class="one-em-font underline primary-color">Terms of Use</a><br>and <a href="/privacy"
                                     class="one-em-font underline primary-color">Privacy Policy</a></p>
@@ -121,7 +123,7 @@
                     <p class="one-em-font move-up centered">By placing your order, you agree to Boxeon's <a href="/privacy"
                             class="one-em-font underline primary-color">Privacy Policy</a> and <a href="/terms"
                             class="one-em-font underline primary-color">Terms of Use</a></p>
-                    <h3>Order Summary</h3>
+                    <h2>Order Summary</h2>
                     <div>
                         <div class="two-col-grid">
                             <p>item(s):</p>
@@ -144,8 +146,8 @@
                         </div>
                         <hr>
                         <div class="two-col-grid">
-                            <h3 class="text-red">Order total:</h3>
-                            <h3 class="text-red checkout-total"></h3>
+                            <h2 class="text-red">Order total:</h2>
+                            <h2 class="text-red checkout-total"></h2>
                         </div>
                     </div>
                 </div>

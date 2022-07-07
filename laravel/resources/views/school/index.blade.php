@@ -5,7 +5,8 @@
         <section class='section maxw1035 rounded-corner card'>
             @include('includes.category-nav')
             <h2 class=" extra-large-font centered primary-color">Charities our subscriptions support</h2><br>
-            <div id="orgs" class="three-col-grid maxw800px">
+            <div  class="m-hori-scroll-wrapper">
+            <div id="orgs" class="three-col-grid">
                 <div>
                     <a href="https://www.timeout4africa.com/stem-camp-for-girls" target="_blank">
                         <img id="img-reminder" class="image-how-it-works h70px" src="../assets/images/stem-girls.jpg"
@@ -37,6 +38,7 @@
                         this charity.</p>
                 </div>
             </div>
+        </div>
             <div class="alert-info">
                 <p><span class="material-icons text-red">info</span>&nbsp;Our subscribers receive a Christmas gift card from
                     us, which they use to donate money to the above charities.</p>

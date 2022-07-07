@@ -6,18 +6,18 @@
         <a id='logo' href="/" title='Boxeon'>
             <img id='logo' src='{{ asset('../assets/images/logo.png') }}' alt='logo' />
         </a>
-        <a class="button text-yellow hide" href="/shop/index" title="Shop">Shop</a>
+        <a class="button text-yellow hide" href="/shop/index?c=staple" title="Shop">Shop</a>
         <a class="button text-yellow hide" href="/returns" title="Returns & Refunds">Returns & Refunds</a>
         <span class="hide"></span>
         <a id='m-shop' class='button one-em-font' href='/search/products' title='#'>
             <span class='material-icons'>search</span></a>
         @auth
-            <a href="tel:+1646-450-4671‬" class="button one-em-font hide">646-450-4671‬</a>
+            <a href="tel:+1646-450-4671‬" class="button one-em-font phone-hide">646-450-4671‬</a>
             <a href="/cart/index" class="white button"><span><img id="cart" class="w30px" src="../assets/images/cart.png"
                         alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
         @endauth
         @if (!Auth::check())
-            <a href="tel:+1646-450-4671‬" class="button hide">646-450-4671‬</a>
+            <a href="tel:+1646-450-4671‬" class="button phone-hide">646-450-4671‬</a>
             <a href="/cart/index" class="white button"><span><img class="w30px"
                         src="../assets/images/cart.png" alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
         @endif

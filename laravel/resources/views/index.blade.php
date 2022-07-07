@@ -14,16 +14,16 @@
     <main> <a id='whatis' href='#whatis'></a>
         @include('includes.works')
         <section class="block maxw1035 section">
-            <div class="three-col-grid">
-                <span></span>
+          
+                
                 <div class="learn-more-index-wrapper">
-                    <img class="float-left h70px border-radius margin-right-1-em border-yellow"
+                    <img class="float-left h50px border-radius margin-right-1-em border-yellow"
                         src="../assets/images/tabitha-girl.jpg" alt="Boxeon" />
                     <a class="learn-more" href="/school/subscriptions">
                         <h2>Learn more about Boxeon subscriptions<span class="material-icons">arrow_forward</span></h2>
                     </a>
-                </div>
-                <span></span>
+                
+              
             </div>
         </section>
         @include('includes.shop-products')

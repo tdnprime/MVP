@@ -4,7 +4,7 @@
     <main>
         <section class='section rounded-corners card maxw1036'>
             @include('includes.category-nav')
-            <h2>Returns & refunds</h2>
+            <h2 class="font-size-2-em margin-bottom-zero">Returns & refunds</h2>
             <div class="div-horizontal-rule"></div>
             <p>
                 When you return an item, your refund amount and refund method may vary. Check the payment method refunded

@@ -6,7 +6,7 @@
             </div>
             @for ($i = 0; $i < count($cart); $i++)
                 <div class="cart-items">
-                    <img class="w300px" src="../assets/images/products/{{ $cart[$i]->img }}"
+                    <img class="cart-image" src="../assets/images/products/{{ $cart[$i]->img }}"
                         alt="{{ $cart[$i]->name }}" />
                     <div>
                         <div>

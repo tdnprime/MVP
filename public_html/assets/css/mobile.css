@@ -4,11 +4,11 @@ Extra small devices (phones, 476px and down)
 
 @media only screen and (max-width: 476px) {
 
-
+  #product-stream .two-col-grid,
   #checkout-content .two-col-grid {
     display: block;
   }
-
+.phone-hide,
   .hide {
     display: none !important;
   }
@@ -70,7 +70,15 @@ Extra small devices (phones, 476px and down)
 Extra small devices (phones, 600px and down) 
 */
 @media only screen and (max-width: 600px) {
+ 
 
+  #product-stream,
+  #checkout-content .two-col-grid {
+    display: block;
+  }
+
+
+ 
   .m-hide {
     display: block;
   }
@@ -161,7 +169,7 @@ Extra small devices (phones, 600px and down)
     width: 70%;
   }
 
-  .div-limited-editions-panel img {
+  #product-stream img {
     width: 86%;
     margin: auto;
   }
@@ -410,7 +418,7 @@ Extra small devices (phones, 600px and down)
   /* .creator-ego {
     width: 75px !important;
   } */
-
+  .phone-hide,
   .hide {
     display: none;
   }
@@ -444,6 +452,35 @@ Small devices (portrait tablets and large phones, 600px and up)
 */
 @media only screen and (min-width: 600px) {
 
+  #checkout-main {
+    width: 100%;
+
+}
+
+  #banner-slogan {
+    height: auto;
+    margin: revert;
+}
+
+ /*  #banner-slogan {
+
+    height: auto; 
+
+}
+
+  .m-hide {
+    display: block;
+  }
+
+  #about .hide {
+    display: none;
+  } */
+  
+  .products-stream {
+    
+    grid-template-columns: 50% 50%;
+}
+
   /* General */
   #sub-nav {
     display: block;
@@ -469,12 +506,12 @@ Small devices (portrait tablets and large phones, 600px and up)
 
   /* Shop */
 
-  .products-stream {
+  /* .products-stream {
     width: 100%;
     display: grid;
     grid-template-columns: none;
 
-  }
+  } */
 
   .cart-banner {
     grid-template-columns: auto auto;
@@ -574,6 +611,17 @@ Medium devices (landscape tablets, 768px and up)
 */
 @media only screen and (min-width: 768px) {
 
+  #checkout-main {
+    width: 100%;
+
+}
+
+  #banner-slogan {
+
+    height: auto;
+    margin: revert;
+}
+
   #sub-nav {
     display: block !important;
   }
@@ -601,7 +649,7 @@ Medium devices (landscape tablets, 768px and up)
   .products-stream {
     width: 100%;
     display: grid;
-    grid-gap: 2%;
+    /* grid-gap: 2%;  BAD for 1049px screens */
     grid-template-columns: 32% 32% 32%;
 
   }
@@ -613,14 +661,17 @@ Medium devices (landscape tablets, 768px and up)
 /* Large devices (laptops/desktops, 992px and down) */
 @media only screen and (max-width: 992px) {
 
-
+  #nav-categories a {
+   height:fit-content;
+   min-width: auto;
+}
   #header-inner-wrapper {
 
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
   }
 
   #header-inner-wrapper .hide {
-    display: none;
+   display: none;
   }
 
   #index #masthead,
@@ -753,9 +804,8 @@ Medium devices (landscape tablets, 768px and up)
 @media only screen and (min-width: 1200px) {
 
   /* Shop */
-  .cart-banner,
-  .products-stream {
-    width: 75%;
+  .cart-banner {
+   width: 75%;
 
   }
 

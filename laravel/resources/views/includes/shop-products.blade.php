@@ -1,14 +1,18 @@
 @php
 
 if (isset($_GET['c'])) {
+
     $query = ucfirst($_GET['c']);
 
     $product = DB::table('products')
         ->where('category', '=', $query)
         ->get();
+
 } else {
+
     $product = DB::table('products')
         ->where('category', '=', 'Staple')
+        ->limit(9)
         ->get();
 
     $sellers = DB::table('products')

@@ -2,12 +2,13 @@
 <title>Boxeon.com <?php echo 'Shop ' . $product[0]->name; ?> | Best African Market Online</title>
 @section('content')
     <main>
-       
-        <section class="card maxw1036 section">
+
+        <section class="card maxw1035 section">
             @include('includes.category-nav')
-            <div id="product-stream"  class="fit-content margin-auto two-col-grid">
-            
-                <img class="image-lg-product margin-auto" src="../assets/images/products/{{ $product[0]->img }}" alt='{{ $product[0]->name }}' />
+            <div id="product-stream" class="fit-content margin-auto two-col-grid">
+
+                <img class="image-lg-product margin-auto" src="../assets/images/products/{{ $product[0]->img }}"
+                    alt='{{ $product[0]->name }}' />
 
                 <div class="w70per margin-auto">
                     <p class="red-tag">SUBSCRIBE & SAVE</p>
@@ -48,9 +49,9 @@
                         </a>
                     </div>
                 </div>
-           
-        </div>
-            {{-- <h2 class='center margin-top-4-em'>Customer Reviews</h2>
+
+            </div>
+        <h2 class='center margin-top-4-em'>Customer Reviews</h2>
                 <br>
                 <div id="ratings-overview" class='four-col-grid display-none'>
                     <span></span>
@@ -116,7 +117,7 @@
                             <input type='submit' value='Submit review'>
                         </div>
                     </div>
-                </form> --}}
+                </form>
         </section>
 
     </main>

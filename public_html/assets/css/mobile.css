@@ -71,7 +71,9 @@ Extra small devices (phones, 600px and down)
 */
 @media only screen and (max-width: 600px) {
  
-
+#item #banner-footer{
+display: none;
+}
   #product-stream,
   #checkout-content .two-col-grid {
     display: block;
@@ -444,6 +446,9 @@ Extra small devices (phones, 600px and down)
   #home main {
     display: block;
   }
+  .order-summary{
+    display: none
+  }
 
 }
 
@@ -452,6 +457,10 @@ Small devices (portrait tablets and large phones, 600px and up)
 */
 @media only screen and (min-width: 600px) {
 
+
+  .order-summary{
+    display: block;
+  }
   #checkout-main {
     width: 100%;
 
@@ -661,6 +670,10 @@ Medium devices (landscape tablets, 768px and up)
 /* Large devices (laptops/desktops, 992px and down) */
 @media only screen and (max-width: 992px) {
 
+  #order-summary{
+    display: none;
+  }
+
   #nav-categories a {
    height:fit-content;
    min-width: auto;
@@ -705,6 +718,8 @@ Medium devices (landscape tablets, 768px and up)
 /* Large devices (laptops/desktops, 992px and up) */
 
 @media only screen and (min-width: 992px) {
+
+ 
 
 
   #header-inner-wrapper {

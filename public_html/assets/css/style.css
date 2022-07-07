@@ -3082,13 +3082,13 @@ ol {
   list-style: disc;
   /* Remove default bullets */
 }
-
+.order-summary,
 #order-summary {
   padding: 4%;
   border-radius: .5em;
   max-width: 290px;
 }
-
+.order-summary,
 #order-summary .two-col-grid {
   grid-template-columns: 80% 20%;
 }
@@ -3099,6 +3099,10 @@ ol {
   grid-gap: 2%;
 }
 
+.font15em {
+  font-size: 15em !important;
+}
+.order-summary,
 #order-summary .two-col-grid p {
   margin: 0;
   padding: 0;

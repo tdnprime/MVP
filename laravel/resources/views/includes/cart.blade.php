@@ -4,6 +4,20 @@
             <div class="cart-header">
                 <h2 class="font-size-2-em">Shopping cart</h2>
             </div>
+            <section class="order-summary m-hide">
+                <div class="card-white-bg">
+    
+                    <h2 class="hide">Subtotal (<span class="cart-count">&nbsp;</span> items) <span
+                            class="cart-total text-red">&nbsp;</span></h2>
+    
+                    <form action="/checkout/index" method="post">
+                        @csrf
+                        <input type="submit" class="button yellowbtn" value="Proceed to checkout">
+                        <p class="float-right">Secure checkout powered by</p>
+                        <img class="float-right" src="../assets/images/square-logo.png" alt="Square"><br>
+                    </form>
+                </div>
+            </section>
             @for ($i = 0; $i < count($cart); $i++)
                 <div class="cart-items">
                     <img class="cart-image" src="../assets/images/products/{{ $cart[$i]->img }}"
@@ -69,7 +83,7 @@
         </div>
         </div>
         </section>
-        <section id="order-summary">
+        <section id="order-summary" class="hide">
             <div class="card-white-bg">
 
                 <h2 class="hide">Subtotal (<span class="cart-count">&nbsp;</span> items) <span

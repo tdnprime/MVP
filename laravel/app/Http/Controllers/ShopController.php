@@ -29,8 +29,8 @@ class ShopController extends Controller
         $id = $request["id"];
 
         if ($user = Auth::user()) {
-            $id = auth()->user()->id;
-            $user = User::find($id);
+            $u = auth()->user()->id;
+            $user = User::find($u);
         }
 
         $id = $_GET["id"];
@@ -38,7 +38,12 @@ class ShopController extends Controller
             ->where("id", "=", $id)
             ->get();
 
+            $reviews = DB::table("reviews")
+            ->where("product", "=", $id)
+            ->get();
+    
         return view('shop.item', compact('user', 'user'))
-            ->with("product", $product);
+            ->with("product", $product)
+            ->with("reviews", $reviews);
     }
 }

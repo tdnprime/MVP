@@ -84,8 +84,8 @@
                     </div>
                     <span></span>
                 </div>
-                <div class="div-wide-horizontal-rule center"></div>
-                <div class="two-col-grid">
+               
+                <div class="review two-col-grid">
                     <div class="three-col-grid reviewer-grid">
                         <img src="../assets/images/user.png">
                         <b>
@@ -101,9 +101,9 @@
                     </div>
                     <p>Review...</p>
                 </div>
-                <div class="div-wide-horizontal-rule center"></div>
+           
 
-                <button id="show-review-form" class="button center">WRITE A REVIEW</button>
+                <button id="show-review-form" class="button center margin-top-4-em">WRITE A REVIEW</button>
                 <form id="form-reviews" action='/review/submit' method='post'>
                     @csrf
                     @method('POST')

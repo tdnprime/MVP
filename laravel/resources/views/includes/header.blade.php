@@ -21,7 +21,7 @@
             <a href="/cart/index" class="white button"><span><img class="w30px"
                         src="../assets/images/cart.png" alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
         @endif
-        <div>
+        
             <a id="showDropdown" class='fadein button m-padding-right-zero' href='#'><span class="material-icons">account_circle</span>
             </a>
             <div class="dropdown">
@@ -33,7 +33,7 @@
                     <a class="one-em-font" href="/signout">Sign Out</a>
                 </div>
             </div>
-        </div>
+       
     </div>
 </header>
 {{--

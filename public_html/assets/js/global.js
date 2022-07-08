@@ -790,6 +790,7 @@ window.onload = function () {
     for (let i = 0; i < x.length; i++) {
       x[i].addEventListener('click', function () {
         this.parentNode.close();
+        this.parentNode.style.display = "none";
 
       })
     }
@@ -888,12 +889,15 @@ window.onload = function () {
     let d = document.getElementById('feedback');
     d.addEventListener('click', function () {
       document.getElementById('dialog-feedback').show();
+      document.getElementById('dialog-feedback').style.display = "block";
+
     });
   }
   if (document.getElementById('m-feedback')) {
     let d = document.getElementById('m-feedback');
     d.addEventListener('click', function () {
       document.getElementById('dialog-feedback').show();
+      document.getElementById('dialog-feedback').style.display = "block";
     });
   }
 

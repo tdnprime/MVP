@@ -269,7 +269,9 @@ Brown skin: #a0616a
 /* h1, h2, h3, h4 {
   font-family: 'Open Sans';
 } */
-
+dialog{
+  display: none;
+}
 dialog p {
   max-width: 400px;
   min-width: 200px;
@@ -404,6 +406,7 @@ dialog p {
   grid-gap: 1px;
   grid-template-rows: auto 70px auto auto;
   position: relative;
+  width:100%;
 }
 
 #container {
@@ -1640,6 +1643,7 @@ dialog p {
 #product-stream {
   grid-gap: 4%;
 }
+
 
 .cart-banner {
   grid-template-columns: 20% 20% 20% 20% 20%;

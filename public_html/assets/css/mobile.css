@@ -2,6 +2,10 @@
 Extra small devices (phones, 476px and down) 
 */
 
+.maxw250px *{
+  max-width: 250px;
+ }
+
 @media only screen and (max-width: 476px) {
 
   #product-stream .two-col-grid,
@@ -70,6 +74,17 @@ Extra small devices (phones, 476px and down)
 Extra small devices (phones, 600px and down) 
 */
 @media only screen and (max-width: 600px) {
+
+  .maxw250px *{
+    max-width: 250px;
+   }
+
+   .stars-grid {
+    display: block;
+    width:auto;
+    padding:1em;
+ 
+}
  
 #item #banner-footer{
 display: none;
@@ -172,7 +187,7 @@ display: none;
   }
 
   #product-stream img {
-    width: 86%;
+ 
     margin: auto;
   }
 
@@ -711,7 +726,7 @@ Medium devices (landscape tablets, 768px and up)
 
   .mobile-scroll {
     max-width: 100%;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
   }
 }
 

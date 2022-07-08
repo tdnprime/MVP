@@ -866,10 +866,10 @@ dialog p {
 
 #index #masthead {
   background-color: #d3fb95;
-  background-image: url('../images/shop.png');
-  background-size: contain;
+  background-image: url('../images/new-bg.jpg');
+  background-size: cover;
   background-repeat: no-repeat;
-  max-height: 46em;
+  max-height: 56em;
 
 }
 

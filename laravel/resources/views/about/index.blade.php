@@ -141,23 +141,16 @@
                     <div>
                         <p> Contact customer service at 646-450-4671‬.</p>
                     </div>
-                
-        
                 </section>
-        
         </section>
         <section class='section wide hide'>     
             <div class="pitch w100per margin-bottom-4-em">
-   
-                  
                     <div class="maxw800px margin-auto centered padding-2-per">
                     <h1 class="text-3em">We started Boxeon to make it simple for the diaspora to enjoy the foods they love from home. But we quickly learned that Boxeon is much more than that. If you've ever had problems with time management and stress; if you've ever worried about the rampant carcinogenics in Western foods; if you've ever wished to experience more of your home culture; we're here for you.</h1>
                     <h1 class="text-3em">We're here for anyone and everyone who wants to consume from back home but whose time is valuable.</h1>
                     <h1 class="text-3em"> We're a service for diasporans with busy lives to automate and repatriate their grocery shopping.</h1>
                     <h1 class="text-3em">We believe that a culture of "work abroad, but consume from home" will one day spark industrial revolutions in our home countries. That's what Boxeon is about.</h1>
                     </div>
-                 
-                
             </div>
             <section class="section wide margin-bottom-4-em bg-color-yellow">
             <h1 class="centered ginormous">OUR VALUES</h1>

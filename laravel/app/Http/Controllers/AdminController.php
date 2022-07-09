@@ -14,8 +14,10 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function login()
+    public function login(Request $request)
     {
+        dd($request);
+
         $user = Auth::user();
         return view('admin.login', compact('user'));
     }

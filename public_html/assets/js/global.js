@@ -1009,110 +1009,127 @@ window.onload = function () {
       Boxeon.scrollToTop();
       //Send to server (array);
     });
-
-    // Saves billing address
-    if (document.getElementById("billing-address")) {
-      let div = document.getElementById("billing-address");
-      div.addEventListener("submit", function (event) {
-        event.preventDefault();
-        let array = [];
-        var formData = new FormData(this);
-        //  div.classList.add("fadeout");
-        div.style.display = "none";
-        for (var [key, value] of formData) {
-          array.push([key = value]);
-
-        }
-        var p = document.getElementsByClassName("preview");
-        for (var x = 0; x < p.length; x++) {
-          if (p[x].getAttribute("data-type-id") == div.id) {
-            p[x].innerText = array[2] + " ...";
-          }
-        }
-
-        document.getElementById("payment").style.display = "block";
-        //Send to server (array);
-        Boxeon.scrollToTop();
-      });
-    }
-
-    // Place order
-    if (document.getElementsByClassName("place-order")) {
-      let form = document.getElementsByClassName("place-order");
-      for (let i = 0; i < form.length; i++) {
-        form[i].addEventListener("submit", function (event) {
-          event.preventDefault();
-
-        });
-      }
-    }
-
-    // Checkout page EDIT buttons
-    if (document.getElementById("billing-address")) {
-
-      let btns = document.getElementsByClassName("edit-btn");
-      for (let i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function () {
-          var id = btns[i].getAttribute("data-type-id");
-          document.getElementById(id).style.display = "block";
-        });
-
-      }
-
-    }
-
-
-
-    // Google Analytics -- SHOULD THIS BE MOVED UP?
-
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-
-      window.dataLayer.push(arguments);
-
-    }
-
-    gtag('js', new Date());
-    gtag('config', 'G-EKYP1LECWS');
-
-
-    window.addEventListener('onbeforeunload', function () {
-
-      document.getElementBy("container").setAttribute("class", "fadeout");
-
-
-    });
-
-    // Event snippet for Waiting List Signup conversion page
-    function gtag_report_conversion(url) {
-
-      var callback = function () {
-        if (typeof (url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-10788250660/CKWeCNWaosUDEKTInpgo',
-        'event_callback': callback
-      });
-      return false;
-    }
-
-    if (document.getElementById('survey')) {
-      document.getElementById('survey').addEventListener('click', function () {
-        gtag_report_conversion("https://boxeon.com/apply/survey");
-
-      });
-    }
-
-    // Exit Intent Popup
-    document.addEventListener("mouseleave", function () {
-      //document.getElementById('popup').open = true;
-    });
-
-    //import instance from './modules/messages.js'
   }
+
+  // Saves billing address
+  if (document.getElementById("billing-address")) {
+    let div = document.getElementById("billing-address");
+    div.addEventListener("submit", function (event) {
+      event.preventDefault();
+      let array = [];
+      var formData = new FormData(this);
+      //  div.classList.add("fadeout");
+      div.style.display = "none";
+      for (var [key, value] of formData) {
+        array.push([key = value]);
+
+      }
+      var p = document.getElementsByClassName("preview");
+      for (var x = 0; x < p.length; x++) {
+        if (p[x].getAttribute("data-type-id") == div.id) {
+          p[x].innerText = array[2] + " ...";
+        }
+      }
+
+      document.getElementById("payment").style.display = "block";
+      //Send to server (array);
+      Boxeon.scrollToTop();
+    });
+  }
+
+  //Checkout
+  if (document.getElementsByClassName("cartcheckout")) {
+
+    let form = document.getElementsByClassName("cartcheckout");
+    for (let i = 0; i < form.length; i++) {
+      form[i].addEventListener("submit", function (event) {
+      
+        event.preventDefault();
+        document.cookie = "checkout=" + "/checkout/index" + ";" + "path=/";
+      
+        location.assign("/checkout/index");
+
+      });
+    }
+  }
+
+  // Place order
+  if (document.getElementsByClassName("place-order")) {
+    let form = document.getElementsByClassName("place-order");
+    for (let i = 0; i < form.length; i++) {
+      form[i].addEventListener("submit", function (event) {
+        event.preventDefault();
+
+      });
+    }
+  }
+
+  // Checkout page EDIT buttons
+  if (document.getElementById("billing-address")) {
+
+    let btns = document.getElementsByClassName("edit-btn");
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        var id = btns[i].getAttribute("data-type-id");
+        document.getElementById(id).style.display = "block";
+      });
+
+    }
+
+  }
+
+
+
+  // Google Analytics -- SHOULD THIS BE MOVED UP?
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+
+    window.dataLayer.push(arguments);
+
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-EKYP1LECWS');
+
+
+  window.addEventListener('onbeforeunload', function () {
+
+    document.getElementBy("container").setAttribute("class", "fadeout");
+
+
+  });
+
+  // Event snippet for Waiting List Signup conversion page
+  function gtag_report_conversion(url) {
+
+    var callback = function () {
+      if (typeof (url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-10788250660/CKWeCNWaosUDEKTInpgo',
+      'event_callback': callback
+    });
+    return false;
+  }
+
+  if (document.getElementById('survey')) {
+    document.getElementById('survey').addEventListener('click', function () {
+      gtag_report_conversion("https://boxeon.com/apply/survey");
+
+    });
+  }
+
+  // Exit Intent Popup
+  document.addEventListener("mouseleave", function () {
+    //document.getElementById('popup').open = true;
+  });
+
+  //import instance from './modules/messages.js'
+
 
 
   // Close the dropdown menu if the user clicks outside of it
@@ -1133,14 +1150,13 @@ window.onload = function () {
     Boxeon.removeLoader();
   }
 
-};
-if (document.getElementById('menu-icon')) {
-  document.getElementById('menu-icon').addEventListener("click", function () {
-    document.getElementById("m").show();
-  });
-}
+  if (document.getElementById('menu-icon')) {
+    document.getElementById('menu-icon').addEventListener("click", function () {
+      document.getElementById("m").show();
+    });
+  }
+} // listeners end
 
-// document.cookie = "checkout=/checkout/index";
 if (!document.getElementsByClassName("loader")[0]) {
 
   let div = document.createElement("div");

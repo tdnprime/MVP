@@ -5,6 +5,7 @@
     @include('includes.meta')
 </head>
 <body>
+
     <div id="container">
         @include('includes.header')
         <span></span><!-- Hack-->

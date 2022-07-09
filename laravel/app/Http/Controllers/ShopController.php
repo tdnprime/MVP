@@ -20,7 +20,6 @@ class ShopController extends Controller
             $id = auth()->user()->id;
             $user = User::find($id);
         }
-   
 
         return view('shop.index', compact('user', 'user'));
     }
@@ -41,9 +40,19 @@ class ShopController extends Controller
             $reviews = DB::table("reviews")
             ->where("product", "=", $id)
             ->get();
-    
+
+            $avg_reviews = DB::table("reviews")
+            ->where("product", "=", $id)
+            ->avg("stars");
+
+            $total_reviews = DB::table("reviews")
+            ->where("product", "=", $id)
+            ->count();
+  
         return view('shop.item', compact('user', 'user'))
             ->with("product", $product)
+            ->with("avg_reviews", (int)round($avg_reviews))
+            ->with("total_reviews", $total_reviews)
             ->with("reviews", $reviews);
     }
 }

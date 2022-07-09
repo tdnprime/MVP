@@ -12,7 +12,7 @@
         <b>
             <h2 class="cart-subtotal">Subtotal (<span class="cart-count">&nbsp;</span> items) <span class="cart-total text-red">&nbsp;</span></h2>
         </b>
-        <form class="maxw65per" action="/checkout/index" method="post">
+        <form class="maxw65per cartcheckout" action="/checkout/index" method="post">
             @csrf
             <input type="submit" class="button yellowbtn" value="Proceed to checkout">
         </form>

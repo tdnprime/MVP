@@ -47,7 +47,12 @@ Brown skin: #a0616a
 #alt-masthead-image {
   display: none;
 }
-
+.text-gold{
+  color:gold;
+}
+.text-grey{
+  color:rgb(231, 231, 231);
+}
 .text-cart-count {
   position: relative;
   right: 1.2em;
@@ -2996,7 +3001,6 @@ header {
 }
 .review{
   border-bottom: 1px solid #8bc34a;
-  border-top: 1px solid #8bc34a;
   padding-top:2em;
   padding-bottom:2em;
 }
@@ -3276,12 +3280,11 @@ table {
   width: 100%;
 }
 
-td h2 {
-  position: relative;
 
 
+pre,
   textarea {
-    font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
+    font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif !important;
   }
 
   th, td {
@@ -3303,7 +3306,7 @@ td h2 {
     color: #023256;
   }
 
-  ul li, ol li, td, p, a, label {
+   ul li, ol li, td, p, a, label {
     font-size: 1.5em;
   }
 

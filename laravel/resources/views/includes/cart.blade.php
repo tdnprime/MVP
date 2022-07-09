@@ -10,7 +10,7 @@
                     <h2 class="hide">Subtotal (<span class="cart-count">&nbsp;</span> items) <span
                             class="cart-total text-red">&nbsp;</span></h2>
     
-                    <form action="/checkout/index" method="post">
+                    <form class="cartcheckout" action="/checkout/index" method="post">
                         @csrf
                         <input type="submit" class="button yellowbtn" value="Proceed to checkout">
                         <p class="float-right">Secure checkout powered by</p>
@@ -74,9 +74,9 @@
                 <div  class="card-white-bg w100per m-checkout-summary">
             <h2 class="cart-subtotal">Subtotal (<span class="cart-count">&nbsp;</span> items) <span
                     class="cart-total text-red">&nbsp;</span></h2>
-            <form class="w300 float-right clear-both" action="/checkout/index" method="post">
+            <form class="w300 float-right clear-both cartcheckout">
                 @csrf
-                <input type="submit" class="button yellowbtn" value="Proceed to checkout">
+                <input type="submit" class="button yellowbtn" value="Proceed to checkout+">
                 <p class="float-right">Secure checkout powered by</p>
                 <img class="float-right clear-both" src="../assets/images/square-logo.png" alt="Square">
             </form>
@@ -89,7 +89,7 @@
                 <h2 class="hide">Subtotal (<span class="cart-count">&nbsp;</span> items) <span
                         class="cart-total text-red">&nbsp;</span></h2>
 
-                <form action="/checkout/index" method="post">
+                <form class="cartcheckout" action="/checkout/index" method="post">
                     @csrf
                     <input type="submit" class="button yellowbtn" value="Proceed to checkout">
                     <p class="float-right">Secure checkout powered by</p>

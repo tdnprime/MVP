@@ -20,7 +20,9 @@
                     <a class="" href="/shop/item?id={{ $product[0]->id }}">
                         <p>{{ $product[0]->name }}</p>
                     </a>
+
                     @include('includes.stars')
+
                     <p class="green">In Stock</p>
                     <p class="w300">{{ $product[0]->description }}</p>
                     <h4 class="uppercase">Product details</h4>
@@ -61,27 +63,50 @@
             <h2 class='center margin-top-4-em'>Customer Reviews</h2>
             <br>
             @if (count($reviews) > 0)
-          
-            @for($i=0; $i < count($reviews); $i++)
-                <div class="review two-col-grid">
-                    <div class="three-col-grid reviewer-grid">
-                        <img src="../assets/images/user.png">
-                        <b>
-                            <p>{{ $reviews[$i]->name }}</p>
-                        </b>
-                        <div class="stars-grid">
-                            <span class="material-icons">star</span>
-                            <span class="material-icons">star</span>
-                            <span class="material-icons">star</span>
-                            <span class="material-icons">star</span>
-                            <span class="material-icons">star</span>
+                @for ($i = 0; $i < count($reviews); $i++)
+                    <div class="review two-col-grid">
+                        <div class="three-col-grid reviewer-grid">
+                            <img src="../assets/images/user.png">
+                            <b>
+                                <p>{{ $reviews[$i]->name }}</p>
+                            </b>
+                            <div class="stars-grid">
+                                @php
+                                    if (isset($reviews[$i])) {
+                                        if ($reviews[$i]->stars == 5) {
+                                            $stars = 5;
+                                            $diff = 0;
+                                        }
+                                        if ($reviews[$i]->stars < 5) {
+                                            $stars = (int) $reviews[$i]->stars;
+                                            $diff = 5 - $stars;
+                                        }
+                                    } else {
+                                        $stars = 0;
+                                        $diff = 5;
+                                    }
+                                    
+                                @endphp
+
+                                @for ($s = 0; $s < $stars; $s++)
+                                    <span class="material-icons text-gold">star</span>
+                                @endfor
+
+                                @for ($d = 0; $d < $diff; $d++)
+                                    <span class="material-icons text-grey">star</span>
+                                @endfor
+
+                            </div>
+                        </div>
+                        <div>
+                            <pre>{{ $reviews[$i]->review }}</pre>
                         </div>
                     </div>
-                    <p>{{ $reviews[$i]->review }}</p>
-                </div>
                 @endfor
-                @else
-                <div class="alert-info w100per"><p><span class="material-icons text-red">info</span>&nbsp;Be the first to leave a review!</p></div>
+            @else
+                <div class="alert-info w100per">
+                    <p><span class="material-icons text-red">info</span>&nbsp;Be the first to leave a review!</p>
+                </div>
             @endif
             <button id="show-review-form" class="button center margin-top-4-em">WRITE A REVIEW</button>
             <form class="w100per" id="form-reviews" action='/reviews/submit' method='post'>

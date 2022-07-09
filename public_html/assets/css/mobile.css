@@ -74,7 +74,16 @@ Extra small devices (phones, 476px and down)
 Extra small devices (phones, 600px and down) 
 */
 @media only screen and (max-width: 600px) {
+  .reviewer-grid  {
 
+ display: block;
+ 
+}
+.review{
+  display: block;
+  width: 80%;
+    margin: auto;
+}
   .maxw250px *{
     max-width: 250px;
    }

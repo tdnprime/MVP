@@ -97,6 +97,9 @@
             </div>
         </fieldset>
     </form>
+    <div id="feedback-thanks">
+        <h2 class="text-red">Thanks for your feedback!</h2>
+    </div>
 </dialog>
 
 <dialog id="m">

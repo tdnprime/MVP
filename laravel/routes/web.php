@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::post('/pmf/email', 'App\Http\Controllers\HomeController@waiting')->name('waiting');
+Route::post('/feedback/send', 'App\Http\Controllers\MessagesController@feedback')->name('feedback');
 Route::post('/reviews/submit', 'App\Http\Controllers\ReviewsController@submit')->name('review');
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('index');
 //Handle Laravel logout

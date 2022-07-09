@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Session;
 
 class MessagesController extends Controller
 {
+
+    public function feedback(Request $request){
+
+        $feedback = json_decode($request["feedback"]);
+        return;
+    }
     /**
      * Show all of the message threads to the user.
      *

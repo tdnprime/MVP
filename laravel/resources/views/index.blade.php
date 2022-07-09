@@ -7,7 +7,7 @@
             <p class="centered center font-1-5-em">Home in a box. Subscribe to monthly deliveries of your favorite foods from
                 home
                 to save time and money. Cancel anytime.</p><br>
-            <a href="/shop/index" class="button uppercase">SUBSCRIBE NOW</a>
+            <a href="/shop/index?c=staple" class="button uppercase">SUBSCRIBE NOW</a>
         </aside>
         <br><br>
     </div>

@@ -1544,6 +1544,7 @@ dialog p {
   display: grid;
   grid-template-columns: auto auto auto auto auto 75px;
   width: 200px;
+  height: 60px;
 }
 
 .margin-bottom-2-em {
@@ -2502,6 +2503,7 @@ a {
 
 }
 
+
 #ratings-breakdown li span {
   height: 8px;
   margin-right: 1em;
@@ -2522,7 +2524,12 @@ a {
   max-width: 450px;
   width: 100%;
 }
-
+.reviewer-grid p{
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 160px;
+}
 .section {
   display: grid;
   grid-gap: 1em 1em;
@@ -2999,8 +3006,11 @@ header {
   max-width: 1035px;
   width: 100%;
 }
+#feedback-thanks{
+  display:none;
+}
 .review{
-  border-bottom: 1px solid #8bc34a;
+  border-top: 1px solid #8bc34a;
   padding-top:2em;
   padding-bottom:2em;
 }
@@ -3307,7 +3317,7 @@ pre,
   }
 
    ul li, ol li, td, p, a, label {
-    font-size: 1.5em;
+    font-size: 1.3em; /* Don't change */
   }
 
   td ul li {

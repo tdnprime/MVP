@@ -49,6 +49,37 @@ Boxeon = {
       }
     }
   },
+
+
+
+  feedback: function (data) {
+
+    var json = JSON.stringify(data);
+
+    var manifest = {
+
+      method: "POST",
+
+      action: "/feedback/send/?feedback=" + json,
+
+      contentType: "application/json; charset=utf-8",
+
+      customHeader: "X-CSRF-TOKEN",
+
+      payload: document.querySelector('meta[name="csrf-token"]').content
+
+    }
+
+    function callback(re) {
+
+      //
+    }
+
+    Boxeon.sendAjax(manifest, callback);
+
+  },
+
+
   deleteCookie: function (name) {
 
     document.cookie = name + "=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
@@ -917,6 +948,8 @@ window.onload = function () {
         if (feedback == "lightbulb") {
           document.getElementById('suggestion').style.display = "block";
         }
+        var array = [];
+        Boxeon.feedback(array["sentiment"] = feedback);
 
       });
     }
@@ -932,6 +965,24 @@ window.onload = function () {
         var message = this.parentNode.getElementsByTagName("textarea")[0].value;
         this.parentNode.style.display = "none";
         document.getElementById('nps').style.display = "block";
+        var array = [];
+        Boxeon.feedback(array["message"] = message);
+        return false;
+      });
+    }
+  }
+  if (document.getElementsByClassName('scale')) {
+    let choices = document.getElementsByClassName('scale');
+    var num = choices.length;
+    for (let i = 0; i < num; i++) {
+      choices[i].addEventListener('click', function (event) {
+        event.preventDefault();
+        var scale = choices[i].getAttribute("data-type-value");
+        this.parentNode.parentNode.style.display = "none";
+        document.getElementById('feedback-thanks').style.display = "block";
+        var array = [];
+        Boxeon.feedback(array["scale"] = scale);
+      
         return false;
       });
     }
@@ -1043,10 +1094,10 @@ window.onload = function () {
     let form = document.getElementsByClassName("cartcheckout");
     for (let i = 0; i < form.length; i++) {
       form[i].addEventListener("submit", function (event) {
-      
+
         event.preventDefault();
         document.cookie = "checkout=" + "/checkout/index" + ";" + "path=/";
-      
+
         location.assign("/checkout/index");
 
       });

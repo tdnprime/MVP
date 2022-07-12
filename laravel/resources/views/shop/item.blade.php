@@ -1,12 +1,12 @@
 @extends('layouts.home')
 <title>Boxeon.com <?php echo 'Shop ' . $product[0]->name; ?> | Best African Market Online</title>
 @section('content')
+    @if (session()->has('message'))
+        <dialog class="alert">
+            <p class='centered'> {{ session()->get('message') }}</p>
+        </dialog>
+    @endif
     <main>
-        @if (session()->has('message'))
-            <dialog class="alert">
-                <p class='centered'> {{ session()->get('message') }}</p>
-            </dialog>
-        @endif
         <section class="card maxw1035 section">
             @include('includes.category-nav')
             <div id="product-stream" class="fit-content margin-auto two-col-grid">
@@ -66,10 +66,10 @@
                 @for ($i = 0; $i < count($reviews); $i++)
                     <div class="review two-col-grid">
                         <div class="three-col-grid reviewer-grid">
-                            <img src="../assets/images/user.png">
-                            <b>
+                         <span class="material-icons material-symbols-outlined">account_circle</span>
+                            
                                 <p>{{ $reviews[$i]->name }}</p>
-                            </b>
+                            
                             <div class="stars-grid">
                                 @php
                                     if (isset($reviews[$i])) {
@@ -119,13 +119,13 @@
 
                     </div>
                     <div class="col-75">
-                        <select required name="stars">
-                            <option invalid value="-1">Select stars</option>
-                            <option value="1"> 1 star</option>
-                            <option value="2"> 2 stars</option>
-                            <option value="3">3 stars</option>
-                            <option value="4">4 stars</option>
+                        <select name="stars" required>
+                            <option disabled>Select stars</option>
                             <option value="5">5 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="2">2 stars</option>
+                            <option value="1">1 star</option>
                         </select>
 
                     </div>

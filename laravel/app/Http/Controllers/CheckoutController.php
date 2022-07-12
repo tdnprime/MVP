@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subscription;
 use App\Models\User;
 use Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
@@ -25,7 +27,7 @@ class CheckoutController extends Controller
         if (isset($_COOKIE["cart"])) {
             $cart = json_decode($_COOKIE["cart"]);
             return view('checkout.index', compact('user'))
-            ->with("cart", $cart);
+                ->with("cart", $cart);
         }
     }
     public function referal()
@@ -43,4 +45,66 @@ class CheckoutController extends Controller
         $response->withCookie(cookie('checkout', '/checkout/index', $minutes));
         return $response;
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+        $data = json_decode($request["addr"]);
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        $subscription = [];
+
+        $subscription["given_name"] = $data->given_name;
+        $subscription["family_name"] = $data->family_name;
+        $subscription["address_line_1"] = $data->address_line_1;
+        $subscription["address_line_2"] = $data->address_line_2 ?? null;
+        $subscription["admin_area_1"] = $data->admin_area_1;
+        $subscription["admin_area_2"] = $data->admin_area_2;
+        $subscription["postal_code"] = $data->postal_code;
+        $subscription["country_code"] = $data->country_code;
+       
+        DB::table("users")
+        ->where("id", $id)
+        ->update($subscription);
+        
+        return true;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function storeBilling(Request $request)
+    {
+        $data = json_decode($request["addr"]);
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        $subscription = [];
+        $subscription["billing_given_name"] = $data->billing_given_name;
+        $subscription["billing_family_name"] = $data->billing_family_name;
+        $subscription["billing_address_line_1"] = $data->billing_address_line_1;
+        $subscription["billing_address_line_2"] = $data->billing_address_line_2 ?? null;
+        $subscription["billing_admin_area_1"] = $data->billing_admin_area_1;
+        $subscription["billing_admin_area_2"] = $data->billing_admin_area_2;
+        $subscription["billing_postal_code"] = $data->billing_postal_code;
+        $subscription["billing_country_code"] = $data->billing_country_code;
+        
+        DB::table("users")
+        ->where("id", $id)
+        ->update($subscription);
+
+        return true;
+    }
+
 }

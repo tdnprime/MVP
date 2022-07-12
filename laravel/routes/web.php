@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::post('/pmf/email', 'App\Http\Controllers\HomeController@waiting')->name('waiting');
-Route::post('/feedback/send', 'App\Http\Controllers\MessagesController@feedback')->name('feedback');
+Route::post('/feedback/submit/{feedback}', 'App\Http\Controllers\MessagesController@feedback');
+Route::get('/feedback/submit/', 'App\Http\Controllers\MessagesController@feedback');
 Route::post('/reviews/submit', 'App\Http\Controllers\ReviewsController@submit')->name('review');
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('index');
 //Handle Laravel logout
@@ -135,7 +136,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     #SHIPPING
 
     Route::prefix('shipping')->group(function () {
-        Route::get('/addresses', 'App\Http\Controllers\ShippingController@addresses')->name('shipping.addresses');
+        Route::get('/address', 'App\Http\Controllers\CheckoutController@store');
+        Route::post('/address', 'App\Http\Controllers\CheckoutController@store');
+        Route::get('/store', 'App\Http\Controllers\CheckoutController@storeBilling');
+        Route::post('/store', 'App\Http\Controllers\CheckoutController@storeBilling');
+
+
 
     });
 

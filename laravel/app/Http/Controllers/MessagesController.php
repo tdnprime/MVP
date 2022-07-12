@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
@@ -12,11 +12,31 @@ use Illuminate\Support\Facades\Session;
 class MessagesController extends Controller
 {
 
-    public function feedback(Request $request){
+    public function feedback($data)
+    {
 
-        $feedback = json_decode($request["feedback"]);
-        return;
+        $feedback = (array) json_decode($data);
+
+        if (isset($feedback["sentiment"])) {
+
+            define("ID", DB::table("feedback")
+                    ->insertGetId($feedback));
+            return ID;
+
+        } else {
+
+            $id = array_pop($feedback);
+
+            DB::table("feedback")
+                ->where("id", $id)
+                ->update($feedback);
+                
+                return $id;
+
+        }
+
     }
+
     /**
      * Show all of the message threads to the user.
      *
@@ -34,7 +54,7 @@ class MessagesController extends Controller
             ->select('users.*')
             ->get();
 
-            $trevor = User::find(1);
+        $trevor = User::find(1);
 
         return view('messenger.index', compact('user', $user))
             ->with('subs', $subs)
@@ -60,8 +80,8 @@ class MessagesController extends Controller
         $user = User::find($id);
 
         return view('messenger.show', compact('user', $user))
-        ->with('thread', $thread)
-        ->with('subs', $subs);
+            ->with('thread', $thread)
+            ->with('subs', $subs);
     }
 
     /**
@@ -75,7 +95,7 @@ class MessagesController extends Controller
         $user = User::find($id);
         $trevor = User::find(1);
         return view('messenger.create', compact('user', $user))
-        ->with('trevor', $trevor);
+            ->with('trevor', $trevor);
     }
 
     /**

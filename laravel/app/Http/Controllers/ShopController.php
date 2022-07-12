@@ -23,6 +23,8 @@ class ShopController extends Controller
 
         return view('shop.index', compact('user', 'user'));
     }
+
+
     public function item(Request $request)
     {
         $id = $request["id"];
@@ -55,4 +57,7 @@ class ShopController extends Controller
             ->with("total_reviews", $total_reviews)
             ->with("reviews", $reviews);
     }
+
+
+
 }

@@ -52,15 +52,13 @@ Boxeon = {
 
 
 
-  feedback: function (data) {
-
-    var json = JSON.stringify(data);
+  feedback: function (string) {
 
     var manifest = {
 
       method: "POST",
 
-      action: "/feedback/send/?feedback=" + json,
+      action: "/feedback/submit/" + string,
 
       contentType: "application/json; charset=utf-8",
 
@@ -72,7 +70,7 @@ Boxeon = {
 
     function callback(re) {
 
-      //
+      Boxeon.ID = re;
     }
 
     Boxeon.sendAjax(manifest, callback);
@@ -102,6 +100,7 @@ Boxeon = {
       }
 
     }
+
     if (cart.length > 1) {
 
       document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
@@ -250,17 +249,14 @@ Boxeon = {
     if (!document.getElementsByClassName("loader")[0]) {
       let div = document.createElement("div");
       div.className = "loader";
-      if (document.getElementById("container")) {
-        let container = document.getElementById("container");
-      } else if (document.getElementById("m-window")) {
-        let container = document.getElementById("m-window");
-      }
+      let container = document.getElementById("container");
       container.prepend(div);
       div.style.position = "absolute";
     }
   },
 
   removeLoader: function () {
+
     if (document.getElementsByClassName("loader")[0]) {
       var loader = document.getElementsByClassName("loader")[0];
       loader.remove();
@@ -446,8 +442,7 @@ Boxeon = {
 
 Shipping = {
 
-
-  getRates: function (address) {
+  saveBilling: function (address) {
 
     var json = JSON.stringify(address);
 
@@ -455,7 +450,7 @@ Shipping = {
 
       method: "POST",
 
-      action: "/rates/fetch/?to=" + json,
+      action: "/shipping/store?addr=" + json,
 
       contentType: "application/json; charset=utf-8",
 
@@ -466,12 +461,41 @@ Shipping = {
     }
 
     function callback(re) {
+      Boxeon.removeLoader();
 
-      Shipping.buildRateCard(JSON.parse(re));
     }
 
     Boxeon.loader();
+    Boxeon.sendAjax(manifest, callback);
 
+  },
+
+
+  saveAddress: function (address) {
+
+
+    var json = JSON.stringify(address);
+
+    var manifest = {
+
+      method: "POST",
+
+      action: "/shipping/address?addr=" + json,
+
+      contentType: "application/json; charset=utf-8",
+
+      customHeader: "X-CSRF-TOKEN",
+
+      payload: document.querySelector('meta[name="csrf-token"]').content
+
+    }
+
+    function callback(re) {
+      Boxeon.removeLoader();
+
+    }
+
+    Boxeon.loader();
     Boxeon.sendAjax(manifest, callback);
 
   },
@@ -933,26 +957,41 @@ window.onload = function () {
   }
 
   if (document.getElementsByClassName('sentiment')) {
+
     let choices = document.getElementsByClassName('sentiment');
+
     var num = choices.length;
+
     for (let i = 0; i < num; i++) {
+
       choices[i].addEventListener('click', function () {
+
         var feedback = choices[i].id;
+
         document.getElementById('start').style.display = "none";
+
         if (feedback == "thumb_up") {
+
           document.getElementById('like').style.display = "block";
+
         }
         if (feedback == "thumb_down") {
+
           document.getElementById('dislike').style.display = "block";
         }
         if (feedback == "lightbulb") {
+
           document.getElementById('suggestion').style.display = "block";
+
         }
-        var array = [];
-        Boxeon.feedback(array["sentiment"] = feedback);
+
+        var data = { "sentiment": choices[i].id };
+
+        Boxeon.feedback(JSON.stringify(data));
 
       });
     }
+
   }
 
 
@@ -965,8 +1004,8 @@ window.onload = function () {
         var message = this.parentNode.getElementsByTagName("textarea")[0].value;
         this.parentNode.style.display = "none";
         document.getElementById('nps').style.display = "block";
-        var array = [];
-        Boxeon.feedback(array["message"] = message);
+
+        Boxeon.feedback(JSON.stringify({ "message": message, "id": Boxeon.ID }));
         return false;
       });
     }
@@ -980,9 +1019,7 @@ window.onload = function () {
         var scale = choices[i].getAttribute("data-type-value");
         this.parentNode.parentNode.style.display = "none";
         document.getElementById('feedback-thanks').style.display = "block";
-        var array = [];
-        Boxeon.feedback(array["scale"] = scale);
-      
+        Boxeon.feedback(JSON.stringify({ "nps": scale, "id": Boxeon.ID }));
         return false;
       });
     }
@@ -1027,16 +1064,17 @@ window.onload = function () {
   }
 
   // Save shipping address
+
   if (document.getElementById("shipping-address")) {
     let div = document.getElementById("shipping-address");
     div.addEventListener("submit", function (event) {
       event.preventDefault();
       let array = [];
       var formData = new FormData(this);
-      // div.classList.add("fadeout");
+   
       div.style.display = "none";
       for (var [key, value] of formData) {
-        array.push([key = value]);
+        array.push(value);
         if (value == 0) {
 
           document.getElementById("billing-address").style.display = "block";
@@ -1051,6 +1089,7 @@ window.onload = function () {
         }
 
       }
+
       var p = document.getElementsByClassName("preview");
       for (var x = 0; x < p.length; x++) {
         if (p[x].getAttribute("data-type-id") == div.id) {
@@ -1058,7 +1097,20 @@ window.onload = function () {
         }
       }
       Boxeon.scrollToTop();
-      //Send to server (array);
+
+      var arr = {
+        "given_name": array[0],
+        "family_name": array[1],
+        "address_line_1": array[2],
+        "address_line_2": array[3],
+        "admin_area_1": array[4],
+        "admin_area_2": array[5],
+        "postal_code": array[6],
+        "country_code": array[7]
+      }
+
+      Shipping.saveAddress(arr);
+
     });
   }
 
@@ -1072,7 +1124,7 @@ window.onload = function () {
       //  div.classList.add("fadeout");
       div.style.display = "none";
       for (var [key, value] of formData) {
-        array.push([key = value]);
+        array.push(value);
 
       }
       var p = document.getElementsByClassName("preview");
@@ -1083,8 +1135,21 @@ window.onload = function () {
       }
 
       document.getElementById("payment").style.display = "block";
-      //Send to server (array);
+
+      var arr = {
+        "billing_given_name": array[0],
+        "billing_family_name": array[1],
+        "billing_address_line_1": array[2],
+        "billing_address_line_2": array[3],
+        "billing_admin_area_1": array[4],
+        "billing_admin_area_2": array[5],
+        "billing_postal_code": array[6],
+        "billing_country_code": array[7]
+      }
+
+      Shipping.saveBilling(arr);
       Boxeon.scrollToTop();
+
     });
   }
 
@@ -1204,6 +1269,7 @@ window.onload = function () {
   if (document.getElementById('menu-icon')) {
     document.getElementById('menu-icon').addEventListener("click", function () {
       document.getElementById("m").show();
+      document.getElementById("m").style.display = "block";
     });
   }
 } // listeners end

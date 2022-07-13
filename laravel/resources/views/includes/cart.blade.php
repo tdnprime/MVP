@@ -76,7 +76,7 @@
                     class="cart-total text-red">&nbsp;</span></h2>
             <form class="w300 float-right clear-both cartcheckout">
                 @csrf
-                <input type="submit" class="button yellowbtn" value="Proceed to checkout+">
+                <input type="submit" class="button yellowbtn" value="Proceed to checkout">
                 <p class="float-right">Secure checkout powered by</p>
                 <img class="float-right clear-both" src="../assets/images/square-logo.png" alt="Square">
             </form>

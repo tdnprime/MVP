@@ -1149,7 +1149,7 @@ dialog p {
 }
 
 .primary-color {
-  color: green;
+  color: green !important;
 }
 
 
@@ -1874,6 +1874,7 @@ dialog p {
   color: #000 !important;
   border: 1px solid #e4c00c !important;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .clearbtn:hover {

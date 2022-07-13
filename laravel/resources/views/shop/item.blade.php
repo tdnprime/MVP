@@ -48,13 +48,12 @@
                             <option value="0">${{ $product[0]->price + 3 }} - One-time purchase</option>
                         </select>
                     </form>
-                    <button data-name="{{ $product[0]->name }}" data-plan="1" data-img="{{ $product[0]->img }}"
-                        data-id="{{ $product[0]->id }}" data-price="{{ $product[0]->price }}" class="cart-add"
-                        class="button">SUBSCRIBE NOW</button>
+                    <button data-quantity="1" data-name="{{ $product[0]->name }}" data-plan="1" data-img="{{ $product[0]->img }}" data-id="{{ $product[0]->id }}" data-basePrice="{{$product[0]->price }}" data-price="{{$product[0]->price }}" class="cart-add button">SUBSCRIBE NOW</button>
+
                     <div class="two-col-grid charitable-grid">
                         <img class="w40px" src="../assets/images/girl.jpg" alt="Orphan Girl" />
-                        <a href="/school/subscriptions" class="primary-color one-em-font">
-                            <p>Learn about Boxeon subscriptions</p>
+                        <a href="/school/subscriptions" class="primary-color">
+                            Learn about Boxeon subscriptions
                         </a>
                     </div>
                 </div>

@@ -20,9 +20,19 @@ if (isset($_GET['c'])) {
     @include('includes.category-nav')
     <div class="products-stream">
         @for ($i = 0; $i < count($product); $i++)
+
+            @php
+                // HACK
+                $name = explode('.', $product[$i]->img);
+                $img = $name[0] . '.jpeg';
+                
+            @endphp
+
+
             <div class="fit-content margin-auto">
                 <a href="/shop/item?id={{ $product[$i]->id }}"><img
-                        src="../assets/images/products/{{ $product[$i]->img }}" alt="{{ $product[$i]->name }}"></a>
+                        src="../assets/images/products/medium/{{ $img }}"
+                        alt="{{ $product[$i]->name }}"></a>
                 <a class="" href="/shop/item?id={{ $product[$i]->id }}">
                     <p>{{ $product[$i]->name }}</p>
                 </a>
@@ -33,7 +43,7 @@ if (isset($_GET['c'])) {
                     $r = DB::table('reviews')
                         ->where('product', '=', $product[$i]->id)
                         ->avg('stars');
-                        $avg_reviews = (int)round($r);
+                    $avg_reviews = (int) round($r);
                     
                     $total_reviews = DB::table('reviews')
                         ->where('product', '=', $product[$i]->id)

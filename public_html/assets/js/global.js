@@ -535,6 +535,8 @@ Subscriptions = {
     });
 
   },
+
+
   createUpdateUI: function (button) {
     var div = document.createElement("div");
     var form = document.createElement("form");
@@ -636,10 +638,12 @@ Subscriptions = {
   },
 
 
-  complete: function (json) {
+  order: function (cart) {
+
+    let json = JSON.stringify(cart);
     var data = {
       method: "POST",
-      action: "/subscription/complete/" + json + "",
+      action: "/checkout/order?order=" + json + "",
       contentType: "application/json; charset=utf-8",
       customHeader: "X-CSRF-TOKEN",
       payload: document.querySelector('meta[name="csrf-token"]').content
@@ -647,7 +651,8 @@ Subscriptions = {
 
     function callback(re) {
       if (re == 1) {
-        //  localStorage.clear();
+        Boxeon.deleteCookie("cart");
+        localStorage.setItem("celebrate", true);
         location.href = "/home/index";
       }
     }
@@ -1071,7 +1076,7 @@ window.onload = function () {
       event.preventDefault();
       let array = [];
       var formData = new FormData(this);
-   
+
       div.style.display = "none";
       for (var [key, value] of formData) {
         array.push(value);
@@ -1175,6 +1180,8 @@ window.onload = function () {
     for (let i = 0; i < form.length; i++) {
       form[i].addEventListener("submit", function (event) {
         event.preventDefault();
+        let cart = Boxeon.getCookie("cart");
+        Subscriptions.order(cart);
 
       });
     }

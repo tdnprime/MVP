@@ -30,6 +30,16 @@ class CheckoutController extends Controller
                 ->with("cart", $cart);
         }
     }
+
+    public function order(Request $request)
+    {
+        return true;
+        $order = json_decode($request["order"]);
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+    }
+
     public function referal()
     {
 
@@ -37,6 +47,7 @@ class CheckoutController extends Controller
         $user = User::find($id);
         return view('checkout.referal', compact('user'));
     }
+
 
     public function setCookie(Request $request)
     {

@@ -504,108 +504,75 @@ Shipping = {
 
 Subscriptions = {
 
-  unsubCheck: function (b) {
-    var ownerID = b.getAttribute("data-id");
+  updateCheck: function (a) {
+
+
     let h2 = document.createElement("h3");
-    h2.className = "centered";
-    let h2txt = document.createTextNode("Do you wish to unsubscribe from this box?");
+    h2.className = "centered text-red";
+    let h2txt = document.createTextNode("You're about to update this subscription");
     var div = document.createElement("dialog");
-    div.id = "dialog";;
+    div.className = "bg-yellow";
+    div.id = "dialog";
+    div.style.display = "block";
     let button = document.createElement("button");
-    button.innerText = "No";
+    button.innerText = "CANCEL";
     let button2 = document.createElement("button");
-    button2.className = "clearbtn";
-    button2.setAttribute("data-id", ownerID);
-    let version = b.getAttribute("data-version");
-    button2.setAttribute("data-version", version);
-    button2.innerText = "Yes";
+    button2.className = "clearbtn red white";
+    button2.innerText = "UPDATE";
     h2.appendChild(h2txt)
     div.appendChild(h2);
     div.appendChild(button);
     div.appendChild(button2);
     document.getElementById("container").appendChild(div);
+
     div.showModal();
+
     button.addEventListener("click", function (div) {
 
       document.getElementById("dialog").remove();
     });
+
     button2.addEventListener("click", function () {
-      let b = this;
-      Subscriptions.remove(b);
+
+      var json = {
+        "name": a.getAttribute("data-name"),
+        "quantity": a.getAttribute("data-quantity"),
+        "price": a.getAttribute("data-price"),
+        "basePrice": a.getAttribute("data-basePrice"),
+        "product": a.getAttribute("data-id"),
+        "plan": a.getAttribute("data-plan"),
+        "img": a.getAttribute("data-img")
+
+      }
+      Subscriptions.update(json);
+
     });
 
   },
 
 
-  createUpdateUI: function (button) {
-    var div = document.createElement("div");
-    var form = document.createElement("form");
-    form.method = "post";
-    form.action = "/subscription/update";
+  update: function (json) {
 
-    var input = document.createElement("input");
-    var input1 = document.createElement("input");
-    var input2 = document.createElement("input");
+    var data = {
+      method: "POST",
+      action: "/subscription/update?order=" + json + "",
+      contentType: "application/json; charset=utf-8",
+      customHeader: "X-CSRF-TOKEN",
+      payload: document.querySelector('meta[name="csrf-token"]').content
+    }
 
-    input.type = "hidden";
-    input.name = "_token";
-    input.value = document.querySelector('meta[name="csrf-token"]').content;
+    function callback(re) {
 
-    input1.type = "hidden";
-    input1.name = "creator_id";
-    input1.value = button.getAttribute("data-id");
+      if (re == 1) {
 
-    input2.type = "hidden";
-    input2.name = "version";
-    input2.value = button.getAttribute("data-version");
-
-    form.appendChild(input);
-    form.appendChild(input1);
-    form.appendChild(input2);
-
-
-    var button = document.createElement("button");
-    button.type = "submit";
-    button.innerText = "Update";
-    button.addEventListener("click", function () {
-
-      var a = this;
-
-    })
-
-    var select = document.createElement("select");
-    select.name = "cadence";
-    select.style.marginTop = "0";
-
-    var option1 = document.createElement("option");
-    var txt1 = document.createTextNode("Monthly");
-    option1.value = "MONTHLY";
-    option1.appendChild(txt1);
-
-    var option2 = document.createElement("option");
-    var txt2 = document.createTextNode("Every two months");
-    option2.value = "EVERY_TWO_MONTHS";
-    option2.appendChild(txt2);
-
-    var option3 = document.createElement("option");
-    var txt3 = document.createTextNode("Every 90 days");
-    option3.value = "NINETY_DAYS";
-    option3.appendChild(txt3);
-
-    select.appendChild(option1);
-    select.appendChild(option2);
-    select.appendChild(option3);
-
-
-    form.appendChild(select);
-    form.appendChild(button);
-
-    div.appendChild(form);
-    Boxeon.dialog("Update how often you receive this box.");
-    document.getElementsByTagName("dialog")[0].appendChild(div);
-
-
+        document.getElementById("dialog").remove();
+        alert("Your subscription has been scheduled for update.");
+      }
+    }
+    Boxeon.loader();
+    Boxeon.sendAjax(data, callback);
   },
+
 
   remove: function (b) {
     let box = {
@@ -671,8 +638,8 @@ Subscriptions = {
 
   },
 
-
   showSubscriptions: function () {
+
     var data = {
       method: "POST",
       action: "../subs/get-subscriptions.php",
@@ -915,6 +882,18 @@ window.onload = function () {
     });
   }
 
+
+  if (document.getElementsByClassName('sub-update')) {
+    let btns = document.getElementsByClassName('sub-update');
+    var total = btns.length;
+    for (var i = 0; i < total; i++) {
+      btns[i].addEventListener('click', function () {
+        let a = this;
+        Subscriptions.updateCheck(a);
+
+      });
+    }
+  }
 
 
   if (document.getElementsByClassName('cart-add')) {
@@ -1160,16 +1139,12 @@ window.onload = function () {
 
   //Checkout
   if (document.getElementsByClassName("cartcheckout")) {
-
     let form = document.getElementsByClassName("cartcheckout");
     for (let i = 0; i < form.length; i++) {
       form[i].addEventListener("submit", function (event) {
-
         event.preventDefault();
         document.cookie = "checkout=" + "/checkout/index" + ";" + "path=/";
-
         location.assign("/checkout/index");
-
       });
     }
   }
@@ -1182,25 +1157,21 @@ window.onload = function () {
         event.preventDefault();
         let cart = Boxeon.getCookie("cart");
         Subscriptions.order(cart);
-
       });
     }
   }
 
   // Checkout page EDIT buttons
   if (document.getElementById("billing-address")) {
-
     let btns = document.getElementsByClassName("edit-btn");
     for (let i = 0; i < btns.length; i++) {
       btns[i].addEventListener("click", function () {
         var id = btns[i].getAttribute("data-type-id");
         document.getElementById(id).style.display = "block";
       });
-
     }
 
   }
-
 
 
   // Google Analytics -- SHOULD THIS BE MOVED UP?

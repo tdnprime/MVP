@@ -22,7 +22,7 @@
                         src="../assets/images/cart.png" alt="Cart" /></span><span class="cart-count text-cart-count text-yellow"></span></a>
         @endif
         
-            <a id="showDropdown" class='fadein button m-padding-right-zero' href='#'><span class="material-icons">account_circle</span>
+            <a id="showDropdown" class='fadein button margin-right-1-em m-padding-right-zero' href='#'><span class="material-icons">account_circle</span>
             </a>
             <div class="dropdown">
                 <div id="myDropdown" class="dropdown-content">

@@ -7,14 +7,14 @@
 
 </div>
 
-<section class="fix-to-bottom">
+<section class="fix-to-botto">
     <div class="card-white-bg">
         <b>
-            <h2 class="cart-subtotal">Subtotal (<span class="cart-count">&nbsp;</span> items) <span class="cart-total text-red">&nbsp;</span></h2>
+            <h2>Subtotal (<span class="cart-count">&nbsp;</span> items) <span class="cart-total text-red">&nbsp;</span></h2>
         </b>
         <form class="maxw65per cartcheckout" action="/checkout/index" method="post">
             @csrf
-            <input type="submit" class="button yellowbtn" value="Proceed to checkout">
+            <input type="submit" class="button" value="Proceed to checkout">
         </form>
     </div>
 </div>

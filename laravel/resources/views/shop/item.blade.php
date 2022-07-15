@@ -26,7 +26,7 @@
                     <p class="green">In Stock</p>
                     <p class="w300">{{ $product[0]->description }}</p>
                     <h4 class="uppercase">Product details</h4>
-                    <p>Weight: {{ $product[0]->weight }} pound(s)</p>
+                    <p>Weight: {{$product[0]->weight}} {{$product[0]->unit}}</p>
                     </p>
                     <p class="text-red">Original price: ${{ $product[0]->price + 3 }}</p>
                     <form class="form-plan" action="/cart" method="post">
@@ -65,7 +65,7 @@
                 @for ($i = 0; $i < count($reviews); $i++)
                     <div class="review two-col-grid">
                         <div class="three-col-grid reviewer-grid">
-                         <span class="material-icons material-symbols-outlined">account_circle</span>
+                         <span class="material-icons margin-block-start-end">account_circle</span>
                             
                                 <p>{{ $reviews[$i]->name }}</p>
                             
@@ -88,7 +88,7 @@
                                 @endphp
 
                                 @for ($s = 0; $s < $stars; $s++)
-                                    <span class="material-icons text-gold">star</span>
+                                    <span class="material-icons text-black">star</span>
                                 @endfor
 
                                 @for ($d = 0; $d < $diff; $d++)

@@ -181,7 +181,7 @@ class SubscriptionController extends Controller
      */
     public function store($data)
     {
-        if(empty($data->cpf)){$data->cpf = 0;}
+        if (empty($data->cpf)) {$data->cpf = 0;}
 
         $id = auth()->user()->id;
         $user = User::find($id);
@@ -219,9 +219,9 @@ class SubscriptionController extends Controller
 
     public function updateStock($creator_id, $version, $stock)
     {
-        if($stock == 1){
+        if ($stock == 1) {
             $new = 0;
-        }else{
+        } else {
             $new = $stock - 1;
         }
         DB::table('boxes')
@@ -262,7 +262,7 @@ class SubscriptionController extends Controller
             ->where('user_id', '=', $user->id)
             ->delete();
         // Update in_stock
-        self::addStock($box);
+        //self::addStock($box);
     }
 
     protected function remove($box)
@@ -294,46 +294,42 @@ class SubscriptionController extends Controller
             return $result;
 
         } else {
-    
+
             // Remove from Boxeon
             $this->boxeonRemove($box);
             return 1;
         }
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
+
+    public function pause($sub)
     {
 
-        $id = auth()->user()->id;
-        $user = User::find($id);
+        // Pause on Square
 
-        // Get subscription ID
+        // Pause on Boxeon
+
+
+    }
+
+    public function updateSquare($sub)
+    {
+        # Update on Square
+
+        // Get subscription details
         $subscription = Subscription::where('user_id', '=', $id)
-            ->where('creator_id', '=', $request->input("creator_id"))
-            ->where('version', '=', $request->input("version"))
+            ->where('product_id', '=', $sub->product_id)
             ->get();
 
-        // Update on Square
         $square = new SquareController();
-
         $response = $square->updateSubscription([
-
             'cadence' => $request->input("cadence"),
             'square_vid' => (int) $subscription[0]['square_vid'],
             'sub_id' => $subscription[0]['sub_id'],
         ]);
 
         if (!isset($response->subscription->id)) {
-
             return $response;
-
         } else {
-
             // update on Boxeon
             Subscription::where('user_id', '=', $id)
                 ->update([
@@ -344,15 +340,49 @@ class SubscriptionController extends Controller
             return redirect()->route('home.subscriptions', $user);
         }
     }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+        return true;
 
-    public function billingAddress(){
-
+        $sub = json_decode($request["order"]);
 
         $id = auth()->user()->id;
         $user = User::find($id);
 
-       $address = Subscription::where('user_id', '=', $id)
-        ->get();
+        // Decide the update type
+        if ($sub->plan == -1) {
+            // Pause
+            //self::pause($sub);
+
+        } elseif ($sub->plan == -2) {
+            // Remove
+            //self::remove($sub);
+
+        } else {
+
+            // Update
+           // self::updateSquare($sub);
+         
+
+        }
+        return;
+
+    }
+
+    public function billingAddress()
+    {
+
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        $address = Subscription::where('user_id', '=', $id)
+            ->get();
         return json_encode($address);
     }
 

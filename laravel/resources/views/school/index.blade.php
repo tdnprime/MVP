@@ -40,7 +40,7 @@
             </div>
         </div>
             <div class="alert-info">
-                <p><span class="material-icons text-red">info</span>&nbsp;Our subscribers receive a Christmas gift card from
+                <p><span class="material-icons">star</span>&nbsp;Our subscribers receive an annual gift card from
                     us, which they use to donate money to the above charities.</p>
             </div>
             <h1 class='extra-large-font centered margin-top-4-em primary-color'> Frequently Asked Questions</h1>

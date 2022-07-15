@@ -86,7 +86,7 @@
         <section id="order-summary" class="hide">
             <div class="card-white-bg">
 
-                <h2 class="hide">Subtotal (<span class="cart-count">&nbsp;</span> items) <span
+                <h2 class="hide cart-subtotal">Subtotal (<span class="cart-count">&nbsp;</span> items) <span
                         class="cart-total text-red">&nbsp;</span></h2>
 
                 <form class="cartcheckout" action="/checkout/index" method="post">
@@ -101,7 +101,7 @@
 @else
     <section class="section maxw1035">
         <div class="alert-info w100per">
-            <p><span class="material-icons">info</span>&nbsp;Your cart is empty.</p>
+            <p><span class="material-icons">star</span>&nbsp;Your cart is empty.</p>
         </div>
     </section>
 

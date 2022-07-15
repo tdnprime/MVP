@@ -36,7 +36,7 @@ if (isset($_GET['c'])) {
                 <a class="" href="/shop/item?id={{ $product[$i]->id }}">
                     <p>{{ $product[$i]->name }}</p>
                 </a>
-                <p>Weight: {{ $product[$i]->weight }} pound(s)</p>
+                <p>Weight: {{$product[$i]->weight}} {{$product[$i]->unit}} </p>
 
                 @php
                     

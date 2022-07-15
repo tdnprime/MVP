@@ -52,6 +52,11 @@ Brown skin: #a0616a
   color: gold;
 }
 
+.text-black {
+  color: black;
+  /* Black stars */
+}
+
 .text-grey {
   color: rgb(231, 231, 231);
 }
@@ -272,18 +277,18 @@ Brown skin: #a0616a
   float: right;
   clear: both;
   text-transform: uppercase;
-  margin-bottom:1em;
+  margin-bottom: 1em;
 }
 
 .material-symbols-outlined {
-  font-size:40px !important;
-  fill:none;
-  color:#cccaca;
+  font-size: 40px !important;
+  fill: none;
+  color: #cccaca;
   font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
+    'FILL'0,
+    'wght'400,
+    'GRAD'0,
+    'opsz'48
 }
 
 /* h1, h2, h3, h4 {
@@ -291,6 +296,7 @@ Brown skin: #a0616a
 } */
 dialog {
   display: none;
+  padding: 2em;
 }
 
 dialog p {
@@ -2490,7 +2496,8 @@ a {
 }
 
 .red {
-  background-color: #c40c0c;
+  background-color: #c40c0c !important;
+
 }
 
 .green {
@@ -2526,7 +2533,7 @@ a {
 
 .text-3em {
   font-size: 2em;
-
+  color: #000;
 }
 
 
@@ -2556,6 +2563,12 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 160px;
+
+}
+
+.margin-block-start-end {
+  margin-block-start: .6em;
+  margin-block-end: .5em;
 }
 
 .section {
@@ -2809,14 +2822,15 @@ a:hover {
 
 .charitable-grid {
   display: grid;
-  grid-template-columns: 10% 58%;
+  grid-template-columns: 40px 58%;
   place-items: center;
-  grid-gap: 2%;
+  grid-gap: 1em;
 
   width: 414px;
 }
 
 .charitable-grid img {
+  width: 40px;
   border-radius: 999px;
 }
 
@@ -3040,7 +3054,7 @@ header {
 #feedback-thanks {
   display: none;
   padding: 2em;
-  height:300px;
+  height: 300px;
   text-align: center;
 }
 

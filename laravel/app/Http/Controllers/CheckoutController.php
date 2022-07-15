@@ -31,12 +31,49 @@ class CheckoutController extends Controller
         }
     }
 
+    public function price($quantity, $cadence, $basePrice)
+    {
+
+        if ($cadence == 1) {
+            $price = $basePrice;
+        } else if ($cadence == 2) {
+            $price = $basePrice + 1;
+        } else if ($cadence == 3) {
+            $price = $basePrice + 2;
+        } else if ($cadence == 0) {
+            $price = $basePrice + 3;
+        }
+
+        return $price * $quantity;
+    }
+
     public function order(Request $request)
     {
-        return true;
-        $order = json_decode($request["order"]);
+
+        $order = json_decode(json_decode($request["order"])); 
         $id = auth()->user()->id;
         $user = User::find($id);
+
+        foreach ($order as $item) {
+
+           $basePrice = DB::table("products")
+                ->where("id", $item->product)
+                ->select("price")
+                ->get()[0]->price;
+
+            $sub["product_id"] = $item->product;
+            $sub["total"] = self::price($item->quantity, $item->plan, $basePrice);
+            $sub["frequency"] = $item->plan;
+            $sub["user_id"] = $id;
+            $sub["quantity"] = $item->quantity;
+            
+            DB::table("subscriptions")
+            ->insert($sub);
+
+        }
+        // Call Square
+
+        return true;
 
     }
 
@@ -47,7 +84,6 @@ class CheckoutController extends Controller
         $user = User::find($id);
         return view('checkout.referal', compact('user'));
     }
-
 
     public function setCookie(Request $request)
     {
@@ -80,11 +116,11 @@ class CheckoutController extends Controller
         $subscription["admin_area_2"] = $data->admin_area_2;
         $subscription["postal_code"] = $data->postal_code;
         $subscription["country_code"] = $data->country_code;
-       
+
         DB::table("users")
-        ->where("id", $id)
-        ->update($subscription);
-        
+            ->where("id", $id)
+            ->update($subscription);
+
         return true;
     }
 
@@ -110,10 +146,10 @@ class CheckoutController extends Controller
         $subscription["billing_admin_area_2"] = $data->billing_admin_area_2;
         $subscription["billing_postal_code"] = $data->billing_postal_code;
         $subscription["billing_country_code"] = $data->billing_country_code;
-        
+
         DB::table("users")
-        ->where("id", $id)
-        ->update($subscription);
+            ->where("id", $id)
+            ->update($subscription);
 
         return true;
     }

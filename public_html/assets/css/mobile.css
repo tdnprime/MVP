@@ -702,6 +702,7 @@ Medium devices (landscape tablets, 768px and up)
    height:fit-content;
    min-width: auto;
 }
+
   #header-inner-wrapper {
 
     grid-template-columns: auto auto auto auto;

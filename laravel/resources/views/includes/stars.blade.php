@@ -22,7 +22,7 @@
     @endphp
 
     @for ($s = 0; $s < $stars; $s++)
-        <span class="material-icons text-gold">star</span>
+        <span class="material-icons text-black">star</span>
     @endfor
 
     @for ($d = 0; $d < $diff; $d++)

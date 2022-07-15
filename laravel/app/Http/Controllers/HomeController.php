@@ -84,6 +84,7 @@ class HomeController extends Controller
         $user = Auth::user();
         return view('returns.index', compact('user'));
     }
+    
     public function entry()
     {
         $user = Auth::user();
@@ -110,18 +111,24 @@ class HomeController extends Controller
 
         return view('contact.index', compact('user'));
     }
+
+
     public function commission()
     {
         $user = Auth::user();
 
         return view('commission.index', compact('user'));
     }
+
+
     public function search()
     {
         $user = Auth::user();
 
         return view('search.index', compact('user'));
     }
+
+
     public function account()
     {
         $user = Auth::user();
@@ -140,18 +147,27 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        return view('home.index', compact('user'));
+        $subscriptions = DB::table("subscriptions")
+            ->join('products', 'products.id', '=', 'subscriptions.product_id')
+            ->where('subscriptions.user_id', '=', $user->id)
+          //  ->where('sub_id', '<>', null)
+            ->select('subscriptions.*', 'products.*')
+            ->get();
+
+        return view('home.index', compact('user'))
+            ->with('subscriptions', $subscriptions);
     }
+
+
     public function subscriptions()
     {
         $user = Auth::user();
 
         $subscriptions = DB::table("subscriptions")
-            ->join('boxes', 'boxes.user_id', '=', 'subscriptions.creator_id')
-            ->join('users', 'users.id', '=', 'boxes.user_id')
+            ->join('products', 'product.id', '=', 'subscriptions.product_id')
             ->where('subscriptions.user_id', '=', $user->id)
-            ->where('sub_id', '<>', null)
-            ->select('subscriptions.*', 'boxes.*', 'users.given_name', 'users.family_name')
+          //  ->where('sub_id', '<>', null)
+            ->select('subscriptions.*', 'products.*')
             ->get();
 
         return view('home.index', compact('user'))

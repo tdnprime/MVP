@@ -168,6 +168,7 @@ input[type="submit"], .button, button {
   grid-gap:1%;
   max-width: 303px;
 }
+.sub-update,
 .cart-add{
   max-width: 303px;
   width: 100%;

@@ -14,7 +14,7 @@
                         @csrf
                         <input type="submit" class="button yellowbtn" value="Proceed to checkout">
                         <p class="float-right">Secure checkout powered by</p>
-                        <img class="float-right" src="../assets/images/square-logo.png" alt="Square"><br>
+                        <img class="float-right" src="../assets/images/square-logo.png" alt="Square">
                     </form>
                 </div>
             </section>
@@ -100,7 +100,7 @@
     </main>
 @else
     <section class="section maxw1035">
-        <div class="alert-info w100per">
+        <div class="alert-info">
             <p><span class="material-icons">star</span>&nbsp;Your cart is empty.</p>
         </div>
     </section>

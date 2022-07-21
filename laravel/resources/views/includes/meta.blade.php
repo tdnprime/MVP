@@ -25,3 +25,8 @@
 <script defer type="module" src="{{ asset('../assets/js/global.js?v=2.1') }}"></script>
 <script async defer src="https://www.googletagmanager.com/gtag/js?id=AW-10788250660"></script>
 <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
+<!-- Meta Pixel Code -->
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=552073569711730&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->

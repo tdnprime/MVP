@@ -13,12 +13,10 @@
 <select required name='{{ $billing ?? '' }}country_code' class='form-control' id='country'>
     <option value='{{ $address->country_code ?? '' }}'>{{ $address->country_code ?? 'Select your country' }}
     </option>
-
     <optgroup id='country-optgroup-Americas' label='Americas'>
         <option value='US' label='United States'>United States</option>
         <option value='BR' label='Brazil'>Brazil</option>
         <option value='CA' label='Canada'>Canada</option>
-
     </optgroup>
 </select>
 <input name='{{ $billing ?? '' }}postal_code' type='text' required value='{{ $address->postal_code ?? '' }}'

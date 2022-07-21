@@ -10,14 +10,11 @@
         <section class="card maxw1035 section">
             @include('includes.category-nav')
             <div id="product-stream" class="fit-content margin-auto two-col-grid">
-
                 <img class="image-lg-product margin-auto" src="../assets/images/products/{{ $product[0]->img }}"
                     alt='{{ $product[0]->name }}' />
-
-
                 <div class="maxw250px">
                     <p class="red-tag">SUBSCRIBE & SAVE</p>
-                    <a class="" href="/shop/item?id={{ $product[0]->id }}">
+                    <a href="/shop/item?id={{ $product[0]->id }}">
                         <p>{{ $product[0]->name }}</p>
                     </a>
 
@@ -49,7 +46,6 @@
                         </select>
                     </form>
                     <button data-quantity="1" data-name="{{ $product[0]->name }}" data-plan="1" data-img="{{ $product[0]->img }}" data-id="{{ $product[0]->id }}" data-basePrice="{{$product[0]->price }}" data-price="{{$product[0]->price }}" class="cart-add button">SUBSCRIBE NOW</button>
-
                     <div class="two-col-grid charitable-grid">
                         <img class="w40px" src="../assets/images/girl.jpg" alt="Orphan Girl" />
                         <a href="/school/subscriptions" class="primary-color">
@@ -58,7 +54,6 @@
                     </div>
                 </div>
             </div>
-
             <h2 class='center margin-top-4-em'>Customer Reviews</h2>
             <br>
             @if (count($reviews) > 0)
@@ -67,7 +62,7 @@
                         <div class="three-col-grid reviewer-grid">
                          <span class="material-icons margin-block-start-end">account_circle</span>
                             
-                                <p>{{ $reviews[$i]->name }}</p>
+                                <p class="bold">{{ $reviews[$i]->name }}</p>
                             
                             <div class="stars-grid">
                                 @php
@@ -84,7 +79,7 @@
                                         $stars = 0;
                                         $diff = 5;
                                     }
-                                    
+
                                 @endphp
 
                                 @for ($s = 0; $s < $stars; $s++)
@@ -98,13 +93,13 @@
                             </div>
                         </div>
                         <div>
-                            <pre>{{ $reviews[$i]->review }}</pre>
+                            <p>@php echo nl2br($reviews[$i]->review); @endphp</p>
                         </div>
                     </div>
                 @endfor
             @else
-                <div class="alert-info w100per">
-                    <p><span class="material-icons text-red">info</span>&nbsp;Be the first to leave a review!</p>
+                <div class="alert-info">
+                    <p><span class="material-icons">star</span>&nbsp;Be the first to leave a review!</p>
                 </div>
             @endif
             <button id="show-review-form" class="button center margin-top-4-em">WRITE A REVIEW</button>
@@ -115,7 +110,6 @@
                     <div class="col-75">
                         <input type="hidden" value="{{ $product[0]->id }}" name="product">
                         <input type="text" required placeholder="Name" name="name">
-
                     </div>
                     <div class="col-75">
                         <select name="stars" required>
@@ -126,24 +120,17 @@
                             <option value="2">2 stars</option>
                             <option value="1">1 star</option>
                         </select>
-
                     </div>
                     <div class="col-75">
                         <textarea required rows="10" cols="40" name="review" placeholder="Write a review"></textarea>
                     </div>
                 </div>
                 <div class="row">
-
                     <div class="col-75">
-
                         <input type='submit' value='SUBMIT'>
                     </div>
                 </div>
             </form>
-
-
         </section>
-
-
     </main>
 @endsection

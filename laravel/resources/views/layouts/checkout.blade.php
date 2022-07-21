@@ -7,9 +7,10 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     @include('includes.meta')
-    <!-- <link href="../assets/css/square.css" rel="stylesheet" />!-->
-    <script type="text/javascript" src="{{ asset('../assets/js/square.js') }}"></script>
-    <script defer type="text/javascript" src="https://web.squarecdn.com/v1/square.js"></script>
+     <link href="../assets/css/square.css" rel="stylesheet" />
+     <script type="text/javascript" src="{{ asset('../assets/js/square.js') }}"></script>
+
+    <script type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
 </head>
 
 <body id='index' class="checkout">

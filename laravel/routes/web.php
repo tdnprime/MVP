@@ -194,7 +194,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::prefix('account')->group(function () {
 
-        Route::get('/home', 'App\Http\Controllers\HomeController@account')->name('account.home');
+        Route::get('/home', 'App\Http\Controllers\AccountController@index')->name('account.index');
         Route::post('/box', 'App\Http\Controllers\AccountController@updateBox')->name('account.box_url');
         Route::post('/users', 'App\Http\Controllers\AccountController@updateUsers')->name('account.users');
         Route::post('/address', 'App\Http\Controllers\AccountController@updateAddress')->name('account.address');

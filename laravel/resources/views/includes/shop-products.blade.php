@@ -34,9 +34,9 @@ if (isset($_GET['c'])) {
                         src="../assets/images/products/medium/{{ $img }}"
                         alt="{{ $product[$i]->name }}"></a>
                 <a class="" href="/shop/item?id={{ $product[$i]->id }}">
-                    <p>{{ $product[$i]->name }}</p>
+                    <p class="product-title">{{ $product[$i]->name }}</p>
                 </a>
-                <p>Weight: {{$product[$i]->weight}} {{$product[$i]->unit}} </p>
+                <p>Weight: {{$product[$i]->weight}} {{$product[$i]->unit}}</p>
 
                 @php
                     

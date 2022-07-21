@@ -128,14 +128,6 @@ class HomeController extends Controller
         return view('search.index', compact('user'));
     }
 
-
-    public function account()
-    {
-        $user = Auth::user();
-
-        return view('account.index', compact('user'));
-    }
-
     public function about()
     {
         $user = Auth::user();

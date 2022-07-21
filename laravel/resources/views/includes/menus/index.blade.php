@@ -1,12 +1,8 @@
 <div id="menu" class="menu">
     <span id="cart-left-arrow" class="material-icons white">arrow_left</span>
 <h2>Your cart</h2>
-
-
 <div id="flyout">
-
 </div>
-
 <section class="fix-to-botto">
     <div class="card-white-bg">
         <b>
@@ -22,7 +18,6 @@
 @auth
 
 @else
-
     <div id='mobile-signin'>
         <a class='signin centered center' href='{{ url('auth/google') }}'>
             Sign in with Google

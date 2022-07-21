@@ -106,7 +106,7 @@
     <a href="#" class="close-dialog">X</a><br>
     <a href="/shop/index?c=staple" class="button clearbtn">Staple Essentials</a>
     <a href="/shop/index?c=spice" class="button clearbtn">Seasoning Essentials</a>
-    <a href="/shop/index?c=produce" class="button clearbtn">15 Minute Meals</a>
+    <a href="/shop/index?c=produce" class="button clearbtn">Produce</a>
     <a href="/shop/index?c=body" class="button clearbtn">Body Essentials</a>
     <a href="/shop/index?c=snack" class="button clearbtn">Snacks</a>
 </dialog>

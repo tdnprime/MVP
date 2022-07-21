@@ -10,6 +10,17 @@ use Illuminate\Support\Facades\Session;
 
 class AccountController extends Controller
 {
+    public function index()
+    {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        $address = DB::table("users")
+        ->where("id", $id)
+        ->get()[0];
+        return view('account.index', compact('user'))
+        ->with("address", $address);
+    }
+
     public function earnings(){
 
         $id = auth()->user()->id;
@@ -17,6 +28,7 @@ class AccountController extends Controller
         return view('account.earnings', compact('user', $user));
 
     }
+
     public function updateBox(Request $request)
     {
 

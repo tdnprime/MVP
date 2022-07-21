@@ -71,6 +71,16 @@ Brown skin: #a0616a
   max-width: fit-content;
 
 }
+.product-title {
+  width: 303px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cartcheckout img{
+  margin-bottom: 2em;
+}
 
 #product-categories {
   grid-gap: 1em;
@@ -1200,11 +1210,16 @@ dialog p {
 
 }
 
+
 #nav-categories {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   grid-gap: 2%;
+  min-width: 450px;
+  overflow-x: hidden;
+  overflow: auto;
 }
+
 
 #phone-1,
 #cart {
@@ -2499,6 +2514,9 @@ a {
   background-color: #c40c0c !important;
 
 }
+.bold{
+  font-weight: bold;
+}
 
 .green {
   color: #007600;
@@ -2821,7 +2839,7 @@ a:hover {
 }
 
 .charitable-grid {
-  display: grid;
+  display: grid !important;
   grid-template-columns: 40px 58%;
   place-items: center;
   grid-gap: 1em;

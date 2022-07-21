@@ -3,7 +3,7 @@ Extra small devices (phones, 476px and down)
 */
 
 .maxw250px *{
-  max-width: 250px;
+ // max-width: 250px;
  }
 
 @media only screen and (max-width: 476px) {
@@ -74,6 +74,11 @@ Extra small devices (phones, 476px and down)
 Extra small devices (phones, 600px and down) 
 */
 @media only screen and (max-width: 600px) {
+
+  .charitable-grid {
+  
+    width: auto;
+  }
   .reviewer-grid  {
 
  display: block;
@@ -85,13 +90,13 @@ Extra small devices (phones, 600px and down)
     margin: auto;
 }
   .maxw250px *{
-    max-width: 250px;
+   // max-width: 250px;
    }
 
    .stars-grid {
     display: block;
     width:auto;
-    padding:1em;
+    //padding:1em;
  
 }
  
@@ -481,7 +486,6 @@ Small devices (portrait tablets and large phones, 600px and up)
 */
 @media only screen and (min-width: 600px) {
 
-
   .order-summary{
     display: block;
   }
@@ -644,6 +648,17 @@ Medium devices (landscape tablets, 768px and up)
 */
 @media only screen and (min-width: 768px) {
 
+
+  #m-menu {
+    width: 100%;
+    display: grid;
+    height: 70px;
+    background-color: green;
+    position: fixed;
+    bottom: 0;
+    padding-top: 1em;
+  }
+
   #checkout-main {
     width: 100%;
 
@@ -693,6 +708,18 @@ Medium devices (landscape tablets, 768px and up)
 
 /* Large devices (laptops/desktops, 992px and down) */
 @media only screen and (max-width: 992px) {
+
+  .hack{
+    display: none;
+  }
+
+  .product-title{
+    width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
 
   #order-summary{
     display: none;

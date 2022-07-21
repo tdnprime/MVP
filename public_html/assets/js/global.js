@@ -9,8 +9,7 @@ var controller = new AbortController();
 var signal = controller.signal;
 
 
-//import instance from './modules/messages.js'
-
+// import instance from './modules/messages.js'
 
 
 /**
@@ -50,8 +49,6 @@ Boxeon = {
     }
   },
 
-
-
   feedback: function (string) {
 
     var manifest = {
@@ -84,6 +81,45 @@ Boxeon = {
 
   },
 
+
+  deleteCheck:function(product){
+
+    let h2 = document.createElement("h3");
+    h2.className = "text-red";
+    let h2txt = document.createTextNode("You're about to delete this item");
+    var div = document.createElement("dialog");
+    div.className = "bg-yellow";
+    div.id = "dialog";
+    div.style.display = "block";
+    let button = document.createElement("button");
+    button.innerText = "CANCEL";
+    let button2 = document.createElement("button");
+    button2.className = "clearbtn red white";
+    button2.innerText = "DELETE";
+    h2.appendChild(h2txt)
+    div.appendChild(h2);
+    div.appendChild(button);
+    div.appendChild(button2);
+    document.getElementById("container").appendChild(div);
+
+    div.showModal();
+
+    button.addEventListener("click", function (div) {
+
+      document.getElementById("dialog").remove();
+    });
+
+    let id = product;
+
+    button2.addEventListener("click", function () {
+
+      Boxeon.delete(id);
+
+    });
+
+  },
+
+
   delete: function (product) {
 
     // Update Cookie
@@ -102,16 +138,12 @@ Boxeon = {
     }
 
     if (cart.length > 1) {
-
       document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
-
       Boxeon.showCartTotal();
     } else {
       Boxeon.deleteCookie("cart");
-
     }
     location.reload();
-
   },
 
   showCartCount: function () {
@@ -339,9 +371,6 @@ Boxeon = {
 
   },
 
-  showDetailsPreview: function (elem) {
-
-  },
   getCookie: function (cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -365,15 +394,12 @@ Boxeon = {
     if (!Boxeon.getCookie("cart")) { return; }
     let newCart = [];
     let cart = JSON.parse(Boxeon.getCookie("cart"));
-
     for (var i = 0; i < cart.length; i++) {
       if (cart[i]["product"] == product) {
         cart[i]["quantity"] = quantity;
 
       }
-
       newCart.push(cart[i]);
-
     }
     document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
     Boxeon.showCartTotal();
@@ -384,19 +410,12 @@ Boxeon = {
 
     // Update Cookie
     let newCart = [];
-
     let cart = JSON.parse(Boxeon.getCookie("cart"));
-
     if (cart.length == 0) { return; }
-
     for (var i = 0; i < cart.length; i++) {
-
       if (cart[i]["product"] == product) {
-
         cart[i]["plan"] = cadence;
-
       }
-
       newCart.push(cart[i]);
 
     }
@@ -404,11 +423,10 @@ Boxeon = {
     document.cookie = "cart=" + JSON.stringify(newCart) + ";" + "path=/";
     Boxeon.showCartTotal();
 
-
   },
 
   cartUpdatePrice: function (quantity, product, price) {
-    //alert(price);
+
     // Update in UI
     if (!document.getElementById("itemprice" + product)) { return; }
     var newPrice = price * quantity;
@@ -419,13 +437,9 @@ Boxeon = {
 
     let newCart = [];
     let cart = JSON.parse(Boxeon.getCookie("cart"));
-
     for (var i = 0; i < cart.length; i++) {
-
       if (cart[i]["product"] == product) {
-
         cart[i]["price"] = price;
-
       }
 
       newCart.push(cart[i]);
@@ -505,7 +519,6 @@ Shipping = {
 Subscriptions = {
 
   updateCheck: function (a) {
-
 
     let h2 = document.createElement("h3");
     h2.className = "centered text-red";
@@ -704,6 +717,19 @@ window.onload = function () {
 
   }
 
+  
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '552073569711730');
+    fbq('track', 'PageView');
+    
+
   if (document.getElementsByClassName("delete-icon")) {
 
     let icons = document.getElementsByClassName("delete-icon");
@@ -713,9 +739,9 @@ window.onload = function () {
 
       icons[i].addEventListener("click", function () {
 
-        Boxeon.delete(product);
+        Boxeon.deleteCheck(product);
 
-        icons[i].parentNode.parentNode.parentNode.parentNode.remove();
+       // icons[i].parentNode.parentNode.parentNode.parentNode.remove();
 
       });
 

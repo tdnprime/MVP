@@ -23,11 +23,16 @@ class CheckoutController extends Controller
 
         $id = auth()->user()->id;
         $user = User::find($id);
-        //$cookie = self::setCookie($request);
+      
+        $address = DB::table("users")
+        ->where("id", $id)
+        ->get()[0];
+
         if (isset($_COOKIE["cart"])) {
             $cart = json_decode($_COOKIE["cart"]);
             return view('checkout.index', compact('user'))
-                ->with("cart", $cart);
+                ->with("cart", $cart)
+                ->with("address", $address);
         }
     }
 

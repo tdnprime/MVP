@@ -27,13 +27,14 @@
             </div>
         </section>
         @include('includes.shop-products')
-        <div class="center div-horizontal-rule"></div>
-        <section id="creators-bar" class="max-width-1035 section  mobile-scroll">
+        
+        <section id="creators-bar" class="max-width-1035 section  mobile-scroll display-none">
+            <div class="center div-horizontal-rule"></div>
             <h2 class="centered primary-color">BEST SELLERS</h2>
             <div id="as-seen-on" class="four-col-grid">
                 @php
                     $sellers = DB::table('products')
-                        ->where('category', '=', 'Spice')
+                        ->where('category', '=', 'Snack')
                         ->take(4)
                         ->get();
                     

@@ -213,11 +213,12 @@ Boxeon = {
   addToFlyout: function () {
 
     let products = JSON.parse(Boxeon.getCookie("cart"));
+    let flyOut = document.getElementById("flyout");
 
     for (var i = 0; i < products.length; i++) {
 
-      if (!document.getElementById(products[i]['product'])) {
-        let flyOut = document.getElementById("flyout");
+      if (!document.getElementById(products[i]['product'] + "p")) {
+      
         var img = document.createElement("img");
         var div = document.createElement("div");
         var p = document.createElement("p");
@@ -225,26 +226,25 @@ Boxeon = {
         var price = products[i]['price'] * quantity; // moved last half to own line?
         var txt = document.createTextNode("$" + price);
         div.className = "cart-item";
-        div.id = products[i]["product"];
+        div.id = products[i]["product"] + "p";
         img.src = "../assets/images/products/" + products[i]['img'];
         img.className = "h70px";
         div.appendChild(img);
         p.appendChild(txt);
         div.appendChild(p);
+        
         if (flyOut.getElementsByClassName("cart-item")[0]) {
-          flyOut.insertBefore(div,
-            flyOut.getElementsByClassName("cart-item")[0]
+          
+          flyOut.insertBefore(div, flyOut.getElementsByClassName("cart-item")[0]
           );
         } else {
           flyOut.appendChild(div);
-        }
+       }
       }
     }
 
     Boxeon.showCartCount();
     Boxeon.showCartTotal();
-
-
 
   },
 
@@ -702,7 +702,6 @@ window.onload = function () {
 
   // LISTENERS
 
-
   if (localStorage.getItem('celebrate') == 'true') {
 
     document.getElementById('container').className = 'celebrate';
@@ -922,7 +921,7 @@ window.onload = function () {
   }
 
 
-  if (document.getElementsByClassName('cart-add')) {
+if (document.getElementsByClassName('cart-add')) {
     let btns = document.getElementsByClassName('cart-add');
     var total = btns.length;
     for (var i = 0; i < total; i++) {

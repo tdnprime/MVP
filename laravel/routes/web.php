@@ -42,7 +42,7 @@ Route::post('/apply/apply', 'App\Http\Controllers\ApplyController@apply')->name(
 Route::get('/box/index', 'App\Http\Controllers\BoxController@index')->name('box.index');
 Route::get('/{box_url}', 'App\Http\Controllers\BoxController@index')->name('box.index');
 Route::get('/{id}/accept', 'App\Http\Controllers\InvitationsController@accept')->name('invitations.accept');
-Route::get('/search/creator', 'App\Http\Controllers\SearchController@creator')->name('search.creator');
+Route::get('/search/products', 'App\Http\Controllers\SearchController@index')->name('search.show');
 
 #SCHOOL
 Route::prefix('school')->group(function () {
@@ -246,8 +246,13 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('/google', [GoogleController::class, 'redirectToGoogle']);
     Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback']);
     Route::get('/google/status', [GoogleController::class, 'status']);
+    Route::post('/register', 'App\Http\Controllers\AuthController@index')->name("register.show");
+    Route::get('/register', 'App\Http\Controllers\AuthController@index')->name("register.show");
+    Route::post('/create', 'App\Http\Controllers\AuthController@create')->name("register.account");
+    Route::post('/email', 'App\Http\Controllers\AuthController@login')->name("email.login");
+    Route::get('/forgot', 'App\Http\Controllers\HomeController@forgot');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/index', function () {
-    return view('dashboard');
+    return view('home.index');
 })->name('dashboard');

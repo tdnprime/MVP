@@ -13,8 +13,8 @@
             <section class='section card maxw1036'>
               
                 <div class="alert-info">
-                    <h3 class="primary-color">Delivery Details</h3>
-                    <p>Expected to arrive<span class="material-icons text-red">arrow_forward</span>
+                    <h3 class="primary-color">Welcome, {{$user->given_name}}!</h3>
+                    <p>Your next shipment is expected to arrive<span class="material-icons text-red">arrow_forward</span>
                         @php
                             
                             $date = date('Y-m-j');

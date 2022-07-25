@@ -193,4 +193,14 @@ class HomeController extends Controller
         return view('apply.index', compact('user'));
     }
 
+  
+
+    public function forgot()
+    {
+
+        $user = Auth::user();
+
+        return view('auth.forgot-password', compact('user'));
+    }
+
 }

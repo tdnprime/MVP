@@ -74,7 +74,9 @@ input:checked+.slider {
 input:focus+.slider {
   box-shadow: 20px 20px 60px #0c8dc41a;
 }
-
+input[type="text"]:focus{
+  border: 1px solid green;
+}
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
@@ -107,7 +109,7 @@ label {
   margin: auto;
 
 }
-
+input[type="password"],
 input[type="tel"], input[type="number"], input[type="email"], select, textarea, input[type="text"], input[type="url"] {
   background-color: #fff;
   border: 1px solid rgba(248, 61, 61, 0.644);

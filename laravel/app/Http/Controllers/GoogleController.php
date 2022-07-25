@@ -23,6 +23,7 @@ class GoogleController extends Controller
      *
      * @return void
      */
+    
     public function redirectToGoogle()
     {
       
@@ -35,15 +36,16 @@ class GoogleController extends Controller
      *
      * @return void
      */
+
     public function handleGoogleCallback()
     {
         try {
+
             $user = Socialite::driver('google')->stateless()->user();
             $finduser = User::where('google_id', $user->id)->first();
 
             if ($finduser) {
                 Auth::login($finduser);
-
                 #Redirect to checkout
                 if (isset($_COOKIE['checkout'])) {
                     $location = "/checkout/index";
@@ -87,17 +89,10 @@ class GoogleController extends Controller
 
             }
         } catch (Exception $e) {
+
             dd($e);
         }
     }
-    public function status()
-    {
-        $status = Auth::check();
-        if ($status) {
-            echo 1;
-        } else if (!$status) {
-            echo 0;
-        }
-    }
+
 
 }
